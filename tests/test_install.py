@@ -45,10 +45,10 @@ class InstallTests(unittest.TestCase):
             with open(path, encoding='utf-8') as f:
                 entry = f.read()
             entries.append(entry)
-            self.assertIn('Exec=%s %s\n' % (
-                words_install.exec_arg(sys.executable),
-                words_install.exec_arg(os.path.join(words_install.HERE,
-                                                    program))), entry)
+            python = words_install.exec_arg(sys.executable)
+            script = words_install.exec_arg(
+                os.path.join(words_install.HERE, program))
+            self.assertIn(f'Exec={python} {script}\n', entry)
             self.assertNotIn('~', entry)
             if shutil.which('desktop-file-validate'):
                 result = subprocess.run(['desktop-file-validate', path],
@@ -147,8 +147,8 @@ class InstallTests(unittest.TestCase):
         with open(paths[1]) as f:
             target, args, folder, icon = f.read().split('|')
         self.assertEqual(target, sys.executable)
-        self.assertEqual(args, '"%s"' % os.path.join(words_install.HERE,
-                                                     'words.py'))
+        self.assertEqual(
+            args, f'"{os.path.join(words_install.HERE, "words.py")}"')
         self.assertEqual(folder, words_install.HERE)
         self.assertTrue(icon.endswith('py-whitaker-words.ico,0'))
         self.assertEqual(words_install.uninstall_windows(), paths)

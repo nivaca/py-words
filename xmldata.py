@@ -14,6 +14,8 @@ files as they go.  A problem raises DataError, or, if the caller passes a
 list as ERRORS, is appended to it and the element skipped.
 """
 
+from __future__ import annotations
+
 import os
 from collections.abc import Callable, Iterator
 from xml.parsers import expat
@@ -35,7 +37,7 @@ class DataError(Exception):
     """A problem in a data file, with its location."""
 
     def __init__(self, path, line, message):
-        super().__init__('%s:%s: %s' % (path, line, message))
+        super().__init__(f'{path}:{line}: {message}')
         self.path = path
         self.line = line
         self.message = message
@@ -121,10 +123,10 @@ def _parse(path: str, root_tag: str) -> Iterator[_Element]:
     def start(tag, attrs):
         el = _Element(tag, attrs, parser.CurrentLineNumber)
         if not stack and tag != root_tag:
-            raise DataError(path, el.line, 'the root element must be <%s>, '
-                            'not <%s>' % (root_tag, tag))
+            raise DataError(path, el.line, f'the root element must be '
+                            f'<{root_tag}>, not <{tag}>')
         if len(stack) > 2:
-            raise DataError(path, el.line, '<%s> is nested too deeply' % tag)
+            raise DataError(path, el.line, f'<{tag}> is nested too deeply')
         if len(stack) >= 2:
             stack[-1].children.append(el)
         stack.append(el)
@@ -151,8 +153,8 @@ def _parse(path: str, root_tag: str) -> Iterator[_Element]:
                 if not chunk:
                     break
     except expat.ExpatError as e:
-        raise DataError(path, e.lineno, 'malformed XML: %s'
-                        % expat.ErrorString(e.code)) from None
+        raise DataError(path, e.lineno, f'malformed XML: '
+                        f'{expat.ErrorString(e.code)}') from None
 
 
 class _Root(Exception):
@@ -173,8 +175,8 @@ def root_tag(path: str) -> str:
     except _Root as e:
         return e.args[0]
     except expat.ExpatError as e:
-        raise DataError(path, e.lineno, 'malformed XML: %s'
-                        % expat.ErrorString(e.code)) from None
+        raise DataError(path, e.lineno, f'malformed XML: '
+                        f'{expat.ErrorString(e.code)}') from None
     raise DataError(path, 1, 'the file has no root element')
 
 
@@ -207,7 +209,7 @@ class _Reader:
     def raw(self, name, default=None):
         if name not in self.el.attrs:
             if default is None:
-                self.fail('<%s> needs a %s attribute' % (self.el.tag, name))
+                self.fail(f'<{self.el.tag}> needs a {name} attribute')
             return default
         self.used.add(name)
         return self.el.attrs[name]
@@ -219,14 +221,13 @@ class _Reader:
         try:
             return enum_cls[value]
         except KeyError:
-            self.fail('%s="%s" is not one of: %s' % (
-                name, value, ' '.join(m.name for m in enum_cls)))
+            names = ' '.join(m.name for m in enum_cls)
+            self.fail(f'{name}="{value}" is not one of: {names}')
 
     def integer(self, name, lo, hi):
         value = self.raw(name)
         if not value.isdigit() or not lo <= int(value) <= hi:
-            self.fail('%s="%s" must be a number from %d to %d' % (
-                name, value, lo, hi))
+            self.fail(f'{name}="{value}" must be a number from {lo} to {hi}')
         return int(value)
 
     def decl(self, name) -> Decl:
@@ -234,32 +235,33 @@ class _Reader:
         parts = value.split()
         if len(parts) != 2 or not all(p.isdigit() and len(p) == 1
                                       for p in parts):
-            self.fail('%s="%s" must be two digits, like "2 1"' % (
-                name, value))
+            self.fail(f'{name}="{value}" must be two digits, like "2 1"')
         return Decl(int(parts[0]), int(parts[1]))
 
     def pos(self, allowed) -> Pos:
         pos = self.enum('pos', Pos)
         if pos not in allowed:
-            self.fail('pos="%s" is not allowed in <%s>; use one of: %s' % (
-                pos.name, self.el.tag, ' '.join(p.name for p in allowed)))
+            names = ' '.join(p.name for p in allowed)
+            self.fail(f'pos="{pos.name}" is not allowed in <{self.el.tag}>; '
+                      f'use one of: {names}')
         return pos
 
     def word(self, text: str, what: str, line=None, empty=False) -> str:
         if (text or not empty) and not (text and set(text) <= LETTERS):
-            self.fail('the %s "%s" may only contain the letters a-z and A-Z'
-                      % (what, text), line)
+            self.fail(f'the {what} "{text}" may only contain the letters '
+                      'a-z and A-Z', line)
         if len(text) > MAX_STEM:
-            self.fail('the %s "%s" is longer than %d letters'
-                      % (what, text, MAX_STEM), line)
+            self.fail(f'the {what} "{text}" is longer than {MAX_STEM} '
+                      'letters', line)
         return text
 
     def done(self):
         extra = set(self.el.attrs) - self.used
         if extra:
-            self.fail('<%s> does not take the attribute%s %s here' % (
-                self.el.tag, 's' if len(extra) > 1 else '',
-                ', '.join(sorted(extra))))
+            plural = 's' if len(extra) > 1 else ''
+            names = ', '.join(sorted(extra))
+            self.fail(f'<{self.el.tag}> does not take the attribute{plural} '
+                      f'{names} here')
 
     def children(self, expected):
         """{tag: [child elements]}, checked against EXPECTED, a dict
@@ -267,15 +269,15 @@ class _Reader:
         found = {tag: [] for tag in expected}
         for child in self.el.children:
             if child.tag not in expected:
-                self.fail('<%s> cannot contain <%s>' % (self.el.tag,
-                                                        child.tag),
+                self.fail(f'<{self.el.tag}> cannot contain <{child.tag}>',
                           child.line)
             found[child.tag].append(child)
         for tag, (lo, hi) in expected.items():
             if not lo <= len(found[tag]) <= hi:
-                need = 'exactly %d' % lo if lo == hi else '%d to %d' % (lo, hi)
-                self.fail('<%s> must contain %s <%s> element%s' % (
-                    self.el.tag, need, tag, '' if hi == 1 else 's'))
+                need = f'exactly {lo}' if lo == hi else f'{lo} to {hi}'
+                plural = '' if hi == 1 else 's'
+                self.fail(f'<{self.el.tag}> must contain {need} <{tag}> '
+                          f'element{plural}')
         return found
 
     def meaning(self, el: _Element) -> str:
@@ -293,14 +295,15 @@ class _Reader:
     def _part(self, pos: Pos, uses) -> Part:
         kw = {}
         for name in uses:
-            if name in ('decl', 'conj'):
-                kw['decl'] = self.decl(name)
-            elif name == 'kind':
-                kw['kind'] = self.enum('kind', KIND_ENUM[pos])
-            elif name == 'value':
-                kw['value'] = self.integer('value', 0, 1000)
-            else:
-                kw[name] = self.enum(name, ENUMS[name])
+            match name:
+                case 'decl' | 'conj':
+                    kw['decl'] = self.decl(name)
+                case 'kind':
+                    kw['kind'] = self.enum('kind', KIND_ENUM[pos])
+                case 'value':
+                    kw['value'] = self.integer('value', 0, 1000)
+                case _:
+                    kw[name] = self.enum(name, ENUMS[name])
         return Part(pos, **kw)
 
     def form(self, pos: Pos) -> Form:
@@ -338,9 +341,9 @@ def _read(path: str, root: str, errors: list | None,
 
 def _expect(r: _Reader, *tags):
     if r.el.tag not in tags:
-        names = ', '.join('<%s>' % t for t in tags)
-        r.fail('this file can only contain %s elements, not <%s>'
-               % (names, r.el.tag))
+        names = ', '.join(f'<{t}>' for t in tags)
+        r.fail(f'this file can only contain {names} elements, not '
+               f'<{r.el.tag}>')
 
 
 def _entry(r: _Reader, n: int, dictionary: str) -> Entry:
@@ -392,10 +395,9 @@ def read_inflections(path: str, errors=None) -> list[tuple[Inflection, int]]:
         key = r.integer('key', 0, 9)
         ending = r.raw('ending', '')
         if ending and not set(ending) <= LETTERS:
-            r.fail('ending="%s" may only contain letters' % ending)
+            r.fail(f'ending="{ending}" may only contain letters')
         if len(ending) > MAX_ENDING:
-            r.fail('ending="%s" is longer than %d letters'
-                   % (ending, MAX_ENDING))
+            r.fail(f'ending="{ending}" is longer than {MAX_ENDING} letters')
         age = r.enum('age', Age, Age.X)
         freq = r.enum('freq', Freq, Freq.X)
         r.done()
@@ -436,7 +438,7 @@ def read_addons(path: str, errors=None):
                           r.meaning(found['meaning'][0]))
         connect = r.raw('connect', '')
         if len(connect) > 1:
-            r.fail('connect="%s" must be a single character' % connect)
+            r.fail(f'connect="{connect}" must be a single character')
         if tag == 'prefix':
             root = r.enum('root', Pos)
             target = r.enum('target', Pos)
@@ -458,7 +460,7 @@ def read_addons(path: str, errors=None):
 def _target(path: str, el: _Element) -> Part:
     r = _Reader(path, el)
     if el.children or el.content.strip():
-        r.fail('<%s> has no content' % el.tag)
+        r.fail(f'<{el.tag}> has no content')
     part = r.part(r.pos(TARGET_POS))
     r.done()
     return part
@@ -492,7 +494,7 @@ def codes_attrs(codes: Codes) -> list[tuple[str, str]]:
 
 
 def _attrs(pairs) -> str:
-    return ''.join(' %s=%s' % (n, quoteattr(v)) for n, v in pairs)
+    return ''.join(f' {n}={quoteattr(v)}' for n, v in pairs)
 
 
 HEADERS = {
@@ -519,7 +521,7 @@ def write_file(path: str, root: str, body: list[str], wrap=False):
         f.write(opening + '\n')
         for line in body:
             f.write(('  ' + line if line else '') + '\n')
-        f.write('</%s>\n' % root)
+        f.write(f'</{root}>\n')
     os.replace(tmp, path)
 
 
@@ -535,23 +537,23 @@ def comment(text: str) -> str:
         text = text.replace('--', '- -')
     if text.endswith('-'):
         text += ' '
-    return '<!--%s-->' % text
+    return f'<!--{text}-->'
 
 
 def root_open(tag: str) -> str:
-    return ('<%s xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
-            'xsi:noNamespaceSchemaLocation="%s">' % (tag, SCHEMA))
+    return (f'<{tag} xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
+            f'xsi:noNamespaceSchemaLocation="{SCHEMA}">')
 
 
 def entry_xml(entry: Entry) -> str:
     stems = list(entry.stems)
     while len(stems) > 1 and stems[-1] == '':
         stems.pop()
-    body = ''.join('<stem>%s</stem>' % escape(s) if s else '<stem/>'
+    body = ''.join(f'<stem>{escape(s)}</stem>' if s else '<stem/>'
                    for s in stems)
-    return '<entry%s>%s<meaning>%s</meaning></entry>' % (
-        _attrs(part_attrs(entry.part) + codes_attrs(entry.codes)), body,
-        escape(entry.meaning))
+    attrs = _attrs(part_attrs(entry.part) + codes_attrs(entry.codes))
+    return (f'<entry{attrs}>{body}<meaning>{escape(entry.meaning)}'
+            '</meaning></entry>')
 
 
 WIDTH = 79             # the longest line of entry attributes, indented
@@ -574,9 +576,9 @@ def entry_lines(entry: Entry) -> list[str]:
     stems = list(entry.stems)
     while len(stems) > 1 and stems[-1] == '':
         stems.pop()
-    lines += ['  <stem>%s</stem>' % escape(s) if s else '  <stem/>'
+    lines += [f'  <stem>{escape(s)}</stem>' if s else '  <stem/>'
               for s in stems]
-    lines += ['  <meaning>%s</meaning>' % escape(entry.meaning), '</entry>']
+    lines += [f'  <meaning>{escape(entry.meaning)}</meaning>', '</entry>']
     return lines
 
 
@@ -585,7 +587,7 @@ def inflection_xml(infl: Inflection) -> str:
                                      ('ending', infl.ending),
                                      ('age', infl.age.name),
                                      ('freq', infl.freq.name)]
-    return '<inflection%s/>' % _attrs(pairs)
+    return f'<inflection{_attrs(pairs)}/>'
 
 
 def unique_xml(u: Unique) -> str:
@@ -593,24 +595,24 @@ def unique_xml(u: Unique) -> str:
     if u.form.pos in UNIQUE_KIND_ATTRS:
         pairs.append((UNIQUE_KIND_ATTRS[u.form.pos], _value(u.kind)))
     pairs += codes_attrs(u.codes)
-    return '<unique%s><form>%s</form><meaning>%s</meaning></unique>' % (
-        _attrs(pairs), escape(u.word), escape(u.meaning))
+    return (f'<unique{_attrs(pairs)}><form>{escape(u.word)}</form>'
+            f'<meaning>{escape(u.meaning)}</meaning></unique>')
 
 
 def addon_xml(addon) -> str:
     if isinstance(addon, Tackon):
-        return '<tackon fix=%s><base%s/><meaning>%s</meaning></tackon>' % (
-            quoteattr(addon.fix), _attrs(part_attrs(addon.base)),
-            escape(addon.meaning))
+        return (f'<tackon fix={quoteattr(addon.fix)}>'
+                f'<base{_attrs(part_attrs(addon.base))}/>'
+                f'<meaning>{escape(addon.meaning)}</meaning></tackon>')
     pairs = [('fix', addon.fix)]
     if addon.connect:
         pairs.append(('connect', addon.connect))
     if isinstance(addon, Prefix):
         pairs += [('root', addon.root.name), ('target', addon.target.name)]
-        return '<prefix%s><meaning>%s</meaning></prefix>' % (
-            _attrs(pairs), escape(addon.meaning))
+        return (f'<prefix{_attrs(pairs)}><meaning>{escape(addon.meaning)}'
+                '</meaning></prefix>')
     pairs += [('root', addon.root.name), ('rootkey', str(addon.root_key)),
               ('targetkey', str(addon.target_key))]
-    return '<suffix%s><target%s/><meaning>%s</meaning></suffix>' % (
-        _attrs(pairs), _attrs(part_attrs(addon.target)),
-        escape(addon.meaning))
+    return (f'<suffix{_attrs(pairs)}>'
+            f'<target{_attrs(part_attrs(addon.target))}/>'
+            f'<meaning>{escape(addon.meaning)}</meaning></suffix>')

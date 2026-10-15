@@ -6,7 +6,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the package, when run from anywhere
-os.environ['WHITAKERS_WORDS_CACHE'] = ''     # the tests leave the user's cache alone
+os.environ['WHITAKERS_WORDS_CACHE'] = ''   # (leave the user's cache alone)
 
 from analyzer import Analyzer, split_line, form_of_sum
 from lexicon import Lexicon

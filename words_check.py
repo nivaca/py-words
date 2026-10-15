@@ -16,6 +16,9 @@ inflections.xml, or a missing stem.
 The exit status is 1 if there are errors (or warnings, with --strict).
 """
 
+from version import check_python
+check_python()          # (before the modules that need it)
+
 import argparse
 import os
 import sys
@@ -54,7 +57,7 @@ class Checker:
             self.errors += 1
         else:
             self.warnings += 1
-        self.out.append('%s:%s: %s: %s' % (path, line, kind, message))
+        self.out.append(f'{path}:{line}: {kind}: {message}')
 
     def check_file(self, path):
         """Checks PATH according to its root element."""
@@ -72,9 +75,9 @@ class Checker:
                 xmldata.read_addons(path, errors)
             else:
                 errors.append(xmldata.DataError(
-                    path, 1, '<%s> is not a WORDS data file (the root must '
-                    'be <dictionary>, <inflections>, <uniques> or <addons>)'
-                    % root))
+                    path, 1, f'<{root}> is not a WORDS data file (the root '
+                    'must be <dictionary>, <inflections>, <uniques> or '
+                    '<addons>)'))
         except xmldata.DataError as e:
             errors.append(e)            # the file could not be parsed
         for e in errors:
@@ -86,7 +89,7 @@ class Checker:
             key = (entry.stems, entry.part, entry.codes, entry.meaning)
             if key in seen:
                 self.report(path, line, 'warning',
-                            'duplicate of the entry on line %d' % seen[key])
+                            f'duplicate of the entry on line {seen[key]}')
             else:
                 seen[key] = line
             for message in self.entry_warnings(entry):
@@ -98,21 +101,20 @@ class Checker:
         if meaning.strip() == '':
             out.append('the meaning is empty')
         elif len(meaning) > MEANING_SHOWN:
-            out.append('the meaning is %d characters long; it may be cut '
-                       'after %d: ...%r' % (len(meaning), MEANING_SHOWN,
-                                            meaning[MEANING_SHOWN - 10:
-                                                    MEANING_SHOWN]))
+            cut = meaning[MEANING_SHOWN - 10:MEANING_SHOWN]
+            out.append(f'the meaning is {len(meaning)} characters long; it '
+                       f'may be cut after {MEANING_SHOWN}: ...{cut!r}')
         used = stems_used(part.pos)
         for k in range(used, 4):
             if stems[k]:
-                out.append('stem %d %r is ignored for %s' % (
-                    k + 1, stems[k], part.pos.name))
+                out.append(f'stem {k + 1} {stems[k]!r} is ignored for '
+                           f'{part.pos.name}')
         if not stems[0]:
             out.append('the first stem is blank')
         for k in range(1, used):
             if not stems[k] and _stem_needed(part, k):
-                out.append('stem %d is blank (use zzz if the form does not '
-                           'exist)' % (k + 1))
+                out.append(f'stem {k + 1} is blank (use zzz if the form '
+                           'does not exist)')
         if all(st in ('', 'zzz') for st in stems[:max(used, 1)]):
             out.append('no usable stem: no form of this word can be found')
         if part.pos in INFLECTED_AS:
@@ -120,10 +122,9 @@ class Checker:
                      for p in INFLECTED_AS[part.pos]
                      for d in self.decls.get(p, ()))
             if not ok:
-                out.append('%s %s has no endings in %s, so no form of this '
-                           'word can be found' % (
-                               part.pos.name, part.decl,
-                               lexicon.INFLECTIONS))
+                out.append(f'{part.pos.name} {part.decl} has no endings in '
+                           f'{lexicon.INFLECTIONS}, so no form of this word '
+                           'can be found')
         return out
 
 
@@ -165,12 +166,11 @@ def main(argv=None):
     datadir = default_datadir()
     files = args.files or data_files(datadir)
     if not files:
-        sys.exit('no data files in %s (set WHITAKERS_WORDS_DATADIR)'
-                 % datadir)
+        sys.exit(f'no data files in {datadir} (set WHITAKERS_WORDS_DATADIR)')
     inflections = args.inflections or \
         os.path.join(datadir, lexicon.INFLECTIONS)
     if not os.path.isfile(inflections):
-        sys.exit('cannot find %s (use --inflections)' % inflections)
+        sys.exit(f'cannot find {inflections} (use --inflections)')
     try:
         decls = inflection_decls(
             i for i, _ in xmldata.read_inflections(inflections, []))
@@ -179,16 +179,16 @@ def main(argv=None):
     checker = Checker(decls)
     for path in files:
         if not os.path.isfile(path):
-            sys.exit('cannot find %s' % path)
+            sys.exit(f'cannot find {path}')
         checker.check_file(path)
     for item in checker.out:
         if args.errors_only and ': warning: ' in item:
             continue
         print(item)
-    print('%d error%s, %d warning%s' % (
-        checker.errors, '' if checker.errors == 1 else 's',
-        checker.warnings, '' if checker.warnings == 1 else 's'),
-        file=sys.stderr)
+    errors, warnings = checker.errors, checker.warnings
+    print(f"{errors} error{'' if errors == 1 else 's'}, "
+          f"{warnings} warning{'' if warnings == 1 else 's'}",
+          file=sys.stderr)
     if checker.errors or (args.strict and checker.warnings):
         sys.exit(1)
 

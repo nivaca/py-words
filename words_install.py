@@ -16,6 +16,9 @@ needed.  Run it again after moving this folder; --uninstall removes
 everything it added.
 """
 
+from version import check_python
+check_python()          # (before the modules that need it)
+
 import argparse
 import os
 import plistlib
@@ -30,10 +33,14 @@ from version import VERSION
 
 APP_ID = 'py-whitaker-words'             # the names of the entries and icons
 BUNDLE_ID = 'io.github.nivaca.py-whitaker-words'
-NAME = 'Py-Whitaker-Words (%s)'          # the name shown, with GUI or CLI
 COMMENT = 'Latin Dictionary'
 HERE = os.path.dirname(os.path.abspath(__file__))
 ICON_DIR = os.path.join(HERE, 'icons')
+
+def display_name(kind):
+    """The name shown for the entry of KIND (GUI or CLI)."""
+    return f'Py-Whitaker-Words ({kind})'
+
 
 #  (kind, program, whether it runs in a terminal)
 PROGRAMS = (('GUI', 'words_gui.py', False),
@@ -58,7 +65,7 @@ Exec={exec}
 
 #  The lines that differ, by kind
 ENTRY_REST = {
-    'GUI': 'Terminal=false\nStartupNotify=true\nStartupWMClass=%s\n' % APP_ID,
+    'GUI': f'Terminal=false\nStartupNotify=true\nStartupWMClass={APP_ID}\n',
     'CLI': 'Terminal=true\n',
 }
 
@@ -82,7 +89,7 @@ def exec_arg(arg):
         return arg
     for c in '\\"`$':
         arg = arg.replace(c, '\\' + c)
-    return '"%s"' % arg
+    return f'"{arg}"'
 
 
 def icon_files():
@@ -127,7 +134,7 @@ def install_linux() -> list[str]:
         path = entry_path(kind)
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, 'w', encoding='utf-8', newline='\n') as f:
-            f.write(ENTRY.format(name=NAME % kind, comment=COMMENT,
+            f.write(ENTRY.format(name=display_name(kind), comment=COMMENT,
                                  app_id=APP_ID, exec=' '.join(
                                      exec_arg(a) for a in command)))
             f.write(ENTRY_REST[kind])
@@ -193,8 +200,8 @@ def windows_shortcuts() -> list[Shortcut]:
         target = sys.executable if terminal or not os.path.isfile(pythonw) \
             else pythonw
         shortcuts.append(Shortcut(
-            os.path.join(start_menu(), NAME % kind + '.lnk'), target,
-            '"%s"' % os.path.join(HERE, program), HERE, icon))
+            os.path.join(start_menu(), display_name(kind) + '.lnk'), target,
+            f'"{os.path.join(HERE, program)}"', HERE, icon))
     return shortcuts
 
 
@@ -210,8 +217,8 @@ def install_windows() -> list[str]:
              SHORTCUT_SCRIPT], env=env, stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT, check=False)
         if result.returncode != 0 or not os.path.isfile(s.path):
-            raise OSError('could not make the shortcut %s: %s' % (
-                s.path, result.stdout.decode(errors='replace').strip()))
+            output = result.stdout.decode(errors='replace').strip()
+            raise OSError(f'could not make the shortcut {s.path}: {output}')
         paths.append(s.path)
     return paths
 
@@ -244,7 +251,7 @@ def make_icns(iconset: str) -> bytes:
     b'' if there are none."""
     chunks = b''
     for kind, size in ICNS_TYPES:
-        path = os.path.join(iconset, 'icon_%s.png' % size)
+        path = os.path.join(iconset, f'icon_{size}.png')
         if os.path.isfile(path):
             with open(path, 'rb') as f:
                 png = f.read()
@@ -260,7 +267,7 @@ def applications_dir():
 
 
 def app_path(kind):
-    return os.path.join(applications_dir(), NAME % kind + '.app')
+    return os.path.join(applications_dir(), display_name(kind) + '.app')
 
 
 def is_ours(app: str) -> bool:
@@ -286,28 +293,28 @@ def make_app(kind: str, program: str, terminal: bool, icns: bytes) -> str:
     app = app_path(kind)
     if os.path.exists(app):
         if not is_ours(app):
-            raise OSError('%s exists and was not made by words_install.py; '
-                          'move it away first' % app)
+            raise OSError(f'{app} exists and was not made by '
+                          'words_install.py; move it away first')
         shutil.rmtree(app)
     contents = os.path.join(app, 'Contents')
     macos = os.path.join(contents, 'MacOS')
     resources = os.path.join(contents, 'Resources')
     os.makedirs(macos)
     os.makedirs(resources)
-    run = 'exec %s %s\n' % (shlex.quote(sys.executable),
-                            shlex.quote(os.path.join(HERE, program)))
+    python = shlex.quote(sys.executable)
+    script = shlex.quote(os.path.join(HERE, program))
+    run = f'exec {python} {script}\n'
     launcher = os.path.join(macos, APP_ID)
     if terminal:
         write_script(os.path.join(resources, 'run.command'),
-                     '#!/bin/sh\ncd %s\nclear\n%s' % (shlex.quote(HERE), run))
+                     f'#!/bin/sh\ncd {shlex.quote(HERE)}\nclear\n{run}')
         write_script(launcher, '#!/bin/sh\nexec open -a Terminal '
                                '"$(dirname "$0")/../Resources/run.command"\n')
     else:
-        write_script(launcher, '#!/bin/sh\ncd %s\n%s'
-                     % (shlex.quote(HERE), run))
+        write_script(launcher, f'#!/bin/sh\ncd {shlex.quote(HERE)}\n{run}')
     info = {
-        'CFBundleName': NAME % kind,
-        'CFBundleDisplayName': NAME % kind,
+        'CFBundleName': display_name(kind),
+        'CFBundleDisplayName': display_name(kind),
         'CFBundleIdentifier': BUNDLE_ID + '.' + kind.lower(),
         'CFBundleExecutable': APP_ID,
         'CFBundlePackageType': 'APPL',
@@ -381,13 +388,13 @@ def main(argv=None):
     try:
         if args.uninstall:
             removed = uninstall()
-            print('Removed py-words from %s.' % WHERE[system()] if removed
+            print(f'Removed py-words from {WHERE[system()]}.' if removed
                   else 'There was nothing to remove.')
             return
         paths = install()
     except OSError as e:
-        sys.exit('words_install.py: %s' % e)
-    print('Added py-words to %s:' % WHERE[system()])
+        sys.exit(f'words_install.py: {e}')
+    print(f'Added py-words to {WHERE[system()]}:')
     for path in paths:
         print('  ' + path)
     print('If you move this folder, run this again.')

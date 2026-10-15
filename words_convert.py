@@ -14,6 +14,11 @@ a quirk: in ADDONS.LAT a short line after a comment can pick up the end of
 the comment.  A tackon that this makes unusable is written as a comment.
 """
 
+from __future__ import annotations
+
+from version import check_python
+check_python()          # (before the modules that need it)
+
 import argparse
 import os
 import sys
@@ -62,13 +67,12 @@ class Tokens:
         try:
             return cls[word.upper()]
         except KeyError:
-            raise ConvertError('%r is not a %s' % (word, cls.__name__))
+            raise ConvertError(f'{word!r} is not a {cls.__name__}')
 
     def number(self, lo=0, hi=9) -> int:
         word = self.next()
         if not word.isdigit() or not lo <= int(word) <= hi:
-            raise ConvertError('%r is not a number from %d to %d'
-                               % (word, lo, hi))
+            raise ConvertError(f'{word!r} is not a number from {lo} to {hi}')
         return int(word)
 
     def decl(self) -> Decl:
@@ -97,8 +101,7 @@ def read_part(t: Tokens, pos: Pos | None = None) -> Part:
     if pos == Pos.PREP:
         return Part(pos, case=t.enum(Case))
     if pos in (Pos.VPAR, Pos.SUPINE):
-        raise ConvertError('%s is not a dictionary part of speech'
-                           % pos.name)
+        raise ConvertError(f'{pos.name} is not a dictionary part of speech')
     return Part(pos)
 
 
@@ -142,7 +145,7 @@ def read_lines(path: str) -> list[str]:
 
 
 def _fail(path, number, message, line):
-    raise ConvertError('%s:%d: %s\n    %s' % (path, number, message, line))
+    raise ConvertError(f'{path}:{number}: {message}\n    {line}')
 
 
 def _split_comment(line: str) -> tuple[str, str | None]:
@@ -202,8 +205,8 @@ def convert_inflects(path: str) -> list[str]:
             size = t.number(0, 7)
             ending = t.next() if size else ''
             if len(ending) != size:
-                raise ConvertError('the ending %r is not %d letters long'
-                                   % (ending, size))
+                raise ConvertError(f'the ending {ending!r} is not {size} '
+                                   'letters long')
             infl = Inflection(form, key, ending, t.enum(Age), t.enum(Freq))
         except ConvertError as e:
             _fail(path, number, str(e), line)
@@ -217,8 +220,8 @@ def convert_inflects(path: str) -> list[str]:
 def convert_uniques(path: str) -> list[Unique]:
     lines = read_lines(path)
     if len(lines) % 3:
-        raise ConvertError('%s: the number of lines is not a multiple of 3'
-                           % path)
+        raise ConvertError(f'{path}: the number of lines is not a multiple '
+                           'of 3')
     out = []
     for i in range(0, len(lines), 3):
         word, line, meaning = lines[i:i + 3]
@@ -280,8 +283,8 @@ def convert_addons(path: str) -> list[str]:
                 if len(rest) != 1:
                     body.append(xmldata.comment(
                         ' Not used by WORDS: in ADDONS.LAT this tackon was '
-                        'read as "%s", with text from the comment before '
-                        'it, and never matched. ' % header[t.pos:].strip()))
+                        f'read as "{header[t.pos:].strip()}", with text from '
+                        'the comment before it, and never matched. '))
                     body.append(xmldata.comment(
                         ' ' + xmldata.addon_xml(addon) + ' '))
                     pos += 3

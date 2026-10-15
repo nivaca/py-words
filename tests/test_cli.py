@@ -10,7 +10,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the package, when run from anywhere
-os.environ['WHITAKERS_WORDS_CACHE'] = ''     # the tests leave the user's cache alone
+os.environ['WHITAKERS_WORDS_CACHE'] = ''   # (leave the user's cache alone)
 
 import words as cli, words_convert as convert, xmldata
 from lexicon import Lexicon
@@ -79,8 +79,8 @@ class SettingsTests(InTempDir):
 def run(*args, stdin=''):
     return subprocess.run([sys.executable, os.path.join(ROOT, 'words.py'),
                            '--datadir', DATA] + list(args),
-                          input=stdin.encode(), stdout=subprocess.PIPE,
-                          stderr=subprocess.PIPE, check=False)
+                          input=stdin.encode(), capture_output=True,
+                          check=False)
 
 
 class CommandLineTests(InTempDir):

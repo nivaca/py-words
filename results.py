@@ -7,6 +7,8 @@ spelling change, a syncopated form ...) was needed.  A marker applies to
 the parses that follow it.
 """
 
+from __future__ import annotations
+
 from dataclasses import dataclass, field, replace
 from enum import IntEnum
 
@@ -36,7 +38,7 @@ AFFIX_POS = (Pos.TACKON, Pos.PREFIX, Pos.SUFFIX)
 Source = Entry | Unique | Prefix | Suffix | Tackon | None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Parse:
     stem: str                       # or, for a trick marker, its label
     infl: Inflection
@@ -80,7 +82,7 @@ def trick_marker(label: str, origin: Origin = Origin.TRICK) -> Parse:
     return Parse(label, NO_INFLECTION, origin)
 
 
-@dataclass
+@dataclass(slots=True)
 class Reading:
     """Forms of one word: a dictionary entry, an irregular form, an affix
     or a trick, with the stems and endings that make them."""
@@ -93,7 +95,7 @@ class Reading:
         return self.forms[0].form.pos
 
 
-@dataclass
+@dataclass(slots=True)
 class WordResult:
     word: str
     readings: list[Reading] = field(default_factory=list)

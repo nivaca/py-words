@@ -114,7 +114,7 @@ class CacheTests(unittest.TestCase):
     def test_old_caches_are_removed(self):
         lex = Lexicon.load(self.data)
         for i in range(lexicon.KEEP_FOLDERS + 2):
-            path = os.path.join(self.cache, 'lexicon-old%d.pickle' % i)
+            path = os.path.join(self.cache, f'lexicon-old{i}.pickle')
             with open(path, 'wb'):
                 pass
             os.utime(path, (1000 + i, 1000 + i))

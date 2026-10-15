@@ -3,6 +3,7 @@ grammar in plain English (noun, 2nd declension, masculine), the grammar of
 a form (genitive singular), and English example glosses.
 """
 
+from __future__ import annotations
 
 from model import (Pos, Gender, Case, Number, Comparison, NumeralSort,
                     Tense, Voice, Mood, VerbKind, PronounKind, Decl, Part,
@@ -65,7 +66,8 @@ NOUN_PARTS = {
     (2, 8): ((0, 'on'), (1, 'i')), (2, 9): ((0, 'us'), (1, 'i')),
     (4, 1): ((0, 'us'), (1, 'us')), (4, 2): ((0, 'u'), (1, 'us')),
     (4, 3): ((0, 'us'), (1, 'u')), (4, 4): ((0, ''), (1, 'u')),
-    (9, 8): ((0, '.'), (None, 'abb.')), (9, 9): ((0, ''), (None, 'undeclined')),
+    (9, 8): ((0, '.'), (None, 'abb.')),
+    (9, 9): ((0, ''), (None, 'undeclined')),
 }
 
 PRONOUN_PARTS = {
@@ -75,7 +77,8 @@ PRONOUN_PARTS = {
     (4, 2): ((0, 'dem'), (1, 'adem'), (0, 'dem')),
     (6, 1): ((0, 'e'), (0, 'a'), (0, 'ud')),
     (6, 2): ((0, 'e'), (0, 'a'), (0, 'um')),
-    (9, 8): ((0, '.'), (None, 'abb.')), (9, 9): ((0, ''), (None, 'undeclined')),
+    (9, 8): ((0, '.'), (None, 'abb.')),
+    (9, 9): ((0, ''), (None, 'undeclined')),
 }
 
 ADJ_PARTS = {
@@ -94,7 +97,8 @@ ADJ_PARTS = {
     (3, 2): ((0, 'is'), (1, 'is'), (1, 'e')),
     (3, 3): ((0, ''), (1, 'is'), (1, 'e')),
     (3, 6): ((0, ''), (None, '(gen.)'), (1, 'os')),
-    (9, 8): ((0, '.'), (None, 'abb.')), (9, 9): ((0, ''), (None, 'undeclined')),
+    (9, 8): ((0, '.'), (None, 'abb.')),
+    (9, 9): ((0, ''), (None, 'undeclined')),
 }
 
 ADJ_COMPARED = (2, 'or -or -us'), (3, 'mus -a -um')
@@ -242,20 +246,21 @@ def principal_parts(entry: Entry) -> str:
     elif p.pos == Pos.V:
         parts = _verb_parts(st, p)
     elif p.pos == Pos.NUM:
-        if p.sort == NumeralSort.X:
-            key = (which, var) if which == 1 else (2, 0)
-            parts = _make(st, NUMERAL_PARTS.get(key, ()))
-        elif p.sort == NumeralSort.CARD:
-            if which == 2:
+        match p.sort:
+            case NumeralSort.X:
+                key = (which, var) if which == 1 else (2, 0)
+                parts = _make(st, NUMERAL_PARTS.get(key, ()))
+            case NumeralSort.CARD:
+                if which == 2:
+                    parts = [st[0]]
+                elif (which, var) in CARDINAL_PARTS:
+                    parts = [st[0] + e for e in CARDINAL_PARTS[which, var]]
+            case NumeralSort.ORD:
+                parts = _make(st, ((0, 'us'), (0, 'a'), (0, 'um')))
+            case NumeralSort.DIST:
+                parts = _make(st, ((0, 'i'), (0, 'ae'), (0, 'a')))
+            case _:
                 parts = [st[0]]
-            elif (which, var) in CARDINAL_PARTS:
-                parts = [st[0] + e for e in CARDINAL_PARTS[which, var]]
-        elif p.sort == NumeralSort.ORD:
-            parts = _make(st, ((0, 'us'), (0, 'a'), (0, 'um')))
-        elif p.sort == NumeralSort.DIST:
-            parts = _make(st, ((0, 'i'), (0, 'ae'), (0, 'a')))
-        else:
-            parts = [st[0]]
     else:
         parts = [st[0]]
     return ', '.join(x for x in parts if x) or st[0]
@@ -284,28 +289,29 @@ def describe_part(part: Part) -> str:
     masculine"."""
     p = part.pos
     words = [POS_NAME.get(p, p.name)]
-    if p == Pos.N:
-        words += [_declension(part.decl), GENDER_NAME.get(part.gender)]
-    elif p in (Pos.PRON, Pos.PACK):
-        words += [PRONOUN_KIND_NAME.get(part.kind)]
-    elif p == Pos.ADJ:
-        d = _declension(part.decl)
-        if part.decl.which == 1:
-            d = '1st/2nd declension'
-        words += [d, COMPARISON_NAME.get(part.comparison)
-                  if part.comparison != Comparison.POS else None]
-    elif p == Pos.NUM:
-        words += [SORT_NAME.get(part.sort),
-                  str(part.value) if part.value else None]
-    elif p == Pos.ADV:
-        words += [COMPARISON_NAME.get(part.comparison)
-                  if part.comparison != Comparison.POS else None]
-    elif p == Pos.V:
-        words += [_declension(part.decl, conjugation=True),
-                  VERB_KIND_NAME.get(part.kind)]
-    elif p == Pos.PREP:
-        words += ['with the ' + CASE_NAME[part.case]
-                  if part.case in CASE_NAME else None]
+    match p:
+        case Pos.N:
+            words += [_declension(part.decl), GENDER_NAME.get(part.gender)]
+        case Pos.PRON | Pos.PACK:
+            words += [PRONOUN_KIND_NAME.get(part.kind)]
+        case Pos.ADJ:
+            d = _declension(part.decl)
+            if part.decl.which == 1:
+                d = '1st/2nd declension'
+            words += [d, COMPARISON_NAME.get(part.comparison)
+                      if part.comparison != Comparison.POS else None]
+        case Pos.NUM:
+            words += [SORT_NAME.get(part.sort),
+                      str(part.value) if part.value else None]
+        case Pos.ADV:
+            words += [COMPARISON_NAME.get(part.comparison)
+                      if part.comparison != Comparison.POS else None]
+        case Pos.V:
+            words += [_declension(part.decl, conjugation=True),
+                      VERB_KIND_NAME.get(part.kind)]
+        case Pos.PREP:
+            words += ['with the ' + CASE_NAME[part.case]
+                      if part.case in CASE_NAME else None]
     return ', '.join(w for w in words if w)
 
 
@@ -316,34 +322,34 @@ def describe_form(form: Form, deponent: bool = False) -> str:
     p = form.pos
     voice = None if deponent else VOICE_NAME.get(form.voice)
     words: list[str | None] = []
-    if p in (Pos.N, Pos.PRON, Pos.PACK, Pos.ADJ, Pos.NUM):
-        words = [CASE_NAME.get(form.case), NUMBER_NAME.get(form.number),
-                 GENDER_NAME.get(form.gender) if p != Pos.N else None]
-        if p == Pos.ADJ and form.comparison not in (Comparison.POS,
-                                                     Comparison.X):
-            words.append(COMPARISON_NAME[form.comparison])
-        if p == Pos.NUM:
-            words.append(SORT_NAME.get(form.sort))
-    elif p == Pos.ADV:
-        words = [COMPARISON_NAME.get(form.comparison)]
-    elif p == Pos.V:
-        if form.mood in (Mood.INF,):
+    match p:
+        case Pos.N | Pos.PRON | Pos.PACK | Pos.ADJ | Pos.NUM:
+            words = [CASE_NAME.get(form.case), NUMBER_NAME.get(form.number),
+                     GENDER_NAME.get(form.gender) if p != Pos.N else None]
+            if p == Pos.ADJ and form.comparison not in (Comparison.POS,
+                                                         Comparison.X):
+                words.append(COMPARISON_NAME[form.comparison])
+            if p == Pos.NUM:
+                words.append(SORT_NAME.get(form.sort))
+        case Pos.ADV:
+            words = [COMPARISON_NAME.get(form.comparison)]
+        case Pos.V if form.mood == Mood.INF:
             words = [TENSE_NAME.get(form.tense), voice, 'infinitive']
-        else:
-            person = '%s person' % ORDINAL[form.person] \
+        case Pos.V:
+            person = f'{ORDINAL[form.person]} person' \
                 if form.person in (1, 2, 3) else None
             words = [person, NUMBER_NAME.get(form.number),
                      TENSE_NAME.get(form.tense), voice,
                      MOOD_NAME.get(form.mood)]
-    elif p == Pos.VPAR:
-        words = [TENSE_NAME.get(form.tense), voice, 'participle,',
-                 CASE_NAME.get(form.case), NUMBER_NAME.get(form.number),
-                 GENDER_NAME.get(form.gender)]
-    elif p == Pos.SUPINE:
-        words = ['supine,', CASE_NAME.get(form.case)]
-    elif p == Pos.PREP:
-        words = ['with the ' + CASE_NAME[form.case]
-                 if form.case in CASE_NAME else None]
+        case Pos.VPAR:
+            words = [TENSE_NAME.get(form.tense), voice, 'participle,',
+                     CASE_NAME.get(form.case), NUMBER_NAME.get(form.number),
+                     GENDER_NAME.get(form.gender)]
+        case Pos.SUPINE:
+            words = ['supine,', CASE_NAME.get(form.case)]
+        case Pos.PREP:
+            words = ['with the ' + CASE_NAME[form.case]
+                     if form.case in CASE_NAME else None]
     text = ' '.join(w for w in words if w)
     return text.rstrip(',')
 
@@ -386,7 +392,7 @@ def example(form: Form, entry: Entry | None) -> str | None:
                    Case.ABL: 'by/in ~ing',
                    Case.ACC: 'for ~ing/to ~'}.get(form.case, '~ing')
             return 'to (/must) be ~ed  FUT PASSIVE PPL, often used as ' \
-                'gerund or gerundive (%s)' % how
+                f'gerund or gerundive ({how})'
     if p == Pos.SUPINE:
         return {Case.ACC: 'to ~  expresses purpose of verb of motion; may '
                           'take a direct object',

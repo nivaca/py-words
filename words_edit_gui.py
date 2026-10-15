@@ -9,6 +9,9 @@ edited.  Nothing is written until "Save"; the first save keeps the original
 file as dictionary.xml.bak.
 """
 
+from version import check_python
+check_python()          # (before the modules that need it)
+
 import os
 import tkinter as tk
 from tkinter import messagebox, ttk
@@ -38,7 +41,7 @@ class EditorWindow:
         self.fields = Fields()
         self.results = []
         self.win = win = tk.Toplevel(master) if master else tk.Tk()
-        win.title('%s: dictionary editor' % NAME)
+        win.title(f'{NAME}: dictionary editor')
         win.geometry('1080x720')
         win.protocol('WM_DELETE_WINDOW', self.close)
 
@@ -146,7 +149,7 @@ class EditorWindow:
             ttk.Entry(self.form, textvariable=var, width=24).grid(
                 row=row, column=1, sticky='w')
             var.trace_add('write', lambda *a: self.changed())
-            self.vars['stem%d' % i] = var
+            self.vars[f'stem{i}'] = var
             row += 1
         for name in f.names():
             label(FIELD_LABELS.get(name, name))
@@ -181,7 +184,7 @@ class EditorWindow:
     def read_form(self):
         f = self.fields
         for i in range(len(f.stem_labels())):
-            f.stems[i] = self.vars['stem%d' % i].get().strip()
+            f.stems[i] = self.vars[f'stem{i}'].get().strip()
         for name in f.names():
             f.attrs[name] = _value(self.vars[name].get())
         f.meaning = self.vars['meaning'].get()
@@ -218,7 +221,7 @@ class EditorWindow:
         self.listbox.delete(0, 'end')
         for e in self.results:
             self.listbox.insert('end', self.editor.summary(e, 80))
-        self.status.config(text='%d found' % len(self.results)
+        self.status.config(text=f'{len(self.results)} found'
                            if self.results else 'Nothing found')
         if self.results:
             self.listbox.selection_set(0)
@@ -270,7 +273,7 @@ class EditorWindow:
         self.results = [entry] + [e for e in self.results
                                   if e is not entry]
         self.refresh_list()
-        self.update_status('%s: %s' % (done, self.editor.summary(entry, 60)))
+        self.update_status(f'{done}: {self.editor.summary(entry, 60)}')
         self.changed()
 
     def delete(self):
@@ -309,10 +312,10 @@ class EditorWindow:
         try:
             self.editor.save()
         except OSError as e:
-            messagebox.showerror(NAME, 'Cannot save: %s' % e,
+            messagebox.showerror(NAME, f'Cannot save: {e}',
                                  parent=self.win)
             return
-        self.update_status('Saved %s' % self.editor.path)
+        self.update_status(f'Saved {self.editor.path}')
         if self.on_save:
             self.on_save()
 
@@ -334,7 +337,7 @@ class EditorWindow:
 def main():
     datadir = default_datadir()
     if not os.path.isfile(os.path.join(datadir, DICTIONARY)):
-        raise SystemExit('There is no %s in %s' % (DICTIONARY, datadir))
+        raise SystemExit(f'There is no {DICTIONARY} in {datadir}')
     window = EditorWindow(None, datadir)
     window.win.mainloop()
 

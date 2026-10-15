@@ -11,6 +11,8 @@ Each trick that works adds a marker (a Parse labelled with what was done)
 before the parses it found, and an explanation to NOTES.
 """
 
+from __future__ import annotations
+
 import re
 from typing import TYPE_CHECKING
 from collections.abc import Callable
@@ -145,7 +147,8 @@ def bad_roman_number(word: str) -> int:
     """A guess at the value of an ill-formed numeral (IIX, LXXXXX ...)."""
     values = [ROMAN_DIGITS.get(c, 0) for c in word.upper()]
     total = decremented_from = values[-1]
-    for v, n in zip(reversed(values[:-1]), reversed(values[1:])):
+    for v, n in zip(reversed(values[:-1]), reversed(values[1:]),
+                    strict=True):
         if v < n:
             total -= v
             decremented_from = n
@@ -167,7 +170,7 @@ def roman_numeral(word: str, notes: dict) -> list[Parse]:
     value = roman_number(word)
     if not value:
         return []
-    notes[Origin.ROMAN] = '%d  as a ROMAN NUMERAL;' % value
+    notes[Origin.ROMAN] = f'{value}  as a ROMAN NUMERAL;'
     return [_numeral(word, Freq.A)]
 
 
@@ -271,18 +274,18 @@ class _Tricks:
         s = self.s
         if len(s) >= len(x1) + 2 and s.startswith(x1):
             return self.attempt(
-                'Word mod %s/%s' % (x1, x2), x2 + s[len(x1):],
-                note or "An initial '%s' may have replaced usual '%s'"
-                % (x1, x2), '%-5s   FLIP at ' % self.stat_kind)
+                f'Word mod {x1}/{x2}', x2 + s[len(x1):],
+                note or f"An initial '{x1}' may have replaced usual '{x2}'",
+                f'{self.stat_kind:<5}   FLIP at ')
         return False
 
     def flip_flop(self, x1, x2) -> bool:
         s = self.s
         for a, b in ((x1, x2), (x2, x1)):
             if len(s) >= len(a) + 2 and s.startswith(a):
-                if self.attempt('Word mod %s/%s' % (a, b), b + s[len(a):],
-                                "An initial '%s' may be rendered by '%s'"
-                                % (a, b), '%-5s  FLOP at ' % self.stat_kind):
+                if self.attempt(f'Word mod {a}/{b}', b + s[len(a):],
+                                f"An initial '{a}' may be rendered by '{b}'",
+                                f'{self.stat_kind:<5}  FLOP at '):
                     return True
                 if self.stat_kind == 'SLURY':
                     return False        # slurs only try the reverse if
@@ -293,8 +296,8 @@ class _Tricks:
         s = self.s
         for i in range(len(s) - len(x1) + 1):
             if s[i:i + len(x1)] == x1 and self.attempt(
-                    'Word mod %s/%s' % (x1, x2), s[:i] + x2 + s[i + len(x1):],
-                    "An internal '%s' might be rendered by '%s'" % (x1, x2),
+                    f'Word mod {x1}/{x2}', s[:i] + x2 + s[i + len(x1):],
+                    f"An internal '{x1}' might be rendered by '{x2}'",
                     'TRICK   INTR at '):
                 return True
         return False
@@ -308,14 +311,14 @@ class _Tricks:
             return False
         if s.startswith(x1) and s[n] not in VOWELS:
             return self.attempt(
-                'Slur %s/%s~' % (x1, x1[:-1]), x1[:-1] + s[n] + s[n:],
-                "An initial '%s' may be rendered by %s~" % (x1, x1[:-1]),
+                f'Slur {x1}/{x1[:-1]}~', x1[:-1] + s[n] + s[n:],
+                f"An initial '{x1}' may be rendered by {x1[:-1]}~",
                 'SLURY   SLUR at ')
         if s.startswith(x1[:-1]) and s[n - 1] == s[n] and \
                 s[n] not in VOWELS:
             return self.attempt(
-                'Slur %s~/%s' % (x1[:-1], x1), x1 + s[n:],
-                "An initial '%s~' may be rendered by %s" % (x1[:-1], x1),
+                f'Slur {x1[:-1]}~/{x1}', x1 + s[n:],
+                f"An initial '{x1[:-1]}~' may be rendered by {x1}",
                 'SLURY   SLUR at ')
         return False
 
@@ -402,8 +405,8 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
         _two_words(az, t, opts)
     if only_roman_digits(word):
         notes.pop(Origin.TRICK, None)
-        notes[Origin.ROMAN] = '%d  as ill-formed ROMAN NUMERAL?;' % \
-            bad_roman_number(word)
+        notes[Origin.ROMAN] = \
+            f'{bad_roman_number(word)}  as ill-formed ROMAN NUMERAL?;'
         return [trick_marker('Bad Roman Numeral?'), _numeral(word, Freq.D)]
     return t.out
 
@@ -413,7 +416,7 @@ def _double_consonants(t: _Tricks):
     s = t.s
     for i in range(1, len(s) - 1):
         if s[i] not in VOWELS and s[i - 1] in VOWELS and s[i + 1] in VOWELS:
-            if t.attempt('Word mod %s -> %s%s' % (s[i], s[i], s[i]),
+            if t.attempt(f'Word mod {s[i]} -> {s[i]}{s[i]}',
                          s[:i + 1] + s[i:],
                          'A doubled consonant may be rendered by just the '
                          'single  MEDIEVAL', 'TRICK   2CON at '):
@@ -445,11 +448,12 @@ def _two_words(az: Analyzer, t: _Tricks, opts: Opts):
                      not (from_dictionary(p.origin) or
                           p.origin == Origin.UNIQUE)]
             t.notes[Origin.TRICK] = 'It is very likely a compound number' \
-                '    %s + %s' % (s[:i], s[i:])
+                f'    {s[:i]} + {s[i:]}'
             az.put_stat('TRICK   2NUM at ', t.word, s[:i] + '+' + s[i:])
         else:
-            t.notes[Origin.TRICK] = 'May be 2 words combined (%s+%s) If ' \
-                'not obvious, probably incorrect' % (s[:i], s[i:])
+            t.notes[Origin.TRICK] = (f'May be 2 words combined ({s[:i]}+'
+                                     f'{s[i:]}) If not obvious, probably '
+                                     'incorrect')
             az.put_stat('TRICK   2WDS at ', t.word, s[:i] + '+' + s[i:])
         t.out += [trick_marker('Two words')] + found
         return

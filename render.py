@@ -11,6 +11,7 @@ irregular form, an affix or enclitic found on the word, or a note on a
 trick that was needed to find it.
 """
 
+from __future__ import annotations
 
 from english import Hit
 from forms import (principal_parts, describe_part, describe_form, example,
@@ -49,7 +50,7 @@ class Renderer:
 
     def line(self, text: str, indent: int = 0, code: int | None = None):
         if self.s.do_pearse_codes and code is not None:
-            text = '%02d %s' % (code, text)
+            text = f'{code:02d} {text}'
         else:
             text = ' ' * indent + text
         self.lines.append(text.rstrip())
@@ -86,17 +87,17 @@ class Renderer:
             self.affix(src)
         elif r.origin in (Origin.TRICK, Origin.SYNCOPE):
             label = r.forms[0].stem
-            self.line('%s: %s' % (TRICK_TITLE[r.origin], label), 2,
+            self.line(f'{TRICK_TITLE[r.origin]}: {label}', 2,
                       TRICK_CODE)
             note = result.notes.get(r.origin)
             if note and r.origin not in shown:
                 self.line(note, 4, TRICK_CODE)
                 shown.add(r.origin)
         elif r.origin == Origin.COMPOUND and r.pos == Pos.SUFFIX:
-            self.line('-%s  suffix: adverb from adjective' % r.forms[0].stem,
+            self.line(f'-{r.forms[0].stem}  suffix: adverb from adjective',
                       2, AFFIX_CODE)
         elif r.origin == Origin.ROMAN:
-            self.line('%s  Roman numeral' % r.forms[0].stem, 2, ENTRY_CODE)
+            self.line(f'{r.forms[0].stem}  Roman numeral', 2, ENTRY_CODE)
             note = result.notes.get(Origin.ROMAN)
             if note:
                 self.line(note.split('  ')[0], 4, MEANING_CODE)
@@ -107,11 +108,11 @@ class Renderer:
 
     def affix(self, a):
         if isinstance(a, Prefix):
-            title = '%s-  prefix' % a.fix
+            title = f'{a.fix}-  prefix'
         elif isinstance(a, Suffix):
-            title = '-%s  suffix' % a.fix
+            title = f'-{a.fix}  suffix'
         else:
-            title = '-%s  enclitic' % a.fix
+            title = f'-{a.fix}  enclitic'
         self.line(title, 2, AFFIX_CODE)
         if not self.s.do_dictionary_forms:
             return
@@ -123,7 +124,7 @@ class Renderer:
             words.append(principal_parts(entry))
             words.append(describe_part(entry.part))
         if self.s.show_dictionary_codes:
-            words.append('[%s]' % entry.codes)
+            words.append(f'[{entry.codes}]')
         flags = []
         if self.s.show_age or entry.codes.age != Age.X:
             flags.append(ENTRY_AGE.get(entry.codes.age))
@@ -131,9 +132,9 @@ class Renderer:
             flags.append(ENTRY_FREQ.get(entry.codes.freq))
         words += [f for f in flags if f]
         if self.s.show_dictionary:
-            words.append('(%s dictionary)' % entry.dictionary)
+            words.append(f'({entry.dictionary} dictionary)')
         if self.s.show_dictionary_line:
-            words.append('(entry %d)' % entry.id)
+            words.append(f'(entry {entry.id})')
         return '  '.join(w for w in words if w)
 
     def entry(self, r: Reading, entry: Entry, result: WordResult):
@@ -149,7 +150,7 @@ class Renderer:
     def unique(self, r: Reading, u: Unique):
         words = [u.word, POS_NAME.get(u.form.pos, '')]
         if self.s.show_dictionary_codes:
-            words.append('[%s]' % u.codes)
+            words.append(f'[{u.codes}]')
         self.line('  '.join(w for w in words if w), 2, ENTRY_CODE)
         self.line(u.meaning, 4, MEANING_CODE)
         if not self.meanings_only:
@@ -179,7 +180,7 @@ class Renderer:
             extra.append(FORM_FREQ.get(p.infl.freq))
         extra = [e for e in extra if e]
         if extra:
-            text += '  (%s)' % ', '.join(extra)
+            text += f"  ({', '.join(extra)})"
         self.line(text, 4, FORM_CODE)
         if p.origin == Origin.COMPOUND and result is not None:
             note = result.notes.get(Origin.COMPOUND)
@@ -209,7 +210,7 @@ class Renderer:
             self.line(header, 2, ENTRY_CODE)
             self.line(h.entry.meaning, 4, MEANING_CODE)
         if len(shown) < len(hits):
-            self.line('(%d more not shown)' % (len(hits) - len(shown)), 2)
+            self.line(f'({len(hits) - len(shown)} more not shown)', 2)
         return self.text()
 
 
@@ -229,13 +230,13 @@ def meaning_of(entry: Entry, p: Parse) -> str:
         return m
     n = part.value
     if p.form.pos != Pos.NUM:
-        return 'Number %d' % n
+        return f'Number {n}'
     return {
-        NumeralSort.CARD: "%d - (CARD answers 'how many');" % n,
-        NumeralSort.ORD: "%dth - (ORD, 'in series'); (a/the) %dth (part) "
-                         "(fract w/pars?);" % (n, n),
-        NumeralSort.DIST: "%d each/apiece/times/fold/together/at a time - "
-                          "'how many each'; by %ds; " % (n, n),
-        NumeralSort.ADVERB: "%d times, on %d occasions - (ADVERB answers "
-                            "'how often');" % (n, n),
+        NumeralSort.CARD: f"{n} - (CARD answers 'how many');",
+        NumeralSort.ORD: f"{n}th - (ORD, 'in series'); (a/the) {n}th (part) "
+                         "(fract w/pars?);",
+        NumeralSort.DIST: f"{n} each/apiece/times/fold/together/at a time - "
+                          f"'how many each'; by {n}s; ",
+        NumeralSort.ADVERB: f"{n} times, on {n} occasions - (ADVERB answers "
+                            "'how often');",
     }.get(p.form.sort, m)

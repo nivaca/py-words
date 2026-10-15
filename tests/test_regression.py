@@ -33,8 +33,8 @@ def run_words(args, workdir):
     return subprocess.run(
         [sys.executable, os.path.join(ROOT, 'words.py'), '--datadir', DATA]
         + args,
-        cwd=workdir, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-        stdin=subprocess.DEVNULL, check=False)
+        cwd=workdir, env=env, capture_output=True, stdin=subprocess.DEVNULL,
+        check=False)
 
 
 class RegressionTests(unittest.TestCase):

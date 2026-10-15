@@ -5,6 +5,8 @@ enumeration has an X member meaning "unknown" or "any", which is also the
 default.
 """
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from enum import IntEnum
 from typing import NamedTuple
@@ -234,7 +236,7 @@ class Decl(NamedTuple):
     var: int = 0
 
     def __str__(self):
-        return '%d %d' % self
+        return f'{self.which} {self.var}'
 
     def fits(self, pattern: Decl) -> bool:
         """Whether this declension is one that PATTERN describes."""
@@ -263,7 +265,7 @@ def matches(value, pattern) -> bool:
     return pattern == value or pattern == 0
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Codes:
     """When, where, how often and on whose authority a word is used."""
     age: Age = Age.X
@@ -280,7 +282,7 @@ class Codes:
 NO_CODES = Codes()
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Part:
     """The grammar of a dictionary word.  Only the fields that its part of
     speech uses are set (decl is the conjugation of a verb, case the case a
@@ -298,7 +300,7 @@ class Part:
 NO_PART = Part()
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Form:
     """The grammar of an inflected form, as given by an ending.  Only the
     fields that its part of speech uses are set (decl is the conjugation of
@@ -317,26 +319,25 @@ class Form:
 
     def order(self) -> tuple:
         """The key by which forms of an entry are listed."""
-        p = self.pos
-        if p in (Pos.N, Pos.PRON, Pos.PACK):
-            rest = (self.decl, self.number, self.case, self.gender)
-        elif p == Pos.ADJ:
-            rest = (self.decl, self.number, self.case, self.gender,
-                    self.comparison)
-        elif p == Pos.NUM:
-            rest = (self.decl, self.number, self.case, self.gender, self.sort)
-        elif p == Pos.ADV:
-            rest = (self.comparison,)
-        elif p == Pos.V:
-            rest = (self.decl, self.number, self.tense, self.voice, self.mood,
-                    self.person)
-        elif p in (Pos.VPAR, Pos.SUPINE):
-            rest = (self.decl, self.number, self.case, self.gender)
-        elif p == Pos.PREP:
-            rest = (self.case,)
-        else:
-            rest = ()
-        return (p, rest)
+        match self.pos:
+            case Pos.N | Pos.PRON | Pos.PACK | Pos.VPAR | Pos.SUPINE:
+                rest = (self.decl, self.number, self.case, self.gender)
+            case Pos.ADJ:
+                rest = (self.decl, self.number, self.case, self.gender,
+                        self.comparison)
+            case Pos.NUM:
+                rest = (self.decl, self.number, self.case, self.gender,
+                        self.sort)
+            case Pos.ADV:
+                rest = (self.comparison,)
+            case Pos.V:
+                rest = (self.decl, self.number, self.tense, self.voice,
+                        self.mood, self.person)
+            case Pos.PREP:
+                rest = (self.case,)
+            case _:
+                rest = ()
+        return (self.pos, rest)
 
     @property
     def tvm(self) -> tuple[Tense, Voice, Mood]:
@@ -346,7 +347,7 @@ class Form:
 NO_FORM = Form()
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Inflection:
     """An ending: added to stem number KEY (1-4; 0 for any) of a word whose
     grammar fits FORM, it makes that form."""
@@ -364,7 +365,7 @@ NO_INFLECTION = Inflection(NO_FORM)
 #  Dictionary entries, irregular forms and affixes.  These are compared by
 #  identity: two entries with the same text are still two entries.
 
-@dataclass(frozen=True, eq=False)
+@dataclass(frozen=True, eq=False, slots=True)
 class Entry:
     """A dictionary entry.  STEMS has four items ('' for a blank stem and
     'zzz' for a form that does not exist).  ID is the entry's position in
@@ -377,11 +378,11 @@ class Entry:
     dictionary: str = 'general'
 
     def __repr__(self):
-        return '<Entry %s:%d %s %s>' % (self.dictionary, self.id,
-                                       self.stems[0], self.part.pos.name)
+        return (f'<Entry {self.dictionary}:{self.id} {self.stems[0]} '
+                f'{self.part.pos.name}>')
 
 
-@dataclass(frozen=True, eq=False)
+@dataclass(frozen=True, eq=False, slots=True)
 class Unique:
     """An irregular form that is not made of a stem and an ending."""
     id: int
@@ -392,10 +393,10 @@ class Unique:
     meaning: str
 
     def __repr__(self):
-        return '<Unique %d %s>' % (self.id, self.word)
+        return f'<Unique {self.id} {self.word}>'
 
 
-@dataclass(frozen=True, eq=False)
+@dataclass(frozen=True, eq=False, slots=True)
 class Prefix:
     id: int
     fix: str
@@ -405,7 +406,7 @@ class Prefix:
     meaning: str
 
 
-@dataclass(frozen=True, eq=False)
+@dataclass(frozen=True, eq=False, slots=True)
 class Suffix:
     id: int
     fix: str
@@ -417,7 +418,7 @@ class Suffix:
     meaning: str
 
 
-@dataclass(frozen=True, eq=False)
+@dataclass(frozen=True, eq=False, slots=True)
 class Tackon:
     """An enclitic (-que, -ne, -cumque ...).  A packon is one that attaches
     only to qu- pronouns (qui -> quicumque)."""

@@ -18,6 +18,9 @@ original as dictionary.xml.bak.  (On Windows, curses needs the
 windows-curses package; the window editor, words_edit_gui.py, needs nothing.)
 """
 
+from version import check_python
+check_python()          # (before the modules that need it)
+
 import curses
 import os
 import sys
@@ -120,7 +123,7 @@ class TUI:
         ed = self.editor
         fields = [Field('pos', 'part of speech', f.pos, POS_CHOICES)]
         for i, label in enumerate(f.stem_labels()):
-            fields.append(Field('stem%d' % i, label, f.stems[i]))
+            fields.append(Field(f'stem{i}', label, f.stems[i]))
         for name in f.names():
             default = 'X' if name in CODE_FIELDS else ''
             fields.append(Field(name, FIELD_LABELS.get(name, name),
@@ -164,15 +167,15 @@ class TUI:
         scr.erase()
         h, w = scr.getmaxyx()
         ed = self.editor
-        title = ' %s: dictionary editor   %s%s ' % (
-            NAME, ed.path, '   [unsaved changes]' if ed.dirty else '')
+        unsaved = '   [unsaved changes]' if ed.dirty else ''
+        title = f' {NAME}: dictionary editor   {ed.path}{unsaved} '
         self.put(0, 0, title.ljust(w), curses.A_REVERSE)
         self.put(1, 0, 'Find: ')
         self.put(1, 6, self.query.value,
                  curses.A_UNDERLINE if self.focus == 'find' else 0)
         left = max(30, w * 2 // 5)
         top, bottom = 3, h - 4
-        self.put(2, 0, '%d found' % len(self.results) if self.results
+        self.put(2, 0, f'{len(self.results)} found' if self.results
                  else '', curses.A_DIM)
         # the list
         rows = bottom - top
@@ -262,7 +265,7 @@ class TUI:
                 top = pos - rows + 1
             win.erase()
             win.box()
-            win.addnstr(0, 2, ' %s ' % title, bw - 4)
+            win.addnstr(0, 2, f' {title} ', bw - 4)
             for i, line in enumerate(lines[top:top + rows]):
                 attr = curses.A_REVERSE if choose and top + i == pos else 0
                 try:
@@ -354,15 +357,15 @@ class TUI:
                                   if e is not self.current]
         self.current = entry
         self.selected = 0
-        self.message = '%s: %s.  F2 saves the file.' % (
-            done, self.editor.summary(entry, 50))
+        self.message = (f'{done}: {self.editor.summary(entry, 50)}.  '
+                        'F2 saves the file.')
 
     def delete(self):
         if self.current is None:
             self.message = 'Choose an entry to delete first.'
             return
-        if not self.confirm('Delete %s?' % self.editor.summary(
-                self.current, 50)):
+        if not self.confirm(
+                f'Delete {self.editor.summary(self.current, 50)}?'):
             return
         self.editor.delete(self.current)
         self.results = [e for e in self.results if e is not self.current]
@@ -380,10 +383,10 @@ class TUI:
     def save(self):
         try:
             self.editor.save()
-            self.message = 'Saved %s (the original is in %s.bak).' % (
-                self.editor.path, DICTIONARY)
+            self.message = (f'Saved {self.editor.path} (the original is in '
+                            f'{DICTIONARY}.bak).')
         except OSError as e:
-            self.message = 'Cannot save: %s' % e
+            self.message = f'Cannot save: {e}'
 
     def quit(self):
         if self.editor.dirty:
@@ -522,7 +525,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     datadir = args.datadir or default_datadir()
     if not os.path.isfile(os.path.join(datadir, DICTIONARY)):
-        sys.exit('words_edit.py: there is no %s in %s' % (DICTIONARY, datadir))
+        sys.exit(f'words_edit.py: there is no {DICTIONARY} in {datadir}')
     if not sys.stdin.isatty() or not sys.stdout.isatty():
         sys.exit('words_edit.py: this is a full-screen program; run it in a '
                  'terminal (or use words_edit_gui.py)')

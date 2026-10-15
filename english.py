@@ -2,11 +2,13 @@
 
 Each meaning is read sense by sense (senses are separated by ';').  A
 phrase (separated by ',') with no spaces ("friend", "wild/stormy") gives
-its words a high rank; words taken from longer phrases rank lower, and common words that say
-little about the entry ("thing", "make", "of" ...) are not indexed from
-them.  Text in parentheses is skipped; in "[idiom => translation]" only the
-translation is used.
+its words a high rank; words taken from longer phrases rank lower, and
+common words that say little about the entry ("thing", "make", "of" ...)
+are not indexed from them.  Text in parentheses is skipped; in
+"[idiom => translation]" only the translation is used.
 """
+
+from __future__ import annotations
 
 import re
 from collections import defaultdict

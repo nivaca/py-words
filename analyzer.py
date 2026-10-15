@@ -9,6 +9,8 @@ tricks.py).  Finally participles followed by a form of esse are read as
 compound tenses, and the results are ordered and grouped (results.py).
 """
 
+from __future__ import annotations
+
 import re
 from dataclasses import dataclass, replace
 from collections.abc import Callable
@@ -30,7 +32,7 @@ ENCLITICS = 4       # the first tackons of addons.xml (que, ne, ve, est) are
 REGULAR, QU_PRONOUNS, PACKONS = 'regular', 'qu-pronouns', 'packons'
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class Opts:
     """How a word is looked up."""
     do_fixes: bool = True           # try prefixes and suffixes ...
@@ -64,43 +66,44 @@ def _form_of(part, key: int, infl: Inflection) -> Form | None:
     """The form that INFL makes of a word with grammar PART whose stem
     number is KEY, or None if the ending does not fit the word."""
     q = infl.form
-    p = part.pos
-    if p == Pos.N:
-        if part.decl.fits(q.decl) and _gender_fits(part.gender, q.gender):
-            return Form(Pos.N, part.decl, q.case, q.number, part.gender)
-    elif p == Pos.PRON:
-        if part.decl.fits(q.decl):
-            return Form(Pos.PRON, part.decl, q.case, q.number, q.gender)
-    elif p == Pos.ADJ:
-        if part.decl.fits(q.decl) and (
-                part.comparison in (q.comparison, Comparison.X) or
-                q.comparison == Comparison.X):
-            if part.comparison != Comparison.X:
-                comparison = part.comparison
-            else:
-                comparison = _adj_comparison(key)
-            return Form(Pos.ADJ, part.decl, q.case, q.number, q.gender,
-                        comparison)
-    elif p == Pos.NUM:
-        if part.decl.fits(q.decl) and key == infl.key:
-            sort = part.sort if part.sort != NumeralSort.X \
-                else NumeralSort(key) if 1 <= key <= 4 else NumeralSort.X
-            return Form(Pos.NUM, part.decl, q.case, q.number, q.gender,
-                        sort=sort)
-    elif p == Pos.ADV:
-        if q.comparison in (part.comparison, Comparison.X) or \
-                part.comparison == Comparison.X:
-            comparison = part.comparison if part.comparison != \
-                Comparison.X else _adv_comparison(key)
-            return Form(Pos.ADV, comparison=comparison)
-    elif p == Pos.V:
-        if part.decl.fits(q.decl):
-            return replace(q, decl=part.decl)
-    elif p == Pos.PREP:
-        if part.case == q.case:
+    match part.pos:
+        case Pos.N:
+            if part.decl.fits(q.decl) and \
+                    _gender_fits(part.gender, q.gender):
+                return Form(Pos.N, part.decl, q.case, q.number, part.gender)
+        case Pos.PRON:
+            if part.decl.fits(q.decl):
+                return Form(Pos.PRON, part.decl, q.case, q.number, q.gender)
+        case Pos.ADJ:
+            if part.decl.fits(q.decl) and (
+                    part.comparison in (q.comparison, Comparison.X) or
+                    q.comparison == Comparison.X):
+                if part.comparison != Comparison.X:
+                    comparison = part.comparison
+                else:
+                    comparison = _adj_comparison(key)
+                return Form(Pos.ADJ, part.decl, q.case, q.number, q.gender,
+                            comparison)
+        case Pos.NUM:
+            if part.decl.fits(q.decl) and key == infl.key:
+                sort = part.sort if part.sort != NumeralSort.X \
+                    else NumeralSort(key) if 1 <= key <= 4 else NumeralSort.X
+                return Form(Pos.NUM, part.decl, q.case, q.number, q.gender,
+                            sort=sort)
+        case Pos.ADV:
+            if q.comparison in (part.comparison, Comparison.X) or \
+                    part.comparison == Comparison.X:
+                comparison = part.comparison if part.comparison != \
+                    Comparison.X else _adv_comparison(key)
+                return Form(Pos.ADV, comparison=comparison)
+        case Pos.V:
+            if part.decl.fits(q.decl):
+                return replace(q, decl=part.decl)
+        case Pos.PREP:
+            if part.case == q.case:
+                return q
+        case Pos.CONJ | Pos.INTERJ:
             return q
-    elif p in (Pos.CONJ, Pos.INTERJ):
-        return q
     return None
 
 
@@ -146,8 +149,8 @@ class Analyzer:
 
     def put_stat(self, caption: str, word: str, detail: str):
         """A line for the statistics file (WORD.STA)."""
-        self.stat('%s%-8d%-4d   %-20s   %s' % (
-            caption, self.line_number, self.word_number, word[:20], detail))
+        self.stat(f'{caption}{self.line_number:<8d}{self.word_number:<4d}   '
+                  f'{word[:20]:<20}   {detail}')
 
     # -----------------------------------------------------------------
     #  Affixes
@@ -650,7 +653,8 @@ def form_of_sum(word: str) -> Form | None:
     """The form of sum that WORD is (the first, if it is several)."""
     for mood, tenses in _SUM.items():
         for tense, numbers in tenses.items():
-            for number, forms in zip((Number.S, Number.P), numbers):
+            for number, forms in zip((Number.S, Number.P), numbers,
+                                     strict=True):
                 for person, form in enumerate(forms.split(), 1):
                     if word == form:
                         return Form(Pos.V, Decl(5, 1), number=number,

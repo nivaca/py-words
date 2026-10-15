@@ -111,7 +111,10 @@ On this base, the following were added:
 * faster start-up: the XML is read as a stream, and what is read is
   cached, so that the program starts in about a quarter of a second;
 * a simple layout: the programs in one folder, the data in `data/`, with
-  nothing to install beyond Python 3.8 or later.
+  nothing to install beyond Python 3.11 or later;
+* current Python: the code was brought up to Python 3.11 (modern type
+  annotations, f-strings, `match` statements, data classes with slots),
+  and each program says plainly when it is run with an older Python.
 
 Testing
 -------

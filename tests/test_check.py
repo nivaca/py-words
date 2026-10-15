@@ -7,7 +7,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the package, when run from anywhere
-os.environ['WHITAKERS_WORDS_CACHE'] = ''     # the tests leave the user's cache alone
+os.environ['WHITAKERS_WORDS_CACHE'] = ''   # (leave the user's cache alone)
 
 import words_check as check, xmldata
 
@@ -35,8 +35,8 @@ class CheckerTests(unittest.TestCase):
     def problems(self, body, root='dictionary'):
         path = os.path.join(self.tmp.name, 'test.xml')
         with open(path, 'w', encoding='utf-8') as f:
-            f.write('<?xml version="1.0" encoding="UTF-8"?>\n<%s>\n%s\n</%s>\n'
-                    % (root, body, root))
+            f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<{root}>\n'
+                    f'{body}\n</{root}>\n')
         checker = check.Checker(self.decls)
         checker.check_file(path)
         return [item.split(': ', 2)[1:] for item in checker.out]
@@ -63,7 +63,7 @@ class CheckerTests(unittest.TestCase):
 
     def test_bad_stem(self):
         for stem in ('caf\xe9', 'two words', 'x' * 19, ' blogg'):
-            body = GOOD.replace('<stem>blogg</stem>', '<stem>%s</stem>' % stem,
+            body = GOOD.replace('<stem>blogg</stem>', f'<stem>{stem}</stem>',
                                 1)
             self.assertIn('error', self.kinds(body), stem)
 

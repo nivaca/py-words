@@ -15,6 +15,8 @@ built, the English index) is cached in the user's cache folder (see
 `cache_dir`) and read from there while the data files are unchanged.
 """
 
+from __future__ import annotations
+
 import bisect
 import copy
 import hashlib
@@ -23,6 +25,7 @@ import pickle
 import sys
 from collections import defaultdict
 from dataclasses import dataclass, field
+from functools import cached_property
 from typing import NamedTuple
 
 import english, model, xmldata
@@ -124,8 +127,7 @@ class Lexicon:
         their cached copy if CACHE and they have not changed since."""
         for name in (DICTIONARY, INFLECTIONS):
             if not os.path.isfile(os.path.join(datadir, name)):
-                raise FileNotFoundError('there is no %s in %s'
-                                        % (name, datadir))
+                raise FileNotFoundError(f'there is no {name} in {datadir}')
         store = _Cache.of(datadir) if cache else None
         lex = store.read('lexicon') if store else None
         if not isinstance(lex, cls):
@@ -225,14 +227,16 @@ class Lexicon:
     def dictionary(self, name: str) -> list[Entry]:
         return self.special if name == 'special' else self.entries
 
+    @cached_property
+    def _sorted_stems(self) -> list[tuple[str, int]]:
+        """(folded stem, entry id) for the general dictionary, in order."""
+        return sorted((key, ref.entry.id) for key, refs in self.stems.items()
+                      for ref in refs if ref.entry.dictionary == 'general')
+
     def neighbours(self, word: str, before: int = 5,
                    after: int = 3) -> list[Entry]:
         """The general dictionary entries around where WORD would be, for
         an unknown word."""
-        if not hasattr(self, '_sorted_stems'):
-            self._sorted_stems = sorted(
-                (key, ref.entry.id) for key, refs in self.stems.items()
-                for ref in refs if ref.entry.dictionary == 'general')
         i = bisect.bisect_left(self._sorted_stems, (fold(word), 0))
         if i == len(self._sorted_stems):
             i -= 1
@@ -297,7 +301,7 @@ class _Cache:
         return cls(folder, name, tuple(stamp))
 
     def path(self, what: str) -> str:
-        return os.path.join(self.folder, '%s-%s.pickle' % (what, self.name))
+        return os.path.join(self.folder, f'{what}-{self.name}.pickle')
 
     def read(self, what: str):
         """The cached data, or None."""
@@ -312,7 +316,7 @@ class _Cache:
     def write(self, what: str, data) -> None:
         """Caches DATA, if the cache folder can be written."""
         path = self.path(what)
-        tmp = '%s.%d.tmp' % (path, os.getpid())
+        tmp = f'{path}.{os.getpid()}.tmp'
         try:
             os.makedirs(self.folder, exist_ok=True)
             with open(tmp, 'wb') as f:

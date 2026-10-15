@@ -5,6 +5,9 @@ Type Latin words (or an English word in English-to-Latin mode) and press
 Enter; the results are those the command line shows.
 """
 
+from version import check_python
+check_python()          # (before the modules that need it)
+
 import os
 import sys
 import queue
@@ -48,7 +51,7 @@ class App:
         self.datadir = datadir
         self.session = None
         self.lock = threading.Lock()
-        root.title('%s: a Latin dictionary' % NAME)
+        root.title(f'{NAME}: a Latin dictionary')
         root.geometry('860x620')
 
         top = ttk.Frame(root, padding=(8, 8, 8, 4))
@@ -119,7 +122,7 @@ class App:
     def ready(self, session, error):
         if error is not None:
             messagebox.showerror(NAME,
-                                 'Could not load the dictionary:\n%s' % error)
+                                 f'Could not load the dictionary:\n{error}')
             self.root.destroy()
             return
         self.session = session
@@ -154,7 +157,7 @@ class App:
                 try:
                     result = self.session.lookup(line)
                 except Exception as e:      # show it, keep going
-                    result = '(error: %s)' % e
+                    result = f'(error: {e})'
             self.done.put((self.show, (result,)))
         threading.Thread(target=work, daemon=True).start()
 
@@ -178,7 +181,7 @@ class App:
         try:
             EditorWindow(self.root, self.datadir, on_save=self.reload)
         except Exception as e:              # (a bad data file, say)
-            messagebox.showerror(NAME, 'Cannot open the editor:\n%s' % e)
+            messagebox.showerror(NAME, f'Cannot open the editor:\n{e}')
 
     def reload(self):
         self.set_busy(True)
@@ -188,7 +191,7 @@ class App:
     def about(self):
         """A small window with the credits."""
         win = tk.Toplevel(self.root)
-        win.title('About %s' % NAME)
+        win.title(f'About {NAME}')
         win.resizable(False, False)
         win.transient(self.root)
         frame = ttk.Frame(win, padding=16)
@@ -198,7 +201,7 @@ class App:
         buttons.pack(fill='x')
         close = ttk.Button(buttons, text='Close', command=win.destroy)
         close.pack(side='right')
-        ttk.Button(buttons, text='Open the %s project page' % NAME,
+        ttk.Button(buttons, text=f'Open the {NAME} project page',
                    command=lambda: webbrowser.open(URL)).pack(
                        side='right', padx=(0, 6))
         win.bind('<Escape>', lambda e: win.destroy())
@@ -222,7 +225,7 @@ def set_icon(root):
     """Gives the window the program's icon, if the icons are there."""
     images = []
     for size in (16, 32, 48, 128, 256):
-        path = os.path.join(ICON_DIR, '%dx%d' % (size, size), 'apps',
+        path = os.path.join(ICON_DIR, f'{size}x{size}', 'apps',
                             WM_CLASS + '.png')
         try:
             images.append(tk.PhotoImage(file=path))
@@ -248,7 +251,7 @@ def main():
     if not os.path.isfile(os.path.join(datadir, DICTIONARY)):
         root.withdraw()
         datadir = filedialog.askdirectory(
-            title='Choose the folder containing %s' % DICTIONARY)
+            title=f'Choose the folder containing {DICTIONARY}')
         if not datadir:
             return
         root.deiconify()

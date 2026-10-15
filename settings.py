@@ -15,6 +15,8 @@ directory, and saved in the current directory.  Names the program does not
 know (some older ones did nothing) are ignored.
 """
 
+from __future__ import annotations
+
 import os
 from dataclasses import dataclass, fields
 
@@ -107,13 +109,13 @@ class Settings:
             try:
                 problems = self.read(path)
             except OSError as e:
-                messages.append('Cannot read %s: %s' % (path, e.strerror))
+                messages.append(f'Cannot read {path}: {e.strerror}')
                 continue
             if problems:
-                messages.append('%s has errors (%s); the defaults are used '
-                                'for those lines' % (path, '; '.join(problems)))
+                messages.append(f"{path} has errors ({'; '.join(problems)}); "
+                                'the defaults are used for those lines')
             else:
-                messages.append('Using the %s in %s' % (kind, path))
+                messages.append(f'Using the {kind} in {path}')
         return messages
 
     def read(self, path: str) -> list[str]:
@@ -131,15 +133,15 @@ class Settings:
                     if len(value) == 1 and is_command_character(value):
                         setattr(self, characters[name], value)
                     else:
-                        problems.append('line %d: bad character' % number)
+                        problems.append(f'line {number}: bad character')
                 elif name.lower() in MODES + DEV_MODES:
                     reply = words[1].upper() if len(words) > 1 else ''
                     if reply not in ('Y', 'N'):
-                        problems.append('line %d: expected Y or N' % number)
+                        problems.append(f'line {number}: expected Y or N')
                     else:
                         setattr(self, name.lower(), reply == 'Y')
                 elif name.upper() != name:
-                    problems.append('line %d: unexpected text' % number)
+                    problems.append(f'line {number}: unexpected text')
         return problems
 
     def save_modes(self, path: str = MODE_FILE):
@@ -151,11 +153,11 @@ class Settings:
     def _write(self, path, names, with_characters):
         with open(path, 'w', encoding='latin-1') as f:
             for name in names:
-                f.write('%-34s %s\n' % (name.upper(),
-                                        'Y' if getattr(self, name) else 'N'))
+                yes = 'Y' if getattr(self, name) else 'N'
+                f.write(f'{name.upper():<34} {yes}\n')
             if with_characters:
                 for label, attr in CHARACTERS:
-                    f.write("%-32s '%s'\n" % (label, getattr(self, attr)))
+                    f.write(f"{label:<32} '{getattr(self, attr)}'\n")
 
 
 def find(name: str, datadir: str):

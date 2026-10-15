@@ -10,7 +10,7 @@ It was written by Nicolas Vaughan (<nivaca@fastmail.com>) in 2026, first
 as a faithful translation of the Ada version maintained at
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words), then
 (version 2) redesigned as idiomatic Python with the same analyses, a more
-readable output and a modern command line.  It needs only Python 3.8 or
+readable output and a modern command line.  It needs only Python 3.11 or
 later, with nothing to install.
 
 Installation
@@ -18,7 +18,7 @@ Installation
 
 ### What is needed
 
-Python 3.8 or later, and nothing else: the program uses only Python's
+Python 3.11 or later, and nothing else: the program uses only Python's
 standard library.  The windows (the dictionary and the editor) need Tk,
 which comes with Python on Windows and with the installers from
 [python.org](https://www.python.org/downloads/) on macOS.  On Linux, and
@@ -27,6 +27,11 @@ with Homebrew's Python on macOS, it may be a separate package:
     $ sudo dnf install python3-tkinter         # Fedora
     $ sudo apt install python3-tk              # Debian, Ubuntu
     $ brew install python-tk                   # macOS with Homebrew
+
+To see which Python you have, run `python3 --version`.  The Python that
+comes with macOS may be too old: if so, install a newer one from
+python.org or with Homebrew.  With an older Python the program says so and
+stops.
 
 The commands below are written with `python3`; on Windows, type `python`.
 

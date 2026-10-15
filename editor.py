@@ -8,6 +8,8 @@ against the edited dictionary, and saves the file (keeping a backup of the
 original as dictionary.xml.bak).
 """
 
+from __future__ import annotations
+
 import os
 import re
 import shutil
@@ -180,11 +182,10 @@ def plain_message(message: str) -> str:
         return FIELD_LABELS.get(name, name)
     m = re.match(r'<\w+> needs a (\w+) attribute', message)
     if m:
-        return 'the %s is missing' % label(m.group(1))
+        return f'the {label(m.group(1))} is missing'
     m = re.match(r'(\w+)="(.*?)" (.*)', message)
     if m:
-        return 'the %s "%s" %s' % (label(m.group(1)), m.group(2),
-                                   m.group(3))
+        return f'the {label(m.group(1))} "{m.group(2)}" {m.group(3)}'
     return message
 
 
@@ -336,7 +337,7 @@ class Editor:
     def describe(self, entry: Entry) -> str:
         """How WORDS shows the entry: its principal parts and grammar."""
         parts = principal_parts(entry) or entry.stems[0]
-        return '%s  %s' % (parts, describe_part(entry.part))
+        return f'{parts}  {describe_part(entry.part)}'
 
     def warnings(self, entry: Entry) -> list[str]:
         return self.checker.entry_warnings(entry)
@@ -355,6 +356,5 @@ class Editor:
     def summary(entry: Entry, width: int = 70) -> str:
         """A one-line description, for lists."""
         parts = principal_parts(entry) or entry.stems[0]
-        text = '%s  %s  %s' % (parts, entry.part.pos.name,
-                               entry.meaning.strip())
+        text = f'{parts}  {entry.part.pos.name}  {entry.meaning.strip()}'
         return text if len(text) <= width else text[:width - 1] + '…'

@@ -20,6 +20,11 @@ these:
 An empty line twice, or end of input, quits.
 """
 
+from __future__ import annotations
+
+from version import check_python
+check_python()          # (before the modules that need it)
+
 import argparse
 import sys
 from collections.abc import Callable
@@ -40,7 +45,7 @@ def load(datadir: str) -> Lexicon:
     try:
         return Lexicon.load(datadir)
     except (DataError, FileNotFoundError) as e:
-        sys.exit('words: %s' % e)
+        sys.exit(f'words: {e}')
 
 
 # ---------------------------------------------------------------------------
@@ -53,7 +58,7 @@ class _Skip(Exception):
 def _yes_no(settings: Settings, name: str, ask: Ask, say) -> None:
     current = getattr(settings, name)
     while True:
-        reply = ask('%-34s %s => ' % (name.upper(), 'Y' if current else 'N'))
+        reply = ask(f"{name.upper():<34} {'Y' if current else 'N'} => ")
         if reply == '':
             return
         if not reply.strip():
@@ -73,7 +78,7 @@ def _character(settings: Settings, name: str, ask: Ask, say) -> None:
         'start_file_character', 'change_parameters_character',
         'change_developer_modes_character') if n != name} | {'~'}
     while True:
-        reply = ask("%-34s '%s' => " % (name.upper(), getattr(settings, name)))
+        reply = ask(f"{name.upper():<34} '{getattr(settings, name)}' => ")
         if reply == '':
             return
         if not reply.strip():
@@ -159,12 +164,11 @@ def banner(session: Session) -> str:
     return CREDITS + '\n\n' + (
         "Type a Latin word or line and Enter.  ~E: English to Latin, "
         "~L: back to Latin.\n"
-        "%sFILE: look up a file   %s: parameters   %s: developer modes   "
+        f"{s.start_file_character}FILE: look up a file   "
+        f"{s.change_parameters_character}: parameters   "
+        f"{s.change_developer_modes_character}: developer modes   "
         "?: help\n"
-        "An empty line twice quits." % (
-            s.start_file_character,
-            s.change_parameters_character,
-            s.change_developer_modes_character))
+        "An empty line twice quits.")
 
 
 class Pager:
@@ -238,10 +242,10 @@ def interactive_help(s: Settings) -> str:
     return '\n'.join([
         'Type a word or a line of Latin (or, after ~E, an English word).',
         '  ~E / ~L    English to Latin / Latin to English',
-        '  %sFILE      look up each line of FILE' % s.start_file_character,
-        '  %s          change the parameters' % s.change_parameters_character,
-        '  %s          change the developer modes'
-        % s.change_developer_modes_character,
+        f'  {s.start_file_character}FILE      look up each line of FILE',
+        f'  {s.change_parameters_character}          change the parameters',
+        f'  {s.change_developer_modes_character}          change the '
+        'developer modes',
         'In the parameter dialogues, ? explains each setting.',
         'An empty line twice, or Ctrl-D, quits.'])
 
@@ -265,7 +269,7 @@ def run_file(session: Session, name: str, say) -> None:
         with open(name, encoding='utf-8', errors='replace') as f:
             feed(session, f, say)
     except OSError as e:
-        say('Cannot read %s: %s' % (name, e.strerror))
+        say(f'Cannot read {name}: {e.strerror}')
 
 
 # ---------------------------------------------------------------------------
@@ -318,8 +322,7 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
         try:
             out = open(args.output, 'w', encoding='utf-8')
         except OSError as e:
-            sys.exit('words: cannot write %s: %s' % (args.output,
-                                                      e.strerror))
+            sys.exit(f'words: cannot write {args.output}: {e.strerror}')
     session = Session(lexicon, settings, args.meanings_only, out.write)
     session.english = args.english
     try:

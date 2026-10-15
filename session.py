@@ -10,6 +10,8 @@ files the program writes.
 They are written in the current directory.
 """
 
+from __future__ import annotations
+
 from typing import TextIO
 from collections.abc import Callable
 
@@ -118,8 +120,8 @@ class Session:
             return
         if self.settings.include_unknown_context:
             self.unknowns.write(line.rstrip('\n') + '\n')
-        self.unknowns.write('%-20s line %d, word %d\n' % (
-            word, self.analyzer.line_number, self.analyzer.word_number))
+        self.unknowns.write(f'{word:<20} line {self.analyzer.line_number}, '
+                            f'word {self.analyzer.word_number}\n')
 
     def process(self, line: str):
         """Looks up LINE and writes the result."""
@@ -133,7 +135,7 @@ def _keep_open(f, name: str, wanted: bool):
         try:
             return open(name, 'w', encoding='utf-8')
         except OSError as e:
-            print('Cannot create %s: %s' % (name, e.strerror))
+            print(f'Cannot create {name}: {e.strerror}')
             return None
     if not wanted and f is not None:
         f.close()
