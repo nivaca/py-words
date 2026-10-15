@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1024 1024"
+   width="1024"
+   height="1024"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="py-whitaker-words.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.81445312"
+     inkscape:cx="511.38609"
+     inkscape:cy="512"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <title
+     id="title1">py-Whitaker Words</title>
+  <rect
+     width="1024"
+     height="1024"
+     rx="210"
+     ry="210"
+     fill="#292929"
+     id="rect1" />
+  <text
+     x="512"
+     y="255"
+     font-size="260px"
+     fill="#f7b72a"
+     text-anchor="middle"
+     textLength="420"
+     lengthAdjust="spacingAndGlyphs"
+     id="text1"
+     style="font-weight:400;font-family:Montserrat, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif"
+     transform="translate(10)">py-</text>
+  <text
+     x="520"
+     y="475"
+     font-size="158px"
+     fill="#ffffff"
+     text-anchor="middle"
+     textLength="850"
+     lengthAdjust="spacingAndGlyphs"
+     id="text2"
+     style="font-weight:400;font-family:Montserrat, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif">WHITAKER</text>
+  <text
+     x="512"
+     y="722"
+     font-size="165px"
+     fill="#ffffff"
+     text-anchor="middle"
+     textLength="635"
+     lengthAdjust="spacingAndGlyphs"
+     id="text3"
+     style="font-weight:400;font-family:Montserrat, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif">WORDS</text>
+  <rect
+     x="98"
+     y="538"
+     width="827"
+     height="9"
+     fill="#FFFFFF"
+     id="rect3" />
+  <g
+     fill="none"
+     stroke="#FFFFFF"
+     stroke-width="9"
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     id="g4">
+    <path
+       d="M393 797 Q450 780 512 806 Q574 780 632 797 L632 916 Q574 900 512 934 Q450 900 393 916 Z"
+       id="path3" />
+    <path
+       d="M512 806 L512 934"
+       id="path4" />
+  </g>
+</svg>
