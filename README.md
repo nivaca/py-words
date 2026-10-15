@@ -13,6 +13,69 @@ as a faithful translation of the Ada version maintained at
 readable output and a modern command line.  It needs only Python 3.8 or
 later, with nothing to install.
 
+Installation
+------------
+
+### What is needed
+
+Python 3.8 or later, and nothing else: the program uses only Python's
+standard library.  The windows (the dictionary and the editor) need Tk,
+which comes with Python on Windows and with the installers from
+[python.org](https://www.python.org/downloads/) on macOS.  On Linux, and
+with Homebrew's Python on macOS, it may be a separate package:
+
+    $ sudo dnf install python3-tkinter         # Fedora
+    $ sudo apt install python3-tk              # Debian, Ubuntu
+    $ brew install python-tk                   # macOS with Homebrew
+
+The commands below are written with `python3`; on Windows, type `python`.
+
+### Getting the program
+
+Clone the repository:
+
+    $ git clone https://github.com/nivaca/py-whitaker-words.git
+
+or download it as a zip (on GitHub: "Code", then "Download ZIP") and unpack
+it anywhere.  The folder is the whole program: there is nothing to build
+or install, and it can be run from where it is:
+
+    $ cd py-whitaker-words                     # (or the unpacked folder)
+    $ python3 words.py amicus                  # a first test
+    $ python3 words_gui.py                     # the window
+
+### A menu entry
+
+To start the program from the applications menu, run once
+
+    $ python3 words_install.py
+
+which adds two entries, with the program's icon: the window, and the
+command line (in a terminal).  Where they go depends on the system:
+
+* Linux (and other systems with freedesktop menus): the applications
+  menu, as `.desktop` files and icons in `~/.local/share`;
+* Windows: the Start menu, as shortcuts;
+* macOS: `~/Applications`, as two small applications.
+
+No administrator rights are needed.  The entries start the program in its
+folder, so run the script again after moving the folder.
+
+### Updating
+
+With git, `git pull` in the folder; otherwise, download the program again
+and replace the folder.  If you have edited the dictionary, keep a copy of
+`data/dictionary.xml` first (with git, commit it).  The menu entries keep
+working as long as the folder stays where it was.
+
+### Uninstalling
+
+    $ python3 words_install.py --uninstall     # remove the menu entries
+
+then delete the folder.  The program also keeps a cache, which can be
+deleted too: `~/.cache/py-words` on Linux, `~/Library/Caches/py-words` on
+macOS, `%LOCALAPPDATA%\py-words` on Windows.
+
 What is where
 -------------
 
@@ -23,8 +86,10 @@ What is where
     words_edit_gui.py   edit the dictionary in a window
     words_check.py      check the data files after editing them by hand
     words_convert.py    convert data in the original text format to XML
+    words_install.py    add the program to the applications menu
     *.py                the rest of the program, used by the above
     data/               the dictionary and the other data files
+    icons/              the program's icons
     tests/              the tests (not needed to use the program)
 
 To use it elsewhere, copy (or zip) the folder; the tests can be left out.
@@ -39,7 +104,9 @@ Usage
     $ python3 words.py                         # interactive
     $ python3 words_gui.py                     # a window
 
-On Windows, `pythonw words_gui.py` opens the window without a console.
+On Windows, type `python` instead of `python3`; `pythonw words_gui.py`
+opens the window without a console.  To start the program from the
+applications menu instead, see "Installation" above.
 
     words.py                          interactive
     words.py amicus est               look up words (a line of Latin)

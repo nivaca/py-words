@@ -6,6 +6,7 @@ Enter; the results are those the command line shows.
 """
 
 import os
+import sys
 import queue
 import threading
 import webbrowser
@@ -210,8 +211,39 @@ class App:
         self.root.config(cursor='watch' if busy else '')
 
 
+#  The window's class, which desktop files name in StartupWMClass, and its
+#  icon
+WM_CLASS = 'py-whitaker-words'
+ICON_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons',
+                        'linux', 'icons', 'hicolor')
+
+
+def set_icon(root):
+    """Gives the window the program's icon, if the icons are there."""
+    images = []
+    for size in (16, 32, 48, 128, 256):
+        path = os.path.join(ICON_DIR, '%dx%d' % (size, size), 'apps',
+                            WM_CLASS + '.png')
+        try:
+            images.append(tk.PhotoImage(file=path))
+        except tk.TclError:             # missing, or no PNG support (Tk 8.5)
+            pass
+    if images:
+        root.iconphoto(True, *images)
+        root._icons = images            # (Tk does not keep them alive)
+
+
 def main():
-    root = tk.Tk()
+    if sys.platform == 'win32':
+        #  So that the taskbar shows the window's icon, not Python's
+        try:
+            import ctypes
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(
+                WM_CLASS)
+        except (AttributeError, OSError):
+            pass
+    root = tk.Tk(className=WM_CLASS)
+    set_icon(root)
     datadir = default_datadir()
     if not os.path.isfile(os.path.join(datadir, DICTIONARY)):
         root.withdraw()
