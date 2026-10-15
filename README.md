@@ -1,4 +1,4 @@
-py-words
+py-whitaker-words
 ========
 
 William Whitaker's WORDS, a Latin-English dictionary with inflectional

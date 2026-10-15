@@ -8,11 +8,9 @@ them.  Text in parentheses is skipped; in "[idiom => translation]" only the
 translation is used.
 """
 
-from __future__ import annotations
-
 import re
 from collections import defaultdict
-from typing import Dict, List, NamedTuple
+from typing import NamedTuple
 
 from model import Pos, Freq, Entry, pos_fits
 
@@ -133,12 +131,12 @@ def rank(entry: Entry, sense: int, kind: int) -> int:
 
 
 class EnglishIndex:
-    def __init__(self, index: Dict[str, List[Hit]]):
+    def __init__(self, index: dict[str, list[Hit]]):
         self.index = index
 
     @classmethod
-    def build(cls, entries: List[Entry]) -> 'EnglishIndex':
-        best: Dict[tuple, Hit] = {}
+    def build(cls, entries: list[Entry]) -> EnglishIndex:
+        best: dict[tuple, Hit] = {}
         for entry in entries:
             p = entry.part
             if p.pos == Pos.V and p.decl.which == 8:
@@ -154,7 +152,7 @@ class EnglishIndex:
             index[word].append(hit)
         return cls(dict(index))
 
-    def pack(self, entries: List[Entry]) -> dict:
+    def pack(self, entries: list[Entry]) -> dict:
         """The index with entries given by their position in ENTRIES (for
         the cache)."""
         where = {id(e): i for i, e in enumerate(entries)}
@@ -163,12 +161,12 @@ class EnglishIndex:
                 for word, hits in self.index.items()}
 
     @classmethod
-    def unpack(cls, packed: dict, entries: List[Entry]) -> 'EnglishIndex':
+    def unpack(cls, packed: dict, entries: list[Entry]) -> EnglishIndex:
         return cls({word: [Hit(entries[i], sense, kind, rank)
                            for i, sense, kind, rank in hits]
                     for word, hits in packed.items()})
 
-    def search(self, word: str, pos: Pos = Pos.X) -> List[Hit]:
+    def search(self, word: str, pos: Pos = Pos.X) -> list[Hit]:
         """The entries whose meaning has WORD, best first."""
         hits = [h for h in self.index.get(word.lower(), ())
                 if pos_fits(h.entry.part.pos, pos)]

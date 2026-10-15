@@ -11,10 +11,9 @@ Each trick that works adds a marker (a Parse labelled with what was done)
 before the parses it found, and an explanation to NOTES.
 """
 
-from __future__ import annotations
-
 import re
-from typing import TYPE_CHECKING, Callable, List
+from typing import TYPE_CHECKING
+from collections.abc import Callable
 
 from model import (Pos, Case, Number, NumeralSort, Decl, Form, Inflection,
                     Freq)
@@ -164,7 +163,7 @@ def _numeral(word: str, freq: Freq) -> Parse:
                  Origin.ROMAN)
 
 
-def roman_numeral(word: str, notes: dict) -> List[Parse]:
+def roman_numeral(word: str, notes: dict) -> list[Parse]:
     value = roman_number(word)
     if not value:
         return []
@@ -175,13 +174,13 @@ def roman_numeral(word: str, notes: dict) -> List[Parse]:
 # ---------------------------------------------------------------------------
 #  Syncope
 
-def _is_perfect(found: List[Parse]) -> bool:
+def _is_perfect(found: list[Parse]) -> bool:
     return bool(found) and found[-1].form.pos == Pos.V and \
         found[-1].infl.key == 3
 
 
-def syncope(az: 'Analyzer', word: str, opts: 'Opts', notes: dict,
-            prior: int) -> List[Parse]:
+def syncope(az: Analyzer, word: str, opts: Opts, notes: dict,
+            prior: int) -> list[Parse]:
     """Syncopated perfects: amasti (amavisti), audii (audivi), dixti
     (dixisti) ..."""
     s = word.lower()
@@ -245,15 +244,15 @@ def syncope(az: 'Analyzer', word: str, opts: 'Opts', notes: dict,
 class _Tricks:
     """Applies spelling rules to a word, keeping the first that works."""
 
-    def __init__(self, az: 'Analyzer', word: str, notes: dict,
-                 lookup: Callable[[str, int], List[Parse]], stat: str):
+    def __init__(self, az: Analyzer, word: str, notes: dict,
+                 lookup: Callable[[str, int], list[Parse]], stat: str):
         self.az = az
         self.word = word
         self.s = word.lower()
         self.notes = notes
         self.lookup = lookup            # (word, prior) -> parses
         self.stat_kind = stat           # 'TRICK' or 'SLURY'
-        self.out: List[Parse] = []
+        self.out: list[Parse] = []
 
     def attempt(self, label: str, new: str, note: str, caption: str,
                 accept=None, lookup=None) -> bool:
@@ -336,8 +335,8 @@ class _Tricks:
         return False
 
 
-def slury(az: 'Analyzer', word: str, opts: 'Opts', notes: dict,
-          prior: int) -> List[Parse]:
+def slury(az: Analyzer, word: str, opts: Opts, notes: dict,
+          prior: int) -> list[Parse]:
     """Assimilated and variant prefixes (adq-/acq-, con-/com- ...)."""
     from analyzer import Opts
     plain = Opts(opts.do_fixes, opts.only_fixes, False)
@@ -353,8 +352,8 @@ def slury(az: 'Analyzer', word: str, opts: 'Opts', notes: dict,
     return t.out
 
 
-def try_tricks(az: 'Analyzer', word: str, notes: dict,
-               capitalized: bool = False) -> List[Parse]:
+def try_tricks(az: Analyzer, word: str, notes: dict,
+               capitalized: bool = False) -> list[Parse]:
     """Spelling variants, medieval spellings and two-word compounds, for a
     word that is not otherwise found."""
     s = az.settings
@@ -421,7 +420,7 @@ def _double_consonants(t: _Tricks):
                 return
 
 
-def _two_words(az: 'Analyzer', t: _Tricks, opts: 'Opts'):
+def _two_words(az: Analyzer, t: _Tricks, opts: Opts):
     """Two words written as one: the first is the shortest found word at
     the start that is not a common prefix."""
     s = t.s

@@ -10,9 +10,8 @@ files the program writes.
 They are written in the current directory.
 """
 
-from __future__ import annotations
-
-from typing import Callable, Optional, TextIO
+from typing import TextIO
+from collections.abc import Callable
 
 from analyzer import Analyzer
 from lexicon import Lexicon
@@ -34,9 +33,9 @@ class Session:
         self.meanings_only = meanings_only
         self.english = False
         self.write = write or (lambda text: print(text, end=''))
-        self.output: Optional[TextIO] = None
-        self.unknowns: Optional[TextIO] = None
-        self.stats: Optional[TextIO] = None
+        self.output: TextIO | None = None
+        self.unknowns: TextIO | None = None
+        self.stats: TextIO | None = None
         self.analyzer = Analyzer(lexicon, settings, self._stat)
         self.settings_changed()
 

@@ -5,11 +5,9 @@ enumeration has an X member meaning "unknown" or "any", which is also the
 default.
 """
 
-from __future__ import annotations
-
 from dataclasses import dataclass
 from enum import IntEnum
-from typing import NamedTuple, Tuple, Union
+from typing import NamedTuple
 
 
 class Pos(IntEnum):
@@ -226,7 +224,7 @@ class Source(IntEnum):
     Z = 25
 
 
-Kind = Union[NounKind, PronounKind, VerbKind, None]
+Kind = NounKind | PronounKind | VerbKind | None
 
 
 class Decl(NamedTuple):
@@ -341,7 +339,7 @@ class Form:
         return (p, rest)
 
     @property
-    def tvm(self) -> Tuple[Tense, Voice, Mood]:
+    def tvm(self) -> tuple[Tense, Voice, Mood]:
         return (self.tense, self.voice, self.mood)
 
 
@@ -372,7 +370,7 @@ class Entry:
     'zzz' for a form that does not exist).  ID is the entry's position in
     its dictionary file, counted from 1."""
     id: int
-    stems: Tuple[str, str, str, str]
+    stems: tuple[str, str, str, str]
     part: Part
     codes: Codes
     meaning: str
@@ -389,7 +387,7 @@ class Unique:
     id: int
     word: str
     form: Form
-    kind: Union[Kind, int]          # a numeral's value for NUM
+    kind: Kind | int          # a numeral's value for NUM
     codes: Codes
     meaning: str
 
@@ -434,7 +432,7 @@ class Tackon:
             and self.meaning.startswith('PACKON w/')
 
 
-Addon = Union[Prefix, Suffix, Tackon]
+Addon = Prefix | Suffix | Tackon
 
 
 def stems_used(pos: Pos) -> int:

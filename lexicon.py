@@ -15,8 +15,6 @@ built, the English index) is cached in the user's cache folder (see
 `cache_dir`) and read from there while the data files are unchanged.
 """
 
-from __future__ import annotations
-
 import bisect
 import copy
 import hashlib
@@ -25,7 +23,7 @@ import pickle
 import sys
 from collections import defaultdict
 from dataclasses import dataclass, field
-from typing import Dict, List, NamedTuple, Optional
+from typing import NamedTuple
 
 import english, model, xmldata
 from version import VERSION
@@ -74,7 +72,7 @@ class StemRef(NamedTuple):
         return self.entry.part
 
 
-def indexed_stems(entry: Entry) -> List[tuple]:
+def indexed_stems(entry: Entry) -> list[tuple]:
     """The (stem, key) pairs under which ENTRY is found.
 
     Nouns, adjectives and verbs whose first two stems are equal are listed
@@ -105,23 +103,23 @@ def indexed_stems(entry: Entry) -> List[tuple]:
 
 @dataclass
 class Lexicon:
-    entries: List[Entry] = field(default_factory=list)
-    special: List[Entry] = field(default_factory=list)
-    stems: Dict[str, List[StemRef]] = field(default_factory=dict)
-    endings: Dict[str, List[Inflection]] = field(default_factory=dict)
-    blank_endings: List[Inflection] = field(default_factory=list)
-    qu_endings: Dict[str, List[Inflection]] = field(default_factory=dict)
-    uniques: Dict[str, List[Unique]] = field(default_factory=dict)
-    prefixes: List[Prefix] = field(default_factory=list)
-    tickons: List[Prefix] = field(default_factory=list)
-    suffixes: List[Suffix] = field(default_factory=list)
-    tackons: List[Tackon] = field(default_factory=list)
-    packons: List[Tackon] = field(default_factory=list)
-    _english: Optional[object] = None
-    _cache: Optional['_Cache'] = None
+    entries: list[Entry] = field(default_factory=list)
+    special: list[Entry] = field(default_factory=list)
+    stems: dict[str, list[StemRef]] = field(default_factory=dict)
+    endings: dict[str, list[Inflection]] = field(default_factory=dict)
+    blank_endings: list[Inflection] = field(default_factory=list)
+    qu_endings: dict[str, list[Inflection]] = field(default_factory=dict)
+    uniques: dict[str, list[Unique]] = field(default_factory=dict)
+    prefixes: list[Prefix] = field(default_factory=list)
+    tickons: list[Prefix] = field(default_factory=list)
+    suffixes: list[Suffix] = field(default_factory=list)
+    tackons: list[Tackon] = field(default_factory=list)
+    packons: list[Tackon] = field(default_factory=list)
+    _english: object | None = None
+    _cache: _Cache | None = None
 
     @classmethod
-    def load(cls, datadir: str, cache: bool = True) -> 'Lexicon':
+    def load(cls, datadir: str, cache: bool = True) -> Lexicon:
         """Reads the data files in DATADIR (raises xmldata.DataError), or
         their cached copy if CACHE and they have not changed since."""
         for name in (DICTIONARY, INFLECTIONS):
@@ -138,7 +136,7 @@ class Lexicon:
         return lex
 
     @classmethod
-    def _read(cls, datadir: str) -> 'Lexicon':
+    def _read(cls, datadir: str) -> Lexicon:
         def path(name):
             return os.path.join(datadir, name)
         lex = cls()
@@ -173,7 +171,7 @@ class Lexicon:
                         self.entries))
         return self._english
 
-    def with_entries(self, entries: List[Entry]) -> 'Lexicon':
+    def with_entries(self, entries: list[Entry]) -> Lexicon:
         """A copy of this lexicon with ENTRIES as its general dictionary
         (esse is added), for trying out changes to the dictionary."""
         lex = copy.copy(self)
@@ -195,7 +193,7 @@ class Lexicon:
                 index[fold(stem)].append(StemRef(stem, key, entry))
         self.stems = dict(index)
 
-    def _index_inflections(self, inflections: List[Inflection]):
+    def _index_inflections(self, inflections: list[Inflection]):
         """Endings are tried longest first and, for the same ending, in the
         reverse of their order in the file."""
         regular = defaultdict(list)
@@ -220,15 +218,15 @@ class Lexicon:
             else:
                 (self.packons if a.is_packon else self.tackons).append(a)
 
-    def lookup(self, stem: str) -> List[StemRef]:
+    def lookup(self, stem: str) -> list[StemRef]:
         """The entries with this stem (compared by `fold`)."""
         return self.stems.get(fold(stem), [])
 
-    def dictionary(self, name: str) -> List[Entry]:
+    def dictionary(self, name: str) -> list[Entry]:
         return self.special if name == 'special' else self.entries
 
     def neighbours(self, word: str, before: int = 5,
-                   after: int = 3) -> List[Entry]:
+                   after: int = 3) -> list[Entry]:
         """The general dictionary entries around where WORD would be, for
         an unknown word."""
         if not hasattr(self, '_sorted_stems'):
@@ -249,7 +247,7 @@ ENDING_LETTERS = frozenset('acdeimnorstu')
 # ---------------------------------------------------------------------------
 #  The cache
 
-def cache_dir() -> Optional[str]:
+def cache_dir() -> str | None:
     """Where the cache is kept: $WHITAKERS_WORDS_CACHE (if empty, there is
     no cache), else the user's cache folder."""
     env = os.environ.get('WHITAKERS_WORDS_CACHE')
@@ -280,7 +278,7 @@ class _Cache:
         self.stamp = stamp
 
     @classmethod
-    def of(cls, datadir: str) -> Optional['_Cache']:
+    def of(cls, datadir: str) -> _Cache | None:
         folder = cache_dir()
         if not folder:
             return None

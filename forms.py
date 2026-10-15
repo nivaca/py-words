@@ -3,9 +3,6 @@ grammar in plain English (noun, 2nd declension, masculine), the grammar of
 a form (genitive singular), and English example glosses.
 """
 
-from __future__ import annotations
-
-from typing import List, Optional
 
 from model import (Pos, Gender, Case, Number, Comparison, NumeralSort,
                     Tense, Voice, Mood, VerbKind, PronounKind, Decl, Part,
@@ -129,7 +126,7 @@ INFINITIVE = {1: 'are', 2: 'ere', (3, 2): 're', (3, 4): 'ire', 3: 'ere',
               8: 'ere'}
 
 
-def _make(stems, parts) -> List[str]:
+def _make(stems, parts) -> list[str]:
     out = []
     for stem, ending in parts:
         if stem is None:
@@ -141,7 +138,7 @@ def _make(stems, parts) -> List[str]:
     return out
 
 
-def _verb_parts(stems, part: Part) -> List[str]:
+def _verb_parts(stems, part: Part) -> list[str]:
     which, var = part.decl
     kind = part.kind
     st = stems
@@ -212,7 +209,7 @@ def principal_parts(entry: Entry) -> str:
         (p.pos == Pos.V and p.decl in ((9, 8), (9, 9)))
     if st[1:] == ('', '', '') and not special:
         return st[0]
-    parts: List[str] = []
+    parts: list[str] = []
     if p.pos == Pos.N:
         if (which, var) == (2, 4):
             ending = 'um' if p.gender == Gender.N else 'us'
@@ -267,7 +264,7 @@ def principal_parts(entry: Entry) -> str:
 # ---------------------------------------------------------------------------
 #  Grammar in words
 
-def _declension(decl: Decl, conjugation=False) -> Optional[str]:
+def _declension(decl: Decl, conjugation=False) -> str | None:
     which, var = decl
     if which == 9:
         return {8: 'abbreviation', 9: 'undeclined'}.get(var)
@@ -318,7 +315,7 @@ def describe_form(form: Form, deponent: bool = False) -> str:
     is not shown, as it is active in meaning."""
     p = form.pos
     voice = None if deponent else VOICE_NAME.get(form.voice)
-    words: List[Optional[str]] = []
+    words: list[str | None] = []
     if p in (Pos.N, Pos.PRON, Pos.PACK, Pos.ADJ, Pos.NUM):
         words = [CASE_NAME.get(form.case), NUMBER_NAME.get(form.number),
                  GENDER_NAME.get(form.gender) if p != Pos.N else None]
@@ -354,7 +351,7 @@ def describe_form(form: Form, deponent: bool = False) -> str:
 # ---------------------------------------------------------------------------
 #  Example glosses (the do_examples parameter)
 
-def example(form: Form, entry: Optional[Entry]) -> Optional[str]:
+def example(form: Form, entry: Entry | None) -> str | None:
     """How a form is put into English, with ~ for the word: "~'s; of ~"."""
     p = form.pos
     if p == Pos.N:
@@ -479,7 +476,7 @@ def _verb_example(f: Form, kind) -> str:
     return they + sub + shall + have + been + '~' + ed
 
 
-def deponent(entry: Optional[Entry]) -> bool:
+def deponent(entry: Entry | None) -> bool:
     return entry is not None and entry.part.pos == Pos.V and \
         entry.part.kind == VerbKind.DEP
 

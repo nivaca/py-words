@@ -24,7 +24,7 @@ import shutil
 import struct
 import subprocess
 import sys
-from typing import List, NamedTuple
+from typing import NamedTuple
 
 from version import VERSION
 
@@ -113,7 +113,7 @@ def refresh_linux():
                 break
 
 
-def install_linux() -> List[str]:
+def install_linux() -> list[str]:
     theme = os.path.join(data_home(), 'icons', 'hicolor')
     for source, rel in icon_files():
         dest = os.path.join(theme, rel)
@@ -137,7 +137,7 @@ def install_linux() -> List[str]:
     return paths
 
 
-def uninstall_linux() -> List[str]:
+def uninstall_linux() -> list[str]:
     removed = []
     theme = os.path.join(data_home(), 'icons', 'hicolor')
     paths = [os.path.join(theme, rel) for _, rel in icon_files()] + \
@@ -182,7 +182,7 @@ def start_menu():
                         'Programs')
 
 
-def windows_shortcuts() -> List[Shortcut]:
+def windows_shortcuts() -> list[Shortcut]:
     """The shortcuts: the window runs with pythonw.exe, which opens no
     console; the command line with python.exe, which opens one."""
     folder = os.path.dirname(sys.executable)
@@ -198,7 +198,7 @@ def windows_shortcuts() -> List[Shortcut]:
     return shortcuts
 
 
-def install_windows() -> List[str]:
+def install_windows() -> list[str]:
     paths = []
     for s in windows_shortcuts():
         os.makedirs(os.path.dirname(s.path), exist_ok=True)
@@ -216,7 +216,7 @@ def install_windows() -> List[str]:
     return paths
 
 
-def uninstall_windows() -> List[str]:
+def uninstall_windows() -> list[str]:
     removed = []
     for s in windows_shortcuts():
         if os.path.isfile(s.path):
@@ -326,7 +326,7 @@ def make_app(kind: str, program: str, terminal: bool, icns: bytes) -> str:
     return app
 
 
-def install_macos() -> List[str]:
+def install_macos() -> list[str]:
     icns = make_icns(ICONSET)
     os.makedirs(applications_dir(), exist_ok=True)
     apps = [make_app(kind, program, terminal, icns)
@@ -336,7 +336,7 @@ def install_macos() -> List[str]:
     return apps
 
 
-def uninstall_macos() -> List[str]:
+def uninstall_macos() -> list[str]:
     removed = []
     for kind, _, _ in PROGRAMS:
         app = app_path(kind)
@@ -357,12 +357,12 @@ def system(platform=None) -> str:
     return 'linux'
 
 
-def install() -> List[str]:
+def install() -> list[str]:
     return {'linux': install_linux, 'windows': install_windows,
             'macos': install_macos}[system()]()
 
 
-def uninstall() -> List[str]:
+def uninstall() -> list[str]:
     return {'linux': uninstall_linux, 'windows': uninstall_windows,
             'macos': uninstall_macos}[system()]()
 

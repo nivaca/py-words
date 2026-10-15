@@ -8,14 +8,11 @@ against the edited dictionary, and saves the file (keeping a backup of the
 original as dictionary.xml.bak).
 """
 
-from __future__ import annotations
-
 import os
 import re
 import shutil
 from collections import Counter
 from dataclasses import replace
-from typing import Dict, List, Optional, Tuple
 
 import xmldata
 from words_check import Checker, inflection_decls
@@ -56,7 +53,7 @@ FIELD_LABELS = {
 
 CODE_FIELDS = ('age', 'area', 'geo', 'freq', 'source')
 
-DESCRIPTIONS: Dict[str, Dict[str, str]] = {
+DESCRIPTIONS: dict[str, dict[str, str]] = {
     'gender': {'M': 'masculine', 'F': 'feminine', 'N': 'neuter',
                'C': 'common (masculine or feminine)', 'X': 'unknown'},
     'case': {'NOM': 'nominative', 'GEN': 'genitive', 'DAT': 'dative',
@@ -135,23 +132,23 @@ class Fields:
     def __init__(self, pos='N', attrs=None, stems=('', '', '', ''),
                  meaning=''):
         self.pos = pos
-        self.attrs: Dict[str, str] = dict(attrs or {})
+        self.attrs: dict[str, str] = dict(attrs or {})
         self.stems = list(stems) + [''] * (4 - len(stems))
         self.meaning = meaning
 
     @classmethod
-    def of(cls, entry: Entry) -> 'Fields':
+    def of(cls, entry: Entry) -> Fields:
         attrs = dict(xmldata.part_attrs(entry.part) +
                      xmldata.codes_attrs(entry.codes))
         pos = attrs.pop('pos')
         return cls(pos, attrs, entry.stems, entry.meaning)
 
-    def names(self) -> List[str]:
+    def names(self) -> list[str]:
         """The attributes this part of speech uses, then the codes."""
         return list(xmldata.PART_ATTRS.get(Pos[self.pos], ())) + \
             list(CODE_FIELDS)
 
-    def stem_labels(self) -> Tuple[str, ...]:
+    def stem_labels(self) -> tuple[str, ...]:
         pos = Pos[self.pos]
         return STEM_LABELS.get(pos, ('word',))[:max(stems_used(pos), 1)]
 
@@ -196,18 +193,18 @@ class Editor:
         self.datadir = datadir
         self.path = os.path.join(datadir, DICTIONARY)
         self.base = Lexicon.load(datadir)
-        self.entries: List[Entry] = self.base.entries[:-1]     # (not esse)
+        self.entries: list[Entry] = self.base.entries[:-1]     # (not esse)
         self.checker = Checker(inflection_decls(
             i for i, _ in xmldata.read_inflections(
                 os.path.join(datadir, INFLECTIONS))))
         self.dirty = False
         self._backed_up = False
-        self._trial: Optional[Lexicon] = None
-        self._decl_examples: Dict[Tuple[str, str], str] = {}
+        self._trial: Lexicon | None = None
+        self._decl_examples: dict[tuple[str, str], str] = {}
 
     # Choices ---------------------------------------------------------------
 
-    def options(self, name: str, pos: str) -> List[Tuple[str, str]]:
+    def options(self, name: str, pos: str) -> list[tuple[str, str]]:
         """The (value, description) choices for a field, or [] for free
         text (value)."""
         if name in ('decl', 'conj'):
@@ -222,7 +219,7 @@ class Editor:
                     for m in ENUMS[name]]
         return []
 
-    def _declensions(self, pos: str) -> List[Tuple[str, str]]:
+    def _declensions(self, pos: str) -> list[tuple[str, str]]:
         """The declensions (or conjugations) entries of this part of speech
         have, each with an example."""
         counts = Counter(str(e.part.decl) for e in self.entries
@@ -243,7 +240,7 @@ class Editor:
 
     # Finding ---------------------------------------------------------------
 
-    def search(self, query: str, limit: int = 200) -> List[Entry]:
+    def search(self, query: str, limit: int = 200) -> list[Entry]:
         """Entries for QUERY: those it is a form of, those with a stem
         that begins with it, then those whose meaning has it."""
         query = query.strip()
@@ -251,7 +248,7 @@ class Editor:
             return []
         trial = self.trial()
         by_id = {i + 1: e for i, e in enumerate(self.entries)}
-        found: List[Entry] = []
+        found: list[Entry] = []
         seen = set()
 
         def add(entry):
@@ -286,7 +283,7 @@ class Editor:
 
     # Changing --------------------------------------------------------------
 
-    def add(self, entry: Entry, after: Optional[Entry] = None) -> Entry:
+    def add(self, entry: Entry, after: Entry | None = None) -> Entry:
         """Adds ENTRY after AFTER, or where its first stem goes in the
         alphabetical order of the dictionary."""
         if after is not None and any(e is after for e in self.entries):
@@ -318,7 +315,7 @@ class Editor:
         self.dirty = True
         self._trial = None
 
-    def numbered(self) -> List[Entry]:
+    def numbered(self) -> list[Entry]:
         """The entries, numbered by their position (as when read)."""
         return [e if e.id == i else replace(e, id=i)
                 for i, e in enumerate(self.entries, 1)]
@@ -341,7 +338,7 @@ class Editor:
         parts = principal_parts(entry) or entry.stems[0]
         return '%s  %s' % (parts, describe_part(entry.part))
 
-    def warnings(self, entry: Entry) -> List[str]:
+    def warnings(self, entry: Entry) -> list[str]:
         return self.checker.entry_warnings(entry)
 
     def trial(self) -> Lexicon:

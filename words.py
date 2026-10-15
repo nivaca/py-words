@@ -20,16 +20,13 @@ these:
 An empty line twice, or end of input, quits.
 """
 
-from __future__ import annotations
-
 import argparse
-import os
 import sys
-from typing import Callable, List, Optional
+from collections.abc import Callable
 
 from version import CREDITS
 from helptext import HELP
-from lexicon import Lexicon, DICTIONARY, default_datadir
+from lexicon import Lexicon, default_datadir
 from settings import Settings, MODES, DEV_MODES, is_command_character
 from session import Session
 from xmldata import DataError
@@ -281,7 +278,7 @@ class _Credits(argparse.Action):
         parser.exit()
 
 
-def main(argv: Optional[List[str]] = None, meanings_only: bool = False):
+def main(argv: list[str] | None = None, meanings_only: bool = False):
     parser = argparse.ArgumentParser(
         prog='meanings' if meanings_only else 'words',
         description="py-words, based on William Whitaker's WORDS: a "
@@ -352,7 +349,7 @@ def main(argv: Optional[List[str]] = None, meanings_only: bool = False):
             out.close()
 
 
-def meanings(argv: Optional[List[str]] = None):
+def meanings(argv: list[str] | None = None):
     """`meanings`: WORDS showing only dictionary forms and meanings."""
     main(argv, meanings_only=True)
 

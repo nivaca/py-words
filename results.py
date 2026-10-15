@@ -7,11 +7,8 @@ spelling change, a syncopated form ...) was needed.  A marker applies to
 the parses that follow it.
 """
 
-from __future__ import annotations
-
 from dataclasses import dataclass, field, replace
 from enum import IntEnum
-from typing import Dict, List, Optional, Union
 
 from model import (Pos, Case, Number, Gender, Tense, Voice, Mood, Age,
                     Freq, Decl, VerbKind, Form, Inflection, Entry, Unique,
@@ -36,7 +33,7 @@ MARKER_ORIGINS = (Origin.ADDON, Origin.TRICK, Origin.SYNCOPE)
 TRICK_ORIGINS = (Origin.TRICK, Origin.SYNCOPE, Origin.COMPOUND)
 AFFIX_POS = (Pos.TACKON, Pos.PREFIX, Pos.SUFFIX)
 
-Source = Union[Entry, Unique, Prefix, Suffix, Tackon, None]
+Source = Entry | Unique | Prefix | Suffix | Tackon | None
 
 
 @dataclass(frozen=True)
@@ -55,7 +52,7 @@ class Parse:
         return self.source.id if self.source is not None else 0
 
     @property
-    def entry(self) -> Optional[Entry]:
+    def entry(self) -> Entry | None:
         return self.source if isinstance(self.source, Entry) else None
 
     @property
@@ -73,7 +70,7 @@ def from_dictionary(origin: Origin) -> bool:
     return origin in (Origin.GENERAL, Origin.SPECIAL)
 
 
-def marker(addon: Union[Prefix, Suffix, Tackon]) -> Parse:
+def marker(addon: Prefix | Suffix | Tackon) -> Parse:
     pos = {Prefix: Pos.PREFIX, Suffix: Pos.SUFFIX,
            Tackon: Pos.TACKON}[type(addon)]
     return Parse(addon.fix, Inflection(Form(pos)), Origin.ADDON, addon)
@@ -89,7 +86,7 @@ class Reading:
     or a trick, with the stems and endings that make them."""
     origin: Origin
     source: Source
-    forms: List[Parse] = field(default_factory=list)
+    forms: list[Parse] = field(default_factory=list)
 
     @property
     def pos(self) -> Pos:
@@ -99,10 +96,10 @@ class Reading:
 @dataclass
 class WordResult:
     word: str
-    readings: List[Reading] = field(default_factory=list)
+    readings: list[Reading] = field(default_factory=list)
     #  The explanations of tricks, by origin (several tricks of the same
     #  kind share the last explanation, as in the original program)
-    notes: Dict[Origin, str] = field(default_factory=dict)
+    notes: dict[Origin, str] = field(default_factory=dict)
     trimmed: bool = False
 
     @property
@@ -196,8 +193,8 @@ def _order(p: Parse) -> tuple:
             f.order())
 
 
-def _sort_and_trim(block: List[Parse], settings: Settings, all_caps: bool,
-                   followed_by_period: bool) -> (List[Parse], bool):
+def _sort_and_trim(block: list[Parse], settings: Settings, all_caps: bool,
+                   followed_by_period: bool) -> (list[Parse], bool):
     block = sorted(block, key=_order)
     if not settings.trim_output:
         return block, False
@@ -241,13 +238,13 @@ def _sort_and_trim(block: List[Parse], settings: Settings, all_caps: bool,
     return kept, len(kept) < len(block)
 
 
-def sweep(parses: List[Parse], settings: Settings, all_caps=False,
-          followed_by_period=False) -> (List[Parse], bool):
+def sweep(parses: list[Parse], settings: Settings, all_caps=False,
+          followed_by_period=False) -> (list[Parse], bool):
     """Orders the parses and removes unlikely and repeated ones.  Returns
     them and whether any were trimmed."""
-    out: List[Parse] = []
-    block: List[Parse] = []
-    markers: List[Parse] = []       # the markers before BLOCK
+    out: list[Parse] = []
+    block: list[Parse] = []
+    markers: list[Parse] = []       # the markers before BLOCK
     trimmed = False
 
     def flush():
@@ -269,7 +266,7 @@ def sweep(parses: List[Parse], settings: Settings, all_caps=False,
             block.append(p)
     flush()
 
-    unique: List[Parse] = []
+    unique: list[Parse] = []
     for p in out:
         prev = unique[-1] if unique else None
         if prev is not None and p.origin not in TRICK_ORIGINS and (
@@ -299,11 +296,11 @@ NOMINAL = (Pos.N, Pos.PRON, Pos.PACK, Pos.ADJ, Pos.NUM)
 VERBAL = (Pos.V, Pos.VPAR, Pos.SUPINE)
 
 
-def group(parses: List[Parse]) -> List[Reading]:
+def group(parses: list[Parse]) -> list[Reading]:
     """Gathers consecutive parses of the same entry and part of speech into
     readings.  A compound with esse joins the reading of its participle."""
-    readings: List[Reading] = []
-    current: Optional[Reading] = None
+    readings: list[Reading] = []
+    current: Reading | None = None
     for p in parses:
         pos = p.form.pos
         same = current is not None and current.pos == pos and \

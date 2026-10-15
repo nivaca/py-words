@@ -9,11 +9,9 @@ tricks.py).  Finally participles followed by a form of esse are read as
 compound tenses, and the results are ordered and grouped (results.py).
 """
 
-from __future__ import annotations
-
 import re
 from dataclasses import dataclass, replace
-from typing import Callable, Dict, List, Optional, Tuple
+from collections.abc import Callable
 
 import tricks
 from lexicon import Lexicon, StemRef, ENDING_LETTERS
@@ -62,7 +60,7 @@ def _adv_comparison(key: int) -> Comparison:
             3: Comparison.SUPER}.get(key, Comparison.X)
 
 
-def _form_of(part, key: int, infl: Inflection) -> Optional[Form]:
+def _form_of(part, key: int, infl: Inflection) -> Form | None:
     """The form that INFL makes of a word with grammar PART whose stem
     number is KEY, or None if the ending does not fit the word."""
     q = infl.form
@@ -130,13 +128,13 @@ def _abbreviation(part) -> bool:
 
 class Analyzer:
     def __init__(self, lexicon: Lexicon, settings: Settings,
-                 stat: Optional[Callable[[str], None]] = None):
+                 stat: Callable[[str], None] | None = None):
         self.lex = lexicon
         self.settings = settings
         self.stat = stat or (lambda line: None)
         self.line_number = 0
         self.word_number = 0
-        self._cache: Dict[tuple, Tuple[Parse, ...]] = {}
+        self._cache: dict[tuple, tuple[Parse, ...]] = {}
 
     def reset(self):
         """Forget cached results (after the settings have changed)."""
@@ -182,7 +180,7 @@ class Analyzer:
     # -----------------------------------------------------------------
     #  Dictionary search
 
-    def search(self, stems, restriction=REGULAR) -> List[StemRef]:
+    def search(self, stems, restriction=REGULAR) -> list[StemRef]:
         """The dictionary stems equal to one of STEMS; general dictionary
         first."""
         refs = []
@@ -204,7 +202,7 @@ class Analyzer:
                     refs.append(ref)
         return refs
 
-    def candidates(self, word: str) -> Tuple[List[Parse], List[str]]:
+    def candidates(self, word: str) -> tuple[list[Parse], list[str]]:
         """The ways WORD can be split into a stem and an ending, and the
         stems (shortest first)."""
         parses = []
@@ -223,10 +221,10 @@ class Analyzer:
                     stems[len(stem)] = stem
         return parses, [stems[n] for n in sorted(stems)]
 
-    def match(self, candidates: List[Parse], refs: List[StemRef],
-              prefix: Optional[Prefix] = None,
-              suffix: Optional[Suffix] = None,
-              opts: Opts = Opts()) -> List[Parse]:
+    def match(self, candidates: list[Parse], refs: list[StemRef],
+              prefix: Prefix | None = None,
+              suffix: Suffix | None = None,
+              opts: Opts = Opts()) -> list[Parse]:
         """The candidate (stem, ending) splits that fit the dictionary stems
         REFS, perhaps with a prefix and/or suffix."""
         out = []
@@ -269,7 +267,7 @@ class Analyzer:
         return out
 
     @staticmethod
-    def arrange(parses: List[Parse]) -> List[Parse]:
+    def arrange(parses: list[Parse]) -> list[Parse]:
         """Orders the parses of a word by entry, then ending, then form,
         dropping repeats."""
         ordered = sorted(parses, key=lambda p: (
@@ -284,7 +282,7 @@ class Analyzer:
     # -----------------------------------------------------------------
     #  WORD
 
-    def word(self, word: str, opts: Opts, prior: int = 0) -> List[Parse]:
+    def word(self, word: str, opts: Opts, prior: int = 0) -> list[Parse]:
         """The analyses of WORD as a dictionary word, irregular form or
         qu- pronoun, with prefixes, suffixes and tackons.  PRIOR is the
         number of results the caller already has: prefixes and suffixes
@@ -295,7 +293,7 @@ class Analyzer:
             found = self._cache[key] = tuple(self._word(word, opts, prior))
         return list(found)
 
-    def _word(self, word: str, opts: Opts, prior: int) -> List[Parse]:
+    def _word(self, word: str, opts: Opts, prior: int) -> list[Parse]:
         w = word.lower().strip()
         if not w:
             return []
@@ -310,7 +308,7 @@ class Analyzer:
         return out
 
     def _stems(self, candidates, stems, opts: Opts,
-               have: int) -> List[Parse]:
+               have: int) -> list[Parse]:
         refs = [] if opts.only_fixes else self.search(stems)
         if opts.do_fixes and ((have == 0 and not refs) or
                               self.settings.do_fixes_anyway):
@@ -327,7 +325,7 @@ class Analyzer:
         return []
 
     def _prefixed(self, stems, candidates, opts: Opts,
-                  suffix: Optional[Suffix] = None) -> List[Parse]:
+                  suffix: Suffix | None = None) -> list[Parse]:
         """[prefix marker, parses] for the first prefix that works."""
         if not opts.use_prefixes:
             return []
@@ -345,7 +343,7 @@ class Analyzer:
                 return [marker(prefix)] + self.arrange(found)
         return []
 
-    def _suffixed(self, stems, candidates, opts: Opts) -> List[Parse]:
+    def _suffixed(self, stems, candidates, opts: Opts) -> list[Parse]:
         """[(prefix marker), suffix marker, parses] for every suffix that
         works."""
         out = []
@@ -369,7 +367,7 @@ class Analyzer:
     # -----------------------------------------------------------------
     #  qu- pronouns and packons
 
-    def _qu_words(self, w: str, opts: Opts) -> List[Parse]:
+    def _qu_words(self, w: str, opts: Opts) -> list[Parse]:
         """qui, quis, aliquis ...; with a tickon (a prefix that goes on qu-
         pronouns: ecquis ...) or a packon (an enclitic that does:
         quicumque ...)."""
@@ -389,7 +387,7 @@ class Analyzer:
                 return ([marker(tickon)] if tickon else []) + found
         return []
 
-    def _qu_split(self, w: str, longest: int, test) -> List[Parse]:
+    def _qu_split(self, w: str, longest: int, test) -> list[Parse]:
         out = []
         for z in range(min(longest, len(w)), 0, -1):
             for infl in self.lex.qu_endings.get(fold(w[-z:]), ()):
@@ -404,7 +402,7 @@ class Analyzer:
         return Parse(c.stem, replace(c.infl, form=form), _origin(ref),
                      ref.entry)
 
-    def _qu_pronouns(self, w: str, qkey: int) -> List[Parse]:
+    def _qu_pronouns(self, w: str, qkey: int) -> list[Parse]:
         candidates = self._qu_split(w, 4, lambda i: i.key == qkey)
         out = []
         for ref in self.search({c.stem for c in candidates}, QU_PRONOUNS):
@@ -414,7 +412,7 @@ class Analyzer:
                     out.append(self._as_pronoun(c, ref))
         return out
 
-    def _packons(self, w: str) -> List[Parse]:
+    def _packons(self, w: str) -> list[Parse]:
         out = []
         for packon in self.lex.packons:
             x = self.strip_tackon(w, packon)
@@ -440,7 +438,7 @@ class Analyzer:
     # -----------------------------------------------------------------
     #  Tackons
 
-    def _tackons(self, w: str, opts: Opts, prior: int) -> List[Parse]:
+    def _tackons(self, w: str, opts: Opts, prior: int) -> list[Parse]:
         """The less common enclitics, which attach to particular words."""
         for tackon in self.lex.tackons[ENCLITICS:]:
             less = self.strip_tackon(w, tackon)
@@ -469,7 +467,7 @@ class Analyzer:
                 return [marker(tackon)] + kept
         return []
 
-    def enclitic(self, w: str, out: List[Parse], opts: Opts,
+    def enclitic(self, w: str, out: list[Parse], opts: Opts,
                  notes: dict) -> bool:
         """Tries the word without -que, -ne, -ve or -est (only -que if it
         already has analyses).  Appends to OUT; returns whether one
@@ -496,11 +494,11 @@ class Analyzer:
     def analyze_word(self, word: str, next_word: str = '',
                      capitalized: bool = False, all_caps: bool = False,
                      followed_by_period: bool = False,
-                     meanings_only: bool = False) -> Tuple[WordResult, bool]:
+                     meanings_only: bool = False) -> tuple[WordResult, bool]:
         """Returns the result and whether NEXT_WORD (a form of esse) was
         used to make a compound tense."""
         s = self.settings
-        notes: Dict[Origin, str] = {}
+        notes: dict[Origin, str] = {}
         self.word_number += 1
         out = self._passes(word, notes)
         if not out and not (s.ignore_unknown_names and capitalized):
@@ -517,7 +515,7 @@ class Analyzer:
         parses, trimmed = sweep(out, s, all_caps, followed_by_period)
         return WordResult(word, group(parses), notes, trimmed), used_next
 
-    def _passes(self, word: str, notes: dict) -> List[Parse]:
+    def _passes(self, word: str, notes: dict) -> list[Parse]:
         s = self.settings
         out = tricks.roman_numeral(word, notes)
         first = Opts(False, s.do_only_fixes, s.use_prefixes)
@@ -537,7 +535,7 @@ class Analyzer:
         return out
 
     def _tricks_enclitic(self, word: str, notes: dict,
-                         capitalized: bool) -> List[Parse]:
+                         capitalized: bool) -> list[Parse]:
         for tackon in self.lex.tackons[:ENCLITICS]:
             less = self.strip_tackon(word.lower(), tackon)
             if less != word.lower():
@@ -546,7 +544,7 @@ class Analyzer:
         return []
 
     def analyze_line(self, line: str,
-                     meanings_only: bool = False) -> List[WordResult]:
+                     meanings_only: bool = False) -> list[WordResult]:
         """Analyses each word of a line of Latin.  Text after '--' is a
         comment."""
         self.line_number += 1
@@ -573,7 +571,7 @@ class Analyzer:
 # ---------------------------------------------------------------------------
 #  Lines and words
 
-def split_line(line: str) -> List[str]:
+def split_line(line: str) -> list[str]:
     """The words of LINE: runs of letters, each with a following '.' if
     there is one."""
     line = line.split('--', 1)[0]
@@ -593,7 +591,7 @@ def is_all_caps(word: str) -> bool:
     return word.isupper()
 
 
-def _is_esse(parses: List[Parse]) -> bool:
+def _is_esse(parses: list[Parse]) -> bool:
     """A form of esse is not tried as a syncopated perfect."""
     return any(p.form.pos == Pos.V and p.form.decl == Decl(5, 1)
                for p in parses)
@@ -648,7 +646,7 @@ _SUM = {
 }
 
 
-def form_of_sum(word: str) -> Optional[Form]:
+def form_of_sum(word: str) -> Form | None:
     """The form of sum that WORD is (the first, if it is several)."""
     for mood, tenses in _SUM.items():
         for tense, numbers in tenses.items():
@@ -661,8 +659,8 @@ def form_of_sum(word: str) -> Optional[Form]:
     return None
 
 
-def compounds(parses: List[Parse], next_word: str,
-              notes: dict) -> Tuple[List[Parse], bool]:
+def compounds(parses: list[Parse], next_word: str,
+              notes: dict) -> tuple[list[Parse], bool]:
     """If NEXT_WORD is a form of esse (or iri) that makes a compound tense
     with a participle (or supine) among PARSES, keeps only those and adds
     the compound.  Returns the parses and whether NEXT_WORD was used."""
@@ -768,7 +766,7 @@ def compounds(parses: List[Parse], next_word: str,
 # ---------------------------------------------------------------------------
 #  Adverbs from adjectives: longe from longus
 
-def adverbs(parses: List[Parse], notes: dict) -> List[Parse]:
+def adverbs(parses: list[Parse], notes: dict) -> list[Parse]:
     """For an adjective found as a vocative singular masculine (longe,
     longissime), the adverb made from it."""
     out = []

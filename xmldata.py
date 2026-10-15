@@ -14,10 +14,8 @@ files as they go.  A problem raises DataError, or, if the caller passes a
 list as ERRORS, is appended to it and the element skipped.
 """
 
-from __future__ import annotations
-
 import os
-from typing import Callable, Iterator, List, Optional, Tuple
+from collections.abc import Callable, Iterator
 from xml.parsers import expat
 from xml.sax.saxutils import escape, quoteattr
 
@@ -117,8 +115,8 @@ def _parse(path: str, root_tag: str) -> Iterator[_Element]:
     given as soon as it has been read, so that the whole file is never held
     in memory."""
     parser = expat.ParserCreate()
-    stack: List[_Element] = []
-    done: List[_Element] = []
+    stack: list[_Element] = []
+    done: list[_Element] = []
 
     def start(tag, attrs):
         el = _Element(tag, attrs, parser.CurrentLineNumber)
@@ -203,7 +201,7 @@ class _Reader:
             self.used.update(n for n in names if n in attrs)
         return record
 
-    def fail(self, message: str, line: Optional[int] = None):
+    def fail(self, message: str, line: int | None = None):
         raise DataError(self.path, line or self.el.line, message)
 
     def raw(self, name, default=None):
@@ -322,10 +320,10 @@ class _Reader:
                                             for name, cls in CODES)))
 
 
-Loaded = List[Tuple[object, int]]
+Loaded = list[tuple[object, int]]
 
 
-def _read(path: str, root: str, errors: Optional[list],
+def _read(path: str, root: str, errors: list | None,
           convert: Callable[[_Reader, int], object]) -> Loaded:
     out = []
     for el in _parse(path, root):
@@ -360,12 +358,12 @@ def _entry(r: _Reader, n: int, dictionary: str) -> Entry:
 
 
 def read_dictionary(path: str, errors=None,
-                    dictionary='general') -> List[Tuple[Entry, int]]:
+                    dictionary='general') -> list[tuple[Entry, int]]:
     return _read(path, 'dictionary', errors,
                  lambda r, n: _entry(r, n, dictionary))
 
 
-def entry_from_fields(attrs: dict, stems: List[str], meaning: str,
+def entry_from_fields(attrs: dict, stems: list[str], meaning: str,
                       id: int = 0, dictionary: str = 'general') -> Entry:
     """An entry from the values of its attributes (as in the XML: pos,
     decl or conj, gender ..., age, area ...), its stems and its meaning,
@@ -384,7 +382,7 @@ def entry_from_fields(attrs: dict, stems: List[str], meaning: str,
     return _entry(_Reader('entry', el), id, dictionary)
 
 
-def read_inflections(path: str, errors=None) -> List[Tuple[Inflection, int]]:
+def read_inflections(path: str, errors=None) -> list[tuple[Inflection, int]]:
     def inflection(r: _Reader, n: int) -> Inflection:
         _expect(r, 'inflection')
         if r.el.children:
@@ -405,7 +403,7 @@ def read_inflections(path: str, errors=None) -> List[Tuple[Inflection, int]]:
     return _read(path, 'inflections', errors, inflection)
 
 
-def read_uniques(path: str, errors=None) -> List[Tuple[Unique, int]]:
+def read_uniques(path: str, errors=None) -> list[tuple[Unique, int]]:
     def unique(r: _Reader, n: int) -> Unique:
         _expect(r, 'unique')
         pos = r.pos(FORM_POS)
@@ -473,7 +471,7 @@ def _value(v) -> str:
     return v.name if hasattr(v, 'name') else str(v)
 
 
-def part_attrs(part: Part) -> List[Tuple[str, str]]:
+def part_attrs(part: Part) -> list[tuple[str, str]]:
     pairs = [('pos', part.pos.name)]
     for name in PART_ATTRS.get(part.pos, ()):
         attr = 'decl' if name == 'conj' else name
@@ -481,7 +479,7 @@ def part_attrs(part: Part) -> List[Tuple[str, str]]:
     return pairs
 
 
-def form_attrs(form: Form) -> List[Tuple[str, str]]:
+def form_attrs(form: Form) -> list[tuple[str, str]]:
     pairs = [('pos', form.pos.name)]
     for name in FORM_ATTRS.get(form.pos, ()):
         attr = 'decl' if name == 'conj' else name
@@ -489,7 +487,7 @@ def form_attrs(form: Form) -> List[Tuple[str, str]]:
     return pairs
 
 
-def codes_attrs(codes: Codes) -> List[Tuple[str, str]]:
+def codes_attrs(codes: Codes) -> list[tuple[str, str]]:
     return [(name, getattr(codes, name).name) for name, _ in CODES]
 
 
@@ -507,7 +505,7 @@ HEADERS = {
 }
 
 
-def write_file(path: str, root: str, body: List[str], wrap=False):
+def write_file(path: str, root: str, body: list[str], wrap=False):
     """Writes a data file: the XML declaration, a comment, the root element
     with BODY (lines) inside.  The file is replaced only when complete.
     With WRAP, the root element's attributes go on two lines."""
@@ -559,7 +557,7 @@ def entry_xml(entry: Entry) -> str:
 WIDTH = 79             # the longest line of entry attributes, indented
 
 
-def entry_lines(entry: Entry) -> List[str]:
+def entry_lines(entry: Entry) -> list[str]:
     """ENTRY as lines, indented relative to <entry>: its attributes
     wrapped to WIDTH, then each stem and the meaning on a line of its own."""
     attrs = [_attrs([pair]) for pair in

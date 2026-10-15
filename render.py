@@ -11,9 +11,6 @@ irregular form, an affix or enclitic found on the word, or a note on a
 trick that was needed to find it.
 """
 
-from __future__ import annotations
-
-from typing import List, Optional
 
 from english import Hit
 from forms import (principal_parts, describe_part, describe_form, example,
@@ -48,9 +45,9 @@ class Renderer:
     def __init__(self, settings: Settings, meanings_only: bool = False):
         self.s = settings
         self.meanings_only = meanings_only or settings.do_only_meanings
-        self.lines: List[str] = []
+        self.lines: list[str] = []
 
-    def line(self, text: str, indent: int = 0, code: Optional[int] = None):
+    def line(self, text: str, indent: int = 0, code: int | None = None):
         if self.s.do_pearse_codes and code is not None:
             text = '%02d %s' % (code, text)
         else:
@@ -159,7 +156,7 @@ class Renderer:
             for p in r.forms:
                 self.form(p, None, None)
 
-    def form(self, p: Parse, entry: Optional[Entry], result):
+    def form(self, p: Parse, entry: Entry | None, result):
         if p.origin == Origin.COMPOUND and p.stem.startswith(
                 ('PPL+', 'SUPINE')):
             words = p.stem.replace('PPL+', 'participle + ').replace(
@@ -199,7 +196,7 @@ class Renderer:
 
     # English to Latin ------------------------------------------------------
 
-    def english(self, word: str, hits: List[Hit]) -> str:
+    def english(self, word: str, hits: list[Hit]) -> str:
         self.line(word)
         if not hits:
             self.line('(no match)', 2)

@@ -14,12 +14,10 @@ a quirk: in ADDONS.LAT a short line after a comment can pick up the end of
 the comment.  A tackon that this makes unusable is written as a comment.
 """
 
-from __future__ import annotations
-
 import argparse
 import os
 import sys
-from typing import Iterator, List, Optional, Tuple
+from collections.abc import Iterator
 
 import xmldata
 from model import (Pos, Gender, Case, Number, Comparison, NumeralSort,
@@ -81,7 +79,7 @@ KIND = {Pos.N: NounKind, Pos.PRON: PronounKind, Pos.PACK: PronounKind,
         Pos.V: VerbKind, Pos.VPAR: VerbKind, Pos.SUPINE: VerbKind}
 
 
-def read_part(t: Tokens, pos: Optional[Pos] = None) -> Part:
+def read_part(t: Tokens, pos: Pos | None = None) -> Part:
     pos = pos if pos is not None else t.enum(Pos)
     if pos == Pos.N:
         return Part(pos, t.decl(), t.enum(Gender), t.enum(NounKind))
@@ -137,7 +135,7 @@ def read_codes(t: Tokens) -> Codes:
                  t.enum(Source))
 
 
-def read_lines(path: str) -> List[str]:
+def read_lines(path: str) -> list[str]:
     """The lines of a file, without line endings (LF or CR LF)."""
     with open(path, encoding='latin-1', newline='') as f:
         return [line.rstrip('\r\n') for line in f]
@@ -147,7 +145,7 @@ def _fail(path, number, message, line):
     raise ConvertError('%s:%d: %s\n    %s' % (path, number, message, line))
 
 
-def _split_comment(line: str) -> Tuple[str, Optional[str]]:
+def _split_comment(line: str) -> tuple[str, str | None]:
     content, sep, comment = line.partition('--')
     return content, (comment if sep else None)
 
@@ -163,7 +161,7 @@ def _is_comment(line: str) -> bool:
 
 # ---------------------------------------------------------------------------
 
-def convert_dictline(path: str, dictionary='general') -> List[Entry]:
+def convert_dictline(path: str, dictionary='general') -> list[Entry]:
     entries = []
     for number, line in enumerate(read_lines(path), 1):
         if not line.strip():
@@ -187,7 +185,7 @@ def convert_dictline(path: str, dictionary='general') -> List[Entry]:
     return entries
 
 
-def convert_inflects(path: str) -> List[str]:
+def convert_inflects(path: str) -> list[str]:
     body = []
     for number, line in enumerate(read_lines(path), 1):
         if not line.replace('\t', ' ').strip():
@@ -216,7 +214,7 @@ def convert_inflects(path: str) -> List[str]:
     return body
 
 
-def convert_uniques(path: str) -> List[Unique]:
+def convert_uniques(path: str) -> list[Unique]:
     lines = read_lines(path)
     if len(lines) % 3:
         raise ConvertError('%s: the number of lines is not a multiple of 3'
@@ -241,7 +239,7 @@ def convert_uniques(path: str) -> List[Unique]:
     return out
 
 
-def convert_addons(path: str) -> List[str]:
+def convert_addons(path: str) -> list[str]:
     lines = read_lines(path)
     body = []
     #  The header of an entry is read into a buffer that still holds the

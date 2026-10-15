@@ -15,11 +15,8 @@ directory, and saved in the current directory.  Names the program does not
 know (some older ones did nothing) are ignored.
 """
 
-from __future__ import annotations
-
 import os
 from dataclasses import dataclass, fields
-from typing import List
 
 MODE_FILE = 'WORD.MOD'
 DEV_MODE_FILE = 'WORD.MDV'
@@ -92,13 +89,13 @@ class Settings:
     change_parameters_character: str = '#'
     change_developer_modes_character: str = '!'
 
-    def copy(self) -> 'Settings':
+    def copy(self) -> Settings:
         return Settings(**{f.name: getattr(self, f.name)
                            for f in fields(self)})
 
     # Files ----------------------------------------------------------------
 
-    def load(self, datadir: str = '.') -> List[str]:
+    def load(self, datadir: str = '.') -> list[str]:
         """Reads WORD.MOD and WORD.MDV, if there are any.  Returns messages
         about what was found."""
         messages = []
@@ -119,7 +116,7 @@ class Settings:
                 messages.append('Using the %s in %s' % (kind, path))
         return messages
 
-    def read(self, path: str) -> List[str]:
+    def read(self, path: str) -> list[str]:
         """Sets what the settings file PATH says; returns its problems."""
         problems = []
         characters = dict(CHARACTERS)
