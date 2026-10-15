@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The format of the WORDS data files: dictionary.xml (and special.xml),
+     inflections.xml, uniques.xml and addons.xml.
+
+     Which attributes an element needs depends on its part of speech (pos),
+     which XML Schema 1.0 cannot express: here they are all optional, and
+     each is documented with the parts of speech that use it.  The checker
+     (python -m py_whitaker_words.check) checks this too, as WORDS does when
+     it reads the files.  The order of the elements matters. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Codes -->
+
+  <xs:simpleType name="dictionaryPos">
+    <xs:annotation><xs:documentation>Part of speech of a dictionary entry.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="PRON"/>
+      <xs:enumeration value="PACK"/>
+      <xs:enumeration value="ADJ"/>
+      <xs:enumeration value="NUM"/>
+      <xs:enumeration value="ADV"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="PREP"/>
+      <xs:enumeration value="CONJ"/>
+      <xs:enumeration value="INTERJ"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="inflectionPos">
+    <xs:annotation><xs:documentation>Part of speech of an inflection or unique form.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="PRON"/>
+      <xs:enumeration value="PACK"/>
+      <xs:enumeration value="ADJ"/>
+      <xs:enumeration value="NUM"/>
+      <xs:enumeration value="ADV"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="VPAR"/>
+      <xs:enumeration value="SUPINE"/>
+      <xs:enumeration value="PREP"/>
+      <xs:enumeration value="CONJ"/>
+      <xs:enumeration value="INTERJ"/>
+      <xs:enumeration value="TACKON"/>
+      <xs:enumeration value="PREFIX"/>
+      <xs:enumeration value="SUFFIX"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="anyPos">
+    <xs:annotation><xs:documentation>Any part of speech (X: any).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="PRON"/>
+      <xs:enumeration value="PACK"/>
+      <xs:enumeration value="ADJ"/>
+      <xs:enumeration value="NUM"/>
+      <xs:enumeration value="ADV"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="VPAR"/>
+      <xs:enumeration value="SUPINE"/>
+      <xs:enumeration value="PREP"/>
+      <xs:enumeration value="CONJ"/>
+      <xs:enumeration value="INTERJ"/>
+      <xs:enumeration value="TACKON"/>
+      <xs:enumeration value="PREFIX"/>
+      <xs:enumeration value="SUFFIX"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="targetPos">
+    <xs:annotation><xs:documentation>Part of speech that a suffix produces or a tackon attaches to (X: any).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="PRON"/>
+      <xs:enumeration value="PACK"/>
+      <xs:enumeration value="ADJ"/>
+      <xs:enumeration value="NUM"/>
+      <xs:enumeration value="ADV"/>
+      <xs:enumeration value="V"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="gender">
+    <xs:annotation><xs:documentation>M masculine, F feminine, N neuter, C common, X unknown/any.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="C"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="case">
+    <xs:annotation><xs:documentation>NOM GEN DAT ABL ACC VOC LOC; X unknown/any.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="NOM"/>
+      <xs:enumeration value="VOC"/>
+      <xs:enumeration value="GEN"/>
+      <xs:enumeration value="LOC"/>
+      <xs:enumeration value="DAT"/>
+      <xs:enumeration value="ABL"/>
+      <xs:enumeration value="ACC"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="number">
+    <xs:annotation><xs:documentation>S singular, P plural, X unknown/any.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="P"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="comparison">
+    <xs:annotation><xs:documentation>POS positive, COMP comparative, SUPER superlative, X all/unknown.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="POS"/>
+      <xs:enumeration value="COMP"/>
+      <xs:enumeration value="SUPER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="numeralSort">
+    <xs:annotation><xs:documentation>CARD cardinal, ORD ordinal, DIST distributive, ADVERB numeral adverb, X all/unknown.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="CARD"/>
+      <xs:enumeration value="ORD"/>
+      <xs:enumeration value="DIST"/>
+      <xs:enumeration value="ADVERB"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tense">
+    <xs:annotation><xs:documentation>PRES IMPF FUT PERF PLUP FUTP; X unknown/any.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="PRES"/>
+      <xs:enumeration value="IMPF"/>
+      <xs:enumeration value="FUT"/>
+      <xs:enumeration value="PERF"/>
+      <xs:enumeration value="PLUP"/>
+      <xs:enumeration value="FUTP"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="voice">
+    <xs:annotation><xs:documentation>ACTIVE PASSIVE; X unknown/any.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="PASSIVE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="mood">
+    <xs:annotation><xs:documentation>IND SUB IMP INF PPL; X unknown/any.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="IND"/>
+      <xs:enumeration value="SUB"/>
+      <xs:enumeration value="IMP"/>
+      <xs:enumeration value="INF"/>
+      <xs:enumeration value="PPL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="kind">
+    <xs:annotation><xs:documentation>Kind of noun (X S M A G N P T L W), pronoun (X PERS REL REFLEX DEMONS INTERR INDEF ADJECT) or verb (X TO_BE TO_BEING GEN DAT ABL TRANS INTRANS IMPERS DEP SEMIDEP PERFDEF).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="T"/>
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="W"/>
+      <xs:enumeration value="PERS"/>
+      <xs:enumeration value="REL"/>
+      <xs:enumeration value="REFLEX"/>
+      <xs:enumeration value="DEMONS"/>
+      <xs:enumeration value="INTERR"/>
+      <xs:enumeration value="INDEF"/>
+      <xs:enumeration value="ADJECT"/>
+      <xs:enumeration value="TO_BE"/>
+      <xs:enumeration value="TO_BEING"/>
+      <xs:enumeration value="GEN"/>
+      <xs:enumeration value="DAT"/>
+      <xs:enumeration value="ABL"/>
+      <xs:enumeration value="TRANS"/>
+      <xs:enumeration value="INTRANS"/>
+      <xs:enumeration value="IMPERS"/>
+      <xs:enumeration value="DEP"/>
+      <xs:enumeration value="SEMIDEP"/>
+      <xs:enumeration value="PERFDEF"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="age">
+    <xs:annotation><xs:documentation>When the word was used (X: always).  Default X.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="D"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="H"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="area">
+    <xs:annotation><xs:documentation>Subject area (X: general).  Default X.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="D"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="T"/>
+      <xs:enumeration value="W"/>
+      <xs:enumeration value="Y"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="geo">
+    <xs:annotation><xs:documentation>Where the word was used (X: everywhere).  Default X.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="D"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="H"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="J"/>
+      <xs:enumeration value="K"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="Q"/>
+      <xs:enumeration value="R"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="U"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="freq">
+    <xs:annotation><xs:documentation>How frequent the word is: A (very frequent) to F (very rare), or the special codes I M N; X unknown.  Default X.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="D"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="N"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="source">
+    <xs:annotation><xs:documentation>The source of the entry (X: general).  Default X.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="D"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="H"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="J"/>
+      <xs:enumeration value="K"/>
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="O"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="Q"/>
+      <xs:enumeration value="R"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="T"/>
+      <xs:enumeration value="U"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="W"/>
+      <xs:enumeration value="Y"/>
+      <xs:enumeration value="Z"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="decn">
+    <xs:annotation><xs:documentation>A declension or conjugation and its variant, as "2 1".</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string"><xs:pattern value="[0-9] [0-9]"/></xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="stem">
+    <xs:annotation><xs:documentation>A stem or form: letters only, at most 18.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string"><xs:pattern value="[A-Za-z]{0,18}"/></xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="fix">
+    <xs:annotation><xs:documentation>A prefix, suffix or tackon: letters only, at most 18.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string"><xs:pattern value="[A-Za-z]{1,18}"/></xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ending">
+    <xs:annotation><xs:documentation>An inflectional ending: letters only, at most 7 (empty for none).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string"><xs:pattern value="[A-Za-z]{0,7}"/></xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="connect">
+    <xs:annotation><xs:documentation>The letter that must follow a prefix (or precede a suffix).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string"><xs:pattern value="."/></xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="meaning">
+    <xs:annotation><xs:documentation>A meaning, on one line.  WORDS uses its first 80 characters.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string"><xs:pattern value="[^\r\n]*"/></xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="key">
+    <xs:annotation><xs:documentation>Which stem (1-4) an ending or affix attaches to; 0 for any.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger"><xs:minInclusive value="0"/><xs:maxInclusive value="9"/></xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="person">
+    <xs:annotation><xs:documentation>Person of a verb form (0 for none).</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger"><xs:minInclusive value="0"/><xs:maxInclusive value="3"/></xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="value">
+    <xs:annotation><xs:documentation>Numeric value of a numeral.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger"><xs:minInclusive value="0"/><xs:maxInclusive value="1000"/></xs:restriction>
+  </xs:simpleType>
+
+  <!-- Attribute groups -->
+
+  <xs:attributeGroup name="part">
+    <xs:annotation><xs:documentation>The grammatical description of a dictionary word.</xs:documentation></xs:annotation>
+    <xs:attribute name="decl" type="decn">
+      <xs:annotation><xs:documentation>Required for N PRON PACK ADJ NUM.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="conj" type="decn">
+      <xs:annotation><xs:documentation>Required for V.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="gender" type="gender">
+      <xs:annotation><xs:documentation>Required for N.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="kind" type="kind">
+      <xs:annotation><xs:documentation>Required for N PRON PACK V.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="comparison" type="comparison">
+      <xs:annotation><xs:documentation>Required for ADJ ADV.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="sort" type="numeralSort">
+      <xs:annotation><xs:documentation>Required for NUM.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="value" type="value">
+      <xs:annotation><xs:documentation>Required for NUM.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="case" type="case">
+      <xs:annotation><xs:documentation>Required for PREP.</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="qual">
+    <xs:annotation><xs:documentation>The grammatical description of an inflected form.</xs:documentation></xs:annotation>
+    <xs:attribute name="decl" type="decn">
+      <xs:annotation><xs:documentation>Required for N PRON PACK ADJ NUM.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="conj" type="decn">
+      <xs:annotation><xs:documentation>Required for V VPAR SUPINE.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="case" type="case">
+      <xs:annotation><xs:documentation>Required for N PRON PACK ADJ NUM VPAR SUPINE PREP.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="number" type="number">
+      <xs:annotation><xs:documentation>Required for N PRON PACK ADJ NUM V VPAR SUPINE.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="gender" type="gender">
+      <xs:annotation><xs:documentation>Required for N PRON PACK ADJ NUM VPAR SUPINE.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="comparison" type="comparison">
+      <xs:annotation><xs:documentation>Required for ADJ ADV.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="sort" type="numeralSort">
+      <xs:annotation><xs:documentation>Required for NUM.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="tense" type="tense">
+      <xs:annotation><xs:documentation>Required for V VPAR.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="voice" type="voice">
+      <xs:annotation><xs:documentation>Required for V VPAR.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="mood" type="mood">
+      <xs:annotation><xs:documentation>Required for V VPAR.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="person" type="person">
+      <xs:annotation><xs:documentation>Required for V.</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="translation">
+    <xs:attribute name="age" type="age" default="X"/>
+    <xs:attribute name="area" type="area" default="X"/>
+    <xs:attribute name="geo" type="geo" default="X"/>
+    <xs:attribute name="freq" type="freq" default="X"/>
+    <xs:attribute name="source" type="source" default="X"/>
+  </xs:attributeGroup>
+
+  <!-- dictionary.xml -->
+
+  <xs:element name="dictionary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation><xs:documentation>A dictionary entry.  Its stems are
+            given in order (an empty &lt;stem/&gt; for a blank one; zzz for
+            a form that does not exist); how many are used depends on the
+            part of speech: N, PRON, PACK 2; ADJ, NUM, V 4; ADV 3; others 1.
+          </xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="stem" type="stem" maxOccurs="4"/>
+              <xs:element name="meaning" type="meaning"/>
+            </xs:sequence>
+            <xs:attribute name="pos" type="dictionaryPos" use="required"/>
+            <xs:attributeGroup ref="part"/>
+            <xs:attributeGroup ref="translation"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- inflections.xml -->
+
+  <xs:element name="inflections">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="inflection" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation><xs:documentation>An ending, the form it makes and
+            the stem it attaches to.</xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:attribute name="pos" type="inflectionPos" use="required"/>
+            <xs:attributeGroup ref="qual"/>
+            <xs:attribute name="key" type="key" use="required"/>
+            <xs:attribute name="ending" type="ending" default=""/>
+            <xs:attribute name="age" type="age" default="X"/>
+            <xs:attribute name="freq" type="freq" default="X"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- uniques.xml -->
+
+  <xs:element name="uniques">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="unique" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation><xs:documentation>An irregular form, complete in
+            itself.  kind is required for N PRON PACK V VPAR SUPINE, value
+            for NUM.</xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="form" type="fix"/>
+              <xs:element name="meaning" type="meaning"/>
+            </xs:sequence>
+            <xs:attribute name="pos" type="inflectionPos" use="required"/>
+            <xs:attributeGroup ref="qual"/>
+            <xs:attribute name="kind" type="kind"/>
+            <xs:attribute name="value" type="value"/>
+            <xs:attributeGroup ref="translation"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- addons.xml -->
+
+  <xs:complexType name="target">
+    <xs:attribute name="pos" type="targetPos" use="required"/>
+    <xs:attributeGroup ref="part"/>
+  </xs:complexType>
+
+  <xs:element name="addons">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="prefix">
+          <xs:annotation><xs:documentation>A prefix: added to a word of part
+            of speech root, it makes one of part of speech target.
+          </xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="meaning" type="meaning"/>
+            </xs:sequence>
+            <xs:attribute name="fix" type="fix" use="required"/>
+            <xs:attribute name="connect" type="connect"/>
+            <xs:attribute name="root" type="anyPos" use="required"/>
+            <xs:attribute name="target" type="anyPos" use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="suffix">
+          <xs:annotation><xs:documentation>A suffix: added to stem rootkey of
+            a word of part of speech root, it makes a word described by
+            &lt;target&gt;, whose stem targetkey it is.
+          </xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="target" type="target"/>
+              <xs:element name="meaning" type="meaning"/>
+            </xs:sequence>
+            <xs:attribute name="fix" type="fix" use="required"/>
+            <xs:attribute name="connect" type="connect"/>
+            <xs:attribute name="root" type="anyPos" use="required"/>
+            <xs:attribute name="rootkey" type="key" use="required"/>
+            <xs:attribute name="targetkey" type="key" use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tackon">
+          <xs:annotation><xs:documentation>An enclitic, attached to a word
+            described by &lt;base&gt;.  Tackons on PACK 1 or 2 whose meaning
+            starts with "PACKON w/" attach to qu- pronouns.
+          </xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="base" type="target"/>
+              <xs:element name="meaning" type="meaning"/>
+            </xs:sequence>
+            <xs:attribute name="fix" type="fix" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

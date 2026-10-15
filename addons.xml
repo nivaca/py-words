@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Prefixes, suffixes and enclitics (tackons). See words.xsd. -->
+<addons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="words.xsd">
+  <!--  This file lists, in human readable and editable form, a set of-->
+  <!--  "ADDONS" for the LATIN program.  ADDONS are prefixes, suffixes-->
+  <!--  and enclitic type fragments used in latin word formation.-->
+  <!---->
+  <!--  While this "word formation" ability is, in principle, very powerful,-->
+  <!--  in practice, most of the common constructed words are in the dictionary-->
+  <!--  by themselves, so the number of prefix hits are smaller than might be-->
+  <!--  anticipated.  When there is a hit, that is, the full word was not found-->
+  <!--  in the dictionary but the base stem was found after removing the ADDON,-->
+  <!--  the resulting word/meaning is correct and fairly clear about 75% of-->
+  <!--  the time.  In many of the remaining cases, the construction is true,-->
+  <!--  but the usage of the word has strayed a bit and it may be a stretch to-->
+  <!--  make the association.  In about 10% of the cases, the construction is-->
+  <!--  just wrong, the word was simply derived from a different root.-->
+  <!---->
+  <!--  The present algorithms can handle one prefix, one suffix, and one tackon-->
+  <!--  in the same word, i.e., a two suffix situation (if such exists) will fail.-->
+  <!--  {Need to make an exception for the formation of COMP, SUPER, ADV from ADJ}-->
+  <!---->
+  <!--  The question remains as to whether there are too many, especially suffixes,-->
+  <!--  so that excessive aritficial words are created - are we too imaginative?-->
+  <!--  We will do a number of experiments when there is a sufficient data base.-->
+  <!---->
+  <!--  This list can be modified by the user.  It is read in each time-->
+  <!--  the latin program is initiated, so is always current.-->
+  <!---->
+  <!---->
+  <!--  PREFIX is a fragment added to the beginning of a stem to modify or-->
+  <!--  reinforce the meaning.  "ante" added to a verb gives the meaning-->
+  <!--  "before" (ante-cedo = before-move => precede).  This does not-->
+  <!--  impact the addition of inflections on the end of the word.-->
+  <!---->
+  <!--  Each PREFIX entry leads off with the identifier "PREFIX".-->
+  <!---->
+  <!--  This is followed (separated by a space) by the prefix itself.-->
+  <!---->
+  <!--  In the formulation used by this program, there may be a connecting-->
+  <!--  character associated with the prefix.  For example, the prefix "ad",-->
+  <!--  meaning "to", when applied to a word beginning with "c" changes to "ac".-->
+  <!--  Thus with curro (run) we get ac-curro, "run to".  The CONNECT character,-->
+  <!--  if any, is placed after the prefix, on the same line.-->
+  <!---->
+  <!--  Prefixes may be thought of as not changing the base part of-->
+  <!--  speech.  "ante" is applied to a verb stem and converts it to-->
+  <!--  another verb stem.  The same prefix may have different meanings-->
+  <!--  when applied to different parts.  "sub" applied to an adjective-->
+  <!--  adds the meaning "somewhat", when applied to a verb it means "under".-->
+  <!--  The parts of speech (from and to) are listed on the second line,-->
+  <!--  but are always the same.  The redundancy is the result of a generality-->
+  <!--  built into the data structure initially and never changed.-->
+  <!---->
+  <!--  The third line gives the meaning, using 78 characters or less.-->
+  <!---->
+  <!--  There is provision for AGE, AREA, GEO, FREQ, or SOURCE flags.-->
+  <!---->
+  <!--  The order of this list is important.  The program checks in order.-->
+  <!--  One should check to see if "extra" is possible before trying "ex".-->
+  <!--  The longer prefix should be placed earlier in the list.-->
+  <!--  Otherwise prefixes are listed in alphabetical order.-->
+  <!---->
+  <!--  Most prefixes transform V to V in this system.-->
+  <!--  The same prefixes can usually be applied to N and ADJ, especially those-->
+  <!--  suffix derived from verbs.  The word formation algorithm will usually-->
+  <!--  make the two steps necessary.  In almost all cases the ADJ ADJ prefixes-->
+  <!--  apply to those ADV derived from the adjective, but are not so listed here.-->
+  <!---->
+  <!--  X X prefixes are interpreted by the program as applying to N, ADJ, ADV, abd V.-->
+  <!--  The program will not attempt to apply them to PRON, NUM, INTERJ or CONJ.-->
+  <!---->
+  <!--  One could make all prefixes X X.  This would asure that no case was missed,-->
+  <!--  and generally that is the philosophy of the program.  However, that might-->
+  <!--  also produce excessive nonsense interpretations.  Probably the way to-->
+  <!--  proceed is to check the master dictionary (when it is sufficiently large)-->
+  <!--  to see if there are proper formations with that prefix of other parts of-->
+  <!--  speach, and to target in a similar manner.  If that prefix is never seen-->
+  <!--  in classical Latin in a particular formation, the ADDONS table should-->
+  <!--  probably ignore it.  This is yet to be done, which is one of the reasons-->
+  <!--  that ADDONS are not coded but left text for easy change.-->
+  <!---->
+  <!---->
+  <!--  TICKONS-->
+  <!--  These are applied to a class of PRON which in the code are designated as PACKons.-->
+  <!---->
+  <prefix fix="ec" root="PACK" target="PACK"><meaning>is there any...that? does any? (w/qui, sometimes w/nam) (passionate interrogation);</meaning></prefix>
+  <prefix fix="ne" root="PACK" target="PACK"><meaning>not (introducing negative clause, w/qui); verily, truely  (affirmative particle);</meaning></prefix>
+  <prefix fix="nescio" root="PACK" target="PACK"><meaning>(w/qui/quis) nescioquis=&gt; some (unknown/unspecified), one/someone or other;</meaning></prefix>
+  <prefix fix="neu" root="PACK" target="PACK"><meaning>nor, and..not, neither..nor (adding a alternative or prohibition, w/qui);</meaning></prefix>
+  <prefix fix="seu" root="PACK" target="PACK"><meaning>or if (w/qui); </meaning></prefix>
+  <prefix fix="si" root="PACK" target="PACK"><meaning>if, when, in so much, even if (assumed fact/wish/unfinished, w/qui); </meaning></prefix>
+  <!---->
+  <!--  Pure PREFIXES-->
+  <!---->
+  <prefix fix="abs" root="X" target="X"><meaning>- away, off; - aside;</meaning></prefix>
+  <prefix fix="ab" root="V" target="V"><meaning>- away, off; - aside;</meaning></prefix>
+  <prefix fix="ac" connect="c" root="X" target="X"><meaning>- to, towards, near, for, together (adeo =&gt; go to);</meaning></prefix>
+  <prefix fix="ac" connect="q" root="X" target="X"><meaning>- to, towards, near, for, together (adeo =&gt; go to);</meaning></prefix>
+  <prefix fix="ad" root="X" target="X"><meaning>- to, towards, near, for, together (adeo =&gt; go to);</meaning></prefix>
+  <prefix fix="aedi" root="X" target="X"><meaning>having to do with buildings/temples;</meaning></prefix>
+  <prefix fix="aequi" root="X" target="X"><meaning>equi-, equal; </meaning></prefix>
+  <prefix fix="af" connect="f" root="X" target="X"><meaning>- to, towards, near, for, together (adeo =&gt; go to);</meaning></prefix>
+  <prefix fix="ag" connect="g" root="X" target="X"><meaning>- to, towards, near, for, together (adeo =&gt; go to);</meaning></prefix>
+  <prefix fix="alti" root="X" target="X"><meaning>high, lofty;</meaning></prefix>
+  <prefix fix="ambi" root="X" target="X"><meaning>around, round about; having two;          </meaning></prefix>
+  <prefix fix="amb" root="X" target="X"><meaning>around, round about; having two;          </meaning></prefix>
+  <prefix fix="amphi" root="X" target="X"><meaning>having two/double, (on) both/opposite (sides), front and back;</meaning></prefix>
+  <prefix fix="am" root="X" target="X"><meaning>around, round about; having two;</meaning></prefix>
+  <prefix fix="ante" root="X" target="X"><meaning>ante-, - before;</meaning></prefix>
+  <prefix fix="anti" root="X" target="X"><meaning>anti-, counter-, against, contrary, opposite/opposed to; for ante-/before;</meaning></prefix>
+  <prefix fix="an" root="X" target="X"><meaning>around, round about; having two;</meaning></prefix>
+  <prefix fix="ap" connect="p" root="X" target="X"><meaning>- to, towards, near, for, together (adeo =&gt; go to);</meaning></prefix>
+  <prefix fix="archi" root="X" target="X"><meaning>arch-, chief-, first, master; great; extremely, very;</meaning></prefix>
+  <prefix fix="as" connect="s" root="X" target="X"><meaning>- to, towards, near, for, together (adeo =&gt; go to);</meaning></prefix>
+  <prefix fix="at" connect="t" root="X" target="X"><meaning>- to, towards, near, for, together (adeo =&gt; go to);</meaning></prefix>
+  <prefix fix="auri" root="X" target="X"><meaning>golden, gold-; of gold, gold-colored;</meaning></prefix>
+  <prefix fix="au" connect="f" root="X" target="X"><meaning>- away, off (aufero =&gt; make off with, carry away); - aside;</meaning></prefix>
+  <prefix fix="a" root="V" target="V"><meaning>- away, off; - aside;</meaning></prefix>
+  <prefix fix="bene" root="V" target="V"><meaning>well, good</meaning></prefix>
+  <prefix fix="beni" root="V" target="V"><meaning>well, good;</meaning></prefix>
+  <prefix fix="bis" root="X" target="X"><meaning>two, twice; double; having two;</meaning></prefix>
+  <prefix fix="bi" root="X" target="X"><meaning>two, twice; double; having two;</meaning></prefix>
+  <prefix fix="blandi" root="X" target="X"><meaning>sweet-, soothing-, smooth-, charming, flattering;</meaning></prefix>
+  <prefix fix="cardio" root="X" target="X"><meaning>cardio-, pertaining to the heart;</meaning></prefix>
+  <prefix fix="centi" root="X" target="X"><meaning>hundred (numerical prefix);</meaning></prefix>
+  <prefix fix="centu" root="X" target="X"><meaning>hundred (numerical prefix);</meaning></prefix>
+  <prefix fix="circum" root="X" target="X"><meaning>- around, about, near;</meaning></prefix>
+  <prefix fix="col" connect="l" root="X" target="X"><meaning>- together, completely, forcibly, strongly; </meaning></prefix>
+  <prefix fix="com" root="X" target="X"><meaning>- together, completely, forcibly, strongly; </meaning></prefix>
+  <prefix fix="conn" connect="e" root="X" target="X"><meaning>- together, completely, forcibly, strongly; </meaning></prefix>
+  <prefix fix="conn" connect="i" root="X" target="X"><meaning>- together, completely, forcibly, strongly; </meaning></prefix>
+  <prefix fix="contra" root="X" target="X"><meaning>- against;</meaning></prefix>
+  <prefix fix="con" root="X" target="X"><meaning>- together; completely, strongly, forcibly, violently;</meaning></prefix>
+  <prefix fix="co" root="X" target="X"><meaning>- together; completely, strongly, forcibly, violently;</meaning></prefix>
+  <prefix fix="decem" root="X" target="X"><meaning>ten (numerical prefix);</meaning></prefix>
+  <prefix fix="decu" root="X" target="X"><meaning>ten (numerical prefix);</meaning></prefix>
+  <prefix fix="de" root="V" target="V"><meaning>- down, off, away, from; not; removal, reversal; utterly/completely (intensive);</meaning></prefix>
+  <prefix fix="dif" connect="f" root="V" target="V"><meaning>- apart/asunder, in different directions; separation/dispersal/process reversal;</meaning></prefix>
+  <prefix fix="dir" root="V" target="V"><meaning>- apart/asunder, in different directions; separation/dispersal/process reversal;</meaning></prefix>
+  <prefix fix="dis" root="V" target="V"><meaning>- apart/asunder, in different directions; separation/dispersal/process reversal;</meaning></prefix>
+  <prefix fix="di" root="N" target="N"><meaning>two-;</meaning></prefix>
+  <prefix fix="di" root="V" target="V"><meaning>- apart/asunder, in different directions; separation/dispersal/process reversal;</meaning></prefix>
+  <prefix fix="duode" root="NUM" target="NUM"><meaning>- less two/two less than (numerical prefix); (duodeviginti =&gt; 20 less 2 = 18);</meaning></prefix>
+  <prefix fix="duoet" root="NUM" target="NUM"><meaning>two more than (numerical prefix); (duoetviginti =&gt; two more than twenty = 22);</meaning></prefix>
+  <prefix fix="du" root="X" target="X"><meaning>two (numerical prefix);</meaning></prefix>
+  <prefix fix="ef" connect="f" root="V" target="V"><meaning>- out, away from; beyond; completely;</meaning></prefix>
+  <prefix fix="electro" root="X" target="X"><meaning>electro-; electrical; electronic;         </meaning></prefix>
+  <prefix fix="extra" root="V" target="V"><meaning>- outside;         </meaning></prefix>
+  <prefix fix="ex" root="V" target="V"><meaning>- out, away from; beyond; completely;</meaning></prefix>
+  <prefix fix="e" root="V" target="V"><meaning>- out, away from; beyond; completely;</meaning></prefix>
+  <prefix fix="inaequi" root="X" target="X"><meaning>umequal; </meaning></prefix>
+  <prefix fix="inter" root="V" target="V"><meaning>between, within; at intervals, to pieces;</meaning></prefix>
+  <prefix fix="inter" root="N" target="N"><meaning>between, within; at intervals, to pieces;</meaning></prefix>
+  <prefix fix="intra" root="V" target="V"><meaning>within, inside; - between, at intervals, to pieces;</meaning></prefix>
+  <prefix fix="intro" root="V" target="V"><meaning>within, inside; - between, at intervals, to pieces;</meaning></prefix>
+  <prefix fix="ig" connect="n" root="V" target="V"><meaning>- in, - on, - against; not -, un-;  </meaning></prefix>
+  <prefix fix="II" root="N" target="N"><meaning>two-; second; (Roman numeral for 2); [IIviri/duoviri =&gt; 2 man board];  </meaning></prefix>
+  <prefix fix="il" connect="l" root="V" target="V"><meaning>- in, - on, - against; not -, un-;  </meaning></prefix>
+  <prefix fix="im" connect="b" root="V" target="V"><meaning>- in, - on, - against; not -, un-;  </meaning></prefix>
+  <prefix fix="im" connect="m" root="V" target="V"><meaning>- in, - on, - against; not -, un-;  </meaning></prefix>
+  <prefix fix="im" connect="p" root="V" target="V"><meaning>- in, - on, - against; not -, un-;  </meaning></prefix>
+  <prefix fix="in" root="V" target="V"><meaning>- in, - on, - against; not -, un-;  </meaning></prefix>
+  <prefix fix="in" root="ADJ" target="ADJ"><meaning>not -, un-, -less;</meaning></prefix>
+  <prefix fix="ir" connect="r" root="V" target="V"><meaning>- in, - on, - against; not -, un-;  </meaning></prefix>
+  <prefix fix="male" root="V" target="V"><meaning>ill, bad;</meaning></prefix>
+  <prefix fix="multi" root="N" target="N"><meaning>much, many;</meaning></prefix>
+  <prefix fix="ne" root="ADV" target="ADV"><meaning>not;</meaning></prefix>
+  <prefix fix="non" root="V" target="V"><meaning>not;</meaning></prefix>
+  <prefix fix="ob" root="V" target="V"><meaning>- towards, to meet, in opposition;</meaning></prefix>
+  <prefix fix="octu" root="X" target="X"><meaning>eight (numerical prefix);</meaning></prefix>
+  <prefix fix="of" connect="f" root="V" target="V"><meaning>- towards, to meet, in opposition;</meaning></prefix>
+  <prefix fix="omni" root="ADJ" target="ADJ"><meaning>all-, - everywhere;</meaning></prefix>
+  <prefix fix="op" connect="p" root="V" target="V"><meaning>- towards, to meet, in opposition;</meaning></prefix>
+  <prefix fix="os" connect="t" root="V" target="V"><meaning>- towards, to meet, in opposition;</meaning></prefix>
+  <prefix fix="per" root="ADJ" target="ADJ"><meaning>very -, - completely, - thoroughly;</meaning></prefix>
+  <prefix fix="per" root="V" target="V"><meaning>- through, thoroughly, completely, very; adds to the force of the verb;  </meaning></prefix>
+  <prefix fix="por" root="V" target="V"><meaning>- forward;</meaning></prefix>
+  <prefix fix="praeter" root="X" target="X"><meaning>past or by; (drive past, drive by, flow past, flow by);</meaning></prefix>
+  <prefix fix="prae" root="X" target="X"><meaning>pre-, before -, in front of -; forth; very -, - completely, - thorughly;</meaning></prefix>
+  <prefix fix="pro" root="N" target="N"><meaning>before -, in front of -;</meaning></prefix>
+  <prefix fix="pro" root="V" target="V"><meaning>- forward; before; in front of; forth [pro-cedo =&gt; go forth, proceed, continue];</meaning></prefix>
+  <prefix fix="pseudo" root="X" target="X"><meaning>pseudo-, false; fallacious, deceitful; sperious; imitation of;</meaning></prefix>
+  <prefix fix="quadri" root="X" target="X"><meaning>four (numerical prefix);</meaning></prefix>
+  <prefix fix="quadru" root="X" target="X"><meaning>four (numerical prefix);</meaning></prefix>
+  <prefix fix="quincu" root="X" target="X"><meaning>five (numerical prefix);</meaning></prefix>
+  <prefix fix="quinqu" root="X" target="X"><meaning>five (numerical prefix);</meaning></prefix>
+  <prefix fix="quinti" root="X" target="X"><meaning>five (numerical prefix);</meaning></prefix>
+  <prefix fix="red" root="V" target="V"><meaning>- back, - again;</meaning></prefix>
+  <prefix fix="re" root="X" target="X"><meaning>- back, - again;</meaning></prefix>
+  <prefix fix="sed" root="V" target="V"><meaning>- apart, apart from; away;</meaning></prefix>
+  <prefix fix="semi" root="X" target="X"><meaning>semi-, half, partly;</meaning></prefix>
+  <prefix fix="septem" root="X" target="X"><meaning>seven (numerical prefix);</meaning></prefix>
+  <prefix fix="septu" root="X" target="X"><meaning>seven (numerical prefix);</meaning></prefix>
+  <prefix fix="sesque" root="X" target="X"><meaning>one and half (numerical); one plus aliquot fraction; (sesqui-septimus = 8/7);</meaning></prefix>
+  <prefix fix="sesqui" root="X" target="X"><meaning>one and half (numerical); one plus aliquot fraction; (sesqui-septimus = 8/7);</meaning></prefix>
+  <prefix fix="sexqui" root="X" target="X"><meaning>one and half (numerical); one plus aliquot fraction; (sesqui-septimus = 8/7);</meaning></prefix>
+  <prefix fix="ses" root="X" target="X"><meaning>six-;                     </meaning></prefix>
+  <prefix fix="sexti" root="X" target="X"><meaning>six (numerical prefix);</meaning></prefix>
+  <prefix fix="sextu" root="X" target="X"><meaning>six (numerical prefix);</meaning></prefix>
+  <prefix fix="sex" root="X" target="X"><meaning>six-;                     </meaning></prefix>
+  <!--PREFIX se      - -  conflict with semet-->
+  <!--V V-->
+  <!--- apart, apart from; away (se-cedo = go away, withdraw, secede);-->
+  <prefix fix="sim" root="X" target="X"><meaning>one (numerical prefix), single, simple;</meaning></prefix>
+  <prefix fix="sub" root="V" target="V"><meaning>sub-; - up to, - under, up from under; to the aid;</meaning></prefix>
+  <prefix fix="sub" root="N" target="N"><meaning>sub-; somewhat -/-ish/rather -; under, from under/below; lesser/assistant/vice;</meaning></prefix>
+  <prefix fix="sub" root="ADJ" target="ADJ"><meaning>sub-; somewhat -/-ish/rather -; under, from under/below; lesser/assistant/vice;</meaning></prefix>
+  <prefix fix="suc" connect="c" root="V" target="V"><meaning>- up to, - under, up from under; to the aid;</meaning></prefix>
+  <prefix fix="suc" connect="c" root="N" target="N"><meaning>sub-; somewhat -/-ish/rather -; under, from under/below; lesser/assistant/vice;</meaning></prefix>
+  <prefix fix="suc" connect="c" root="ADJ" target="ADJ"><meaning>sub-; somewhat -/-ish/rather -; under, from under/below; lesser/assistant/vice;</meaning></prefix>
+  <prefix fix="super" root="X" target="X"><meaning>super-, over, above, upon; from above; over and above; </meaning></prefix>
+  <prefix fix="supra" root="X" target="X"><meaning>supra-, over, above, upon, on top of; earlier than; beyond; superior to;</meaning></prefix>
+  <prefix fix="superquadri" root="X" target="X"><meaning>number plus 4/5; one plus aliquot fraction; (superquadripartiens = 9/5);</meaning></prefix>
+  <prefix fix="sur" root="V" target="V"><meaning>super-, over, above;</meaning></prefix>
+  <prefix fix="sus" connect="s" root="V" target="V"><meaning>- up to, - under, up from under; to the aid;</meaning></prefix>
+  <prefix fix="trans" root="V" target="V"><meaning>- across, - over;</meaning></prefix>
+  <prefix fix="tra" root="V" target="V"><meaning>- across, - over;</meaning></prefix>
+  <prefix fix="tre" connect="i" root="V" target="V"><meaning>- across, - over;</meaning></prefix>
+  <prefix fix="tri" root="X" target="X"><meaning>three; (also used to represent many times, persistant, extreme, gross); </meaning></prefix>
+  <prefix fix="ultra" root="N" target="N"><meaning>beyond; exceeding; over; more than;</meaning></prefix>
+  <prefix fix="ultra" root="ADJ" target="ADJ"><meaning>extremely; more; overly; more than;</meaning></prefix>
+  <prefix fix="unde" root="NUM" target="NUM"><meaning>- less one, one less than; (undetriginta =&gt; thirty less one = 29);</meaning></prefix>
+  <prefix fix="uni" root="ADJ" target="ADJ"><meaning>one-; having (only/but) one ~; (being) of one ~; </meaning></prefix>
+  <prefix fix="ve" root="ADJ" target="ADJ"><meaning>not- (vegrandis =&gt; small), without; very (vepallidus =&gt; very pale);</meaning></prefix>
+  <prefix fix="V" root="N" target="N"><meaning>five-; fifth; (Roman numeral for 5);  </meaning></prefix>
+  <prefix fix="X" root="N" target="N"><meaning>ten-; tenth; (Roman numeral for 10);  </meaning></prefix>
+  <!---->
+  <!---->
+  <!--  SUFFIX is a fragment added to the end of a stem to modify or-->
+  <!--  reinforce the meaning.  "tor" added to a verb gives the meaning-->
+  <!--  "doer of the action" (vincere = conquer, vic-tor = conqueror).  This-->
+  <!--  does not impact the addition of inflections on the end of the word.-->
+  <!---->
+  <!--  Each SUFFIX entry leads off with the identifier "SUFFIX".-->
+  <!---->
+  <!--  This is followed (separated by a space) by the suffix itself.-->
+  <!---->
+  <!--  In the formulation used by this program, there may be a connecting-->
+  <!--  character associated with the suffix.  For example, the prefix "itudo",-->
+  <!--  givs a noun adding the meaning "-ness", when applied to an adjective-->
+  <!--  stem.  If the adjective stem ends in "i", then the suffix is "ietudo".-->
+  <!--  The CONNECT character, if any, is placed after the suffix, on the same-->
+  <!--  line.-->
+  <!---->
+  <!--  Suffixes may be thought of as associated with a certain parts of-->
+  <!--  speech.  In many cases application of the suffix converts a stem-->
+  <!--  from one part of speech to a stem for another part of speech.-->
+  <!--  Further, the resulting verb, noun or adjective is of a particular-->
+  <!--  conjugation or declension.  This information is included on the-->
+  <!--  second line of the suffix record.-->
+  <!---->
+  <!--  The third line gives the meaning, using 78 characters or less.-->
+  <!---->
+  <!--  The order of this list is important.  The program checks in order.-->
+  <!--  The longer suffix should be placed earlier in the list.-->
+  <!--  This list is ordered on last character of suffix, but that is not significant.-->
+  <!---->
+  <!--  TO DO-->
+  <!--  ADJ derived from N could also be derived from ADJ (try to include N roots)-->
+  <!--  V can be formed from N stem, no suffix (Denominatives - to do/make _)-->
+  <!--  null suffixes Sinkovich p246-->
+  <!---->
+  <suffix fix="atic" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ic; -en; --ery; -al; made of; belonging to; has property of; is like;</meaning></suffix>
+  <suffix fix="ific" root="N" rootkey="2" targetkey="2"><target pos="N" decl="3 1" gender="M" kind="P"/><meaning>denotes one who makes (the source noun), master of, professional in;</meaning></suffix>
+  <suffix fix="tic" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ic; -en; --ery; -al; made of; belonging to; has property of; is like;</meaning></suffix>
+  <suffix fix="ric" root="V" rootkey="4" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="P"/><meaning>-or; -er; indicates the doer; one who preforms the action of the verb (act.or);</meaning></suffix>
+  <suffix fix="esc" root="V" rootkey="2" targetkey="1"><target pos="V" conj="3 1" kind="X"/><meaning>begin to -, grow - (Inceptive or Inchoative) (esp. on 2nd declension verbs);</meaning></suffix>
+  <suffix fix="esc" root="V" rootkey="2" targetkey="2"><target pos="V" conj="3 1" kind="X"/><meaning>begin to -, grow - (Inceptive or Inchoative) (esp. on 2nd declension verbs);</meaning></suffix>
+  <suffix fix="ac" root="X" rootkey="2" targetkey="2"><target pos="ADJ" decl="3 1" comparison="POS"/><meaning>-ing; having a tendency;</meaning></suffix>
+  <suffix fix="ic" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ic; of, pertaining/belonging to; connected with; derived/coming from (place);</meaning></suffix>
+  <suffix fix="sc" root="V" rootkey="2" targetkey="1"><target pos="V" conj="3 1" kind="X"/><meaning>begin to -, grow - (Inceptive or Inchoative);</meaning></suffix>
+  <suffix fix="sc" root="V" rootkey="2" targetkey="2"><target pos="V" conj="3 1" kind="X"/><meaning>begin to -, grow - (Inceptive or Inchoative);</meaning></suffix>
+  <suffix fix="c" connect="i" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ic; of, pertaining/belonging to; connected with; derived/coming from (place);</meaning></suffix>
+  <suffix fix="abund" root="V" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-bund; -ent; -ful; -ing; characteristic of; verbal ADJ of active force w/object;</meaning></suffix>
+  <suffix fix="ebund" root="V" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-bund; -ent; -ful; -ing; characteristic of; verbal ADJ of active force w/object;</meaning></suffix>
+  <suffix fix="ibund" root="V" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-bund; -ent; -ful; -ing; characteristic of; verbal ADJ of active force w/object;</meaning></suffix>
+  <suffix fix="cund" root="V" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ent; -ful; -ing; characteristic of; capacity or inclination;</meaning></suffix>
+  <suffix fix="id" root="V" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ous; tending to, in a condition of, in a state of;</meaning></suffix>
+  <suffix fix="issime" root="ADJ" rootkey="2" targetkey="0"><target pos="ADV" comparison="SUPER"/><meaning>-estily; -estly; most -ly, much -ly, very -ly;</meaning></suffix>
+  <suffix fix="ace" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>of/made of (material); resembling (material); similar to, -like;</meaning></suffix>
+  <suffix fix="ose" root="N" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-fully, -ily, -ly; -tiously; </meaning></suffix>
+  <suffix fix="me" root="ADJ" rootkey="4" targetkey="0"><target pos="ADV" comparison="SUPER"/><meaning>-estily; -estly; most -ly, much -ly, very -ly;</meaning></suffix>
+  <suffix fix="e" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>make of; </meaning></suffix>
+  <suffix fix="e" root="ADJ" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ily; -ly;</meaning></suffix>
+  <suffix fix="antissi" root="V" rootkey="1" targetkey="0"><target pos="ADJ" decl="0 0" comparison="SUPER"/><meaning>most -ing, much -ing, makes ADJ SUPER of verb, ('a' stem is for V 1 0);</meaning></suffix>
+  <suffix fix="entissi" root="V" rootkey="1" targetkey="0"><target pos="ADJ" decl="0 0" comparison="SUPER"/><meaning>most -ing, much -ing, makes ADJ of verb, ('e' stem is for V 2/3);</meaning></suffix>
+  <suffix fix="cini" root="N" rootkey="1" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>-ing, -age; forms activity/profession of person (latro.cinium =&gt; brigandage);</meaning></suffix>
+  <suffix fix="issi" root="ADJ" rootkey="2" targetkey="4"><target pos="ADJ" decl="0 0" comparison="SUPER"/><meaning>-est, most ~, much ~, makes SUPER;</meaning></suffix>
+  <suffix fix="issi" root="V" rootkey="4" targetkey="4"><target pos="ADJ" decl="0 0" comparison="SUPER"/><meaning>makes a verb PERF PPL into an adjective SUPER (amat.issimus =&gt; most/much loved);</meaning></suffix>
+  <suffix fix="boni" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>of good;</meaning></suffix>
+  <suffix fix="moni" root="V" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>-monia; act of; means of; result of;</meaning></suffix>
+  <suffix fix="moni" root="V" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>-monia; act of; means of; result of;</meaning></suffix>
+  <suffix fix="anti" root="V" rootkey="1" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>-ance; state of; quality of; act of; (with 1st conj verbs);</meaning></suffix>
+  <suffix fix="anti" root="V" rootkey="1" targetkey="0"><target pos="ADJ" decl="0 0" comparison="COMP"/><meaning>more -ing, makes ADJ COMP of verb, ('a' stem is for V 1 0);</meaning></suffix> <!--  Conflicts with another -anti- -->
+  <suffix fix="enti" root="V" rootkey="1" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>-ence; state of; quality of; act of; (with other than 1st conj verbs);</meaning></suffix>
+  <suffix fix="enti" root="V" rootkey="1" targetkey="0"><target pos="ADJ" decl="0 0" comparison="COMP"/><meaning>more -ing, makes ADJ COMP of verb, ('e' stem is for V 2/3);</meaning></suffix>
+  <suffix fix="ari" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>place where (argent.aria = money place, bank); female agent (rare);</meaning></suffix>
+  <suffix fix="ari" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>-arium, -ary; place where;</meaning></suffix>
+  <suffix fix="ari" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 1" gender="M" kind="P"/><meaning>-er; -ist; dealer in thing, maker/artisan (argent.arius = money/silver changer);</meaning></suffix>
+  <suffix fix="ari" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>of, pertaining/belonging to; connected with; derived from; made of; -like;</meaning></suffix>
+  <suffix fix="ari" root="NUM" rootkey="3" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>consisting of/containing X things; X each; (with number X); of X; digits wide;</meaning></suffix>
+  <suffix fix="ori" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>-orium, -ory, -or; place where;</meaning></suffix>
+  <suffix fix="ori" root="V" rootkey="4" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-orous, -ory; having to do with, pretaining to; tending to;</meaning></suffix>
+  <suffix fix="iti" root="ADJ" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>-ity, -ship, -ance, ility, ness; makes abstract noun of the adjective;</meaning></suffix>
+  <suffix fix="iti" root="ADJ" rootkey="2" targetkey="0"><target pos="N" decl="5 1" gender="F" kind="T"/><meaning>-ity, -ship, -ance, ility, ness; makes abstract noun of the adjective;</meaning></suffix>
+  <suffix fix="iti" root="V" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>-ity, -ship, -ance, ility, ness; makes abstract noun of the verb;</meaning></suffix>
+  <suffix fix="li" connect="l" root="ADJ" rootkey="2" targetkey="4"><target pos="ADJ" decl="0 0" comparison="SUPER"/><meaning>-est, most ~, much ~, makes ADJ with stem ending in 'l' SUPER;</meaning></suffix>
+  <suffix fix="ri" connect="r" root="ADJ" rootkey="1" targetkey="4"><target pos="ADJ" decl="0 0" comparison="SUPER"/><meaning>-est, most ~, much ~, makes ADJ with stem ending in 'r' SUPER;</meaning></suffix>
+  <suffix fix="ti" root="ADJ" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>-ness, makes abstract noun;</meaning></suffix>
+  <suffix fix="i" root="V" rootkey="4" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ly; (use imagination! run -&gt; hastily; strive -&gt; eagerly; stand -&gt; immediately);</meaning></suffix> <!--  ?????????????-->
+  <suffix fix="i" root="ADJ" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>-ness, -es, makes abstract noun;</meaning></suffix>
+  <suffix fix="i" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>art or craft done by the person (abstract noun of person); office of, -ship; </meaning></suffix>
+  <suffix fix="i" root="V" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>makes abstract noun of the verb; place/instrument/result of verb action; </meaning></suffix>
+  <suffix fix="i" root="ADJ" rootkey="2" targetkey="3"><target pos="ADJ" decl="0 0" comparison="COMP"/><meaning>-er, makes adjective comparative;</meaning></suffix>
+  <suffix fix="i" root="V" rootkey="4" targetkey="3"><target pos="ADJ" decl="0 0" comparison="COMP"/><meaning>makes a verb PERF PPL into an adjective COMP (amat.ior =&gt; more loved);</meaning></suffix>
+  <suffix fix="abil" root="X" rootkey="2" targetkey="0"><target pos="ADJ" decl="3 2" comparison="POS"/><meaning>-able, -ble; having the passive quality, able to, able to be; </meaning></suffix>
+  <suffix fix="atil" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="3 2" comparison="POS"/><meaning>-il; of a, pertaining to a, in a condition of, in a state of;</meaning></suffix>
+  <suffix fix="ibil" root="V" rootkey="2" targetkey="0"><target pos="ADJ" decl="3 2" comparison="POS"/><meaning>-able, -ble; having the passive quality, able to, able to be; -ful; </meaning></suffix>
+  <suffix fix="icul" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="icul" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 1" gender="M" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="icul" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="bil" root="V" rootkey="2" targetkey="0"><target pos="ADJ" decl="3 2" comparison="POS"/><meaning>-able, -ble; having the passive quality, able to, able to be; having ability;</meaning></suffix>
+  <suffix fix="bul" root="X" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>forms noun of means, instrument; place;</meaning></suffix>
+  <suffix fix="bul" root="X" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>forms noun of means, instrument; place;</meaning></suffix>
+  <suffix fix="col" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="M" kind="P"/><meaning>denotes one who inhabits/tills/worships;</meaning></suffix>
+  <suffix fix="cul" root="V" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>denotes means or instrument or place for special purpose for action of V;</meaning></suffix>
+  <suffix fix="ell" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl; !!!!!!!!</meaning></suffix>
+  <suffix fix="ell" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 1" gender="M" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="ell" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="ill" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl; </meaning></suffix>
+  <suffix fix="ill" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 1" gender="M" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl; </meaning></suffix>
+  <suffix fix="ill" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl; </meaning></suffix>
+  <suffix fix="al" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="3 2" comparison="POS"/><meaning>-al; of a ~, pertaining to a ~, in a condition of ~, in a state of ~;</meaning></suffix>
+  <suffix fix="il" root="V" rootkey="2" targetkey="0"><target pos="ADJ" decl="3 2" comparison="POS"/><meaning>-able, -ble; having the passive quality, able to, able to be; </meaning></suffix>
+  <suffix fix="il" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="3 2" comparison="POS"/><meaning>-il; of a ~, pertaining to a ~, in a condition of ~, in a state of ~;</meaning></suffix>
+  <suffix fix="ol" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="ol" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 1" gender="M" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="ol" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="ul" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="ul" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 1" gender="M" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="ul" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="X"/><meaning>little, small, -let (Diminutive) target is of gender of root =&gt; decl;</meaning></suffix>
+  <suffix fix="ul" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ulus; of a, pertaining to a, in a condition of, in a state of;</meaning></suffix>
+  <suffix fix="itim" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-itime, -tine, -tane; of, belonging to (esp. of place and time);</meaning></suffix>
+  <suffix fix="atim" root="X" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>_ by _; eg. step by step; little by little; </meaning></suffix>
+  <suffix fix="itim" root="X" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>_ by _; eg. vir.itim =&gt; man by man;</meaning></suffix>
+  <suffix fix="tim" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-itime, -tine, -tane; of, belonging to  (esp. of place and time);</meaning></suffix>
+  <suffix fix="ism" root="X" rootkey="2" targetkey="0"><target pos="N" decl="2 1" gender="M" kind="T"/><meaning>-ism; makes noun of action/ideology/association/fellowship;</meaning></suffix>
+  <suffix fix="um" root="ADJ" rootkey="1" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ly; </meaning></suffix>
+  <suffix fix="udin" connect="t" root="ADJ" rootkey="2" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ness; makes abstract noun;</meaning></suffix>
+  <suffix fix="sion" root="V" rootkey="4" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="sion" root="V" rootkey="2" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="tion" root="V" rootkey="4" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="tion" root="V" rootkey="2" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="ian" root="N" rootkey="2" targetkey="0"><target pos="N" decl="2 1" gender="M" kind="P"/><meaning>of/belonging to  [N -&gt; ADJ] (Cicero -&gt; Ciceronianus);</meaning></suffix>
+  <suffix fix="men" root="V" rootkey="2" targetkey="1"><target pos="N" decl="3 2" gender="N" kind="T"/><meaning>act of; means of; result of;</meaning></suffix>
+  <suffix fix="ten" root="NUM" rootkey="3" targetkey="3"><target pos="NUM" decl="1 4" sort="DIST" value="0"/><meaning>each/apiece/times/fold; (NUM DIST to a late Latin form, Xceni -&gt; Xcenteni);</meaning></suffix>
+  <suffix fix="min" root="V" rootkey="2" targetkey="2"><target pos="N" decl="3 2" gender="N" kind="T"/><meaning>act of; means of; result of;</meaning></suffix>
+  <suffix fix="don" root="V" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>act of or result of the action of the verb;</meaning></suffix>
+  <suffix fix="gon" root="V" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>act of or result of the action of the verb;</meaning></suffix>
+  <suffix fix="ion" root="V" rootkey="4" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; indicates the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="ion" root="V" rootkey="2" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="urn" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-urnal, -ily, -y, -ing; of, belonging to  (esp. of place and time);</meaning></suffix>
+  <suffix fix="an" root="NUM" rootkey="2" targetkey="0"><target pos="N" decl="2 1" gender="M" kind="P"/><meaning>soldiers of the Nth Legion;</meaning></suffix>
+  <suffix fix="an" root="ADJ" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-anus; (indicates former gens when adopted into another, Sejus -&gt; Sejanus);</meaning></suffix>
+  <suffix fix="an" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-an, -ain; of, pertaining/belonging to; connected with; derived/coming from;</meaning></suffix>
+  <suffix fix="en" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-en, -ene; of, pertaining/belonging to; connected with; derived/coming from;</meaning></suffix>
+  <suffix fix="in" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ine; -in; of, pertaining/belonging to; connected with; derived/coming from;</meaning></suffix>
+  <suffix fix="in" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>-ing; art or craft (medic.ina = art of doctoring);</meaning></suffix>
+  <suffix fix="udo" connect="t" root="ADJ" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ness; makes abstract noun;</meaning></suffix>
+  <suffix fix="sio" root="V" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="sio" root="V" rootkey="4" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="tio" root="V" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="tio" root="V" rootkey="4" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="do" root="V" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>act of or result of the action of the verb;</meaning></suffix>
+  <suffix fix="go" root="V" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>act of or result of the action of the verb;</meaning></suffix>
+  <suffix fix="io" root="V" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="io" root="V" rootkey="4" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ing, -ion, -ery; indicates the action or result of the action of the verb;</meaning></suffix>
+  <suffix fix="abiliter" root="V" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-abaly;</meaning></suffix>
+  <suffix fix="ibiliter" root="V" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ibaly;</meaning></suffix>
+  <suffix fix="aliter" root="N" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ality, -ally; </meaning></suffix>
+  <suffix fix="anter" root="V" rootkey="1" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ingly;</meaning></suffix>
+  <suffix fix="enter" root="V" rootkey="1" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ingly;</meaning></suffix>
+  <suffix fix="ester" root="N" rootkey="2" targetkey="1"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-urnal, -ily, -y, -ing; of, belonging to  (esp. of place and time);</meaning></suffix>
+  <suffix fix="estr" root="N" rootkey="2" targetkey="2"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-y; of the, of, belonging to  (esp. of place and time);</meaning></suffix>
+  <suffix fix="iter" root="ADJ" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ily; -ly;</meaning></suffix>
+  <suffix fix="ior" root="ADJ" rootkey="2" targetkey="3"><target pos="ADJ" decl="0 0" comparison="COMP"/><meaning>-er, more ~; makes ADJ POS into ADJ COMP;</meaning></suffix>
+  <suffix fix="por" root="N" rootkey="2" targetkey="0"><target pos="N" decl="3 1" gender="M" kind="P"/><meaning>-'s boy; (slave's name adding -por for -puer to anme of master);</meaning></suffix>
+  <suffix fix="ar" root="X" rootkey="2" targetkey="0"><target pos="N" decl="3 4" gender="N" kind="T"/><meaning>means/instrument/place for special purpose of N/V (calco/calcar - tread/spur);</meaning></suffix>
+  <suffix fix="ar" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="3 2" comparison="POS"/><meaning>-ary; of a, pertaining to a; (-like?);</meaning></suffix>
+  <suffix fix="br" root="V" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>denotes means or instrument;</meaning></suffix>
+  <suffix fix="cr" root="V" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>denotes means or instrument or place for special purpose for action of V;</meaning></suffix>
+  <suffix fix="er" connect="t" root="ADJ" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ly;</meaning></suffix>
+  <suffix fix="or" root="V" rootkey="4" targetkey="0"><target pos="N" decl="3 1" gender="M" kind="P"/><meaning>-or; -er; indicates the doer; one who performs the action of the verb (act.or);</meaning></suffix>
+  <suffix fix="or" root="V" rootkey="2" targetkey="0"><target pos="N" decl="3 1" gender="M" kind="P"/><meaning>the thing of the verb; result of; (abstract noun) amor = love, timor = fear;</meaning></suffix>
+  <suffix fix="tr" root="V" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>means, instrument; place;</meaning></suffix>
+  <suffix fix="ur" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>-ure, pertaining to, use of;</meaning></suffix>
+  <suffix fix="ur" root="N" rootkey="4" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="T"/><meaning>-ure, pertaining to, use of;</meaning></suffix>
+  <suffix fix="etas" connect="i" root="ADJ" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ness, makes abstract noun;</meaning></suffix>
+  <suffix fix="itas" root="ADJ" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ity; -ness, makes abstract noun of quality or condition;</meaning></suffix>
+  <suffix fix="itas" root="N" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ness, condition of being; makes abstract noun (civ.itas = citizenship);</meaning></suffix>
+  <suffix fix="itus" root="X" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>of _; from the _; -ing;</meaning></suffix>
+  <suffix fix="tas" root="N" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ness, condition of being; makes abstract noun; </meaning></suffix>
+  <suffix fix="tus" root="N" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-liness, makes abstract noun;</meaning></suffix>
+  <suffix fix="ans" root="V" rootkey="1" targetkey="1"><target pos="ADJ" decl="3 1" comparison="POS"/><meaning>-ing, makes ADJ of verb, equivalent to PRES ACTIVE PPL ('a' stem is for V 1 0);</meaning></suffix>
+  <suffix fix="ens" root="V" rootkey="1" targetkey="1"><target pos="ADJ" decl="3 1" comparison="POS"/><meaning>-ing, makes ADJ of verb, equivalent to PRES ACTIVE PPL ('e' stem is for V 2/3);</meaning></suffix>
+  <suffix fix="iss" root="N" rootkey="2" targetkey="0"><target pos="N" decl="1 1" gender="F" kind="P"/><meaning>female (whatever the noun base was);</meaning></suffix>
+  <suffix fix="ius" root="ADJ" rootkey="2" targetkey="0"><target pos="ADV" comparison="COMP"/><meaning>more -ly; -ier;</meaning></suffix>
+  <suffix fix="tus" root="X" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>of _; from the _;</meaning></suffix>
+  <suffix fix="es" root="N" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>result of; place of; (abstract noun);</meaning></suffix>
+  <suffix fix="is" root="N" rootkey="2" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>result of; place of; (abstract noun);</meaning></suffix>
+  <suffix fix="os" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ous, -ose; -some, full of; prone to; rich in; abounding in; </meaning></suffix>
+  <suffix fix="us" root="ADJ" rootkey="2" targetkey="1"><target pos="ADV" comparison="POS"/><meaning>-ly;</meaning></suffix>
+  <suffix fix="us" root="ADJ" rootkey="3" targetkey="0"><target pos="ADV" comparison="COMP"/><meaning>more -ly; -lier;</meaning></suffix>
+  <suffix fix="olent" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-olent; full of; prone to; rich in; abounding in; </meaning></suffix>
+  <suffix fix="ulent" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ulent; full of; prone to; rich in; abounding in; </meaning></suffix>
+  <suffix fix="ament" root="V" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>-ment; -ion; act of; instrument/equipment/means for ~ing; result of ~ing;</meaning></suffix>
+  <suffix fix="ment" root="V" rootkey="2" targetkey="0"><target pos="N" decl="2 2" gender="N" kind="T"/><meaning>-ment; -ion; act of; instrument/equipment/means for ~ing; result of ~ing;</meaning></suffix>
+  <suffix fix="etat" connect="i" root="V" rootkey="4" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ness, makes abstract noun;</meaning></suffix>
+  <suffix fix="itat" root="ADJ" rootkey="2" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ity; -ness, makes abstract noun of quality or condition;</meaning></suffix>
+  <suffix fix="itat" root="N" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ness, condition of being; makes abstract noun (civ.itas = citizenship);</meaning></suffix>
+  <suffix fix="tat" root="N" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ness, condition of being; makes abstract noun; </meaning></suffix>
+  <suffix fix="tat" root="ADJ" rootkey="2" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-ness, makes abstract noun;</meaning></suffix>
+  <suffix fix="tat" root="V" rootkey="2" targetkey="4"><target pos="V" conj="1 1" kind="X"/><meaning>try to do -, keep doing -;</meaning></suffix>
+  <suffix fix="tut" root="N" rootkey="2" targetkey="2"><target pos="N" decl="3 1" gender="F" kind="T"/><meaning>-liness, makes abstract noun;</meaning></suffix>
+  <suffix fix="ant" root="V" rootkey="1" targetkey="2"><target pos="ADJ" decl="3 1" comparison="POS"/><meaning>-ing, makes ADJ of verb, equivalent to PRES ACTIVE PPL ('a' stem is for V 1 0);</meaning></suffix>
+  <suffix fix="ent" root="V" rootkey="1" targetkey="2"><target pos="ADJ" decl="3 1" comparison="POS"/><meaning>-ing, makes ADJ of verb, equivalent to PRES ACTIVE PPL ('e' stem is for V 2/3);</meaning></suffix>
+  <suffix fix="at" root="N" rootkey="2" targetkey="0"><target pos="N" decl="4 1" gender="M" kind="T"/><meaning>-ate, -ship, the office of; official body (consul.atus = consulate, consulship);</meaning></suffix>
+  <suffix fix="at" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ed, having, having a, provided with; -able;              </meaning></suffix>
+  <suffix fix="it" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ed, having, having a, provided with; -able;              </meaning></suffix>
+  <suffix fix="ut" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ed, having, having a, provided with; -able;              </meaning></suffix>
+  <suffix fix="it" root="V" rootkey="4" targetkey="1"><target pos="V" conj="1 1" kind="X"/><meaning>try to do -, keep doing - (Intensive/Iterative - forcible or iterative action);</meaning></suffix>
+  <suffix fix="it" root="V" rootkey="2" targetkey="1"><target pos="V" conj="1 1" kind="X"/><meaning>try to do -, keep doing - (Intensive/Iterative - forcible or iterative action);</meaning></suffix>
+  <suffix fix="t" root="V" rootkey="2" targetkey="1"><target pos="V" conj="1 1" kind="X"/><meaning>try to do -, keep doing - (Intensive/Iterative - forcible or iterative action);</meaning></suffix>
+  <suffix fix="t" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ed, having, having a, provided with; -able;              </meaning></suffix>
+  <suffix fix="ativ" root="N" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ative; capable/worthy of;         </meaning></suffix>
+  <suffix fix="tav" root="V" rootkey="2" targetkey="3"><target pos="V" conj="1 1" kind="X"/><meaning>try to do -, keep doing -;</meaning></suffix>
+  <suffix fix="iv" root="V" rootkey="2" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ive, -ed; tending to, pretaining to;</meaning></suffix>
+  <suffix fix="iv" root="V" rootkey="4" targetkey="0"><target pos="ADJ" decl="1 1" comparison="POS"/><meaning>-ive, -ed; having the passive tendency; having been ...-ed;</meaning></suffix>
+  <suffix fix="ifex" root="N" rootkey="2" targetkey="1"><target pos="N" decl="3 1" gender="M" kind="P"/><meaning>denotes one who makes (the source noun), master of, professional in;</meaning></suffix>
+  <suffix fix="rix" root="V" rootkey="4" targetkey="1"><target pos="N" decl="3 1" gender="F" kind="P"/><meaning>-ess, -or; -er; indicates the doer; one who performs action of verb (act.ess);</meaning></suffix>
+  <suffix fix="ax" root="X" rootkey="2" targetkey="1"><target pos="ADJ" decl="3 1" comparison="POS"/><meaning>-ing; having a tendency/ability;</meaning></suffix>
+  <!---->
+  <!---->
+  <!--  TACKON is a fragment added to the end of a word, after inflection-->
+  <!--  has been applied.  Just removing the tackon will give a reasonable word.-->
+  <!--  This does not impact the addition of inflections,-->
+  <!--  as opposed to SUFFIX, which is applied before the inflection.-->
+  <!---->
+  <!--  Each TACKON entry leads off with the identifier "TACKON".-->
+  <!---->
+  <!--  This is followed (separated by a space) by the tackon itself.-->
+  <!---->
+  <!--  The second line gives a PART_ENTRY, information on where this is tacked.-->
+  <!--  A TACKON does not change the part of speech or case from its base.-->
+  <!---->
+  <!--  The third line gives the meaning, using 78 characters or less.-->
+  <!---->
+  <!--  The order of this list is significant.  The program checks in order.-->
+  <!--  The longer or less frequent tackon should be placed earlier in the list.-->
+  <!---->
+  <!--  ENCLITICS-->
+  <!---->
+  <tackon fix="que"><base pos="X"/><meaning>-que = and (enclitic, translated before attached word); completes plerus/uter;</meaning></tackon>
+  <tackon fix="ne"><base pos="X"/><meaning>-ne = is it not that (enclitic); or ...(introduces a question or alternative);</meaning></tackon>
+  <tackon fix="ve"><base pos="X"/><meaning>-ve = or if you will (enclitic); or as you please; or;             rare</meaning></tackon>
+  <tackon fix="est"><base pos="PRON" decl="4 1" kind="X"/><meaning>-est = is, in a contraction; (idest = it/that is);                 rare      </meaning></tackon>
+  <!---->
+  <!--  TACKONS  - -  that are not PACKONS - - not w/qu PRONS-->
+  <!---->
+  <tackon fix="cumque"><base pos="ADJ" decl="0 0" comparison="POS"/><meaning>-ever/-soever; (for generalized/indefinite force); (what/how -&gt; what/however);</meaning></tackon>
+  <tackon fix="cunque"><base pos="ADJ" decl="0 0" comparison="POS"/><meaning>-ever/-soever; (for generalized/indefinite force); (what/how -&gt; what/however);</meaning></tackon>
+  <tackon fix="cine"><base pos="PRON" decl="3 1" kind="ADJECT"/><meaning>TACKON w/hic this?   (hic + ce + ne (enclitic));</meaning></tackon>
+  <tackon fix="pte"><base pos="ADJ" decl="1 0" comparison="POS"/><meaning>TACKON ! (emphatic particle w/personal ADJ); (usually with ABL, suapte);</meaning></tackon>
+  <tackon fix="pte"><base pos="PRON" decl="4 0" kind="PERS"/><meaning>TACKON ! (emphatic particle w/personal PRON); (usually with ABL, mepte);</meaning></tackon>
+  <tackon fix="pte"><base pos="PRON" decl="5 0" kind="PERS"/><meaning>TACKON ! (emphatic particle w/personal PRON); (usually with ABL, mepte);</meaning></tackon>
+  <tackon fix="ce"><base pos="PRON" decl="3 1" kind="ADJECT"/><meaning>TACKON w/hic this;</meaning></tackon>
+  <tackon fix="modi"><base pos="PRON" decl="3 1" kind="ADJECT"/><meaning>TACKON w/GEN of ~ kind, sort, nature; (w/hic); [huiusmodi =&gt; of this sort];</meaning></tackon>
+  <tackon fix="modi"><base pos="PRON" decl="4 1" kind="PERS"/><meaning>TACKON w/GEN of ~ kind/sort/nature; w/his/our/your [eiusmodi =&gt; of his sort];</meaning></tackon>
+  <tackon fix="dem"><base pos="PRON" decl="4 2" kind="DEMONS"/><meaning>TACKON w/i-ea-id   idem =&gt; same;</meaning></tackon>
+  <tackon fix="cum"><base pos="PRON" decl="5 0" kind="PERS"/><meaning>TACKON with (enclitic with PRON 5 0); [w/ABL  mecum =&gt; at my house/with me]; </meaning></tackon>
+  <tackon fix="vis"><base pos="ADJ" decl="1 1" comparison="POS"/><meaning>TACKON (what)-ever (w/quantus) [quantusvis =&gt; of whatever size you like]; </meaning></tackon>
+  <tackon fix="met"><base pos="PRON" decl="5 0" kind="PERS"/><meaning>TACKON w/personal self, own; on subst PERS [meamet/egomet =&gt; my own/myself];</meaning></tackon>
+  <tackon fix="familias"><base pos="N" decl="3 0" gender="C" kind="P"/><meaning>TACKON of the family/household; (archaic GEN); [pater~ =&gt; head of household];</meaning></tackon>
+  <!---->
+  <!--  PACKONS-->
+  <!--  A special class of TACKONS, applied to qu- pronouns called PACKons-->
+  <!---->
+  <tackon fix="cumque"><base pos="PACK" decl="1 0" kind="REL"/><meaning>PACKON w/qui =&gt; whoever; whatever; everyone who, all that, anything that;</meaning></tackon>
+  <tackon fix="cunque"><base pos="PACK" decl="1 0" kind="REL"/><meaning>PACKON w/qui =&gt; whoever; whatever; everyone who, all that, anything that;</meaning></tackon>
+  <tackon fix="que"><base pos="PACK" decl="1 0" kind="INDEF"/><meaning>PACKON w/qui =&gt; whoever it be; whatever; each, each one; everyone, everything;</meaning></tackon>
+  <!--TACKON que-->
+  <!--PACK    1  0 ADJECT-->
+  <!--PACKON w/qui => whoever it be; whatever; each, each one; everyone, everything;-->
+  <tackon fix="piam"><base pos="PACK" decl="1 0" kind="INDEF"/><meaning>PACKON w/qui =&gt;  any/somebody, any, some, any/something;                </meaning></tackon>
+  <tackon fix="quam"><base pos="PACK" decl="1 0" kind="INDEF"/><meaning>PACKON w/quis =&gt;  any; any man/person, anybody/anyone, any whatever, anything;</meaning></tackon>
+  <!--TACKON quam-->
+  <!--PACK    1  0 ADJECT-->
+  <!--PACKON w/quis =>  any, anyone;-->
+  <!--TACKON dam-->
+  <!--PACK    1  0 ADJECT-->
+  <!--PACKON w/qui => certain;-->
+  <tackon fix="dam"><base pos="PACK" decl="1 0" kind="INDEF"/><meaning>PACKON w/qui =&gt; certain; a certain (one); a certain thing;                       </meaning></tackon>
+  <tackon fix="nam"><base pos="PACK" decl="1 0" kind="INTERR"/><meaning>PACKON w/qui =&gt; who then/in the world; which, I insist/meant; why/what pray;   </meaning></tackon>
+  <!--TACKON nam-->
+  <!--PACK    1  0 ADJECT-->
+  <!--PACKON w/qui => who then; what a thing; which I meant; why, pray;-->
+  <tackon fix="cum"><base pos="PACK" decl="1 0" kind="INTERR"/><meaning>PACKON w/qui pron with ABL =&gt; with what, with whom;</meaning></tackon>
+  <tackon fix="vis"><base pos="PACK" decl="1 0" kind="INDEF"/><meaning>PACKON w/qui whoever it be, whomever you please; any/anything whatever;</meaning></tackon>
+  <!--TACKON vis-->
+  <!--PACK    1  0 ADJECT-->
+  <!--PACKON w/qui whoever it be, whomever you please; any whateve/whatsoever;-->
+  <tackon fix="libet"><base pos="PACK" decl="1 0" kind="INDEF"/><meaning>PACKON w/qui-anyone; -whatever; what you will; no matter which;</meaning></tackon>
+  <!--TACKON libet-->
+  <!--PACK    1  0 ADJECT-->
+  <!--PACKON w/qui-whatever, without distinction; whichever you will; no matter;-->
+  <tackon fix="lubet"><base pos="PACK" decl="1 0" kind="INDEF"/><meaning>PACKON w/qui -anyone; -whatever; what you will; no matter which;</meaning></tackon>
+</addons>
