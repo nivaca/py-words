@@ -253,6 +253,12 @@ does not record vowel length.
 Licensing
 ---------
 
+The Python code is copyright (c) 2026 Nicolas Vaughan
+(<nivaca@fastmail.com>) and distributed under the BSD 3-Clause licence;
+see [LICENCE.txt](LICENCE.txt).  The dictionary data in `data/` and the
+original WORDS program it is based on remain under William Whitaker's
+terms:
+
 WORDS, a Latin dictionary, by Colonel William Whitaker (USAF, Retired)
 
 Copyright William A. Whitaker (1936-2010)
@@ -268,6 +274,3 @@ would appreciate comments and suggestions.
 
 All parts of the WORDS system, source code and data files, are made freely
 available to anyone who wishes to use them, for whatever purpose.
-
-The Python port, copyright Nicolas Vaughan (2026), is distributed under
-the same terms.
