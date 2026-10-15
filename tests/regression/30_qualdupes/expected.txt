@@ -1,0 +1,30 @@
+ludica
+  -ic  suffix
+    -ic; of, pertaining/belonging to; connected with; derived/coming from (place);
+  ludus, ludi  noun, 2nd declension, masculine  [XXXBX]
+    game, play, sport, pastime, entertainment, fun; school, elementary school;
+    ludic-a        adjective, nominative singular feminine
+    ludic-a        adjective, vocative singular feminine
+    ludic-a        adjective, ablative singular feminine
+    ludic-a        adjective, nominative plural neuter
+    ludic-a        adjective, vocative plural neuter
+    ludic-a        adjective, accusative plural neuter
+  -c  suffix
+    -ic; of, pertaining/belonging to; connected with; derived/coming from (place);
+  ludia, ludiae  noun, 1st declension, feminine  [XXXES]  uncommon
+    actress; female gladiator;
+    ludic-a        adjective, nominative singular feminine
+    ludic-a        adjective, vocative singular feminine
+    ludic-a        adjective, ablative singular feminine
+    ludic-a        adjective, nominative plural neuter
+    ludic-a        adjective, vocative plural neuter
+    ludic-a        adjective, accusative plural neuter
+  ludius, ludi(i)  noun, 2nd declension, masculine  [XDXEO]  uncommon
+    dancer; stage performer;
+    ludic-a        adjective, nominative singular feminine
+    ludic-a        adjective, vocative singular feminine
+    ludic-a        adjective, ablative singular feminine
+    ludic-a        adjective, nominative plural neuter
+    ludic-a        adjective, vocative plural neuter
+    ludic-a        adjective, accusative plural neuter
+

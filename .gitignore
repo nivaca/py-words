@@ -1,0 +1,10 @@
+*~
+.DS_Store
+WORD.MOD
+WORD.MDV
+WORD.OUT
+WORD.UNK
+WORD.STA
+__pycache__/
+data/*.bak
+*.tmp

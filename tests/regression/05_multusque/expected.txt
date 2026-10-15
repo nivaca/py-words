@@ -1,0 +1,78 @@
+multa
+  multa, multae  noun, 1st declension, feminine  [XLXCO]
+    fine; penalty; penalty involving property (livestock, later money);
+    mult-a         nominative singular
+    mult-a         vocative singular
+    mult-a         ablative singular
+  multum, multi  noun, 2nd declension, neuter  [XXXDX]  lesser
+    many things (pl.); much; many;
+    mult-a         nominative plural
+    mult-a         vocative plural
+    mult-a         accusative plural
+  multo, multare, multavi, multatus  verb, 1st conjugation, transitive  [XLXCO]
+    punish, fine; extract as forfeit; sentence to pay;
+    mult-a         2nd person singular present active imperative
+  multus, multa -um, -, plurimus -a -um  adjective, 1st/2nd declension  [XXXAX]
+    much, many, great, many a; large, intense, assiduous; tedious;
+    mult-a         nominative singular feminine
+    mult-a         vocative singular feminine
+    mult-a         ablative singular feminine
+    mult-a         nominative plural neuter
+    mult-a         vocative plural neuter
+    mult-a         accusative plural neuter
+  -, multae  noun, 1st declension, feminine  [XXXDX]  lesser
+    many women (pl.);
+    mult-a         ablative singular
+
+viri
+  virus, viri  noun, 2nd declension, neuter  [XXXAO]
+    venom (sg.), poisonous secretion of snakes/creatures/plants; acrid element;
+    vir-i          genitive singular
+    vir-i          locative singular
+  virum, viri  noun, 2nd declension, neuter  [GBXEK]  neo-Latin  uncommon
+    virus;
+    vir-i          genitive singular
+    vir-i          locative singular
+  vir, viri  noun, 2nd declension, masculine  [XXXAX]
+    man; husband; hero; person of courage, honor, and nobility;
+    vir-i          genitive singular
+    vir-i          locative singular
+    vir-i          nominative plural
+    vir-i          vocative plural
+  vis, viris  noun, 3rd declension, feminine  [XXXAX]
+    strength (bodily) (pl.), force, power, might, violence; resources; large body;
+    vir-i          locative singular  (early)
+    vir-i          dative singular
+    vir-i          ablative singular
+
+virtus
+  virtus, virtutis  noun, 3rd declension, feminine  [XXXAX]
+    strength/power; courage/bravery; worth/manliness/virtue/character/excellence;
+    virtus         nominative singular
+    virtus         vocative singular
+  virtus, virtutis  noun, 3rd declension, feminine  [EEXCR]  later
+    army; host; mighty works (pl.); class of Angels; [Dominus ~ => Lord of hosts];
+    virtus         nominative singular
+    virtus         vocative singular
+
+animo
+  animus, animi  noun, 2nd declension, masculine  [XXXAO]
+    mind; intellect; soul; feelings; heart; spirit, courage, character, pride; air;
+    anim-o         dative singular
+    anim-o         ablative singular
+  animo, animare, animavi, animatus  verb, 1st conjugation, transitive  [XXXBO]
+    animate, give/bring life; revive, refresh; rouse, animate; inspire; blow;
+    anim-o         1st person singular present active indicative
+
+multusque
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  multus, multa -um, -, plurimus -a -um  adjective, 1st/2nd declension  [XXXAX]
+    much, many, great, many a; large, intense, assiduous; tedious;
+    mult-us        nominative singular masculine
+
+recursat
+  recurso, recursare, recursavi, recursatus  verb, 1st conjugation  [XXXDX]  lesser
+    keep rebounding/recoiling; keep recurring to the mind;
+    recurs-at      3rd person singular present active indicative
+

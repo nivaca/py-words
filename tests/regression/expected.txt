@@ -1,0 +1,16 @@
+rem
+  res, rei  noun, 5th declension, feminine  [XXXAX]
+    thing; event/affair/business; fact; cause; property; [~ familiaris => property];
+    r-em           accusative singular
+
+acu
+  acus, acus  noun, 4th declension, feminine  [XXXBO]
+    needle, pin; hair-pin; pipefish, needlefish; detail; husks/chaff (pl.);
+    ac-u           ablative singular
+  (less likely forms are not shown)
+
+tetigisti
+  tango, tangere, tetigi, tactus  verb, 3rd conjugation  [XXXAX]
+    touch, strike; border on, influence; mention;
+    tetig-isti     2nd person singular perfect active indicative
+

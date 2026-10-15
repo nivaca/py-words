@@ -1,0 +1,283 @@
+wild
+  ferus, fera, ferum  adjective, 1st/2nd declension  [XXXAX]
+    wild, savage; uncivilized; untamed; fierce;
+  ferox, (gen.), ferocis  adjective, 3rd declension  [XXXAX]
+    wild, bold; warlike; cruel; defiant, arrogant;
+  turbidus, turbida, turbidum  adjective, 1st/2nd declension  [XXXAO]
+    wild/stormy; muddy/turbid; murky/foggy/clouded/opaque; gloomy, frowning;
+  agrestis, agrestis, agreste  adjective, 3rd declension  [XAXAO]
+    rustic, inhabiting countryside; rude, wild, savage; of/passing through fields;
+  horridus, horrida, horridum  adjective, 1st/2nd declension  [XXXBX]
+    wild, frightful, rough, bristly, standing on end, unkempt; grim; horrible;
+  impotens, (gen.), impotentis  adjective, 3rd declension  [XXXBX]
+    powerless, impotent, wild, headstrong; having no control (over), incapable (of);
+  (33 more not shown)
+
+game
+  ludus, ludi  noun, 2nd declension, masculine  [XXXBX]
+    game, play, sport, pastime, entertainment, fun; school, elementary school;
+  alea, aleae  noun, 1st declension, feminine  [XXXBO]
+    game of dice; die; dice-play; gambling, risking; chance, venture, risk, stake;
+  ferina, ferinae  noun, 1st declension, feminine  [XXXDX]  lesser
+    game, flesh of wild animals;
+  calculus, calculi  noun, 2nd declension, masculine  [XXXBO]
+    pebble; (bladder) stone; piece for reckoning/voting/game; calculation;
+  calx, calcis  noun, 3rd declension, masculine/feminine  [XXXBO]
+    limestone, lime; chalk, goal, goal-line (chalk mark), end of life; game piece;
+  talus, tali  noun, 2nd declension, masculine  [XBXBO]
+    ankle; ankle/pastern bone; sheep knucklebone (marked for dice); dice game (pl.);
+  (21 more not shown)
+
+ate
+  tripudium, tripudi(i)  noun, 2nd declension, neuter  [XXXDX]  lesser
+    solemn ritual dance (to Mars); favorable omen when sacred chickens ate greedily;
+
+grain
+  frumentum, frumenti  noun, 2nd declension, neuter  [XXXBX]
+    grain; crops;
+  curculio, curculionis  noun, 3rd declension, feminine  [XAXCO]
+    grain-worm/weevil; weevil;
+  gurculio, gurculionis  noun, 3rd declension, feminine  [BAXCS]  early
+    grain-worm/weevil; weevil;
+  seges, segetis  noun, 3rd declension, feminine  [XXXBX]
+    grain field; crop;
+  secundus, secunda -um, secundior -or -us, secundissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
+    |favorable, fair (wind/current); fortunate, propitious; smooth, w/the grain;
+  granum, grani  noun, 2nd declension, neuter  [XXXDX]  lesser
+    grain; seed;
+  (59 more not shown)
+
+fresh
+  novus, nova -um, novior -or -us, novissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
+    new, fresh, young; unusual, extraordinary;  (novae res, f. pl. = revolution);
+  vivus, viva, vivum  adjective, 1st/2nd declension  [XXXAX]
+    alive, fresh; living;
+  integer, integra -um, integrior -or -us, integerrimus -a -um  adjective, 1st/2nd declension  [XXXAX]
+    untouched, entire, whole, complete; uninjured, sound, fresh (troops), vigorous;
+  recens, (gen.), recentis  adjective, 3rd declension  [XXXBX]
+    fresh, recent; rested;
+  viridis, viridis, viride  adjective, 3rd declension  [XXXBX]
+    fresh, green; blooming,youthful;
+  crudus, cruda -um, crudior -or -us, crudissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    |youthful/hardy/vigorous; fresh/green/immature; undigested; w/undigested food;
+  (9 more not shown)
+
+air
+  spiritus, spiritus  noun, 4th declension, masculine  [XXXAX]
+    breath, breathing, air, soul, life;
+  nubes, nubis  noun, 3rd declension, feminine  [XXXAO]
+    cloud/mist/haze/dust/smoke; sky/air; billowy formation (hair); swarm/multitude;
+  caelus, caeli  noun, 2nd declension, masculine  [BSXAO]  early
+    heaven, sky, heavens; space; air, climate, weather; universe, world; Jehovah;
+  caelum, caeli  noun, 2nd declension, neuter  [XSXAO]
+    heaven, sky, heavens; space; air, climate, weather; universe, world; Jehovah;
+  coelus, coeli  noun, 2nd declension, masculine  [BSXAS]  early
+    sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
+  coelum, coeli  noun, 2nd declension, neuter  [XSXAS]
+    sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
+  (54 more not shown)
+
+came
+  convenit, convenire, convenit, conventus est  verb, 4th conjugation, impersonal  [XXXCO]
+    it agrees/came together/is agreed/asserted; [bene ~ nobis=>we're on good terms];
+  contingit, contingere, contigit, contactus est  verb, 3rd conjugation, impersonal  [XXXCO]
+    it happens, it turns out; (PERF) it came to pass;
+
+in
+  in  preposition, with the ablative  [XXXAX]
+    in, on, at (space); in accordance with/regard to/the case of; within (time);
+  intro  adverb  [XXXAX]
+    within, in; to the inside, indoors;
+  gener, generi  noun, 2nd declension, masculine  [XXXBX]
+    son-in-law;
+  ante  preposition, with the accusative  [XXXAO]
+    in front/presence of, in view; before (space/time/degree); over against, facing;
+  prae  preposition, with the ablative  [XXXAX]
+    before, in front; in view of, because of;
+  super  preposition, with the ablative  [XXXAX]
+    over (space), above, upon, in addition to; during (time); concerning; beyond;
+  (40 more not shown)
+
+a
+  (no match)
+
+breeze
+  aura, aurae  noun, 1st declension, feminine  [XXXBO]
+    breeze, breath (of air), wind; gleam; odor, stench; vapor; air (pl.), heaven;
+  anima, animae  noun, 1st declension, feminine  [XXXAO]
+    soul, spirit, vital principle; life; breathing; wind, breeze; air (element);
+  adflatus, adflatus  noun, 4th declension, masculine  [XXXBO]
+    breath, snorting; breeze, wind, draught, (hot) blast; stench; inspiration;
+  afflatus, afflatus  noun, 4th declension, masculine  [XXXBO]
+    breath, snorting; breeze, wind, draught, (hot) blast; stench; inspiration, flash
+  aer, aeris  noun, 3rd declension, masculine/feminine  [XXXCO]
+    air (one of 4 elements); atmosphere, sky; cloud, mist, weather; breeze; odor;
+  flamen, flaminis  noun, 3rd declension, neuter  [XXXCO]
+    gust/blast (of wind); gale; breath/exhalation; wind/breeze; note on woodwind;
+  (4 more not shown)
+
+tests
+  (no match)
+
+are
+  pila, pilae  noun, 1st declension, feminine  [XXXBO]
+    ball (play/decorative); sphere; mortar, vessel in which things are pounded;
+  mortarium, mortarii  noun, 2nd declension, neuter  [XXXCO]
+    mortar; bowl/trough in which materials are pounded/ground
+  isto  adverb  [XXXDX]  lesser
+    thither, to you, to where you are; in that matter; to the point you reached;
+  istuc  adverb  [XXXDX]  lesser
+    thither, to you, to where you are; in that direction; to that subject/point;
+  isti  adverb  [XXXDX]  lesser
+    there, in that place; where you are; herein, in this affair;
+  istic  adverb  [XXXDX]  lesser
+    there, over there, in that place; where you are; herein, in this affair;
+  (21 more not shown)
+
+fun
+  delicia, deliciae  noun, 1st declension, feminine  [XXXAO]
+    pleasure/delight/fun (usu. pl.), activity affording enjoyment, luxuries; toys;
+  ludus, ludi  noun, 2nd declension, masculine  [XXXBX]
+    game, play, sport, pastime, entertainment, fun; school, elementary school;
+  derideo, deridere, derisi, derisus  verb, 2nd conjugation, transitive  [XXXCO]
+    mock/deride/laugh at/make fun of; be able to laugh, escape, get off scot free;
+  cavillor, cavillari, cavillatus sum  verb, 1st conjugation, deponent  [XXXCO]
+    jest, banter; make fun of, satirize, mock; use sophistry, quibble, cavil (at);
+  irrideo, irridere, irrisi, irrisus  verb, 2nd conjugation  [XXXDX]  lesser
+    ridicule, mock, make fun of; laugh at;
+  ludibundus, ludibunda, ludibundum  adjective, 1st/2nd declension  [XXXDX]  lesser
+    having fun; cares free;
+  (7 more not shown)
+
+free
+  absolvo, absolvere, absolvi, absolutus  verb, 3rd conjugation, transitive  [XLXAO]
+    free (bonds), release; acquit; vote for/secure acquittal; pay off; sum up;
+  apertus, aperta -um, apertior -or -us, apertissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    open/public/free; uncovered/exposed/opened; frank/clear/manifest; cloudless;
+  apsolvo, apsolvere, apsolvi, apsolutus  verb, 3rd conjugation, transitive  [XLXAO]
+    free (bonds), release; acquit; vote for/secure acquittal; pay off; sum up;
+  libero, liberare, liberavi, liberatus  verb, 1st conjugation  [XXXAX]
+    free; acquit, absolve; manumit; liberate, release;
+  liber, libera -um, liberior -or -us, liberrimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    free (man); unimpeded; void of; independent, outspoken/frank; free from tribute;
+  solvo, solvere, solvi, solutus  verb, 3rd conjugation  [XXXAX]
+    loosen, release, unbind, untie, free; open; set sail; scatter; pay off/back;
+  (89 more not shown)
+
+money
+  aes, aeris  noun, 3rd declension, neuter  [XXXAO]
+    money, pay, fee, fare; copper/bronze/brass, base metal; (w/alienum) debt; gong;
+  pecunia, pecuniae  noun, 1st declension, feminine  [XLXAX]
+    money; property;
+  argentum, argenti  noun, 2nd declension, neuter  [XXXBO]
+    silver; money, cash; silver-plate; [argentum vivum => quicksilver/mercury];
+  moneta, monetae  noun, 1st declension, feminine  [XXXCO]
+    money/coinage; die on which coin is struck, stamp; mint, temple striking coins;
+  arca, arcae  noun, 1st declension, feminine  [XXXBO]
+    box, chest; strong-box, coffer; wealth, money; coffin, bier; cell, cage; ark;
+  lamina, laminae  noun, 1st declension, feminine  [XXXBO]
+    plate; veneer; thin sheet of metal/other material; (blade); money/cash;
+  (23 more not shown)
+
+do
+  facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
+    make/build/construct/create/cause/do; have built/made; fashion; work (metal);
+  facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
+    |||compose/write; classify; provide; do/perform; commit crime; suppose/imagine;
+  como, comere, compsi, comptus  verb, 3rd conjugation, transitive  [XXXCO]
+    arrange/do (hair); adorn, make beautiful; embellish; arrange in order, set out;
+  como, comere, comsi, comtus  verb, 3rd conjugation, transitive  [XXXCS]
+    arrange/do (hair); adorn, make beautiful; embellish; arrange in order, set out;
+  facesso, facessere, facessi, facessitus  verb, 3rd conjugation  [XXXDX]  lesser
+    do; perpetrate; go away;
+
+be
+  sum, esse, fui, futurus  verb, irregular, the verb "to be"  [XXXAX]
+    be; exist; (also used to form verb perfect passive tenses) with NOM PERF PPL
+  versor, versari, versatus sum  verb, 1st conjugation, deponent  [XXXDX]  lesser
+    move about; live, dwell; be;
+  existo, existere, existiti, existitus  verb, 3rd conjugation  [XXXDX]  lesser
+    step forth, appear; arise; become; prove to be; be (Bee);
+  consum, conesse, confui, confuturus  verb, irregular, compound of "to be"  [XXXES]  uncommon
+    be together/with, coexist; be, happen; [confore => to be about to happen];
+
+great
+  amplus, ampla -um, amplior -or -us, amplissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    great, large, spacious, wide, ample; distinguished, important, honorable;
+  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    large/great/big/vast/huge; much; powerful; tall/long/broad; extensive/spacious;
+  multus, multa -um, -, plurimus -a -um  adjective, 1st/2nd declension  [XXXAX]
+    much, many, great, many a; large, intense, assiduous; tedious;
+  grandis, grandis, grande  adjective, 3rd declension  [XXXAX]
+    full-grown, grown up; large, great, grand, tall, lofty; powerful; aged, old;
+  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    |great (achievement); mighty; distinguished; skilled; bold/confident; proud;
+  nimius, nimia, nimium  adjective, 1st/2nd declension  [XXXAX]
+    excessive, too great;
+  (37 more not shown)
+
+grammer
+  (no match)
+
+is
+  (no match)
+
+hard
+  durus, dura -um, durior -or -us, durissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
+    hard, stern; harsh, rough, vigorous; cruel, unfeeling, inflexible; durable;
+  robustus, robusta -um, robustior -or -us, robustissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    of oak; hard/firm/solid; hardy/robust/durable, able to resist change; valiant;
+  rigidus, rigida, rigidum  adjective, 1st/2nd declension  [XXXBX]
+    stiff, hard; stern; rough;
+  asper, aspera -um, asperior -or -us, asperrimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    rude/unrefined; cruel/violent/savage/raging/drastic; stern/severe/bitter; hard;
+  difficilis, difficile, difficilior -or -us, difficillimus -a -um  adjective, 3rd declension  [XXXBO]
+    difficult, troublesome; hard; hard to please/manage/deal with/carry out;
+  callosus, callosa -um, callosior -or -us, callosissimus -a -um  adjective, 1st/2nd declension  [XXXCO]
+    tough, hard/thick-skinned; made hard/tough by use; callused, indurated;
+  (19 more not shown)
+
+never
+  numquam  adverb  [XXXAX]
+    never;
+  nequando  adverb  [XXXCW]
+    lest, lest ever; never, not ever;
+  nunquam  adverb  [XXXDX]  lesser
+    at no time, never; not in any circumstances;
+  inexstinctus, inexstincta, inexstinctum  adjective, 1st/2nd declension  [XXXDX]  lesser
+    that is never extinguished;
+  nihilominus  adverb  [XXXDX]  lesser
+    never/none the less, notwithstanding, just the same; likewise, as well;
+  inocciduus, inoccidua, inocciduum  adjective, 1st/2nd declension  [XXXEC]  uncommon
+    never setting;
+
+say
+  aio, -, -  verb, irregular  [XXXAO]
+    say (defective), assert; say yes/so, affirm, assent; prescribe/lay down (law);
+  dico, dicere, dixi, dictus  verb, 3rd conjugation  [XXXAO]
+    say, declare, state; allege, declare positively; assert; plead (case);
+  inquiam, -, -  verb, irregular  [XXXAX]
+    say (defective); (postpositive - for direct quote); [inquiens => saying];
+  loquor, loqui, locutus sum  verb, 3rd conjugation, deponent  [XXXAX]
+    speak, tell; talk; mention; say, utter; phrase;
+  addo, addere, addidi, additus  verb, 3rd conjugation, transitive  [XXXAO]
+    add, insert, bring/attach to, say in addition; increase; impart; associate;
+  ait, -, -  verb, irregular, impersonal  [XXXAO]
+    he says (ait), it is said; they say (aiunt);
+  (31 more not shown)
+
+stop
+  consisto, consistere, constiti, constitus  verb, 3rd conjugation  [XXXAO]
+    stop/stand/halt/cease; pause, linger; stop spreading/flowing; take a position;
+  commoror, commorari, commoratus sum  verb, 1st conjugation, deponent  [XXXBO]
+    stop/stay/remain, abide; linger, delay; detain, be delayed (menses); dwell on;
+  conmoror, conmorari, conmoratus sum  verb, 1st conjugation, deponent  [XXXBS]
+    stop/stay/remain, abide; linger, delay; detain, be delayed (menses); dwell on;
+  desino, desinere, desivi, desitus  verb, 3rd conjugation  [XXXBO]
+    stop/end/finish, abandon/leave/break off, desist/cease; come to/at end/close;
+  desisto, desistere, destiti, destitus  verb, 3rd conjugation  [XXXBO]
+    stop/cease/desist (from); give up, leave/stand off; dissociate oneself;
+  mansio, mansionis  noun, 3rd declension, feminine  [XXXBO]
+    lodging, stop; day's journey, stage; staying away; abode/quarters/home/dwelling;
+  (24 more not shown)
+
