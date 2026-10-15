@@ -13,7 +13,7 @@ and Humanities of the Universidad de los Andes, Bogotá, Colombia.
 1. A faithful translation
 -------------------------
 
-The first version was a line-by-line translation of the Ada program.
+At first, the program was a line-by-line translation of the Ada program.
 Its modules followed the Ada packages closely, and the Ada behaviour was
 reproduced exactly, down to its peculiarities:
 
@@ -57,9 +57,9 @@ files, with line numbers.
 3. A redesign in idiomatic Python
 ---------------------------------
 
-With the translation as a reference, the program was rewritten (version
-2) as ordinary Python, keeping what matters (what WORDS finds for a word)
-and replacing the rest:
+With the translation as a reference, the program was rewritten as
+ordinary Python, keeping what matters (what WORDS finds for a word) and
+replacing the rest:
 
 * the grammatical codes became enumerations, and dictionary entries,
   endings and forms became immutable records (dataclasses) that mirror

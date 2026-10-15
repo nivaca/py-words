@@ -9,7 +9,7 @@ English words to find Latin equivalents.
 It was written by Nicolas Vaughan (<nivaca@fastmail.com> and <n.vaughan@uniandes.edu.co>) in 2026, first
 as a faithful translation of the Ada version maintained at
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words), then
-(version 2) redesigned as idiomatic Python with the same analyses, a more
+redesigned as idiomatic Python with the same analyses, a more
 readable output and a modern command line.  It needs only Python 3.11 or
 later, with nothing to install.
 
@@ -357,6 +357,11 @@ compare the output for some inputs (among them 735 lines of the Aeneid)
 with the expected output.  After an intended change to the output,
 regenerate the expected files with `UPDATE_GOLDEN=1` and review them with
 `git diff`.
+
+Version
+-------
+
+- 1.0: first public release.
 
 The Ada version
 ---------------
