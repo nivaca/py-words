@@ -1,7 +1,7 @@
 """Help for the settings, shown when '?' is answered in the # and ! menus."""
 
 HELP = {
-    # Parameters (#, WORD.MOD)
+    # Parameters (#, [parameters] in config.toml)
     'trim_output':
         'Leave out the least likely results: forms that are only possible '
         'in theory, and archaic, medieval or uncommon ones when more common '
@@ -58,11 +58,12 @@ HELP = {
         'would be.  This can catch a word whose stem is in the dictionary '
         'under another part of speech.',
     'save':
-        'Save these settings in the current directory (WORD.MOD for the '
-        'parameters, WORD.MDV for the developer modes), to be used at the '
-        'next start.  The files are plain text and can also be edited.',
+        'Save these settings in the configuration file, config.toml (on '
+        'Linux in ~/.config/py-words), to be used at the next start.  It is '
+        'plain text and can also be edited; words.py --config shows where '
+        'it is.',
 
-    # Developer modes (!, WORD.MDV)
+    # Developer modes (!, [developer] in config.toml)
     'have_statistics_file':
         'Create the file WORD.STA (in the current directory) for statistics '
         'on the tricks and affixes used; see write_statistics_file.',

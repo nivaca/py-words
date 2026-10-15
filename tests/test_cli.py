@@ -10,8 +10,9 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the package, when run from anywhere
-os.environ['WHITAKERS_WORDS_CACHE'] = ''   # (leave the user's cache alone)
+import isolate  # noqa: F401,E402  (before anything that reads settings)
 
+import config
 import words as cli, words_convert as convert, xmldata
 from lexicon import Lexicon
 from session import Session
@@ -44,15 +45,58 @@ class InTempDir(unittest.TestCase):
 
 class SettingsTests(InTempDir):
 
+    def setUp(self):
+        super().setUp()
+        self.old_config = os.environ['WHITAKERS_WORDS_CONFIG']
+        os.environ['WHITAKERS_WORDS_CONFIG'] = os.path.join(self.tmp.name,
+                                                            'config')
+
+    def tearDown(self):
+        os.environ['WHITAKERS_WORDS_CONFIG'] = self.old_config
+        super().tearDown()
+
     def test_round_trip(self):
         s = Settings(trim_output=False, do_examples=True, omit_archaic=False,
                      start_file_character='%')
-        s.save_modes()
-        s.save_dev_modes()
+        path = s.save('parameters')
+        self.assertEqual(s.save('developer'), path)
         t = Settings()
         messages = t.load('/nonexistent')
-        self.assertEqual(len(messages), 2)
+        self.assertEqual(messages, [f'Using the settings in {path}'])
         self.assertEqual(t, s)
+
+    def test_config_comes_first(self):
+        """An old WORD.MOD is read, but the configuration file wins."""
+        with open('WORD.MOD', 'w') as f:
+            f.write('TRIM_OUTPUT   N\nDO_FIXES   N\n')
+        Settings(trim_output=True, do_fixes=True,
+                 do_examples=True).save('parameters')
+        s = Settings()
+        messages = s.load('/nonexistent')
+        self.assertEqual(len(messages), 2)          # (both were read)
+        self.assertTrue(s.trim_output and s.do_fixes and s.do_examples)
+
+    def test_bad_config(self):
+        os.makedirs(os.environ['WHITAKERS_WORDS_CONFIG'])
+        path = os.path.join(os.environ['WHITAKERS_WORDS_CONFIG'],
+                            'config.toml')
+        with open(path, 'w') as f:
+            f.write('[parameters]\ntrim_output = "no"\ndo_fixes = false\n'
+                    'colour = true\n[developer]\n'
+                    'start_file_character = "a"\n')
+        s = Settings()
+        [message] = s.load('/nonexistent')
+        self.assertIn('trim_output: must be true or false', message)
+        self.assertIn('[parameters] colour: unknown setting', message)
+        self.assertIn('start_file_character: must be one punctuation',
+                      message)
+        self.assertTrue(s.trim_output)
+        self.assertFalse(s.do_fixes)
+        self.assertEqual(s.start_file_character, '@')
+        with open(path, 'w') as f:
+            f.write('[parameters\n')
+        [message] = Settings().load('/nonexistent')
+        self.assertIn('its settings are not used', message)
 
     def test_old_files(self):
         """Files written by the Ada program, with modes that no longer
@@ -94,6 +138,24 @@ class CommandLineTests(InTempDir):
         out = run('-m', 'amicus').stdout.decode()
         self.assertIn('friend, ally', out)
         self.assertNotIn('amic-us', out)
+
+    def test_config_option(self):
+        out = run('--config').stdout.decode()
+        path = os.path.join(os.environ['WHITAKERS_WORDS_CONFIG'],
+                            'config.toml')
+        self.assertEqual(out, f'Created the configuration file {path}\n')
+        self.assertEqual(run('--config').stdout.decode(),
+                         f'The configuration file is {path}\n')
+        self.assertIs(config.section('developer')['use_prefixes'], True)
+        # the data folder can be given there
+        data = config.read()
+        data['data']['folder'] = '/nonexistent/py-words-data'
+        config.write(data)
+        result = subprocess.run([sys.executable,
+                                 os.path.join(ROOT, 'words.py'), 'amo'],
+                                capture_output=True)
+        self.assertIn(b'/nonexistent/py-words-data', result.stderr)
+        os.remove(path)
 
     def test_english(self):
         out = run('-e', 'friend', '--pos', 'ADJ').stdout.decode()
@@ -169,15 +231,16 @@ class InteractiveTests(InTempDir):
         # trim_output: N; have_output_file: Enter; then a space skips
         session, out = self.repl('#', 'n', '', ' ')
         self.assertFalse(session.settings.trim_output)
-        self.assertFalse(os.path.exists('WORD.MOD'))
+        self.assertFalse(os.path.exists(config.config_path()))
 
     def test_parameters_help_and_save(self):
         # trim_output (after ?), then the others but write_output_to_file
         replies = ['#', '?', 'y'] + [''] * (len(MODES) - 2) + ['y']
         session, out = self.repl(*replies)
         self.assertIn('Leave out the least likely results', out)
-        with open('WORD.MOD') as f:
-            self.assertIn('TRIM_OUTPUT', f.read())
+        self.assertIn(f'Saved in {config.config_path()}', out)
+        self.assertIs(config.section('parameters')['trim_output'], True)
+        os.remove(config.config_path())
 
     def test_developer_modes_and_files(self):
         # have_statistics_file: Y, write_statistics_file: Y, then stop

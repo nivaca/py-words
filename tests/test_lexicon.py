@@ -8,6 +8,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the package, when run from anywhere
+import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import lexicon, xmldata
 from lexicon import Lexicon

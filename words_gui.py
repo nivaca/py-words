@@ -14,9 +14,11 @@ import queue
 import threading
 import webbrowser
 import tkinter as tk
-from tkinter import filedialog, font, messagebox, ttk
+from tkinter import filedialog, messagebox, ttk
 from tkinter.scrolledtext import ScrolledText
 
+from config import ConfigError
+from gui_fonts import Fonts
 from lexicon import default_datadir
 from lexicon import Lexicon, DICTIONARY
 from session import Session
@@ -32,19 +34,6 @@ OPTIONS = (
     ('Tricks', 'do_tricks'),
 )
 
-MONOSPACE = ('DejaVu Sans Mono', 'Liberation Mono', 'Noto Sans Mono',
-             'Menlo', 'Consolas', 'Courier New', 'Courier')
-
-
-def monospace_font(size=11):
-    """An installed fixed-width font: the forms are laid out in columns."""
-    available = set(font.families())
-    for family in MONOSPACE:
-        if family in available:
-            return (family, size)
-    return ('TkFixedFont', size)
-
-
 class App:
     def __init__(self, root, datadir):
         self.root = root
@@ -53,10 +42,11 @@ class App:
         self.lock = threading.Lock()
         root.title(f'{NAME}: a Latin dictionary')
         root.geometry('860x620')
+        self.fonts = Fonts.of(root)
 
         top = ttk.Frame(root, padding=(8, 8, 8, 4))
         top.pack(fill='x')
-        self.entry = ttk.Entry(top, font=('TkDefaultFont', 13))
+        self.entry = ttk.Entry(top, font=self.fonts.entry)
         self.entry.pack(side='left', fill='x', expand=True)
         self.entry.bind('<Return>', lambda e: self.lookup())
         self.button = ttk.Button(top, text='Look up', command=self.lookup)
@@ -70,6 +60,9 @@ class App:
         ttk.Radiobutton(lang, text='English → Latin', value=True,
                         variable=self.english).pack(side='left', padx=(12, 0))
         ttk.Button(lang, text='About', command=self.about).pack(side='right')
+        ttk.Button(lang, text='Font…',
+                   command=lambda: self.fonts.dialog(root)).pack(
+                       side='right', padx=(6, 0))
         ttk.Button(lang, text='Edit dictionary…',
                    command=self.edit_dictionary).pack(side='right', padx=6)
         opts = ttk.Frame(root, padding=(8, 0, 8, 4))
@@ -82,7 +75,7 @@ class App:
                                                              padx=(0, 10))
             self.option_vars[name] = var
 
-        self.text = ScrolledText(root, wrap='word', font=monospace_font(),
+        self.text = ScrolledText(root, wrap='word', font=self.fonts.text,
                                  padx=6, pady=6, state='disabled')
         self.text.pack(fill='both', expand=True, padx=8)
         self.show_text(CREDITS)
@@ -133,12 +126,18 @@ class App:
         self.entry.focus_set()
 
     def apply_options(self):
+        """Uses the options as ticked, and keeps them in the configuration
+        file for next time."""
         if self.session is None:
             return
         with self.lock:
             for name, var in self.option_vars.items():
                 setattr(self.session.settings, name, var.get())
             self.session.analyzer.reset()
+            try:
+                self.session.settings.save('parameters')
+            except (OSError, ConfigError) as e:
+                self.status.config(text=f'The options were not saved: {e}')
         if self.entry.get().strip():
             self.lookup()
 

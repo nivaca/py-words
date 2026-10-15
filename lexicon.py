@@ -28,6 +28,7 @@ from dataclasses import dataclass, field
 from functools import cached_property
 from typing import NamedTuple
 
+import config
 import english, model, xmldata
 from version import VERSION
 from model import (Pos, Decl, Comparison, NumeralSort, VerbKind, Freq,
@@ -47,9 +48,10 @@ DATA_DIR = os.path.join(HERE, 'data')
 
 
 def default_datadir() -> str:
-    """$WHITAKERS_WORDS_DATADIR, else the data folder next to the
-    program."""
-    return os.environ.get('WHITAKERS_WORDS_DATADIR') or DATA_DIR
+    """$WHITAKERS_WORDS_DATADIR, else the folder in the configuration file,
+    else the data folder next to the program."""
+    return os.environ.get('WHITAKERS_WORDS_DATADIR') or \
+        config.data_folder() or DATA_DIR
 
 #  The forms of esse are built in: its second stem is blank (es, est, esse
 #  are the bare endings), which a dictionary entry cannot express.

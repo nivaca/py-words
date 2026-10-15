@@ -18,6 +18,7 @@ from tkinter import messagebox, ttk
 
 from lexicon import default_datadir
 from editor import Editor, Fields, FIELD_LABELS, POS_CHOICES
+from gui_fonts import Fonts
 from lexicon import DICTIONARY
 from version import NAME
 from xmldata import DataError
@@ -43,12 +44,13 @@ class EditorWindow:
         self.win = win = tk.Toplevel(master) if master else tk.Tk()
         win.title(f'{NAME}: dictionary editor')
         win.geometry('1080x720')
+        self.fonts = Fonts.of(win)
         win.protocol('WM_DELETE_WINDOW', self.close)
 
         top = ttk.Frame(win, padding=(8, 8, 8, 4))
         top.pack(fill='x')
         ttk.Label(top, text='Find:').pack(side='left')
-        self.query = ttk.Entry(top, font=('TkDefaultFont', 12))
+        self.query = ttk.Entry(top, font=self.fonts.entry)
         self.query.pack(side='left', fill='x', expand=True, padx=6)
         self.query.bind('<Return>', lambda e: self.find())
         ttk.Button(top, text='Find', command=self.find).pack(side='left')
@@ -81,7 +83,7 @@ class EditorWindow:
         panes.add(right, weight=2)
         self.form = ttk.Frame(right)
         self.form.pack(fill='x')
-        self.preview = ttk.Label(right, font=('TkDefaultFont', 11, 'bold'),
+        self.preview = ttk.Label(right, font=self.fonts.bold,
                                  wraplength=620, justify='left')
         self.preview.pack(fill='x', pady=(10, 0))
         self.problems = ttk.Label(right, foreground='#b00020',
@@ -104,7 +106,7 @@ class EditorWindow:
         ttk.Button(trybox, text='Try', command=self.try_word).pack(
             side='left')
         self.output = tk.Text(right, height=10, wrap='word',
-                              font=('TkFixedFont', 10), state='disabled')
+                              font=self.fonts.text, state='disabled')
         self.output.pack(fill='both', expand=True, pady=(4, 0))
 
         bottom = ttk.Frame(win, padding=(8, 4, 8, 8))
@@ -115,6 +117,9 @@ class EditorWindow:
             side='right')
         ttk.Button(bottom, text='Save', command=self.save).pack(
             side='right', padx=4)
+        ttk.Button(bottom, text='Font…',
+                   command=lambda: self.fonts.dialog(win)).pack(
+                       side='right', padx=(0, 12))
 
         self.vars = {}
         self.new()

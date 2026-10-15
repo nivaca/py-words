@@ -17,6 +17,8 @@ import sys
 import tempfile
 import unittest
 
+import isolate  # noqa: F401  (before anything that reads settings)
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 DATA = os.path.join(ROOT, 'data')

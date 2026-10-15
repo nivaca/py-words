@@ -1,24 +1,32 @@
 """The settings of WORDS and the files that keep them.
 
-The parameters (changed with # in interactive mode) are kept in WORD.MOD,
-the developer modes (changed with !) in WORD.MDV, one per line:
+The parameters (changed with # in interactive mode) and the developer
+modes and command characters (changed with !) are kept in the
+configuration file, in its sections [parameters] and [developer] (see
+config.py):
+
+    [parameters]
+    trim_output = true
+    do_fixes = false
+
+The settings files of the original program are still read, if there are
+any, but the configuration file comes first: WORD.MOD (the parameters) and
+WORD.MDV (the developer modes and characters), one setting per line,
 
     TRIM_OUTPUT                      Y
-    DO_FIXES                         N
-
-WORD.MDV also holds the three command characters:
-
     START_FILE_CHARACTER             '@'
 
-Settings files are looked for in the current directory, then in the data
-directory, and saved in the current directory.  Names the program does not
-know (some older ones did nothing) are ignored.
+looked for in the current folder, the program's folder and the data
+folder.  Names the program does not know (some older ones did nothing) are
+ignored.
 """
 
 from __future__ import annotations
 
 import os
 from dataclasses import dataclass, fields
+
+import config
 
 MODE_FILE = 'WORD.MOD'
 DEV_MODE_FILE = 'WORD.MDV'
@@ -98,8 +106,8 @@ class Settings:
     # Files ----------------------------------------------------------------
 
     def load(self, datadir: str = '.') -> list[str]:
-        """Reads WORD.MOD and WORD.MDV, if there are any.  Returns messages
-        about what was found."""
+        """Reads WORD.MOD and WORD.MDV, if there are any, then the
+        configuration file.  Returns messages about what was found."""
         messages = []
         for name, kind in ((MODE_FILE, 'parameters'),
                            (DEV_MODE_FILE, 'developer modes')):
@@ -116,7 +124,58 @@ class Settings:
                                 'the defaults are used for those lines')
             else:
                 messages.append(f'Using the {kind} in {path}')
+        try:
+            data = config.read()
+        except config.ConfigError as e:
+            messages.append(f'{e}; its settings are not used')
+            return messages
+        if data.get('parameters') or data.get('developer'):
+            problems = self.apply_config(data)
+            where = config.config_path()
+            if problems:
+                messages.append(f"{where} has errors ({'; '.join(problems)})"
+                                '; the usual values are used for those '
+                                'settings')
+            else:
+                messages.append(f'Using the settings in {where}')
         return messages
+
+    def apply_config(self, data: dict) -> list[str]:
+        """Sets what the sections [parameters] and [developer] of the
+        configuration file say; returns their problems."""
+        problems = []
+        characters = {attr for _, attr in CHARACTERS}
+        for name, allowed in (('parameters', MODES),
+                              ('developer', DEV_MODES + tuple(characters))):
+            for key, value in data.get(name, {}).items():
+                if key not in allowed:
+                    problems.append(f'[{name}] {key}: unknown setting')
+                elif key in characters:
+                    if isinstance(value, str) and len(value) == 1 and \
+                            is_command_character(value):
+                        setattr(self, key, value)
+                    else:
+                        problems.append(f'{key}: must be one punctuation '
+                                        'character')
+                elif isinstance(value, bool):
+                    setattr(self, key, value)
+                else:
+                    problems.append(f'{key}: must be true or false')
+        return problems
+
+    def config_section(self, name: str) -> dict:
+        """The values of section NAME (parameters or developer)."""
+        if name == 'parameters':
+            return {key: getattr(self, key) for key in MODES}
+        values = {key: getattr(self, key) for key in DEV_MODES}
+        values.update((attr, getattr(self, attr)) for _, attr in CHARACTERS)
+        return values
+
+    def save(self, name: str) -> str:
+        """Saves the parameters or the developer modes (NAME) in the
+        configuration file; returns its path (raises OSError or
+        config.ConfigError if it cannot)."""
+        return config.update(name, self.config_section(name))
 
     def read(self, path: str) -> list[str]:
         """Sets what the settings file PATH says; returns its problems."""
@@ -143,21 +202,6 @@ class Settings:
                 elif name.upper() != name:
                     problems.append(f'line {number}: unexpected text')
         return problems
-
-    def save_modes(self, path: str = MODE_FILE):
-        self._write(path, MODES, with_characters=False)
-
-    def save_dev_modes(self, path: str = DEV_MODE_FILE):
-        self._write(path, DEV_MODES, with_characters=True)
-
-    def _write(self, path, names, with_characters):
-        with open(path, 'w', encoding='latin-1') as f:
-            for name in names:
-                yes = 'Y' if getattr(self, name) else 'N'
-                f.write(f'{name.upper():<34} {yes}\n')
-            if with_characters:
-                for label, attr in CHARACTERS:
-                    f.write(f"{label:<32} '{getattr(self, attr)}'\n")
 
 
 def find(name: str, datadir: str):

@@ -79,7 +79,8 @@ working as long as the folder stays where it was.
 
 then delete the folder.  The program also keeps a cache, which can be
 deleted too: `~/.cache/py-words` on Linux, `~/Library/Caches/py-words` on
-macOS, `%LOCALAPPDATA%\py-words` on Windows.
+macOS, `%LOCALAPPDATA%\py-words` on Windows; and the configuration file,
+if one was made (see "Settings and files").
 
 What is where
 -------------
@@ -110,8 +111,14 @@ Usage
     $ python3 words_gui.py                     # a window
 
 On Windows, type `python` instead of `python3`; `pythonw words_gui.py`
-opens the window without a console.  To start the program from the
-applications menu instead, see "Installation" above.
+opens the window without a console.
+
+In the windows, Ctrl and + or − make the text larger or smaller, and Ctrl
+and 0 brings back the usual size (Command instead of Ctrl on macOS).
+"Font…" chooses the fonts: a fixed-width one for the results, whose
+columns must line up, and one for the rest of the window.  The choice is
+remembered in the configuration file (see "Settings and files").  To start
+the program from the applications menu instead, see "Installation" above.
 
     words.py                          interactive
     words.py amicus est               look up words (a line of Latin)
@@ -120,10 +127,12 @@ applications menu instead, see "Installation" above.
     words.py -m ...                   dictionary forms and meanings only
                                       (the same as `meanings.py ...`)
     words.py --datadir DIR ...        the data files in DIR
+    words.py --config                 create/show the configuration file
     words.py --help
 
 The data files are looked for with `--datadir`, then
-`$WHITAKERS_WORDS_DATADIR`, then the `data` folder next to the program.
+`$WHITAKERS_WORDS_DATADIR`, then the folder in the configuration file, then
+the `data` folder next to the program.
 
 In interactive mode a line is looked up unless it starts with one of
 these:
@@ -162,12 +171,52 @@ Settings and files
 ------------------
 
 The parameters (`#`) and developer modes (`!`) are those of the original
-program; `?` in their dialogues explains each one.  They can be saved in
-WORD.MOD and WORD.MDV, which are read at start-up from the current
-directory or the program folder, in the original format (names the program
-no longer uses are ignored).  On request the program writes, in the current
-directory, WORD.OUT (the results), WORD.UNK (the unknown words) and WORD.STA
-(statistics on the tricks and affixes used).
+program; `?` in their dialogues explains each one.  They are kept, with
+the fonts of the windows and (optionally) the data folder, in one
+configuration file, `config.toml`:
+
+| System  | Configuration file                                         |
+|---------|------------------------------------------------------------|
+| Linux   | `$XDG_CONFIG_HOME/py-words/config.toml` (usually `~/.config/py-words`) |
+| macOS   | `~/Library/Application Support/py-words/config.toml`       |
+| Windows | `%APPDATA%\py-words\config.toml`                           |
+
+(`$WHITAKERS_WORDS_CONFIG` names another folder.)  The program writes it
+when settings are saved in the `#` or `!` dialogue or the fonts change;
+
+    $ python3 words.py --config
+
+creates it with the current settings and shows where it is.  It is plain
+text, with a comment for each setting, and can be edited by hand:
+
+    [data]
+    folder = ""              # empty: the data folder next to the program
+
+    [parameters]
+    trim_output = true
+    do_examples = false
+    ...
+
+    [developer]
+    use_prefixes = true
+    start_file_character = "@"
+    ...
+
+    [fonts]
+    text_size = 13
+
+Any setting can be left out, and then has its usual value.  When the
+program rewrites the file it keeps the values, but not comments of your
+own.
+
+The settings files of the original program, WORD.MOD (the parameters) and
+WORD.MDV (the developer modes), are still read if there are any, in the
+current folder or the program folder, but the configuration file comes
+first.
+
+On request the program writes, in the current directory, WORD.OUT (the
+results), WORD.UNK (the unknown words) and WORD.STA (statistics on the
+tricks and affixes used).
 
 The data files
 --------------
@@ -258,6 +307,8 @@ How it works
 | `settings.py` | the parameters and developer modes, and their files           |
 | `session.py`  | a session: language, output files                             |
 | `editor.py`   | editing the dictionary: what the two editors share            |
+| `config.py`   | the configuration file, config.toml                           |
+| `gui_fonts.py`| the fonts of the windows: zoom, the "Font…" dialogue          |
 | `words.py`    | the command line, interactive mode and setting dialogues      |
 | `words_*.py`, `meanings.py` | the other programs (see above)                  |
 

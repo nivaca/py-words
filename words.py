@@ -26,10 +26,13 @@ from version import check_python
 check_python()          # (before the modules that need it)
 
 import argparse
+import os
 import sys
 from collections.abc import Callable
 
 from version import CREDITS
+import config
+from config import ConfigError
 from helptext import HELP
 from lexicon import Lexicon, default_datadir
 from settings import Settings, MODES, DEV_MODES, is_command_character
@@ -93,14 +96,19 @@ def _character(settings: Settings, name: str, ask: Ask, say) -> None:
             say('Not an acceptable character: it may conflict with another.')
 
 
-def _save(ask: Ask, say, save) -> None:
+def _save(ask: Ask, say, settings: Settings, section: str) -> None:
+    """Offers to save the parameters or developer modes (SECTION) in the
+    configuration file."""
     while True:
         reply = ask('Save these settings? (N) => ').strip()
         if reply[:1] == '?':
             say(HELP['save'])
             continue
         if reply[:1].upper() == 'Y':
-            save()
+            try:
+                say(f'Saved in {settings.save(section)}')
+            except (OSError, ConfigError) as e:
+                say(f'Not saved: {e}')
         return
 
 
@@ -117,8 +125,7 @@ def change_parameters(session: Session, ask: Ask, say) -> None:
             _yes_no(s, name, ask, say)
             if name == 'have_output_file':
                 session.settings_changed()
-        _save(ask, say, lambda: (s.save_modes(),
-                                 say('Parameters saved in WORD.MOD')))
+        _save(ask, say, s, 'parameters')
     except _Skip:
         pass
     session.settings_changed()
@@ -149,8 +156,7 @@ def change_developer_modes(session: Session, ask: Ask, say) -> None:
         for name in ('start_file_character', 'change_parameters_character',
                      'change_developer_modes_character'):
             _character(s, name, ask, say)
-        _save(ask, say, lambda: (s.save_dev_modes(),
-                                 say('Developer modes saved in WORD.MDV')))
+        _save(ask, say, s, 'developer')
     except _Skip:
         pass
     session.settings_changed()
@@ -305,8 +311,12 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
                         help='show only dictionary forms and meanings')
     parser.add_argument('--datadir', default=None,
                         help='the folder with the data files (default: '
-                             '$WHITAKERS_WORDS_DATADIR, or the data '
-                             'folder next to the program)')
+                             '$WHITAKERS_WORDS_DATADIR, the folder in the '
+                             'configuration file, or the data folder next '
+                             'to the program)')
+    parser.add_argument('--config', action='store_true',
+                        help='create the configuration file (if there is '
+                             'none) and show where it is')
     parser.add_argument('--version', action=_Credits, nargs=0,
                         help='show the version and credits, and exit')
     args = parser.parse_args(argv)
@@ -314,6 +324,9 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
     datadir = args.datadir or default_datadir()
     settings = Settings()
     messages = settings.load(datadir)
+    if args.config:
+        print(make_config(settings))
+        return
     interactive = not args.words and not args.file and sys.stdin.isatty()
     lexicon = load(datadir)
 
@@ -350,6 +363,20 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
         session.close()
         if out is not sys.stdout:
             out.close()
+
+
+def make_config(settings: Settings) -> str:
+    """Creates the configuration file with SETTINGS, unless there is one;
+    says where it is."""
+    path = config.config_path()
+    if os.path.exists(path):
+        return f'The configuration file is {path}'
+    try:
+        config.write({name: settings.config_section(name)
+                      for name in ('parameters', 'developer')})
+    except OSError as e:
+        sys.exit(f'words: cannot write {path}: {e.strerror}')
+    return f'Created the configuration file {path}'
 
 
 def meanings(argv: list[str] | None = None):
