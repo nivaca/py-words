@@ -24,6 +24,7 @@ import os
 import sys
 
 import lexicon, xmldata
+from settings import ensure_config
 from lexicon import default_datadir
 from model import Pos, stems_used
 
@@ -148,6 +149,7 @@ def data_files(datadir):
 
 
 def main(argv=None):
+    ensure_config()                 # (made at the first start)
     parser = argparse.ArgumentParser(
         description='Check the WORDS data files for mistakes.')
     parser.add_argument('files', nargs='*', metavar='FILE',

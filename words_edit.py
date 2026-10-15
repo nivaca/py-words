@@ -25,6 +25,7 @@ import curses
 import os
 import sys
 
+from settings import ensure_config
 from lexicon import default_datadir
 from editor import Editor, Fields, FIELD_LABELS, POS_CHOICES, CODE_FIELDS
 from lexicon import DICTIONARY
@@ -515,6 +516,7 @@ def run(screen, datadir):
 
 
 def main(argv=None):
+    ensure_config()                 # (made at the first start)
     import argparse
     parser = argparse.ArgumentParser(
         prog='words_edit.py', description='Edit the WORDS dictionary in the '

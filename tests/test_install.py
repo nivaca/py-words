@@ -39,8 +39,8 @@ class InstallTests(unittest.TestCase):
     def test_install_and_uninstall(self):
         paths = words_install.install()
         self.assertEqual([os.path.basename(p) for p in paths],
-                         ['py-whitaker-words.desktop',
-                          'py-whitaker-words.cli.desktop'])
+                         ['py-words.desktop',
+                          'py-words.cli.desktop'])
         entries = []
         for path, program in zip(paths, ('words_gui.py', 'words.py')):
             with open(path, encoding='utf-8') as f:
@@ -68,6 +68,44 @@ class InstallTests(unittest.TestCase):
         for path in paths:
             self.assertFalse(os.path.exists(path))
 
+    def test_old_name_is_cleaned_up(self):
+        """Entries and icons installed as py-whitaker-words are removed."""
+        apps = os.path.join(self.tmp.name, 'applications')
+        icon_dir = os.path.join(self.tmp.name, 'icons', 'hicolor', '48x48',
+                                'apps')
+        os.makedirs(apps)
+        os.makedirs(icon_dir)
+        old = [os.path.join(apps, 'py-whitaker-words.desktop'),
+               os.path.join(apps, 'py-whitaker-words.cli.desktop'),
+               os.path.join(icon_dir, 'py-whitaker-words.png')]
+        for path in old:
+            open(path, 'w').close()
+        words_install.install_linux()
+        for path in old:
+            self.assertFalse(os.path.exists(path), path)
+        # and on uninstalling
+        for path in old:
+            open(path, 'w').close()
+        removed = words_install.uninstall_linux()
+        self.assertTrue(set(old) <= set(removed))
+        # macOS: an old application made by the installer
+        old_app = os.path.join(self.tmp.name, 'Applications',
+                               'Py-Whitaker-Words (GUI).app')
+        os.makedirs(os.path.join(old_app, 'Contents'))
+        with open(os.path.join(old_app, 'Contents', 'Info.plist'),
+                  'wb') as f:
+            plistlib.dump({'CFBundleIdentifier':
+                           'io.github.nivaca.py-whitaker-words.gui'}, f)
+        words_install.install_macos()
+        self.assertFalse(os.path.exists(old_app))
+        words_install.uninstall_macos()
+        # Windows: an old shortcut
+        old_lnk = os.path.join(words_install.start_menu(),
+                               'Py-Whitaker-Words (CLI).lnk')
+        os.makedirs(os.path.dirname(old_lnk))
+        open(old_lnk, 'w').close()
+        self.assertEqual(words_install.uninstall_windows(), [old_lnk])
+
     def test_quoting(self):
         q = words_install.exec_arg
         self.assertEqual(q('/usr/bin/python3'), '/usr/bin/python3')
@@ -93,8 +131,8 @@ class InstallTests(unittest.TestCase):
     def test_macos(self):
         apps = words_install.install_macos()
         self.assertEqual([os.path.basename(a) for a in apps],
-                         ['Py-Whitaker-Words (GUI).app',
-                          'Py-Whitaker-Words (CLI).app'])
+                         ['py-words (GUI).app',
+                          'py-words (CLI).app'])
         for app in apps:
             with open(os.path.join(app, 'Contents', 'Info.plist'),
                       'rb') as f:
@@ -140,8 +178,8 @@ class InstallTests(unittest.TestCase):
         os.environ['PATH'] = bin_dir + os.pathsep + os.environ['PATH']
         paths = words_install.install_windows()
         self.assertEqual([os.path.basename(p) for p in paths],
-                         ['Py-Whitaker-Words (GUI).lnk',
-                          'Py-Whitaker-Words (CLI).lnk'])
+                         ['py-words (GUI).lnk',
+                          'py-words (CLI).lnk'])
         self.assertTrue(paths[0].startswith(os.path.join(
             self.tmp.name, 'AppData', 'Microsoft', 'Windows', 'Start Menu',
             'Programs')))
@@ -151,7 +189,7 @@ class InstallTests(unittest.TestCase):
         self.assertEqual(
             args, f'"{os.path.join(words_install.HERE, "words.py")}"')
         self.assertEqual(folder, words_install.HERE)
-        self.assertTrue(icon.endswith('py-whitaker-words.ico,0'))
+        self.assertTrue(icon.endswith('py-words.ico,0'))
         self.assertEqual(words_install.uninstall_windows(), paths)
 
 

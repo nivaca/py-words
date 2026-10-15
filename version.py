@@ -8,7 +8,7 @@ import sys
 
 NAME = 'py-words'
 VERSION = '2.0.0'
-URL = 'https://github.com/nivaca/py-whitaker-words'
+URL = 'https://github.com/nivaca/py-words'
 
 CREDITS = (
     f'{NAME} {VERSION}, a Latin dictionary by Nicolas Vaughan\n'
@@ -18,6 +18,12 @@ CREDITS = (
     'Code © 2026 Nicolas Vaughan (nivaca@fastmail.com); dictionary data '
     'by\n'
     'William Whitaker, free for any use.')
+
+#  The credits with a word about the author (the About box, --version)
+ABOUT = CREDITS + (
+    '\n\n'
+    'Nicolas Vaughan is Associate Professor of Literature at the School of\n'
+    'Arts and Humanities of the Universidad de los Andes, Bogotá, Colombia.')
 
 
 #  The oldest Python the program runs on

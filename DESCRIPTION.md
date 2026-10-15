@@ -7,6 +7,9 @@ Nicolas Vaughan in 2026 from the Ada version of WORDS maintained at
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words).  This
 document describes how it was done, in four stages.
 
+Nicolas Vaughan is Associate Professor of Literature at the School of Arts
+and Humanities of the Universidad de los Andes, Bogotá, Colombia.
+
 1. A faithful translation
 -------------------------
 

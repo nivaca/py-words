@@ -30,7 +30,7 @@ import os
 import sys
 from collections.abc import Callable
 
-from version import CREDITS
+from version import ABOUT, CREDITS
 import config
 from config import ConfigError
 from helptext import HELP
@@ -284,7 +284,7 @@ class _Credits(argparse.Action):
     """--version: the credits, as written (argparse would rewrap them)."""
 
     def __call__(self, parser, namespace, values, option_string=None):
-        print(CREDITS)
+        print(ABOUT)
         parser.exit()
 
 
@@ -315,8 +315,7 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
                              'configuration file, or the data folder next '
                              'to the program)')
     parser.add_argument('--config', action='store_true',
-                        help='create the configuration file (if there is '
-                             'none) and show where it is')
+                        help='show where the configuration file is')
     parser.add_argument('--version', action=_Credits, nargs=0,
                         help='show the version and credits, and exit')
     args = parser.parse_args(argv)
@@ -366,17 +365,12 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
 
 
 def make_config(settings: Settings) -> str:
-    """Creates the configuration file with SETTINGS, unless there is one;
-    says where it is."""
+    """Says where the configuration file is (it is made at start-up, if it
+    can be)."""
     path = config.config_path()
     if os.path.exists(path):
         return f'The configuration file is {path}'
-    try:
-        config.write({name: settings.config_section(name)
-                      for name in ('parameters', 'developer')})
-    except OSError as e:
-        sys.exit(f'words: cannot write {path}: {e.strerror}')
-    return f'Created the configuration file {path}'
+    sys.exit(f'words: cannot create {path}')
 
 
 def meanings(argv: list[str] | None = None):

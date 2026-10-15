@@ -1,4 +1,4 @@
-py-whitaker-words
+py-words
 ========
 
 William Whitaker's WORDS, a Latin-English dictionary with inflectional
@@ -12,6 +12,9 @@ as a faithful translation of the Ada version maintained at
 (version 2) redesigned as idiomatic Python with the same analyses, a more
 readable output and a modern command line.  It needs only Python 3.11 or
 later, with nothing to install.
+
+Nicolas Vaughan is Associate Professor of Literature at the School of Arts
+and Humanities of the Universidad de los Andes, Bogotá, Colombia.
 
 Installation
 ------------
@@ -39,13 +42,13 @@ The commands below are written with `python3`; on Windows, type `python`.
 
 Clone the repository:
 
-    $ git clone https://github.com/nivaca/py-whitaker-words.git
+    $ git clone https://github.com/nivaca/py-words.git
 
 or download it as a zip (on GitHub: "Code", then "Download ZIP") and unpack
 it anywhere.  The folder is the whole program: there is nothing to build
 or install, and it can be run from where it is:
 
-    $ cd py-whitaker-words                     # (or the unpacked folder)
+    $ cd py-words                              # (or the unpacked folder)
     $ python3 words.py amicus                  # a first test
     $ python3 words_gui.py                     # the window
 

@@ -129,6 +129,12 @@ class Settings:
         except config.ConfigError as e:
             messages.append(f'{e}; its settings are not used')
             return messages
+        exists = os.path.exists(config.config_path())
+        made = ensure_config(self)
+        if made:
+            messages.append(f"{'Completed' if exists else 'Created'} the "
+                            f'configuration file {made}, with the settings '
+                            'in use')
         if data.get('parameters') or data.get('developer'):
             problems = self.apply_config(data)
             where = config.config_path()
@@ -202,6 +208,30 @@ class Settings:
                 elif name.upper() != name:
                     problems.append(f'line {number}: unexpected text')
         return problems
+
+
+def ensure_config(settings: Settings | None = None) -> str | None:
+    """Makes sure the configuration file exists and has the sections
+    [parameters] and [developer]: creates it, or adds those it lacks, with
+    SETTINGS (or the usual ones), keeping what is there.  Returns its path
+    if it was created or completed; nothing happens if it cannot be read or
+    written."""
+    try:
+        data = config.read()
+    except config.ConfigError:
+        return None                     # (left for the user to mend)
+    missing = [name for name in ('parameters', 'developer')
+               if name not in data]
+    if not missing:
+        return None
+    settings = settings or Settings()
+    for name in missing:
+        data[name] = settings.config_section(name)
+    try:
+        config.write(data)
+    except OSError:
+        return None
+    return config.config_path()
 
 
 def find(name: str, datadir: str):

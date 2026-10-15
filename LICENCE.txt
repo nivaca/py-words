@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Nicolas Vaughan <nivaca@fastmail.com>
+Copyright (c) 2026 Nicolas Vaughan <nivaca@fastmail.com> and <n.vaughan@uniandes.edu.co>
   (py-words, the Python program)
 Copyright (c) William A. Whitaker (1936-2010)
   (WORDS, the original program, and its dictionary data in data/)

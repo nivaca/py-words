@@ -16,6 +16,7 @@ import os
 import tkinter as tk
 from tkinter import messagebox, ttk
 
+from settings import ensure_config
 from lexicon import default_datadir
 from editor import Editor, Fields, FIELD_LABELS, POS_CHOICES
 from gui_fonts import Fonts
@@ -340,6 +341,7 @@ class EditorWindow:
 
 
 def main():
+    ensure_config()                 # (made at the first start)
     datadir = default_datadir()
     if not os.path.isfile(os.path.join(datadir, DICTIONARY)):
         raise SystemExit(f'There is no {DICTIONARY} in {datadir}')

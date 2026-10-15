@@ -23,7 +23,7 @@ from lexicon import default_datadir
 from lexicon import Lexicon, DICTIONARY
 from session import Session
 from settings import Settings
-from version import CREDITS, NAME, URL
+from version import ABOUT, CREDITS, NAME, URL
 
 OPTIONS = (
     ('Trim output', 'trim_output'),
@@ -99,7 +99,10 @@ class App:
                 function(*args)
         except queue.Empty:
             pass
-        self.root.after(50, self.poll)
+        try:
+            self.root.after(50, self.poll)
+        except tk.TclError:             # (the window is gone)
+            pass
 
     def load(self):
         try:
@@ -191,11 +194,10 @@ class App:
         """A small window with the credits."""
         win = tk.Toplevel(self.root)
         win.title(f'About {NAME}')
-        win.resizable(False, False)
         win.transient(self.root)
         frame = ttk.Frame(win, padding=16)
         frame.pack(fill='both', expand=True)
-        ttk.Label(frame, text=CREDITS, justify='left').pack(anchor='w')
+        ttk.Label(frame, text=ABOUT, justify='left').pack(anchor='w')
         buttons = ttk.Frame(frame, padding=(0, 12, 0, 0))
         buttons.pack(fill='x')
         close = ttk.Button(buttons, text='Close', command=win.destroy)
@@ -206,6 +208,7 @@ class App:
         win.bind('<Escape>', lambda e: win.destroy())
         win.bind('<Return>', lambda e: win.destroy())
         close.focus_set()
+        win.resizable(False, False)     # (once its contents are in)
         win.grab_set()
 
     def set_busy(self, busy):
@@ -215,7 +218,7 @@ class App:
 
 #  The window's class, which desktop files name in StartupWMClass, and its
 #  icon
-WM_CLASS = 'py-whitaker-words'
+WM_CLASS = 'py-words'
 ICON_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons',
                         'linux', 'icons', 'hicolor')
 

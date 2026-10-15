@@ -29,17 +29,22 @@ import subprocess
 import sys
 from typing import NamedTuple
 
-from version import VERSION
+from version import NAME, VERSION
 
-APP_ID = 'py-whitaker-words'             # the names of the entries and icons
-BUNDLE_ID = 'io.github.nivaca.py-whitaker-words'
+APP_ID = 'py-words'                      # the names of the entries and icons
+BUNDLE_ID = 'io.github.nivaca.py-words'
+
+#  The names used before (whatever was installed under them is removed)
+OLD_APP_IDS = ('py-whitaker-words',)
+OLD_BUNDLE_IDS = ('io.github.nivaca.py-whitaker-words',)
+OLD_NAME = 'Py-Whitaker-Words'
 COMMENT = 'Latin Dictionary'
 HERE = os.path.dirname(os.path.abspath(__file__))
 ICON_DIR = os.path.join(HERE, 'icons')
 
 def display_name(kind):
     """The name shown for the entry of KIND (GUI or CLI)."""
-    return f'Py-Whitaker-Words ({kind})'
+    return f'{NAME} ({kind})'
 
 
 #  (kind, program, whether it runs in a terminal)
@@ -120,7 +125,29 @@ def refresh_linux():
                 break
 
 
+def old_linux_files() -> list[str]:
+    """What was installed under an old name (entries and icons)."""
+    theme = os.path.join(data_home(), 'icons', 'hicolor')
+    found = []
+    for old in OLD_APP_IDS:
+        for name in (old + '.desktop', old + '.cli.desktop'):
+            found.append(os.path.join(data_home(), 'applications', name))
+        if os.path.isdir(theme):
+            for size in os.listdir(theme):
+                for ext in ('.png', '.svg'):
+                    found.append(os.path.join(theme, size, 'apps',
+                                              old + ext))
+    return [path for path in found if os.path.isfile(path)]
+
+
+def remove(paths: list[str]) -> list[str]:
+    for path in paths:
+        os.remove(path)
+    return paths
+
+
 def install_linux() -> list[str]:
+    remove(old_linux_files())
     theme = os.path.join(data_home(), 'icons', 'hicolor')
     for source, rel in icon_files():
         dest = os.path.join(theme, rel)
@@ -153,6 +180,7 @@ def uninstall_linux() -> list[str]:
         if os.path.isfile(path):
             os.remove(path)
             removed.append(path)
+    removed += remove(old_linux_files())
     refresh_linux()
     return removed
 
@@ -205,7 +233,15 @@ def windows_shortcuts() -> list[Shortcut]:
     return shortcuts
 
 
+def old_shortcuts() -> list[str]:
+    """Shortcuts made under the old name."""
+    paths = [os.path.join(start_menu(), f'{OLD_NAME} ({kind}).lnk')
+             for kind, _, _ in PROGRAMS]
+    return [path for path in paths if os.path.isfile(path)]
+
+
 def install_windows() -> list[str]:
+    remove(old_shortcuts())
     paths = []
     for s in windows_shortcuts():
         os.makedirs(os.path.dirname(s.path), exist_ok=True)
@@ -229,7 +265,7 @@ def uninstall_windows() -> list[str]:
         if os.path.isfile(s.path):
             os.remove(s.path)
             removed.append(s.path)
-    return removed
+    return removed + remove(old_shortcuts())
 
 
 # ---------------------------------------------------------------------------
@@ -277,7 +313,15 @@ def is_ours(app: str) -> bool:
             info = plistlib.load(f)
     except (OSError, ValueError, plistlib.InvalidFileException):
         return False
-    return str(info.get('CFBundleIdentifier', '')).startswith(BUNDLE_ID)
+    bundle = str(info.get('CFBundleIdentifier', ''))
+    return any(bundle.startswith(b) for b in (BUNDLE_ID,) + OLD_BUNDLE_IDS)
+
+
+def old_apps() -> list[str]:
+    """Applications made under the old name."""
+    apps = [os.path.join(applications_dir(), f'{OLD_NAME} ({kind}).app')
+            for kind, _, _ in PROGRAMS]
+    return [app for app in apps if os.path.isdir(app) and is_ours(app)]
 
 
 def write_script(path: str, text: str):
@@ -334,6 +378,8 @@ def make_app(kind: str, program: str, terminal: bool, icns: bytes) -> str:
 
 
 def install_macos() -> list[str]:
+    for app in old_apps():
+        shutil.rmtree(app)
     icns = make_icns(ICONSET)
     os.makedirs(applications_dir(), exist_ok=True)
     apps = [make_app(kind, program, terminal, icns)
@@ -350,6 +396,9 @@ def uninstall_macos() -> list[str]:
         if os.path.isdir(app) and is_ours(app):
             shutil.rmtree(app)
             removed.append(app)
+    for app in old_apps():
+        shutil.rmtree(app)
+        removed.append(app)
     return removed
 
 

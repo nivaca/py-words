@@ -73,7 +73,10 @@ class SettingsTests(InTempDir):
                  do_examples=True).save('parameters')
         s = Settings()
         messages = s.load('/nonexistent')
-        self.assertEqual(len(messages), 2)          # (both were read)
+        # both were read, and [developer] was added to the file
+        self.assertEqual(len(messages), 3)
+        self.assertTrue(any(m.startswith('Completed the configuration')
+                            for m in messages))
         self.assertTrue(s.trim_output and s.do_fixes and s.do_examples)
 
     def test_bad_config(self):
@@ -139,23 +142,66 @@ class CommandLineTests(InTempDir):
         self.assertIn('friend, ally', out)
         self.assertNotIn('amic-us', out)
 
-    def test_config_option(self):
-        out = run('--config').stdout.decode()
-        path = os.path.join(os.environ['WHITAKERS_WORDS_CONFIG'],
-                            'config.toml')
-        self.assertEqual(out, f'Created the configuration file {path}\n')
-        self.assertEqual(run('--config').stdout.decode(),
+    def test_config_is_made_at_the_first_start(self):
+        folder = tempfile.mkdtemp()
+        path = os.path.join(folder, 'py-words', 'config.toml')
+        env = dict(os.environ, WHITAKERS_WORDS_CONFIG=os.path.dirname(path))
+        command = [sys.executable, os.path.join(ROOT, 'words.py')]
+        result = subprocess.run(command + ['amo'], env=env,
+                                capture_output=True)
+        self.assertEqual(result.returncode, 0)
+        self.assertTrue(os.path.isfile(path))       # (folder made too)
+        with open(path) as f:
+            text = f.read()
+        self.assertIn('[parameters]\n', text)
+        self.assertIn('trim_output = true', text)
+        # --config shows it; a second start leaves it as it is
+        result = subprocess.run(command + ['--config'], env=env,
+                                capture_output=True)
+        self.assertEqual(result.stdout.decode(),
                          f'The configuration file is {path}\n')
-        self.assertIs(config.section('developer')['use_prefixes'], True)
+        os.utime(path, (0, 0))
+        subprocess.run(command + ['amo'], env=env, capture_output=True)
+        self.assertEqual(os.path.getmtime(path), 0)
         # the data folder can be given there
-        data = config.read()
-        data['data']['folder'] = '/nonexistent/py-words-data'
-        config.write(data)
-        result = subprocess.run([sys.executable,
-                                 os.path.join(ROOT, 'words.py'), 'amo'],
+        os.environ['WHITAKERS_WORDS_CONFIG'], old = os.path.dirname(path), \
+            os.environ['WHITAKERS_WORDS_CONFIG']
+        try:
+            data = config.read()
+            data['data']['folder'] = '/nonexistent/py-words-data'
+            config.write(data)
+        finally:
+            os.environ['WHITAKERS_WORDS_CONFIG'] = old
+        result = subprocess.run(command + ['amo'], env=env,
                                 capture_output=True)
         self.assertIn(b'/nonexistent/py-words-data', result.stderr)
-        os.remove(path)
+
+    def test_interactive_start_says_so(self):
+        folder = tempfile.mkdtemp()
+        os.environ['WHITAKERS_WORDS_CONFIG'], old = folder, \
+            os.environ['WHITAKERS_WORDS_CONFIG']
+        try:
+            messages = Settings().load('/nonexistent')
+            path = os.path.join(folder, 'config.toml')
+            self.assertEqual(messages, [
+                f'Created the configuration file {path}, with the settings '
+                'in use'])
+            self.assertEqual(Settings().load('/nonexistent'),
+                             [f'Using the settings in {path}'])
+            # a file with only the fonts (made by "Font…") is completed,
+            # keeping them
+            with open(path, 'w') as f:
+                f.write('[fonts]\ntext_size = 12\n')
+            messages = Settings(trim_output=False).load('/nonexistent')
+            self.assertEqual(messages, [
+                f'Completed the configuration file {path}, with the '
+                'settings in use'])
+            self.assertEqual(config.section('fonts'), {'text_size': 12})
+            self.assertIs(config.section('parameters')['trim_output'],
+                          False)
+            self.assertIn('use_prefixes', config.section('developer'))
+        finally:
+            os.environ['WHITAKERS_WORDS_CONFIG'] = old
 
     def test_english(self):
         out = run('-e', 'friend', '--pos', 'ADJ').stdout.decode()
@@ -181,7 +227,9 @@ class CommandLineTests(InTempDir):
         self.assertIn('py-words', out)
         self.assertIn('William Whitaker', out)
         self.assertIn('nivaca@fastmail.com', out)
-        self.assertIn('https://github.com/nivaca/py-whitaker-words', out)
+        self.assertIn('https://github.com/nivaca/py-words', out)
+        self.assertIn('Associate Professor of Literature', out)
+        self.assertIn('Universidad de los Andes, Bogotá, Colombia', out)
 
     def test_bad_data_directory(self):
         result = run('--datadir', self.tmp.name, 'rem')
@@ -231,7 +279,9 @@ class InteractiveTests(InTempDir):
         # trim_output: N; have_output_file: Enter; then a space skips
         session, out = self.repl('#', 'n', '', ' ')
         self.assertFalse(session.settings.trim_output)
-        self.assertFalse(os.path.exists(config.config_path()))
+        # (not saved: skipping the rest skips the question too)
+        self.assertNotEqual(config.section('parameters').get('trim_output'),
+                            False)
 
     def test_parameters_help_and_save(self):
         # trim_output (after ?), then the others but write_output_to_file

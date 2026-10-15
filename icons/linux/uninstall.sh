@@ -1,8 +1,8 @@
 #!/bin/sh
-# Removes the py-Whitaker Words icons and desktop entry installed by install.sh.
+# Removes the py-words icons installed by install.sh.
 set -e
 share="${XDG_DATA_HOME:-$HOME/.local/share}"
-name="py-whitaker-words"
+name="py-words"
 
 # Icons: every size under hicolor, including scalable
 if [ -d "$share/icons/hicolor" ]; then
