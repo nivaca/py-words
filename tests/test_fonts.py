@@ -150,9 +150,8 @@ class FontTests(unittest.TestCase):
             os.path.abspath(__file__))), 'data')
         app = words_gui.App(self.root, data)
         self.wait_for(app, self.root)
-        self.assertFalse(app.option_vars['do_examples'].get())
-        app.option_vars['do_examples'].set(True)
-        app.apply_options()
+        self.assertFalse(app.setting('do_examples'))
+        app.change_setting('do_examples', True)
         self.assertIs(config.section('parameters')['do_examples'], True)
         # the next window starts with it
         self.assertTrue(app.session.settings.do_examples)
@@ -161,7 +160,8 @@ class FontTests(unittest.TestCase):
         try:
             again = words_gui.App(root, data)
             self.wait_for(again, root)
-            self.assertTrue(again.option_vars['do_examples'].get())
+            self.assertTrue(again.setting('do_examples'))
+            self.assertTrue(again.session.settings.do_examples)
         finally:
             root.destroy()
             del again, root

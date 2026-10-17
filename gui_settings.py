@@ -44,7 +44,9 @@ class SettingsDialog:
     """GET(name) gives a setting's value and CHANGE(name, value) changes
     it (the window applies and saves it)."""
 
-    def __init__(self, parent, get, change, name='py-words'):
+    def __init__(self, parent, get, change, name='py-words',
+                 clear_history=None):
+        """CLEAR_HISTORY, if given, forgets the earlier searches."""
         self.get = get
         self.change = change
         self.name = name
@@ -83,6 +85,14 @@ class SettingsDialog:
         close.pack(side='right')
         ttk.Button(buttons, text='Usual settings',
                    command=self.usual).pack(side='right', padx=(0, 6))
+        if clear_history:
+            def clear():
+                if messagebox.askyesno(
+                        self.name, 'Forget the earlier searches (in the '
+                        'window and the command line)?', parent=self.win):
+                    clear_history()
+            ttk.Button(buttons, text='Clear history',
+                       command=clear).pack(side='left')
         win.bind('<Escape>', lambda e: win.destroy())
         close.focus_set()
         self.refresh()

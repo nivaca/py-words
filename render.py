@@ -54,8 +54,9 @@ class Renderer:
         self.lines: list[str] = []
 
     def describe(self, form: Form, deponent: bool = False) -> str:
-        """The analysis of a form: "GEN.PL", or "genitive plural"."""
-        if self.glosses:
+        """The analysis of a form: "GEN.PL" (with use_glosses, if there
+        are glosses), or "genitive plural"."""
+        if self.glosses and self.s.use_glosses:
             return gloss_form(form, self.glosses, deponent)
         return describe_form(form, deponent)
 

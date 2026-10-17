@@ -203,6 +203,26 @@ class CommandLineTests(InTempDir):
         finally:
             os.environ['WHITAKERS_WORDS_CONFIG'] = old
 
+    def test_glosses_or_words(self):
+        """use_glosses (on by usual) and --glosses / --no-glosses."""
+        self.assertIn('amav-isti      2SG.PRF.ACT.IND',
+                      run('amavisti').stdout.decode())
+        self.assertIn('amav-isti      2nd person singular perfect active '
+                      'indicative', run('--no-glosses', 'amavisti')
+                      .stdout.decode())
+        config_dir = os.path.join(self.tmp.name, 'config')
+        os.makedirs(config_dir)
+        with open(os.path.join(config_dir, 'config.toml'), 'w') as f:
+            f.write('[parameters]\nuse_glosses = false\n')
+        old = os.environ['WHITAKERS_WORDS_CONFIG']
+        os.environ['WHITAKERS_WORDS_CONFIG'] = config_dir
+        try:
+            self.assertIn('genitive plural', run('amicorum').stdout.decode())
+            self.assertIn('GEN.PL', run('--glosses', 'amicorum')
+                          .stdout.decode())
+        finally:
+            os.environ['WHITAKERS_WORDS_CONFIG'] = old
+
     def test_english(self):
         out = run('-e', 'friend', '--pos', 'ADJ').stdout.decode()
         self.assertIn('adjective', out)

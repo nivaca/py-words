@@ -34,6 +34,7 @@ from version import ABOUT, CREDITS
 import config
 from config import ConfigError
 from helptext import HELP
+from history import History
 from lexicon import Lexicon, default_datadir
 from settings import Settings, MODES, DEV_MODES, is_command_character
 from session import Session
@@ -205,7 +206,10 @@ class Pager:
 
 
 def repl(session: Session, ask: Ask = input,
-         write: Callable[[str], None] = None) -> None:
+         write: Callable[[str], None] = None,
+         remember: Callable[[str], None] | None = None) -> None:
+    """The interactive mode.  REMEMBER(line) is told each line typed at
+    the prompt (for the history)."""
     write = write or (lambda text: print(text, end='', flush=True))
 
     def say(text):
@@ -221,6 +225,8 @@ def repl(session: Session, ask: Ask = input,
             write('\n')
             return
         pager.reset()
+        if remember and line.strip():
+            remember(line)
         if not line.strip():
             blank += 1
             if blank >= 2:
@@ -244,6 +250,29 @@ def repl(session: Session, ask: Ask = input,
             session.process(line)
 
 
+def line_history() -> Callable[[str], None]:
+    """Line editing for input(), with the history of the searches (Up and
+    Down bring them back, also those of earlier sessions and of the
+    window).  Returns what remembers a search."""
+    history = History()
+    try:
+        import readline
+    except ImportError:                 # (no line editing: Windows)
+        return history.add
+    try:
+        readline.set_auto_history(False)    # (not the answers to # and !)
+    except AttributeError:
+        pass
+    readline.clear_history()
+    for line in history.items:
+        readline.add_history(line)
+
+    def remember(line: str):
+        history.add(line)
+        readline.add_history(line.strip())
+    return remember
+
+
 def interactive_help(s: Settings) -> str:
     return '\n'.join([
         'Type a word or a line of Latin (or, after ~E, an English word).',
@@ -253,6 +282,8 @@ def interactive_help(s: Settings) -> str:
         f'  {s.change_developer_modes_character}          change the '
         'developer modes',
         'In the parameter dialogues, ? explains each setting.',
+        'Up and Down bring back earlier searches (also those of earlier '
+        'sessions).',
         'An empty line twice, or Ctrl-D, quits.'])
 
 
@@ -309,6 +340,12 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
     parser.add_argument('-m', '--meanings-only', action='store_true',
                         default=meanings_only,
                         help='show only dictionary forms and meanings')
+    parser.add_argument('--glosses', action=argparse.BooleanOptionalAction,
+                        default=None,
+                        help='write the analyses in Leipzig glossing '
+                             'abbreviations (GEN.PL), or with --no-glosses '
+                             'in words (genitive plural); this time only '
+                             '(the setting is use_glosses)')
     parser.add_argument('--datadir', default=None,
                         help='the folder with the data files (default: '
                              '$WHITAKERS_WORDS_DATADIR, the folder in the '
@@ -316,6 +353,8 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
                              'to the program)')
     parser.add_argument('--config', action='store_true',
                         help='show where the configuration file is')
+    parser.add_argument('--clear-history', action='store_true',
+                        help='forget the earlier searches, and exit')
     parser.add_argument('--version', action=_Credits, nargs=0,
                         help='show the version and credits, and exit')
     args = parser.parse_args(argv)
@@ -326,6 +365,10 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
     if args.config:
         print(make_config(settings))
         return
+    if args.clear_history:
+        History().clear()
+        print('The history of the searches is cleared.')
+        return
     interactive = not args.words and not args.file and sys.stdin.isatty()
     lexicon = load(datadir)
 
@@ -335,17 +378,15 @@ def main(argv: list[str] | None = None, meanings_only: bool = False):
             out = open(args.output, 'w', encoding='utf-8')
         except OSError as e:
             sys.exit(f'words: cannot write {args.output}: {e.strerror}')
+    if args.glosses is not None:
+        settings.use_glosses = args.glosses
     session = Session(lexicon, settings, args.meanings_only, out.write)
     session.english = args.english
     try:
         if interactive:
             for m in messages:
                 print(m)
-            try:
-                import readline  # noqa: F401  (line editing for input())
-            except ImportError:
-                pass
-            repl(session)
+            repl(session, remember=line_history())
         elif args.words:
             words = list(args.words)
             if args.english and args.pos:

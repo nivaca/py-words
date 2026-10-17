@@ -51,6 +51,11 @@ HELP = {
     'do_examples':
         'Show an English pattern for each form ("~\'s; of ~" for a '
         'genitive), with ~ standing for the meaning.',
+    'use_glosses':
+        'Write the analyses of the forms in glossing abbreviations, as in '
+        'the Leipzig Glossing Rules (GEN.PL, 2SG.PRF.ACT.IND); if not, in '
+        'words (genitive plural, 2nd person singular perfect active '
+        'indicative).  The abbreviations are those of data/gloss.xml.',
     'do_only_meanings':
         'Show only the entries and their meanings, without the forms.',
     'do_stems_for_unknown':

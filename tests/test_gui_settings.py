@@ -68,15 +68,31 @@ class SettingsDialogTests(unittest.TestCase):
         self.toggle('do_examples')
         self.assertTrue(self.app.session.settings.do_examples)
         self.assertIs(config.section('parameters')['do_examples'], True)
-        # the window's own checkbox follows
-        self.assertTrue(self.app.option_vars['do_examples'].get())
-        # and the other way round
-        self.app.option_vars['do_examples'].set(False)
-        self.app.apply_options()
+        # a change made otherwise shows in the dialogue
+        self.app.change_setting('do_examples', False)
         self.assertFalse(self.dialog.vars['do_examples'].get())
         self.toggle('show_dictionary_line')
         self.assertIs(config.section('developer')['show_dictionary_line'],
                       True)
+
+    def test_glosses(self):
+        """Use glosses, in the dialogue, switches the analyses."""
+        app = self.app
+        self.assertTrue(self.dialog.vars['use_glosses'].get())
+        self.assertIn('GEN.PL', app.session.lookup('amicorum'))
+        self.toggle('use_glosses')
+        self.assertIn('genitive plural', app.session.lookup('amicorum'))
+
+    def test_no_checkboxes_in_the_window(self):
+        """The settings are only in the dialogue."""
+        def boxes(widget):
+            for child in widget.winfo_children():
+                if child.winfo_class() == 'TCheckbutton':
+                    yield child
+                yield from boxes(child)
+        found = [b for b in boxes(self.root)
+                 if b.winfo_toplevel() is self.root]
+        self.assertEqual(found, [])
 
     def test_dependent_settings(self):
         here = os.getcwd()
@@ -137,7 +153,7 @@ class SettingsDialogTests(unittest.TestCase):
             gui_settings.messagebox.askyesno = old
         self.assertFalse(self.app.setting('do_examples'))
         self.assertTrue(self.app.setting('trim_output'))
-        self.assertTrue(self.app.option_vars['trim_output'].get())
+        self.assertTrue(self.dialog.vars['trim_output'].get())
 
 
 if __name__ == '__main__':

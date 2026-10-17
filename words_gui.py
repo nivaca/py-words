@@ -20,20 +20,12 @@ from tkinter.scrolledtext import ScrolledText
 from config import ConfigError
 from gui_fonts import Fonts
 from gui_settings import COMMAND_LINE, SettingsDialog
+from history import History
 from lexicon import default_datadir
 from lexicon import Lexicon, DICTIONARY
 from session import Session
 from settings import MODES, Settings
 from version import ABOUT, CREDITS, NAME, URL
-
-OPTIONS = (
-    ('Trim output', 'trim_output'),
-    ('Dictionary forms', 'do_dictionary_forms'),
-    ('Examples', 'do_examples'),
-    ('Meanings only', 'do_only_meanings'),
-    ('Prefixes/suffixes', 'do_fixes'),
-    ('Tricks', 'do_tricks'),
-)
 
 class App:
     def __init__(self, root, datadir):
@@ -49,13 +41,18 @@ class App:
 
         top = ttk.Frame(root, padding=(8, 8, 8, 4))
         top.pack(fill='x')
-        self.entry = ttk.Entry(top, font=self.fonts.entry)
+        #  the box where words are typed, with the earlier searches (of
+        #  this and earlier sessions, and of the command line) in its list
+        self.history = History()
+        self.entry = ttk.Combobox(top, font=self.fonts.entry,
+                                  values=self.history.recent())
         self.entry.pack(side='left', fill='x', expand=True)
         self.entry.bind('<Return>', lambda e: self.lookup())
+        self.entry.bind('<<ComboboxSelected>>', lambda e: self.lookup())
         self.button = ttk.Button(top, text='Look up', command=self.lookup)
         self.button.pack(side='left', padx=(6, 0))
 
-        lang = ttk.Frame(root, padding=(8, 0, 8, 2))
+        lang = ttk.Frame(root, padding=(8, 0, 8, 6))
         lang.pack(fill='x')
         self.english = tk.BooleanVar(value=False)
         ttk.Radiobutton(lang, text='Latin → English', value=False,
@@ -71,16 +68,6 @@ class App:
                                                       padx=(6, 0))
         ttk.Button(lang, text='Edit dictionary…',
                    command=self.edit_dictionary).pack(side='right', padx=6)
-        opts = ttk.Frame(root, padding=(8, 0, 8, 4))
-        opts.pack(fill='x')
-        self.option_vars = {}
-        for label, name in OPTIONS:
-            var = tk.BooleanVar()
-            ttk.Checkbutton(opts, text=label, variable=var,
-                            command=self.apply_options).pack(side='left',
-                                                             padx=(0, 10))
-            self.option_vars[name] = var
-
         self.text = ScrolledText(root, wrap='word', font=self.fonts.text,
                                  padx=6, pady=6, state='disabled')
         self.text.pack(fill='both', expand=True, padx=8)
@@ -133,20 +120,9 @@ class App:
         #  the settings as saved, which the window keeps for the command
         #  line (session.settings differ in what the window cannot use)
         self.saved = saved or session.settings.copy()
-        for name, var in self.option_vars.items():
-            var.set(getattr(session.settings, name))
         self.status.config(text='Ready.')
         self.set_busy(False)
         self.entry.focus_set()
-
-    def apply_options(self):
-        """Uses the options as ticked, and keeps them in the configuration
-        file for next time."""
-        if self.session is None:
-            return
-        for name, var in self.option_vars.items():
-            if var.get() != getattr(self.saved, name):
-                self.change_setting(name, var.get())
 
     def setting(self, name):
         return getattr(self.saved, name)
@@ -164,8 +140,6 @@ class App:
                 self.saved.save(section)
             except (OSError, ConfigError) as e:
                 self.status.config(text=f'The settings were not saved: {e}')
-        if name in self.option_vars and self.option_vars[name].get() != value:
-            self.option_vars[name].set(value)
         if self.settings_window is not None:
             self.settings_window.refresh()
         if self.entry.get().strip():
@@ -180,13 +154,20 @@ class App:
             win.win.lift()
             return
         self.settings_window = SettingsDialog(
-            self.root, self.setting, self.change_setting, NAME)
+            self.root, self.setting, self.change_setting, NAME,
+            clear_history=self.clear_history)
+
+    def clear_history(self):
+        self.history.clear()
+        self.entry.configure(values=[])
 
     def lookup(self):
         line = self.entry.get().strip()
         if not line or self.session is None or \
                 str(self.button['state']) == 'disabled':
             return
+        self.history.add(line)
+        self.entry.configure(values=self.history.recent())
         self.set_busy(True)
         self.status.config(text='Looking up…')
         english = self.english.get()

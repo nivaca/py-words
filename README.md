@@ -82,8 +82,9 @@ working as long as the folder stays where it was.
 
 then delete the folder.  The program also keeps a cache, which can be
 deleted too: `~/.cache/py-words` on Linux, `~/Library/Caches/py-words` on
-macOS, `%LOCALAPPDATA%\py-words` on Windows; and the configuration file,
-if one was made (see "Settings and files").
+macOS, `%LOCALAPPDATA%\py-words` on Windows; the configuration file, if
+one was made (see "Settings and files"); and the history of the searches
+(see "Usage").
 
 What is where
 -------------
@@ -129,8 +130,10 @@ the program from the applications menu instead, see "Installation" above.
     words.py -e friend [--pos N]      English to Latin
     words.py -m ...                   dictionary forms and meanings only
                                       (the same as `meanings.py ...`)
+    words.py --no-glosses ...         analyses in words, not abbreviations
     words.py --datadir DIR ...        the data files in DIR
     words.py --config                 create/show the configuration file
+    words.py --clear-history          forget the earlier searches
     words.py --help
 
 The data files are looked for with `--datadir`, then
@@ -148,6 +151,17 @@ these:
 
 An empty line twice, or Ctrl-D, quits.  A file given with `-f` or `@` can
 also switch the language with lines `~E` and `~L`.
+
+The searches are remembered, also between sessions: in interactive mode,
+Up and Down bring them back, and in the window the box where words are
+typed lists them (Down opens the list, newest first).  The command line
+and the window share them.  They are kept, the last 1,000, in
+`$XDG_STATE_HOME/py-words/history` on Linux (usually
+`~/.local/state/py-words`), `~/Library/Application Support/py-words` on
+macOS and `%LOCALAPPDATA%\py-words` on Windows
+(`$WHITAKERS_WORDS_HISTORY` names another file; set to nothing, nothing is
+kept).  `words.py --clear-history`, or "Clear history" in the window's
+Settings, forgets them.
 
 The output
 ----------
@@ -194,8 +208,11 @@ those marked * are not among the standard Leipzig ones:
 * Numerals: CARD* cardinal numeral, ORD* ordinal numeral, DISTR distributive
   numeral, MULT* multiplicative numeral (numeral adverb)
 
-They are kept in `data/gloss.xml`, where they can be changed.  Without that
-file the analyses are written in words ("genitive plural").
+They are kept in `data/gloss.xml`, where they can be changed.  With the
+parameter `use_glosses` off ("Use glosses" in the window's Settings;
+`--no-glosses` on the command line, for one run), or without that file,
+the analyses are written in words ("genitive plural", "2nd person
+singular perfect active indicative").
 
 Settings and files
 ------------------
@@ -203,9 +220,8 @@ Settings and files
 The parameters (`#`) and developer modes (`!`) are those of the original
 program; `?` in their dialogues explains each one.  In the window,
 "Settings…" shows them all, with what each one does; a change there
-applies at once, as do the main options ticked in the window itself.  They
-are kept, with the fonts of the windows and (optionally) the data folder,
-in one configuration file, `config.toml`:
+applies at once.  They are kept, with the fonts of the windows and
+(optionally) the data folder, in one configuration file, `config.toml`:
 
 | System  | Configuration file                                         |
 |---------|------------------------------------------------------------|
@@ -356,6 +372,7 @@ How it works
 | `session.py`  | a session: language, output files                             |
 | `editor.py`   | editing the dictionary: what the two editors share            |
 | `config.py`   | the configuration file, config.toml                           |
+| `history.py`  | the history of the searches                                   |
 | `gui_fonts.py`| the fonts of the windows: zoom, the "Font…" dialogue          |
 | `gui_settings.py` | the window's "Settings…" dialogue                         |
 | `words.py`    | the command line, interactive mode and setting dialogues      |
@@ -410,6 +427,21 @@ them with `git diff`.
 Version
 -------
 
+- 1.6:
+  - The searches are remembered between sessions, and shared by the
+    command line (Up and Down in interactive mode) and the window (the
+    list of the box where words are typed).  `--clear-history`, or "Clear
+    history" in the window's Settings, forgets them.
+  - The window's options (Trim output, Examples ...) are only in the
+    Settings dialogue, which has them all.
+- 1.5:
+  - The window has a "Settings…" dialogue with every parameter and
+    developer mode of the command line, each with what it does; changes
+    apply at once and are kept in the configuration file.
+  - The new parameter `use_glosses` (on by usual) chooses between glossing
+    abbreviations and words in the analyses: "Use glosses" in the window's
+    Settings, the `#` dialogue or `--glosses` / `--no-glosses` on the
+    command line.
 - 1.4:
   - The analyses of the forms are written in glossing abbreviations, as in
     the Leipzig Glossing Rules: `GEN.PL` (was "genitive plural"),

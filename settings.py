@@ -36,8 +36,8 @@ MODES = (
     'trim_output', 'have_output_file', 'write_output_to_file',
     'do_unknowns_only', 'write_unknowns_to_file', 'ignore_unknown_names',
     'do_compounds', 'do_fixes', 'do_tricks', 'do_dictionary_forms',
-    'show_age', 'show_frequency', 'do_examples', 'do_only_meanings',
-    'do_stems_for_unknown')
+    'show_age', 'show_frequency', 'do_examples', 'use_glosses',
+    'do_only_meanings', 'do_stems_for_unknown')
 
 DEV_MODES = (
     'have_statistics_file', 'write_statistics_file', 'show_dictionary',
@@ -70,6 +70,7 @@ class Settings:
     show_age: bool = False
     show_frequency: bool = False
     do_examples: bool = False
+    use_glosses: bool = True
     do_only_meanings: bool = False
     do_stems_for_unknown: bool = False
     # Developer modes (WORD.MDV)
