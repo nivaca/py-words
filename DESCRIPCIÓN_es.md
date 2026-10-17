@@ -1,4 +1,4 @@
-# py-words 1.0: descripción
+# py-words 1.2: descripción
 
 ## Análisis
 
@@ -23,12 +23,13 @@ El punto de partida fue WORDS, el programa de William Whitaker (1936-2010), en s
 - **Configuración:** `settings.py` y `config.py`.
 - **Interfaces:** línea de órdenes (`words.py`), ventana (`words_gui.py`), editores del diccionario en ventana y en terminal, verificador de datos, conversor del formato original e instalador de accesos en el menú del sistema.
 
-**Datos.** Cuatro archivos XML, descritos por un esquema XML (`words.xsd`):
+**Datos.** Cinco archivos XML, descritos por un esquema XML (`words.xsd`):
 
 - `dictionary.xml`: 39 335 entradas.
 - `inflections.xml`: 1 797 desinencias.
 - `uniques.xml`: 79 formas irregulares.
 - `addons.xml`: 343 prefijos, sufijos y enclíticos.
+- `sources.xml`: las 26 fuentes (diccionarios, gramáticas, listas de palabras) que representan los códigos de fuente de las entradas, como el Oxford Latin Dictionary o Du Cange.
 
 Los códigos gramaticales se mantienen como en el original, para que cualquier conocedor de WORDS pueda leer las entradas.
 
@@ -36,7 +37,7 @@ Los códigos gramaticales se mantienen como en el original, para que cualquier c
 
 ## Implementación
 
-- **Lenguaje y dependencias:** está escrito en Python 3.11 o superior y usa solo la biblioteca estándar, sin paquetes externos. Son 24 archivos, unas 7 800 líneas.
+- **Lenguaje y dependencias:** está escrito en Python 3.11 o superior y usa solo la biblioteca estándar, sin paquetes externos. Son 24 archivos, unas 8 000 líneas.
 - **Recursos del lenguaje:** clases de datos inmutables con `slots`, anotaciones de tipos, `match`/`case`, f-strings y `tomllib` para la configuración.
 - **Interfaces:**
   - La ventana y el editor gráfico usan Tkinter, con fuentes ajustables y acercamiento con Ctrl y +/−.
@@ -52,7 +53,7 @@ Los códigos gramaticales se mantienen como en el original, para que cualquier c
 ## Validación
 
 - **Comparación con el original:** el rediseño se comparó con la traducción fiel sobre un corpus de 133 671 palabras: todas las raíces del diccionario, formas generadas y las entradas de prueba. El 99,2 % dio resultados idénticos. Cada diferencia restante se examinó una por una; todas resultaron ser cambios deliberados o errores del original corregidos, documentados en el README.
-- **Pruebas automáticas:** 110 en total, que se ejecutan con `python3 -m unittest discover -s tests`:
+- **Pruebas automáticas:** 124 en total, que se ejecutan con `python3 -m unittest discover -s tests`:
   - **Pruebas unitarias:** del análisis, el léxico, la configuración, la caché, el verificador, el conversor y el instalador.
   - **Pruebas de regresión:** comparan la salida completa del programa con resultados esperados y revisados, entre ellos 735 versos de la *Eneida*.
   - **Pruebas de los editores:** se manejan como lo haría un usuario, en una terminal simulada y en una ventana real.

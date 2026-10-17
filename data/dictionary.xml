@@ -162633,6 +162633,24 @@
     <stem>Lebnitic</stem>
     <meaning>family of Libini; (son of Gerson, grandson of Levi);</meaning>
   </entry>
+  <entry pos="N" decl="3 1" gender="M" kind="P" age="F" area="X" geo="X"
+    freq="D" source="U">
+    <stem>lecator</stem>
+    <stem>oris</stem>
+    <meaning>glutton, lecher, wanton person</meaning>
+  </entry>
+  <entry pos="N" decl="3 1" gender="M" kind="X" age="F" area="X" geo="X"
+    freq="D" source="U">
+    <stem>lecator</stem>
+    <stem>oris</stem>
+    <meaning>epulo, scurra, Leccator vel parasitus</meaning>
+  </entry>
+  <entry pos="N" decl="3 1" gender="M" kind="X" age="F" area="X" geo="X"
+    freq="D" source="U">
+    <stem>leccator</stem>
+    <stem>oris</stem>
+    <meaning>epulo, scurra, Leccator vel parasitus</meaning>
+  </entry>
   <entry pos="N" decl="2 1" gender="M" kind="P" age="X" area="X" geo="X"
     freq="B" source="X">
     <stem>lect</stem>

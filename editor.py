@@ -5,7 +5,9 @@ finds entries (by a Latin form, a stem, or an English word), builds new or
 corrected ones from the values of their fields (checked as the data files
 are checked), describes them as WORDS will show them, lets a word be tried
 against the edited dictionary, and saves the file (keeping a backup of the
-original as dictionary.xml.bak).
+original as dictionary.xml.bak).  `Editing` is what the two editors do with
+it: the entry in the form, applying changes, and asking before they are
+lost.
 """
 
 from __future__ import annotations
@@ -19,7 +21,7 @@ from dataclasses import replace
 import xmldata
 from words_check import Checker, inflection_decls
 from forms import principal_parts, describe_part
-from lexicon import Lexicon, DICTIONARY, INFLECTIONS
+from lexicon import Lexicon, DICTIONARY, INFLECTIONS, source_names
 from model import (Pos, Gender, Case, Comparison, NumeralSort, NounKind,
                     PronounKind, VerbKind, Age, Area, Geo, Freq, Source,
                     Entry, fold, stems_used)
@@ -55,6 +57,7 @@ FIELD_LABELS = {
 
 CODE_FIELDS = ('age', 'area', 'geo', 'freq', 'source')
 
+#  What the codes mean (those of the sources are in sources.xml)
 DESCRIPTIONS: dict[str, dict[str, str]] = {
     'gender': {'M': 'masculine', 'F': 'feminine', 'N': 'neuter',
                'C': 'common (masculine or feminine)', 'X': 'unknown'},
@@ -104,21 +107,6 @@ DESCRIPTIONS: dict[str, dict[str, str]] = {
              'C': 'common', 'D': 'lesser', 'E': 'uncommon',
              'F': 'very rare', 'I': 'only in inscriptions',
              'M': 'only in graffiti', 'N': 'only in Pliny'},
-    'source': {'X': 'general or unknown', 'B': 'Beeson, Medieval Latin',
-               'C': "Cassell's Latin Dictionary", 'D': 'Adams, Latin '
-               'Sexual Vocabulary', 'E': 'Stelten, Ecclesiastical Latin',
-               'F': 'Deferrari, St. Thomas Aquinas',
-               'G': 'Gildersleeve and Lodge, Latin Grammar',
-               'H': 'Collatinus (Ouvrard)', 'I': 'Leverett, Lexicon',
-               'J': 'Bracton, De Legibus', 'K': 'Calepinus Novus (Licoppe)',
-               'L': 'Lewis, Elementary Latin Dictionary',
-               'M': 'Latham, Medieval Word List', 'N': 'Nelson, word list',
-               'O': 'Oxford Latin Dictionary', 'P': 'Souter, Later Latin',
-               'Q': 'other dictionaries',
-               'R': 'Plater and White, Vulgate grammar',
-               'S': 'Lewis and Short', 'T': 'found in a translation',
-               'U': 'Du Cange', 'V': 'Blatt, Saxo', 'W': "Whitaker's guess",
-               'Y': 'temporary', 'Z': 'sent by a user', 'A': '(unused)'},
 }
 
 ENUMS = {'gender': Gender, 'case': Case, 'comparison': Comparison,
@@ -161,6 +149,12 @@ class Fields:
         keep = set(self.names())
         self.attrs = {k: v for k, v in self.attrs.items() if k in keep}
 
+    def snapshot(self) -> tuple:
+        """The values that make the entry, to tell whether a form was
+        changed."""
+        return (self.pos, tuple(self.attrs.get(n, '') for n in self.names()),
+                tuple(self.stems[:len(self.stem_labels())]), self.meaning)
+
     def entry(self, id: int = 0) -> Entry:
         """The entry (raises xmldata.DataError if a value is wrong)."""
         attrs = {'pos': self.pos}
@@ -195,9 +189,13 @@ class Editor:
         self.path = os.path.join(datadir, DICTIONARY)
         self.base = Lexicon.load(datadir)
         self.entries: list[Entry] = self.base.entries[:-1]     # (not esse)
+        #  the descriptions of the codes; the sources come from sources.xml
+        self.descriptions = dict(DESCRIPTIONS)
+        self.descriptions['source'] = source_names(datadir)
         self.checker = Checker(inflection_decls(
             i for i, _ in xmldata.read_inflections(
-                os.path.join(datadir, INFLECTIONS))))
+                os.path.join(datadir, INFLECTIONS))),
+            set(self.descriptions['source']) or None)
         self.dirty = False
         self._backed_up = False
         self._trial: Lexicon | None = None
@@ -211,12 +209,12 @@ class Editor:
         if name in ('decl', 'conj'):
             return self._declensions(pos)
         if name == 'kind':
-            descriptions = DESCRIPTIONS['kind ' + ('PRON' if pos == 'PACK'
-                                                   else pos)]
+            descriptions = self.descriptions['kind ' + (
+                'PRON' if pos == 'PACK' else pos)]
             return [(k.name, descriptions.get(k.name, ''))
                     for k in KINDS[Pos[pos]]]
         if name in ENUMS:
-            return [(m.name, DESCRIPTIONS.get(name, {}).get(m.name, ''))
+            return [(m.name, self.descriptions.get(name, {}).get(m.name, ''))
                     for m in ENUMS[name]]
         return []
 
@@ -339,6 +337,11 @@ class Editor:
         parts = principal_parts(entry) or entry.stems[0]
         return f'{parts}  {describe_part(entry.part)}'
 
+    @staticmethod
+    def name(entry: Entry) -> str:
+        """The entry's dictionary form: "amicus, amici"."""
+        return principal_parts(entry) or entry.stems[0]
+
     def warnings(self, entry: Entry) -> list[str]:
         return self.checker.entry_warnings(entry)
 
@@ -358,3 +361,90 @@ class Editor:
         parts = principal_parts(entry) or entry.stems[0]
         text = f'{parts}  {entry.part.pos.name}  {entry.meaning.strip()}'
         return text if len(text) <= width else text[:width - 1] + '…'
+
+
+class Editing:
+    """What the two editors (words_edit_gui.py and words_edit.py) share:
+    the entries found, the entry in the form (None for a new one), and
+    whether the form has changes that were not applied.
+
+    The editors pass the form's values as Fields and do the asking.  A
+    change counts once it is applied; saving applies the form first, and
+    leaving the entry (for another one, a new one, or to close) asks what
+    to do with changes not applied."""
+
+    def __init__(self, editor: Editor):
+        self.editor = editor
+        self.results: list[Entry] = []
+        self.current: Entry | None = None
+        self._shown: tuple | None = None    # the form as it was shown
+
+    def find(self, query: str) -> list[Entry]:
+        self.results = self.editor.search(query)
+        return self.results
+
+    def start(self, entry: Entry | None, fields: Fields) -> None:
+        """The form now shows ENTRY (None: a new entry) as FIELDS."""
+        self.current = entry
+        self._shown = fields.snapshot()
+
+    def pending(self, fields: Fields) -> bool:
+        """Whether the form (FIELDS) has changes that were not applied."""
+        return fields.snapshot() != self._shown
+
+    def label(self) -> str:
+        """The entry in the form, for questions: '“amicus, amici”' or
+        'the new entry'."""
+        if self.current is None:
+            return 'the new entry'
+        return f'“{self.editor.name(self.current)}”'
+
+    def apply(self, fields: Fields) -> tuple[Entry, str]:
+        """Puts FIELDS into the dictionary, as a change to the entry in the
+        form or as a new entry.  Returns the entry and 'Added' or
+        'Changed'; raises xmldata.DataError if a value is wrong."""
+        entry = fields.entry()
+        old = self.current
+        if old is None:
+            self.editor.add(entry)
+            done = 'Added'
+        else:
+            self.editor.replace(old, entry)
+            done = 'Changed'
+        self.results = [entry] + [e for e in self.results
+                                  if e is not old and e is not entry]
+        self.start(entry, fields)
+        return entry, done
+
+    def leave(self, fields: Fields, ask) -> bool:
+        """Before the form shows something else: whether it may.  If it
+        has changes, ASK(label) decides: True applies them, False leaves
+        them out, None stays.  Raises xmldata.DataError if they are to be
+        applied but cannot be."""
+        if not self.pending(fields):
+            return True
+        answer = ask(self.label())
+        if answer is None:
+            return False
+        if answer:
+            self.apply(fields)
+        return True
+
+    def delete(self) -> Entry:
+        """Takes the entry in the form out of the dictionary."""
+        entry = self.current
+        if entry is None:
+            raise ValueError('there is no entry to delete')
+        self.editor.delete(entry)
+        self.results = [e for e in self.results if e is not entry]
+        self.current = None
+        return entry
+
+    def save(self, fields: Fields) -> tuple[Entry, str] | None:
+        """Applies the form, if it has changes, and writes the dictionary.
+        Returns what apply returned, if the form was applied.  Raises
+        xmldata.DataError (and nothing is written) if the form has an
+        error, OSError if the file cannot be written."""
+        applied = self.apply(fields) if self.pending(fields) else None
+        self.editor.save()
+        return applied

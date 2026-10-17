@@ -116,7 +116,11 @@ class FontTests(unittest.TestCase):
 
     def test_dialog(self):
         fonts = self.gui_fonts.Fonts.of(self.root)
-        self.root.update()      # (a dialogue shows only over a shown window)
+        for _ in range(200):    # (a dialogue shows only over a shown window)
+            self.root.update()
+            if self.root.winfo_ismapped():
+                break
+            self.root.after(20)
         win = fonts.dialog(self.root)
         for _ in range(200):            # (until the window manager shows it)
             self.root.update()
@@ -124,9 +128,11 @@ class FontTests(unittest.TestCase):
                     win.winfo_height() >= win.winfo_reqheight() - 2:
                 break
             self.root.after(20)
-        # it opens big enough for its contents
-        self.assertGreaterEqual(win.winfo_height(),
-                                win.winfo_reqheight() - 2)
+        # it opens big enough for its contents (if the window manager shows
+        # it: some open new windows minimised)
+        if win.winfo_ismapped():
+            self.assertGreaterEqual(win.winfo_height(),
+                                    win.winfo_reqheight() - 2)
         self.assertIn(fonts.values['text_family'], fonts.fixed_families())
         win.variables['text_size'].set('15')
         self.assertEqual(fonts.text.cget('size'), 15)

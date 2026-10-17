@@ -230,7 +230,18 @@ The data files
 | `inflections.xml` | the inflectional endings                   |
 | `uniques.xml`     | irregular forms not built from a stem      |
 | `addons.xml`      | prefixes, suffixes and enclitics (tackons) |
+| `sources.xml`     | the names of the sources (dictionaries ...) |
 | `special.xml`     | (optional) a second, special dictionary    |
+
+Each entry names its source with a one-letter code (`source="O"`);
+`sources.xml` says what each code stands for, e.g.
+
+    <source code="O" name="Oxford Latin Dictionary"/>
+    <source code="U" name="Du Cange"/>
+
+The editors show these names when a source is chosen, and `words_check.py`
+warns about entries whose code is not listed.  To add a source, give it an
+unused letter there.
 
 `words.xsd` describes their format, so an XML editor can check them as you
 type.  The grammatical codes are those of the original files; an entry
@@ -274,8 +285,12 @@ the bottom; on Windows it needs the windows-curses package).  In both:
   declension, masculine) and any problem; "try a word" shows what WORDS
   makes of a word with the dictionary as edited.
 
-Nothing is written until you save.  The first save in a session keeps the
-original file as `dictionary.xml.bak`.
+A change to an entry is put into the dictionary with "Apply changes" (F3
+in the terminal); "Save" (F2) also applies the entry shown before writing
+the file, and choosing another entry, starting a new one or closing the
+editor while the entry shown has changes not applied asks whether to apply
+them.  Nothing is written until you save.  The first save in a session
+keeps the original file as `dictionary.xml.bak`.
 
 The files can also be edited by hand: copy the entry of a similar word in
 `data/dictionary.xml` and edit it, then run
@@ -361,6 +376,23 @@ regenerate the expected files with `UPDATE_GOLDEN=1` and review them with
 Version
 -------
 
+- 1.2:
+  - The two dictionary editors share one implementation of editing an
+    entry (applying changes, asking before they are lost, saving), in
+    `editor.py`, so that they behave the same.
+  - Fixed: after "Apply changes", the window editor listed the entry twice
+    (old and new); its button did not say "Add to the dictionary" on a new
+    entry; and deleting from the list in the terminal editor did not ask
+    about changes not applied to the entry being edited.
+- 1.1:
+  - The dictionary editors no longer lose changes: "Save" (F2) applies the
+    entry being edited before writing the file, and choosing another
+    entry, starting a new one or closing the editor while the entry has
+    changes not applied asks whether to apply them.
+  - The names of the sources (Oxford Latin Dictionary, Du Cange ...) are
+    kept in `data/sources.xml`, where they can be changed or added to.
+    `words_check.py` checks the file, and warns about entries whose source
+    code is not listed there.
 - 1.0: first public release.
 
 The Ada version

@@ -32,12 +32,12 @@ class CheckerTests(unittest.TestCase):
     def tearDownClass(cls):
         cls.tmp.cleanup()
 
-    def problems(self, body, root='dictionary'):
+    def problems(self, body, root='dictionary', sources=None):
         path = os.path.join(self.tmp.name, 'test.xml')
         with open(path, 'w', encoding='utf-8') as f:
             f.write(f'<?xml version="1.0" encoding="UTF-8"?>\n<{root}>\n'
                     f'{body}\n</{root}>\n')
-        checker = check.Checker(self.decls)
+        checker = check.Checker(self.decls, sources)
         checker.check_file(path)
         return [item.split(': ', 2)[1:] for item in checker.out]
 
@@ -48,12 +48,32 @@ class CheckerTests(unittest.TestCase):
         self.assertEqual(self.problems(GOOD), [])
 
     def test_real_data_is_clean(self):
-        checker = check.Checker(self.decls)
+        checker = check.Checker(self.decls, set(
+            check.lexicon.source_names(DATA)))
         for name in ('dictionary.xml', 'inflections.xml', 'uniques.xml',
-                     'addons.xml'):
+                     'addons.xml', 'sources.xml'):
             checker.check_file(os.path.join(DATA, name))
         self.assertEqual((checker.errors, checker.warnings), (0, 0),
                          checker.out[:5])
+
+    def test_sources(self):
+        good = '<source code="O" name="Oxford Latin Dictionary"/>'
+        self.assertEqual(self.problems(good, 'sources'), [])
+        for bad, says in (
+                ('<source code="O" name=" "/>', 'has no name'),
+                ('<source code="OX" name="two letters"/>', 'is not one of'),
+                ('<source name="no code"/>', 'needs a code attribute'),
+                (good + '\n' + good, 'is already on line 3')):
+            [(kind, message)] = self.problems(bad, 'sources')
+            self.assertEqual(kind, 'error')
+            self.assertIn(says, message)
+
+    def test_unlisted_source(self):
+        [(kind, message)] = self.problems(GOOD, sources={'X', 'O'})
+        self.assertEqual(kind, 'warning')
+        self.assertEqual(message,
+                         'the source code W is not listed in sources.xml')
+        self.assertEqual(self.problems(GOOD, sources={'W'}), [])
 
     def test_malformed_xml(self):
         self.assertEqual(self.kinds(GOOD.replace('</entry>', '')), ['error'])

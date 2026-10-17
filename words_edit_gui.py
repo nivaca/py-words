@@ -5,8 +5,10 @@ Find an entry (by a Latin form such as "amicorum", a stem, or an English
 word), correct it, add a new one (from scratch, or as a copy of the one
 shown), or delete it.  The preview shows how WORDS will show the entry and
 any problems; "Try" shows what WORDS makes of a word with the dictionary as
-edited.  Nothing is written until "Save"; the first save keeps the original
-file as dictionary.xml.bak.
+edited.  A change counts once it is applied ("Apply changes"); "Save"
+applies the entry shown and writes the file, and leaving an entry with
+changes not applied asks what to do with them.  Nothing is written until
+"Save"; the first save keeps the original file as dictionary.xml.bak.
 """
 
 from version import check_python
@@ -18,7 +20,7 @@ from tkinter import messagebox, ttk
 
 from settings import ensure_config
 from lexicon import default_datadir
-from editor import Editor, Fields, FIELD_LABELS, POS_CHOICES
+from editor import Editor, Editing, Fields, FIELD_LABELS, POS_CHOICES
 from gui_fonts import Fonts
 from lexicon import DICTIONARY
 from version import NAME
@@ -38,10 +40,9 @@ def _value(shown):
 class EditorWindow:
     def __init__(self, master, datadir, on_save=None):
         self.editor = Editor(datadir)
+        self.editing = Editing(self.editor)
         self.on_save = on_save
-        self.current = None             # the entry shown, or None if new
         self.fields = Fields()
-        self.results = []
         self.win = win = tk.Toplevel(master) if master else tk.Tk()
         win.title(f'{NAME}: dictionary editor')
         win.geometry('1080x720')
@@ -204,6 +205,9 @@ class EditorWindow:
         """Updates the preview and the problems."""
         if 'meaning' not in self.vars:
             return
+        self.apply_button.config(
+            text='Add to the dictionary' if self.current is None
+            else 'Apply changes')
         self.read_form()
         try:
             entry = self.fields.entry()
@@ -216,14 +220,25 @@ class EditorWindow:
         warnings = self.editor.warnings(entry)
         self.problems.config(text='\n'.join('⚠ ' + w for w in warnings))
         self.apply_button.state(['!disabled'])
-        self.apply_button.config(
-            text='Add to the dictionary' if self.current is None
-            else 'Apply changes')
 
     # Actions -----------------------------------------------------------------
 
+    @property
+    def current(self):
+        """The entry shown, or None for a new one."""
+        return self.editing.current
+
+    @property
+    def results(self):
+        return self.editing.results
+
+    def values(self) -> Fields:
+        """The values in the form."""
+        self.read_form()
+        return self.fields
+
     def find(self):
-        self.results = self.editor.search(self.query.get())
+        self.editing.find(self.query.get())
         self.listbox.delete(0, 'end')
         for e in self.results:
             self.listbox.insert('end', self.editor.summary(e, 80))
@@ -235,49 +250,81 @@ class EditorWindow:
 
     def select(self):
         sel = self.listbox.curselection()
-        if sel:
-            self.show(self.results[sel[0]])
+        if not sel or self.results[sel[0]] is self.current:
+            return
+        entry = self.results[sel[0]]
+        if not self.leave():                # stay on the entry shown
+            self.refresh_list()
+            return
+        self.show(entry)
 
     def show(self, entry):
-        self.current = entry
         self.fields = Fields.of(entry)
         self.build_form()
+        self.showing(entry)
 
-    def new(self):
-        self.current = None
+    def showing(self, entry):
+        """The form now shows ENTRY (None: a new one)."""
+        self.editing.start(entry, self.values())
+        self.changed()                  # (the button says Add or Apply)
+
+    def new(self, ask=True):
+        """An empty form, for a new entry (ASK: what to do with changes
+        not applied)."""
+        if ask and not self.leave():
+            return
         self.fields = Fields('N', {'decl': '', 'gender': '', 'kind': 'X'})
         self.listbox.selection_clear(0, 'end')
         self.build_form()
+        self.showing(None)
 
     def copy(self):
         """A new entry with the values of the one shown."""
         self.read_form()
-        self.current = None
         self.listbox.selection_clear(0, 'end')
         self.build_form()
+        self.showing(None)
 
     def revert(self):
         if self.current is not None:
             self.show(self.current)
         else:
-            self.new()
+            self.new(ask=False)
 
-    def apply(self):
-        self.read_form()
+    def pending(self) -> bool:
+        """Whether the form has changes that were not applied."""
+        return 'meaning' in self.vars and self.editing.pending(self.values())
+
+    def leave(self) -> bool:
+        """Before the form shows something else: asks what to do with
+        changes not applied.  False: stay."""
+        if 'meaning' not in self.vars:
+            return True
+
+        def ask(what):
+            return messagebox.askyesnocancel(
+                NAME, f'Apply the changes to {what} first?\n\n'
+                'No leaves them out; Cancel stays on the entry.',
+                parent=self.win)
         try:
-            entry = self.fields.entry()
+            return self.editing.leave(self.values(), ask)
         except DataError as e:
             messagebox.showerror(NAME, e.message, parent=self.win)
-            return
-        if self.current is None:
-            self.editor.add(entry)
-            done = 'Added'
-        else:
-            self.editor.replace(self.current, entry)
-            done = 'Changed'
-        self.current = entry
-        self.results = [entry] + [e for e in self.results
-                                  if e is not entry]
+            return False
+        finally:
+            self.refresh_list()
+
+    def apply(self) -> bool:
+        """Puts the form into the dictionary; False if it has an error."""
+        try:
+            entry, done = self.editing.apply(self.values())
+        except DataError as e:
+            messagebox.showerror(NAME, e.message, parent=self.win)
+            return False
+        self.applied(entry, done)
+        return True
+
+    def applied(self, entry, done):
         self.refresh_list()
         self.update_status(f'{done}: {self.editor.summary(entry, 60)}')
         self.changed()
@@ -289,10 +336,9 @@ class EditorWindow:
                 NAME, 'Delete this entry?\n\n' +
                 self.editor.summary(self.current, 90), parent=self.win):
             return
-        self.editor.delete(self.current)
-        self.results = [e for e in self.results if e is not self.current]
+        self.editing.delete()
         self.refresh_list()
-        self.new()
+        self.new(ask=False)
         self.update_status('Deleted')
 
     def refresh_list(self):
@@ -315,12 +361,19 @@ class EditorWindow:
         self.output.config(state='disabled')
 
     def save(self):
+        """Applies the entry shown, if it has changes, and saves."""
         try:
-            self.editor.save()
+            applied = self.editing.save(self.values())
+        except DataError as e:
+            messagebox.showerror(NAME, e.message, parent=self.win)
+            self.update_status('Not saved: the entry shown has an error')
+            return
         except OSError as e:
             messagebox.showerror(NAME, f'Cannot save: {e}',
                                  parent=self.win)
             return
+        if applied:
+            self.applied(*applied)
         self.update_status(f'Saved {self.editor.path}')
         if self.on_save:
             self.on_save()
@@ -330,6 +383,8 @@ class EditorWindow:
         self.status.config(text=message + unsaved)
 
     def close(self):
+        if not self.leave():
+            return
         if self.editor.dirty:
             answer = messagebox.askyesnocancel(
                 NAME, 'Save the changes to the dictionary?', parent=self.win)

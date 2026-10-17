@@ -40,11 +40,21 @@ SPECIAL = 'special.xml'
 INFLECTIONS = 'inflections.xml'
 UNIQUES = 'uniques.xml'
 ADDONS = 'addons.xml'
-DATA_FILES = (DICTIONARY, SPECIAL, INFLECTIONS, UNIQUES, ADDONS)
+SOURCES = 'sources.xml'
+DATA_FILES = (DICTIONARY, SPECIAL, INFLECTIONS, UNIQUES, ADDONS, SOURCES)
 
 #  The program's folder, and the data folder in it
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(HERE, 'data')
+
+
+def source_names(datadir: str) -> dict[str, str]:
+    """{source code: name}, from sources.xml in DATADIR ({} if there is
+    none; raises xmldata.DataError if it is wrong)."""
+    path = os.path.join(datadir, SOURCES)
+    if not os.path.isfile(path):
+        return {}
+    return dict(source for source, _ in xmldata.read_sources(path))
 
 
 def default_datadir() -> str:

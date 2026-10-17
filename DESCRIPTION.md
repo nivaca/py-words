@@ -42,9 +42,10 @@ converted to XML:
 | Original      | Now               | Contents                          |
 |---------------|-------------------|-----------------------------------|
 | DICTLINE.GEN  | `dictionary.xml`  | 39,335 entries                    |
-| INFLECTS.LAT  | `inflections.xml` | 1,798 inflectional endings        |
+| INFLECTS.LAT  | `inflections.xml` | 1,797 inflectional endings        |
 | UNIQUES.LAT   | `uniques.xml`     | 79 irregular forms                |
 | ADDONS.LAT    | `addons.xml`      | prefixes, suffixes and enclitics  |
+| (in the code) | `sources.xml`     | the 26 source codes and the dictionaries they stand for |
 
 The grammatical codes are written as in the original files (`N`, `V`,
 `NOM`, `PRES`, declensions as "2 1" ...), so an entry can be read by

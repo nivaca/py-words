@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- The format of the WORDS data files: dictionary.xml (and special.xml),
-     inflections.xml, uniques.xml and addons.xml.
+     inflections.xml, uniques.xml, addons.xml and sources.xml.
 
      Which attributes an element needs depends on its part of speech (pos),
      which XML Schema 1.0 cannot express: here they are all optional, and
      each is documented with the parts of speech that use it.  The checker
-     (python -m py_whitaker_words.check) checks this too, as WORDS does when
+     (python3 words_check.py) checks this too, as WORDS does when
      it reads the files.  The order of the elements matters. -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
@@ -559,6 +559,35 @@
         </xs:element>
       </xs:choice>
     </xs:complexType>
+  </xs:element>
+
+  <!-- sources.xml -->
+
+  <xs:element name="sources">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="source" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation><xs:documentation>What a source code (the source
+            attribute of entries and irregular forms) stands for: a
+            dictionary, grammar or word list.  Each code is listed once.
+          </xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:attribute name="code" type="source" use="required"/>
+            <xs:attribute name="name" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:minLength value="1"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:unique name="oneCodeOnce">
+      <xs:selector xpath="source"/>
+      <xs:field xpath="@code"/>
+    </xs:unique>
   </xs:element>
 
 </xs:schema>

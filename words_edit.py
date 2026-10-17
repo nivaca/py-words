@@ -10,11 +10,13 @@ python3 words_edit.py
     F3 / Ctrl-A  apply the changes (or add the new entry)
     F4 / Ctrl-N  new entry           F5 / Ctrl-D  new entry like this one
     F6 / Ctrl-T  try a word          F8 / Ctrl-K  delete the entry
-    F2 / Ctrl-S  save the file       F10 / Ctrl-Q quit
+    F2 / Ctrl-S  save the file (applying the changes first)
+    F10 / Ctrl-Q quit
     Tab          next area           Ctrl-F       find
 
 Nothing is written until the file is saved; the first save keeps the
-original as dictionary.xml.bak.  (On Windows, curses needs the
+original as dictionary.xml.bak.  Leaving an entry whose changes were not
+applied asks what to do with them.  (On Windows, curses needs the
 windows-curses package; the window editor, words_edit_gui.py, needs nothing.)
 """
 
@@ -27,7 +29,8 @@ import sys
 
 from settings import ensure_config
 from lexicon import default_datadir
-from editor import Editor, Fields, FIELD_LABELS, POS_CHOICES, CODE_FIELDS
+from editor import (Editor, Editing, Fields, FIELD_LABELS, POS_CHOICES,
+                    CODE_FIELDS)
 from lexicon import DICTIONARY
 from version import NAME
 from xmldata import DataError
@@ -105,17 +108,26 @@ class TUI:
     def __init__(self, screen, datadir):
         self.scr = screen
         self.editor = Editor(datadir)
+        self.editing = Editing(self.editor)
         self.query = Field('find', 'Find', '')
-        self.results = []
         self.selected = 0
         self.list_top = 0
         self.focus = 'find'             # 'find', 'list' or 'form'
         self.row = 0                    # the field with the focus
-        self.current = None             # the entry in the form (None: new)
         self.fields = []
         self.message = 'Type a Latin form, a stem or an English word, ' \
             'and Enter.'
         self.load(Fields('N', {'kind': 'X'}))
+        self.editing.start(None, self.form_values())
+
+    @property
+    def current(self):
+        """The entry in the form, or None for a new one."""
+        return self.editing.current
+
+    @property
+    def results(self):
+        return self.editing.results
 
     # The form --------------------------------------------------------------
 
@@ -144,6 +156,25 @@ class TUI:
             else:
                 f.attrs[field.key] = field.value.strip()
         return f
+
+    def pending(self) -> bool:
+        """Whether the form has changes that were not applied."""
+        return self.editing.pending(self.form_values())
+
+    def leave(self) -> bool:
+        """Before the form shows something else: asks what to do with
+        changes not applied.  False: stay."""
+        def ask(what):
+            answer = self.ask(f'{what[0].upper()}{what[1:]} has changes '
+                              'that are not applied.  Apply them? '
+                              '(y/n, Esc to stay)')
+            return None if answer is None else \
+                answer.strip().lower().startswith('y')
+        try:
+            return self.editing.leave(self.form_values(), ask)
+        except DataError as e:
+            self.message = 'Not applied: ' + e.message
+            return False
 
     def entry(self):
         """The entry in the form, or the error message."""
@@ -322,7 +353,7 @@ class TUI:
     # Actions ---------------------------------------------------------------
 
     def find(self):
-        self.results = self.editor.search(self.query.value)
+        self.editing.find(self.query.value)
         self.selected = self.list_top = 0
         if self.results:
             self.focus = 'list'
@@ -331,32 +362,35 @@ class TUI:
             self.message = 'Nothing found.'
 
     def edit(self, entry):
-        self.current = entry
-        self.load(Fields.of(entry))
-        self.focus, self.row = 'form', 1
-        self.message = 'Editing.  F3 applies the changes.'
+        if entry is not self.current:
+            if not self.leave():
+                return
+            self.load(Fields.of(entry))
+            self.editing.start(entry, self.form_values())
+            self.row = 1
+        self.focus = 'form'
+        self.message = 'Editing.  F3 applies the changes (F2 also saves).'
 
-    def new(self, like=False):
+    def new(self, like=False, ask=True):
+        if not like and ask and not self.leave():
+            return
         values = self.form_values() if like else Fields('N', {'kind': 'X'})
-        self.current = None
         self.load(values)
+        self.editing.start(None, self.form_values())
         self.focus, self.row = 'form', 1
         self.message = 'New entry.  F3 adds it to the dictionary.'
 
-    def apply(self):
-        entry, error = self.entry()
-        if entry is None:
-            self.message = 'Not applied: ' + error
-            return
-        if self.current is None:
-            self.editor.add(entry)
-            done = 'Added'
-        else:
-            self.editor.replace(self.current, entry)
-            done = 'Changed'
-        self.results = [entry] + [e for e in self.results
-                                  if e is not self.current]
-        self.current = entry
+    def apply(self) -> bool:
+        """Puts the form into the dictionary; False if it has an error."""
+        try:
+            entry, done = self.editing.apply(self.form_values())
+        except DataError as e:
+            self.message = 'Not applied: ' + e.message
+            return False
+        self.applied(entry, done)
+        return True
+
+    def applied(self, entry, done):
         self.selected = 0
         self.message = (f'{done}: {self.editor.summary(entry, 50)}.  '
                         'F2 saves the file.')
@@ -368,10 +402,9 @@ class TUI:
         if not self.confirm(
                 f'Delete {self.editor.summary(self.current, 50)}?'):
             return
-        self.editor.delete(self.current)
-        self.results = [e for e in self.results if e is not self.current]
+        self.editing.delete()
         self.selected = min(self.selected, max(0, len(self.results) - 1))
-        self.new()
+        self.new(ask=False)
         self.message = 'Deleted.  F2 saves the file.'
 
     def try_word(self):
@@ -382,14 +415,23 @@ class TUI:
                        text.rstrip('\n').split('\n'))
 
     def save(self):
+        """Applies the form, if it has changes, and saves."""
         try:
-            self.editor.save()
-            self.message = (f'Saved {self.editor.path} (the original is in '
-                            f'{DICTIONARY}.bak).')
+            applied = self.editing.save(self.form_values())
+        except DataError as e:
+            self.message = 'Not saved: ' + e.message
+            return
         except OSError as e:
             self.message = f'Cannot save: {e}'
+            return
+        if applied:
+            self.applied(*applied)
+        self.message = (f'Saved {self.editor.path} (the original is in '
+                        f'{DICTIONARY}.bak).')
 
     def quit(self):
+        if not self.leave():
+            return False
         if self.editor.dirty:
             answer = self.ask('Save the changes before quitting? '
                               '(y/n, Esc to stay)')
@@ -456,8 +498,10 @@ class TUI:
         elif code in ENTER:
             self.edit(self.results[self.selected])
         elif code == curses.KEY_DC:
-            self.current = self.results[self.selected]
-            self.delete()
+            entry = self.results[self.selected]
+            self.edit(entry)            # (asks about changes not applied)
+            if self.current is entry:
+                self.delete()
 
     def key_form(self, ch, code):
         f = self.fields[self.row]

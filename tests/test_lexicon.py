@@ -17,7 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 DATA = os.path.join(ROOT, 'data')
 DATA_FILES = ('dictionary.xml', 'inflections.xml', 'uniques.xml',
-              'addons.xml')
+              'addons.xml', 'sources.xml')
 
 
 def summary(lex):
@@ -54,6 +54,12 @@ class CacheTests(unittest.TestCase):
         else:
             os.environ['WHITAKERS_WORDS_CACHE'] = self.old
         self.tmp.cleanup()
+
+    @property
+    def entries(self):
+        """The entries of the dictionary, with esse (which is built in)."""
+        return len(xmldata.read_dictionary(
+            os.path.join(self.data, 'dictionary.xml'))) + 1
 
     def cached(self, what):
         return [n for n in os.listdir(self.cache) if n.startswith(what)]
@@ -100,12 +106,14 @@ class CacheTests(unittest.TestCase):
         path = os.path.join(self.cache, self.cached('lexicon')[0])
         with open(path, 'wb') as f:
             f.write(b'not a pickle')
-        self.assertEqual(len(Lexicon.load(self.data).entries), 39336)
+        self.assertEqual(len(Lexicon.load(self.data).entries),
+                         self.entries)
 
     def test_no_cache_where_it_cannot_be_written(self):
         with open(self.cache, 'w'):             # a file, not a folder
             pass
-        self.assertEqual(len(Lexicon.load(self.data).entries), 39336)
+        self.assertEqual(len(Lexicon.load(self.data).entries),
+                         self.entries)
 
     def test_no_cache_if_switched_off(self):
         os.environ['WHITAKERS_WORDS_CACHE'] = ''

@@ -4,6 +4,7 @@
     inflections.xml  <inflections> of <inflection>
     uniques.xml      <uniques> of <unique>
     addons.xml       <addons> of <prefix>, <suffix> and <tackon>
+    sources.xml      <sources> of <source>: the names of the source codes
 
 words.xsd describes them.  Grammatical codes are written as in the
 original WORDS files (N, V, NOM, PRES, ...), declensions and conjugations
@@ -457,6 +458,27 @@ def read_addons(path: str, errors=None):
     return _read(path, 'addons', errors, addon)
 
 
+def read_sources(path: str, errors=None) -> list[tuple[tuple[str, str],
+                                                        int]]:
+    """The sources that the source codes of the entries stand for: a list
+    of ((code, name), line)."""
+    seen = {}
+
+    def source(r: _Reader, n: int) -> tuple[str, str]:
+        _expect(r, 'source')
+        code = r.enum('code', Source).name
+        name = r.raw('name').strip()
+        r.done()
+        r.children({})
+        if not name:
+            r.fail(f'the source {code} has no name')
+        if code in seen:
+            r.fail(f'the source {code} is already on line {seen[code]}')
+        seen[code] = r.el.line
+        return code, name
+    return _read(path, 'sources', errors, source)
+
+
 def _target(path: str, el: _Element) -> Part:
     r = _Reader(path, el)
     if el.children or el.content.strip():
@@ -504,6 +526,8 @@ HEADERS = {
     'uniques': 'Irregular forms that are not built from a stem and an '
                'ending. See words.xsd.',
     'addons': 'Prefixes, suffixes and enclitics (tackons). See words.xsd.',
+    'sources': 'The sources named by the source codes of the entries. See '
+               'words.xsd.',
 }
 
 

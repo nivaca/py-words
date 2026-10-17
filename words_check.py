@@ -4,14 +4,16 @@
     python3 words_check.py [FILE ...]
 
 With no FILE, checks the data files in the data directory: dictionary.xml
-(and special.xml, if there is one), inflections.xml, uniques.xml and
-addons.xml.  Each problem is reported as FILE:LINE: error|warning: message.
+(and special.xml, if there is one), inflections.xml, uniques.xml,
+addons.xml and sources.xml.  Each problem is reported as
+FILE:LINE: error|warning: message.
 
 Errors are elements WORDS cannot read: malformed XML, unknown or missing
 codes, stems with characters other than letters, and so on.  WORDS stops
 at the first of them.  Warnings are dictionary entries that load but
 probably do not do what was meant, such as a declension with no endings in
-inflections.xml, or a missing stem.
+inflections.xml, a missing stem, or a source code not listed in
+sources.xml.
 
 The exit status is 1 if there are errors (or warnings, with --strict).
 """
@@ -47,8 +49,11 @@ def inflection_decls(inflections):
 
 
 class Checker:
-    def __init__(self, decls):
+    def __init__(self, decls, sources: set[str] | None = None):
+        """DECLS: see inflection_decls; SOURCES: the source codes in
+        sources.xml (None: not checked)."""
         self.decls = decls
+        self.sources = sources
         self.errors = 0
         self.warnings = 0
         self.out = []
@@ -74,11 +79,13 @@ class Checker:
                 xmldata.read_uniques(path, errors)
             elif root == 'addons':
                 xmldata.read_addons(path, errors)
+            elif root == 'sources':
+                xmldata.read_sources(path, errors)
             else:
                 errors.append(xmldata.DataError(
                     path, 1, f'<{root}> is not a WORDS data file (the root '
-                    'must be <dictionary>, <inflections>, <uniques> or '
-                    '<addons>)'))
+                    'must be <dictionary>, <inflections>, <uniques>, '
+                    '<addons> or <sources>)'))
         except xmldata.DataError as e:
             errors.append(e)            # the file could not be parsed
         for e in errors:
@@ -118,6 +125,10 @@ class Checker:
                            'does not exist)')
         if all(st in ('', 'zzz') for st in stems[:max(used, 1)]):
             out.append('no usable stem: no form of this word can be found')
+        source = entry.codes.source.name
+        if self.sources is not None and source not in self.sources:
+            out.append(f'the source code {source} is not listed in '
+                       f'{lexicon.SOURCES}')
         if part.pos in INFLECTED_AS:
             ok = any(part.decl.fits(d)
                      for p in INFLECTED_AS[part.pos]
@@ -178,7 +189,11 @@ def main(argv=None):
             i for i, _ in xmldata.read_inflections(inflections, []))
     except xmldata.DataError as e:
         sys.exit(str(e))
-    checker = Checker(decls)
+    try:
+        sources = set(lexicon.source_names(datadir)) or None
+    except xmldata.DataError:
+        sources = None                  # (reported when it is checked)
+    checker = Checker(decls, sources)
     for path in files:
         if not os.path.isfile(path):
             sys.exit(f'cannot find {path}')
