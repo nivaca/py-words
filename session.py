@@ -101,8 +101,8 @@ class Session:
                 self._unknown(result.word, line)
                 if self.settings.do_stems_for_unknown:
                     near = self.lexicon.neighbours(result.word)
-            out.append(Renderer(self.settings, self.meanings_only).word(
-                result, near))
+            out.append(Renderer(self.settings, self.meanings_only,
+                                self.lexicon.glosses).word(result, near))
         return '\n'.join(t for t in out if t)
 
     def lookup_english(self, line: str) -> str:

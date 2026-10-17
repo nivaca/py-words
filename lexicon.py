@@ -41,7 +41,9 @@ INFLECTIONS = 'inflections.xml'
 UNIQUES = 'uniques.xml'
 ADDONS = 'addons.xml'
 SOURCES = 'sources.xml'
-DATA_FILES = (DICTIONARY, SPECIAL, INFLECTIONS, UNIQUES, ADDONS, SOURCES)
+GLOSSES = 'gloss.xml'
+DATA_FILES = (DICTIONARY, SPECIAL, INFLECTIONS, UNIQUES, ADDONS, SOURCES,
+              GLOSSES)
 
 #  The program's folder, and the data folder in it
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -130,6 +132,10 @@ class Lexicon:
     suffixes: list[Suffix] = field(default_factory=list)
     tackons: list[Tackon] = field(default_factory=list)
     packons: list[Tackon] = field(default_factory=list)
+    #  the abbreviations of the analyses, from gloss.xml: {(category,
+    #  code): abbreviation}, as ('case', 'GEN'): 'GEN' ({}: none, and the
+    #  analyses are in words)
+    glosses: dict[tuple[str, str], str] = field(default_factory=dict)
     _english: object | None = None
     _cache: _Cache | None = None
 
@@ -167,6 +173,9 @@ class Lexicon:
                 lex.uniques.setdefault(fold(u.word), []).insert(0, u)
         if os.path.isfile(path(ADDONS)):
             lex._sort_addons([a for a, _ in xmldata.read_addons(path(ADDONS))])
+        if os.path.isfile(path(GLOSSES)):
+            lex.glosses = {(g.category, g.code): g.abbreviation
+                           for g, _ in xmldata.read_glosses(path(GLOSSES))}
         return lex
 
     @property

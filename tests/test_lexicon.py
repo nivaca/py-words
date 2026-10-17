@@ -17,7 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 DATA = os.path.join(ROOT, 'data')
 DATA_FILES = ('dictionary.xml', 'inflections.xml', 'uniques.xml',
-              'addons.xml', 'sources.xml')
+              'addons.xml', 'sources.xml', 'gloss.xml')
 
 
 def summary(lex):

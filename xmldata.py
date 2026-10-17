@@ -5,6 +5,7 @@
     uniques.xml      <uniques> of <unique>
     addons.xml       <addons> of <prefix>, <suffix> and <tackon>
     sources.xml      <sources> of <source>: the names of the source codes
+    gloss.xml        <glosses> of <gloss>: the abbreviations of the analyses
 
 words.xsd describes them.  Grammatical codes are written as in the
 original WORDS files (N, V, NOM, PRES, ...), declensions and conjugations
@@ -18,7 +19,9 @@ list as ERRORS, is appended to it and the element skipped.
 from __future__ import annotations
 
 import os
+import re
 from collections.abc import Callable, Iterator
+from typing import NamedTuple
 from xml.parsers import expat
 from xml.sax.saxutils import escape, quoteattr
 
@@ -479,6 +482,62 @@ def read_sources(path: str, errors=None) -> list[tuple[tuple[str, str],
     return _read(path, 'sources', errors, source)
 
 
+#  The categories of gloss.xml, and the codes each one glosses
+GLOSS_CODES = {
+    'case': [m.name for m in Case if m != Case.X],
+    'number': [m.name for m in Number if m != Number.X],
+    'gender': [m.name for m in Gender if m != Gender.X],
+    'person': ['1', '2', '3'],
+    'tense': [m.name for m in Tense if m != Tense.X],
+    'voice': [m.name for m in Voice if m != Voice.X],
+    'mood': [m.name for m in Mood if m != Mood.X],
+    'form': ['SUPINE'],
+    'comparison': [m.name for m in Comparison if m != Comparison.X],
+    'sort': [m.name for m in NumeralSort if m != NumeralSort.X],
+}
+_ABBREVIATION = re.compile(r'[A-Z0-9]+(\.[A-Z0-9]+)*')
+
+
+class Gloss(NamedTuple):
+    category: str
+    code: str
+    abbreviation: str
+    meaning: str
+    leipzig: bool          # one of the standard Leipzig abbreviations
+
+
+def read_glosses(path: str, errors=None) -> list[tuple[Gloss, int]]:
+    """The abbreviations used in the analyses: a list of (Gloss, line)."""
+    seen = {}
+
+    def gloss(r: _Reader, n: int) -> Gloss:
+        _expect(r, 'gloss')
+        category = r.raw('category')
+        if category not in GLOSS_CODES:
+            r.fail(f'category="{category}" is not one of: '
+                   + ' '.join(GLOSS_CODES))
+        code = r.raw('code')
+        if code not in GLOSS_CODES[category]:
+            r.fail(f'code="{code}" is not one of: '
+                   + ' '.join(GLOSS_CODES[category]))
+        abbreviation = r.raw('abbreviation')
+        if not _ABBREVIATION.fullmatch(abbreviation):
+            r.fail(f'abbreviation="{abbreviation}" must be capital letters '
+                   'and digits, parts joined by dots (FUT.PRF)')
+        meaning = r.raw('meaning').strip()
+        leipzig = r.raw('leipzig', 'no')
+        if leipzig not in ('yes', 'no'):
+            r.fail(f'leipzig="{leipzig}" must be yes or no')
+        r.done()
+        r.children({})
+        key = (category, code)
+        if key in seen:
+            r.fail(f'{category} {code} is already on line {seen[key]}')
+        seen[key] = r.el.line
+        return Gloss(category, code, abbreviation, meaning, leipzig == 'yes')
+    return _read(path, 'glosses', errors, gloss)
+
+
 def _target(path: str, el: _Element) -> Part:
     r = _Reader(path, el)
     if el.children or el.content.strip():
@@ -528,6 +587,9 @@ HEADERS = {
     'addons': 'Prefixes, suffixes and enclitics (tackons). See words.xsd.',
     'sources': 'The sources named by the source codes of the entries. See '
                'words.xsd.',
+    'glosses': 'The glossing abbreviations of the analyses (Leipzig '
+               'Glossing Rules; see https://en.wikipedia.org/wiki/'
+               'List_of_glossing_abbreviations). See words.xsd.',
 }
 
 

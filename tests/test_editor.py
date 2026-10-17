@@ -22,7 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 DATA = os.path.join(ROOT, 'data')
 DATA_FILES = ('dictionary.xml', 'inflections.xml', 'uniques.xml',
-              'addons.xml', 'sources.xml')
+              'addons.xml', 'sources.xml', 'gloss.xml')
 
 BLOGG = Fields('N', {'decl': '2 1', 'gender': 'M', 'kind': 'T',
                      'freq': 'E', 'source': 'Z'},
@@ -101,7 +101,7 @@ class EditorTests(WithData):
         self.assertTrue(self.ed.dirty)
         self.assertEqual(self.ed.describe(entry),
                          'bloggus, bloggi  noun, 2nd declension, masculine')
-        self.assertIn('genitive plural', self.ed.try_word('bloggorum'))
+        self.assertIn('GEN.PL', self.ed.try_word('bloggorum'))
         self.ed.save()
         self.assertFalse(self.ed.dirty)
         self.assertTrue(os.path.exists(self.path + '.bak'))
@@ -366,7 +366,7 @@ class WindowEditorTests(WithData):
             w.apply()
             w.word.insert(0, 'bloggorum')
             w.try_word()
-            self.assertIn('genitive plural', w.output.get('1.0', 'end'))
+            self.assertIn('GEN.PL', w.output.get('1.0', 'end'))
             w.save()
         finally:
             w.win.destroy()

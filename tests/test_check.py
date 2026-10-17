@@ -51,7 +51,7 @@ class CheckerTests(unittest.TestCase):
         checker = check.Checker(self.decls, set(
             check.lexicon.source_names(DATA)))
         for name in ('dictionary.xml', 'inflections.xml', 'uniques.xml',
-                     'addons.xml', 'sources.xml'):
+                     'addons.xml', 'sources.xml', 'gloss.xml'):
             checker.check_file(os.path.join(DATA, name))
         self.assertEqual((checker.errors, checker.warnings), (0, 0),
                          checker.out[:5])
@@ -74,6 +74,22 @@ class CheckerTests(unittest.TestCase):
         self.assertEqual(message,
                          'the source code W is not listed in sources.xml')
         self.assertEqual(self.problems(GOOD, sources={'W'}), [])
+
+    def test_glosses(self):
+        good = ('<gloss category="case" code="GEN" abbreviation="GEN" '
+                'meaning="genitive" leipzig="yes"/>')
+        self.assertEqual(self.problems(good, 'glosses'), [])
+        for bad, says in (
+                (good.replace('"case"', '"colour"'), 'category="colour"'),
+                (good.replace('code="GEN"', 'code="GENITIVE"'),
+                 'code="GENITIVE" is not one of'),
+                (good.replace('abbreviation="GEN"', 'abbreviation="gen"'),
+                 'must be capital letters'),
+                (good.replace('"yes"', '"maybe"'), 'must be yes or no'),
+                (good + '\n' + good, 'is already on line 3')):
+            [(kind, message)] = self.problems(bad, 'glosses')
+            self.assertEqual(kind, 'error')
+            self.assertIn(says, message)
 
     def test_malformed_xml(self):
         self.assertEqual(self.kinds(GOOD.replace('</entry>', '')), ['error'])

@@ -5,7 +5,7 @@
 
 With no FILE, checks the data files in the data directory: dictionary.xml
 (and special.xml, if there is one), inflections.xml, uniques.xml,
-addons.xml and sources.xml.  Each problem is reported as
+addons.xml, sources.xml and gloss.xml.  Each problem is reported as
 FILE:LINE: error|warning: message.
 
 Errors are elements WORDS cannot read: malformed XML, unknown or missing
@@ -81,11 +81,13 @@ class Checker:
                 xmldata.read_addons(path, errors)
             elif root == 'sources':
                 xmldata.read_sources(path, errors)
+            elif root == 'glosses':
+                xmldata.read_glosses(path, errors)
             else:
                 errors.append(xmldata.DataError(
                     path, 1, f'<{root}> is not a WORDS data file (the root '
                     'must be <dictionary>, <inflections>, <uniques>, '
-                    '<addons> or <sources>)'))
+                    '<addons>, <sources> or <glosses>)'))
         except xmldata.DataError as e:
             errors.append(e)            # the file could not be parsed
         for e in errors:

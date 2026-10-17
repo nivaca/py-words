@@ -355,6 +355,50 @@ def describe_form(form: Form, deponent: bool = False) -> str:
     return text.rstrip(',')
 
 
+def gloss_form(form: Form, glosses: dict[tuple[str, str], str],
+               deponent: bool = False) -> str:
+    """The grammar of an inflected form in glossing abbreviations, as in
+    the Leipzig Glossing Rules: "GEN.PL", "3SG.PRF.ACT.IND",
+    "PRF.PASS.PTCP.NOM.SG.M" ...  GLOSSES gives the abbreviations (from
+    gloss.xml); a value without one is shown by its code.  The categories
+    are those of describe_form, in the same order; person and number are
+    written together (3SG)."""
+    def g(category, value):
+        code = value if isinstance(value, str) else value.name
+        return None if code == 'X' else glosses.get((category, code), code)
+    p = form.pos
+    voice = None if deponent else g('voice', form.voice)
+    parts: list[str | None] = []
+    match p:
+        case Pos.N | Pos.PRON | Pos.PACK | Pos.ADJ | Pos.NUM:
+            parts = [g('case', form.case), g('number', form.number),
+                     g('gender', form.gender) if p != Pos.N else None]
+            if p == Pos.ADJ and form.comparison not in (Comparison.POS,
+                                                         Comparison.X):
+                parts.append(g('comparison', form.comparison))
+            if p == Pos.NUM:
+                parts.append(g('sort', form.sort))
+        case Pos.ADV:
+            parts = [g('comparison', form.comparison)]
+        case Pos.V if form.mood == Mood.INF:
+            parts = [g('tense', form.tense), voice, g('mood', form.mood)]
+        case Pos.V:
+            number = g('number', form.number) or ''
+            person = g('person', str(form.person)) + number \
+                if form.person in (1, 2, 3) else number
+            parts = [person, g('tense', form.tense), voice,
+                     g('mood', form.mood)]
+        case Pos.VPAR:
+            parts = [g('tense', form.tense), voice, g('mood', Mood.PPL),
+                     g('case', form.case), g('number', form.number),
+                     g('gender', form.gender)]
+        case Pos.SUPINE:
+            parts = [g('form', 'SUPINE'), g('case', form.case)]
+        case Pos.PREP:
+            parts = [g('case', form.case)]
+    return '.'.join(x for x in parts if x)
+
+
 # ---------------------------------------------------------------------------
 #  Example glosses (the do_examples parameter)
 

@@ -1,69 +1,69 @@
 arma
 02 armum, armi  noun, 2nd declension, neuter  [XWXAO]  very frequent  (general dictionary)
 03 arms (pl.), weapons, armor, shield; close fighting weapons; equipment; force;
-01 arm-a          nominative plural  (always, most frequent)
-01 arm-a          vocative plural  (always, most frequent)
-01 arm-a          accusative plural  (always, most frequent)
+01 arm-a          NOM.PL  (always, most frequent)
+01 arm-a          VOC.PL  (always, most frequent)
+01 arm-a          ACC.PL  (always, most frequent)
 02 armo, armare, armavi, armatus  verb, 1st conjugation, transitive  [XWXAO]  very frequent  (general dictionary)
 03 equip, fit with armor; arm; strengthen; rouse, stir; incite war; rig (ship);
-01 arm-a          2nd person singular present active imperative  (always, most frequent)
+01 arm-a          2SG.PRS.ACT.IMP  (always, most frequent)
 
 virumque
 05 -que  enclitic
 03 -que = and (enclitic, translated before attached word); completes plerus/uter;
 02 virum, viri  noun, 2nd declension, neuter  [GBXEK]  neo-Latin  uncommon  (general dictionary)
 03 virus;
-01 vir-um         nominative singular  (always, most frequent)
-01 vir-um         vocative singular  (always, most frequent)
-01 vir-um         accusative singular  (always, most frequent)
+01 vir-um         NOM.SG  (always, most frequent)
+01 vir-um         VOC.SG  (always, most frequent)
+01 vir-um         ACC.SG  (always, most frequent)
 02 vir, viri  noun, 2nd declension, masculine  [XXXAX]  very frequent  (general dictionary)
 03 man; husband; hero; person of courage, honor, and nobility;
-01 vir-um         accusative singular  (always, most frequent)
+01 vir-um         ACC.SG  (always, most frequent)
 02 vis, viris  noun, 3rd declension, feminine  [XXXAX]  very frequent  (general dictionary)
 03 strength (bodily) (pl.), force, power, might, violence; resources; large body;
-01 vir-um         genitive plural  (always, sometimes)
+01 vir-um         GEN.PL  (always, sometimes)
   (less likely forms are not shown)
 
 cano
 02 canus, cani  noun, 2nd declension, masculine  [XBXCO]  common  (general dictionary)
 03 gray hairs (pl.); old age;
-01 can-o          dative singular  (always, most frequent)
-01 can-o          ablative singular  (always, most frequent)
+01 can-o          DAT.SG  (always, most frequent)
+01 can-o          ABL.SG  (always, most frequent)
 02 canum, cani  noun, 2nd declension, neuter  [XXXFS]  very rare  (general dictionary)
 03 wicker basket (used for food/flowers and in sacrifices);
-01 can-o          dative singular  (always, most frequent)
-01 can-o          ablative singular  (always, most frequent)
+01 can-o          DAT.SG  (always, most frequent)
+01 can-o          ABL.SG  (always, most frequent)
 02 canus, cana, canum  adjective, 1st/2nd declension  [XXXBO]  frequent  (general dictionary)
 03 white, gray; aged, old, wise; hoary; foamy, white-capped; white w/snow/frost;
-01 can-o          dative singular masculine  (always, most frequent)
-01 can-o          dative singular neuter  (always, most frequent)
-01 can-o          ablative singular masculine  (always, most frequent)
-01 can-o          ablative singular neuter  (always, most frequent)
+01 can-o          DAT.SG.M  (always, most frequent)
+01 can-o          DAT.SG.N  (always, most frequent)
+01 can-o          ABL.SG.M  (always, most frequent)
+01 can-o          ABL.SG.N  (always, most frequent)
 02 cano, canere, cani, canitus  verb, 3rd conjugation  [EXXFS]  later  very rare  (general dictionary)
 03 sing, celebrate, chant; crow; recite; play (music)/sound (horn); foretell;
-01 can-o          1st person singular present active indicative  (always, most frequent)
+01 can-o          1SG.PRS.ACT.IND  (always, most frequent)
 02 cano, canere, cecini, cantus  verb, 3rd conjugation  [XXXAO]  very frequent  (general dictionary)
 03 sing, celebrate, chant; crow; recite; play (music)/sound (horn); foretell;
-01 can-o          1st person singular present active indicative  (always, most frequent)
+01 can-o          1SG.PRS.ACT.IND  (always, most frequent)
 
 amicorum
 02 amicus, amici  noun, 2nd declension, masculine  [XXXBO]  frequent  (general dictionary)
 03 friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
-01 amic-orum      genitive plural  (always, most frequent)
+01 amic-orum      GEN.PL  (always, most frequent)
 02 amicus, amica -um, amicior -or -us, amicissimus -a -um  adjective, 1st/2nd declension  [XXXAO]  very frequent  (general dictionary)
 03 friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-01 amic-orum      genitive plural masculine  (always, most frequent)
-01 amic-orum      genitive plural neuter  (always, most frequent)
+01 amic-orum      GEN.PL.M  (always, most frequent)
+01 amic-orum      GEN.PL.N  (always, most frequent)
 
 aspis
 02 aspis, aspidis  noun, 3rd declension, feminine  [EXAEW]  later  uncommon  (general dictionary)
 03 asp, venomous snake of North Africa;
-01 aspis          nominative singular  (always, most frequent)
-01 aspis          vocative singular  (always, most frequent)
+01 aspis          NOM.SG  (always, most frequent)
+01 aspis          VOC.SG  (always, most frequent)
 02 aspis, aspidos/is  noun, 3rd declension, feminine  [XXACO]  common  (general dictionary)
 03 asp, venomous snake of North Africa;
-01 aspis          nominative singular  (always, most frequent)
-01 aspis          vocative singular  (always, most frequent)
+01 aspis          NOM.SG  (always, most frequent)
+01 aspis          VOC.SG  (always, most frequent)
 
 xyzzyq
 00 (unknown)
@@ -89,14 +89,14 @@ xyzzyq
 redeo
 02 redeo, redire, redivi(ii), reditus  verb, irregular  [XXXAX]  very frequent  (general dictionary)
 03 return, go back, give back; fall back on, revert to; respond, pay back;
-01 rede-o         1st person singular present active indicative  (always, most frequent)
+01 rede-o         1SG.PRS.ACT.IND  (always, most frequent)
 
 inamicus
 05 in-  prefix
 03 not -, un-, -less;
 02 amicus, amica -um, amicior -or -us, amicissimus -a -um  adjective, 1st/2nd declension  [XXXAO]  very frequent  (general dictionary)
 03 friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-01 amic-us        nominative singular masculine  (always, most frequent)
+01 amic-us        NOM.SG.M  (always, most frequent)
 
 XIV
 02 XIV  Roman numeral
@@ -105,15 +105,15 @@ XIV
 quamdiu
 02 quamdiu  adverb  [XXXBO]  frequent  (general dictionary)
 03 for how long?; how long (ago)?; how long!, what a long time!; until; as long as;
-01 quamdiu        positive  (always, most frequent)
+01 quamdiu        POS  (always, most frequent)
 02 quamdiu  adverb  [XXXBO]  frequent  (general dictionary)
 03 for the preceding period until; up to the time that; inasmuch as; (quam diu);
-01 quamdiu        positive  (always, most frequent)
+01 quamdiu        POS  (always, most frequent)
 
 amasti
 06 syncope: Syncope   s => vis
 06 Syncopated perfect often drops the 'v' and contracts vowel
 02 amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]  very frequent  (general dictionary)
 03 love, like; fall in love with; be fond of; have a tendency to;
-01 amav-isti      2nd person singular perfect active indicative  (always, most frequent)
+01 amav-isti      2SG.PRF.ACT.IND  (always, most frequent)
 

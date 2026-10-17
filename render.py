@@ -14,10 +14,11 @@ trick that was needed to find it.
 from __future__ import annotations
 
 from english import Hit
-from forms import (principal_parts, describe_part, describe_form, example,
+from forms import (principal_parts, describe_part, describe_form,
+                   gloss_form, example,
                     deponent, stem_and_ending, POS_NAME)
-from model import Pos, Age, Freq, NumeralSort, Entry, Unique, Prefix, \
-    Suffix, Tackon
+from model import Pos, Age, Freq, NumeralSort, Entry, Form, Unique, \
+    Prefix, Suffix, Tackon
 from results import Origin, Parse, Reading, WordResult
 from settings import Settings
 
@@ -43,10 +44,20 @@ TRICK_TITLE = {Origin.TRICK: 'spelling', Origin.SYNCOPE: 'syncope'}
 
 
 class Renderer:
-    def __init__(self, settings: Settings, meanings_only: bool = False):
+    def __init__(self, settings: Settings, meanings_only: bool = False,
+                 glosses: dict[tuple[str, str], str] | None = None):
+        """GLOSSES: the abbreviations for the analyses (from gloss.xml);
+        without them the analyses are in words."""
         self.s = settings
         self.meanings_only = meanings_only or settings.do_only_meanings
+        self.glosses = glosses or {}
         self.lines: list[str] = []
+
+    def describe(self, form: Form, deponent: bool = False) -> str:
+        """The analysis of a form: "GEN.PL", or "genitive plural"."""
+        if self.glosses:
+            return gloss_form(form, self.glosses, deponent)
+        return describe_form(form, deponent)
 
     def line(self, text: str, indent: int = 0, code: int | None = None):
         if self.s.do_pearse_codes and code is not None:
@@ -162,9 +173,9 @@ class Renderer:
                 ('PPL+', 'SUPINE')):
             words = p.stem.replace('PPL+', 'participle + ').replace(
                 'SUPINE + ', 'supine + ')
-            text = columns(words, describe_form(p.form))
+            text = columns(words, self.describe(p.form))
         else:
-            description = describe_form(p.form, deponent(entry))
+            description = self.describe(p.form, deponent(entry))
             if entry is not None and p.form.pos not in (
                     entry.part.pos, Pos.VPAR, Pos.SUPINE) and not (
                     entry.part.pos == Pos.PACK and p.form.pos == Pos.PRON):

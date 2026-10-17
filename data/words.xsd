@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- The format of the WORDS data files: dictionary.xml (and special.xml),
-     inflections.xml, uniques.xml, addons.xml and sources.xml.
+     inflections.xml, uniques.xml, addons.xml, sources.xml and gloss.xml.
 
      Which attributes an element needs depends on its part of speech (pos),
      which XML Schema 1.0 cannot express: here they are all optional, and
@@ -586,6 +586,65 @@
     </xs:complexType>
     <xs:unique name="oneCodeOnce">
       <xs:selector xpath="source"/>
+      <xs:field xpath="@code"/>
+    </xs:unique>
+  </xs:element>
+
+  <!-- gloss.xml -->
+
+  <xs:element name="glosses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="gloss" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation><xs:documentation>The abbreviation that the
+            analyses use for a grammatical value: the code of a category as
+            in the other files (case GEN, tense PERF, person 3 ...), its
+            abbreviation (Leipzig Glossing Rules where they have one), and
+            what it means.  leipzig="yes" marks the standard Leipzig
+            abbreviations.  Which codes each category has is checked by
+            words_check.py.
+          </xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:attribute name="category" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="case"/>
+                  <xs:enumeration value="number"/>
+                  <xs:enumeration value="gender"/>
+                  <xs:enumeration value="person"/>
+                  <xs:enumeration value="tense"/>
+                  <xs:enumeration value="voice"/>
+                  <xs:enumeration value="mood"/>
+                  <xs:enumeration value="form"/>
+                  <xs:enumeration value="comparison"/>
+                  <xs:enumeration value="sort"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="code" type="xs:string" use="required"/>
+            <xs:attribute name="abbreviation" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:pattern value="[A-Z0-9]+(\.[A-Z0-9]+)*"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="meaning" type="xs:string" use="required"/>
+            <xs:attribute name="leipzig" default="no">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="yes"/>
+                  <xs:enumeration value="no"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:unique name="oneGlossOnce">
+      <xs:selector xpath="gloss"/>
+      <xs:field xpath="@category"/>
       <xs:field xpath="@code"/>
     </xs:unique>
   </xs:element>

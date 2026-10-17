@@ -172,6 +172,64 @@ class HelperTests(unittest.TestCase):
         self.assertFalse(Decl(2, 1).fits(Decl(3, 0)))
 
 
+class GlossTests(unittest.TestCase):
+    """The analyses in glossing abbreviations (gloss.xml)."""
+
+    def gloss(self, word, deponent=False, **kw):
+        from forms import gloss_form
+        from model import Form
+        return gloss_form(Form(**kw), lexicon().glosses, deponent)
+
+    def test_glosses_are_loaded(self):
+        g = lexicon().glosses
+        self.assertEqual(g['case', 'GEN'], 'GEN')
+        self.assertEqual(g['mood', 'SUB'], 'SBJV')
+        self.assertEqual(g['tense', 'FUTP'], 'FUT.PRF')
+
+    def test_forms(self):
+        from model import Gender, Mood, Decl, Comparison
+        self.assertEqual(self.gloss('amicorum', pos=Pos.N, decl=Decl(2, 1),
+                                    case=Case.GEN, number=Number.P,
+                                    gender=Gender.M), 'GEN.PL')
+        self.assertEqual(self.gloss('amavisti', pos=Pos.V, person=2,
+                                    number=Number.S, tense=Tense.PERF,
+                                    voice=Voice.ACTIVE, mood=Mood.IND),
+                         '2SG.PRF.ACT.IND')
+        self.assertEqual(self.gloss('hortatus', True, pos=Pos.V, person=3,
+                                    number=Number.S, tense=Tense.PRES,
+                                    voice=Voice.PASSIVE, mood=Mood.SUB),
+                         '3SG.PRS.SBJV')       # (deponent: no voice)
+        self.assertEqual(self.gloss('laudatus', pos=Pos.VPAR,
+                                    tense=Tense.PERF, voice=Voice.PASSIVE,
+                                    mood=Mood.PPL, case=Case.NOM,
+                                    number=Number.S, gender=Gender.M),
+                         'PRF.PASS.PTCP.NOM.SG.M')
+        self.assertEqual(self.gloss('amatu', pos=Pos.SUPINE, case=Case.ABL),
+                         'SUP.ABL')
+        self.assertEqual(self.gloss('altissimis', pos=Pos.ADJ,
+                                    case=Case.DAT, number=Number.P,
+                                    comparison=Comparison.SUPER),
+                         'DAT.PL.SPRL')
+        self.assertEqual(self.gloss('amare', pos=Pos.V, tense=Tense.PRES,
+                                    voice=Voice.ACTIVE, mood=Mood.INF),
+                         'PRS.ACT.INF')
+
+    def test_in_the_output(self):
+        from session import Session
+        out = Session(lexicon(), Settings()).lookup_latin('amicorum')
+        self.assertIn('amic-orum      GEN.PL', out)
+
+    def test_words_without_gloss_xml(self):
+        from session import Session
+        lex = lexicon()
+        saved, lex.glosses = lex.glosses, {}
+        try:
+            out = Session(lex, Settings()).lookup_latin('amicorum')
+        finally:
+            lex.glosses = saved
+        self.assertIn('amic-orum      genitive plural', out)
+
+
 class EnglishTests(unittest.TestCase):
 
     def test_search(self):

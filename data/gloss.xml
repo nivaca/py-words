@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The glossing abbreviations of the analyses (Leipzig Glossing Rules; see https://en.wikipedia.org/wiki/List_of_glossing_abbreviations). See words.xsd. -->
+<glosses xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="words.xsd">
+  <!-- case -->
+  <gloss category="case" code="NOM" abbreviation="NOM" meaning="nominative" leipzig="yes"/>
+  <gloss category="case" code="GEN" abbreviation="GEN" meaning="genitive" leipzig="yes"/>
+  <gloss category="case" code="DAT" abbreviation="DAT" meaning="dative" leipzig="yes"/>
+  <gloss category="case" code="ACC" abbreviation="ACC" meaning="accusative" leipzig="yes"/>
+  <gloss category="case" code="ABL" abbreviation="ABL" meaning="ablative" leipzig="yes"/>
+  <gloss category="case" code="VOC" abbreviation="VOC" meaning="vocative" leipzig="yes"/>
+  <gloss category="case" code="LOC" abbreviation="LOC" meaning="locative" leipzig="yes"/>
+
+  <!-- number -->
+  <gloss category="number" code="S" abbreviation="SG" meaning="singular" leipzig="yes"/>
+  <gloss category="number" code="P" abbreviation="PL" meaning="plural" leipzig="yes"/>
+
+  <!-- gender -->
+  <gloss category="gender" code="M" abbreviation="M" meaning="masculine" leipzig="yes"/>
+  <gloss category="gender" code="F" abbreviation="F" meaning="feminine" leipzig="yes"/>
+  <gloss category="gender" code="N" abbreviation="N" meaning="neuter" leipzig="yes"/>
+  <gloss category="gender" code="C" abbreviation="C" meaning="common (masculine or feminine)"/>
+
+  <!-- person -->
+  <gloss category="person" code="1" abbreviation="1" meaning="first person" leipzig="yes"/>
+  <gloss category="person" code="2" abbreviation="2" meaning="second person" leipzig="yes"/>
+  <gloss category="person" code="3" abbreviation="3" meaning="third person" leipzig="yes"/>
+
+  <!-- tense -->
+  <gloss category="tense" code="PRES" abbreviation="PRS" meaning="present" leipzig="yes"/>
+  <gloss category="tense" code="IMPF" abbreviation="IMPF" meaning="imperfect"/>
+  <gloss category="tense" code="FUT" abbreviation="FUT" meaning="future" leipzig="yes"/>
+  <gloss category="tense" code="PERF" abbreviation="PRF" meaning="perfect" leipzig="yes"/>
+  <gloss category="tense" code="PLUP" abbreviation="PLUP" meaning="pluperfect"/>
+  <gloss category="tense" code="FUTP" abbreviation="FUT.PRF" meaning="future perfect"/>
+
+  <!-- voice -->
+  <gloss category="voice" code="ACTIVE" abbreviation="ACT" meaning="active"/>
+  <gloss category="voice" code="PASSIVE" abbreviation="PASS" meaning="passive" leipzig="yes"/>
+
+  <!-- mood -->
+  <gloss category="mood" code="IND" abbreviation="IND" meaning="indicative" leipzig="yes"/>
+  <gloss category="mood" code="SUB" abbreviation="SBJV" meaning="subjunctive" leipzig="yes"/>
+  <gloss category="mood" code="IMP" abbreviation="IMP" meaning="imperative" leipzig="yes"/>
+  <gloss category="mood" code="INF" abbreviation="INF" meaning="infinitive" leipzig="yes"/>
+  <gloss category="mood" code="PPL" abbreviation="PTCP" meaning="participle" leipzig="yes"/>
+
+  <!-- form -->
+  <gloss category="form" code="SUPINE" abbreviation="SUP" meaning="supine"/>
+
+  <!-- comparison -->
+  <gloss category="comparison" code="POS" abbreviation="POS" meaning="positive"/>
+  <gloss category="comparison" code="COMP" abbreviation="CMPR" meaning="comparative"/>
+  <gloss category="comparison" code="SUPER" abbreviation="SPRL" meaning="superlative"/>
+
+  <!-- sort -->
+  <gloss category="sort" code="CARD" abbreviation="CARD" meaning="cardinal numeral"/>
+  <gloss category="sort" code="ORD" abbreviation="ORD" meaning="ordinal numeral"/>
+  <gloss category="sort" code="DIST" abbreviation="DISTR" meaning="distributive numeral" leipzig="yes"/>
+  <gloss category="sort" code="ADVERB" abbreviation="MULT" meaning="multiplicative numeral (numeral adverb)"/>
+</glosses>

@@ -157,8 +157,8 @@ Each word is followed by what it can be:
     laudatus
       laudo, laudare, laudavi, laudatus  verb, 1st conjugation  [XXXAX]
         recommend; praise, approve, extol; call upon, name; deliver eulogy on;
-        laudat-us      perfect passive participle, nominative singular masculine
-        participle + est  3rd person singular perfect passive indicative
+        laudat-us      PRF.PASS.PTCP.NOM.SG.M
+        participle + est  3SG.PRF.PASS.IND
           PERF PASSIVE PPL + verb TO_BE => PASSIVE perfect system
 
 For a dictionary entry: its principal parts and grammar (and, with
@@ -169,6 +169,33 @@ prefix, suffix or enclitic found on the word, or a trick needed to find it
 gets a line of its own, followed by what was found with it.  A word that is
 not found is marked "(unknown)", and "(less likely forms are not shown)"
 says that trim_output left something out.
+
+The analyses of the forms are written in glossing abbreviations, as in
+the [Leipzig Glossing Rules](https://www.eva.mpg.de/lingua/resources/glossing-rules.php):
+the categories are separated by dots, and person and number are written
+together (`2SG.PRF.ACT.IND` is 2nd person singular perfect active
+indicative).  The abbreviations are those of the [list of glossing
+abbreviations](https://en.wikipedia.org/wiki/List_of_glossing_abbreviations);
+those marked * are not among the standard Leipzig ones:
+
+* Case: NOM nominative, GEN genitive, DAT dative, ACC accusative, ABL
+  ablative, VOC vocative, LOC locative
+* Number: SG singular, PL plural
+* Gender: M masculine, F feminine, N neuter, C* common (masculine or
+  feminine)
+* Person: 1 first person, 2 second person, 3 third person
+* Tense: PRS present, IMPF* imperfect, FUT future, PRF perfect, PLUP*
+  pluperfect, FUT.PRF* future perfect
+* Voice: ACT* active, PASS passive
+* Mood: IND indicative, SBJV subjunctive, IMP imperative, INF infinitive,
+  PTCP participle
+* Other verb forms: SUP* supine
+* Degree: POS* positive, CMPR* comparative, SPRL* superlative
+* Numerals: CARD* cardinal numeral, ORD* ordinal numeral, DISTR distributive
+  numeral, MULT* multiplicative numeral (numeral adverb)
+
+They are kept in `data/gloss.xml`, where they can be changed.  Without that
+file the analyses are written in words ("genitive plural").
 
 Settings and files
 ------------------
@@ -231,6 +258,7 @@ The data files
 | `uniques.xml`     | irregular forms not built from a stem      |
 | `addons.xml`      | prefixes, suffixes and enclitics (tackons) |
 | `sources.xml`     | the names of the sources (dictionaries ...) |
+| `gloss.xml`       | the glossing abbreviations of the analyses |
 | `special.xml`     | (optional) a second, special dictionary    |
 
 Each entry names its source with a one-letter code (`source="O"`);
@@ -379,6 +407,12 @@ them with `git diff`.
 Version
 -------
 
+- 1.4:
+  - The analyses of the forms are written in glossing abbreviations, as in
+    the Leipzig Glossing Rules: `GEN.PL` (was "genitive plural"),
+    `2SG.PRF.ACT.IND` (was "2nd person singular perfect active
+    indicative").  The abbreviations are kept in `data/gloss.xml`, which
+    `words_check.py` checks; without that file the analyses are in words.
 - 1.3:
   - Fixed dictionary forms of numerals with a single stem: *centensimus,
     centensima, centensimum* (was *centensim*), *biseni, bisenae, bisena*,

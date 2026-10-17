@@ -46,6 +46,7 @@ converted to XML:
 | UNIQUES.LAT   | `uniques.xml`     | 79 irregular forms                |
 | ADDONS.LAT    | `addons.xml`      | prefixes, suffixes and enclitics  |
 | (in the code) | `sources.xml`     | the 26 source codes and the dictionaries they stand for |
+| (new)         | `gloss.xml`       | the glossing abbreviations of the analyses (Leipzig Glossing Rules) |
 
 The grammatical codes are written as in the original files (`N`, `V`,
 `NOM`, `PRES`, declensions as "2 1" ...), so an entry can be read by
