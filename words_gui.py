@@ -19,12 +19,12 @@ from tkinter.scrolledtext import ScrolledText
 
 from config import ConfigError
 from gui_fonts import Fonts
-from gui_settings import COMMAND_LINE, SettingsDialog
+from gui_settings import SettingsDialog
 from history import History
 from lexicon import default_datadir
 from lexicon import Lexicon, DICTIONARY
 from session import Session
-from settings import MODES, Settings
+from settings import COMMAND_LINE, MODES, Settings
 from version import ABOUT, CREDITS, NAME, URL
 
 class App:

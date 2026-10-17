@@ -58,8 +58,9 @@ To start the program from the applications menu, run once
 
     $ python3 words_install.py
 
-which adds two entries, with the program's icon: the window, and the
-command line (in a terminal).  Where they go depends on the system:
+which adds three entries, with the program's icon: the window, the
+command line, and the full-screen terminal version (both in a terminal).
+Where they go depends on the system:
 
 * Linux (and other systems with freedesktop menus): the applications
   menu, as `.desktop` files and icons in `~/.local/share`;
@@ -92,6 +93,7 @@ What is where
     words.py            the dictionary (command line and interactive)
     meanings.py         the same, showing only dictionary forms and meanings
     words_gui.py        the dictionary in a window
+    words_tui.py        the dictionary in the terminal, full screen
     words_edit.py       edit the dictionary in the terminal
     words_edit_gui.py   edit the dictionary in a window
     words_check.py      check the data files after editing them by hand
@@ -113,6 +115,16 @@ Usage
     $ python3 words.py rem acu tetigisti
     $ python3 words.py                         # interactive
     $ python3 words_gui.py                     # a window
+    $ python3 words_tui.py                     # full screen, in a terminal
+
+`words_tui.py` is the window's counterpart in the terminal: a search line
+(Up and Down bring back earlier searches), the results below it (PgUp and
+PgDn scroll them), and keys shown on the bottom line: F2 switches between
+Latin to English and English to Latin, F3 lists the settings (Space
+switches one), F4 opens the dictionary editor, F9 clears the history, F1
+shows help and F10 quits.  It shares the settings and the history with
+`words.py` and the window.  (On Windows, it needs the windows-curses
+package.)
 
 On Windows, type `python` instead of `python3`; `pythonw words_gui.py`
 opens the window without a console.
@@ -376,6 +388,7 @@ How it works
 | `gui_fonts.py`| the fonts of the windows: zoom, the "Font…" dialogue          |
 | `gui_settings.py` | the window's "Settings…" dialogue                         |
 | `words.py`    | the command line, interactive mode and setting dialogues      |
+| `tui.py`      | what the two full-screen terminal programs share              |
 | `words_*.py`, `meanings.py` | the other programs (see above)                  |
 
 A word is analysed by splitting it into every possible stem and ending,
@@ -427,6 +440,12 @@ them with `git diff`.
 Version
 -------
 
+- 1.7:
+  - `words_tui.py`: the dictionary in the terminal, full screen, with a
+    search line and its history, scrolling results, and keys for the
+    language (F2), the settings (F3), the dictionary editor (F4) and
+    clearing the history (F9).  `words_install.py` adds a menu entry for
+    it.
 - 1.6:
   - The searches are remembered between sessions, and shared by the
     command line (Up and Down in interactive mode) and the window (the

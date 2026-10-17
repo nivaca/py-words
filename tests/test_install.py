@@ -40,9 +40,11 @@ class InstallTests(unittest.TestCase):
         paths = words_install.install()
         self.assertEqual([os.path.basename(p) for p in paths],
                          ['py-words.desktop',
-                          'py-words.cli.desktop'])
+                          'py-words.cli.desktop',
+                          'py-words.tui.desktop'])
         entries = []
-        for path, program in zip(paths, ('words_gui.py', 'words.py')):
+        for path, program in zip(paths, ('words_gui.py', 'words.py',
+                                         'words_tui.py')):
             with open(path, encoding='utf-8') as f:
                 entry = f.read()
             entries.append(entry)
@@ -58,13 +60,14 @@ class InstallTests(unittest.TestCase):
                 self.assertEqual(result.stdout, b'')
         self.assertIn('Terminal=false', entries[0])
         self.assertIn('Terminal=true', entries[1])
+        self.assertIn('Terminal=true', entries[2])
         icons = words_install.icon_files()
         self.assertTrue(icons)
         for _, rel in icons:
             self.assertTrue(os.path.isfile(os.path.join(
                 self.tmp.name, 'icons', 'hicolor', rel)))
         removed = words_install.uninstall()
-        self.assertEqual(len(removed), len(icons) + 2)
+        self.assertEqual(len(removed), len(icons) + 3)
         for path in paths:
             self.assertFalse(os.path.exists(path))
 
@@ -132,7 +135,8 @@ class InstallTests(unittest.TestCase):
         apps = words_install.install_macos()
         self.assertEqual([os.path.basename(a) for a in apps],
                          ['py-words (GUI).app',
-                          'py-words (CLI).app'])
+                          'py-words (CLI).app',
+                          'py-words (TUI).app'])
         for app in apps:
             with open(os.path.join(app, 'Contents', 'Info.plist'),
                       'rb') as f:
@@ -179,7 +183,8 @@ class InstallTests(unittest.TestCase):
         paths = words_install.install_windows()
         self.assertEqual([os.path.basename(p) for p in paths],
                          ['py-words (GUI).lnk',
-                          'py-words (CLI).lnk'])
+                          'py-words (CLI).lnk',
+                          'py-words (TUI).lnk'])
         self.assertTrue(paths[0].startswith(os.path.join(
             self.tmp.name, 'AppData', 'Microsoft', 'Windows', 'Start Menu',
             'Programs')))

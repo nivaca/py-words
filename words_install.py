@@ -2,14 +2,14 @@
 """Add py-words to the applications menu: python3 words_install.py
 [--uninstall]
 
-Adds two entries that start the program from this folder, one for the
-window (words_gui.py) and one for the command line (words.py, in a
-terminal), with the program's icon:
+Adds three entries that start the program from this folder, with the
+program's icon: the window (words_gui.py), the command line (words.py, in a
+terminal) and the full-screen terminal version (words_tui.py):
 
 * Linux and other freedesktop systems: .desktop files and the icons in the
   user's data folder ($XDG_DATA_HOME, usually ~/.local/share);
 * Windows: shortcuts in the user's Start menu (made with PowerShell);
-* macOS: two small applications in ~/Applications.
+* macOS: three small applications in ~/Applications.
 
 Everything goes in the user's own folders, so no administrator rights are
 needed.  Run it again after moving this folder; --uninstall removes
@@ -49,7 +49,8 @@ def display_name(kind):
 
 #  (kind, program, whether it runs in a terminal)
 PROGRAMS = (('GUI', 'words_gui.py', False),
-            ('CLI', 'words.py', True))
+            ('CLI', 'words.py', True),
+            ('TUI', 'words_tui.py', True))
 
 
 # ---------------------------------------------------------------------------
@@ -72,10 +73,12 @@ Exec={exec}
 ENTRY_REST = {
     'GUI': f'Terminal=false\nStartupNotify=true\nStartupWMClass={APP_ID}\n',
     'CLI': 'Terminal=true\n',
+    'TUI': 'Terminal=true\n',
 }
 
 #  The file names of the entries, by kind
-ENTRY_FILES = {'GUI': APP_ID + '.desktop', 'CLI': APP_ID + '.cli.desktop'}
+ENTRY_FILES = {'GUI': APP_ID + '.desktop', 'CLI': APP_ID + '.cli.desktop',
+               'TUI': APP_ID + '.tui.desktop'}
 
 
 def data_home():

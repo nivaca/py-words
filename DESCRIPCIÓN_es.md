@@ -1,4 +1,4 @@
-# py-words 1.6: descripción
+# py-words 1.7: descripción
 
 ## Análisis
 
@@ -38,11 +38,11 @@ Los códigos gramaticales se mantienen como en el original, para que cualquier c
 
 ## Implementación
 
-- **Lenguaje y dependencias:** está escrito en Python 3.11 o superior y usa solo la biblioteca estándar, sin paquetes externos. Son 26 archivos, unas 8 600 líneas.
+- **Lenguaje y dependencias:** está escrito en Python 3.11 o superior y usa solo la biblioteca estándar, sin paquetes externos. Son 28 archivos, unas 8 900 líneas.
 - **Recursos del lenguaje:** clases de datos inmutables con `slots`, anotaciones de tipos, `match`/`case`, f-strings y `tomllib` para la configuración.
 - **Interfaces:**
   - La ventana y el editor gráfico usan Tkinter, con fuentes ajustables, acercamiento con Ctrl y +/−, y un diálogo de configuración con todas las opciones de la línea de órdenes.
-  - El editor de terminal usa `curses`.
+  - La versión de pantalla completa para la terminal (`words_tui.py`) y el editor de terminal usan `curses`.
   - La línea de órdenes usa `argparse` y tiene un modo interactivo.
   - Las búsquedas se guardan entre sesiones y las comparten la línea de órdenes y la ventana.
 - **Proceso:** el desarrollo tuvo cuatro etapas:
@@ -55,7 +55,7 @@ Los códigos gramaticales se mantienen como en el original, para que cualquier c
 ## Validación
 
 - **Comparación con el original:** el rediseño se comparó con la traducción fiel sobre un corpus de 133 671 palabras: todas las raíces del diccionario, formas generadas y las entradas de prueba. El 99,2 % dio resultados idénticos. Cada diferencia restante se examinó una por una; todas resultaron ser cambios deliberados o errores del original corregidos, documentados en el README.
-- **Pruebas automáticas:** 152 en total, que se ejecutan con `python3 -m unittest discover -s tests`:
+- **Pruebas automáticas:** 158 en total, que se ejecutan con `python3 -m unittest discover -s tests`:
   - **Pruebas unitarias:** del análisis, el léxico, la configuración, la caché, el verificador, el conversor y el instalador.
   - **Pruebas de regresión:** comparan la salida completa del programa con resultados esperados y revisados, entre ellos 735 versos de la *Eneida*.
   - **Pruebas de los editores:** se manejan como lo haría un usuario, en una terminal simulada y en una ventana real.

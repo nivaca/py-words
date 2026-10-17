@@ -54,6 +54,31 @@ CHARACTERS = (('START_FILE_CHARACTER', 'start_file_character'),
                'change_developer_modes_character'))
 
 
+#  A setting that only makes sense with another one on (the dialogues
+#  skip it, or grey it out, while that one is off)
+DEPENDS = {
+    'write_output_to_file': 'have_output_file',
+    'write_statistics_file': 'have_statistics_file',
+    'for_word_list_check': 'do_only_initial_word',
+    'do_only_fixes': 'do_fixes',
+    'do_fixes_anyway': 'do_fixes',
+    'do_medieval_tricks': 'do_tricks',
+}
+
+#  Settings that only the interactive command line uses
+COMMAND_LINE = ('pause_in_screen_output',)
+
+
+def label(name: str) -> str:
+    """'do_only_fixes' -> 'Do only fixes'."""
+    return name.replace('_', ' ').capitalize()
+
+
+def first_sentence(text: str) -> str:
+    end = text.find('.  ')
+    return text if end < 0 else text[:end + 1]
+
+
 @dataclass
 class Settings:
     # Parameters (WORD.MOD)

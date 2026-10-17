@@ -13,32 +13,8 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 
 from helptext import HELP
-from settings import (CHARACTERS, DEV_MODES, MODES, Settings,
-                      is_command_character)
-
-#  A setting greyed out (and off) unless another is on
-DEPENDS = {
-    'write_output_to_file': 'have_output_file',
-    'write_statistics_file': 'have_statistics_file',
-    'for_word_list_check': 'do_only_initial_word',
-    'do_only_fixes': 'do_fixes',
-    'do_fixes_anyway': 'do_fixes',
-    'do_medieval_tricks': 'do_tricks',
-}
-
-#  Settings that only the interactive command line uses
-COMMAND_LINE = ('pause_in_screen_output',)
-
-
-def label(name: str) -> str:
-    """'do_only_fixes' -> 'Do only fixes'."""
-    return name.replace('_', ' ').capitalize()
-
-
-def first_sentence(text: str) -> str:
-    end = text.find('.  ')
-    return text if end < 0 else text[:end + 1]
-
+from settings import (CHARACTERS, COMMAND_LINE, DEPENDS, DEV_MODES, MODES,
+                      Settings, first_sentence, is_command_character, label)
 
 class SettingsDialog:
     """GET(name) gives a setting's value and CHANGE(name, value) changes

@@ -7,7 +7,7 @@ by old versions of Python.
 import sys
 
 NAME = 'py-words'
-VERSION = '1.6'
+VERSION = '1.7'
 URL = 'https://github.com/nivaca/py-words'
 
 CREDITS = (
