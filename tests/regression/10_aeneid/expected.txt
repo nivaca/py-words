@@ -42705,7 +42705,7 @@ idem
     i              accusative singular neuter
 
 ambas
-  amb  numeral, cardinal  [XXXBO]
+  ambo, ambae, ambo  numeral, cardinal  [XXXBO]
     both; two of pair; two considered together, both parties; each of two;
     amb-as         accusative plural feminine cardinal
 

@@ -1,0 +1,99 @@
+arma
+  [XWXAO]
+    arms (pl.), weapons, armor, shield; close fighting weapons; equipment; force;
+    arm-a          nominative plural
+    arm-a          vocative plural
+    arm-a          accusative plural
+  [XWXAO]
+    equip, fit with armor; arm; strengthen; rouse, stir; incite war; rig (ship);
+    arm-a          2nd person singular present active imperative
+
+virumque
+  -que  enclitic
+  [GBXEK]  neo-Latin  uncommon
+    virus;
+    vir-um         nominative singular
+    vir-um         vocative singular
+    vir-um         accusative singular
+  [XXXAX]
+    man; husband; hero; person of courage, honor, and nobility;
+    vir-um         accusative singular
+  [XXXAX]
+    strength (bodily) (pl.), force, power, might, violence; resources; large body;
+    vir-um         genitive plural
+  (less likely forms are not shown)
+
+cano
+  [XBXCO]
+    gray hairs (pl.); old age;
+    can-o          dative singular
+    can-o          ablative singular
+  [XXXFS]  very rare
+    wicker basket (used for food/flowers and in sacrifices);
+    can-o          dative singular
+    can-o          ablative singular
+  [XXXBO]
+    white, gray; aged, old, wise; hoary; foamy, white-capped; white w/snow/frost;
+    can-o          dative singular masculine
+    can-o          dative singular neuter
+    can-o          ablative singular masculine
+    can-o          ablative singular neuter
+  [EXXFS]  later  very rare
+    sing, celebrate, chant; crow; recite; play (music)/sound (horn); foretell;
+    can-o          1st person singular present active indicative
+  [XXXAO]
+    sing, celebrate, chant; crow; recite; play (music)/sound (horn); foretell;
+    can-o          1st person singular present active indicative
+
+amicorum
+  [XXXBO]
+    friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
+    amic-orum      genitive plural
+  [XXXAO]
+    friendly, dear, fond of; supporting (political), loyal, devoted; loving;
+    amic-orum      genitive plural masculine
+    amic-orum      genitive plural neuter
+
+aspis
+  [EXAEW]  later  uncommon
+    asp, venomous snake of North Africa;
+    aspis          nominative singular
+    aspis          vocative singular
+  [XXACO]
+    asp, venomous snake of North Africa;
+    aspis          nominative singular
+    aspis          vocative singular
+
+xyzzyq
+  (unknown)
+
+redeo
+  [XXXAX]
+    return, go back, give back; fall back on, revert to; respond, pay back;
+    rede-o         1st person singular present active indicative
+
+inamicus
+  in-  prefix
+  [XXXAO]
+    friendly, dear, fond of; supporting (political), loyal, devoted; loving;
+    amic-us        nominative singular masculine
+
+XIV
+  XIV  Roman numeral
+    14
+
+quamdiu
+  [XXXBO]
+    for how long?; how long (ago)?; how long!, what a long time!; until; as long as;
+    quamdiu        positive
+  [XXXBO]
+    for the preceding period until; up to the time that; inasmuch as; (quam diu);
+    quamdiu        positive
+
+amasti
+  syncope: Syncope   s => vis
+    Syncopated perfect often drops the 'v' and contracts vowel
+  [XXXAO]
+    love, like; fall in love with; be fond of; have a tendency to;
+    amav-isti      2nd person singular perfect active indicative
+

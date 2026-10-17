@@ -244,6 +244,18 @@ class InteractiveTests(InTempDir):
         return Session(lexicon(), Settings(pause_in_screen_output=False),
                        write=out.write), out
 
+    def test_dictionary_line(self):
+        """show_dictionary_line gives each entry's number in its
+        dictionary file (not in the golden files: it changes whenever a
+        word is added)."""
+        session, out = self.session()
+        session.settings.show_dictionary_line = True
+        session.process('amicorum')
+        amicus = next(e for e in lexicon().entries
+                      if e.meaning.startswith('friend, ally, disciple'))
+        self.assertIn(f'amicus, amici  noun, 2nd declension, masculine  '
+                      f'[XXXBO]  (entry {amicus.id})', out.getvalue())
+
     def repl(self, *lines):
         session, out = self.session()
         replies = iter(lines)

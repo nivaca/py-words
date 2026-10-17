@@ -1,4 +1,4 @@
-# py-words 1.2: descripción
+# py-words 1.3: descripción
 
 ## Análisis
 
@@ -53,7 +53,7 @@ Los códigos gramaticales se mantienen como en el original, para que cualquier c
 ## Validación
 
 - **Comparación con el original:** el rediseño se comparó con la traducción fiel sobre un corpus de 133 671 palabras: todas las raíces del diccionario, formas generadas y las entradas de prueba. El 99,2 % dio resultados idénticos. Cada diferencia restante se examinó una por una; todas resultaron ser cambios deliberados o errores del original corregidos, documentados en el README.
-- **Pruebas automáticas:** 124 en total, que se ejecutan con `python3 -m unittest discover -s tests`:
+- **Pruebas automáticas:** 129 en total, que se ejecutan con `python3 -m unittest discover -s tests`:
   - **Pruebas unitarias:** del análisis, el léxico, la configuración, la caché, el verificador, el conversor y el instalador.
   - **Pruebas de regresión:** comparan la salida completa del programa con resultados esperados y revisados, entre ellos 735 versos de la *Eneida*.
   - **Pruebas de los editores:** se manejan como lo haría un usuario, en una terminal simulada y en una ventana real.

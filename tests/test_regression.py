@@ -2,7 +2,10 @@
 
 Each test feeds regression/NN_name/input.txt to `words -f`, with the developer
 modes of regression/WORD.MDV_template, and compares the output with
-regression/NN_name/expected.txt.  After an intended change to the output,
+regression/NN_name/expected.txt.  A test can change the settings with its
+own regression/NN_name/config.toml (the configuration file, see config.py),
+which comes first.  Each run has a configuration folder of its own, so no
+test's settings reach another.  After an intended change to the output,
 regenerate the expected files with
 
     UPDATE_GOLDEN=1 python3 -m unittest discover -s tests
@@ -26,11 +29,16 @@ TEST_DIR = os.path.join(HERE, 'regression')
 UPDATE = bool(os.environ.get('UPDATE_GOLDEN'))
 
 
-def run_words(args, workdir):
+def run_words(args, workdir, config=None):
     """Runs words in WORKDIR, with a cache there (the first run fills it,
-    the others read it)."""
+    the others read it), a new configuration folder, and CONFIG (a
+    config.toml) in it if given."""
+    folder = tempfile.mkdtemp(dir=workdir, prefix='config-')
+    if config:
+        shutil.copy(config, os.path.join(folder, 'config.toml'))
     env = dict(os.environ,
-               WHITAKERS_WORDS_CACHE=os.path.join(workdir, 'cache'))
+               WHITAKERS_WORDS_CACHE=os.path.join(workdir, 'cache'),
+               WHITAKERS_WORDS_CONFIG=folder)
     env.pop('WHITAKERS_WORDS_DATADIR', None)
     return subprocess.run(
         [sys.executable, os.path.join(ROOT, 'words.py'), '--datadir', DATA]
@@ -51,8 +59,8 @@ class RegressionTests(unittest.TestCase):
     def tearDownClass(cls):
         cls.tmp.cleanup()
 
-    def compare(self, args, expected_path):
-        result = run_words(args, self.tmp.name)
+    def compare(self, args, expected_path, config=None):
+        result = run_words(args, self.tmp.name, config)
         self.assertEqual(result.stderr, b'')
         self.assertEqual(result.returncode, 0)
         if UPDATE:
@@ -65,8 +73,10 @@ class RegressionTests(unittest.TestCase):
                          expected.decode().splitlines())
 
     def check(self, name):
+        config = os.path.join(TEST_DIR, name, 'config.toml')
         self.compare(['-f', os.path.join(TEST_DIR, name, 'input.txt')],
-                     os.path.join(TEST_DIR, name, 'expected.txt'))
+                     os.path.join(TEST_DIR, name, 'expected.txt'),
+                     config if os.path.isfile(config) else None)
 
     def test_multusque(self):
         self.check('05_multusque')
@@ -82,6 +92,19 @@ class RegressionTests(unittest.TestCase):
 
     def test_english(self):
         self.check('40_english')
+
+    def test_forms(self):
+        """Dictionary forms of every kind, with the English examples."""
+        self.check('50_forms')
+
+    def test_developer_modes(self):
+        self.check('60_developer_modes')
+
+    def test_no_dictionary_forms(self):
+        self.check('70_no_dictionary_forms')
+
+    def test_unknowns_only(self):
+        self.check('75_unknowns_only')
 
     def test_command_line(self):
         self.compare(['rem', 'acu', 'tetigisti'],

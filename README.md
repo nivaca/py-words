@@ -369,13 +369,27 @@ Testing
 
 runs the unit tests and the regression tests in `tests/regression`, which
 compare the output for some inputs (among them 735 lines of the Aeneid)
-with the expected output.  After an intended change to the output,
-regenerate the expected files with `UPDATE_GOLDEN=1` and review them with
-`git diff`.
+with the expected output.  Some regression tests switch options on with a
+`config.toml` of their own: the English examples and dictionary forms of
+every kind (`50_forms`), the developer modes (`60_developer_modes`), and
+leaving out dictionary forms or known words.  After an intended change to
+the output, regenerate the expected files with `UPDATE_GOLDEN=1` and review
+them with `git diff`.
 
 Version
 -------
 
+- 1.3:
+  - Fixed dictionary forms of numerals with a single stem: *centensimus,
+    centensima, centensimum* (was *centensim*), *biseni, bisenae, bisena*,
+    *ambo, ambae, ambo*.
+  - Fixed English examples of the subjunctive: "let us ~" (was "let us
+    may/must/should ~"), and the passive "I may/must/should be ~ed" (was
+    "I may/must/should ~").
+  - More regression tests: dictionary forms of every kind with the English
+    examples, the developer modes, and the options that leave out
+    dictionary forms or known words.  Each regression test can set its own
+    options, in a `config.toml` of its own.
 - 1.2:
   - The two dictionary editors share one implementation of editing an
     entry (applying changes, asking before they are lost, saving), in

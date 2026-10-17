@@ -210,7 +210,8 @@ def principal_parts(entry: Entry) -> str:
     special = (p.pos == Pos.N and which == 9) or \
         (p.pos == Pos.ADJ and (which == 9 or p.comparison in (
             Comparison.COMP, Comparison.SUPER))) or \
-        (p.pos == Pos.V and p.decl in ((9, 8), (9, 9)))
+        (p.pos == Pos.V and p.decl in ((9, 8), (9, 9))) or \
+        (p.pos == Pos.NUM and p.sort != NumeralSort.X)  # (one stem)
     if st[1:] == ('', '', '') and not special:
         return st[0]
     parts: list[str] = []
@@ -424,7 +425,9 @@ def _verb_example(f: Form, kind) -> str:
                     0 if singular else 1]
     else:
         they = ''
-    sub = 'may/must/should ' if mood == Mood.SUB else ''
+    #  (the subjunctive "let us" needs no "may/must/should")
+    sub = 'may/must/should ' if mood == Mood.SUB and they != 'let us ' \
+        else ''
     shall = ''
     if tense in (Tense.FUT, Tense.FUTP):
         if mood in (Mood.IND, Mood.SUB):
@@ -461,6 +464,8 @@ def _verb_example(f: Form, kind) -> str:
             been = {Tense.PRES: 'be ', Tense.PERF: 'been '}.get(tense, '')
         elif mood == Mood.IMP:
             been = 'be '
+        elif mood == Mood.SUB:
+            been = 'been ' if tense in (Tense.PERF, Tense.PLUP) else 'be '
     ed = ''
     if mood == Mood.IMP:
         ed = {Voice.ACTIVE: '!', Voice.PASSIVE: 'ed!'}.get(voice, '')
@@ -477,7 +482,8 @@ def _verb_example(f: Form, kind) -> str:
                 ed = 'ed'
         elif voice == Voice.PASSIVE:
             ed = 'ed'
-    elif mood == Mood.SUB and tense in (Tense.PERF, Tense.PLUP):
+    elif mood == Mood.SUB and (voice == Voice.PASSIVE or
+                               tense in (Tense.PERF, Tense.PLUP)):
         ed = 'ed'
     return they + sub + shall + have + been + '~' + ed
 
