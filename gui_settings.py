@@ -1,0 +1,206 @@
+"""The Settings dialogue of the window: every parameter (the # dialogue of
+the command line) and developer mode (!), with what each one does.
+
+Changes apply at once and are kept in the configuration file, as those of
+the # and ! dialogues are when saved.  A setting that only makes sense
+with another (write_output_to_file needs have_output_file ...) is greyed
+out while that one is off, as the command line skips it.  The pause and
+the command characters only matter in the interactive command line; they
+are offered under their own heading.
+"""
+
+import tkinter as tk
+from tkinter import messagebox, ttk
+
+from helptext import HELP
+from settings import (CHARACTERS, DEV_MODES, MODES, Settings,
+                      is_command_character)
+
+#  A setting greyed out (and off) unless another is on
+DEPENDS = {
+    'write_output_to_file': 'have_output_file',
+    'write_statistics_file': 'have_statistics_file',
+    'for_word_list_check': 'do_only_initial_word',
+    'do_only_fixes': 'do_fixes',
+    'do_fixes_anyway': 'do_fixes',
+    'do_medieval_tricks': 'do_tricks',
+}
+
+#  Settings that only the interactive command line uses
+COMMAND_LINE = ('pause_in_screen_output',)
+
+
+def label(name: str) -> str:
+    """'do_only_fixes' -> 'Do only fixes'."""
+    return name.replace('_', ' ').capitalize()
+
+
+def first_sentence(text: str) -> str:
+    end = text.find('.  ')
+    return text if end < 0 else text[:end + 1]
+
+
+class SettingsDialog:
+    """GET(name) gives a setting's value and CHANGE(name, value) changes
+    it (the window applies and saves it)."""
+
+    def __init__(self, parent, get, change, name='py-words'):
+        self.get = get
+        self.change = change
+        self.name = name
+        self.vars: dict[str, tk.Variable] = {}
+        self.boxes: dict[str, ttk.Checkbutton] = {}
+        self.win = win = tk.Toplevel(parent)
+        win.title(f'{name}: settings')
+        win.transient(parent.winfo_toplevel())
+        win.geometry('720x620')
+
+        notebook = ttk.Notebook(win)
+        notebook.pack(fill='both', expand=True, padx=8, pady=(8, 0))
+        for title, names, note in (
+                ('Parameters', MODES, 'The parameters (# in the command '
+                 'line).'),
+                ('Developer modes', DEV_MODES, 'The developer modes (! in '
+                 'the command line), for special purposes.')):
+            outer, frame = self.scrolled(notebook)
+            notebook.add(outer, text=title)
+            ttk.Label(frame, text=note, foreground='gray').pack(
+                anchor='w', pady=(0, 6))
+            for name in names:
+                if name not in COMMAND_LINE:
+                    self.row(frame, name)
+            if title == 'Developer modes':
+                self.command_line(frame)
+
+        self.help = ttk.Label(win, wraplength=690, justify='left',
+                              padding=(10, 6), text='Point at a setting to '
+                              'read more about it.  Changes apply at once '
+                              'and are kept for next time.')
+        self.help.pack(fill='x')
+        buttons = ttk.Frame(win, padding=(8, 0, 8, 8))
+        buttons.pack(fill='x')
+        close = ttk.Button(buttons, text='Close', command=win.destroy)
+        close.pack(side='right')
+        ttk.Button(buttons, text='Usual settings',
+                   command=self.usual).pack(side='right', padx=(0, 6))
+        win.bind('<Escape>', lambda e: win.destroy())
+        close.focus_set()
+        self.refresh()
+
+    # Building -------------------------------------------------------------
+
+    def scrolled(self, parent) -> tuple[ttk.Frame, ttk.Frame]:
+        """A scrolling area (for the long lists), and the frame in it."""
+        outer = ttk.Frame(parent)
+        canvas = tk.Canvas(outer, highlightthickness=0, borderwidth=0)
+        bar = ttk.Scrollbar(outer, orient='vertical', command=canvas.yview)
+        canvas.configure(yscrollcommand=bar.set)
+        bar.pack(side='right', fill='y')
+        canvas.pack(side='left', fill='both', expand=True)
+        inner = ttk.Frame(canvas, padding=(10, 10))
+        window = canvas.create_window((0, 0), window=inner, anchor='nw')
+        inner.bind('<Configure>', lambda e: canvas.configure(
+            scrollregion=canvas.bbox('all')))
+        canvas.bind('<Configure>', lambda e: canvas.itemconfigure(
+            window, width=e.width))
+
+        def wheel(event):
+            step = -1 if (event.num == 4 or event.delta > 0) else 1
+            canvas.yview_scroll(step, 'units')
+        for widget in (canvas, inner):
+            widget.bind('<Enter>', lambda e: (
+                canvas.bind_all('<MouseWheel>', wheel),
+                canvas.bind_all('<Button-4>', wheel),
+                canvas.bind_all('<Button-5>', wheel)))
+        canvas.bind('<Leave>', lambda e: (
+            canvas.unbind_all('<MouseWheel>'),
+            canvas.unbind_all('<Button-4>'),
+            canvas.unbind_all('<Button-5>')))
+        return outer, inner
+
+    def row(self, parent, name: str):
+        """A checkbox for setting NAME, with what it does."""
+        var = tk.BooleanVar(value=self.get(name))
+        box = ttk.Checkbutton(parent, text=label(name), variable=var,
+                              command=lambda: self.toggled(name))
+        box.pack(anchor='w')
+        text = ttk.Label(parent, text=first_sentence(HELP.get(name, '')),
+                         foreground='gray', wraplength=620, justify='left')
+        text.pack(anchor='w', padx=(24, 0), pady=(0, 6))
+        for widget in (box, text):
+            widget.bind('<Enter>', lambda e: self.help.config(
+                text=HELP.get(name, '')))
+        self.vars[name] = var
+        self.boxes[name] = box
+
+    def command_line(self, parent):
+        """The settings that only the interactive command line uses."""
+        ttk.Separator(parent).pack(fill='x', pady=8)
+        ttk.Label(parent, text='Only in the interactive command line',
+                  font='TkHeadingFont').pack(anchor='w', pady=(0, 6))
+        for name in COMMAND_LINE:
+            self.row(parent, name)
+        grid = ttk.Frame(parent)
+        grid.pack(anchor='w', pady=(4, 0))
+        for i, (_, name) in enumerate(CHARACTERS):
+            ttk.Label(grid, text=label(name)).grid(row=i, column=0,
+                                                   sticky='w', pady=2)
+            var = tk.StringVar(value=self.get(name))
+            entry = ttk.Entry(grid, textvariable=var, width=3)
+            entry.grid(row=i, column=1, sticky='w', padx=8)
+            for event in ('<FocusOut>', '<Return>'):
+                entry.bind(event, lambda e, n=name: self.character(n))
+            entry.bind('<Enter>', lambda e: self.help.config(
+                text=HELP['characters']))
+            self.vars[name] = var
+        ttk.Label(parent, text=first_sentence(HELP['characters']),
+                  foreground='gray', wraplength=620, justify='left').pack(
+                      anchor='w', pady=(2, 6))
+
+    # Changes --------------------------------------------------------------
+
+    def toggled(self, name: str):
+        self.change(name, self.vars[name].get())
+        for child, parent in DEPENDS.items():
+            if parent == name and not self.vars[name].get() and \
+                    self.get(child):
+                self.change(child, False)
+        self.refresh()
+
+    def character(self, name: str):
+        value = self.vars[name].get().strip()
+        if value == self.get(name):
+            return
+        others = {self.get(n) for _, n in CHARACTERS if n != name} | {'~'}
+        if len(value) == 1 and is_command_character(value) and \
+                value not in others:
+            self.change(name, value)
+        else:
+            messagebox.showerror(
+                self.name, f'“{value}” cannot be {label(name).lower()}: '
+                'it must be one punctuation character, different from the '
+                'others and from ~.', parent=self.win)
+        self.refresh()
+
+    def usual(self):
+        if not messagebox.askyesno(
+                self.name, 'Go back to the usual value of every setting?',
+                parent=self.win):
+            return
+        usual = Settings()
+        for name in MODES + DEV_MODES + tuple(n for _, n in CHARACTERS):
+            if self.get(name) != getattr(usual, name):
+                self.change(name, getattr(usual, name))
+        self.refresh()
+
+    def refresh(self):
+        """Shows the values (after a change here or in the window)."""
+        if not self.win.winfo_exists():
+            return
+        for name, var in self.vars.items():
+            if var.get() != self.get(name):
+                var.set(self.get(name))
+        for child, parent in DEPENDS.items():
+            if child in self.boxes:
+                self.boxes[child].state(
+                    ['!disabled'] if self.get(parent) else ['disabled'])

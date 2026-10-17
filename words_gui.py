@@ -19,10 +19,11 @@ from tkinter.scrolledtext import ScrolledText
 
 from config import ConfigError
 from gui_fonts import Fonts
+from gui_settings import COMMAND_LINE, SettingsDialog
 from lexicon import default_datadir
 from lexicon import Lexicon, DICTIONARY
 from session import Session
-from settings import Settings
+from settings import MODES, Settings
 from version import ABOUT, CREDITS, NAME, URL
 
 OPTIONS = (
@@ -39,6 +40,8 @@ class App:
         self.root = root
         self.datadir = datadir
         self.session = None
+        self.saved = None               # (see ready)
+        self.settings_window = None
         self.lock = threading.Lock()
         root.title(f'{NAME}: a Latin dictionary')
         root.geometry('860x620')
@@ -63,6 +66,9 @@ class App:
         ttk.Button(lang, text='Font…',
                    command=lambda: self.fonts.dialog(root)).pack(
                        side='right', padx=(6, 0))
+        ttk.Button(lang, text='Settings…',
+                   command=self.settings_dialog).pack(side='right',
+                                                      padx=(6, 0))
         ttk.Button(lang, text='Edit dictionary…',
                    command=self.edit_dictionary).pack(side='right', padx=6)
         opts = ttk.Frame(root, padding=(8, 0, 8, 4))
@@ -105,23 +111,28 @@ class App:
             pass
 
     def load(self):
+        saved = None
         try:
             settings = Settings()
             settings.load(self.datadir)
-            settings.pause_in_screen_output = False
+            saved = settings.copy()
+            settings.pause_in_screen_output = False     # (no paging here)
             session = Session(Lexicon.load(self.datadir), settings)
             error = None
         except Exception as e:              # keep the window alive
             session, error = None, e
-        self.done.put((self.ready, (session, error)))
+        self.done.put((self.ready, (session, error, saved)))
 
-    def ready(self, session, error):
+    def ready(self, session, error, saved=None):
         if error is not None:
             messagebox.showerror(NAME,
                                  f'Could not load the dictionary:\n{error}')
             self.root.destroy()
             return
         self.session = session
+        #  the settings as saved, which the window keeps for the command
+        #  line (session.settings differ in what the window cannot use)
+        self.saved = saved or session.settings.copy()
         for name, var in self.option_vars.items():
             var.set(getattr(session.settings, name))
         self.status.config(text='Ready.')
@@ -133,16 +144,43 @@ class App:
         file for next time."""
         if self.session is None:
             return
+        for name, var in self.option_vars.items():
+            if var.get() != getattr(self.saved, name):
+                self.change_setting(name, var.get())
+
+    def setting(self, name):
+        return getattr(self.saved, name)
+
+    def change_setting(self, name, value):
+        """Changes a setting (a parameter, developer mode or command
+        character), applies it, and keeps it in the configuration file."""
+        setattr(self.saved, name, value)
+        section = 'parameters' if name in MODES else 'developer'
         with self.lock:
-            for name, var in self.option_vars.items():
-                setattr(self.session.settings, name, var.get())
-            self.session.analyzer.reset()
+            if name not in COMMAND_LINE:
+                setattr(self.session.settings, name, value)
+            self.session.settings_changed()     # (output files, cache)
             try:
-                self.session.settings.save('parameters')
+                self.saved.save(section)
             except (OSError, ConfigError) as e:
-                self.status.config(text=f'The options were not saved: {e}')
+                self.status.config(text=f'The settings were not saved: {e}')
+        if name in self.option_vars and self.option_vars[name].get() != value:
+            self.option_vars[name].set(value)
+        if self.settings_window is not None:
+            self.settings_window.refresh()
         if self.entry.get().strip():
             self.lookup()
+
+    def settings_dialog(self):
+        """Opens the dialogue with every setting (or brings it forward)."""
+        if self.session is None:
+            return
+        win = self.settings_window
+        if win is not None and win.win.winfo_exists():
+            win.win.lift()
+            return
+        self.settings_window = SettingsDialog(
+            self.root, self.setting, self.change_setting, NAME)
 
     def lookup(self):
         line = self.entry.get().strip()

@@ -201,9 +201,11 @@ Settings and files
 ------------------
 
 The parameters (`#`) and developer modes (`!`) are those of the original
-program; `?` in their dialogues explains each one.  They are kept, with
-the fonts of the windows and (optionally) the data folder, in one
-configuration file, `config.toml`:
+program; `?` in their dialogues explains each one.  In the window,
+"Settings…" shows them all, with what each one does; a change there
+applies at once, as do the main options ticked in the window itself.  They
+are kept, with the fonts of the windows and (optionally) the data folder,
+in one configuration file, `config.toml`:
 
 | System  | Configuration file                                         |
 |---------|------------------------------------------------------------|
@@ -355,6 +357,7 @@ How it works
 | `editor.py`   | editing the dictionary: what the two editors share            |
 | `config.py`   | the configuration file, config.toml                           |
 | `gui_fonts.py`| the fonts of the windows: zoom, the "Font…" dialogue          |
+| `gui_settings.py` | the window's "Settings…" dialogue                         |
 | `words.py`    | the command line, interactive mode and setting dialogues      |
 | `words_*.py`, `meanings.py` | the other programs (see above)                  |
 
