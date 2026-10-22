@@ -2,7 +2,7 @@
 <!-- The sources named by the source codes of the entries. See words.xsd. -->
 <sources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="words.xsd">
   <source code="X" name="general or unknown"/>
-  <source code="A" name="D"/>
+  <source code="A" name="(unused)"/>
   <source code="B" name="Beeson, Medieval Latin"/>
   <source code="C" name="Cassell's Latin Dictionary"/>
   <source code="D" name="Adams, Latin Sexual Vocabulary"/>
