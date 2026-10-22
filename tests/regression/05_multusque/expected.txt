@@ -1,0 +1,78 @@
+multa
+  multa, multae  noun, 1st declension, feminine  [XLXCO]
+    fine; penalty; penalty involving property (livestock, later money);
+    mult-a         NOM.SG
+    mult-a         VOC.SG
+    mult-a         ABL.SG
+  multum, multi  noun, 2nd declension, neuter  [XXXDX]  lesser
+    many things (pl.); much; many;
+    mult-a         NOM.PL
+    mult-a         VOC.PL
+    mult-a         ACC.PL
+  multo, multare, multavi, multatus  verb, 1st conjugation, transitive  [XLXCO]
+    punish, fine; extract as forfeit; sentence to pay;
+    mult-a         2SG.PRS.ACT.IMP
+  multus, multa -um, -, plurimus -a -um  adjective, 1st/2nd declension  [XXXAX]
+    much, many, great, many a; large, intense, assiduous; tedious;
+    mult-a         NOM.SG.F
+    mult-a         VOC.SG.F
+    mult-a         ABL.SG.F
+    mult-a         NOM.PL.N
+    mult-a         VOC.PL.N
+    mult-a         ACC.PL.N
+  -, multae  noun, 1st declension, feminine  [XXXDX]  lesser
+    many women (pl.);
+    mult-a         ABL.SG
+
+viri
+  virus, viri  noun, 2nd declension, neuter  [XXXAO]
+    venom (sg.), poisonous secretion of snakes/creatures/plants; acrid element;
+    vir-i          GEN.SG
+    vir-i          LOC.SG
+  virum, viri  noun, 2nd declension, neuter  [GBXEK]  neo-Latin  uncommon
+    virus;
+    vir-i          GEN.SG
+    vir-i          LOC.SG
+  vir, viri  noun, 2nd declension, masculine  [XXXAX]
+    man; husband; hero; person of courage, honor, and nobility;
+    vir-i          GEN.SG
+    vir-i          LOC.SG
+    vir-i          NOM.PL
+    vir-i          VOC.PL
+  vis, viris  noun, 3rd declension, feminine  [XXXAX]
+    strength (bodily) (pl.), force, power, might, violence; resources; large body;
+    vir-i          LOC.SG  (early)
+    vir-i          DAT.SG
+    vir-i          ABL.SG
+
+virtus
+  virtus, virtutis  noun, 3rd declension, feminine  [XXXAX]
+    strength/power; courage/bravery; worth/manliness/virtue/character/excellence;
+    virtus         NOM.SG
+    virtus         VOC.SG
+  virtus, virtutis  noun, 3rd declension, feminine  [EEXCR]  later
+    army; host; mighty works (pl.); class of Angels; [Dominus ~ => Lord of hosts];
+    virtus         NOM.SG
+    virtus         VOC.SG
+
+animo
+  animus, animi  noun, 2nd declension, masculine  [XXXAO]
+    mind; intellect; soul; feelings; heart; spirit, courage, character, pride; air;
+    anim-o         DAT.SG
+    anim-o         ABL.SG
+  animo, animare, animavi, animatus  verb, 1st conjugation, transitive  [XXXBO]
+    animate, give/bring life; revive, refresh; rouse, animate; inspire; blow;
+    anim-o         1SG.PRS.ACT.IND
+
+multusque
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  multus, multa -um, -, plurimus -a -um  adjective, 1st/2nd declension  [XXXAX]
+    much, many, great, many a; large, intense, assiduous; tedious;
+    mult-us        NOM.SG.M
+
+recursat
+  recurso, recursare, recursavi, recursatus  verb, 1st conjugation  [XXXDX]  lesser
+    keep rebounding/recoiling; keep recurring to the mind;
+    recurs-at      3SG.PRS.ACT.IND
+

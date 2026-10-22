@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- The sources named by the source codes of the entries. See words.xsd. -->
+<sources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="words.xsd">
+  <source code="X" name="general or unknown"/>
+  <source code="A" name="D"/>
+  <source code="B" name="Beeson, Medieval Latin"/>
+  <source code="C" name="Cassell's Latin Dictionary"/>
+  <source code="D" name="Adams, Latin Sexual Vocabulary"/>
+  <source code="E" name="Stelten, Ecclesiastical Latin"/>
+  <source code="F" name="Deferrari, St. Thomas Aquinas"/>
+  <source code="G" name="Gildersleeve and Lodge, Latin Grammar"/>
+  <source code="H" name="Collatinus (Ouvrard)"/>
+  <source code="I" name="Leverett, Lexicon"/>
+  <source code="J" name="Bracton, De Legibus"/>
+  <source code="K" name="Calepinus Novus (Licoppe)"/>
+  <source code="L" name="Lewis, Elementary Latin Dictionary"/>
+  <source code="M" name="Latham, Medieval Word List"/>
+  <source code="N" name="Nelson, word list"/>
+  <source code="O" name="Oxford Latin Dictionary"/>
+  <source code="P" name="Souter, Later Latin"/>
+  <source code="Q" name="other dictionaries"/>
+  <source code="R" name="Plater and White, Vulgate grammar"/>
+  <source code="S" name="Lewis and Short"/>
+  <source code="T" name="found in a translation"/>
+  <source code="U" name="Du Cange"/>
+  <source code="V" name="Blatt, Saxo"/>
+  <source code="W" name="Whitaker's guess"/>
+  <source code="Y" name="temporary"/>
+  <source code="Z" name="sent by a user"/>
+</sources>

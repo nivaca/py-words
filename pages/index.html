@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>py-words</title>
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<style>
+body { margin: 0; font: 16px/1.5 system-ui, -apple-system, "Segoe UI",
+  sans-serif; background: #fbfaf7; color: #1d1d1b; }
+@media (prefers-color-scheme: dark) {
+  body { background: #1b1b1d; color: #e8e6e1; }
+}
+.loading { max-width: 40rem; margin: 20vh auto; padding: 1rem;
+  text-align: center; }
+.loading h1 { font-size: 1.4rem; margin: 0 0 .5rem; }
+.loading p { color: #6b6a66; }
+.loading .error { color: #b00020; white-space: pre-wrap; text-align: left; }
+</style>
+</head>
+<body>
+<div class="loading">
+<h1>py-words</h1>
+<p id="status">Loading…</p>
+<noscript><p class="error">This page needs JavaScript: the dictionary runs
+in the browser.</p></noscript>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

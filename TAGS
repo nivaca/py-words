@@ -1,0 +1,1169 @@
+
+analyzer.py,1447
+class Opts:Opts36,1419
+def _origin(43,1625
+def _gender_fits(48,1757
+def _adj_comparison(54,1982
+def _adv_comparison(60,2160
+def _form_of(65,2314
+def _verbal(110,4309
+def _key_matches(114,4400
+def _uv(122,4745
+def _abbreviation(128,4900
+class Analyzer:Analyzer132,5003
+    def __init__(133,5019
+    def reset(142,5365
+    def default_opts(146,5486
+    def put_stat(150,5614
+    def strip_prefix(158,5949
+    def strip_suffix(166,6293
+    def strip_tackon(175,6635
+    def search(186,6998
+    def candidates(208,7916
+    def match(227,8778
+    def arrange(273,10825
+    def word(288,11363
+    def _word(301,11995
+    def _stems(316,12626
+    def _prefixed(333,13470
+    def _suffixed(352,14248
+    def _qu_words(374,15156
+    def _qu_split(394,16096
+    def _as_pronoun(403,16435
+    def _qu_pronouns(409,16685
+    def _packons(419,17126
+    def _tackons(444,18206
+            def fits(457,18734
+    def enclitic(475,19510
+    def analyze_word(497,20564
+    def _passes(520,21779
+    def _tricks_enclitic(540,22678
+    def analyze_line(549,23111
+def split_line(577,24126
+def qv_to_qu(584,24340
+def is_capitalized(589,24479
+def is_all_caps(593,24589
+def _is_esse(597,24653
+def form_of_sum(652,26887
+def compounds(666,27524
+    def keep_affixes(674,27931
+    def with_compound(700,28998
+        def update(712,29477
+        def update(744,30961
+def adverbs(786,32785
+def _affixes_before(820,34392
+
+bundle-zip.py,98
+def name(33,1050
+def files(38,1167
+def _left_out(51,1678
+def bundle(55,1788
+def main(67,2210
+
+config.py,279
+class ConfigError(34,1109
+def config_dir(38,1179
+def config_path(56,1876
+def read(60,1955
+def section(77,2589
+def data_folder(85,2785
+def update(93,3033
+def write(107,3478
+def toml_value(119,3881
+def _comment(154,5496
+def _first_sentence(166,5825
+def render(171,5940
+
+editor.py,1257
+class Fields:Fields131,6356
+    def __init__(134,6423
+    def of(145,6878
+    def names(151,7164
+    def stem_labels(156,7367
+    def set_pos(162,7626
+    def snapshot(169,7875
+    def entry(176,8186
+def plain_message(190,8765
+    def label(194,8999
+class Editor:Editor216,9815
+    def __init__(217,9829
+    def set_language(250,11485
+    def translating(267,12259
+    def language_name(273,12436
+    def translation(276,12542
+    def fields(285,12893
+    def set_translation(289,13073
+    def options(305,13664
+    def _declensions(323,14536
+    def search(345,15582
+        def add(357,16052
+    def add(391,17468
+    def replace(408,18247
+    def delete(416,18552
+    def _index(424,18851
+    def _changed(430,19059
+    def numbered(434,19137
+    def save(439,19356
+    def _save_languages(451,19895
+    def describe(477,21100
+    def name(485,21443
+    def warnings(489,21595
+    def trial(499,22090
+    def try_word(515,22862
+    def summary(522,23148
+class Editing:Editing531,23581
+    def __init__(541,24055
+    def find(547,24277
+    def start(551,24402
+    def pending(556,24608
+    def label(560,24779
+    def apply(567,25039
+    def leave(587,25929
+    def delete(601,26451
+    def save(611,26817
+
+forms.py,356
+def _same(20,635
+def _make(145,6306
+def _verb_parts(157,6610
+def principal_parts(214,8730
+def _declension(285,11810
+def describe_part(300,12267
+def describe_form(331,13547
+def _phrase(372,15557
+def gloss_form(378,15729
+    def g(386,16224
+def example(425,18027
+def _verb_example(469,20143
+def deponent(555,23652
+def stem_and_ending(560,23800
+
+gui_fonts.py,421
+def _size(40,1531
+def _clamp(46,1744
+class Fonts:Fonts50,1822
+    def of(55,1948
+    def __init__(62,2170
+    def load(93,3714
+    def save(106,4204
+    def apply(119,4779
+    def set(132,5433
+    def zoom(140,5718
+    def reset(145,5926
+    def key(148,5982
+    def fixed_families(155,6120
+    def all_families(169,6761
+    def dialog(175,7008
+        def changed(221,9381
+        def refresh(235,9816
+
+gui_settings.py,373
+class SettingsDialog:SettingsDialog22,903
+    def __init__(26,1044
+            def clear(72,3240
+    def interface_row(86,3828
+        def chosen(100,4476
+    def scrolled(112,4973
+        def wheel(127,5777
+    def row(141,6379
+    def command_line(157,7139
+    def toggled(184,8522
+    def character(192,8820
+    def usual(208,9543
+    def refresh(219,9984
+
+gui_theme.py,265
+class Theme:Theme38,1377
+    def of(43,1531
+    def __init__(50,1753
+    def _usual_colours(58,2029
+    def set(78,2847
+    def apply(89,3260
+    def _dark_styles(110,4152
+    def _tk_colours(157,6827
+    def _options(163,7140
+    def _recolour(181,8182
+
+history.py,197
+def history_path(21,589
+class History:History38,1213
+    def __init__(39,1228
+    def _read(45,1488
+    def add(59,1929
+    def _write(77,2651
+    def recent(83,2863
+    def clear(94,3228
+
+interface.py,284
+class InterfaceError(42,1292
+def files(46,1382
+def names(56,1685
+def read(69,2093
+def key_of(96,3235
+def use(100,3307
+def use_configured(117,3823
+def code(130,4225
+def tr(135,4311
+def N_(150,4895
+def translate_argparse(156,5068
+def yes(164,5312
+def translate_tk(171,5583
+
+languages.py,369
+def key(53,1951
+def files(66,2453
+def names(81,3036
+class Language:Language93,3398
+    def __init__(96,3453
+    def __repr__(102,3698
+    def code(106,3778
+    def name(110,3850
+    def is_reference(114,3922
+    def translated(117,3994
+    def meaning(123,4218
+    def text(130,4483
+    def _patterns(149,5150
+    def numeral(164,5844
+def read(176,6310
+
+lexicon.py,847
+def source_names(59,1912
+def default_datadir(68,2252
+def esse(83,2826
+class StemRef(90,3068
+    def part(97,3261
+def indexed_stems(101,3322
+    def usable(111,3688
+class Lexicon:Lexicon131,4537
+    def load(155,5816
+    def _read(173,6627
+        def path(174,6672
+    def language_names(195,7688
+    def language(199,7841
+    def reverse(221,8933
+    def with_entries(238,9767
+    def _index_stems(250,10283
+    def _index_inflections(261,10739
+    def _sort_addons(276,11428
+    def lookup(286,11799
+    def dictionary(290,11959
+    def _sorted_stems(294,12100
+    def neighbours(299,12385
+def cache_dir(317,13033
+class _Cache:_Cache337,13722
+    def __init__(342,13956
+    def of(348,14117
+    def extended(366,14848
+    def path(377,15271
+    def read(380,15381
+    def write(390,15734
+    def prune(407,16337
+
+model.py,1006
+class Pos(15,362
+class Gender(35,728
+class Case(43,844
+class Number(54,961
+class Comparison(60,1016
+class NumeralSort(67,1094
+class Tense(75,1187
+class Voice(85,1298
+class Mood(91,1363
+class NounKind(100,1456
+class PronounKind(113,1816
+class VerbKind(124,1955
+class Age(139,2150
+class Freq(151,2411
+class Area(164,2656
+class Geo(179,2801
+class Source(200,3011
+class Decl(232,3362
+    def __str__(238,3571
+    def fits(241,3637
+def gender_fits(250,3893
+def pos_fits(255,4064
+def key_fits(259,4192
+def matches(263,4271
+class Codes:Codes269,4467
+    def __str__(277,4673
+class Part:Part286,4891
+class Form:Form304,5392
+    def order(320,5902
+    def tvm(343,6799
+class Inflection:Inflection351,6955
+class Entry:Entry369,7500
+    def __repr__(383,7984
+class Unique:Unique389,8169
+    def __repr__(399,8440
+class Prefix:Prefix404,8561
+class Suffix:Suffix415,8927
+class Tackon:Tackon428,9377
+    def is_packon(438,9701
+def stems_used(446,9902
+def fold(456,10217
+
+pages/build.py,63
+def program_files(26,779
+def build(39,1313
+def main(55,1968
+
+render.py,457
+class Renderer:Renderer50,2185
+    def __init__(51,2201
+    def t(65,2912
+    def meaning(71,3125
+    def meaning_of(77,3338
+    def describe(92,3921
+    def line(99,4269
+    def text(106,4533
+    def word(113,4741
+    def reading(132,5453
+    def affix(159,6658
+    def entry_header(171,7090
+    def entry(190,7953
+    def unique(200,8404
+    def form(210,8820
+    def neighbour(246,10508
+    def reverse(253,10784
+def columns(271,11408
+
+results.py,699
+class Origin(22,759
+class Parse:Parse43,1560
+    def form(50,1731
+    def id(54,1804
+    def entry(58,1908
+    def meaning(62,2031
+def from_dictionary(68,2173
+def mark(72,2274
+def trick_mark(79,2543
+class Found:Found85,2749
+def found(92,2949
+def marked(98,3112
+def chain(106,3386
+def parses_of(124,4055
+def shown(129,4213
+class Reading:Reading135,4404
+    def pos(143,4661
+class WordResult:WordResult148,4750
+    def unknown(157,5081
+def allowed(167,5295
+def _is_qu_pronoun(230,7999
+def _order(234,8089
+def _sort_and_trim(247,8567
+    def not_only(254,8873
+    def keep(270,9616
+def sweep(292,10460
+def _once(310,11237
+def _for_display(323,11694
+def group(343,12295
+
+reverse.py,323
+class Hit(33,1117
+def fold(41,1339
+class Words:Words47,1560
+    def __init__(50,1623
+    def is_common(62,2150
+def words_of(67,2293
+def rank(92,3431
+class ReverseIndex:ReverseIndex100,3620
+    def __init__(101,3640
+    def build(105,3738
+    def pack(129,4774
+    def unpack(138,5158
+    def search(143,5410
+
+session.py,418
+class Session:Session35,1026
+    def __init__(36,1041
+    def settings_changed(52,1789
+    def _choose_language(68,2480
+    def renderer(82,3060
+    def close(86,3217
+    def _stat(92,3410
+    def _emit(96,3560
+    def set_language(104,3820
+    def lookup(120,4523
+    def lookup_latin(126,4743
+    def lookup_reverse(138,5227
+    def _unknown(151,5801
+    def process(159,6153
+def _keep_open(166,6326
+
+settings.py,347
+def section_of(84,2979
+def label(90,3168
+def first_sentence(96,3335
+class Settings:Settings102,3460
+    def copy(149,5007
+    def load(155,5226
+    def apply_config(204,7515
+    def config_section(236,9178
+    def save(246,9656
+    def read(258,10306
+def ensure_config(288,11710
+def find(312,12587
+def is_command_character(321,12878
+
+tests/spanish.py,20
+def datadir(18,472
+
+tests/test_analyzer.py,1667
+def lexicon(25,701
+class AnalyzerTests(32,817
+    def setUp(34,858
+    def analyze(37,930
+    def forms(41,1054
+    def test_noun(50,1405
+    def test_verb(55,1609
+    def test_u_and_v_are_the_same_letter(63,1928
+    def test_capitals(66,2046
+    def test_unique(69,2145
+    def test_enclitic(73,2287
+    def test_qu_pronoun_and_packon(79,2547
+    def test_esse(84,2743
+    def test_prefix(88,2864
+    def test_compound_tense(92,2991
+    def test_adverb_from_adjective(101,3387
+    def test_syncope(106,3585
+    def test_trick(111,3784
+    def test_roman_numeral(116,3956
+    def test_unknown(121,4141
+    def test_trimming(124,4224
+    def test_settings_switch_off_fixes(130,4430
+    def test_line(136,4649
+    def test_compound_uses_next_word(141,4867
+class HelperTests(146,5034
+    def test_split_line(148,5073
+    def test_form_of_sum(153,5310
+    def test_roman_numbers(159,5549
+    def test_decl_fits(167,5959
+class FindingsTests(175,6258
+    def setUp(179,6399
+    def test_chain(186,6675
+    def test_marked(205,7627
+    def test_marks_in_the_result(215,8068
+class GlossTests(224,8485
+    def gloss(227,8585
+    def test_glosses_are_loaded(232,8770
+    def test_forms(238,8997
+    def test_in_the_output(266,10695
+    def test_words_without_gloss_xml(271,10888
+class EnglishTests(282,11230
+    def test_search(284,11270
+    def test_part_of_speech(289,11463
+    def test_common_words_are_not_indexed_from_phrases(294,11664
+class LexiconTests(299,11843
+    def test_esse_is_built_in(301,11883
+    def test_lookup_folds_u_v_i_j(306,12088
+    def test_neighbours(309,12209
+    def test_comparison_stems(315,12425
+
+tests/test_bundle.py,125
+class BundleTests(19,491
+    def bundle(21,530
+    def test_the_distribution(31,1076
+    def test_with_the_tests(46,1814
+
+tests/test_check.py,696
+class CheckerTests(22,661
+    def setUpClass(25,718
+    def tearDownClass(32,963
+    def problems(35,1018
+    def kinds(44,1459
+    def test_good_entry(47,1569
+    def test_real_data_is_clean(50,1651
+    def test_sources(59,2092
+    def test_unlisted_source(71,2699
+    def test_glosses(78,3020
+    def test_malformed_xml(94,3856
+    def test_wrong_root(97,3969
+    def test_bad_stem(100,4069
+    def test_bad_codes(106,4337
+    def test_two_meanings(116,4822
+    def test_errors_are_all_reported(120,4977
+    def test_no_endings(125,5188
+    def test_missing_stem(129,5327
+    def test_long_meaning(133,5469
+    def test_duplicate(137,5617
+    def test_other_files(140,5718
+
+tests/test_cli.py,1542
+def lexicon(29,708
+class InTempDir(36,824
+    def setUp(37,860
+    def tearDown(42,998
+class SettingsTests(47,1082
+    def setUp(49,1115
+    def tearDown(55,1369
+    def test_round_trip(59,1484
+    def test_config_comes_first(69,1895
+    def test_bad_config(83,2571
+    def test_old_files(105,3605
+    def test_bad_line(117,4168
+def run(127,4479
+class CommandLineTests(134,4750
+    def test_words(136,4786
+    def test_meanings_only(141,4961
+    def test_config_is_made_at_the_first_start(146,5130
+    def test_interactive_start_says_so(180,6830
+    def test_glosses_or_words(207,8151
+    def test_english(227,9154
+    def test_file_and_output(232,9327
+    def test_standard_input(242,9692
+    def test_version(246,9816
+    def test_bad_data_directory(255,10231
+class InteractiveTests(261,10431
+    def session(263,10467
+    def test_dictionary_line(268,10638
+    def repl(280,11235
+        def ask(284,11332
+    def test_about(298,11789
+    def test_ctrl_c_at_the_prompt_does_not_quit(303,11960
+    def test_ctrl_c_stops_a_dialogue(308,12194
+    def test_ctrl_c_outside_interactive_mode(316,12601
+    def test_lookup_and_quit(325,13022
+    def test_language(331,13294
+    def test_file(336,13468
+    def test_parameters_dialogue(343,13715
+    def test_parameters_help_and_save(351,14109
+    def test_developer_modes_and_files(361,14637
+    def test_unknowns_file(369,14989
+    def test_output_file(378,15292
+class ConvertTests(390,15685
+    def test_convert(401,16261
+    def test_error(424,17517
+
+tests/test_config.py,283
+class ConfigTests(17,400
+    def setUp(19,439
+    def tearDown(25,663
+    def test_where(30,778
+    def test_none_yet(42,1362
+    def test_update_keeps_the_other_sections(47,1538
+    def test_comments(61,2326
+    def test_data_folder(68,2625
+    def test_unreadable(76,3004
+
+tests/test_editor.py,1789
+class WithData(32,944
+    def setUp(33,979
+    def tearDown(40,1236
+    def read(43,1288
+class EditorTests(48,1391
+    def setUp(50,1421
+    def test_search(54,1502
+    def test_options(60,1738
+    def test_fields_round_trip(66,2011
+    def test_source_names_come_from_sources_xml(71,2222
+    def test_change_of_part_of_speech(85,2966
+    def test_messages(91,3182
+    def test_add_try_and_save(99,3583
+    def test_change_and_delete_leave_the_rest_alone(113,4239
+class EditingTests(129,4811
+    def setUp(132,4897
+    def test_pending(140,5171
+    def test_apply_replaces_the_entry_in_the_results(146,5439
+    def test_leave(157,5980
+        def answer(160,6026
+            def ask(161,6053
+    def test_new_entry_and_delete(178,6944
+    def test_save_applies_first(189,7410
+def _pty_available(201,7947
+class TranslationTests(211,8199
+    def setUp(214,8290
+    def es_text(235,9229
+    def test_language(239,9332
+    def test_change_add_delete_and_save(253,10045
+    def test_an_empty_translation_is_taken_out(288,11681
+    def test_update_language(300,12205
+    def test_terminal(316,13091
+class TerminalEditorTests(334,13960
+    def run_keys(337,14065
+        def pump(352,14618
+    def test_add_an_entry(384,15716
+    def test_change_an_entry(401,16605
+    def test_save_without_applying(417,17474
+    def test_quit_asks_about_changes(430,18111
+    def test_quit_without_saving(445,18864
+def _display(456,19349
+class WindowEditorTests(468,19643
+    def test_find_change_add_save(470,19679
+    def test_a_changed_entry_is_listed_once(501,20929
+    def test_save_applies_the_entry_shown(519,21617
+    def test_leaving_an_entry_asks(537,22285
+        def ask(542,22438
+class WindowTranslationTests(584,24102
+    def test_window(591,24373
+
+tests/test_fonts.py,433
+def _display(14,342
+class FontTests(27,687
+    def setUp(29,724
+    def tearDown(40,1159
+    def wait_for(50,1500
+    def size(60,1847
+    def test_zoom_and_reset(63,1929
+    def test_sizes_are_limited(80,2764
+    def test_saved_choice_is_used(87,3053
+    def test_keys(98,3623
+    def test_dialog(117,4502
+    def test_options_are_saved(146,5807
+    def test_about(170,6725
+    def test_windows_use_the_fonts(185,7362
+
+tests/test_gui_settings.py,554
+def _display(17,446
+class SettingsDialogTests(30,791
+    def setUp(32,838
+    def tearDown(49,1494
+    def test_language_of_the_meanings(56,1752
+    def toggle(73,2493
+    def test_every_setting_is_offered(78,2624
+    def test_a_change_applies_and_is_saved(83,2856
+    def test_glosses(95,3421
+    def test_no_checkboxes_in_the_window(103,3775
+        def boxes(106,3926
+    def test_dependent_settings(115,4305
+    def test_pause_is_kept_for_the_command_line(130,5018
+    def test_characters(143,5763
+    def test_usual_settings(162,6582
+
+tests/test_history.py,637
+class HistoryTests(21,535
+    def setUp(23,575
+    def tearDown(27,714
+    def test_kept_between_sessions(30,766
+    def test_recent(37,1087
+    def test_only_the_last_are_kept(44,1316
+    def test_clear(52,1631
+    def test_no_file(60,1892
+    def test_where(71,2270
+    def test_unwritable(85,2869
+def _pty_available(93,3177
+class CommandLineHistoryTests(103,3430
+    def setUp(106,3540
+    def tearDown(110,3670
+    def session(113,3722
+        def pump(123,4057
+    def test_up(144,4721
+class WindowHistoryTests(154,5094
+    def setUp(156,5140
+    def tearDown(167,5562
+    def test_searches_are_listed(171,5671
+
+tests/test_install.py,282
+class InstallTests(19,423
+    def setUp(24,569
+    def tearDown(31,866
+    def test_install_and_uninstall(39,1074
+    def test_old_name_is_cleaned_up(76,2878
+    def test_quoting(114,4689
+    def test_icns(122,4979
+    def test_macos(136,5596
+    def test_windows(175,7550
+
+tests/test_interface.py,717
+def program_texts(40,1454
+class TranslationTests(83,3315
+    def tearDown(85,3359
+    def test_every_text_is_translated(88,3412
+    def test_tr(97,3829
+    def test_names_and_unknown_languages(111,4508
+    def test_bad_files(116,4714
+class ProgramTests(132,5479
+    def tearDown(134,5519
+    def test_setting(137,5572
+    def test_command_line(145,5889
+    def test_web_page(153,6217
+def _display(171,6845
+class KeptTests(182,7087
+    def setUp(186,7261
+    def tearDown(191,7358
+    def kept(198,7524
+    def meanings(208,7881
+    def test_other_settings_keep_it(212,8046
+    def test_web_page(224,8628
+    def test_command_line(238,9212
+        def ask(248,9592
+    def test_window(261,10178
+
+tests/test_languages.py,744
+def write(30,922
+class LanguageTests(35,1025
+    def setUpClass(38,1083
+    def tearDownClass(69,2506
+    def lex(72,2561
+    def session(78,2733
+    def test_english(83,2901
+    def test_names(93,3358
+    def test_translated_and_not(97,3503
+    def test_texts(109,4144
+    def test_lookup(126,5052
+    def test_reverse(135,5512
+    def test_examples_only_in_english(145,5998
+    def test_unknown_language(153,6313
+    def test_bad_files(158,6507
+    def test_settings(180,7719
+class IdTests(192,8190
+    def setUp(194,8225
+    def tearDown(197,8296
+    def test_ids_are_read_and_written(200,8348
+    def test_the_data_files_have_ids(213,9032
+    def test_editor_keeps_and_gives_ids(223,9576
+    def test_check(240,10427
+
+tests/test_lexicon.py,492
+def summary(23,611
+class CacheTests(37,1279
+    def setUp(39,1317
+    def tearDown(51,1842
+    def entries(59,2062
+    def cached(64,2266
+    def test_cached_lexicon_is_the_same(67,2368
+    def test_cached_english_is_the_same(77,2867
+    def test_a_changed_file_is_read_again(92,3618
+    def test_a_bad_cache_is_ignored(105,4185
+    def test_no_cache_where_it_cannot_be_written(113,4503
+    def test_no_cache_if_switched_off(119,4750
+    def test_old_caches_are_removed(124,4930
+
+tests/test_regression.py,493
+def run_words(32,1050
+class RegressionTests(50,1817
+    def setUpClass(53,1877
+    def tearDownClass(59,2093
+    def compare(62,2148
+    def check(75,2676
+    def test_multusque(81,2969
+    def test_aeneid(84,3035
+    def test_ius(87,3095
+    def test_qualdupes(90,3149
+    def test_english(93,3215
+    def test_forms(96,3277
+    def test_developer_modes(100,3408
+    def test_no_dictionary_forms(103,3486
+    def test_unknowns_only(106,3572
+    def test_command_line(109,3646
+
+tests/test_theme.py,246
+def _display(14,356
+class ThemeTests(27,701
+    def setUp(29,739
+    def tearDown(39,1104
+    def test_dark_and_back(49,1445
+    def test_kept_for_next_time(73,2666
+    def test_the_box_of_the_main_window(79,2913
+    def widgets(100,3779
+
+tests/test_tui.py,423
+def _pty_available(22,662
+class TerminalDictionaryTests(32,913
+    def setUp(34,964
+    def tearDown(39,1157
+    def run_keys(42,1209
+        def pump(59,1874
+    def test_look_up_and_scroll(89,2866
+    def test_history(99,3269
+    def test_clear_history(110,3744
+    def test_english(117,4020
+    def test_language_of_the_meanings(123,4246
+    def test_settings(137,4922
+    def test_help_and_editor(150,5540
+
+tests/test_web.py,479
+class WebTests(18,491
+    def setUpClass(21,544
+    def tearDownClass(26,704
+    def call(29,757
+        def start(38,1141
+    def test_dark_mode(43,1348
+    def test_lookup(72,2763
+    def test_escaped(77,2960
+    def test_other_host_refused(82,3136
+    def test_form_needs_token(86,3280
+    def test_settings_change(90,3454
+    def test_history(100,3915
+class LanguageTests(108,4182
+    def setUp(111,4281
+    def tearDown(118,4518
+    def test_choose(125,4695
+
+tricks.py,669
+def only_roman_digits(129,5245
+def _sum_digits(133,5360
+def roman_number(140,5608
+def bad_roman_number(147,5792
+def _numeral(164,6355
+def roman_numeral(170,6569
+def _is_perfect(181,6887
+def _ends_with_tackon(188,7137
+def syncope(194,7359
+    def first(201,7576
+def _places(257,9800
+class _Tricks:_Tricks265,9987
+    def __init__(268,10077
+    def attempt(278,10464
+    def flip(290,11016
+    def flip_flop(299,11377
+    def internal(312,11996
+    def slur(322,12352
+    def table(342,13143
+def slury(359,13637
+    def lookup(365,13881
+def try_tricks(376,14221
+    def lookup(383,14498
+def _double_consonants(433,16576
+def _two_words(445,17075
+
+tui.py,336
+def ctrl(12,337
+class Field:Field20,457
+    def __init__(23,536
+    def choice(31,836
+    def shown(34,930
+    def cycle(40,1094
+    def key_press(46,1329
+class Screen:Screen70,2214
+    def __init__(74,2319
+    def put(77,2378
+    def scrolled(87,2714
+    def popup(96,3035
+    def ask(146,5051
+    def confirm(162,5673
+
+version.py,45
+def about(36,1204
+def check_python(48,1526
+
+words.py,696
+def load(56,1722
+class _Skip(66,1990
+def _yes_no(70,2074
+def _character(89,2704
+def _interface(110,3465
+def _save(133,4362
+def change_parameters(149,4952
+def change_developer_modes(169,5658
+def banner(204,7046
+class Pager:Pager217,7609
+    def __init__(220,7688
+    def reset(226,7853
+    def write(229,7898
+def repl(244,8360
+    def say(251,8694
+def command(287,9768
+def line_history(307,10507
+    def remember(324,11117
+def interactive_help(330,11237
+def feed(351,12235
+def run_file(365,12643
+class _Credits(375,12990
+    def __call__(378,13099
+def main(383,13217
+def _main(393,13534
+def make_config(512,19305
+def _interface_option(521,19632
+def meanings(533,20085
+
+words_check.py,393
+def inflection_decls(45,1630
+class Checker:Checker55,1998
+    def __init__(56,2013
+    def report(70,2626
+    def check_file(79,2917
+    def check_dictionary(117,4682
+    def check_ids(130,5217
+    def check_language(141,5669
+    def entry_warnings(162,6721
+def _stem_needed(203,8728
+def _meaning_lines(216,9171
+def data_ids(229,9696
+def data_files(244,10318
+def main(257,10879
+
+words_convert.py,583
+class ConvertError(41,1384
+class Tokens:Tokens45,1426
+    def __init__(48,1513
+    def next(52,1595
+    def rest(63,1985
+    def enum(67,2109
+    def number(75,2368
+    def decl(82,2666
+def read_part(90,2886
+def read_form(113,3805
+def read_codes(141,5008
+def read_lines(146,5150
+def _fail(152,5368
+def _split_comment(156,5476
+def _comment_line(161,5631
+def _is_comment(166,5796
+def convert_dictline(172,5960
+def convert_inflects(196,6874
+def convert_uniques(226,7987
+def convert_addons(251,8842
+def convert(328,11953
+    def path(330,12069
+def main(350,12899
+
+words_edit.py,724
+class TUI(58,2243
+    def __init__(59,2262
+    def current(75,2927
+    def results(80,3061
+    def empty(85,3200
+    def load(90,3380
+    def form_values(114,4527
+    def pending(127,5017
+    def leave(131,5171
+        def ask(134,5316
+    def entry(145,5814
+    def draw(154,6105
+    def find(240,9905
+    def edit(249,10198
+    def new(260,10588
+    def apply(269,10952
+    def applied(279,11316
+    def delete(285,11550
+    def choose_language(297,12014
+    def try_word(325,13316
+    def save(332,13613
+    def quit(353,14519
+    def handle(367,14965
+    def key_find(395,16184
+    def key_list(403,16407
+    def key_form(427,17330
+    def set(456,18690
+def run(466,18969
+def main(483,19376
+
+words_edit_gui.py,856
+def _show(39,1409
+def _value(43,1505
+class EditorWindow:EditorWindow47,1565
+    def __init__(48,1585
+    def build_form(157,6746
+        def label(165,6973
+    def read_form(224,9779
+    def change_pos(234,10170
+    def changed(239,10286
+    def current(262,11189
+    def results(267,11317
+    def values(270,11377
+    def find(275,11500
+    def select(286,11932
+    def show(296,12259
+    def showing(301,12389
+    def new(306,12600
+    def copy(317,13030
+    def choose_language(324,13236
+    def revert(345,14028
+    def pending(351,14170
+    def leave(355,14346
+        def ask(361,14555
+    def apply(374,15072
+    def applied(384,15427
+    def delete(389,15591
+    def refresh_list(401,15980
+    def try_word(410,16319
+    def save(420,16661
+    def update_status(444,17614
+    def close(449,17799
+def main(463,18178
+
+words_gui.py,650
+class App:App39,1054
+    def __init__(40,1065
+    def build(65,2083
+    def fit(133,5627
+    def rebuild(144,6080
+    def poll(170,7292
+    def load(182,7619
+    def ready(195,8118
+    def setting(213,8960
+    def change_setting(216,9031
+    def show_language(249,10523
+    def choose_language(258,10924
+    def settings_dialog(268,11299
+    def clear_history(280,11777
+    def lookup(284,11876
+        def work(295,12272
+    def show_text(305,12680
+    def show(311,12873
+    def edit_dictionary(319,13144
+    def reload(330,13650
+    def about(335,13836
+    def set_busy(357,14836
+def set_icon(369,15229
+def main(384,15774
+
+words_install.py,760
+def display_name(49,1586
+def data_home(91,2713
+def entry_path(96,2845
+def exec_arg(100,2941
+def icon_files(110,3262
+def refresh_linux(124,3767
+def old_linux_files(138,4404
+def remove(153,5053
+def install_linux(159,5162
+def uninstall_linux(184,6174
+class Shortcut(215,7231
+def start_menu(223,7481
+def windows_shortcuts(230,7721
+def old_shortcuts(246,8412
+def install_windows(253,8662
+def uninstall_windows(272,9501
+def make_icns(294,10247
+def applications_dir(311,10872
+def app_path(315,10963
+def is_ours(319,11058
+def old_apps(330,11484
+def write_script(337,11748
+def make_app(343,11901
+def install_macos(390,13910
+def uninstall_macos(402,14297
+def system(417,14704
+def install(426,14904
+def uninstall(431,15046
+def main(441,15347
+
+words_tui.py,528
+class DictionaryTUI(69,2515
+    def __init__(70,2544
+    def draw(92,3531
+    def rows(123,5002
+    def offset(126,5080
+    def shown(130,5239
+    def scroll(142,5683
+    def lookup(149,5940
+    def recall(165,6462
+    def language(177,6955
+    def choose_language(185,7302
+    def choose_interface(202,8120
+    def clear_history(223,9137
+    def help(230,9438
+    def edit_dictionary(234,9565
+    def change(253,10386
+    def settings(266,10940
+    def handle(330,13859
+def run(365,15206
+def main(385,15688
+
+words_web.py,990
+def from_language(75,2630
+def esc(81,2821
+def link(85,2891
+class WebApp:WebApp95,3214
+    def __init__(99,3341
+    def close(117,4172
+    def _mtime(120,4223
+    def _fresh(126,4399
+    def __call__(139,4867
+    def _host_allowed(165,6205
+    def _form(174,6518
+    def _plain(190,7143
+    def _back(196,7383
+    def page(206,7812
+    def results(270,10988
+    def language_options(277,11323
+    def interface_options(287,11720
+    def appearance(297,12097
+    def theme_attribute(305,12501
+    def recent(309,12640
+    def settings_rows(317,13008
+    def icon(340,14088
+    def settings(353,14590
+    def choose_language(373,15477
+    def choose_interface(388,16201
+    def choose_appearance(406,17066
+    def change(420,17746
+    def clear_history(438,18587
+class Server(646,26885
+class Server6(653,27111
+class QuietHandler(657,27173
+    def log_message(658,27213
+def is_loopback(662,27270
+def serve(671,27463
+def address(684,27984
+def main(695,28275
+
+xmldata.py,1823
+class DataError(50,1823
+    def __init__(56,2091
+class _Element:_Element121,4478
+    def __init__(124,4556
+    def content(132,4738
+def _parse(136,4804
+    def start(145,5218
+    def end(160,5829
+    def chars(165,5929
+class _Root(187,6669
+def root_tag(191,6704
+def root_element(196,6832
+    def start(201,7033
+class _Reader:_Reader222,7703
+    def __init__(225,7793
+    def _shared(230,7915
+    def fail(240,8248
+    def bad(245,8481
+    def raw(250,8719
+    def enum(259,9054
+    def integer(269,9449
+    def decl(276,9733
+    def pos(284,10072
+    def word(293,10455
+    def uid(302,10949
+    def done(311,11292
+    def children(321,11737
+    def meaning(342,12791
+    def part(350,13071
+    def _part(354,13229
+    def form(368,13734
+    def codes(379,14120
+def _read(388,14396
+def _expect(401,14779
+def _entry(408,15016
+def read_dictionary(423,15515
+def entry_from_fields(429,15732
+def read_inflections(451,16622
+    def inflection(452,16700
+def read_uniques(472,17506
+    def unique(473,17576
+def read_addons(493,18264
+    def addon(495,18360
+def read_sources(526,19673
+    def source(532,19929
+class Gloss(564,21126
+def read_glosses(572,21295
+    def gloss(576,21454
+class LanguageData(613,23133
+def read_language(631,23790
+    def item(643,24177
+def language_xml(733,27719
+def update_language(741,27972
+    def where(754,28689
+    def line_of(763,28995
+def _target(810,30678
+def _value(822,31007
+def part_attrs(826,31083
+def form_attrs(834,31346
+def codes_attrs(842,31609
+def _attrs(846,31735
+def write_file(865,32528
+def write_dictionary(883,33291
+def comment(889,33524
+def root_open(898,33767
+def entry_xml(903,33936
+def entry_lines(918,34451
+def inflection_xml(941,35376
+def _uid(949,35713
+def unique_xml(954,35878
+def addon_xml(963,36231
+
+tests/isolate.py,0
+
+meanings.py,0
+
+helptext.py,0

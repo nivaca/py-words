@@ -1,0 +1,94 @@
+# py-words 2.13: descripción
+
+## Análisis
+
+py-words es un diccionario latín-inglés-latín y latín-español-latín que analiza la morfología de las palabras. Si se le da una forma flexionada, como *amicorum*, dice a qué entrada del diccionario pertenece (*amicus, amici*) y qué forma es exactamente (genitivo plural), con sus significados en inglés o en español. También hace el camino inverso: busca el latín de una palabra inglesa o española.
+
+Partí de WORDS, el programa de William Whitaker (1936-2010), en la versión en Ada que se mantiene en mk270/whitakers-words. Al estudiarlo quedaron claros los requisitos. Lo primero era no perder lo que vale de WORDS, que son sus análisis: las reglas de raíces y desinencias, las formas irregulares, los prefijos, sufijos y enclíticos, las variantes ortográficas, la síncopa, los numerales romanos y los tiempos compuestos. Lo segundo, cambiar los archivos de texto de columnas fijas del original por un formato estándar que se pudiera leer, validar y editar sin miedo.
+
+Además, el programa tenía que servirle a cualquiera: desde la terminal, en una ventana o en el navegador (también en línea, sin instalar nada), con editores del diccionario que no obliguen a conocer el formato interno y con una instalación sencilla, sin dependencias externas. Había que conservar los parámetros, los modos de desarrollo y los archivos de salida del original, y recordar la configuración de una sesión a otra. Por último, los significados debían poder estar en otros idiomas sin duplicar el diccionario y sin que una traducción se perdiera al añadir o mover entradas.
+
+## Diseño
+
+El programa está dividido en módulos pequeños, cada uno con un solo trabajo. `model.py` define los códigos gramaticales como enumeraciones y los registros inmutables (entradas, formas, desinencias); `xmldata.py` lee y escribe el XML; `lexicon.py` organiza en diccionarios de Python las raíces, las desinencias, las formas irregulares y los afijos, para consultarlos directamente.
+
+El análisis está en `analyzer.py`, que combina raíces y desinencias y reconoce los pronombres *qu-*, los afijos y los tiempos compuestos. `tricks.py` se encarga de las variantes ortográficas, la síncopa y los numerales romanos, y `fuzzy.py` de las grafías cercanas que usa la búsqueda aproximada. Antes de analizar una línea, `plain_letters` le quita las marcas de cantidad y las demás tildes, y escribe æ y œ como ae y oe, de modo que amīcus es amicus y cælum es caelum; antes, cada letra con marca partía la palabra en trozos. Luego `results.py` ordena y depura los resultados, `forms.py` arma las formas de citación y la gramática en palabras, y `render.py` escribe el texto final.
+
+De los idiomas se ocupan tres módulos: `languages.py` lee los archivos de idioma y da cada significado (y el resto de los resultados) en el idioma elegido, o en inglés si falta; `reverse.py` busca en latín a partir de las palabras de ese idioma, e `interface.py` traduce los menús, botones, mensajes y ayuda. La configuración vive en `settings.py` y `config.py`.
+
+Sobre esa base hay varias interfaces: la línea de órdenes (`words.py`), la ventana (`words_gui.py`), la pantalla completa en la terminal (`words_tui.py`), el navegador (`words_web.py`) y la versión en línea (`pages/`). Completan el conjunto los editores del diccionario (en ventana y en terminal), un verificador de datos, un conversor del formato original y un instalador de accesos en el menú del sistema.
+
+Los datos son seis archivos XML más uno por idioma, todos descritos por un esquema (`words.xsd`):
+
+- `dictionary.xml`: 39 338 entradas.
+- `inflections.xml`: 1 797 desinencias.
+- `uniques.xml`: 79 formas irregulares.
+- `addons.xml`: 343 prefijos, sufijos y enclíticos.
+- `gloss.xml`: las abreviaturas de glosado de las Leipzig Glossing Rules con que se escriben los análisis (`GEN.PL`, `2SG.PRF.ACT.IND`).
+- `sources.xml`: las 26 fuentes (diccionarios, gramáticas, listas de palabras) a las que remiten los códigos de fuente de las entradas, como el Oxford Latin Dictionary o Du Cange.
+- `languages/`: un archivo por idioma de los significados (`en.xml`, `es.xml`…). Cada uno trae los significados que traduce, las palabras que la búsqueda hacia el latín ignora, lo que significan las formas de los numerales y el resto de los resultados traducido. El inglés, que es el idioma de los demás archivos, solo necesita las palabras de la búsqueda y los numerales.
+- `interface/`: un archivo por idioma de la interfaz (`es.xml`), con cada texto de los programas en inglés y su traducción.
+
+Los códigos gramaticales son los del original, para que quien conozca WORDS pueda leer las entradas sin aprender nada nuevo. Cada entrada, forma irregular y afijo lleva además un identificador estable (`id`) que no cambia cuando se añaden o mueven otras; las traducciones apuntan a él.
+
+Para que el programa arranque rápido, lo que se lee de los datos se guarda en una caché, que se rehace sola cuando cambian los archivos. La configuración del usuario (parámetros, modos, fuentes de las ventanas, carpeta de datos) queda en un archivo TOML legible, en la carpeta de configuración habitual de cada sistema.
+
+## Implementación
+
+Está escrito en Python 3.11 o superior y usa solo la biblioteca estándar, sin paquetes externos. Son 38 archivos, unas 13 200 líneas. Aprovecha lo que ofrece el Python actual: clases de datos inmutables con `slots`, anotaciones de tipos, `match`/`case`, f-strings y `tomllib` para leer la configuración.
+
+La ventana y el editor gráfico usan Tkinter, con fuentes ajustables, zoom con Ctrl y +/− y un diálogo de ajustes con todas las opciones de la línea de órdenes. La pantalla completa para la terminal (`words_tui.py`) y el editor de terminal usan `curses`. La versión web (`words_web.py`) es una aplicación WSGI servida por `wsgiref`, de la biblioteca estándar: una página con el cuadro de búsqueda, el historial, un enlace de cada entrada a su propia búsqueda y todas las opciones, en claro u oscuro. La línea de órdenes usa `argparse` y tiene un modo interactivo. Desde la versión 2.12, la ventana y la página web muestran los resultados con más orden: cada línea según lo que es (la palabra buscada, una entrada, un significado, una forma, una nota), algo que `layout.py` reconoce a partir de la disposición del texto, sin Tk, para que también lo use la versión en línea. La primera palabra de una entrada es un enlace, un doble clic busca cualquier palabra, y los códigos entre corchetes y los análisis se explican solos al pasar el puntero por encima (o al tocarlos en el teléfono). La ventana tiene además menús, una barra de búsqueda y un menú con el botón derecho. Todas comparten el historial de búsquedas.
+
+La versión en línea (https://nicolasvaughan.org/py-words/) ejecuta esa misma aplicación WSGI dentro del navegador, con Pyodide (CPython compilado para WebAssembly), sin un servidor propio. Un script corto, `pages/app.js`, hace de servidor: intercepta los enlaces y formularios de la página, se los pasa a la aplicación como peticiones y muestra la página que esta devuelve, sin perder la dirección de cada búsqueda. El programa y sus datos viajan en un zip de menos de 3 MB que se descarga a la vez que Pyodide. En cada visita el navegador pregunta si su copia del zip sigue al día, así que una versión nueva se ve enseguida. Los ajustes y el historial se guardan en el almacenamiento local del navegador, y la caché del diccionario en su IndexedDB. Hubo que descomprimir los archivos con las fechas que tienen en el zip, porque la caché las compara; si no, nunca servía. Leer el XML en el navegador tarda alrededor de un segundo y leer la caché, un cuarto: la primera visita tarda unos segundos (casi todo es descargar Python) y las siguientes, cerca de un segundo y medio.
+
+Todos los programas tienen una ayuda (`guide.py`), que se abre con "Ayuda" en la ventana y en la página web, con F1 en la terminal y con `~H` o `--guide` en la línea de órdenes. Cuenta cómo buscar y cómo leer los resultados, qué quieren decir los códigos entre corchetes que siguen a cada entrada (`[XXXBO]`: época, área, región, frecuencia y fuente) y las abreviaturas de los análisis. El ejemplo, las tablas de códigos y las abreviaturas los toma del propio programa y de sus datos (`sources.xml`, `gloss.xml`), de modo que no puede quedarse desfasada.
+
+La interfaz puede estar en inglés o en español: menús, botones, mensajes, ayuda, ajustes, editores y verificador. El idioma se elige en los ajustes de la ventana y de la página web, con F6 en la terminal o con `--interface` en la línea de órdenes, y no depende del de los significados. Las traducciones están en `data/interface/es.xml`, y una prueba se asegura de que no falte ningún texto. El idioma de los significados se elige aparte (una lista desplegable en la ventana y en la página, F5 en la terminal, `--language` en la línea de órdenes) y también se guarda. Los editores del diccionario permiten corregir los significados en ese idioma y los guardan en su archivo.
+
+### Búsqueda aproximada
+
+WORDS busca una palabra tal como se escribe (con u/v e i/j como la misma letra, y con sus trucos ortográficos), pero basta un error de tecleo para que no encuentre nada. La búsqueda aproximada, el parámetro `fuzzy_search`, viene activada; si una palabra de tres letras o más no encuentra nada, desde el latín o hacia él, se muestran los resultados de sus grafías cercanas. Así *amicuss* encuentra *amicus*, "amgio" encuentra "amigo" y "corazn", "corazón".
+
+No es una búsqueda nueva, sino la de siempre aplicada a otras grafías, de modo que el análisis de WORDS queda intacto. `fuzzy.edits` genera las grafías que están a un cambio de la palabra: una letra de menos, una de más, una cambiada o dos letras vecinas intercambiadas. Para una palabra latina de siete letras salen unas 350, sin j ni v (salvo que la palabra las tenga), porque de todos modos se buscan como i y u.
+
+Desde el latín, cada grafía se busca como cualquier palabra, y se queda solo si es una palabra del diccionario por sí misma: con raíces y desinencias, formas irregulares, pronombres *qu-* y enclíticos, pero sin prefijos, sufijos ni trucos, que permitirían leer casi cualquier cadena como algo. Esas consultas no pasan por la caché (unos cientos por palabra desconocida la llenarían) ni escriben estadísticas, y en total tardan unos diez milisegundos. Hacia el latín, una grafía se queda si es una palabra del índice de los significados que encuentra entradas de la categoría pedida; como el índice guarda las palabras sin mayúsculas ni tildes, cada una se vuelve a escribir como aparece en su significado.
+
+Las grafías que quedan se ordenan por su mejor entrada (la más frecuente desde el latín, la mejor clasificada hacia él) y después por lo habitual del error: primero dos letras intercambiadas o una letra duplicada o sin duplicar. Se muestran las tres primeras. La sesión, por la que pasan las búsquedas de todos los programas, decide cuándo intervenir: el ajuste tiene que estar activado, no tiene que haberse encontrado nada, y la palabra no puede ser un nombre con mayúscula inicial (cuando se ignoran los nombres desconocidos) ni una de las que la búsqueda hacia el latín nunca busca ("the", "la"…). Los resultados aparecen tras una nota, `(grafías cercanas: amicus)` o `(palabras cercanas: amigo)`, como si se hubieran escrito, pero no cuentan como palabras de la línea en WORD.UNK. Las palabras de una o dos letras se dejan de lado, porque casi todas están a un cambio de otra ("is": "as", "if", "in").
+
+Se puede desactivar en cualquier programa: con su propia casilla junto a "Significados en", en la ventana y en la página web; desde la lista de parámetros, en el diálogo `#` y con F3 en la terminal; o con `--no-fuzzy` en la línea de órdenes.
+
+### Proceso y distribución
+
+El trabajo pasó por siete etapas: primero una traducción fiel, línea por línea, del programa en Ada, que sirvió de referencia; luego la conversión de los datos a XML con su esquema; un rediseño completo en Python idiomático; las herramientas (ventana, editores, verificador, caché, configuración e instalador); los idiomas de los significados y la traducción completa del diccionario al español; la versión en línea, y por último la búsqueda aproximada.
+
+El código se gestiona con git, en un solo repositorio publicado en GitHub (`https://github.com/nivaca/py-words`) y en Codeberg (https://codeberg.org/nivaca/py-words). La versión en línea es un sitio estático que arma `pages/build.py`; con cada push a la rama principal, un flujo de trabajo de GitHub corre las pruebas, construye el sitio y lo publica en GitHub Pages.
+
+## Traducción al español
+
+Todo el diccionario se tradujo del inglés al español (`languages/es.xml`) con ayuda de Claude, el modelo de lenguaje de Anthropic (el modelo Claude Opus 5.5, `claude-opus-5-5`), en octubre de 2026, a petición y bajo la dirección de Nicolas Vaughan. Eso incluye las 39 338 entradas, las 79 formas irregulares y los 343 prefijos, sufijos y enclíticos, y también el resto de los resultados: la gramática en palabras (*sustantivo, 2.ª declinación, masculino*), las etiquetas y las notas sobre los trucos ortográficos y los tiempos compuestos.
+
+Se tradujo por lotes y por significado, así que un significado compartido por varias entradas se tradujo una sola vez. La traducción sigue de cerca el inglés. Conserva los sentidos y su orden (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD, Ecc, PASS, GEN…) y el latín entre corchetes, del que solo se traduce el lado inglés. Escribe "c/" por "w/", "a. C." y "d. C." por BC y AD, y da las medidas en el sistema métrico. Respeta el inglés aun donde es raro, y solo lo corrige donde está claramente mal, como en las capacidades del efá y del gomor hebreos, que el inglés exageraba unas treinta veces.
+
+Después, una segunda pasada leyó cada entrada traducida junto a su original y corrigió unas 260: sentidos repetidos, palabras ambiguas o equivocadas ("de nuevo" por *newly*, "librería" por *bookcase*) y faltas de ortografía. Como toda traducción de este tamaño, seguro que todavía tiene errores; los editores del diccionario permiten corregirlos fácilmente.
+
+## Validación
+
+El rediseño se comparó con la traducción fiel sobre un corpus de 133 671 palabras: todas las raíces del diccionario, formas generadas y las entradas de prueba. El 99,2 % dio exactamente los mismos resultados. Las diferencias restantes se revisaron una por una, y todas resultaron ser cambios deliberados o errores del original ya corregidos; están documentadas en el README.
+
+Hay 254 pruebas automáticas, que se corren con `python3 -m unittest discover -s tests`. Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador y el servidor web, incluidas sus protecciones. Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
+
+La versión en línea se probó en un navegador manejado por un script (búsquedas en los dos sentidos, los enlaces de los resultados, el botón Atrás, el modo oscuro, la interfaz en español y los ajustes que se conservan al recargar), tanto desde un servidor local como desde el sitio publicado. Las pruebas corren en Python 3.11, la versión mínima, y en 3.14. Las ventanas se revisaron además a ojo, con capturas de pantalla, y con un Python demasiado viejo el programa da un mensaje claro en lugar de un error.
+
+## Plataforma
+
+Funciona en Linux (y en otros sistemas tipo Unix con menús freedesktop), Windows y macOS. Necesita Python 3.11 o superior con Tkinter, que viene en los instaladores de python.org; en algunas distribuciones de Linux es un paquete aparte, como `python3-tkinter` o `python3-tk`. En Windows, el editor de terminal pide además el paquete `windows-curses`.
+
+En el equipo es una aplicación de escritorio, de terminal y de navegador, y no necesita internet. La versión web levanta su propio servidor, que por omisión solo atiende al mismo equipo; con `--host` se puede abrir a la red local, por ejemplo para usarla desde el teléfono. No tiene contraseñas ni permite editar el diccionario, y rechaza las peticiones que llegan con otro nombre de equipo y los formularios enviados desde otros sitios.
+
+En línea, en https://nicolasvaughan.org/py-words/, basta un navegador reciente. Hace falta conexión para arrancar, pero las búsquedas se hacen en el propio navegador: nada de lo que se escribe sale de él. Allí los ajustes de los archivos de salida no hacen nada, y el diccionario no se puede editar.
+
+## Ambiente
+
+Lo desarrollé en Fedora Linux 44 con KDE Plasma, con Python 3.14 para el trabajo diario y Python 3.11 para comprobar que sigue funcionando con la versión mínima, y con git, con repositorios en GitHub y Codeberg.
+
+Para usarlo no hay que instalar nada: se copia o descomprime la carpeta del programa y se ejecuta (`python3 words.py`, `python3 words_gui.py`, `python3 words_tui.py`, `python3 words_web.py`). En línea, basta abrir https://nicolasvaughan.org/py-words/. Si se quiere, `python3 words_install.py` añade accesos al menú de aplicaciones, con su icono y sin permisos de administrador. Los ajustes quedan en la carpeta de configuración del usuario (`~/.config/py-words/config.toml` en Linux) y la caché en su carpeta de caché.

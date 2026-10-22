@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- English: the language of the meanings in the data files. See words.xsd and languages.py. -->
+<language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../words.xsd"
+  code="en" name="English" native="English" reference="yes">
+
+  <!-- The search from English to Latin -->
+  <noise>
+    a abb ABL ACC ad AD ADJ an BC bi COMP DAT de DECL DEMONST di ex INDEF INF
+    KLUDGE nd NE no NT NW OT PASS rd re SE st St SUPER SW th The the
+  </noise>
+  <common pos="CONJ">
+    and but if or
+  </common>
+  <common pos="PREP">
+    after against around as at before between by for from in into like of on
+    per similar than through to towards under upon w with without
+  </common>
+  <common pos="N">
+    animal bird day fish gem group inhabitant instrument land law man measure
+    member men office official parts person pieces place plant plants something
+    species stone stones thing things title tree tribe vessel woman word words
+  </common>
+  <common>
+    act action amount area bit building charactistic cover ear end form front
+    gens hair heap maker material money note offering order part point
+    praenomen preparation purpose quality rest right rite ritual rome Rome sea
+    ship something time water way
+  </common>
+  <common pos="ADJ">
+    another common dark female fine full good great hard high hot joint large
+    legal light little long low male many military more near no official old
+    precious proper public roman Roman round sacred secret several sexual short
+    small some suitable used white wild young
+  </common>
+  <common pos="ADV">
+    about also back closly down forth foward much not off out over so then
+    there throughly together too up very well when where
+  </common>
+  <common pos="PRON PACK">
+    all any anyone anything each every he it one ones oneself other same self
+    she such that this what whatever which who you
+  </common>
+  <common>
+    abounding belonging concerned connected consisting containing having his
+    its kind made manner ones own pertaining producing relating resembling used
+    variety
+  </common>
+  <common pos="V">
+    being bring cause construct cut fall give go grow hold keep lacking lay
+    make making order produce provide Put remove set take throw turn use
+  </common>
+  <common>
+    be become been begin can do had has have is let may must was
+  </common>
+
+  <!-- What the forms of a numeral mean ({n}: its value) -->
+  <numeral sort="CARD">{n} - (CARD answers 'how many');</numeral>
+  <numeral sort="ORD">{n}th - (ORD, 'in series'); (a/the) {n}th (part) (fract w/pars?);</numeral>
+  <numeral sort="DIST">{n} each/apiece/times/fold/together/at a time - 'how many each'; by {n}s; </numeral>
+  <numeral sort="ADVERB">{n} times, on {n} occasions - (ADVERB answers 'how often');</numeral>
+  <numeral sort="X">Number {n}</numeral>
+</language>

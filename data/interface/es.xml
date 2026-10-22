@@ -1,0 +1,2735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The interface of the programs in Spanish: each <text> gives an
+     English text of the programs (<en>) and its translation (<tr>).
+     See interface.py and words.xsd. -->
+<interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../words.xsd"
+  code="es" name="Spanish" native="Español">
+  <text>
+    <en>The settings of py-words.  Each setting can be left out (or the whole file deleted) to use its usual value.  The program rewrites this file when settings are saved: the values are kept, but not comments of your own.</en>
+    <tr>Los ajustes de py-words.  Cada ajuste puede omitirse (o borrarse el archivo entero) para usar su valor habitual.  El programa reescribe este archivo cuando se guardan los ajustes: los valores se conservan, pero no los comentarios propios.</tr>
+  </text>
+  <text>
+    <en>text_family and text_size: the results (a fixed-width font); ui_family and ui_size: the rest of the windows.</en>
+    <tr>text_family y text_size: los resultados (una fuente de ancho fijo); ui_family y ui_size: el resto de las ventanas.</tr>
+  </text>
+  <text>
+    <en>Where dictionary.xml and the other data files are; empty: the data folder next to the program.  (--datadir and $WHITAKERS_WORDS_DATADIR come first.)</en>
+    <tr>Dónde están dictionary.xml y los demás archivos de datos; vacío: la carpeta data junto al programa.  (--datadir y $WHITAKERS_WORDS_DATADIR tienen prioridad.)</tr>
+  </text>
+  <text>
+    <en>The parameters (changed with # in interactive mode).</en>
+    <tr>Los parámetros (se cambian con # en el modo interactivo).</tr>
+  </text>
+  <text>
+    <en>The developer modes and command characters (changed with ! in interactive mode).</en>
+    <tr>Los modos de desarrollo y los caracteres de órdenes (se cambian con ! en el modo interactivo).</tr>
+  </text>
+  <text>
+    <en>The fonts of the windows (also changed with "Font…" and Ctrl and + or -).  Sizes are in points.</en>
+    <tr>Las fuentes de las ventanas (también se cambian con "Fuente…" y Ctrl y + o -).  Los tamaños están en puntos.</tr>
+  </text>
+  <text>
+    <en>cannot read {path}: {error}</en>
+    <tr>no se puede leer {path}: {error}</tr>
+  </text>
+  <text>
+    <en>the {field} is missing</en>
+    <tr>falta el campo «{field}»</tr>
+  </text>
+  <text>
+    <en>the {field} "{value}" {problem}</en>
+    <tr>el campo «{field}» "{value}" {problem}</tr>
+  </text>
+  <text>
+    <en>the entry is not in the dictionary</en>
+    <tr>la entrada no está en el diccionario</tr>
+  </text>
+  <text>
+    <en>the new entry</en>
+    <tr>la entrada nueva</tr>
+  </text>
+  <text>
+    <en>there is no meaning in {language}: the English one is shown</en>
+    <tr>no hay significado en {language}: se muestra el inglés</tr>
+  </text>
+  <text>
+    <en>there is no entry to delete</en>
+    <tr>no hay ninguna entrada que borrar</tr>
+  </text>
+  <text>
+    <en>there is no language {code}</en>
+    <tr>no existe el idioma {code}</tr>
+  </text>
+  <text>
+    <en>like {word}</en>
+    <tr>como {word}</tr>
+  </text>
+  <text>
+    <en>Fonts</en>
+    <tr>Fuentes</tr>
+  </text>
+  <text>
+    <en>Results (fixed-width)</en>
+    <tr>Resultados (ancho fijo)</tr>
+  </text>
+  <text>
+    <en>Window</en>
+    <tr>Ventana</tr>
+  </text>
+  <text>
+    <en>genitive plural</en>
+    <tr>genitivo plural</tr>
+  </text>
+  <text>
+    <en>Close</en>
+    <tr>Cerrar</tr>
+  </text>
+  <text>
+    <en>noun, 2nd declension</en>
+    <tr>sustantivo, 2.ª declinación</tr>
+  </text>
+  <text>
+    <en>{key} and + or − change all the sizes; {key} and 0 brings back the usual fonts.</en>
+    <tr>{key} y + o − cambian todos los tamaños; {key} y 0 restablece las fuentes habituales.</tr>
+  </text>
+  <text>
+    <en>Usual fonts</en>
+    <tr>Fuentes por defecto</tr>
+  </text>
+  <text>
+    <en>{name}: settings</en>
+    <tr>{name}: ajustes</tr>
+  </text>
+  <text>
+    <en>Parameters</en>
+    <tr>Parámetros</tr>
+  </text>
+  <text>
+    <en>The parameters (# in the command line).</en>
+    <tr>Los parámetros (# en la línea de órdenes).</tr>
+  </text>
+  <text>
+    <en>Developer modes</en>
+    <tr>Modos de desarrollo</tr>
+  </text>
+  <text>
+    <en>The developer modes (! in the command line), for special purposes.</en>
+    <tr>Los modos de desarrollo (! en la línea de órdenes), para usos especiales.</tr>
+  </text>
+  <text>
+    <en>Point at a setting to read more about it.  Changes apply at once and are kept for next time.</en>
+    <tr>Señala un ajuste para saber más sobre él.  Los cambios se aplican al instante y se conservan para la próxima vez.</tr>
+  </text>
+  <text>
+    <en>“{value}” cannot be {setting}: it must be one punctuation character, different from the others and from ~.</en>
+    <tr>“{value}” no puede ser {setting}: debe ser un solo signo de puntuación, distinto de los otros y de ~.</tr>
+  </text>
+  <text>
+    <en>Go back to the usual value of every setting?</en>
+    <tr>¿Volver al valor habitual de todos los ajustes?</tr>
+  </text>
+  <text>
+    <en>Forget the earlier searches (in the window and the command line)?</en>
+    <tr>¿Olvidar las búsquedas anteriores (en la ventana y en la línea de órdenes)?</tr>
+  </text>
+  <text>
+    <en>Usual settings</en>
+    <tr>Ajustes por defecto</tr>
+  </text>
+  <text>
+    <en>Language of the interface:</en>
+    <tr>Idioma de la interfaz:</tr>
+  </text>
+  <text>
+    <en>Only in the interactive command line</en>
+    <tr>Solo en la línea de órdenes interactiva</tr>
+  </text>
+  <text>
+    <en>Clear history</en>
+    <tr>Borrar historial</tr>
+  </text>
+  <text>
+    <en>Leave out the least likely results: forms that are only possible in theory, and archaic, medieval or uncommon ones when more common results were found (see the developer modes omit_archaic, omit_medieval and omit_uncommon).  A note says when something was left out.  In English-to-Latin lookups, show only the best six results.  Poets use unusual words and forms, so these can be trimmed wrongly.</en>
+    <tr>Omitir los resultados menos probables: formas solo posibles en teoría, y las arcaicas, medievales o poco comunes cuando se hallaron resultados más comunes (véanse los modos de desarrollo omit_archaic, omit_medieval y omit_uncommon).  Una nota avisa cuando se omitió algo.  En las búsquedas hacia el latín, mostrar solo los seis mejores resultados.  Los poetas usan palabras y formas poco comunes, que así pueden omitirse por error.</tr>
+  </text>
+  <text>
+    <en>Create the file WORD.OUT (in the current directory), which can receive the results instead of the screen; see write_output_to_file.  An existing WORD.OUT is overwritten.</en>
+    <tr>Crear el archivo WORD.OUT (en la carpeta actual), que puede recibir los resultados en lugar de la pantalla; véase write_output_to_file.  Un WORD.OUT existente se sobrescribe.</tr>
+  </text>
+  <text>
+    <en>Send the results to WORD.OUT instead of the screen.  It can be turned on and off during a session, to keep only some results.  Only offered when have_output_file is on.</en>
+    <tr>Enviar los resultados a WORD.OUT en lugar de la pantalla.  Puede activarse y desactivarse durante una sesión, para guardar solo algunos resultados.  Solo se ofrece cuando have_output_file está activado.</tr>
+  </text>
+  <text>
+    <en>Show only the words that are not found.  Useful with write_unknowns_to_file, to check a text for words missing from the dictionary.</en>
+    <tr>Mostrar solo las palabras que no se encuentran.  Útil con write_unknowns_to_file, para revisar en un texto las palabras que faltan en el diccionario.</tr>
+  </text>
+  <text>
+    <en>Write the words that are not found to the file WORD.UNK (in the current directory), with their line and word numbers.</en>
+    <tr>Escribir las palabras que no se encuentran en el archivo WORD.UNK (en la carpeta actual), con su número de línea y de palabra.</tr>
+  </text>
+  <text>
+    <en>Do not try spelling tricks on an unknown word that is capitalized: it is probably a name.</en>
+    <tr>No probar trucos ortográficos con una palabra desconocida que empieza por mayúscula: probablemente es un nombre.</tr>
+  </text>
+  <text>
+    <en>Read a participle followed by a form of esse as a compound tense (laudatus est: perfect passive).</en>
+    <tr>Leer un participio seguido de una forma de esse como un tiempo compuesto (laudatus est: perfecto pasivo).</tr>
+  </text>
+  <text>
+    <en>When a word is not in the dictionary, try it as a known word with a prefix or suffix.  The results may be less reliable than those found directly.</en>
+    <tr>Cuando una palabra no está en el diccionario, probarla como una palabra conocida con un prefijo o un sufijo.  Los resultados pueden ser menos fiables que los hallados directamente.</tr>
+  </text>
+  <text>
+    <en>When a word is still not found, try other spellings (ae for e, ph for f, assimilated prefixes ...), syncopated forms and two words written as one.  Such results are marked as such.</en>
+    <tr>Cuando una palabra sigue sin encontrarse, probar otras grafías (ae por e, ph por f, prefijos asimilados ...), formas sincopadas y dos palabras escritas como una.  Esos resultados se marcan como tales.</tr>
+  </text>
+  <text>
+    <en>Show each entry with its principal parts and grammar (amicus, amici  noun, 2nd declension, masculine).</en>
+    <tr>Mostrar cada entrada con sus partes principales y su gramática (amicus, amici  sustantivo, 2.ª declinación, masculino).</tr>
+  </text>
+  <text>
+    <en>Always show when a word or form was used (archaic, classical, medieval ...), not only when it is not "always".</en>
+    <tr>Mostrar siempre cuándo se usó una palabra o forma (arcaica, clásica, medieval ...), no solo cuando no es "siempre".</tr>
+  </text>
+  <text>
+    <en>Always show how frequent a word or form is, not only when it is uncommon.</en>
+    <tr>Mostrar siempre la frecuencia de una palabra o forma, no solo cuando es poco común.</tr>
+  </text>
+  <text>
+    <en>Show an English pattern for each form ("~'s; of ~" for a genitive), with ~ standing for the meaning.</en>
+    <tr>Mostrar un modelo en inglés para cada forma ("~'s; of ~" para un genitivo), donde ~ representa el significado.</tr>
+  </text>
+  <text>
+    <en>Write the analyses of the forms in glossing abbreviations, as in the Leipzig Glossing Rules (GEN.PL, 2SG.PRF.ACT.IND); if not, in words (genitive plural, 2nd person singular perfect active indicative).  The abbreviations are those of data/gloss.xml.</en>
+    <tr>Escribir los análisis de las formas con abreviaturas de glosado, como en las Leipzig Glossing Rules (GEN.PL, 2SG.PRF.ACT.IND); si no, en palabras (genitivo plural, 2.ª persona singular perfecto activo indicativo).  Las abreviaturas son las de data/gloss.xml.</tr>
+  </text>
+  <text>
+    <en>Show only the entries and their meanings, without the forms.</en>
+    <tr>Mostrar solo las entradas y sus significados, sin las formas.</tr>
+  </text>
+  <text>
+    <en>For an unknown word, list the dictionary entries near where it would be.  This can catch a word whose stem is in the dictionary under another part of speech.</en>
+    <tr>Para una palabra desconocida, listar las entradas del diccionario cercanas a donde estaría.  Así puede hallarse una palabra cuya raíz está en el diccionario con otra categoría gramatical.</tr>
+  </text>
+  <text>
+    <en>When a word finds nothing as it is typed, look for the words one change away from it (a letter left out, added or changed, or two letters swapped), and show the nearest three: amicuss finds amicus, and, in the search to Latin, freind finds friend and wolfs finds wolf.  Exact results are shown as before.</en>
+    <tr>Cuando una palabra no encuentra nada tal como se escribió, buscar las palabras a un cambio de ella (una letra omitida, añadida o cambiada, o dos letras intercambiadas) y mostrar las tres más cercanas: amicuss encuentra amicus y, en la búsqueda hacia el latín, corazn encuentra corazón y amgio encuentra amigo.  Los resultados exactos se muestran como antes.</tr>
+  </text>
+  <text>
+    <en>The language of the meanings, and of the rest of the results (en, es ...).  The search to Latin is from this language.</en>
+    <tr>El idioma de los significados y del resto de los resultados (en, es ...).  La búsqueda hacia el latín se hace desde este idioma.</tr>
+  </text>
+  <text>
+    <en>The language of the menus, buttons, messages and help of the programs (en, es).</en>
+    <tr>El idioma de los menús, botones, mensajes y ayuda de los programas (en, es).</tr>
+  </text>
+  <text>
+    <en>Save these settings in the configuration file, config.toml (on Linux in ~/.config/py-words), to be used at the next start.  It is plain text and can also be edited; words.py --config shows where it is.</en>
+    <tr>Guardar estos ajustes en el archivo de configuración, config.toml (en Linux, en ~/.config/py-words), para usarlos en el próximo inicio.  Es texto plano y también puede editarse; words.py --config muestra dónde está.</tr>
+  </text>
+  <text>
+    <en>Create the file WORD.STA (in the current directory) for statistics on the tricks and affixes used; see write_statistics_file.</en>
+    <tr>Crear el archivo WORD.STA (en la carpeta actual) para estadísticas sobre los trucos y afijos usados; véase write_statistics_file.</tr>
+  </text>
+  <text>
+    <en>Write the statistics to WORD.STA.  It can be turned on and off during a session.  Only offered when have_statistics_file is on.</en>
+    <tr>Escribir las estadísticas en WORD.STA.  Puede activarse y desactivarse durante una sesión.  Solo se ofrece cuando have_statistics_file está activado.</tr>
+  </text>
+  <text>
+    <en>Show which dictionary (general or special) each entry is from.</en>
+    <tr>Mostrar de qué diccionario (general o especial) es cada entrada.</tr>
+  </text>
+  <text>
+    <en>Show the number of each entry in its dictionary file.</en>
+    <tr>Mostrar el número de cada entrada en su archivo de diccionario.</tr>
+  </text>
+  <text>
+    <en>Show the codes of each entry: age, area, geography, frequency and source, as in [XXXBO].</en>
+    <tr>Mostrar los códigos de cada entrada: época, área, geografía, frecuencia y fuente, como en [XXXBO].</tr>
+  </text>
+  <text>
+    <en>Start each line of the results with a code saying what it is (01 a form, 02 an entry, 03 a meaning, 05 an affix, 06 a trick, 00 an unknown word), for programs that read the output.</en>
+    <tr>Empezar cada línea de los resultados con un código que dice qué es (01 una forma, 02 una entrada, 03 un significado, 05 un afijo, 06 un truco, 00 una palabra desconocida), para programas que leen la salida.</tr>
+  </text>
+  <text>
+    <en>Analyse only the first word of each line, for checking word lists.</en>
+    <tr>Analizar solo la primera palabra de cada línea, para revisar listas de palabras.</tr>
+  </text>
+  <text>
+    <en>With do_only_initial_word: accept only dictionary forms (nominative singular, first person present ...).</en>
+    <tr>Con do_only_initial_word: aceptar solo formas de diccionario (nominativo singular, primera persona del presente ...).</tr>
+  </text>
+  <text>
+    <en>Find words only with prefixes and suffixes.</en>
+    <tr>Hallar palabras solo con prefijos y sufijos.</tr>
+  </text>
+  <text>
+    <en>Try prefixes and suffixes even when the word was found without them.</en>
+    <tr>Probar prefijos y sufijos aunque la palabra se haya hallado sin ellos.</tr>
+  </text>
+  <text>
+    <en>Use prefixes when analysing words.</en>
+    <tr>Usar prefijos al analizar las palabras.</tr>
+  </text>
+  <text>
+    <en>Use suffixes when analysing words.</en>
+    <tr>Usar sufijos al analizar las palabras.</tr>
+  </text>
+  <text>
+    <en>Use enclitics (-que, -ne, -cumque ...).</en>
+    <tr>Usar enclíticos (-que, -ne, -cumque ...).</tr>
+  </text>
+  <text>
+    <en>With do_tricks, also try medieval spellings (e for ae, y for i, single for doubled consonants ...).</en>
+    <tr>Con do_tricks, probar también grafías medievales (e por ae, y por i, consonantes simples por dobles ...).</tr>
+  </text>
+  <text>
+    <en>Try syncopated perfects (amasti for amavisti).</en>
+    <tr>Probar perfectos sincopados (amasti por amavisti).</tr>
+  </text>
+  <text>
+    <en>With do_tricks, try an unknown word as two words written together.</en>
+    <tr>Con do_tricks, probar una palabra desconocida como dos palabras escritas juntas.</tr>
+  </text>
+  <text>
+    <en>Write the whole line, as well as the word, to WORD.UNK.</en>
+    <tr>Escribir en WORD.UNK la línea entera, además de la palabra.</tr>
+  </text>
+  <text>
+    <en>With trim_output, leave out archaic forms when others were found.</en>
+    <tr>Con trim_output, omitir las formas arcaicas cuando se hallaron otras.</tr>
+  </text>
+  <text>
+    <en>With trim_output, leave out medieval forms when others were found.</en>
+    <tr>Con trim_output, omitir las formas medievales cuando se hallaron otras.</tr>
+  </text>
+  <text>
+    <en>With trim_output, leave out uncommon forms when others were found.</en>
+    <tr>Con trim_output, omitir las formas poco comunes cuando se hallaron otras.</tr>
+  </text>
+  <text>
+    <en>In interactive use, pause after each screenful of results.</en>
+    <tr>En el uso interactivo, hacer una pausa tras cada pantalla de resultados.</tr>
+  </text>
+  <text>
+    <en>The characters that start a command at the beginning of a line: reading a file (@), the parameters (#) and the developer modes (!).  They must be punctuation, and different from each other and from ~.</en>
+    <tr>Los caracteres que inician una orden al principio de una línea: leer un archivo (@), los parámetros (#) y los modos de desarrollo (!).  Deben ser signos de puntuación, distintos entre sí y de ~.</tr>
+  </text>
+  <text>
+    <en>y</en>
+    <tr>s</tr>
+  </text>
+  <text>
+    <en>there is no {file} in {folder}</en>
+    <tr>no hay ningún {file} en {folder}</tr>
+  </text>
+  <text>
+    <en>Use ~E for {language} to Latin, ~L for Latin to {language}</en>
+    <tr>Use ~E para {language} al latín, ~L para latín al {language}</tr>
+  </text>
+  <text>
+    <en>{language} to Latin: type a word in {language}, and optionally a part of speech (N, ADJ, V, PREP ...)</en>
+    <tr>{language} al latín: escriba una palabra en {language} y, si lo desea, una categoría gramatical (N, ADJ, V, PREP ...)</tr>
+  </text>
+  <text>
+    <en>Latin to {language}</en>
+    <tr>Latín al {language}</tr>
+  </text>
+  <text>
+    <en>The meanings are in English: {error}.</en>
+    <tr>Los significados están en inglés: {error}.</tr>
+  </text>
+  <text>
+    <en>Cannot create {path}: {error}</en>
+    <tr>No se puede crear {path}: {error}</tr>
+  </text>
+  <text>
+    <en>parameters</en>
+    <tr>los parámetros</tr>
+  </text>
+  <text>
+    <en>developer modes</en>
+    <tr>los modos de desarrollo</tr>
+  </text>
+  <text>
+    <en>{path} has errors ({problems}); the defaults are used for those lines</en>
+    <tr>{path} tiene errores ({problems}); se usan los valores predeterminados en esas líneas</tr>
+  </text>
+  <text>
+    <en>Using the {kind} in {path}</en>
+    <tr>Se usan {kind} de {path}</tr>
+  </text>
+  <text>
+    <en>{error}; its settings are not used</en>
+    <tr>{error}; no se usan sus ajustes</tr>
+  </text>
+  <text>
+    <en>Completed the configuration file {path}, with the settings in use</en>
+    <tr>Se completó el archivo de configuración {path} con los ajustes en uso</tr>
+  </text>
+  <text>
+    <en>Created the configuration file {path}, with the settings in use</en>
+    <tr>Se creó el archivo de configuración {path} con los ajustes en uso</tr>
+  </text>
+  <text>
+    <en>{path} has errors ({problems}); the usual values are used for those settings</en>
+    <tr>{path} tiene errores ({problems}); se usan los valores habituales en esos ajustes</tr>
+  </text>
+  <text>
+    <en>Using the settings in {path}</en>
+    <tr>Se usan los ajustes de {path}</tr>
+  </text>
+  <text>
+    <en>Cannot read {path}: {error}</en>
+    <tr>No se puede leer {path}: {error}</tr>
+  </text>
+  <text>
+    <en>[{section}] {key}: unknown setting</en>
+    <tr>[{section}] {key}: ajuste desconocido</tr>
+  </text>
+  <text>
+    <en>line {number}: bad character</en>
+    <tr>línea {number}: carácter incorrecto</tr>
+  </text>
+  <text>
+    <en>{key}: must be a language code, like "en" or "es"</en>
+    <tr>{key}: debe ser un código de idioma, como "en" o "es"</tr>
+  </text>
+  <text>
+    <en>line {number}: expected Y or N</en>
+    <tr>línea {number}: se esperaba Y o N</tr>
+  </text>
+  <text>
+    <en>line {number}: unexpected text</en>
+    <tr>línea {number}: texto inesperado</tr>
+  </text>
+  <text>
+    <en>{key}: must be one punctuation character</en>
+    <tr>{key}: debe ser un solo signo de puntuación</tr>
+  </text>
+  <text>
+    <en>{key}: must be true or false</en>
+    <tr>{key}: debe ser true o false</tr>
+  </text>
+  <text>
+    <en>(y/n)</en>
+    <tr>(s/n)</tr>
+  </text>
+  <text>
+    <en>Answer Y or N; Enter keeps the current value, ? gives help, a space skips the rest.</en>
+    <tr>Responde Y (sí) o N (no); Intro mantiene el valor actual, ? da ayuda, un espacio salta el resto.</tr>
+  </text>
+  <text>
+    <en>Answer Y or N; Enter keeps the current value, ? gives help, a space skips the rest.  Developer modes are for special purposes.</en>
+    <tr>Responde Y (sí) o N (no); Intro mantiene el valor actual, ? da ayuda, un espacio salta el resto.  Los modos de desarrollo son para usos especiales.</tr>
+  </text>
+  <text>
+    <en>The configuration file is {path}</en>
+    <tr>El archivo de configuración es {path}</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line and Enter.  ~E: {language} to Latin, ~L: back to Latin.</en>
+    <tr>Escriba una palabra o una línea en latín y pulse Intro.  ~E: {language} al latín, ~L: volver al latín.</tr>
+  </text>
+  <text>
+    <en>{file}FILE: look up a file   {parameters}: parameters   {developer}: developer modes   ?: commands   ~H: help   ~A: about</en>
+    <tr>{file}ARCHIVO: buscar un archivo   {parameters}: parámetros   {developer}: modos de desarrollo   ?: órdenes   ~H: ayuda   ~A: acerca de</tr>
+  </text>
+  <text>
+    <en>An empty line twice quits.</en>
+    <tr>Dos líneas vacías seguidas terminan.</tr>
+  </text>
+  <text>
+    <en>Type a word or a line of Latin (or, after ~E, a word in {language}).</en>
+    <tr>Escriba una palabra o una línea en latín (o, tras ~E, una palabra en {language}).</tr>
+  </text>
+  <text>
+    <en>In the parameter dialogues, ? explains each setting.</en>
+    <tr>En los diálogos de parámetros, ? explica cada ajuste.</tr>
+  </text>
+  <text>
+    <en>Up and Down bring back earlier searches (also those of earlier sessions).</en>
+    <tr>Arriba y Abajo traen búsquedas anteriores (también las de sesiones anteriores).</tr>
+  </text>
+  <text>
+    <en>An empty line twice, or Ctrl-D, quits; Ctrl-C stops what is being done.</en>
+    <tr>Dos líneas vacías seguidas, o Ctrl-D, terminan; Ctrl-C detiene lo que se está haciendo.</tr>
+  </text>
+  <text>
+    <en>py-words, based on William Whitaker's WORDS: a Latin-English-Latin and Latin-Spanish-Latin dictionary that analyses inflected Latin words.  With no arguments it is interactive.</en>
+    <tr>py-words, basado en WORDS de William Whitaker: un diccionario latín-inglés-latín y latín-español-latín que analiza palabras latinas flexionadas.  Sin argumentos, es interactivo.</tr>
+  </text>
+  <text>
+    <en>In interactive mode, type ? for help.</en>
+    <tr>En el modo interactivo, escriba ? para ver la ayuda.</tr>
+  </text>
+  <text>
+    <en>WORD</en>
+    <tr>PALABRA</tr>
+  </text>
+  <text>
+    <en>Latin words (or, with -e, a word in the language of the meanings)</en>
+    <tr>palabras latinas (o, con -e, una palabra en el idioma de los significados)</tr>
+  </text>
+  <text>
+    <en>FILE</en>
+    <tr>ARCHIVO</tr>
+  </text>
+  <text>
+    <en>look up each line of FILE ('-' for standard input)</en>
+    <tr>buscar cada línea de ARCHIVO ('-' para la entrada estándar)</tr>
+  </text>
+  <text>
+    <en>OUTPUT</en>
+    <tr>SALIDA</tr>
+  </text>
+  <text>
+    <en>write the results to OUTPUT</en>
+    <tr>escribir los resultados en SALIDA</tr>
+  </text>
+  <text>
+    <en>from the language of the meanings (English, unless --language says otherwise) to Latin</en>
+    <tr>desde el idioma de los significados (inglés, salvo que --language diga otro) al latín</tr>
+  </text>
+  <text>
+    <en>with -e: only this part of speech (N, V, ADJ, PREP ...)</en>
+    <tr>con -e: solo esta categoría gramatical (N, V, ADJ, PREP ...)</tr>
+  </text>
+  <text>
+    <en>show only dictionary forms and meanings</en>
+    <tr>mostrar solo las formas de diccionario y los significados</tr>
+  </text>
+  <text>
+    <en>write the analyses in Leipzig glossing abbreviations (GEN.PL), or with --no-glosses in words (genitive plural); this time only (the setting is use_glosses)</en>
+    <tr>escribir los análisis con abreviaturas de glosado de Leipzig (GEN.PL) o, con --no-glosses, en palabras (genitivo plural); solo esta vez (el ajuste es use_glosses)</tr>
+  </text>
+  <text>
+    <en>for a word that finds nothing, show the results of its near spellings (or not, with --no-fuzzy); this time only (the setting is fuzzy_search)</en>
+    <tr>para una palabra que no encuentra nada, mostrar los resultados de sus grafías cercanas (o no, con --no-fuzzy); solo esta vez (el ajuste es fuzzy_search)</tr>
+  </text>
+  <text>
+    <en>CODE</en>
+    <tr>CÓDIGO</tr>
+  </text>
+  <text>
+    <en>the language of the meanings (en, es ...); this time only (the setting is language)</en>
+    <tr>el idioma de los significados (en, es ...); solo esta vez (el ajuste es language)</tr>
+  </text>
+  <text>
+    <en>list the languages of the meanings, and exit</en>
+    <tr>listar los idiomas de los significados y terminar</tr>
+  </text>
+  <text>
+    <en>the language of the interface (en, es); this time only (the setting is interface)</en>
+    <tr>el idioma de la interfaz (en, es); solo esta vez (el ajuste es interface)</tr>
+  </text>
+  <text>
+    <en>DATADIR</en>
+    <tr>CARPETA</tr>
+  </text>
+  <text>
+    <en>the folder with the data files (default: $WHITAKERS_WORDS_DATADIR, the folder in the configuration file, or the data folder next to the program)</en>
+    <tr>la carpeta con los archivos de datos (por omisión: $WHITAKERS_WORDS_DATADIR, la carpeta del archivo de configuración, o la carpeta data junto al programa)</tr>
+  </text>
+  <text>
+    <en>show where the configuration file is</en>
+    <tr>mostrar dónde está el archivo de configuración</tr>
+  </text>
+  <text>
+    <en>forget the earlier searches, and exit</en>
+    <tr>olvidar las búsquedas anteriores y terminar</tr>
+  </text>
+  <text>
+    <en>show the version and credits, and exit</en>
+    <tr>mostrar la versión y los créditos, y terminar</tr>
+  </text>
+  <text>
+    <en>The history of the searches is cleared.</en>
+    <tr>Se borró el historial de búsquedas.</tr>
+  </text>
+  <text>
+    <en>cannot create {path}</en>
+    <tr>no se puede crear {path}</tr>
+  </text>
+  <text>
+    <en>(another empty line quits)</en>
+    <tr>(otra línea vacía termina)</tr>
+  </text>
+  <text>
+    <en>{language} to Latin / Latin to {language}</en>
+    <tr>{language} al latín / latín al {language}</tr>
+  </text>
+  <text>
+    <en>look up each line of FILE</en>
+    <tr>buscar cada línea de ARCHIVO</tr>
+  </text>
+  <text>
+    <en>change the parameters</en>
+    <tr>cambiar los parámetros</tr>
+  </text>
+  <text>
+    <en>change the developer modes</en>
+    <tr>cambiar los modos de desarrollo</tr>
+  </text>
+  <text>
+    <en>(no help)</en>
+    <tr>(sin ayuda)</tr>
+  </text>
+  <text>
+    <en>Answer Y or N, ? for help, Enter to keep, a space to stop.</en>
+    <tr>Responde Y (sí) o N (no), ? para ayuda, Intro para mantener, un espacio para parar.</tr>
+  </text>
+  <text>
+    <en>Not an acceptable character: it may conflict with another.</en>
+    <tr>Carácter no aceptable: puede chocar con otro.</tr>
+  </text>
+  <text>
+    <en>Saved in {path}</en>
+    <tr>Guardado en {path}</tr>
+  </text>
+  <text>
+    <en>(in use)</en>
+    <tr>(en uso)</tr>
+  </text>
+  <text>
+    <en>Save these settings? (N)</en>
+    <tr>¿Guardar estos ajustes? (N)</tr>
+  </text>
+  <text>
+    <en>Not saved: {error}</en>
+    <tr>No se guardó: {error}</tr>
+  </text>
+  <text>
+    <en>-- more (Enter) --</en>
+    <tr>-- más (Intro) --</tr>
+  </text>
+  <text>
+    <en>cannot write {path}: {error}</en>
+    <tr>no se puede escribir {path}: {error}</tr>
+  </text>
+  <text>
+    <en>Check the WORDS data files for mistakes.</en>
+    <tr>Revisa los archivos de datos de WORDS en busca de errores.</tr>
+  </text>
+  <text>
+    <en>files to check (default: the data files in the data directory)</en>
+    <tr>archivos que revisar (por omisión: los archivos de datos de la carpeta de datos)</tr>
+  </text>
+  <text>
+    <en>the inflections.xml to check declensions against (default: the one in the data directory)</en>
+    <tr>el inflections.xml con el que comprobar las declinaciones (por omisión: el de la carpeta de datos)</tr>
+  </text>
+  <text>
+    <en>do not report warnings</en>
+    <tr>no informar de las advertencias</tr>
+  </text>
+  <text>
+    <en>exit with status 1 on warnings too</en>
+    <tr>terminar con estado 1 también si hay advertencias</tr>
+  </text>
+  <text>
+    <en>no data files in {folder} (set WHITAKERS_WORDS_DATADIR)</en>
+    <tr>no hay archivos de datos en {folder} (define WHITAKERS_WORDS_DATADIR)</tr>
+  </text>
+  <text>
+    <en>cannot find {path} (use --inflections)</en>
+    <tr>no se encuentra {path} (use --inflections)</tr>
+  </text>
+  <text>
+    <en>the language {code} should be in {code}.xml, not {name}.xml</en>
+    <tr>el idioma {code} debería estar en {code}.xml, no en {name}.xml</tr>
+  </text>
+  <text>
+    <en>the meanings of English are those of the data files: these are not used</en>
+    <tr>los significados del inglés son los de los archivos de datos: estos no se usan</tr>
+  </text>
+  <text>
+    <en>the meaning is empty</en>
+    <tr>el significado está vacío</tr>
+  </text>
+  <text>
+    <en>the first stem is blank</en>
+    <tr>la primera raíz está en blanco</tr>
+  </text>
+  <text>
+    <en>no usable stem: no form of this word can be found</en>
+    <tr>ninguna raíz utilizable: no puede hallarse ninguna forma de esta palabra</tr>
+  </text>
+  <text>
+    <en>the source code {code} is not listed in {file}</en>
+    <tr>el código de fuente {code} no figura en {file}</tr>
+  </text>
+  <text>
+    <en>cannot find {path}</en>
+    <tr>no se encuentra {path}</tr>
+  </text>
+  <text>
+    <en>1 warning</en>
+    <tr>1 advertencia</tr>
+  </text>
+  <text>
+    <en>{n} warnings</en>
+    <tr>{n} advertencias</tr>
+  </text>
+  <text>
+    <en>duplicate of the entry on line {line}</en>
+    <tr>duplicado de la entrada de la línea {line}</tr>
+  </text>
+  <text>
+    <en>the id {id} is already used on line {line}</en>
+    <tr>el id {id} ya se usa en la línea {line}</tr>
+  </text>
+  <text>
+    <en>there is no {kind} with the id {id}: this meaning is not used</en>
+    <tr>no hay ningún {kind} con el id {id}: este significado no se usa</tr>
+  </text>
+  <text>
+    <en>the meaning is {n} characters long; it may be cut after {shown}: ...{cut}</en>
+    <tr>el significado tiene {n} caracteres; puede cortarse tras {shown}: ...{cut}</tr>
+  </text>
+  <text>
+    <en>stem {k} {stem} is ignored for {pos}</en>
+    <tr>la raíz {k} {stem} se ignora con {pos}</tr>
+  </text>
+  <text>
+    <en>stem {k} is blank (use zzz if the form does not exist)</en>
+    <tr>la raíz {k} está en blanco (use zzz si la forma no existe)</tr>
+  </text>
+  <text>
+    <en>{pos} {decl} has no endings in {file}, so no form of this word can be found</en>
+    <tr>{pos} {decl} no tiene desinencias en {file}, así que no puede hallarse ninguna forma de esta palabra</tr>
+  </text>
+  <text>
+    <en>1 error</en>
+    <tr>1 error</tr>
+  </text>
+  <text>
+    <en>{n} errors</en>
+    <tr>{n} errores</tr>
+  </text>
+  <text>
+    <en>&lt;{root}&gt; is not a WORDS data file (the root must be &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;language&gt; or &lt;interface&gt;)</en>
+    <tr>&lt;{root}&gt; no es un archivo de datos de WORDS (la raíz debe ser &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;language&gt; o &lt;interface&gt;)</tr>
+  </text>
+  <text>
+    <en>{pos} is not a dictionary part of speech</en>
+    <tr>{pos} no es una categoría gramatical del diccionario</tr>
+  </text>
+  <text>
+    <en>Convert WORDS data files in the original text format (DICTLINE.GEN, INFLECTS.LAT, UNIQUES.LAT, ADDONS.LAT) to XML.</en>
+    <tr>Convierte los archivos de datos de WORDS del formato de texto original (DICTLINE.GEN, INFLECTS.LAT, UNIQUES.LAT, ADDONS.LAT) a XML.</tr>
+  </text>
+  <text>
+    <en>the folder with the original files</en>
+    <tr>la carpeta con los archivos originales</tr>
+  </text>
+  <text>
+    <en>the folder for the XML files (default: SRC)</en>
+    <tr>la carpeta para los archivos XML (por omisión: SRC)</tr>
+  </text>
+  <text>
+    <en>the line ends too early</en>
+    <tr>la línea termina demasiado pronto</tr>
+  </text>
+  <text>
+    <en>{word} is not a number from {lo} to {hi}</en>
+    <tr>{word} no es un número de {lo} a {hi}</tr>
+  </text>
+  <text>
+    <en>the number of lines is not a multiple of 3</en>
+    <tr>el número de líneas no es múltiplo de 3</tr>
+  </text>
+  <text>
+    <en>wrote {path}</en>
+    <tr>escrito {path}</tr>
+  </text>
+  <text>
+    <en>{word} is not a {kind}</en>
+    <tr>{word} no es un {kind}</tr>
+  </text>
+  <text>
+    <en>the ending {ending} is not {n} letters long</en>
+    <tr>la desinencia {ending} no tiene {n} letras</tr>
+  </text>
+  <text>
+    <en>expected PREFIX, SUFFIX or TACKON</en>
+    <tr>se esperaba PREFIX, SUFFIX o TACKON</tr>
+  </text>
+  <text>
+    <en>F3 apply  F4 new  F5 like this  F6 try  F7 language  F8 delete  F2 save  F10 quit  Tab next  ^F find</en>
+    <tr>F3 aplicar  F4 nueva  F5 como esta  F6 probar  F7 idioma  F8 borrar  F2 guardar  F10 salir  Tab siguiente  ^F buscar</tr>
+  </text>
+  <text>
+    <en>Type a Latin form, a stem or a word of the meanings, and Enter.</en>
+    <tr>Escriba una forma latina, una raíz o una palabra de los significados, y pulse Intro.</tr>
+  </text>
+  <text>
+    <en>Editing.  F3 applies the changes (F2 also saves).</en>
+    <tr>Editando.  F3 aplica los cambios (F2 también guarda).</tr>
+  </text>
+  <text>
+    <en>New entry.  F3 adds it to the dictionary.</en>
+    <tr>Entrada nueva.  F3 la añade al diccionario.</tr>
+  </text>
+  <text>
+    <en>{done}: {entry}.  F2 saves the file.</en>
+    <tr>{done}: {entry}.  F2 guarda el archivo.</tr>
+  </text>
+  <text>
+    <en>Deleted.  F2 saves the file.</en>
+    <tr>Borrada.  F2 guarda el archivo.</tr>
+  </text>
+  <text>
+    <en>Find</en>
+    <tr>Buscar</tr>
+  </text>
+  <text>
+    <en>Find:</en>
+    <tr>Buscar:</tr>
+  </text>
+  <text>
+    <en>Up/Down to choose, Enter to edit.</en>
+    <tr>Arriba/Abajo para elegir, Intro para editar.</tr>
+  </text>
+  <text>
+    <en>Nothing found.</en>
+    <tr>No se encontró nada.</tr>
+  </text>
+  <text>
+    <en>Choose an entry to delete first.</en>
+    <tr>Primero elija una entrada que borrar.</tr>
+  </text>
+  <text>
+    <en>The meanings in</en>
+    <tr>Los significados en</tr>
+  </text>
+  <text>
+    <en>The meanings are now edited in English and {language}.</en>
+    <tr>Los significados se editan ahora en inglés y en {language}.</tr>
+  </text>
+  <text>
+    <en>The meanings are now edited in English only.</en>
+    <tr>Los significados se editan ahora solo en inglés.</tr>
+  </text>
+  <text>
+    <en>Try the word:</en>
+    <tr>Probar la palabra:</tr>
+  </text>
+  <text>
+    <en>Saved {path} and the meanings in {language} (the originals are kept as .bak files).</en>
+    <tr>Guardado {path} y los significados en {language} (los originales se conservan como archivos .bak).</tr>
+  </text>
+  <text>
+    <en>Saved {path} (the originals are kept as .bak files).</en>
+    <tr>Guardado {path} (los originales se conservan como archivos .bak).</tr>
+  </text>
+  <text>
+    <en>Edit the WORDS dictionary in the terminal.</en>
+    <tr>Edita el diccionario de WORDS en la terminal.</tr>
+  </text>
+  <text>
+    <en>the folder with dictionary.xml (default: as for words)</en>
+    <tr>la carpeta con dictionary.xml (por omisión: como en words)</tr>
+  </text>
+  <text>
+    <en>also edit the meanings in this language (es ...; default: the language of the configuration file, en for English only)</en>
+    <tr>editar también los significados en este idioma (es ...; por omisión: el idioma del archivo de configuración, en para solo inglés)</tr>
+  </text>
+  <text>
+    <en>part of speech</en>
+    <tr>categoría gramatical</tr>
+  </text>
+  <text>
+    <en>{what} has changes that are not applied.  Apply them? (y/n, Esc to stay)</en>
+    <tr>{what} tiene cambios no aplicados.  ¿Aplicarlos? (s/n, Esc para quedarse)</tr>
+  </text>
+  <text>
+    <en>Not applied: {error}</en>
+    <tr>No se aplicó: {error}</tr>
+  </text>
+  <text>
+    <en>[unsaved changes]</en>
+    <tr>[cambios sin guardar]</tr>
+  </text>
+  <text>
+    <en>meanings in {language}</en>
+    <tr>significados en {language}</tr>
+  </text>
+  <text>
+    <en>{name}: dictionary editor</en>
+    <tr>{name}: editor del diccionario</tr>
+  </text>
+  <text>
+    <en>{n} found</en>
+    <tr>{n} encontradas</tr>
+  </text>
+  <text>
+    <en>NEW ENTRY</en>
+    <tr>ENTRADA NUEVA</tr>
+  </text>
+  <text>
+    <en>ENTRY</en>
+    <tr>ENTRADA</tr>
+  </text>
+  <text>
+    <en>Delete {entry}?</en>
+    <tr>¿Borrar {entry}?</tr>
+  </text>
+  <text>
+    <en>Cannot use that language: {error}</en>
+    <tr>No se puede usar ese idioma: {error}</tr>
+  </text>
+  <text>
+    <en>(nothing)</en>
+    <tr>(nada)</tr>
+  </text>
+  <text>
+    <en>WORDS with the dictionary as edited</en>
+    <tr>WORDS con el diccionario editado</tr>
+  </text>
+  <text>
+    <en>Cannot save: {error}</en>
+    <tr>No se puede guardar: {error}</tr>
+  </text>
+  <text>
+    <en>Save the changes before quitting? (y/n, Esc to stay)</en>
+    <tr>¿Guardar los cambios antes de salir? (s/n, Esc para quedarse)</tr>
+  </text>
+  <text>
+    <en>this is a full-screen program; run it in a terminal (or use words_edit_gui.py)</en>
+    <tr>es un programa de pantalla completa; ejecútelo en una terminal (o use words_edit_gui.py)</tr>
+  </text>
+  <text>
+    <en>meaning</en>
+    <tr>significado</tr>
+  </text>
+  <text>
+    <en>meaning in English</en>
+    <tr>significado en inglés</tr>
+  </text>
+  <text>
+    <en>meaning in {language}</en>
+    <tr>significado en {language}</tr>
+  </text>
+  <text>
+    <en>Deleted</en>
+    <tr>Borrada</tr>
+  </text>
+  <text>
+    <en>There is no {file} in {folder}</en>
+    <tr>No hay ningún {file} en {folder}</tr>
+  </text>
+  <text>
+    <en>Apply changes</en>
+    <tr>Aplicar cambios</tr>
+  </text>
+  <text>
+    <en>Saved {path} and the meanings in {language}</en>
+    <tr>Guardado {path} y los significados en {language}</tr>
+  </text>
+  <text>
+    <en>Saved {path}</en>
+    <tr>Guardado {path}</tr>
+  </text>
+  <text>
+    <en>(unsaved changes)</en>
+    <tr>(cambios sin guardar)</tr>
+  </text>
+  <text>
+    <en>Save the changes to the dictionary?</en>
+    <tr>¿Guardar los cambios en el diccionario?</tr>
+  </text>
+  <text>
+    <en>Add to the dictionary</en>
+    <tr>Añadir al diccionario</tr>
+  </text>
+  <text>
+    <en>Nothing found</en>
+    <tr>No se encontró nada</tr>
+  </text>
+  <text>
+    <en>No leaves them out; Cancel stays on the entry.</en>
+    <tr>No los descarta; Cancelar se queda en la entrada.</tr>
+  </text>
+  <text>
+    <en>Not saved: the entry shown has an error</en>
+    <tr>No se guardó: la entrada mostrada tiene un error</tr>
+  </text>
+  <text>
+    <en>Meanings in:</en>
+    <tr>Significados en:</tr>
+  </text>
+  <text>
+    <en>New</en>
+    <tr>Nueva</tr>
+  </text>
+  <text>
+    <en>New like this</en>
+    <tr>Nueva como esta</tr>
+  </text>
+  <text>
+    <en>Delete</en>
+    <tr>Borrar</tr>
+  </text>
+  <text>
+    <en>Revert</en>
+    <tr>Revertir</tr>
+  </text>
+  <text>
+    <en>Try a word:</en>
+    <tr>Probar una palabra:</tr>
+  </text>
+  <text>
+    <en>Try</en>
+    <tr>Probar</tr>
+  </text>
+  <text>
+    <en>Save</en>
+    <tr>Guardar</tr>
+  </text>
+  <text>
+    <en>Font…</en>
+    <tr>Fuente…</tr>
+  </text>
+  <text>
+    <en>Apply the changes to {what} first?</en>
+    <tr>¿Aplicar primero los cambios de {what}?</tr>
+  </text>
+  <text>
+    <en>Delete this entry?</en>
+    <tr>¿Borrar esta entrada?</tr>
+  </text>
+  <text>
+    <en>a Latin form, a stem or a word of the meanings</en>
+    <tr>una forma latina, una raíz o una palabra de los significados</tr>
+  </text>
+  <text>
+    <en>English</en>
+    <tr>inglés</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line, and press Enter.  "Help" explains the results, and "About" shows the credits.</en>
+    <tr>Escriba una palabra o una línea en latín y pulse Intro.  "Ayuda" explica los resultados y "Acerca de" muestra los créditos.</tr>
+  </text>
+  <text>
+    <en>{name}: a Latin dictionary</en>
+    <tr>{name}: un diccionario de latín</tr>
+  </text>
+  <text>
+    <en>About {name}</en>
+    <tr>Acerca de {name}</tr>
+  </text>
+  <text>
+    <en>Loading the dictionary…</en>
+    <tr>Cargando el diccionario…</tr>
+  </text>
+  <text>
+    <en>Look up</en>
+    <tr>Buscar</tr>
+  </text>
+  <text>
+    <en>Latin → {language}</en>
+    <tr>Latín → {language}</tr>
+  </text>
+  <text>
+    <en>{language} → Latin</en>
+    <tr>{language} → latín</tr>
+  </text>
+  <text>
+    <en>Looking up…</en>
+    <tr>Buscando…</tr>
+  </text>
+  <text>
+    <en>(no results)</en>
+    <tr>(sin resultados)</tr>
+  </text>
+  <text>
+    <en>Ready.</en>
+    <tr>Listo.</tr>
+  </text>
+  <text>
+    <en>Loading the dictionary again…</en>
+    <tr>Cargando de nuevo el diccionario…</tr>
+  </text>
+  <text>
+    <en>Choose the folder containing {file}</en>
+    <tr>Elija la carpeta que contiene {file}</tr>
+  </text>
+  <text>
+    <en>Could not load the dictionary:</en>
+    <tr>No se pudo cargar el diccionario:</tr>
+  </text>
+  <text>
+    <en>Meanings in</en>
+    <tr>Significados en</tr>
+  </text>
+  <text>
+    <en>About</en>
+    <tr>Acerca de</tr>
+  </text>
+  <text>
+    <en>Settings…</en>
+    <tr>Ajustes…</tr>
+  </text>
+  <text>
+    <en>Edit dictionary…</en>
+    <tr>Editar diccionario…</tr>
+  </text>
+  <text>
+    <en>(error: {error})</en>
+    <tr>(error: {error})</tr>
+  </text>
+  <text>
+    <en>Cannot open the editor:</en>
+    <tr>No se puede abrir el editor:</tr>
+  </text>
+  <text>
+    <en>Open the {name} project page</en>
+    <tr>Abrir la página del proyecto {name}</tr>
+  </text>
+  <text>
+    <en>The settings were not saved: {error}</en>
+    <tr>No se guardaron los ajustes: {error}</tr>
+  </text>
+  <text>
+    <en>Latin Dictionary</en>
+    <tr>Diccionario de latín</tr>
+  </text>
+  <text>
+    <en>the applications menu</en>
+    <tr>el menú de aplicaciones</tr>
+  </text>
+  <text>
+    <en>the Start menu</en>
+    <tr>el menú Inicio</tr>
+  </text>
+  <text>
+    <en>Applications (in your home folder)</en>
+    <tr>Aplicaciones (en su carpeta personal)</tr>
+  </text>
+  <text>
+    <en>Added py-words to {where}:</en>
+    <tr>Se añadió py-words a {where}:</tr>
+  </text>
+  <text>
+    <en>If you move this folder, run this again.</en>
+    <tr>Si mueve esta carpeta, vuelva a ejecutar esto.</tr>
+  </text>
+  <text>
+    <en>Add py-words to the applications menu, or remove it.</en>
+    <tr>Añade py-words al menú de aplicaciones, o lo quita.</tr>
+  </text>
+  <text>
+    <en>remove what was added</en>
+    <tr>quitar lo que se añadió</tr>
+  </text>
+  <text>
+    <en>Removed py-words from {where}.</en>
+    <tr>Se quitó py-words de {where}.</tr>
+  </text>
+  <text>
+    <en>There was nothing to remove.</en>
+    <tr>No había nada que quitar.</tr>
+  </text>
+  <text>
+    <en>F1 help  F2 direction  F3 settings  F4 edit  F5 meanings  F6 interface  F9 clear  F10 quit</en>
+    <tr>F1 ayuda  F2 dirección  F3 ajustes  F4 editar  F5 significados  F6 interfaz  F9 borrar  F10 salir</tr>
+  </text>
+  <text>
+    <en>The interface is in {language}.</en>
+    <tr>La interfaz está en {language}.</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line and Enter.  F1: help and credits.</en>
+    <tr>Escriba una palabra o una línea en latín y pulse Intro.  F1: ayuda y créditos.</tr>
+  </text>
+  <text>
+    <en>{name} {version}: a Latin dictionary</en>
+    <tr>{name} {version}: un diccionario de latín</tr>
+  </text>
+  <text>
+    <en>{language} to Latin: type a word in {language}.</en>
+    <tr>{language} al latín: escriba una palabra en {language}.</tr>
+  </text>
+  <text>
+    <en>Latin to {language}.</en>
+    <tr>Latín al {language}.</tr>
+  </text>
+  <text>
+    <en>Meanings in (Enter chooses)</en>
+    <tr>Significados en (Intro elige)</tr>
+  </text>
+  <text>
+    <en>The meanings are in {language}.</en>
+    <tr>Los significados están en {language}.</tr>
+  </text>
+  <text>
+    <en>Interface in (Enter chooses)</en>
+    <tr>Interfaz en (Intro elige)</tr>
+  </text>
+  <text>
+    <en>Forget the earlier searches (also those of the window and the command line)?</en>
+    <tr>¿Olvidar las búsquedas anteriores (también las de la ventana y la línea de órdenes)?</tr>
+  </text>
+  <text>
+    <en>Help</en>
+    <tr>Ayuda</tr>
+  </text>
+  <text>
+    <en>The dictionary was saved and read again.</en>
+    <tr>El diccionario se guardó y se volvió a leer.</tr>
+  </text>
+  <text>
+    <en>The WORDS dictionary in the terminal, full screen.</en>
+    <tr>El diccionario de WORDS en la terminal, a pantalla completa.</tr>
+  </text>
+  <text>
+    <en>the folder with the data files (default: as for words.py)</en>
+    <tr>la carpeta con los archivos de datos (por omisión: como en words.py)</tr>
+  </text>
+  <text>
+    <en>this is a full-screen program; run it in a terminal (or use words.py)</en>
+    <tr>es un programa de pantalla completa; ejecútelo en una terminal (o use words.py)</tr>
+  </text>
+  <text>
+    <en>Settings (Space switches, Esc closes)</en>
+    <tr>Ajustes (Espacio cambia, Esc cierra)</tr>
+  </text>
+  <text>
+    <en>(developer)</en>
+    <tr>(desarrollo)</tr>
+  </text>
+  <text>
+    <en>{n} more</en>
+    <tr>{n} más</tr>
+  </text>
+  <text>
+    <en>a Latin dictionary</en>
+    <tr>un diccionario de latín</tr>
+  </text>
+  <text>
+    <en>Search</en>
+    <tr>Buscar</tr>
+  </text>
+  <text>
+    <en>Change</en>
+    <tr>Cambiar</tr>
+  </text>
+  <text>
+    <en>Earlier searches</en>
+    <tr>Búsquedas anteriores</tr>
+  </text>
+  <text>
+    <en>Settings</en>
+    <tr>Ajustes</tr>
+  </text>
+  <text>
+    <en>Apply</en>
+    <tr>Aplicar</tr>
+  </text>
+  <text>
+    <en>Changes are kept for next time, also for the command line and the window.</en>
+    <tr>Los cambios se conservan para la próxima vez, también en la línea de órdenes y en la ventana.</tr>
+  </text>
+  <text>
+    <en>Language of the interface</en>
+    <tr>Idioma de la interfaz</tr>
+  </text>
+  <text>
+    <en>The dictionary was changed, and read again.</en>
+    <tr>El diccionario cambió y se volvió a leer.</tr>
+  </text>
+  <text>
+    <en>{name} {version} is at {url}  (Ctrl-C stops it)</en>
+    <tr>{name} {version} está en {url}  (Ctrl-C lo detiene)</tr>
+  </text>
+  <text>
+    <en>The WORDS dictionary in a web browser.</en>
+    <tr>El diccionario de WORDS en un navegador web.</tr>
+  </text>
+  <text>
+    <en>HOST</en>
+    <tr>HOST</tr>
+  </text>
+  <text>
+    <en>the address to listen on (default: {host}, only this computer)</en>
+    <tr>la dirección en que escuchar (por omisión: {host}, solo este equipo)</tr>
+  </text>
+  <text>
+    <en>PORT</en>
+    <tr>PUERTO</tr>
+  </text>
+  <text>
+    <en>the port (default: {port}, or a free one)</en>
+    <tr>el puerto (por omisión: {port}, o uno libre)</tr>
+  </text>
+  <text>
+    <en>do not open the browser</en>
+    <tr>no abrir el navegador</tr>
+  </text>
+  <text>
+    <en>Other computers can reach it too (at this computer's address); there are no passwords.</en>
+    <tr>Otros equipos también pueden acceder (en la dirección de este equipo); no hay contraseñas.</tr>
+  </text>
+  <text>
+    <en>Unknown host name.</en>
+    <tr>Nombre de equipo desconocido.</tr>
+  </text>
+  <text>
+    <en>There is no such page.</en>
+    <tr>No existe esa página.</tr>
+  </text>
+  <text>
+    <en>Use {method}.</en>
+    <tr>Use {method}.</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line, and press Enter.  "Help" and "About", below, explain the results and show the credits.</en>
+    <tr>Escriba una palabra o una línea en latín y pulse Intro.  "Ayuda" y "Acerca de", abajo, explican los resultados y muestran los créditos.</tr>
+  </text>
+  <text>
+    <en>Reload the page and try again.</en>
+    <tr>Recargue la página e inténtelo de nuevo.</tr>
+  </text>
+  <text>
+    <en>No icon.</en>
+    <tr>Sin icono.</tr>
+  </text>
+  <text>
+    <en>cannot listen on {host} port {port}: {error}</en>
+    <tr>no se puede escuchar en {host} puerto {port}: {error}</tr>
+  </text>
+  <text>
+    <en>a word in {language} (and N, V, ADJ …)</en>
+    <tr>una palabra en {language} (y N, V, ADJ …)</tr>
+  </text>
+  <text>
+    <en>Latin words or a line of Latin</en>
+    <tr>palabras latinas o una línea en latín</tr>
+  </text>
+  <text>
+    <en>None yet.</en>
+    <tr>Ninguna todavía.</tr>
+  </text>
+  <text>
+    <en>the file has no root element</en>
+    <tr>el archivo no tiene elemento raíz</tr>
+  </text>
+  <text>
+    <en>this file can only contain {names} elements, not &lt;{tag}&gt;</en>
+    <tr>este archivo solo puede contener elementos {names}, no &lt;{tag}&gt;</tr>
+  </text>
+  <text>
+    <en>must be a language code, like en or es</en>
+    <tr>debe ser un código de idioma, como en o es</tr>
+  </text>
+  <text>
+    <en>must be yes or no</en>
+    <tr>debe ser yes o no</tr>
+  </text>
+  <text>
+    <en>the language has no name</en>
+    <tr>el idioma no tiene nombre</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; has no content</en>
+    <tr>&lt;{tag}&gt; no tiene contenido</tr>
+  </text>
+  <text>
+    <en>the root element must be &lt;{root}&gt;, not &lt;{tag}&gt;</en>
+    <tr>el elemento raíz debe ser &lt;{root}&gt;, no &lt;{tag}&gt;</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; is nested too deeply</en>
+    <tr>&lt;{tag}&gt; está anidado demasiado</tr>
+  </text>
+  <text>
+    <en>malformed XML: {error}</en>
+    <tr>XML mal formado: {error}</tr>
+  </text>
+  <text>
+    <en>must be a number from {lo} to {hi}</en>
+    <tr>debe ser un número de {lo} a {hi}</tr>
+  </text>
+  <text>
+    <en>must be two digits, like "2 1"</en>
+    <tr>debe tener dos dígitos, como "2 1"</tr>
+  </text>
+  <text>
+    <en>is not allowed in &lt;{tag}&gt;; use one of: {names}</en>
+    <tr>no se permite en &lt;{tag}&gt;; use uno de: {names}</tr>
+  </text>
+  <text>
+    <en>the {what} "{text}" may only contain the letters a-z and A-Z</en>
+    <tr>{what} "{text}" solo puede contener las letras a-z y A-Z</tr>
+  </text>
+  <text>
+    <en>the {what} "{text}" is longer than {n} letters</en>
+    <tr>{what} "{text}" tiene más de {n} letras</tr>
+  </text>
+  <text>
+    <en>must be a whole number above 0</en>
+    <tr>debe ser un número entero mayor que 0</tr>
+  </text>
+  <text>
+    <en>a &lt;meaning&gt; must be on one line</en>
+    <tr>un &lt;meaning&gt; debe ocupar una sola línea</tr>
+  </text>
+  <text>
+    <en>may only contain letters</en>
+    <tr>solo puede contener letras</tr>
+  </text>
+  <text>
+    <en>is longer than {n} letters</en>
+    <tr>tiene más de {n} letras</tr>
+  </text>
+  <text>
+    <en>must be a single character</en>
+    <tr>debe ser un solo carácter</tr>
+  </text>
+  <text>
+    <en>the source {code} has no name</en>
+    <tr>la fuente {code} no tiene nombre</tr>
+  </text>
+  <text>
+    <en>the source {code} is already on line {line}</en>
+    <tr>la fuente {code} ya está en la línea {line}</tr>
+  </text>
+  <text>
+    <en>is not one of: {names}</en>
+    <tr>no es uno de: {names}</tr>
+  </text>
+  <text>
+    <en>must be capital letters and digits, parts joined by dots (FUT.PRF)</en>
+    <tr>debe constar de mayúsculas y dígitos, con las partes unidas por puntos (FUT.PRF)</tr>
+  </text>
+  <text>
+    <en>{what} is already on line {line}</en>
+    <tr>{what} ya está en la línea {line}</tr>
+  </text>
+  <text>
+    <en>the text is empty</en>
+    <tr>el texto está vacío</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; needs a {name} attribute</en>
+    <tr>&lt;{tag}&gt; necesita el atributo {name}</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; does not take the attributes {names} here</en>
+    <tr>&lt;{tag}&gt; no admite aquí los atributos {names}</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; does not take the attribute {names} here</en>
+    <tr>&lt;{tag}&gt; no admite aquí el atributo {names}</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; cannot contain &lt;{child}&gt;</en>
+    <tr>&lt;{tag}&gt; no puede contener &lt;{child}&gt;</tr>
+  </text>
+  <text>
+    <en>exactly {n}</en>
+    <tr>exactamente {n}</tr>
+  </text>
+  <text>
+    <en>{lo} to {hi}</en>
+    <tr>de {lo} a {hi}</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; must contain {need} &lt;{child}&gt; element</en>
+    <tr>&lt;{tag}&gt; debe contener {need} elemento &lt;{child}&gt;</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; must contain {need} &lt;{child}&gt; elements</en>
+    <tr>&lt;{tag}&gt; debe contener {need} elementos &lt;{child}&gt;</tr>
+  </text>
+  <text>
+    <en>must be parts of speech (N V ...)</en>
+    <tr>deben ser categorías gramaticales (N V ...)</tr>
+  </text>
+  <text>
+    <en>en="" is empty</en>
+    <tr>en="" está vacío</tr>
+  </text>
+  <text>
+    <en>the text must have the {1}, {2} ... of en="..."</en>
+    <tr>el texto debe tener los {1}, {2} ... de en="..."</tr>
+  </text>
+  <text>
+    <en>a &lt;meaning&gt; needs one of the attributes {names}</en>
+    <tr>un &lt;meaning&gt; necesita uno de los atributos {names}</tr>
+  </text>
+  <text>
+    <en>must be the id of one</en>
+    <tr>debe ser el id de uno</tr>
+  </text>
+  <text>
+    <en>declension</en>
+    <tr>declinación</tr>
+  </text>
+  <text>
+    <en>conjugation</en>
+    <tr>conjugación</tr>
+  </text>
+  <text>
+    <en>gender</en>
+    <tr>género</tr>
+  </text>
+  <text>
+    <en>kind</en>
+    <tr>clase</tr>
+  </text>
+  <text>
+    <en>degree</en>
+    <tr>grado</tr>
+  </text>
+  <text>
+    <en>sort</en>
+    <tr>tipo</tr>
+  </text>
+  <text>
+    <en>value</en>
+    <tr>valor</tr>
+  </text>
+  <text>
+    <en>takes the case</en>
+    <tr>rige el caso</tr>
+  </text>
+  <text>
+    <en>age</en>
+    <tr>época</tr>
+  </text>
+  <text>
+    <en>area</en>
+    <tr>área</tr>
+  </text>
+  <text>
+    <en>region</en>
+    <tr>región</tr>
+  </text>
+  <text>
+    <en>frequency</en>
+    <tr>frecuencia</tr>
+  </text>
+  <text>
+    <en>source</en>
+    <tr>fuente</tr>
+  </text>
+  <text>
+    <en>noun</en>
+    <tr>sustantivo</tr>
+  </text>
+  <text>
+    <en>verb</en>
+    <tr>verbo</tr>
+  </text>
+  <text>
+    <en>adjective</en>
+    <tr>adjetivo</tr>
+  </text>
+  <text>
+    <en>adverb</en>
+    <tr>adverbio</tr>
+  </text>
+  <text>
+    <en>preposition</en>
+    <tr>preposición</tr>
+  </text>
+  <text>
+    <en>conjunction</en>
+    <tr>conjunción</tr>
+  </text>
+  <text>
+    <en>interjection</en>
+    <tr>interjección</tr>
+  </text>
+  <text>
+    <en>pronoun</en>
+    <tr>pronombre</tr>
+  </text>
+  <text>
+    <en>pronoun with an enclitic (quicumque)</en>
+    <tr>pronombre con enclítico (quicumque)</tr>
+  </text>
+  <text>
+    <en>numeral</en>
+    <tr>numeral</tr>
+  </text>
+  <text>
+    <en>nominative stem</en>
+    <tr>raíz del nominativo</tr>
+  </text>
+  <text>
+    <en>genitive stem</en>
+    <tr>raíz del genitivo</tr>
+  </text>
+  <text>
+    <en>stem 1</en>
+    <tr>raíz 1</tr>
+  </text>
+  <text>
+    <en>stem 2</en>
+    <tr>raíz 2</tr>
+  </text>
+  <text>
+    <en>positive stem</en>
+    <tr>raíz del positivo</tr>
+  </text>
+  <text>
+    <en>oblique stem</en>
+    <tr>raíz oblicua</tr>
+  </text>
+  <text>
+    <en>comparative stem</en>
+    <tr>raíz del comparativo</tr>
+  </text>
+  <text>
+    <en>superlative stem</en>
+    <tr>raíz del superlativo</tr>
+  </text>
+  <text>
+    <en>cardinal stem</en>
+    <tr>raíz del cardinal</tr>
+  </text>
+  <text>
+    <en>ordinal stem</en>
+    <tr>raíz del ordinal</tr>
+  </text>
+  <text>
+    <en>distributive stem</en>
+    <tr>raíz del distributivo</tr>
+  </text>
+  <text>
+    <en>numeral adverb stem</en>
+    <tr>raíz del adverbio numeral</tr>
+  </text>
+  <text>
+    <en>positive</en>
+    <tr>positivo</tr>
+  </text>
+  <text>
+    <en>comparative</en>
+    <tr>comparativo</tr>
+  </text>
+  <text>
+    <en>superlative</en>
+    <tr>superlativo</tr>
+  </text>
+  <text>
+    <en>present stem</en>
+    <tr>raíz del presente</tr>
+  </text>
+  <text>
+    <en>infinitive stem</en>
+    <tr>raíz del infinitivo</tr>
+  </text>
+  <text>
+    <en>perfect stem</en>
+    <tr>raíz del perfecto</tr>
+  </text>
+  <text>
+    <en>participle stem</en>
+    <tr>raíz del participio</tr>
+  </text>
+  <text>
+    <en>word</en>
+    <tr>palabra</tr>
+  </text>
+  <text>
+    <en>masculine</en>
+    <tr>masculino</tr>
+  </text>
+  <text>
+    <en>feminine</en>
+    <tr>femenino</tr>
+  </text>
+  <text>
+    <en>neuter</en>
+    <tr>neutro</tr>
+  </text>
+  <text>
+    <en>common (masculine or feminine)</en>
+    <tr>común (masculino o femenino)</tr>
+  </text>
+  <text>
+    <en>unknown</en>
+    <tr>desconocido</tr>
+  </text>
+  <text>
+    <en>nominative</en>
+    <tr>nominativo</tr>
+  </text>
+  <text>
+    <en>genitive</en>
+    <tr>genitivo</tr>
+  </text>
+  <text>
+    <en>dative</en>
+    <tr>dativo</tr>
+  </text>
+  <text>
+    <en>accusative</en>
+    <tr>acusativo</tr>
+  </text>
+  <text>
+    <en>ablative</en>
+    <tr>ablativo</tr>
+  </text>
+  <text>
+    <en>vocative</en>
+    <tr>vocativo</tr>
+  </text>
+  <text>
+    <en>locative</en>
+    <tr>locativo</tr>
+  </text>
+  <text>
+    <en>all degrees (positive, comparative, superlative)</en>
+    <tr>todos los grados (positivo, comparativo, superlativo)</tr>
+  </text>
+  <text>
+    <en>positive only</en>
+    <tr>solo positivo</tr>
+  </text>
+  <text>
+    <en>comparative only</en>
+    <tr>solo comparativo</tr>
+  </text>
+  <text>
+    <en>superlative only</en>
+    <tr>solo superlativo</tr>
+  </text>
+  <text>
+    <en>all sorts (cardinal, ordinal ...)</en>
+    <tr>todos los tipos (cardinal, ordinal ...)</tr>
+  </text>
+  <text>
+    <en>cardinal</en>
+    <tr>cardinal</tr>
+  </text>
+  <text>
+    <en>ordinal</en>
+    <tr>ordinal</tr>
+  </text>
+  <text>
+    <en>distributive</en>
+    <tr>distributivo</tr>
+  </text>
+  <text>
+    <en>numeral adverb</en>
+    <tr>adverbio numeral</tr>
+  </text>
+  <text>
+    <en>singular only</en>
+    <tr>solo singular</tr>
+  </text>
+  <text>
+    <en>plural only</en>
+    <tr>solo plural</tr>
+  </text>
+  <text>
+    <en>abstract idea</en>
+    <tr>idea abstracta</tr>
+  </text>
+  <text>
+    <en>group, collective</en>
+    <tr>grupo, colectivo</tr>
+  </text>
+  <text>
+    <en>proper name</en>
+    <tr>nombre propio</tr>
+  </text>
+  <text>
+    <en>a person</en>
+    <tr>una persona</tr>
+  </text>
+  <text>
+    <en>a thing</en>
+    <tr>una cosa</tr>
+  </text>
+  <text>
+    <en>a place</en>
+    <tr>un lugar</tr>
+  </text>
+  <text>
+    <en>where (a place name)</en>
+    <tr>dónde (un nombre de lugar)</tr>
+  </text>
+  <text>
+    <en>personal</en>
+    <tr>personal</tr>
+  </text>
+  <text>
+    <en>relative</en>
+    <tr>relativo</tr>
+  </text>
+  <text>
+    <en>reflexive</en>
+    <tr>reflexivo</tr>
+  </text>
+  <text>
+    <en>demonstrative</en>
+    <tr>demostrativo</tr>
+  </text>
+  <text>
+    <en>interrogative</en>
+    <tr>interrogativo</tr>
+  </text>
+  <text>
+    <en>indefinite</en>
+    <tr>indefinido</tr>
+  </text>
+  <text>
+    <en>adjectival</en>
+    <tr>adjetival</tr>
+  </text>
+  <text>
+    <en>transitive</en>
+    <tr>transitivo</tr>
+  </text>
+  <text>
+    <en>intransitive</en>
+    <tr>intransitivo</tr>
+  </text>
+  <text>
+    <en>deponent</en>
+    <tr>deponente</tr>
+  </text>
+  <text>
+    <en>semi-deponent</en>
+    <tr>semideponente</tr>
+  </text>
+  <text>
+    <en>impersonal</en>
+    <tr>impersonal</tr>
+  </text>
+  <text>
+    <en>perfect with present meaning</en>
+    <tr>perfecto con significado de presente</tr>
+  </text>
+  <text>
+    <en>takes the genitive</en>
+    <tr>rige genitivo</tr>
+  </text>
+  <text>
+    <en>takes the dative</en>
+    <tr>rige dativo</tr>
+  </text>
+  <text>
+    <en>takes the ablative</en>
+    <tr>rige ablativo</tr>
+  </text>
+  <text>
+    <en>the verb "to be"</en>
+    <tr>el verbo «ser»</tr>
+  </text>
+  <text>
+    <en>compound of "to be"</en>
+    <tr>compuesto de «ser»</tr>
+  </text>
+  <text>
+    <en>in use throughout</en>
+    <tr>en uso en todas las épocas</tr>
+  </text>
+  <text>
+    <en>archaic</en>
+    <tr>arcaico</tr>
+  </text>
+  <text>
+    <en>early (before the classical period)</en>
+    <tr>antiguo (antes del periodo clásico)</tr>
+  </text>
+  <text>
+    <en>classical</en>
+    <tr>clásico</tr>
+  </text>
+  <text>
+    <en>late (after 200)</en>
+    <tr>tardío (después del 200)</tr>
+  </text>
+  <text>
+    <en>later (after 600)</en>
+    <tr>posterior (después del 600)</tr>
+  </text>
+  <text>
+    <en>medieval (after 1000)</en>
+    <tr>medieval (después del 1000)</tr>
+  </text>
+  <text>
+    <en>scholarly (Renaissance and after)</en>
+    <tr>erudito (Renacimiento y después)</tr>
+  </text>
+  <text>
+    <en>modern</en>
+    <tr>moderno</tr>
+  </text>
+  <text>
+    <en>general</en>
+    <tr>general</tr>
+  </text>
+  <text>
+    <en>agriculture, plants, animals, the land</en>
+    <tr>agricultura, plantas, animales, la tierra</tr>
+  </text>
+  <text>
+    <en>biology, medicine, the body</en>
+    <tr>biología, medicina, el cuerpo</tr>
+  </text>
+  <text>
+    <en>drama, music, the arts</en>
+    <tr>teatro, música, las artes</tr>
+  </text>
+  <text>
+    <en>the Church, the Bible</en>
+    <tr>la Iglesia, la Biblia</tr>
+  </text>
+  <text>
+    <en>grammar, rhetoric, logic, literature, school</en>
+    <tr>gramática, retórica, lógica, literatura, escuela</tr>
+  </text>
+  <text>
+    <en>law, government, money, titles</en>
+    <tr>derecho, gobierno, dinero, títulos</tr>
+  </text>
+  <text>
+    <en>poetry</en>
+    <tr>poesía</tr>
+  </text>
+  <text>
+    <en>science, philosophy, mathematics, measures</en>
+    <tr>ciencia, filosofía, matemáticas, medidas</tr>
+  </text>
+  <text>
+    <en>technical, architecture, surveying</en>
+    <tr>técnica, arquitectura, agrimensura</tr>
+  </text>
+  <text>
+    <en>war, the army, the navy</en>
+    <tr>guerra, el ejército, la marina</tr>
+  </text>
+  <text>
+    <en>mythology</en>
+    <tr>mitología</tr>
+  </text>
+  <text>
+    <en>everywhere</en>
+    <tr>en todas partes</tr>
+  </text>
+  <text>
+    <en>Africa</en>
+    <tr>África</tr>
+  </text>
+  <text>
+    <en>Britain</en>
+    <tr>Britania</tr>
+  </text>
+  <text>
+    <en>China</en>
+    <tr>China</tr>
+  </text>
+  <text>
+    <en>Scandinavia</en>
+    <tr>Escandinavia</tr>
+  </text>
+  <text>
+    <en>Egypt</en>
+    <tr>Egipto</tr>
+  </text>
+  <text>
+    <en>France, Gaul</en>
+    <tr>Francia, la Galia</tr>
+  </text>
+  <text>
+    <en>Germany</en>
+    <tr>Alemania</tr>
+  </text>
+  <text>
+    <en>Greece</en>
+    <tr>Grecia</tr>
+  </text>
+  <text>
+    <en>Italy, Rome</en>
+    <tr>Italia, Roma</tr>
+  </text>
+  <text>
+    <en>India</en>
+    <tr>India</tr>
+  </text>
+  <text>
+    <en>the Balkans</en>
+    <tr>los Balcanes</tr>
+  </text>
+  <text>
+    <en>the Netherlands</en>
+    <tr>los Países Bajos</tr>
+  </text>
+  <text>
+    <en>Persia</en>
+    <tr>Persia</tr>
+  </text>
+  <text>
+    <en>the Near East</en>
+    <tr>el Oriente Próximo</tr>
+  </text>
+  <text>
+    <en>Russia</en>
+    <tr>Rusia</tr>
+  </text>
+  <text>
+    <en>Spain</en>
+    <tr>Hispania</tr>
+  </text>
+  <text>
+    <en>Eastern Europe</en>
+    <tr>Europa oriental</tr>
+  </text>
+  <text>
+    <en>very frequent</en>
+    <tr>muy frecuente</tr>
+  </text>
+  <text>
+    <en>frequent</en>
+    <tr>frecuente</tr>
+  </text>
+  <text>
+    <en>common</en>
+    <tr>común</tr>
+  </text>
+  <text>
+    <en>lesser</en>
+    <tr>menos frecuente</tr>
+  </text>
+  <text>
+    <en>uncommon</en>
+    <tr>poco común</tr>
+  </text>
+  <text>
+    <en>very rare</en>
+    <tr>muy raro</tr>
+  </text>
+  <text>
+    <en>only in inscriptions</en>
+    <tr>solo en inscripciones</tr>
+  </text>
+  <text>
+    <en>only in graffiti</en>
+    <tr>solo en grafitos</tr>
+  </text>
+  <text>
+    <en>only in Pliny</en>
+    <tr>solo en Plinio</tr>
+  </text>
+  <text>
+    <en>Trim output</en>
+    <tr>Recortar los resultados</tr>
+  </text>
+  <text>
+    <en>Have output file</en>
+    <tr>Tener archivo de salida</tr>
+  </text>
+  <text>
+    <en>Write output to file</en>
+    <tr>Escribir la salida en el archivo</tr>
+  </text>
+  <text>
+    <en>Do unknowns only</en>
+    <tr>Solo las desconocidas</tr>
+  </text>
+  <text>
+    <en>Write unknowns to file</en>
+    <tr>Escribir las desconocidas en un archivo</tr>
+  </text>
+  <text>
+    <en>Ignore unknown names</en>
+    <tr>Ignorar los nombres desconocidos</tr>
+  </text>
+  <text>
+    <en>Do compounds</en>
+    <tr>Tiempos compuestos</tr>
+  </text>
+  <text>
+    <en>Do fixes</en>
+    <tr>Afijos</tr>
+  </text>
+  <text>
+    <en>Do tricks</en>
+    <tr>Trucos</tr>
+  </text>
+  <text>
+    <en>Do dictionary forms</en>
+    <tr>Formas de diccionario</tr>
+  </text>
+  <text>
+    <en>Show age</en>
+    <tr>Mostrar la época</tr>
+  </text>
+  <text>
+    <en>Show frequency</en>
+    <tr>Mostrar la frecuencia</tr>
+  </text>
+  <text>
+    <en>Do examples</en>
+    <tr>Ejemplos</tr>
+  </text>
+  <text>
+    <en>Use glosses</en>
+    <tr>Usar glosas</tr>
+  </text>
+  <text>
+    <en>Do only meanings</en>
+    <tr>Solo los significados</tr>
+  </text>
+  <text>
+    <en>Do stems for unknown</en>
+    <tr>Raíces de las desconocidas</tr>
+  </text>
+  <text>
+    <en>Fuzzy search</en>
+    <tr>Búsqueda aproximada</tr>
+  </text>
+  <text>
+    <en>Have statistics file</en>
+    <tr>Tener archivo de estadísticas</tr>
+  </text>
+  <text>
+    <en>Write statistics file</en>
+    <tr>Escribir el archivo de estadísticas</tr>
+  </text>
+  <text>
+    <en>Show dictionary</en>
+    <tr>Mostrar el diccionario</tr>
+  </text>
+  <text>
+    <en>Show dictionary line</en>
+    <tr>Mostrar la línea del diccionario</tr>
+  </text>
+  <text>
+    <en>Show dictionary codes</en>
+    <tr>Mostrar los códigos del diccionario</tr>
+  </text>
+  <text>
+    <en>Do pearse codes</en>
+    <tr>Códigos de Pearse</tr>
+  </text>
+  <text>
+    <en>Do only initial word</en>
+    <tr>Solo la primera palabra</tr>
+  </text>
+  <text>
+    <en>For word list check</en>
+    <tr>Revisión de listas de palabras</tr>
+  </text>
+  <text>
+    <en>Do only fixes</en>
+    <tr>Solo afijos</tr>
+  </text>
+  <text>
+    <en>Do fixes anyway</en>
+    <tr>Afijos de todos modos</tr>
+  </text>
+  <text>
+    <en>Use prefixes</en>
+    <tr>Usar prefijos</tr>
+  </text>
+  <text>
+    <en>Use suffixes</en>
+    <tr>Usar sufijos</tr>
+  </text>
+  <text>
+    <en>Use tackons</en>
+    <tr>Usar enclíticos</tr>
+  </text>
+  <text>
+    <en>Do medieval tricks</en>
+    <tr>Trucos medievales</tr>
+  </text>
+  <text>
+    <en>Do syncope</en>
+    <tr>Síncopa</tr>
+  </text>
+  <text>
+    <en>Do two words</en>
+    <tr>Dos palabras</tr>
+  </text>
+  <text>
+    <en>Include unknown context</en>
+    <tr>Incluir el contexto de las desconocidas</tr>
+  </text>
+  <text>
+    <en>Omit archaic</en>
+    <tr>Omitir las arcaicas</tr>
+  </text>
+  <text>
+    <en>Omit medieval</en>
+    <tr>Omitir las medievales</tr>
+  </text>
+  <text>
+    <en>Omit uncommon</en>
+    <tr>Omitir las poco comunes</tr>
+  </text>
+  <text>
+    <en>Pause in screen output</en>
+    <tr>Pausa en la salida por pantalla</tr>
+  </text>
+  <text>
+    <en>Start file character</en>
+    <tr>Carácter para leer un archivo</tr>
+  </text>
+  <text>
+    <en>Change parameters character</en>
+    <tr>Carácter de los parámetros</tr>
+  </text>
+  <text>
+    <en>Change developer modes character</en>
+    <tr>Carácter de los modos de desarrollo</tr>
+  </text>
+  <text>
+    <en>Spanish</en>
+    <tr>español</tr>
+  </text>
+  <text>
+    <en>error</en>
+    <tr>error</tr>
+  </text>
+  <text>
+    <en>warning</en>
+    <tr>advertencia</tr>
+  </text>
+  <text>
+    <en>Added</en>
+    <tr>Añadida</tr>
+  </text>
+  <text>
+    <en>Changed</en>
+    <tr>Cambiada</tr>
+  </text>
+  <text>
+    <en>stem</en>
+    <tr>la raíz</tr>
+  </text>
+  <text>
+    <en>form</en>
+    <tr>la forma</tr>
+  </text>
+  <text>
+    <en>fix</en>
+    <tr>el afijo</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line (or, after F2, a word in the language of
+the meanings) and Enter.
+
+Up / Down       earlier searches (also of earlier sessions)
+PgUp / PgDn     scroll the results (Ctrl-Up / Ctrl-Down: a line)
+F2 / Ctrl-L     Latin to English (or the language of the meanings),
+                or back
+F3 / Ctrl-O     settings: every parameter and developer mode
+F4 / Ctrl-E     edit the dictionary
+F5 / Ctrl-G     the language of the meanings
+F6              the language of the interface
+F9              clear the history of the searches
+F1              this help
+F10 / Ctrl-Q    quit</en>
+    <tr>Escriba una palabra o una línea en latín (o, tras F2, una palabra en el idioma de
+los significados) y pulse Intro.
+
+Arriba / Abajo  búsquedas anteriores (también de sesiones anteriores)
+RePág / AvPág   desplazar los resultados (Ctrl-Arriba / Ctrl-Abajo: una línea)
+F2 / Ctrl-L     latín al inglés (o al idioma de los significados),
+                o al revés
+F3 / Ctrl-O     ajustes: todos los parámetros y modos de desarrollo
+F4 / Ctrl-E     editar el diccionario
+F5 / Ctrl-G     el idioma de los significados
+F6              el idioma de la interfaz
+F9              borrar el historial de búsquedas
+F1              esta ayuda
+F10 / Ctrl-Q    salir</tr>
+  </text>
+  <text>
+    <en>The results are those of words.py; the settings, the configuration file
+and the history of the searches are shared with it and the window.  (On
+Windows, curses needs the windows-curses package.)
+</en>
+    <tr>Los resultados son los de words.py; los ajustes, el archivo de configuración
+y el historial de búsquedas se comparten con él y con la ventana.  (En
+Windows, curses necesita el paquete windows-curses.)</tr>
+  </text>
+  <text>
+    <en>    Find   type a Latin form, a stem or a word of the meanings and Enter
+    List   Up/Down to choose an entry, Enter to edit it
+    Form   Up/Down between fields; type in text fields; in a field with
+           choices, Left/Right change it and Enter lists them all
+
+    F3 / Ctrl-A  apply the changes (or add the new entry)
+    F4 / Ctrl-N  new entry           F5 / Ctrl-D  new entry like this one
+    F6 / Ctrl-T  try a word          F8 / Ctrl-K  delete the entry
+    F7 / Ctrl-L  the language of the meanings edited besides English
+    F2 / Ctrl-S  save the file (applying the changes first)
+    F10 / Ctrl-Q quit
+    Tab          next area           Ctrl-F       find
+
+Nothing is written until the file is saved; the first save keeps the
+original as dictionary.xml.bak (and so for the file of the language of
+the meanings, in languages/, if one is chosen).  Leaving an entry whose
+changes were not applied asks what to do with them.  (On Windows, curses
+needs the windows-curses package; the window editor, words_edit_gui.py,
+needs nothing.)
+</en>
+    <tr>    Buscar      escriba una forma latina, una raíz o una palabra de los
+                significados, y pulse Intro
+    Lista       Arriba/Abajo para elegir una entrada, Intro para editarla
+    Formulario  Arriba/Abajo entre los campos; escriba en los campos de
+                texto; en un campo con opciones, Izquierda/Derecha lo
+                cambian e Intro las lista todas
+
+    F3 / Ctrl-A  aplicar los cambios (o añadir la entrada nueva)
+    F4 / Ctrl-N  entrada nueva       F5 / Ctrl-D  entrada nueva como esta
+    F6 / Ctrl-T  probar una palabra  F8 / Ctrl-K  borrar la entrada
+    F7 / Ctrl-L  el idioma de los significados editado además del inglés
+    F2 / Ctrl-S  guardar el archivo (aplicando antes los cambios)
+    F10 / Ctrl-Q salir
+    Tab          área siguiente      Ctrl-F       buscar
+
+Nada se escribe hasta que se guarda el archivo; la primera vez se conserva
+el original como dictionary.xml.bak (y lo mismo con el archivo del idioma
+de los significados, en languages/, si se eligió uno).  Al dejar una
+entrada con cambios no aplicados se pregunta qué hacer con ellos.  (En
+Windows, curses necesita el paquete windows-curses; el editor en ventana,
+words_edit_gui.py, no necesita nada.)</tr>
+  </text>
+  <text>
+    <en>Starts a small web server on this computer and opens the browser at it:</en>
+    <tr>Inicia un pequeño servidor web en este equipo y abre el navegador en él:</tr>
+  </text>
+  <text>
+    <en>    http://127.0.0.1:8000/                  the search page
+    http://127.0.0.1:8000/?q=amicus+est     a search (Latin to English)
+    http://127.0.0.1:8000/?q=friend&amp;lang=en a search (English to Latin)</en>
+    <tr>    http://127.0.0.1:8000/                  la página de búsqueda
+    http://127.0.0.1:8000/?q=amicus+est     una búsqueda (latín al inglés)
+    http://127.0.0.1:8000/?q=friend&amp;lang=en una búsqueda (inglés al latín)</tr>
+  </text>
+  <text>
+    <en>(lang= the language of the meanings, en or es ..., for a search from it
+to Latin.)</en>
+    <tr>(lang= el idioma de los significados, en o es ..., para buscar desde él
+hacia el latín.)</tr>
+  </text>
+  <text>
+    <en>The results are those of words.py; the settings, the configuration file
+and the history of the searches are shared with it, the window and the
+terminal.  The dictionary is read again when an editor changes it.</en>
+    <tr>Los resultados son los de words.py; los ajustes, el archivo de configuración
+y el historial de búsquedas se comparten con él, con la ventana y con la
+terminal.  El diccionario se vuelve a leer cuando un editor lo cambia.</tr>
+  </text>
+  <text>
+    <en>Only this computer can reach the server, unless --host says otherwise
+(--host 0.0.0.0: every computer that can reach this one, as a phone on
+the same network).  There are no passwords, so do that only on a network
+you trust; the dictionary cannot be edited from the browser.
+</en>
+    <tr>Solo este equipo puede acceder al servidor, salvo que --host diga otra cosa
+(--host 0.0.0.0: cualquier equipo que pueda llegar a este, como un teléfono
+en la misma red).  No hay contraseñas, así que hazlo solo en una red de
+confianza; el diccionario no puede editarse desde el navegador.</tr>
+  </text>
+  <text>
+    <en>usage: </en>
+    <tr>uso: </tr>
+  </text>
+  <text>
+    <en>positional arguments</en>
+    <tr>argumentos posicionales</tr>
+  </text>
+  <text>
+    <en>options</en>
+    <tr>opciones</tr>
+  </text>
+  <text>
+    <en>show this help message and exit</en>
+    <tr>mostrar esta ayuda y terminar</tr>
+  </text>
+  <text>
+    <en> (default: %(default)s)</en>
+    <tr> (por omisión: %(default)s)</tr>
+  </text>
+  <text>
+    <en>argument %(argument_name)s: %(message)s</en>
+    <tr>argumento %(argument_name)s: %(message)s</tr>
+  </text>
+  <text>
+    <en>unrecognized arguments: %s</en>
+    <tr>argumentos no reconocidos: %s</tr>
+  </text>
+  <text>
+    <en>the following arguments are required: %s</en>
+    <tr>se necesitan los argumentos siguientes: %s</tr>
+  </text>
+  <text>
+    <en>expected one argument</en>
+    <tr>se esperaba un argumento</tr>
+  </text>
+  <text>
+    <en>expected at most one argument</en>
+    <tr>se esperaba como mucho un argumento</tr>
+  </text>
+  <text>
+    <en>expected at least one argument</en>
+    <tr>se esperaba al menos un argumento</tr>
+  </text>
+  <text>
+    <en>invalid choice: %(value)r (choose from %(choices)s)</en>
+    <tr>opción no válida: %(value)r (elija entre %(choices)s)</tr>
+  </text>
+  <text>
+    <en>invalid %(type)s value: %(value)r</en>
+    <tr>valor %(type)s no válido: %(value)r</tr>
+  </text>
+  <text>
+    <en>not allowed with argument %s</en>
+    <tr>no se permite con el argumento %s</tr>
+  </text>
+  <text>
+    <en>ambiguous option: %(option)s could match %(matches)s</en>
+    <tr>opción ambigua: %(option)s podría ser %(matches)s</tr>
+  </text>
+  <text>
+    <en>can't open '%(filename)s': %(error)s</en>
+    <tr>no se puede abrir '%(filename)s': %(error)s</tr>
+  </text>
+  <text>
+    <en>%(prog)s: error: %(message)s
+</en>
+    <tr>%(prog)s: error: %(message)s
+</tr>
+  </text>
+  <text>
+    <en>{name} {version}, a Latin dictionary by Nicolas Vaughan
+{url}
+Based on WORDS by William Whitaker (1936-2010), via the Ada version at
+https://github.com/mk270/whitakers-words
+Code © 2026 Nicolas Vaughan (nivaca@fastmail.com); dictionary data by
+William Whitaker, free for any use.
+The Spanish meanings were translated from the English with the help of
+Claude (the model Claude Opus 5.5, by Anthropic).</en>
+    <tr>{name} {version}, un diccionario de latín de Nicolas Vaughan
+{url}
+Basado en WORDS de William Whitaker (1936-2010), a través de la versión en Ada de
+https://github.com/mk270/whitakers-words
+Código © 2026 Nicolas Vaughan (nivaca@fastmail.com); datos del diccionario de
+William Whitaker, de uso libre.
+Los significados en español se tradujeron del inglés con ayuda de
+Claude (el modelo Claude Opus 5.5, de Anthropic).</tr>
+  </text>
+  <text>
+    <en>Nicolas Vaughan is Associate Professor of Literature at the School of
+Arts and Humanities of the Universidad de los Andes, Bogotá, Colombia.</en>
+    <tr>Nicolas Vaughan es profesor asociado de Literatura de la Facultad de Artes y
+Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
+  </text>
+  <text>
+    <en>Answer one of: {codes}; Enter keeps the current one.</en>
+    <tr>Responde uno de: {codes}; Intro mantiene el actual.</tr>
+  </text>
+  <text>
+    <en>(Ctrl-C does not quit: an empty line twice, or Ctrl-D, quits)</en>
+    <tr>(Ctrl-C no termina: dos líneas vacías seguidas, o Ctrl-D, terminan)</tr>
+  </text>
+  <text>
+    <en>(interrupted)</en>
+    <tr>(interrumpido)</tr>
+  </text>
+  <text>
+    <en>about: the version and the credits</en>
+    <tr>acerca de: la versión y los créditos</tr>
+  </text>
+  <text>
+    <en>Make a zip of the program, to distribute it: {name}.zip, without hidden files.</en>
+    <tr>Hace un zip del programa, para distribuirlo: {name}.zip, sin archivos ocultos.</tr>
+  </text>
+  <text>
+    <en>FOLDER</en>
+    <tr>CARPETA</tr>
+  </text>
+  <text>
+    <en>the folder to write it in (default: the current one)</en>
+    <tr>la carpeta donde escribirlo (por omisión: la actual)</tr>
+  </text>
+  <text>
+    <en>include the tests</en>
+    <tr>incluir las pruebas</tr>
+  </text>
+  <text>
+    <en>there is no folder {folder}</en>
+    <tr>no existe la carpeta {folder}</tr>
+  </text>
+  <text>
+    <en>Wrote {path} ({n} files, {size:.1f} MB).</en>
+    <tr>Escrito {path} ({n} archivos, {size:.1f} MB).</tr>
+  </text>
+  <text>
+    <en>Dark mode</en>
+    <tr>Modo oscuro</tr>
+  </text>
+  <text>
+    <en>The look of the windows and the web page: dark_mode = true for dark, false for light (none: the web page follows the system).  Also changed with "Dark mode" in the window and on the web page.</en>
+    <tr>El aspecto de las ventanas y de la página web: dark_mode = true para oscuro, false para claro (si no hay: la página web sigue al sistema).  También se cambia con "Modo oscuro" en la ventana y en la página web.</tr>
+  </text>
+  <!-- The help (guide.py) -->
+  <text>
+    <en>{name}: help</en>
+    <tr>{name}: ayuda</tr>
+  </text>
+  <text>
+    <en>show the help: how to search and read the results, and exit</en>
+    <tr>mostrar la ayuda: cómo buscar y leer los resultados, y salir</tr>
+  </text>
+  <text>
+    <en>the help: how to search and read the results</en>
+    <tr>la ayuda: cómo buscar y leer los resultados</tr>
+  </text>
+  <text>
+    <en>words.py --help lists the options of the command line.</en>
+    <tr>words.py --help lista las opciones de la línea de órdenes.</tr>
+  </text>
+  <text>
+    <en>{name} is a Latin dictionary that knows Latin grammar: it analyses a Latin word into the dictionary entries and the forms it can be, with their meanings, and finds the Latin for a word of the language of the meanings.</en>
+    <tr>{name} es un diccionario de latín que conoce la gramática latina: analiza una palabra latina en las entradas del diccionario y las formas que puede ser, con sus significados, y busca el latín de una palabra del idioma de los significados.</tr>
+  </text>
+  <text>
+    <en>Searching</en>
+    <tr>Buscar</tr>
+  </text>
+  <text>
+    <en>Type a Latin word, or a whole line of Latin, and look it up: each word is analysed in turn.  Capitals do not matter, nor do u and v, or i and j (iulius, Julius and IVLIVS are the same word), nor long marks and other accents: amīcus is amicus, and cælum is caelum.</en>
+    <tr>Escriba una palabra latina, o una línea entera de latín, y búsquela: cada palabra se analiza por turno.  Las mayúsculas no importan, ni tampoco u y v, o i y j (iulius, Julius e IVLIVS son la misma palabra), ni las marcas de cantidad y otras tildes: amīcus es amicus, y cælum es caelum.</tr>
+  </text>
+  <text>
+    <en>In the other direction, from the language of the meanings to Latin, type one word and, if you like, a part of speech after it (friend N, friend ADJ; the parts of speech are N, PRON, ADJ, NUM, ADV, V, PREP, CONJ and INTERJ): the Latin entries whose meanings have that word are listed, the best first.</en>
+    <tr>En la otra dirección, del idioma de los significados al latín, escriba una palabra y, si lo desea, una categoría gramatical tras ella (amigo N, amigo ADJ; las categorías son N, PRON, ADJ, NUM, ADV, V, PREP, CONJ e INTERJ): se listan las entradas latinas cuyos significados tienen esa palabra, primero las mejores.</tr>
+  </text>
+  <text>
+    <en>When a word finds nothing as it is typed, the program tries other spellings (medieval ones, syncope, two words written as one ...) and says what it did.  With the fuzzy search (on as usual), a word that still finds nothing is followed by the results of its near spellings: amicuss finds amicus.  Unknown words with a capital are taken as names, and left alone.</en>
+    <tr>Cuando una palabra no encuentra nada tal como se escribió, el programa prueba otras grafías (medievales, síncopa, dos palabras escritas como una...) y dice lo que hizo.  Con la búsqueda aproximada (activada por omisión), a una palabra que sigue sin encontrar nada le siguen los resultados de sus grafías cercanas: amicuss encuentra amicus.  Las palabras desconocidas con mayúscula inicial se toman como nombres, y se dejan como están.</tr>
+  </text>
+  <text>
+    <en>Using this program</en>
+    <tr>Uso de este programa</tr>
+  </text>
+  <text>
+    <en>Type in the box at the top and press Enter, or "Look up"; the arrow at the right of the box lists the earlier searches.</en>
+    <tr>Escriba en el cuadro de arriba y pulse Intro, o "Buscar"; la flecha a la derecha del cuadro lista las búsquedas anteriores.</tr>
+  </text>
+  <text>
+    <en>"Latin → …" and "… → Latin" choose the direction of the search, "Meanings in" the language of the meanings, and "Fuzzy search", beside it, whether a word that finds nothing is followed by its near spellings.  The menus have the rest: Dictionary (the dictionary editor, and the other settings, each with its help), View (find in the results, the size of the text, the fonts, dark mode) and Help (this text, and the version and the credits).</en>
+    <tr>"Latín → …" y "… → latín" eligen la dirección de la búsqueda, "Significados en" el idioma de los significados, y "Búsqueda aproximada", a su lado, si a una palabra que no encuentra nada le siguen sus grafías cercanas.  Los menús tienen lo demás: Diccionario (el editor del diccionario y los demás ajustes, cada uno con su ayuda), Ver (buscar en los resultados, el tamaño del texto, las fuentes, el modo oscuro) y Ayuda (este texto, y la versión y los créditos).</tr>
+  </text>
+  <text>
+    <en>In the results, click the first word of an entry to look it up, or double-click any word (a word of the meanings is looked up in Latin).  Point at the codes in brackets or at an analysis (GEN.PL) to see what they mean.  A right click copies or looks up a word, and Ctrl and F finds a text in the results.</en>
+    <tr>En los resultados, haga clic en la primera palabra de una entrada para buscarla, o doble clic en cualquier palabra (una palabra de los significados se busca en latín).  Ponga el puntero sobre los códigos entre corchetes o sobre un análisis (GEN.PL) para ver qué significan.  El botón derecho copia o busca una palabra, y Ctrl y F buscan un texto en los resultados.</tr>
+  </text>
+  <text>
+    <en>Ctrl and + or − make the text larger or smaller (Ctrl and 0: as usual), and "Dark mode", at the bottom right, makes the window dark.</en>
+    <tr>Ctrl y + o − agrandan o achican el texto (Ctrl y 0: como de costumbre), y "Modo oscuro", abajo a la derecha, oscurece la ventana.</tr>
+  </text>
+  <text>
+    <en>Type in the box at the top and press Enter, or "Look up"; the two choices below it give the direction of the search, "Meanings in" the language of the meanings, and "Fuzzy search" whether a word that finds nothing is followed by its near spellings.</en>
+    <tr>Escriba en el cuadro de arriba y pulse Intro, o "Buscar"; las dos opciones de debajo dan la dirección de la búsqueda, "Significados en" el idioma de los significados, y "Búsqueda aproximada" si a una palabra que no encuentra nada le siguen sus grafías cercanas.</tr>
+  </text>
+  <text>
+    <en>The first word of each entry of the results is a link to its own search, and every search has its own address, which can be bookmarked.  "Dark mode" makes the page dark.  At the foot, "Earlier searches" lists the recent ones, "Settings" has the other settings (each with its help), "Help" is this text and "About" shows the version and the credits.</en>
+    <tr>La primera palabra de cada entrada de los resultados enlaza con su propia búsqueda, y cada búsqueda tiene su propia dirección, que puede guardarse en marcadores.  "Modo oscuro" oscurece la página.  Al pie, "Búsquedas anteriores" lista las recientes, "Ajustes" tiene los demás ajustes (cada uno con su ayuda), "Ayuda" es este texto y "Acerca de" muestra la versión y los créditos.</tr>
+  </text>
+  <text>
+    <en>Reading the results</en>
+    <tr>Cómo leer los resultados</tr>
+  </text>
+  <text>
+    <en>This is what {name} shows for {word}:</en>
+    <tr>Esto es lo que {name} muestra para {word}:</tr>
+  </text>
+  <text>
+    <en>The first line is the word looked up.  Each entry it can be follows, indented.</en>
+    <tr>La primera línea es la palabra buscada.  Le sigue, con sangría, cada entrada que puede ser.</tr>
+  </text>
+  <text>
+    <en>The first line of an entry has its dictionary form (the principal parts: amicus, amici), its part of speech and its grammar in words (noun, 2nd declension, masculine), the codes in brackets ([XXXBO], see below) and, for some entries, their age or frequency in words (archaic, lesser ...).</en>
+    <tr>La primera línea de una entrada tiene su forma de diccionario (los enunciados: amicus, amici), su categoría gramatical y su gramática en palabras (sustantivo, 2.ª declinación, masculino), los códigos entre corchetes ([XXXBO], véase más abajo) y, en algunas entradas, su época o su frecuencia en palabras (arcaico, menos frecuente...).</tr>
+  </text>
+  <text>
+    <en>The next line is the meaning.  Its senses are separated by semicolons, the commonest first; a slash separates alternatives (counselor/courtier), and parentheses give the context.  [en] before a meaning says that it is not translated, and is given in English.</en>
+    <tr>La línea siguiente es el significado.  Sus sentidos se separan con punto y coma, primero los más comunes; una barra separa alternativas (consejero/cortesano), y los paréntesis dan el contexto.  [en] antes de un significado indica que no está traducido y se da en inglés.</tr>
+  </text>
+  <text>
+    <en>Then come the forms the word can be: the stem and the ending, separated by a hyphen (amic-orum), and what the form is, in the abbreviations listed below (GEN.PL: genitive plural) or, with the setting use_glosses off, in words.  One spelling can be several forms: the amic-orum of the adjective is GEN.PL.M and GEN.PL.N.</en>
+    <tr>Luego vienen las formas que puede ser la palabra: la raíz y la desinencia, separadas por un guion (amic-orum), y qué forma es, con las abreviaturas que se listan más abajo (GEN.PL: genitivo plural) o, con el ajuste use_glosses desactivado, en palabras.  Una misma grafía puede ser varias formas: el amic-orum del adjetivo es GEN.PL.M y GEN.PL.N.</tr>
+  </text>
+  <text>
+    <en>A line before an entry may say how the word was found: a prefix, a suffix or an enclitic (-que, -ne, -ve) that was taken off, with its meaning, or a spelling trick (spelling: ...), with a sentence on what was done.</en>
+    <tr>Una línea antes de una entrada puede decir cómo se encontró la palabra: un prefijo, un sufijo o un enclítico (-que, -ne, -ve) que se quitó, con su significado, o un truco ortográfico (ortografía: ...), con una frase sobre lo que se hizo.</tr>
+  </text>
+  <text>
+    <en>Notes in parentheses: (unknown), for a word that was not found; (near spellings: ...), before the results of its near spellings; (less likely forms are not shown), when the setting trim_output left some out.  From the language of the meanings: (no match), (near words: ...) and, after the best six entries, (... more not shown).</en>
+    <tr>Notas entre paréntesis: (desconocida), para una palabra que no se encontró; (grafías cercanas: ...), antes de los resultados de sus grafías cercanas; (no se muestran las formas menos probables), cuando el ajuste trim_output omitió algunas.  Desde el idioma de los significados: (sin resultados), (palabras cercanas: ...) y, tras las seis mejores entradas, (no se muestran ... más).</tr>
+  </text>
+  <text>
+    <en>The codes in brackets</en>
+    <tr>Los códigos entre corchetes</tr>
+  </text>
+  <text>
+    <en>The five letters in brackets after an entry say when, where, how often and on whose authority the word is used, in this order: its age, its area (the subject it belongs to), its region, its frequency and its source.  X says that there is nothing particular to say: in use throughout, general, everywhere, or not known.  So the [{codes}] of amicus is read:</en>
+    <tr>Las cinco letras entre corchetes tras una entrada dicen cuándo, dónde, con qué frecuencia y según qué autoridad se usa la palabra, en este orden: su época, su área (el tema al que pertenece), su región, su frecuencia y su fuente.  X indica que no hay nada particular que decir: en uso en todas las épocas, general, en todas partes, o desconocido.  Así, el [{codes}] de amicus se lee:</tr>
+  </text>
+  <text>
+    <en>Each letter can be:</en>
+    <tr>Cada letra puede ser:</tr>
+  </text>
+  <text>
+    <en>The age, when it is known, and the frequency, when it is lesser or rarer, are also given in words after the codes (archaic, lesser ...).  The developer mode show_dictionary_codes hides the codes, and the dictionary editors explain each code of an entry as it is edited.</en>
+    <tr>La época, cuando se conoce, y la frecuencia, cuando es menor o más rara, también se dan en palabras tras los códigos (arcaico, menos frecuente...).  El modo de desarrollo show_dictionary_codes oculta los códigos, y los editores del diccionario explican cada código de una entrada mientras se edita.</tr>
+  </text>
+  <text>
+    <en>The abbreviations of the analyses</en>
+    <tr>Las abreviaturas de los análisis</tr>
+  </text>
+  <text>
+    <en>The forms are written with the abbreviations of the Leipzig Glossing Rules, joined by full stops (GEN.PL, 1SG.PRF.ACT.IND); those marked * are not in the Leipzig list.  They are kept in data/gloss.xml, where they can be changed.</en>
+    <tr>Las formas se escriben con las abreviaturas de las Leipzig Glossing Rules, unidas por puntos (GEN.PL, 1SG.PRF.ACT.IND); las marcadas con * no están en la lista de Leipzig.  Se guardan en data/gloss.xml, donde pueden cambiarse.</tr>
+  </text>
+  <text>
+    <en>case</en>
+    <tr>caso</tr>
+  </text>
+  <text>
+    <en>number</en>
+    <tr>número</tr>
+  </text>
+  <text>
+    <en>person</en>
+    <tr>persona</tr>
+  </text>
+  <text>
+    <en>tense</en>
+    <tr>tiempo</tr>
+  </text>
+  <text>
+    <en>voice</en>
+    <tr>voz</tr>
+  </text>
+  <text>
+    <en>mood</en>
+    <tr>modo</tr>
+  </text>
+  <text>
+    <en>other verb forms</en>
+    <tr>otras formas verbales</tr>
+  </text>
+  <text>
+    <en>numerals</en>
+    <tr>numerales</tr>
+  </text>
+  <text>
+    <en>Each setting has its own help: in the Settings of the window and the web page, in F3 of the terminal, and with ? in the # and ! dialogues of the command line.  The parameters are for everyone, the developer modes for special purposes; the programs share them.</en>
+    <tr>Cada ajuste tiene su propia ayuda: en los Ajustes de la ventana y de la página web, en F3 de la terminal, y con ? en los diálogos # y ! de la línea de órdenes.  Los parámetros son para todos, los modos de desarrollo para fines especiales; los programas los comparten.</tr>
+  </text>
+  <text>
+    <en>general or unknown</en>
+    <tr>general o desconocida</tr>
+  </text>
+  <text>
+    <en>other dictionaries</en>
+    <tr>otros diccionarios</tr>
+  </text>
+  <text>
+    <en>found in a translation</en>
+    <tr>hallada en una traducción</tr>
+  </text>
+  <text>
+    <en>Whitaker's guess</en>
+    <tr>conjetura de Whitaker</tr>
+  </text>
+  <text>
+    <en>temporary</en>
+    <tr>provisional</tr>
+  </text>
+  <text>
+    <en>sent by a user</en>
+    <tr>enviada por un usuario</tr>
+  </text>
+  <!-- The window: menus, results, find bar -->
+  <text>
+    <en>Dictionary</en>
+    <tr>Diccionario</tr>
+  </text>
+  <text>
+    <en>View</en>
+    <tr>Ver</tr>
+  </text>
+  <text>
+    <en>Quit</en>
+    <tr>Salir</tr>
+  </text>
+  <text>
+    <en>Find in results…</en>
+    <tr>Buscar en los resultados…</tr>
+  </text>
+  <text>
+    <en>Larger text</en>
+    <tr>Texto más grande</tr>
+  </text>
+  <text>
+    <en>Smaller text</en>
+    <tr>Texto más pequeño</tr>
+  </text>
+  <text>
+    <en>Usual size</en>
+    <tr>Tamaño habitual</tr>
+  </text>
+  <text>
+    <en>Copy</en>
+    <tr>Copiar</tr>
+  </text>
+  <text>
+    <en>Select all</en>
+    <tr>Seleccionar todo</tr>
+  </text>
+  <text>
+    <en>Look up “{word}”</en>
+    <tr>Buscar “{word}”</tr>
+  </text>
+  <text>
+    <en>Find “{word}” in Latin</en>
+    <tr>Buscar “{word}” en latín</tr>
+  </text>
+  <text>
+    <en>Previous</en>
+    <tr>Anterior</tr>
+  </text>
+  <text>
+    <en>Next</en>
+    <tr>Siguiente</tr>
+  </text>
+  <text>
+    <en>{count} found</en>
+    <tr>{count} encontrados</tr>
+  </text>
+  <text>
+    <en>Not found</en>
+    <tr>No se encontró</tr>
+  </text>
+  <text>
+    <en>Try, for example:</en>
+    <tr>Pruebe, por ejemplo:</tr>
+  </text>
+  <text>
+    <en>{word} (to Latin)</en>
+    <tr>{word} (al latín)</tr>
+  </text>
+  <text>
+    <en>Double-click any word of the results to look it up (a word of the meanings is looked up in Latin), and point at the codes in brackets or at an analysis (GEN.PL), or tap them, to see what they mean.</en>
+    <tr>Haga doble clic en cualquier palabra de los resultados para buscarla (una palabra de los significados se busca en latín), y ponga el puntero sobre los códigos entre corchetes o sobre un análisis (GEN.PL), o tóquelos, para ver qué significan.</tr>
+  </text>
+</interface>

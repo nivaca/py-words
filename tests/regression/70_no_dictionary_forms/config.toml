@@ -1,0 +1,3 @@
+# Without dictionary forms: the meanings and forms only.
+[parameters]
+do_dictionary_forms = false

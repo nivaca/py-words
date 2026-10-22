@@ -1,0 +1,99 @@
+arma
+  [XWXAO]
+    arms (pl.), weapons, armor, shield; close fighting weapons; equipment; force;
+    arm-a          NOM.PL
+    arm-a          VOC.PL
+    arm-a          ACC.PL
+  [XWXAO]
+    equip, fit with armor; arm; strengthen; rouse, stir; incite war; rig (ship);
+    arm-a          2SG.PRS.ACT.IMP
+
+virumque
+  -que  enclitic
+  [GBXEK]  neo-Latin  uncommon
+    virus;
+    vir-um         NOM.SG
+    vir-um         VOC.SG
+    vir-um         ACC.SG
+  [XXXAX]
+    man; husband; hero; person of courage, honor, and nobility;
+    vir-um         ACC.SG
+  [XXXAX]
+    strength (bodily) (pl.), force, power, might, violence; resources; large body;
+    vir-um         GEN.PL
+  (less likely forms are not shown)
+
+cano
+  [XBXCO]
+    gray hairs (pl.); old age;
+    can-o          DAT.SG
+    can-o          ABL.SG
+  [XXXFS]  very rare
+    wicker basket (used for food/flowers and in sacrifices);
+    can-o          DAT.SG
+    can-o          ABL.SG
+  [XXXBO]
+    white, gray; aged, old, wise; hoary; foamy, white-capped; white w/snow/frost;
+    can-o          DAT.SG.M
+    can-o          DAT.SG.N
+    can-o          ABL.SG.M
+    can-o          ABL.SG.N
+  [EXXFS]  later  very rare
+    sing, celebrate, chant; crow; recite; play (music)/sound (horn); foretell;
+    can-o          1SG.PRS.ACT.IND
+  [XXXAO]
+    sing, celebrate, chant; crow; recite; play (music)/sound (horn); foretell;
+    can-o          1SG.PRS.ACT.IND
+
+amicorum
+  [XXXBO]
+    friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
+    amic-orum      GEN.PL
+  [XXXAO]
+    friendly, dear, fond of; supporting (political), loyal, devoted; loving;
+    amic-orum      GEN.PL.M
+    amic-orum      GEN.PL.N
+
+aspis
+  [EXAEW]  later  uncommon
+    asp, venomous snake of North Africa;
+    aspis          NOM.SG
+    aspis          VOC.SG
+  [XXACO]
+    asp, venomous snake of North Africa;
+    aspis          NOM.SG
+    aspis          VOC.SG
+
+xyzzyq
+  (unknown)
+
+redeo
+  [XXXAX]
+    return, go back, give back; fall back on, revert to; respond, pay back;
+    rede-o         1SG.PRS.ACT.IND
+
+inamicus
+  in-  prefix
+  [XXXAO]
+    friendly, dear, fond of; supporting (political), loyal, devoted; loving;
+    amic-us        NOM.SG.M
+
+XIV
+  XIV  Roman numeral
+    14
+
+quamdiu
+  [XXXBO]
+    for how long?; how long (ago)?; how long!, what a long time!; until; as long as;
+    quamdiu        POS
+  [XXXBO]
+    for the preceding period until; up to the time that; inasmuch as; (quam diu);
+    quamdiu        POS
+
+amasti
+  syncope: Syncope   s => vis
+    Syncopated perfect often drops the 'v' and contracts vowel
+  [XXXAO]
+    love, like; fall in love with; be fond of; have a tendency to;
+    amav-isti      2SG.PRF.ACT.IND
+
