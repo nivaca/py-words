@@ -32,7 +32,7 @@ LEFT_OUT = ('__pycache__', '*.pyc', '*.bak', '*.tmp', '*~', 'WORD.MOD',
 #  pages/build.py, a folder kept out of git, and an editor's tags
 #  TODO: no lee .gitignore.  Una carpeta nueva que no deba ir en el zip
 #  hay que añadirla aquí a mano.
-NOT_PART = ('site', 'local-only', 'TAGS')
+NOT_PART = ('site', 'local-only', 'TAGS', 'tools')
 
 
 def name() -> str:

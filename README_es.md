@@ -46,6 +46,11 @@ y en un navegador web (`words_web.py`):
 
 ![La página web](docs/img/web_es.png)
 
+Estas ocho imágenes (cuatro programas, dos idiomas) se hacen con
+`python3 tools/screenshots.py`, que ejecuta cada programa sin mostrarlo y
+las guarda en `docs/img/`. Necesita Linux con sesión gráfica,
+ImageMagick, tmux y Chrome; con `--help` verá las opciones.
+
 Instalación
 -----------
 

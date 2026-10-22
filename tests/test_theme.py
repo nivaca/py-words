@@ -70,6 +70,25 @@ class ThemeTests(unittest.TestCase):
         self.assertEqual(self.config.section('appearance'),
                          {'dark_mode': False})      # (the web page too)
 
+    def test_menus(self):
+        """The menu bar and the menus follow the look too (made before and
+        after the change)."""
+        tk, dark = self.tk, self.gui_theme.DARK
+        theme = self.gui_theme.Theme.of(self.root)
+        before = tk.Menu(self.root)
+        theme.set(True)
+        after = tk.Menu(self.root)
+        for menu in (before, after):         # (Tk gives them as objects)
+            self.assertEqual(str(menu.cget('background')),
+                             dark['background'])
+            self.assertEqual(str(menu.cget('foreground')),
+                             dark['foreground'])
+            self.assertEqual(str(menu.cget('activebackground')),
+                             dark['select'])
+        theme.set(False)
+        self.assertNotEqual(str(before.cget('background')),
+                            dark['background'])
+
     def test_kept_for_next_time(self):
         self.config.update('appearance', {'dark_mode': True})
         theme = self.gui_theme.Theme.of(self.root)

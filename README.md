@@ -44,6 +44,11 @@ and in a web browser (`words_web.py`):
 
 ![The web page](docs/img/web_en.png)
 
+These eight pictures (four programs, two languages) are made by
+`python3 tools/screenshots.py`, which runs each program out of sight and
+writes them in `docs/img/`. It needs Linux with a graphical session,
+ImageMagick, tmux and Chrome; `--help` tells the options.
+
 Installation
 ------------
 

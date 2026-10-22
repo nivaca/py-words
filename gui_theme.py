@@ -32,7 +32,8 @@ DARK = {
 LIGHT_MUTED, LIGHT_ERROR = 'gray', '#b00020'
 
 #  The Tk (not ttk) widgets the option database colours
-TK_CLASSES = ('Text', 'Listbox', 'Canvas', 'Toplevel', 'Tk', 'Frame')
+TK_CLASSES = ('Text', 'Listbox', 'Canvas', 'Toplevel', 'Tk', 'Frame',
+              'Menu')
 
 
 class Theme:
@@ -179,6 +180,20 @@ class Theme:
         add('*Scrollbar.troughColor', c['field'], 'interactive')
         add('*TCombobox*Listbox.background', c['list'], 'interactive')
         add('*TCombobox*Listbox.foreground', c['list_fg'], 'interactive')
+        #  (the menu bar, its menus and the menu of a right click)
+        for option, value in self._menu_colours(c).items():
+            add(f'*Menu.{option}', value, 'interactive')
+
+    def _menu_colours(self, c: dict) -> dict:
+        """The colours of the menus: those of the window, and of a
+        selection for the item pointed at."""
+        colours = {'background': c['background'],
+                   'foreground': c['foreground'],
+                   'activeBackground': c['select'],
+                   'activeForeground': c['select_fg']}
+        if self.dark:
+            colours['disabledForeground'] = DARK['disabled']
+        return colours
 
     def _recolour(self, widget, c: dict):
         """The colours of the Tk widgets already there."""
@@ -203,6 +218,9 @@ class Theme:
                                  foreground=c['list_fg'],
                                  selectbackground=c['select'],
                                  selectforeground=c['select_fg'])
+            elif cls == 'Menu':
+                widget.configure(**{option.lower(): value for option, value
+                                    in self._menu_colours(c).items()})
         except tk.TclError:
             pass
         for child in widget.winfo_children():
