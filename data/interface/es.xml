@@ -1398,6 +1398,22 @@
     <tr>la fuente {code} ya está en la línea {line}</tr>
   </text>
   <text>
+    <en>repeats the source {code}</en>
+    <tr>repite la fuente {code}</tr>
+  </text>
+  <text>
+    <en>has X (general or unknown) with other sources</en>
+    <tr>tiene X (general o desconocida) junto con otras fuentes</tr>
+  </text>
+  <text>
+    <en>other sources</en>
+    <tr>otras fuentes</tr>
+  </text>
+  <text>
+    <en>other source</en>
+    <tr>otra fuente</tr>
+  </text>
+  <text>
     <en>is not one of: {names}</en>
     <tr>no es uno de: {names}</tr>
   </text>
@@ -2588,8 +2604,8 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>Cada letra puede ser:</tr>
   </text>
   <text>
-    <en>The age, when it is known, and the frequency, when it is lesser or rarer, are also given in words after the codes (archaic, lesser ...).  The developer mode show_dictionary_codes hides the codes, and the dictionary editors explain each code of an entry as it is edited.</en>
-    <tr>La época, cuando se conoce, y la frecuencia, cuando es menor o más rara, también se dan en palabras tras los códigos (arcaico, menos frecuente...).  El modo de desarrollo show_dictionary_codes oculta los códigos, y los editores del diccionario explican cada código de una entrada mientras se edita.</tr>
+    <en>An entry can have more than one source: then the others follow the five letters, each after a + ([XXXCO+M] is also from source M).  The age, when it is known, and the frequency, when it is lesser or rarer, are also given in words after the codes (archaic, lesser ...).  The developer mode show_dictionary_codes hides the codes, and the dictionary editors explain each code of an entry as it is edited.</en>
+    <tr>Una entrada puede tener más de una fuente: entonces las demás van tras las cinco letras, cada una después de un + ([XXXCO+M] procede también de la fuente M).  La época, cuando se conoce, y la frecuencia, cuando es menor o más rara, también se dan en palabras tras los códigos (arcaico, menos frecuente...).  El modo de desarrollo show_dictionary_codes oculta los códigos, y los editores del diccionario explican cada código de una entrada mientras se edita.</tr>
   </text>
   <text>
     <en>The abbreviations of the analyses</en>

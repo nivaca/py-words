@@ -68,6 +68,14 @@ class GuideTests(unittest.TestCase):
         self.assertIn('    S  Lewis and Short', text)
         self.assertNotIn('(unused)', text)
 
+    def test_other_sources(self):
+        """[XXXCO+M]: the other sources explained after the five
+        letters."""
+        text = guide.explain_codes('XXXCO+M', DATA)
+        self.assertIn('O  source: Oxford Latin Dictionary', text)
+        self.assertTrue(text.endswith('M  other source: Latham, Medieval '
+                                      'Word List / DMLBS'), text)
+
     def test_glosses(self):
         text = self.text()
         self.assertIn('Case: NOM nominative, GEN genitive', text)

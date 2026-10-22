@@ -56,6 +56,27 @@ class CheckerTests(unittest.TestCase):
         self.assertEqual((checker.errors, checker.warnings), (0, 0),
                          checker.out[:5])
 
+    def test_several_sources(self):
+        """source="O M": the main source, then the others; each must be a
+        known code, none repeated, and X (general) only alone."""
+        good = GOOD.replace('source="W"', 'source="O M"')
+        self.assertEqual(self.problems(good), [])
+        [(entry, _)] = xmldata.read_dictionary(os.path.join(
+            self.tmp.name, 'test.xml'))
+        self.assertEqual(str(entry.codes), 'XEXEO+M')
+        self.assertEqual([s.name for s in entry.codes.sources], ['O', 'M'])
+        self.assertIn('source="O M"', xmldata.entry_xml(entry))
+        for bad, says in (('O O', 'repeats the source O'),
+                          ('X M', 'has X'),
+                          ('O OX', 'is not one of')):
+            [(kind, message)] = self.problems(
+                GOOD.replace('source="W"', f'source="{bad}"'))
+            self.assertEqual(kind, 'error')
+            self.assertIn(says, message)
+        [(kind, message)] = self.problems(good, sources={'O'})
+        self.assertEqual(kind, 'warning')
+        self.assertIn('source code M is not listed', message)
+
     def test_sources(self):
         good = '<source code="O" name="Oxford Latin Dictionary"/>'
         self.assertEqual(self.problems(good, 'sources'), [])

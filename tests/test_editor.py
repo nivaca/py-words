@@ -69,6 +69,18 @@ class EditorTests(WithData):
         again = Fields.of(entry).entry(entry.uid)
         self.assertEqual(xmldata.entry_xml(again), xmldata.entry_xml(entry))
 
+    def test_other_sources(self):
+        """The main source is chosen; the others are typed in their own
+        field, and go to the same attribute (source="O M")."""
+        entry = self.ed.search('amicorum')[0]
+        f = Fields.of(entry)
+        self.assertEqual((f.attrs['source'], f.attrs['more']), ('O', ''))
+        f.attrs['more'] = 'm, a'
+        again = f.entry(entry.uid)
+        self.assertEqual([s.name for s in again.codes.sources],
+                         ['O', 'M', 'A'])
+        self.assertEqual(Fields.of(again).attrs['more'], 'M A')
+
     def test_source_names_come_from_sources_xml(self):
         """The names of the sources are those of sources.xml: here a file
         of the test's own, so that data/sources.xml can change freely (it
@@ -323,7 +335,7 @@ class TranslationTests(WithData):
         English."""
         down = '\x1bOB'
         keys = [('amigo', 0.3), ('\r', 1.5), ('\r', 0.5)]
-        keys += [(down, 0.1)] * 11                      # to the Spanish
+        keys += [(down, 0.1)] * 12                      # to the Spanish
         keys += [('\x1bOF', 0.2), (' (terminal)', 0.5),
                  ('\x13', 2),                           # Ctrl-S: save
                  ('\x1b[18~', 1), ('\x1bOA', 0.3),      # F7, up: English
@@ -391,7 +403,7 @@ class TerminalEditorTests(WithData):
         keys = [('\x0e', 0.5),                          # Ctrl-N: new
                 ('blogg' + down, 0.3), ('blogg' + down, 0.3),
                 ('2 1' + down, 0.3), ('M', 0.3), (down + 'T', 0.3)]
-        keys += [(down, 0.1)] * 6
+        keys += [(down, 0.1)] * 7
         keys += [('blog, online journal;', 0.5),
                  ('\x01', 1.5),                         # Ctrl-A: add
                  ('\x13', 2),                           # Ctrl-S: save
@@ -408,7 +420,7 @@ class TerminalEditorTests(WithData):
         down = '\x1bOB'
         keys = [('amicorum', 0.3), ('\r', 1.5),        # find
                 ('\r', 0.5)]                            # edit the first
-        keys += [(down, 0.1)] * 10                      # to the meaning
+        keys += [(down, 0.1)] * 11                      # to the meaning
         keys += [('\x1bOF', 0.2),                       # End
                  (' (changed)', 0.5),
                  ('\x01', 1.5),                         # Ctrl-A: apply
@@ -423,7 +435,7 @@ class TerminalEditorTests(WithData):
         """F2 straight after changing an entry applies and saves it."""
         down = '\x1bOB'
         keys = [('amicorum', 0.3), ('\r', 1.5), ('\r', 0.5)]
-        keys += [(down, 0.1)] * 10
+        keys += [(down, 0.1)] * 11
         keys += [('\x1bOF', 0.2), (' (saved directly)', 0.5),
                  ('\x13', 2),                           # Ctrl-S: save
                  ('\x11', 1)]                           # Ctrl-Q: quit
@@ -437,7 +449,7 @@ class TerminalEditorTests(WithData):
         save question follows."""
         down = '\x1bOB'
         keys = [('amicorum', 0.3), ('\r', 1.5), ('\r', 0.5)]
-        keys += [(down, 0.1)] * 10
+        keys += [(down, 0.1)] * 11
         keys += [('\x1bOF', 0.2), (' (on quitting)', 0.5),
                  ('\x11', 1),                           # Ctrl-Q
                  ('y\r', 1),                            # apply them

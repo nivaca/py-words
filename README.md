@@ -421,6 +421,10 @@ When the age is known, it is written also in words after the codes, and
 the same with the frequency when it is lesser or more rare (`archaic`,
 `lesser` ...).  The names of the sources come from `data/sources.xml`.
 
+An entry can have more than one source: then the others follow the five
+letters, each after a `+`.  For example `[XXXBO+A]`, of *tectum*, is read
+as before, and the meaning comes also from Echave-Sustaeta (A).
+
 ### The abbreviations of the analyses
 
 The analyses of the forms are written with glossing abbreviations, as in
@@ -559,13 +563,18 @@ The data files
 | `languages/`      | the languages of the meanings, one file each |
 | `interface/`      | the languages of the interface, one file each (those next to the program are used) |
 
-Each entry says its source with a code of one letter (`source="O"`), and
-`sources.xml` says what each code means, for example:
+Each entry says its source with a code of one letter (`source="O"`), or
+with several codes separated by spaces, the main one first
+(`source="O M"`: the Oxford Latin Dictionary, and also Latham); X, general
+or unknown, goes alone.  The entries that cite Latham in their meaning,
+"(Latham)", have his code M among their sources.  `sources.xml` says what
+each code means, for example:
 
     <source code="O" name="Oxford Latin Dictionary"/>
     <source code="U" name="Du Cange"/>
 
-The editors show these names when you choose a source, and
+The editors show these names when you choose the main source; the other
+sources are typed as letters in the field "other sources" (`M A`).
 `words_check.py` warns about the entries with a code that is not in the
 list.  For adding a source, give it there a letter that is not used.
 
@@ -673,7 +682,8 @@ Spanish changed; and a few wrong meanings were corrected (for example
 *opus est*, "it is necessary").  So 321 entries were corrected and 254
 were added: 249 continuations and 5 new words (*consularis*, the
 ex-consul; *recitatio*; the noun *ornatus*; *timiditas*; *inrisus*).
-All of them have the source code A, Echave-Sustaeta.
+All of them have the source code A, Echave-Sustaeta: after their own
+source, when they had one other than X (`source="O A"`), or alone.
 
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations

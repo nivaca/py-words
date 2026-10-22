@@ -312,6 +312,16 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="sources">
+    <xs:annotation><xs:documentation>The sources of the entry: one code, or several separated by spaces, the main one first ("O M").  X (general or unknown) goes alone.</xs:documentation></xs:annotation>
+    <xs:restriction>
+      <xs:simpleType>
+        <xs:list itemType="source"/>
+      </xs:simpleType>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:simpleType name="decn">
     <xs:annotation><xs:documentation>A declension or conjugation and its variant, as "2 1".</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string"><xs:pattern value="[0-9] [0-9]"/></xs:restriction>
@@ -434,7 +444,7 @@
     <xs:attribute name="area" type="area" default="X"/>
     <xs:attribute name="geo" type="geo" default="X"/>
     <xs:attribute name="freq" type="freq" default="X"/>
-    <xs:attribute name="source" type="source" default="X"/>
+    <xs:attribute name="source" type="sources" default="X"/>
   </xs:attributeGroup>
 
   <!-- dictionary.xml -->

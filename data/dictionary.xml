@@ -1742,7 +1742,7 @@
     <meaning>devour; overwhelm; swallow up/engulf, submerge; absorb, suck in; import; dry up;</meaning>
   </entry>
   <entry id="264" pos="N" decl="3 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="F" source="S">
+    geo="X" freq="F" source="S M">
     <stem>absorptio</stem>
     <stem>absorption</stem>
     <meaning>drink, beverage; swallowing (Latham);</meaning>
@@ -6031,7 +6031,7 @@
     <meaning>that strikes against/down/overthrows or collides with;</meaning>
   </entry>
   <entry id="929" pos="V" conj="3 1" kind="TRANS" age="X" area="X" geo="X"
-    freq="A" source="A">
+    freq="A" source="O A">
     <stem>adflig</stem>
     <stem>adflig</stem>
     <stem>adflix</stem>
@@ -7765,7 +7765,7 @@
     <meaning>mixture, admixture, mingling;</meaning>
   </entry>
   <entry id="1184" pos="V" conj="3 1" kind="TRANS" age="X" area="X" geo="X"
-    freq="A" source="A">
+    freq="A" source="O A">
     <stem>admitt</stem>
     <stem>admitt</stem>
     <stem>admis</stem>
@@ -14484,7 +14484,7 @@
     <meaning>that strikes against/down/overthrows or collides with (female);</meaning>
   </entry>
   <entry id="2208" pos="V" conj="3 1" kind="TRANS" age="X" area="X" geo="X"
-    freq="A" source="A">
+    freq="A" source="O A">
     <stem>afflig</stem>
     <stem>afflig</stem>
     <stem>afflix</stem>
@@ -39405,7 +39405,7 @@
     <meaning>baron; magnate; tenant-in-chief (of crown/earl); burgess; official; husband;</meaning>
   </entry>
   <entry id="6180" pos="N" decl="3 1" gender="M" kind="P" age="X" area="X"
-    geo="X" freq="C" source="O">
+    geo="X" freq="C" source="O M">
     <stem>baro</stem>
     <stem>baron</stem>
     <meaning>block-head, lout, dunce, simpleton; slave (Latham);</meaning>
@@ -52066,7 +52066,7 @@
     <meaning>mortised; hinged to;</meaning>
   </entry>
   <entry id="8238" pos="ADJ" decl="1 1" comparison="POS" age="X" area="T"
-    geo="X" freq="F" source="O">
+    geo="X" freq="F" source="O M">
     <stem>cardine</stem>
     <stem>cardine</stem>
     <meaning>of/by hinges; of/pertaining to door-hinge; E:of a cardinal (Latham);</meaning>
@@ -88398,7 +88398,7 @@
     <meaning>continuously, uninterruptedly; in uninterrupted succession;</meaning>
   </entry>
   <entry id="13845" pos="ADJ" decl="1 1" comparison="POS" age="X" area="X"
-    geo="X" freq="C" source="O">
+    geo="X" freq="C" source="O M">
     <stem>continuat</stem>
     <stem>continuat</stem>
     <meaning>uninterrupted/unbroken; consecutive; contiguous/adjacent to; permanent (Latham);</meaning>
@@ -111037,7 +111037,7 @@
     <meaning>detour; stray; depart;</meaning>
   </entry>
   <entry id="17317" pos="N" decl="3 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="F" source="O">
+    geo="X" freq="F" source="O M">
     <stem>deviatio</stem>
     <stem>deviation</stem>
     <meaning>evasion, avoidance; deviation (Latham); straying;</meaning>
@@ -111591,7 +111591,7 @@
     <meaning>|specific day; day in question; date of letter; festival; lifetime, age; time;</meaning>
   </entry>
   <entry id="17402" pos="ADJ" decl="1 1" comparison="POS" age="X" area="E"
-    geo="X" freq="D" source="O">
+    geo="X" freq="D" source="O M">
     <stem>di</stem>
     <stem>di</stem>
     <meaning>divine; w/supernatural radiance; divinely inspired; blessed, saint (Latham);</meaning>
@@ -111735,7 +111735,7 @@
     <meaning>deacon-elect, one who is to be made a deacon;</meaning>
   </entry>
   <entry id="17426" pos="N" decl="2 1" gender="M" kind="T" age="E" area="E"
-    geo="X" freq="E" source="S">
+    geo="X" freq="E" source="S M">
     <stem>diaconat</stem>
     <stem>diaconat</stem>
     <meaning>deaconate, office/position of deacon, deaconship; deaconry (Latham);</meaning>
@@ -115721,7 +115721,7 @@
     <meaning>disk/disc; discus; disk-shaped object; dish; gong; form of sundial; dial; CD;</meaning>
   </entry>
   <entry id="18045" pos="N" decl="2 1" gender="M" kind="T" age="F" area="X"
-    geo="X" freq="C" source="E">
+    geo="X" freq="C" source="E M">
     <stem>disc</stem>
     <stem>disc</stem>
     <meaning>|paten (Greek rite); high table (Latham); measure (grain/salt/ale/ore); tray;</meaning>
@@ -117651,7 +117651,7 @@
     <meaning>sky, open air; [sub divo =&gt; in the open air];</meaning>
   </entry>
   <entry id="18327" pos="ADJ" decl="1 1" comparison="X" age="D" area="E"
-    geo="X" freq="E" source="S">
+    geo="X" freq="E" source="S M">
     <stem>div</stem>
     <stem>div</stem>
     <stem>zzz</stem>
@@ -118152,7 +118152,7 @@
     <meaning>dogmatically; doctrinally;</meaning>
   </entry>
   <entry id="18402" pos="V" conj="1 1" kind="X" age="E" area="E" geo="X"
-    freq="F" source="S">
+    freq="F" source="S M">
     <stem>dogmatiz</stem>
     <stem>dogmatiz</stem>
     <stem>dogmatizav</stem>
@@ -118436,7 +118436,7 @@
     <meaning>of/belonging to master/owner; belonging to the Roman Emperor; the Lord's;</meaning>
   </entry>
   <entry id="18444" pos="ADJ" decl="3 2" comparison="POS" age="E" area="E"
-    geo="X" freq="C" source="E">
+    geo="X" freq="C" source="E M">
     <stem>dominical</stem>
     <stem>dominical</stem>
     <meaning>of Sunday (Lord's day); of the Lord; divine (Latham);</meaning>
@@ -122219,7 +122219,7 @@
     <meaning>|marquetry;</meaning>
   </entry>
   <entry id="19028" pos="ADJ" decl="1 1" comparison="POS" age="F" area="X"
-    geo="X" freq="E" source="E">
+    geo="X" freq="E" source="E M">
     <stem>emblematic</stem>
     <stem>emblematic</stem>
     <meaning>of emblems; checky, with checks (heraldry) (Latham);</meaning>
@@ -126756,7 +126756,7 @@
     <meaning>detestable; accursed;</meaning>
   </entry>
   <entry id="19732" pos="N" decl="2 2" gender="N" kind="T" age="E" area="E"
-    geo="X" freq="E" source="E">
+    geo="X" freq="E" source="E M">
     <stem>execrament</stem>
     <stem>execrament</stem>
     <meaning>accursed thing; increase, excess (Latham); excrement; [~ auri =&gt; gold fillings];</meaning>
@@ -128247,7 +128247,7 @@
     <meaning>investigation, searching out; examination, exploration; reconnaissance unit;</meaning>
   </entry>
   <entry id="19944" pos="N" decl="3 1" gender="M" kind="P" age="X" area="X"
-    geo="X" freq="C" source="A">
+    geo="X" freq="C" source="O A">
     <stem>explorator</stem>
     <stem>explorator</stem>
     <meaning>investigator, one who searches out; scout, spy; scouting parties (pl.);</meaning>
@@ -128647,7 +128647,7 @@
     <meaning>detestable; accursed;</meaning>
   </entry>
   <entry id="20003" pos="N" decl="2 2" gender="N" kind="T" age="E" area="E"
-    geo="X" freq="E" source="E">
+    geo="X" freq="E" source="E M">
     <stem>exsecrament</stem>
     <stem>exsecrament</stem>
     <meaning>accursed thing; increase, excess (Latham); excrement; [~ auri =&gt; gold fillings];</meaning>
@@ -133217,7 +133217,7 @@
     <meaning>brooch; clasp; buckle; fastener;</meaning>
   </entry>
   <entry id="20703" pos="N" decl="3 4" gender="N" kind="T" age="F" area="X"
-    geo="X" freq="E" source="E">
+    geo="X" freq="E" source="E M">
     <stem>firmale</stem>
     <stem>firmal</stem>
     <meaning>brooch (for a cope); clasp (Latham); buckle; fastener;</meaning>
@@ -133639,7 +133639,7 @@
     <meaning>blown, of/produced by blowing;</meaning>
   </entry>
   <entry id="20769" pos="ADJ" decl="1 1" comparison="POS" age="X" area="X"
-    geo="X" freq="B" source="X">
+    geo="X" freq="B" source="M">
     <stem>flav</stem>
     <stem>flav</stem>
     <meaning>yellow, golden, gold colored; flaxen, blond; golden-haired (Latham);</meaning>
@@ -137414,7 +137414,7 @@
     <meaning>toll, payment for passage;</meaning>
   </entry>
   <entry id="21354" pos="N" decl="1 1" gender="F" kind="T" age="F" area="A"
-    geo="X" freq="D" source="T">
+    geo="X" freq="D" source="T M">
     <stem>gatt</stem>
     <stem>gatt</stem>
     <meaning>cat; (female?); gateway, gap (Latham);</meaning>
@@ -137440,13 +137440,13 @@
     <meaning>joy, delight, gladness; source/cause of joy; physical/sensual delight;</meaning>
   </entry>
   <entry id="21358" pos="N" decl="2 4" gender="N" kind="T" age="E" area="E"
-    geo="X" freq="C" source="P">
+    geo="X" freq="C" source="P M">
     <stem>gaudi</stem>
     <stem>gaudi</stem>
     <meaning>|everlasting blessedness; gaud/gaudy, bead of rosary (Latham);</meaning>
   </entry>
   <entry id="21359" pos="N" decl="2 4" gender="N" kind="T" age="X" area="X"
-    geo="X" freq="F" source="O">
+    geo="X" freq="F" source="O M">
     <stem>gaudimoni</stem>
     <stem>gaudimoni</stem>
     <meaning>joy; time of joy/jollity, festal day (Souter); gaudy feast (Latham);</meaning>
@@ -144510,7 +144510,7 @@
     <meaning>notes/strings in highest pitch tetrachord; highest tetrachord in 2-octave scale;</meaning>
   </entry>
   <entry id="22506" pos="ADJ" decl="1 1" comparison="POS" age="D" area="X"
-    geo="X" freq="F" source="S">
+    geo="X" freq="F" source="S M">
     <stem>hyperbolic</stem>
     <stem>hyperbolic</stem>
     <meaning>excessive, overstrained, hyperbolical/hyperbolic; insolent (Latham);</meaning>
@@ -148445,7 +148445,7 @@
     <meaning>enchantress; witch;</meaning>
   </entry>
   <entry id="23121" pos="ADJ" decl="3 2" comparison="POS" age="E" area="E"
-    geo="X" freq="E" source="S">
+    geo="X" freq="E" source="S M">
     <stem>incapabil</stem>
     <stem>incapabil</stem>
     <meaning>incomprehensible; that cannot be taken in (Latham);</meaning>
@@ -148640,7 +148640,7 @@
     <meaning>||inspire, fire, rouse, excite, inflame; provoke, incense, aggravate;</meaning>
   </entry>
   <entry id="23149" pos="N" decl="2 4" gender="N" kind="T" age="X" area="X"
-    geo="X" freq="B" source="O">
+    geo="X" freq="B" source="O M">
     <stem>incendi</stem>
     <stem>incendi</stem>
     <meaning>fire, conflagration; fiery heat; fiery passion/love/hostility; arson (Latham);</meaning>
@@ -156493,7 +156493,7 @@
     <meaning>leap/jump/spring (in/on); dance/trample (on); enter with a leap;</meaning>
   </entry>
   <entry id="24346" pos="V" conj="1 1" kind="X" age="X" area="X" geo="X"
-    freq="B" source="O">
+    freq="B" source="O M">
     <stem>insult</stem>
     <stem>insult</stem>
     <stem>insultav</stem>
@@ -156501,7 +156501,7 @@
     <meaning>|insult; behave insultingly, mock/scoff/jeer (at); assault/attack (Latham);</meaning>
   </entry>
   <entry id="24347" pos="N" decl="3 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="E" source="O">
+    geo="X" freq="E" source="O M">
     <stem>insultatio</stem>
     <stem>insultation</stem>
     <meaning>insult; insulting remark/action; mockery; assault, attack (Latham);</meaning>
@@ -166195,7 +166195,7 @@
     <meaning>straw of Indian millet; nightshade, strychnos;</meaning>
   </entry>
   <entry id="25854" pos="N" decl="2 1" gender="M" kind="T" age="E" area="A"
-    geo="X" freq="E" source="P">
+    geo="X" freq="E" source="P M">
     <stem>lob</stem>
     <stem>lob</stem>
     <meaning>hull, husk, pod; lobe (Latham);</meaning>
@@ -168351,7 +168351,7 @@
     <meaning>sad/unhappy; mournful/gloomy; mourning; stern/grim; ill-omened/inauspicious;</meaning>
   </entry>
   <entry id="26191" pos="ADV" comparison="POS" age="X" area="X" geo="X"
-    freq="F" source="O">
+    freq="F" source="O M">
     <stem>maeste</stem>
     <meaning>sadly; mournfully; sorrowfully (Latham); with sadness (L+S);</meaning>
   </entry>
@@ -168370,7 +168370,7 @@
     <meaning>grieve, make sad/sorrowful, sadden;</meaning>
   </entry>
   <entry id="26194" pos="ADV" comparison="POS" age="X" area="X" geo="X"
-    freq="F" source="O">
+    freq="F" source="O M">
     <stem>maestiter</stem>
     <meaning>sadly; mournfully; sorrowfully (Latham); in a way to indicate sorrow (L+S);</meaning>
   </entry>
@@ -168953,7 +168953,7 @@
     <meaning>slanderous; abusive; scurrilous;</meaning>
   </entry>
   <entry id="26287" pos="N" decl="2 2" gender="N" kind="T" age="X" area="X"
-    geo="X" freq="C" source="A">
+    geo="X" freq="C" source="O A">
     <stem>maledict</stem>
     <stem>maledict</stem>
     <meaning>insult, reproach, taunt; curse;</meaning>
@@ -170044,7 +170044,7 @@
     <meaning>towel;</meaning>
   </entry>
   <entry id="26461" pos="N" decl="3 1" gender="C" kind="P" age="E" area="E"
-    geo="X" freq="F" source="S">
+    geo="X" freq="F" source="S M">
     <stem>manzer</stem>
     <stem>manzer</stem>
     <meaning>bastard, one of illegitimate birth; mongrel (Latham); (Hebrew);</meaning>
@@ -172591,7 +172591,7 @@
     <meaning>methanol (wood alcohol);</meaning>
   </entry>
   <entry id="26875" pos="N" decl="2 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="D" source="S">
+    geo="X" freq="D" source="S M">
     <stem>method</stem>
     <stem>method</stem>
     <meaning>method; mode of proceeding; way of teaching (L+S); road (Latham);</meaning>
@@ -172835,7 +172835,7 @@
     <meaning>military/soldier's; (abb.  mil. for militum/militares); [tr. mil. =&gt; colonels];</meaning>
   </entry>
   <entry id="26914" pos="N" decl="3 1" gender="M" kind="P" age="X" area="W"
-    geo="X" freq="A" source="X">
+    geo="X" freq="A" source="M">
     <stem>miles</stem>
     <stem>milit</stem>
     <meaning>soldier; foot soldier; soldiery; knight (Latham); knight's fee/service;</meaning>
@@ -172962,7 +172962,7 @@
     <meaning>military; soldier-like; martial; soldierly; warlike;</meaning>
   </entry>
   <entry id="26935" pos="ADV" comparison="POS" age="X" area="W" geo="X"
-    freq="F" source="S">
+    freq="F" source="S M">
     <stem>militarie</stem>
     <meaning>in a military or soldier-like manner; knightly (Latham);</meaning>
   </entry>
@@ -174354,7 +174354,7 @@
     <meaning>sad/unhappy; mournful/gloomy; mourning; stern/grim; ill-omened/inauspicious;</meaning>
   </entry>
   <entry id="27153" pos="ADV" comparison="POS" age="X" area="X" geo="X"
-    freq="F" source="O">
+    freq="F" source="O M">
     <stem>moeste</stem>
     <meaning>sadly; mournfully; sorrowfully (Latham); with sadness (L+S);</meaning>
   </entry>
@@ -174373,7 +174373,7 @@
     <meaning>grieve, make sad/sorrowful, sadden;</meaning>
   </entry>
   <entry id="27156" pos="ADV" comparison="POS" age="X" area="X" geo="X"
-    freq="F" source="O">
+    freq="F" source="O M">
     <stem>moestiter</stem>
     <meaning>sadly; mournfully; sorrowfully (Latham); in a way to indicate sorrow (L+S);</meaning>
   </entry>
@@ -182573,7 +182573,7 @@
     <meaning>meet a situation with silence;</meaning>
   </entry>
   <entry id="28445" pos="V" conj="2 1" kind="X" age="X" area="X" geo="X"
-    freq="A" source="A">
+    freq="A" source="O A">
     <stem>obtin</stem>
     <stem>obtin</stem>
     <stem>obtinu</stem>
@@ -187029,7 +187029,7 @@
     <meaning>district; county (equiv. to pagus);</meaning>
   </entry>
   <entry id="29134" pos="N" decl="2 1" gender="M" kind="T" age="X" area="X"
-    geo="X" freq="C" source="A">
+    geo="X" freq="C" source="O A">
     <stem>pag</stem>
     <stem>pag</stem>
     <meaning>country district/community, canton; village;</meaning>
@@ -189065,13 +189065,13 @@
     <meaning>suffering; passion; (esp. of Christ); disease (Bee);</meaning>
   </entry>
   <entry id="29462" pos="ADJ" decl="1 1" comparison="POS" age="X" area="X"
-    geo="X" freq="E" source="O">
+    geo="X" freq="E" source="O M">
     <stem>passiv</stem>
     <stem>passiv</stem>
     <meaning>random, indiscriminate; passive, being acted on (Latham);</meaning>
   </entry>
   <entry id="29463" pos="ADV" comparison="POS" age="X" area="X" geo="X"
-    freq="E" source="O">
+    freq="E" source="O M">
     <stem>passive</stem>
     <meaning>freely, indiscriminately; randomly; passively, in passive sense (Latham);</meaning>
   </entry>
@@ -190754,7 +190754,7 @@
     <meaning>inner part of a place; inner shrine; sanctuary of the household gods;</meaning>
   </entry>
   <entry id="29728" pos="N" decl="3 4" gender="N" kind="T" age="F" area="X"
-    geo="X" freq="F" source="E">
+    geo="X" freq="F" source="E M">
     <stem>penetrale</stem>
     <stem>penetral</stem>
     <meaning>|innermost parts/chambers/self (pl.); spirit, life of soul; gimlet (Latham);</meaning>
@@ -190837,7 +190837,7 @@
     <meaning>confessor; penitentiary;</meaning>
   </entry>
   <entry id="29741" pos="N" decl="3 4" gender="N" kind="T" age="F" area="X"
-    geo="X" freq="F" source="E">
+    geo="X" freq="F" source="E M">
     <stem>penitrale</stem>
     <stem>penitral</stem>
     <meaning>innermost parts/chambers/self (pl.); spirit, life of soul; gimlet (Latham);</meaning>
@@ -195171,7 +195171,7 @@
     <meaning>wearing phalerae/ornaments;</meaning>
   </entry>
   <entry id="30389" pos="N" decl="1 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="E" source="O">
+    geo="X" freq="E" source="O M">
     <stem>phantasi</stem>
     <stem>phantasi</stem>
     <meaning>fancy, imagined situation; mental image (Latham); imagination; phenomenon (Def);</meaning>
@@ -197737,7 +197737,7 @@
     <meaning>plurality; multitude; the plural number;</meaning>
   </entry>
   <entry id="30794" pos="ADV" comparison="POS" age="E" area="X" geo="X"
-    freq="D" source="P">
+    freq="D" source="P M">
     <stem>pluraliter</stem>
     <meaning>in the bulk; in the plural (Latham); in several places; at several times;</meaning>
   </entry>
@@ -197927,7 +197927,7 @@
     <meaning>poem, composition in verse; poetic piece (even nonmetrical); (pl.) poetry;</meaning>
   </entry>
   <entry id="30826" pos="N" decl="1 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="A" source="A">
+    geo="X" freq="A" source="O A">
     <stem>poen</stem>
     <stem>poen</stem>
     <meaning>penalty, punishment; revenge/retribution; [poenas dare =&gt; to pay the penalty];</meaning>
@@ -199925,7 +199925,7 @@
     <meaning>preamble; preface;</meaning>
   </entry>
   <entry id="31146" pos="ADJ" decl="1 1" comparison="POS" age="D" area="X"
-    geo="X" freq="F" source="S">
+    geo="X" freq="F" source="S M">
     <stem>praeambul</stem>
     <stem>praeambul</stem>
     <meaning>walking before; preceding (Def); preparatory; preliminary (Latham); previous;</meaning>
@@ -202906,7 +202906,7 @@
     <meaning>preamble; preface;</meaning>
   </entry>
   <entry id="31576" pos="ADJ" decl="1 1" comparison="POS" age="F" area="X"
-    geo="X" freq="F" source="S">
+    geo="X" freq="F" source="S M">
     <stem>preambul</stem>
     <stem>preambul</stem>
     <meaning>walking before; preceding (Def); preparatory; preliminary (Latham); previous;</meaning>
@@ -203746,7 +203746,7 @@
     <meaning>commendable/admirable; justifiable; plausible/credible/demonstrable; probable;</meaning>
   </entry>
   <entry id="31709" pos="N" decl="3 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="E" source="O">
+    geo="X" freq="E" source="O M">
     <stem>probabilitas</stem>
     <stem>probabilitat</stem>
     <meaning>probability; appearance of truth; approvability (Latham); soundness (Red);</meaning>
@@ -205532,7 +205532,7 @@
     <meaning>ready, eager, willing; favorably disposed;</meaning>
   </entry>
   <entry id="31974" pos="N" decl="3 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="E" source="C">
+    geo="X" freq="E" source="C M">
     <stem>propensio</stem>
     <stem>propension</stem>
     <meaning>inclination, propensity; consideration (Latham);</meaning>
@@ -205773,7 +205773,7 @@
     <meaning>proportion; proportionality;</meaning>
   </entry>
   <entry id="32011" pos="N" decl="2 2" gender="N" kind="T" age="X" area="X"
-    geo="X" freq="B" source="A">
+    geo="X" freq="B" source="O A">
     <stem>proposit</stem>
     <stem>proposit</stem>
     <meaning>intention/purpose/objective; resolution/design/plan; theme, subject;</meaning>
@@ -207320,7 +207320,7 @@
     <meaning>confiscation; appropriation by the state;</meaning>
   </entry>
   <entry id="32245" pos="N" decl="3 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="D" source="O">
+    geo="X" freq="D" source="O M">
     <stem>publicatio</stem>
     <stem>publication</stem>
     <meaning>publication, proclamation; disclosure; manifestation (Def); preaching (Latham);</meaning>
@@ -221219,7 +221219,7 @@
     <meaning>dance; (4 Ezra 6:21);</meaning>
   </entry>
   <entry id="34399" pos="V" conj="3 1" kind="TRANS" age="X" area="X" geo="X"
-    freq="E" source="A">
+    freq="E" source="C A">
     <stem>scisc</stem>
     <stem>scisc</stem>
     <stem>sciv</stem>
@@ -225878,7 +225878,7 @@
     <meaning>seat, kind of seat/stool;</meaning>
   </entry>
   <entry id="35148" pos="N" decl="1 1" gender="F" kind="T" age="F" area="G"
-    geo="X" freq="B" source="O">
+    geo="X" freq="B" source="O M">
     <stem>sillab</stem>
     <stem>sillab</stem>
     <meaning>syllable; letter, epistle (Latham); geometric section;</meaning>
@@ -232752,7 +232752,7 @@
     <meaning>left over; extra, superfluous, spare;</meaning>
   </entry>
   <entry id="36212" pos="V" conj="3 1" kind="X" age="X" area="X" geo="X"
-    freq="D" source="X">
+    freq="D" source="M">
     <stem>subsid</stem>
     <stem>subsid</stem>
     <stem>subsed</stem>
@@ -232772,7 +232772,7 @@
     <meaning>reserve-, of the reserve; in reserve; acting support to front line; subsidiary;</meaning>
   </entry>
   <entry id="36215" pos="N" decl="2 4" gender="M" kind="T" age="X" area="X"
-    geo="X" freq="C" source="S">
+    geo="X" freq="C" source="S M">
     <stem>subsidiari</stem>
     <stem>subsidiari</stem>
     <meaning>reserves (pl.); body of reserves; in form of subsidy (Latham);</meaning>
@@ -236221,7 +236221,7 @@
     <meaning>cunning, craft; deceit;</meaning>
   </entry>
   <entry id="36718" pos="N" decl="1 1" gender="F" kind="T" age="X" area="G"
-    geo="X" freq="B" source="O">
+    geo="X" freq="B" source="O M">
     <stem>syllab</stem>
     <stem>syllab</stem>
     <meaning>syllable; letter, epistle (Latham); geometric section;</meaning>
@@ -236631,7 +236631,7 @@
     <meaning>sandbank, quicksand; (esp. one on the coast of North Africa);</meaning>
   </entry>
   <entry id="36785" pos="N" decl="3 2" gender="N" kind="T" age="F" area="X"
-    geo="X" freq="E" source="S">
+    geo="X" freq="E" source="S M">
     <stem>systema</stem>
     <stem>systemat</stem>
     <meaning>system; complex whole; whole consisting of several parts; harmony (Latham)</meaning>
@@ -237512,7 +237512,7 @@
     <meaning>technological;</meaning>
   </entry>
   <entry id="36927" pos="N" decl="2 2" gender="N" kind="T" age="X" area="X"
-    geo="X" freq="B" source="A">
+    geo="X" freq="B" source="O A">
     <stem>tect</stem>
     <stem>tect</stem>
     <meaning>roof; ceiling; house; dwelling; shelter;</meaning>
@@ -238927,7 +238927,7 @@
     <meaning>wastes (pl.), deserts;</meaning>
   </entry>
   <entry id="37142" pos="N" decl="1 1" gender="F" kind="T" age="X" area="X"
-    geo="X" freq="D" source="X">
+    geo="X" freq="D" source="M">
     <stem>tessell</stem>
     <stem>tessell</stem>
     <meaning>small cube, die; tile, shingle (Latham); pane (Erasmus);</meaning>
@@ -239189,7 +239189,7 @@
     <meaning>quadrangle; tetragon;</meaning>
   </entry>
   <entry id="37184" pos="ADJ" decl="1 1" comparison="POS" age="E" area="S"
-    geo="X" freq="F" source="P">
+    geo="X" freq="F" source="P M">
     <stem>tetragon</stem>
     <stem>tetragon</stem>
     <meaning>square; four-sided; quadrature (Latham);</meaning>

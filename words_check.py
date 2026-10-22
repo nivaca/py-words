@@ -184,10 +184,11 @@ class Checker:
         if all(st in ('', 'zzz') for st in stems[:max(used, 1)]):
             out.append(tr('no usable stem: no form of this word can be '
                           'found'))
-        source = entry.codes.source.name
-        if self.sources is not None and source not in self.sources:
-            out.append(tr('the source code {code} is not listed in {file}',
-                          code=source, file=lexicon.SOURCES))
+        for source in entry.codes.sources:
+            if self.sources is not None and source.name not in self.sources:
+                out.append(tr('the source code {code} is not listed in '
+                              '{file}', code=source.name,
+                              file=lexicon.SOURCES))
         if part.pos in INFLECTED_AS:
             ok = any(part.decl.fits(d)
                      for p in INFLECTED_AS[part.pos]

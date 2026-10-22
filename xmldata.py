@@ -377,9 +377,33 @@ class _Reader:
         return Form(pos, **kw)
 
     def codes(self) -> Codes:
-        return self._shared('codes', [name for name, _ in CODES],
-                            lambda: Codes(*(self.enum(name, cls, cls.X)
-                                            for name, cls in CODES)))
+        def make():
+            sources = self.sources()
+            return Codes(*(self.enum(name, cls, cls.X)
+                           for name, cls in CODES[:-1]),
+                         sources[0], sources[1:])
+        return self._shared('codes', [name for name, _ in CODES], make)
+
+    def sources(self) -> tuple[Source, ...]:
+        """The source attribute: one code or several ("O M"), the main
+        one first."""
+        value = self.raw('source', '')
+        if not value.strip():
+            return (Source.X,)
+        out = []
+        for code in value.split():
+            if code not in Source.__members__:
+                names = ' '.join(m.name for m in Source)
+                self.bad('source', value,
+                         tr('is not one of: {names}', names=names))
+            if Source[code] in out:
+                self.bad('source', value,
+                         tr('repeats the source {code}', code=code))
+            out.append(Source[code])
+        if len(out) > 1 and Source.X in out:
+            self.bad('source', value,
+                     tr('has X (general or unknown) with other sources'))
+        return tuple(out)
 
 
 Loaded = list[tuple[object, int]]
@@ -840,7 +864,8 @@ def form_attrs(form: Form) -> list[tuple[str, str]]:
 
 
 def codes_attrs(codes: Codes) -> list[tuple[str, str]]:
-    return [(name, getattr(codes, name).name) for name, _ in CODES]
+    return [(name, getattr(codes, name).name) for name, _ in CODES[:-1]] + \
+        [('source', ' '.join(s.name for s in codes.sources))]
 
 
 def _attrs(pairs) -> str:

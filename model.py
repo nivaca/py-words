@@ -267,16 +267,26 @@ def matches(value, pattern) -> bool:
 
 @dataclass(frozen=True, slots=True)
 class Codes:
-    """When, where, how often and on whose authority a word is used."""
+    """When, where, how often and on whose authority a word is used.
+    SOURCE is the main source; MORE, the other sources of the entry (as
+    source="O M" in the files)."""
     age: Age = Age.X
     area: Area = Area.X
     geo: Geo = Geo.X
     freq: Freq = Freq.X
     source: Source = Source.X
+    more: tuple[Source, ...] = ()
+
+    @property
+    def sources(self) -> tuple[Source, ...]:
+        """All the sources, the main one first."""
+        return (self.source,) + self.more
 
     def __str__(self):
+        """The five letters ([XXXAO]), and +M for each other source."""
         return ''.join(c.name for c in (self.age, self.area, self.geo,
-                                        self.freq, self.source))
+                                        self.freq, self.source)) + \
+            ''.join('+' + s.name for s in self.more)
 
 
 NO_CODES = Codes()

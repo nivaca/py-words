@@ -65,7 +65,7 @@ FIELD_LABELS = {
     'kind': 'kind', 'comparison': 'degree', 'sort': 'sort',
     'value': 'value', 'case': 'takes the case', 'age': 'age',
     'area': 'area', 'geo': 'region', 'freq': 'frequency',
-    'source': 'source'}
+    'source': 'source', 'more': 'other sources'}
 
 CODE_FIELDS = ('age', 'area', 'geo', 'freq', 'source')
 
@@ -146,12 +146,15 @@ class Fields:
         attrs = dict(xmldata.part_attrs(entry.part) +
                      xmldata.codes_attrs(entry.codes))
         pos = attrs.pop('pos')
+        #  (the main source is chosen from a list; the others are typed)
+        attrs['source'], _, attrs['more'] = attrs['source'].partition(' ')
         return cls(pos, attrs, entry.stems, entry.meaning, translation)
 
     def names(self) -> list[str]:
-        """The attributes this part of speech uses, then the codes."""
+        """The attributes this part of speech uses, then the codes (and
+        the other sources, after the main one)."""
         return list(xmldata.PART_ATTRS.get(Pos[self.pos], ())) + \
-            list(CODE_FIELDS)
+            list(CODE_FIELDS) + ['more']
 
     def stem_labels(self) -> tuple[str, ...]:
         """The labels of the stems of this part of speech (in English:
@@ -178,6 +181,9 @@ class Fields:
         attrs = {'pos': self.pos}
         attrs.update({k: v for k, v in self.attrs.items()
                       if k in self.names()})
+        more = attrs.pop('more', '').replace(',', ' ').upper().split()
+        if more:
+            attrs['source'] = ' '.join([attrs.get('source') or 'X'] + more)
         n = len(self.stem_labels())
         try:
             return xmldata.entry_from_fields(attrs, self.stems[:n],

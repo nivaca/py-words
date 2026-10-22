@@ -431,6 +431,11 @@ Si se conoce la época, también se escribe con palabras tras los códigos, y
 lo mismo la frecuencia cuando es menor o más rara (`arcaico`, `menos
 frecuente`...).  Los nombres de las fuentes salen de `data/sources.xml`.
 
+Una entrada puede tener más de una fuente: entonces las demás van tras las
+cinco letras, cada una después de un `+`.  Por ejemplo, `[XXXBO+A]`, de
+*tectum*, se lee como antes, y el significado procede también de
+Echave-Sustaeta (A).
+
 ### Las abreviaturas de los análisis
 
 Los análisis de las formas se escriben con abreviaturas de glosado, como
@@ -569,13 +574,18 @@ Los archivos de datos
 | `languages/`         | los idiomas de los significados, un archivo por idioma |
 | `interface/`         | los idiomas de la interfaz, un archivo por idioma (se usan los que están junto al programa) |
 
-Cada entrada indica su fuente con un código de una letra (`source="O"`);
+Cada entrada indica su fuente con un código de una letra (`source="O"`),
+o con varios separados por espacios, el principal primero
+(`source="O M"`: el Oxford Latin Dictionary, y también Latham); la X,
+general o desconocida, va sola.  Las entradas que citan a Latham en su
+significado, "(Latham)", tienen su código M entre sus fuentes.
 `sources.xml` dice qué representa cada código, p. ej.
 
     <source code="O" name="Oxford Latin Dictionary"/>
     <source code="U" name="Du Cange"/>
 
-Los editores muestran estos nombres al elegir una fuente, y
+Los editores muestran estos nombres al elegir la fuente principal; las
+demás se escriben como letras en el campo "otras fuentes" (`M A`).
 `words_check.py` avisa de las entradas cuyo código no figura en la lista.
 Para añadir una fuente, basta darle ahí una letra libre.
 
@@ -682,7 +692,8 @@ unos pocos significados equivocados (por ejemplo, *opus est*, "es
 necesario").  Así se corrigieron 321 entradas y se añadieron 254: 249
 continuaciones y 5 palabras nuevas (*consularis*, el excónsul;
 *recitatio*; el sustantivo *ornatus*; *timiditas*; *inrisus*).  Todas
-tienen el código de fuente A, Echave-Sustaeta.
+tienen el código de fuente A, Echave-Sustaeta: tras su propia fuente,
+cuando tenían una distinta de X (`source="O A"`), o sola.
 
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,

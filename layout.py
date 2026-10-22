@@ -14,7 +14,7 @@ from __future__ import annotations
 import re
 
 FORM_LINE = re.compile(r'( {4})(\S+)( {2,})(\S.*)')     # amic-us   NOM.SG
-CODES = re.compile(r'\[([A-Z]{5})\]')
+CODES = re.compile(r'\[([A-Z]{5}(?:\+[A-Z])*)\]')     # [XXXCO+M]
 ANALYSIS = re.compile(r'[0-9A-Z]+(?:\.[0-9A-Z]+)*')
 HEADWORD = re.compile(r' {2}([^\W\d_][^\s,(]*)')        # amicus, amici ...
 WORD = re.compile(r'[^\W\d_]+')

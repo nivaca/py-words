@@ -141,7 +141,10 @@ CODES = N_('The five letters in brackets after an entry say when, where, '
            'nothing particular to say: in use throughout, general, '
            'everywhere, or not known.  So the [{codes}] of amicus is read:')
 EACH_LETTER = N_('Each letter can be:')
-CODES_MORE = N_('The age, when it is known, and the frequency, when it is '
+CODES_MORE = N_('An entry can have more than one source: then the others '
+                'follow the five letters, each after a + ([XXXCO+M] is '
+                'also from source M).  '
+                'The age, when it is known, and the frequency, when it is '
                 'lesser or rarer, are also given in words after the codes '
                 '(archaic, lesser ...).  The developer mode '
                 'show_dictionary_codes hides the codes, and the dictionary '
@@ -280,15 +283,20 @@ def glosses(session) -> list[Block]:
 
 def explain_codes(codes: str, datadir: str) -> str:
     """What the codes in brackets of an entry mean, one letter a line:
-    "XXXBO" -> "X  age: in use throughout" ..."""
+    "XXXBO" -> "X  age: in use throughout" ...; the other sources after
+    a + ("XXXCO+M") too."""
     names = _sources(datadir)
+    first, *more = codes.split('+')
     lines = []
-    for field, letter in zip(CODE_FIELDS, codes):
+    for field, letter in zip(CODE_FIELDS, first):
         if field == 'source':
             meaning = names.get(letter, '')
         else:
             meaning = tr(DESCRIPTIONS[field].get(letter, ''))
         lines.append(f'{letter}  {tr(FIELD_LABELS[field])}: {meaning}')
+    for letter in more:
+        lines.append(f'{letter}  {tr("other source")}: '
+                     f'{names.get(letter, "")}')
     return '\n'.join(lines)
 
 

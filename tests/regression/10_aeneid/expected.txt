@@ -5221,7 +5221,7 @@ die
     specific day; day in question; date of letter; festival; lifetime, age; time;
     di-e           GEN.SG  (early)
     di-e           ABL.SG
-  dius, dia, dium  adjective, 1st/2nd declension  [XEXDO]  lesser
+  dius, dia, dium  adjective, 1st/2nd declension  [XEXDO+M]  lesser
     divine; w/supernatural radiance; divinely inspired; blessed, saint (Latham);
     di-e           VOC.SG.M
   dius, dia, dium  adjective, 1st/2nd declension  [XXXEO]  uncommon
@@ -5232,7 +5232,7 @@ die
     daylit; charged with brightness of day/daylight;
     di-e           adverb, POS
   -e  suffix: adverb from adjective
-  dius, dia, dium  adjective, 1st/2nd declension  [XEXDO]  lesser
+  dius, dia, dium  adjective, 1st/2nd declension  [XEXDO+M]  lesser
     divine; w/supernatural radiance; divinely inspired; blessed, saint (Latham);
     di-e           adverb, POS
   (less likely forms are not shown)
@@ -10746,7 +10746,7 @@ agros
     agr-os         ACC.PL
 
 tecta
-  tectum, tecti  noun, 2nd declension, neuter  [XXXBA]
+  tectum, tecti  noun, 2nd declension, neuter  [XXXBO+A]
     roof; ceiling; house; dwelling; shelter;
     tect-a         NOM.PL
     tect-a         VOC.PL
@@ -12212,7 +12212,7 @@ culmine
     culmin-e       ABL.SG
 
 tecti
-  tectum, tecti  noun, 2nd declension, neuter  [XXXBA]
+  tectum, tecti  noun, 2nd declension, neuter  [XXXBO+A]
     roof; ceiling; house; dwelling; shelter;
     tect-i         GEN.SG
     tect-i         LOC.SG
@@ -17469,7 +17469,7 @@ ac
     and, and also, and besides;
 
 tecta
-  tectum, tecti  noun, 2nd declension, neuter  [XXXBA]
+  tectum, tecti  noun, 2nd declension, neuter  [XXXBO+A]
     roof; ceiling; house; dwelling; shelter;
     tect-a         NOM.PL
     tect-a         VOC.PL
@@ -22986,7 +22986,7 @@ primi
     prim-i         VOC.PL.M.ORD
 
 tecta
-  tectum, tecti  noun, 2nd declension, neuter  [XXXBA]
+  tectum, tecti  noun, 2nd declension, neuter  [XXXBO+A]
     roof; ceiling; house; dwelling; shelter;
     tect-a         NOM.PL
     tect-a         VOC.PL
@@ -24290,7 +24290,7 @@ diva
     div-a          NOM.PL
     div-a          VOC.PL
     div-a          ACC.PL
-  divus, diva -um, -, divissimus -a -um  adjective, 1st/2nd declension  [DEXES]  late  uncommon
+  divus, diva -um, -, divissimus -a -um  adjective, 1st/2nd declension  [DEXES+M]  late  uncommon
     divine; blessed, saint (Latham);
     div-a          NOM.SG.F
     div-a          VOC.SG.F
@@ -25912,7 +25912,7 @@ improbe
     improb-e       adverb, POS
 
 poenas
-  poena, poenae  noun, 1st declension, feminine  [XXXAA]
+  poena, poenae  noun, 1st declension, feminine  [XXXAO+A]
     penalty, punishment; revenge/retribution; [poenas dare => to pay the penalty];
     poen-as        ACC.PL
   Poenus, Poena, Poenum  adjective, 1st/2nd declension  [XXACO]
@@ -26970,7 +26970,7 @@ memores
 tectoque
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
-  tectum, tecti  noun, 2nd declension, neuter  [XXXBA]
+  tectum, tecti  noun, 2nd declension, neuter  [XXXBO+A]
     roof; ceiling; house; dwelling; shelter;
     tect-o         DAT.SG
     tect-o         ABL.SG
@@ -30524,7 +30524,7 @@ in
     in             ACC
 
 tectis
-  tectum, tecti  noun, 2nd declension, neuter  [XXXBA]
+  tectum, tecti  noun, 2nd declension, neuter  [XXXBO+A]
     roof; ceiling; house; dwelling; shelter;
     tect-is        LOC.PL
     tect-is        DAT.PL
@@ -32781,7 +32781,7 @@ pyram
     pyr-am         ACC.SG
 
 tecto
-  tectum, tecti  noun, 2nd declension, neuter  [XXXBA]
+  tectum, tecti  noun, 2nd declension, neuter  [XXXBO+A]
     roof; ceiling; house; dwelling; shelter;
     tect-o         DAT.SG
     tect-o         ABL.SG
@@ -33468,7 +33468,7 @@ penetrali
     penetral-i     LOC.SG  (early)
     penetral-i     DAT.SG
     penetral-i     ABL.SG
-  penetrale, penetralis  noun, 3rd declension, neuter  [FXXFE]  medieval  very rare
+  penetrale, penetralis  noun, 3rd declension, neuter  [FXXFE+M]  medieval  very rare
     innermost parts/chambers/self (pl.); spirit, life of soul; gimlet (Latham);
     penetral-i     LOC.SG  (early)
     penetral-i     DAT.SG
@@ -37214,7 +37214,7 @@ crinis
   (less likely forms are not shown)
 
 flavos
-  flavus, flava, flavum  adjective, 1st/2nd declension  [XXXBX]
+  flavus, flava, flavum  adjective, 1st/2nd declension  [XXXBM]
     yellow, golden, gold colored; flaxen, blond; golden-haired (Latham);
     flav-os        ACC.PL.M
 
@@ -43708,7 +43708,7 @@ virum
   (less likely forms are not shown)
 
 poenas
-  poena, poenae  noun, 1st declension, feminine  [XXXAA]
+  poena, poenae  noun, 1st declension, feminine  [XXXAO+A]
     penalty, punishment; revenge/retribution; [poenas dare => to pay the penalty];
     poen-as        ACC.PL
   Poenus, Poena, Poenum  adjective, 1st/2nd declension  [XXACO]
@@ -44386,7 +44386,7 @@ ululatu
     ululat-u       ABL.SG
 
 tecta
-  tectum, tecti  noun, 2nd declension, neuter  [XXXBA]
+  tectum, tecti  noun, 2nd declension, neuter  [XXXBO+A]
     roof; ceiling; house; dwelling; shelter;
     tect-a         NOM.PL
     tect-a         VOC.PL
@@ -46379,7 +46379,7 @@ illi
     ill-i          NOM.PL.M
 
 flavum
-  flavus, flava, flavum  adjective, 1st/2nd declension  [XXXBX]
+  flavus, flava, flavum  adjective, 1st/2nd declension  [XXXBM]
     yellow, golden, gold colored; flaxen, blond; golden-haired (Latham);
     flav-um        NOM.SG.N
     flav-um        VOC.SG.N
