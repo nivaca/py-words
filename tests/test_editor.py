@@ -69,15 +69,19 @@ class EditorTests(WithData):
         self.assertEqual(xmldata.entry_xml(again), xmldata.entry_xml(entry))
 
     def test_source_names_come_from_sources_xml(self):
-        names = dict(self.ed.options('source', 'N'))
-        self.assertEqual(names['U'], 'Du Cange')
-        self.assertEqual(names['O'], 'Oxford Latin Dictionary')
+        """The names of the sources are those of sources.xml: here a file
+        of the test's own, so that data/sources.xml can change freely (it
+        is checked by words_check.py and the schema)."""
         path = os.path.join(self.dir, 'sources.xml')
-        text = open(path, encoding='utf-8').read()
         with open(path, 'w', encoding='utf-8') as f:
-            f.write(text.replace('name="(unused)"', 'name="A new source"'))
+            f.write('<?xml version="1.0" encoding="UTF-8"?>\n<sources>\n'
+                    '  <source code="O" name="Oxford Latin Dictionary"/>\n'
+                    '  <source code="A" name="A new source"/>\n'
+                    '</sources>\n')
         names = dict(Editor(self.dir).options('source', 'N'))
         self.assertEqual(names['A'], 'A new source')
+        self.assertEqual(names['O'], 'Oxford Latin Dictionary')
+        self.assertEqual(names['U'], '')     # (not in the file: code only)
         os.remove(path)                 # without the file: codes only
         names = dict(Editor(self.dir).options('source', 'N'))
         self.assertEqual(names['O'], '')
