@@ -2,6 +2,9 @@ rem
   res, rei  noun, 5th declension, feminine  [XXXAX]
     thing; event/affair/business; fact; cause; property; [~ familiaris => property];
     r-em           ACC.SG
+  res, rei  noun, 5th declension, feminine  [XXXAA]
+    circumstances; reality; wealth; [res publica => state; res gestae => exploits]
+    r-em           ACC.SG
 
 acu
   acus, acus  noun, 4th declension, feminine  [XXXBO]
@@ -12,5 +15,8 @@ acu
 tetigisti
   tango, tangere, tetigi, tactus  verb, 3rd conjugation  [XXXAX]
     touch, strike; border on, influence; mention;
+    tetig-isti     2SG.PRF.ACT.IND
+  tango, tangere, tetigi, tactus  verb, 3rd conjugation  [XXXAA]
+    reach; [de caelo tactus => struck by lightning]; affect, move;
     tetig-isti     2SG.PRF.ACT.IND
 

@@ -415,7 +415,8 @@ Latin Dictionary.  Las letras son:
 * Frecuencia: X desconocido; A muy frecuente; B frecuente; C común; D menos
   frecuente; E poco común; F muy raro; I solo en inscripciones; M solo en
   grafitos; N solo en Plinio.
-* Fuente: X general o desconocida; B Beeson, Medieval Latin; C Cassell's
+* Fuente: X general o desconocida; A Echave-Sustaeta, Lengua latina,
+  vocabulario básico; B Beeson, Medieval Latin; C Cassell's
   Latin Dictionary; D Adams, Latin Sexual Vocabulary; E Stelten,
   Ecclesiastical Latin; F Deferrari, St. Thomas Aquinas; G Gildersleeve and
   Lodge, Latin Grammar; H Collatinus (Ouvrard); I Leverett, Lexicon; J
@@ -661,10 +662,27 @@ Los significados en español (`data/languages/es.xml`) se tradujeron del
 inglés del diccionario con ayuda de Claude, el modelo de lenguaje de
 Anthropic (el modelo Claude Opus 5.5, `claude-opus-5-5`), en octubre de
 2026, a petición y bajo la dirección de Nicolas Vaughan.  Abarcan todo el
-diccionario: las 39 338 entradas, las 79 formas irregulares, los 343
+diccionario: las 39 592 entradas, las 79 formas irregulares, los 343
 prefijos, sufijos y enclíticos, y el resto de los resultados (la
 gramática en palabras, las etiquetas y las notas sobre trucos).  Una
 segunda pasada por cada entrada traducida corrigió unas 260.
+
+También en octubre de 2026 se comparó el diccionario, entrada por
+entrada, con el vocabulario básico latín-español de J. Echave-Sustaeta
+(*Lengua latina. Vocabulario básico*): unas 1870 voces, con las palabras
+derivadas de ellas.  Se hizo con ayuda de Claude, el modelo de lenguaje
+de Anthropic (el modelo Claude Opus 5.5, `claude-opus-5-5`), a petición
+y bajo la dirección de Nicolas Vaughan.  Cuando el vocabulario da un
+sentido que nuestra entrada no tenía, se añadió en español y también en
+inglés; si el significado inglés ya estaba lleno (80 caracteres), los
+sentidos nuevos van en una entrada nueva que lo continúa (su significado
+empieza con `|`).  A veces solo al español le faltaba un sentido que el
+inglés sí tenía, y entonces solo cambió el español; además se corrigieron
+unos pocos significados equivocados (por ejemplo, *opus est*, "es
+necesario").  Así se corrigieron 321 entradas y se añadieron 254: 249
+continuaciones y 5 palabras nuevas (*consularis*, el excónsul;
+*recitatio*; el sustantivo *ornatus*; *timiditas*; *inrisus*).  Todas
+tienen el código de fuente A, Echave-Sustaeta.
 
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,

@@ -44,6 +44,11 @@ viri
     vir-i          LOC.SG  (early)
     vir-i          DAT.SG
     vir-i          ABL.SG
+  vis, viris  noun, 3rd declension, feminine  [XXXAA]
+    troops;
+    vir-i          LOC.SG  (early)
+    vir-i          DAT.SG
+    vir-i          ABL.SG
 
 virtus
   virtus, virtutis  noun, 3rd declension, feminine  [XXXAX]
@@ -58,6 +63,10 @@ virtus
 animo
   animus, animi  noun, 2nd declension, masculine  [XXXAO]
     mind; intellect; soul; feelings; heart; spirit, courage, character, pride; air;
+    anim-o         DAT.SG
+    anim-o         ABL.SG
+  animus, animi  noun, 2nd declension, masculine  [XXXAA]
+    intention, purpose, will, inclination
     anim-o         DAT.SG
     anim-o         ABL.SG
   animo, animare, animavi, animatus  verb, 1st conjugation, transitive  [XXXBO]

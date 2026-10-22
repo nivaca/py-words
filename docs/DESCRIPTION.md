@@ -190,7 +190,7 @@ The Spanish translation
 The whole dictionary was translated into Spanish (`es.xml`) with the help
 of Claude, the large language model of Anthropic (the model Claude Opus
 5.5, `claude-opus-5-5`), in October 2026, at the request and under the
-direction of Nicolas Vaughan: the 39,338 entries, the 79 irregular forms,
+direction of Nicolas Vaughan: the 39,592 entries, the 79 irregular forms,
 the 343 prefixes, suffixes and enclitics, and the texts of the results.
 
 It was made in batches, by meaning, so a meaning shared by several

@@ -21,6 +21,9 @@ virumque
   [XXXAX]
     strength (bodily) (pl.), force, power, might, violence; resources; large body;
     vir-um         GEN.PL
+  [XXXAA]
+    troops;
+    vir-um         GEN.PL
   (less likely forms are not shown)
 
 cano

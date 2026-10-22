@@ -405,7 +405,8 @@ and taken from the Oxford Latin Dictionary.  The letters are:
 * Frequency: X unknown; A very frequent; B frequent; C common; D lesser; E
   uncommon; F very rare; I only in inscriptions; M only in graffiti; N only
   in Pliny.
-* Source: X general or unknown; B Beeson, Medieval Latin; C Cassell's Latin
+* Source: X general or unknown; A Echave-Sustaeta, Lengua latina,
+  vocabulario básico; B Beeson, Medieval Latin; C Cassell's Latin
   Dictionary; D Adams, Latin Sexual Vocabulary; E Stelten, Ecclesiastical
   Latin; F Deferrari, St. Thomas Aquinas; G Gildersleeve and Lodge, Latin
   Grammar; H Collatinus (Ouvrard); I Leverett, Lexicon; J Bracton, De
@@ -651,11 +652,28 @@ The Spanish meanings (`data/languages/es.xml`) were translated from the
 English of the dictionary with the help of Claude, the large language
 model of Anthropic (the model Claude Opus 5.5, `claude-opus-5-5`), in
 October 2026, at the request and under the direction of Nicolas Vaughan.
-They cover the complete dictionary: the 39,338 entries, the 79 irregular
+They cover the complete dictionary: the 39,592 entries, the 79 irregular
 forms, the 343 prefixes, suffixes and enclitics, and the rest of the
 results (the grammar in words, the labels and the notes about the
 tricks).  A second revision of every translated entry corrected around
 260 of them.
+
+Also in October 2026 the dictionary was compared, entry by entry, with
+the Latin-Spanish basic vocabulary of J. Echave-Sustaeta (*Lengua
+latina. Vocabulario básico*): around 1,870 headwords, with the words
+derived from them.  This was done with the help of Claude, the large
+language model of Anthropic (the model Claude Opus 5.5,
+`claude-opus-5-5`), at the request and under the direction of Nicolas
+Vaughan.  When the vocabulary gives a sense that our entry did not have,
+the sense was added in Spanish and also in English; if the English
+meaning was already full (80 characters), the new senses go in a new
+entry that continues it (its meaning begins with `|`).  Sometimes only
+the Spanish was missing a sense that the English had, and then only the
+Spanish changed; and a few wrong meanings were corrected (for example
+*opus est*, "it is necessary").  So 321 entries were corrected and 254
+were added: 249 continuations and 5 new words (*consularis*, the
+ex-consul; *recitatio*; the noun *ornatus*; *timiditas*; *inrisus*).
+All of them have the source code A, Echave-Sustaeta.
 
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations

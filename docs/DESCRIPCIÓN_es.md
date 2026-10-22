@@ -20,7 +20,7 @@ Sobre esa base hay varias interfaces: la línea de órdenes (`words.py`), la ven
 
 Los datos son seis archivos XML más uno por idioma, todos descritos por un esquema (`words.xsd`):
 
-- `dictionary.xml`: 39 338 entradas.
+- `dictionary.xml`: 39 592 entradas.
 - `inflections.xml`: 1 797 desinencias.
 - `uniques.xml`: 79 formas irregulares.
 - `addons.xml`: 343 prefijos, sufijos y enclíticos.
@@ -65,7 +65,7 @@ El código se gestiona con git, en un solo repositorio publicado en GitHub (`htt
 
 ## Traducción al español
 
-Todo el diccionario se tradujo del inglés al español (`languages/es.xml`) con ayuda de Claude, el modelo de lenguaje de Anthropic (el modelo Claude Opus 5.5, `claude-opus-5-5`), en octubre de 2026, a petición y bajo la dirección de Nicolas Vaughan. Eso incluye las 39 338 entradas, las 79 formas irregulares y los 343 prefijos, sufijos y enclíticos, y también el resto de los resultados: la gramática en palabras (*sustantivo, 2.ª declinación, masculino*), las etiquetas y las notas sobre los trucos ortográficos y los tiempos compuestos.
+Todo el diccionario se tradujo del inglés al español (`languages/es.xml`) con ayuda de Claude, el modelo de lenguaje de Anthropic (el modelo Claude Opus 5.5, `claude-opus-5-5`), en octubre de 2026, a petición y bajo la dirección de Nicolas Vaughan. Eso incluye las 39 592 entradas, las 79 formas irregulares y los 343 prefijos, sufijos y enclíticos, y también el resto de los resultados: la gramática en palabras (*sustantivo, 2.ª declinación, masculino*), las etiquetas y las notas sobre los trucos ortográficos y los tiempos compuestos.
 
 Se tradujo por lotes y por significado, así que un significado compartido por varias entradas se tradujo una sola vez. La traducción sigue de cerca el inglés. Conserva los sentidos y su orden (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD, Ecc, PASS, GEN…) y el latín entre corchetes, del que solo se traduce el lado inglés. Escribe "c/" por "w/", "a. C." y "d. C." por BC y AD, y da las medidas en el sistema métrico. Respeta el inglés aun donde es raro, y solo lo corrige donde está claramente mal, como en las capacidades del efá y del gomor hebreos, que el inglés exageraba unas treinta veces.
 

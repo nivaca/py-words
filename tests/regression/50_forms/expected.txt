@@ -172,6 +172,15 @@ manus
     man-us         NOM.PL
     man-us         VOC.PL
     man-us         ACC.PL
+  manus, manus  noun, 4th declension, feminine  [XXXAA]
+    force, violence; power, control; handful of men;
+    man-us         NOM.SG
+    man-us         VOC.SG
+    man-us         GEN.SG
+      ~'s; of ~
+    man-us         NOM.PL
+    man-us         VOC.PL
+    man-us         ACC.PL
 
 cornu
   cornus, cornus  noun, 4th declension, feminine  [XXXCO]
@@ -192,6 +201,13 @@ cornu
 res
   res, rei  noun, 5th declension, feminine  [XXXAX]
     thing; event/affair/business; fact; cause; property; [~ familiaris => property];
+    r-es           NOM.SG
+    r-es           VOC.SG
+    r-es           NOM.PL
+    r-es           VOC.PL
+    r-es           ACC.PL
+  res, rei  noun, 5th declension, feminine  [XXXAA]
+    circumstances; reality; wealth; [res publica => state; res gestae => exploits]
     r-es           NOM.SG
     r-es           VOC.SG
     r-es           NOM.PL
@@ -368,6 +384,10 @@ maximus
       ~est; most/very
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
     full/complete/utter/pure; intense; loud; at high price; notable/famous; old;
+    maxi-mus       NOM.SG.M.SPRL
+      ~est; most/very
+  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAA]
+    [natu maior/maximus => older/eldest; maiores => ancestors]
     maxi-mus       NOM.SG.M.SPRL
       ~est; most/very
   maximus, maxima, maximum  adjective, superlative  [XXXAO]
@@ -851,6 +871,10 @@ fero
     bring, bear; tell/speak of; consider; carry off, win, receive, produce; get;
     fer-o          1SG.PRS.ACT.IND
       I ~
+  fero, ferre, tuli, latus  verb, 3rd conjugation  [XXXAA]
+    endure; propose (law); declare;
+    fer-o          1SG.PRS.ACT.IND
+      I ~
 
 volo
   volo, velle, volui, -  verb, irregular  [XXXAX]
@@ -869,6 +893,10 @@ volo
 memini
   memini, meminisse, -  verb, 2nd conjugation, perfect with present meaning  [XXXAO]
     remember  (PERF form, PRES force); keep in mind, pay heed to; be sure; recall;
+    memin-i        1SG.PRF.ACT.IND
+      I have ~ed
+  memini, meminisse, -  verb, 2nd conjugation, perfect with present meaning  [XXXAA]
+    mention;
     memin-i        1SG.PRF.ACT.IND
       I have ~ed
 

@@ -22,6 +22,9 @@ virumque
 02 vis, viris  noun, 3rd declension, feminine  [XXXAX]  very frequent  (general dictionary)
 03 strength (bodily) (pl.), force, power, might, violence; resources; large body;
 01 vir-um         GEN.PL  (always, sometimes)
+02 vis, viris  noun, 3rd declension, feminine  [XXXAA]  very frequent  (general dictionary)
+03 troops;
+01 vir-um         GEN.PL  (always, sometimes)
   (less likely forms are not shown)
 
 cano

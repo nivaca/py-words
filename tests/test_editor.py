@@ -65,7 +65,8 @@ class EditorTests(WithData):
 
     def test_fields_round_trip(self):
         entry = self.ed.search('amicorum')[0]
-        again = Fields.of(entry).entry(entry.id)
+        #  (its uid, which the file keeps; the position, id, may differ)
+        again = Fields.of(entry).entry(entry.uid)
         self.assertEqual(xmldata.entry_xml(again), xmldata.entry_xml(entry))
 
     def test_source_names_come_from_sources_xml(self):
