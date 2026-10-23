@@ -147,7 +147,7 @@ for distributing it:
 
     $ python3 bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `py-words-v.2.15.zip` (with the version of the program), with
+This writes `py-words-v.2.16.zip` (with the version of the program), with
 the program inside a folder of the same name.  It contains the programs,
 the data, the icons and the documents.  It does not contain hidden files
 (`.git` ...), nor the things that are made when the program runs or is
@@ -998,6 +998,32 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 2.16:
+  - py-words is distributed now under the GNU General Public License,
+    version 3 or later (until 2.15, the MIT License), so that it can take
+    code and data from Collatinus, of Yves Ouvrard and Philippe Verkerk
+    (see "Licensing").
+  - The meanings can be also in French, German, Catalan and Galician
+    (`--language fr`, or the list "Meanings in"), taken from the lemmas
+    of Collatinus: 23,044 entries in French, 6,301 in German, 7,624 in
+    Catalan and 7,699 in Galician; the rest is shown in English (see "The
+    meanings from Collatinus").
+  - The forms show their long vowels, in the stem and in the ending
+    (amīc-ōrum, am-ābat, ros-ā), from the lemmas and the models of
+    Collatinus; the parameter show_long_vowels hides them (see "The long
+    vowels").  The new file `data/quantities.xml` has the stems, and the
+    endings have an attribute `long` in `data/inflections.xml`.
+  - Medieval spellings are recognized in a more general way (michi,
+    ecclesie, hystorie), the prodelision of est is understood (amatust,
+    bonumst), and two words declined together (rempublicam) give only
+    the forms that agree.  Six abbreviations (Agr., Kalen. ...) and the
+    form quaesumus were added: the dictionary has now 44,386 entries.
+  - The settings that wrote the files WORD.OUT, WORD.UNK and WORD.STA
+    were taken out, with the files (have_output_file,
+    write_output_to_file, write_unknowns_to_file, have_statistics_file,
+    write_statistics_file and include_unknown_context).  For keeping the
+    results in a file there is `-o FILE`; a configuration file that still
+    has these settings is read without complaint.
 - 2.15:
   - The dictionary was compared with the medieval word-list of R. E.
     Latham, and it has now 44,380 entries (39,846 before), all with their

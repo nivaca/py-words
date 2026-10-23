@@ -7,7 +7,7 @@ Colonel William Whitaker (1936-2010) wrote, with its meanings translated
 to Spanish.  Nicolas Vaughan made it in 2026, starting from the Ada
 version of WORDS maintained in
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words).  Here
-I explain how it was made, in seven stages.
+I explain how it was made, in eight stages.
 
 Nicolas Vaughan is Associate Professor of Literature at the School of Arts
 and Humanities of the Universidad de los Andes, Bogotá, Colombia.
@@ -149,9 +149,10 @@ letter with a mark cut the word, so amīcus was looked up as "am" and
 "cus".  The same happened with breves, diaeresis and the ligatures æ and
 œ.  Now, before the search, the line loses its marks and accents and the
 ligatures are written ae and oe (`plain_letters` in `analyzer.py`), so a
-text copied from a school edition works without changes.  The dictionary
-does not register the length of the vowels, so the marks cannot help to
-choose between forms.
+text copied from a school edition works without changes.  The marks
+typed do not help yet to choose between forms, but since 2.16 the
+results show the long vowels themselves (see "8. What came from
+Collatinus").
 
 5. Other languages of the meanings
 ----------------------------------
@@ -304,10 +305,39 @@ to "Meanings in" in the window and in the web page, from the list of
 parameters in the `#` dialogue and with F3 in the terminal, or with
 `--no-fuzzy` in the command line.
 
+8. What came from Collatinus
+----------------------------
+
+Collatinus, of Yves Ouvrard and Philippe Verkerk, is another Latin
+lemmatiser, with its own lemmas, inflection models and translations.  It
+is under the GPL, so in 2.16 py-words changed from the MIT License to
+the GPL (version 3 or later) to be able to take from it.  Its lemmas
+were matched with the entries of the dictionary by the citation form,
+the part of speech and, for nouns, the genitive and the gender; an entry
+claimed by two lemmas was left out.  From this came four new languages
+of the meanings, French (23,044 entries), German (6,301), Catalan
+(7,624) and Galician (7,699), with the rest of the results translated
+too; Italian and Portuguese were left out, because Collatinus translated
+them by machine from the French.
+
+The second thing were the long vowels.  From the lemmas and models of
+Collatinus I took the quantities of the stems of 20,297 entries
+(`quantities.xml`) and of 731 endings (the attribute `long` in
+`inflections.xml`), so the results show amīc-ōrum and am-ābat.
+Collatinus marks the weight of the syllables, for verse, so the marks
+before two consonants were left out, except before ns and nf; and an
+ending was marked only where nine of ten of its forms agree.
+
+Last, some ideas were written again in py-words: a more general reading
+of the medieval spellings (michi, ecclesie, hystorie), the prodelision
+of est (amatust), two words declined together that must agree
+(rempublicam), six abbreviations and the form quaesumus.  The README
+tells all of it in detail.
+
 Testing
 -------
 
-The program has unit tests and regression tests (`tests/`), 254 in
+The program has unit tests and regression tests (`tests/`), 268 in
 total, that run with Python 3.11 (the oldest it supports) and with the
 last Python.  The regression tests run the inputs inherited from the Ada
 version and compare the output with expected files already revised.  The
@@ -316,5 +346,5 @@ window, and the languages with a Spanish file of their own.  The online
 version was tried in a browser controlled by a script (searches in both
 directions, the links of the results, the Back button, dark mode, the
 Spanish interface, and the settings that stay after reloading), from a
-local server and also in the published site.  The program has now 38
-files, around 13,200 lines.
+local server and also in the published site.  The program has now 39
+files, around 13,900 lines.

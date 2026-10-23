@@ -1,12 +1,12 @@
-# py-words 2.15: descripción
+# py-words 2.16: descripción
 
 ## Análisis
 
-py-words es un diccionario latín-inglés-latín y latín-español-latín que analiza la morfología de las palabras. Si se le da una forma flexionada, como *amicorum*, dice a qué entrada del diccionario pertenece (*amicus, amici*) y qué forma es exactamente (genitivo plural), con sus significados en inglés o en español. También hace el camino inverso: busca el latín de una palabra inglesa o española.
+py-words es un diccionario latín-inglés-latín y latín-español-latín que analiza la morfología de las palabras. Si se le da una forma flexionada, como *amicorum*, dice a qué entrada del diccionario pertenece (*amicus, amici*) y qué forma es exactamente (genitivo plural), con sus significados en inglés o en español (y, en parte, en francés, alemán, catalán y gallego). También hace el camino inverso: busca el latín de una palabra inglesa o española.
 
 Partí de WORDS, el programa de William Whitaker (1936-2010), en la versión en Ada que se mantiene en mk270/whitakers-words. Al estudiarlo quedaron claros los requisitos. Lo primero era no perder lo que vale de WORDS, que son sus análisis: las reglas de raíces y desinencias, las formas irregulares, los prefijos, sufijos y enclíticos, las variantes ortográficas, la síncopa, los numerales romanos y los tiempos compuestos. Lo segundo, cambiar los archivos de texto de columnas fijas del original por un formato estándar que se pudiera leer, validar y editar sin miedo.
 
-Además, el programa tenía que servirle a cualquiera: desde la terminal, en una ventana o en el navegador (también en línea, sin instalar nada), con editores del diccionario que no obliguen a conocer el formato interno y con una instalación sencilla, sin dependencias externas. Había que conservar los parámetros, los modos de desarrollo y los archivos de salida del original, y recordar la configuración de una sesión a otra. Por último, los significados debían poder estar en otros idiomas sin duplicar el diccionario y sin que una traducción se perdiera al añadir o mover entradas.
+Además, el programa tenía que servirle a cualquiera: desde la terminal, en una ventana o en el navegador (también en línea, sin instalar nada), con editores del diccionario que no obliguen a conocer el formato interno y con una instalación sencilla, sin dependencias externas. Había que conservar los parámetros y los modos de desarrollo del original, y recordar la configuración de una sesión a otra. Por último, los significados debían poder estar en otros idiomas sin duplicar el diccionario y sin que una traducción se perdiera al añadir o mover entradas.
 
 ## Diseño
 
@@ -18,15 +18,16 @@ De los idiomas se ocupan tres módulos: `languages.py` lee los archivos de idiom
 
 Sobre esa base hay varias interfaces: la línea de órdenes (`words.py`), la ventana (`words_gui.py`), la pantalla completa en la terminal (`words_tui.py`), el navegador (`words_web.py`) y la versión en línea (`pages/`). Completan el conjunto los editores del diccionario (en ventana y en terminal), un verificador de datos, un conversor del formato original y un instalador de accesos en el menú del sistema.
 
-Los datos son seis archivos XML más uno por idioma, todos descritos por un esquema (`words.xsd`):
+Los datos son siete archivos XML más uno por idioma, todos descritos por un esquema (`words.xsd`):
 
-- `dictionary.xml`: 44 380 entradas.
-- `inflections.xml`: 1 797 desinencias.
-- `uniques.xml`: 79 formas irregulares.
+- `dictionary.xml`: 44 386 entradas.
+- `inflections.xml`: 1 797 desinencias, 731 de ellas con sus vocales largas marcadas.
+- `uniques.xml`: 80 formas irregulares.
+- `quantities.xml`: las raíces de 20 297 entradas con sus vocales largas marcadas (*amīc*), tomadas de Collatinus.
 - `addons.xml`: 343 prefijos, sufijos y enclíticos.
 - `gloss.xml`: las abreviaturas de glosado de las Leipzig Glossing Rules con que se escriben los análisis (`GEN.PL`, `2SG.PRF.ACT.IND`).
 - `sources.xml`: las 26 fuentes (diccionarios, gramáticas, listas de palabras) a las que remiten los códigos de fuente de las entradas, como el Oxford Latin Dictionary o Du Cange.
-- `languages/`: un archivo por idioma de los significados (`en.xml`, `es.xml`…). Cada uno trae los significados que traduce, las palabras que la búsqueda hacia el latín ignora, lo que significan las formas de los numerales y el resto de los resultados traducido. El inglés, que es el idioma de los demás archivos, solo necesita las palabras de la búsqueda y los numerales.
+- `languages/`: un archivo por idioma de los significados (`en.xml`, `es.xml`, `fr.xml`, `de.xml`, `ca.xml`, `gl.xml`). Cada uno trae los significados que traduce, las palabras que la búsqueda hacia el latín ignora, lo que significan las formas de los numerales y el resto de los resultados traducido. El inglés, que es el idioma de los demás archivos, solo necesita las palabras de la búsqueda y los numerales.
 - `interface/`: un archivo por idioma de la interfaz (`es.xml`), con cada texto de los programas en inglés y su traducción.
 
 Los códigos gramaticales son los del original, para que quien conozca WORDS pueda leer las entradas sin aprender nada nuevo. Cada entrada, forma irregular y afijo lleva además un identificador estable (`id`) que no cambia cuando se añaden o mueven otras; las traducciones apuntan a él.
@@ -59,7 +60,7 @@ Se puede desactivar en cualquier programa: con su propia casilla junto a "Signif
 
 ### Proceso y distribución
 
-El trabajo pasó por siete etapas: primero una traducción fiel, línea por línea, del programa en Ada, que sirvió de referencia; luego la conversión de los datos a XML con su esquema; un rediseño completo en Python idiomático; las herramientas (ventana, editores, verificador, caché, configuración e instalador); los idiomas de los significados y la traducción completa del diccionario al español; la versión en línea, y por último la búsqueda aproximada.
+El trabajo pasó por ocho etapas: primero una traducción fiel, línea por línea, del programa en Ada, que sirvió de referencia; luego la conversión de los datos a XML con su esquema; un rediseño completo en Python idiomático; las herramientas (ventana, editores, verificador, caché, configuración e instalador); los idiomas de los significados y la traducción completa del diccionario al español; la versión en línea; la búsqueda aproximada, y por último lo que vino de Collatinus (otros idiomas, las vocales largas y algunas ideas del análisis).
 
 El código se gestiona con git, en un solo repositorio publicado en GitHub (`https://github.com/nivaca/py-words`) y en Codeberg (https://codeberg.org/nivaca/py-words). La versión en línea es un sitio estático que arma `pages/build.py`; con cada push a la rama principal, un flujo de trabajo de GitHub corre las pruebas, construye el sitio y lo publica en GitHub Pages.
 
@@ -73,11 +74,19 @@ Después, una segunda pasada leyó cada entrada traducida junto a su original y 
 
 Después, el diccionario se comparó con dos listas más, también con ayuda de Claude: el vocabulario básico latín-español de J. Echave-Sustaeta, que corrigió 321 entradas y añadió 254, y la lista de latín medieval de R. E. Latham, que añadió sus sentidos medievales (2444 entradas), corrigió 21 significados y sumó 1140 palabras y categorías gramaticales que faltaban y 1204 variantes ortográficas, todas con sus significados en español. El README explica cómo se hizo.
 
+## Lo que vino de Collatinus
+
+Collatinus, de Yves Ouvrard y Philippe Verkerk, es otro lematizador latino, con sus propios lemas, modelos de flexión y traducciones. Está bajo la GPL, así que en la 2.16 py-words pasó de la licencia MIT a la GPL (versión 3 o posterior) para poder tomar de él. Sus lemas se emparejaron con las entradas del diccionario por la forma de citación, la categoría gramatical y, en los sustantivos, el genitivo y el género; una entrada reclamada por dos lemas se dejó de lado. De ahí salieron cuatro idiomas nuevos de los significados, francés (23 044 entradas), alemán (6301), catalán (7624) y gallego (7699), con el resto de los resultados también traducido; el italiano y el portugués se descartaron, porque Collatinus los tradujo a máquina desde el francés.
+
+Lo segundo fueron las vocales largas. De los lemas y modelos de Collatinus tomé la cantidad de las raíces de 20 297 entradas (`quantities.xml`) y de 731 desinencias (el atributo `long` de `inflections.xml`), de modo que los resultados muestran amīc-ōrum y am-ābat. Collatinus marca el peso de las sílabas, para el verso, así que se quitaron las marcas ante dos consonantes, salvo ante ns y nf, y una desinencia solo se marcó donde coinciden nueve de cada diez de sus formas.
+
+Por último, algunas ideas se escribieron de nuevo en py-words: una lectura más general de las grafías medievales (michi, ecclesie, hystorie), la prodelisión de est (amatust), dos palabras declinadas juntas que deben concordar (rempublicam), seis abreviaturas y la forma quaesumus. El README lo cuenta todo en detalle.
+
 ## Validación
 
 El rediseño se comparó con la traducción fiel sobre un corpus de 133 671 palabras: todas las raíces del diccionario, formas generadas y las entradas de prueba. El 99,2 % dio exactamente los mismos resultados. Las diferencias restantes se revisaron una por una, y todas resultaron ser cambios deliberados o errores del original ya corregidos; están documentadas en el README.
 
-Hay 254 pruebas automáticas, que se corren con `python3 -m unittest discover -s tests`. Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador y el servidor web, incluidas sus protecciones. Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
+Hay 268 pruebas automáticas, que se corren con `python3 -m unittest discover -s tests`. Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador y el servidor web, incluidas sus protecciones. Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
 
 La versión en línea se probó en un navegador manejado por un script (búsquedas en los dos sentidos, los enlaces de los resultados, el botón Atrás, el modo oscuro, la interfaz en español y los ajustes que se conservan al recargar), tanto desde un servidor local como desde el sitio publicado. Las pruebas corren en Python 3.11, la versión mínima, y en 3.14. Las ventanas se revisaron además a ojo, con capturas de pantalla, y con un Python demasiado viejo el programa da un mensaje claro en lugar de un error.
 
@@ -87,7 +96,7 @@ Funciona en Linux (y en otros sistemas tipo Unix con menús freedesktop), Window
 
 En el equipo es una aplicación de escritorio, de terminal y de navegador, y no necesita internet. La versión web levanta su propio servidor, que por omisión solo atiende al mismo equipo; con `--host` se puede abrir a la red local, por ejemplo para usarla desde el teléfono. No tiene contraseñas ni permite editar el diccionario, y rechaza las peticiones que llegan con otro nombre de equipo y los formularios enviados desde otros sitios.
 
-En línea, en https://nicolasvaughan.org/py-words/, basta un navegador reciente. Hace falta conexión para arrancar, pero las búsquedas se hacen en el propio navegador: nada de lo que se escribe sale de él. Allí los ajustes de los archivos de salida no hacen nada, y el diccionario no se puede editar.
+En línea, en https://nicolasvaughan.org/py-words/, basta un navegador reciente. Hace falta conexión para arrancar, pero las búsquedas se hacen en el propio navegador: nada de lo que se escribe sale de él. Allí el diccionario no se puede editar.
 
 ## Ambiente
 

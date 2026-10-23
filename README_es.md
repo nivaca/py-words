@@ -150,7 +150,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `py-words-v.2.15.zip` (con la versión del programa), con el
+Eso escribe `py-words-v.2.16.zip` (con la versión del programa), con el
 programa dentro de una carpeta del mismo nombre.  Lleva los programas,
 los datos, los iconos y los documentos.  Deja fuera los archivos ocultos
 (`.git`...), lo que se genera al usar o editar el programa
@@ -1016,6 +1016,34 @@ con `git diff`.
 Versiones
 ---------
 
+- 2.16:
+  - py-words se distribuye ahora bajo la Licencia Pública General de
+    GNU, versión 3 o posterior (hasta la 2.15, la licencia MIT), para
+    poder tomar código y datos de Collatinus, de Yves Ouvrard y Philippe
+    Verkerk (véase "Licencia").
+  - Los significados pueden estar también en francés, alemán, catalán y
+    gallego (`--language fr`, o la lista "Significados en"), tomados de
+    los lemas de Collatinus: 23 044 entradas en francés, 6301 en alemán,
+    7624 en catalán y 7699 en gallego; lo demás se muestra en inglés
+    (véase "Los significados tomados de Collatinus").
+  - Las formas muestran sus vocales largas, en la raíz y en la
+    desinencia (amīc-ōrum, am-ābat, ros-ā), a partir de los lemas y los
+    modelos de Collatinus; el parámetro show_long_vowels las oculta
+    (véase "Las vocales largas").  El nuevo archivo `data/quantities.xml`
+    tiene las raíces, y las desinencias tienen un atributo `long` en
+    `data/inflections.xml`.
+  - Las grafías medievales se reconocen de un modo más general (michi,
+    ecclesie, hystorie), se entiende la prodelisión de est (amatust,
+    bonumst), y dos palabras declinadas juntas (rempublicam) dan solo
+    las formas que concuerdan.  Se añadieron seis abreviaturas (Agr.,
+    Kalen.…) y la forma quaesumus: el diccionario tiene ahora 44 386
+    entradas.
+  - Se quitaron los ajustes que escribían los archivos WORD.OUT, WORD.UNK
+    y WORD.STA, junto con los archivos (have_output_file,
+    write_output_to_file, write_unknowns_to_file, have_statistics_file,
+    write_statistics_file e include_unknown_context).  Para guardar los
+    resultados en un archivo está `-o ARCHIVO`; un archivo de
+    configuración que todavía tenga esos ajustes se lee sin quejas.
 - 2.15:
   - El diccionario se comparó con la lista de latín medieval de R. E.
     Latham, y ahora tiene 44 380 entradas (antes, 39 846), todas con sus
