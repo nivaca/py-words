@@ -15,7 +15,7 @@ import queue
 import threading
 import webbrowser
 import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+from tkinter import filedialog, font as tkfont, messagebox, ttk
 
 import guide
 import interface
@@ -31,6 +31,11 @@ from lexicon import Lexicon, DICTIONARY
 from session import Session
 from settings import COMMAND_LINE, Settings, section_of
 from version import NAME, URL, about
+
+#  The dark mode button: what a click does (no images, only letters that
+#  the usual fonts have)
+MOON = '\u263e'                 # ☾  (make it dark)
+SUN = '\u2600'                  # ☀  (make it light)
 
 #  What the window shows until the first search
 WELCOME = N_('Type a Latin word or line, and press Enter.  "Help" explains '
@@ -123,10 +128,18 @@ class App:
                                self.explain_codes, self.explain_analysis)
         self.results.pack(fill='both', expand=True, padx=8)
         self.text = self.results.text
-        ttk.Checkbutton(bottom, text=tr('Dark mode'), variable=self.dark,
-                        command=self.choose_dark).pack(side='right')
+        #  dark mode: a moon to make the window dark, a sun to make it
+        #  light again (its name in the status line, under the mouse)
+        self.dark_box = ttk.Checkbutton(bottom, variable=self.dark,
+                                        style='Mode.Toolbutton',
+                                        command=self.choose_dark)
+        self.dark_box.pack(side='right')
+        self.dark.trace_add('write', lambda *a: self.show_dark())
+        self.show_dark()
         self.status = ttk.Label(bottom)
         self.status.pack(side='left', fill='x', expand=True)
+        self.dark_box.bind('<Enter>', lambda e: self.name_dark(True))
+        self.dark_box.bind('<Leave>', lambda e: self.name_dark(False))
         root.bind('<<FontsChanged>>', lambda e: self.fit())
         self.fit()
 
@@ -174,6 +187,24 @@ class App:
 
     def choose_dark(self):
         self.theme.set(self.dark.get())
+        self.show_dark()
+
+    def show_dark(self):
+        """The moon or the sun, larger than the text (each theme has its
+        own styles, so this is done again when it changes)."""
+        size = tkfont.nametofont('TkDefaultFont').actual('size')
+        ttk.Style().configure('Mode.Toolbutton', padding=(4, 0),
+                              font=('TkDefaultFont', round(abs(size) * 1.5)))
+        self.dark_box.config(text=SUN if self.dark.get() else MOON)
+
+    def name_dark(self, shown: bool):
+        """The name of the dark mode button, in the status line while the
+        mouse is over it (and what was there, after)."""
+        if shown:
+            self._status_before = self.status.cget('text')
+            self.status.config(text=tr('Dark mode'))
+        elif self.status.cget('text') == tr('Dark mode'):
+            self.status.config(text=getattr(self, '_status_before', ''))
 
     def find(self):
         return self.results.show_find()

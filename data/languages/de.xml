@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- German: the meanings of the entries for which Collatinus has a
-     translation into German (those not here are shown in English), and
-     the rest of the results.  The meanings come from the file lemmes.de
-     of Collatinus 11, by Yves Ouvrard and Philippe Verkerk, and the
-     people who translated it, distributed under the GNU General Public
-     License (version 2 or later); they were matched to the entries of
-     py-words by their lemma, part of speech and, for nouns, genitive and
-     gender, and given to the most frequent entry of each lemma.  The
-     rest was translated with the help of Claude, the large language
-     model of Anthropic (the model Claude Opus 5.5, claude-opus-5-5), in
-     October 2026.  See words.xsd and languages.py. -->
+     translation into German (those not here are shown in English), and the
+     rest of the results.  The meanings come from the file lemmes.de of
+     Collatinus 11, by Yves Ouvrard and Philippe Verkerk, and the people who
+     translated it (Collatinus thanks among them Philipp Roelli, who made
+     possible its Latin-German dictionary; see "Sources" in the README),
+     distributed under the GNU General Public License (version 2 or later);
+     they were matched to the entries of py-words by their lemma, part of
+     speech and, for nouns, genitive and gender, and given to the most
+     frequent entry of each lemma.  The rest was translated with the help of
+     Claude, the large language model of Anthropic (the model Claude Opus
+     5.5, claude-opus-5-5), in October 2026.  See words.xsd and
+     languages.py. -->
 <language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="../words.xsd"
   code="de" name="German" native="Deutsch">

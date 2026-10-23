@@ -1,10 +1,10 @@
-# py-words 2.16: descripción
+# py-words 3.0: descripción
 
 ## Análisis
 
 py-words es un diccionario latín-inglés-latín y latín-español-latín que analiza la morfología de las palabras. Si se le da una forma flexionada, como *amicorum*, dice a qué entrada del diccionario pertenece (*amicus, amici*) y qué forma es exactamente (genitivo plural), con sus significados en inglés o en español (y, en parte, en francés, alemán, catalán y gallego). También hace el camino inverso: busca el latín de una palabra inglesa o española.
 
-El diccionario tiene cuatro fuentes: WORDS, de William Whitaker, para el programa y casi todas las entradas; la *Revised Medieval Latin Word-List from British and Irish Sources* de R. E. Latham, para sentidos, palabras y grafías medievales; *Lengua latina. Vocabulario básico* de J. Echave-Sustaeta, para sentidos y palabras en inglés y en español, y Collatinus, de Yves Ouvrard y Philippe Verkerk, para las vocales largas y los significados en francés, alemán, catalán y gallego. py-words es software libre, bajo la Licencia Pública General de GNU, versión 3 o posterior; los datos de WORDS son de uso libre, con permiso de Whitaker.
+El diccionario tiene cuatro fuentes: WORDS, de William Whitaker, para el programa y casi todas las entradas; la *Revised Medieval Latin Word-List from British and Irish Sources* de R. E. Latham, para sentidos, palabras y grafías medievales; *Lengua latina. Vocabulario básico* de J. Echave-Sustaeta, para sentidos y palabras en inglés y en español, y Collatinus, de Yves Ouvrard y Philippe Verkerk, para las vocales largas y los significados en francés, alemán, catalán y gallego (Collatinus, a su vez, hizo su léxico con los diccionarios de Gaffiot, Jeanneau, Du Cange y Lewis y Short, entre otros, y el README nombra todas las fuentes y personas a las que agradece). py-words es software libre, bajo la Licencia Pública General de GNU, versión 3 o posterior; los datos de WORDS son de uso libre, con permiso de Whitaker.
 
 Partí de WORDS, el programa de William Whitaker (1936-2010), en la versión en Ada que se mantiene en mk270/whitakers-words. Al estudiarlo quedaron claros los requisitos. Lo primero era no perder lo que vale de WORDS, que son sus análisis: las reglas de raíces y desinencias, las formas irregulares, los prefijos, sufijos y enclíticos, las variantes ortográficas, la síncopa, los numerales romanos y los tiempos compuestos. Lo segundo, cambiar los archivos de texto de columnas fijas del original por un formato estándar que se pudiera leer, validar y editar sin miedo.
 

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- The long vowels of the stems of the entries of dictionary.xml: for
-     each entry (by its id), its stems in order with the long vowels
-     marked (amīc), or - where they are not known.  Taken from the lemmas
-     and models of Collatinus 11 (lemmes.la, lem_ext.la, modeles.la), by
-     Yves Ouvrard and Philippe Verkerk, distributed under the GNU General
-     Public License (version 2 or later).  An entry was matched to a lemma
-     by its citation form, part of speech and, for nouns, genitive and
-     gender; its stems were found among the lemma's stems.  Collatinus
-     marks the weight of syllables, for verse, so the marks on vowels
-     before two consonants (or x, z) were left out, except before ns and
-     nf, where a vowel is always long: a vowel long by nature before other
-     consonants (rēx, āctum) is not marked.  Diphthongs (ae, au, oe) are not
-     marked either.  See words.xsd and lexicon.py. -->
+<!-- The long vowels of the stems of the entries of dictionary.xml: for each
+     entry (by its id), its stems in order with the long vowels marked
+     (amīc), or - where they are not known.  Taken from the lemmas and
+     models of Collatinus 11 (lemmes.la, lem_ext.la, modeles.la), by Yves
+     Ouvrard and Philippe Verkerk (lem_ext.la: by Philippe Verkerk, by
+     collating digital dictionaries; for its lexicon Collatinus thanks the
+     dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, Pede
+     Certo and others: see "Sources" in the README), distributed under the
+     GNU General Public License (version 2 or later).  An entry was matched
+     to a lemma by its citation form, part of speech and, for nouns,
+     genitive and gender; its stems were found among the lemma's stems.
+     Collatinus marks the weight of syllables, for verse, so the marks on
+     vowels before two consonants (or x, z) were left out, except before ns
+     and nf, where a vowel is always long: a vowel long by nature before
+     other consonants (rēx, āctum) is not marked.  Diphthongs (ae, au, oe)
+     are not marked either.  See words.xsd and lexicon.py. -->
 <quantities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="words.xsd">
   <stems entry="3">ā</stems>

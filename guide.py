@@ -83,8 +83,8 @@ WINDOW = (
        'to see what they mean.  A right click copies or looks up a word, '
        'and Ctrl and F finds a text in the results.'),
     N_('Ctrl and + or − make the text larger or smaller (Ctrl and 0: as '
-       'usual), and "Dark mode", at the bottom right, makes the window '
-       'dark.'),
+       'usual), and the moon at the bottom right makes the window dark (a '
+       'sun, then, makes it light again).'),
 )
 WEB = (
     N_('Type in the box at the top and press Enter, or "Look up"; the two '
@@ -93,7 +93,8 @@ WEB = (
        'that finds nothing is followed by its near spellings.'),
     N_('The first word of each entry of the results is a link to its own '
        'search, and every search has its own address, which can be '
-       'bookmarked.  "Dark mode" makes the page dark.  At the foot, '
+       'bookmarked.  The moon makes the page dark, and the sun light '
+       'again.  At the foot, '
        '"Earlier searches" lists the recent ones, "Settings" has the other '
        'settings (each with its help), "Help" is this text and "About" '
        'shows the version and the credits.'),
@@ -177,7 +178,10 @@ SOURCES = (
        'and words, in English and in Spanish (source code A).  Collatinus, '
        'by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the '
        'stems and endings, the meanings in French, German, Catalan and '
-       'Galician, and some abbreviations (source code H).'),
+       'Galician, and some abbreviations (source code H).  Collatinus, '
+       'in its turn, made its lexicon with the help of the dictionaries '
+       'of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; '
+       'the README names all the sources and people it thanks.'),
     N_('{name} is free software, distributed under the GNU General Public '
        'License, version 3 or later (see LICENCE.txt): it can be used, '
        'copied, changed and shared, but a program that includes it must be '

@@ -144,8 +144,8 @@ INTRO = {
                 'Ctrl and + or -).  Sizes are in points.'),
     'appearance': N_('The look of the windows and the web page: dark_mode = '
                      'true for dark, false for light (none: the web page '
-                     'follows the system).  Also changed with "Dark mode" '
-                     'in the window and on the web page.'),
+                     'follows the system).  Also changed with the moon (or '
+                     'sun) in the window and on the web page.'),
 }
 FONTS = N_('text_family and text_size: the results (a fixed-width font); '
            'ui_family and ui_size: the rest of the windows.')

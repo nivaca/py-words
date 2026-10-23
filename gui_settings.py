@@ -67,7 +67,7 @@ class SettingsDialog:
         buttons.pack(fill='x')
         close = ttk.Button(buttons, text=tr('Close'), command=win.destroy)
         close.pack(side='right')
-        ttk.Button(buttons, text=tr('Usual settings'),
+        ttk.Button(buttons, text=tr('Default settings'),
                    command=self.usual).pack(side='right', padx=(0, 6))
         if clear_history:
             def clear():
@@ -208,7 +208,7 @@ class SettingsDialog:
 
     def usual(self):
         if not messagebox.askyesno(
-                self.name, tr('Go back to the usual value of every '
+                self.name, tr('Go back to the default value of every '
                               'setting?'), parent=self.win):
             return
         usual = Settings()

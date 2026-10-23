@@ -155,7 +155,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `py-words-v.2.16.zip` (con la versión del programa), con el
+Eso escribe `py-words-v.3.0.zip` (con la versión del programa), con el
 programa dentro de una carpeta del mismo nombre.  Lleva los programas,
 los datos, los iconos y los documentos.  Deja fuera los archivos ocultos
 (`.git`...), lo que se genera al usar o editar el programa
@@ -195,10 +195,9 @@ cuando un editor lo cambia.  Solo se puede entrar desde este equipo, a
 menos que `--host` diga otra cosa (con `--host 0.0.0.0` se puede usar
 desde un teléfono en la misma red); como no hay contraseñas, hágalo solo en
 una red de confianza.  El diccionario no puede editarse desde el
-navegador.  Su casilla "Modo oscuro", junto a "Significados en", la
-oscurece (y, sin marcar, la aclara; hasta que se usa por primera vez, la
-página sigue al sistema); es el mismo ajuste que el de la
-ventana.  `--port` elige el puerto y `--no-browser` no abre el navegador;
+navegador.  Su luna (☾), junto a "Significados en", la oscurece, y
+luego el sol (☀) la vuelve a aclarar (hasta que se usa por primera vez,
+la página sigue al sistema); es el mismo ajuste que el de la ventana.  `--port` elige el puerto y `--no-browser` no abre el navegador;
 Ctrl-C detiene el servidor.
 
 Los resultados de la página se ven como en la ventana: la forma de
@@ -294,11 +293,11 @@ En las ventanas, Ctrl y + o − agrandan o achican el texto, y Ctrl y 0
 restablece el tamaño habitual (Command en lugar de Ctrl en macOS).
 "Fuente…", en el menú Ver y en los Ajustes de la ventana (y en la ventana
 del editor), elige las fuentes: una de ancho fijo para los resultados,
-cuyas columnas deben alinearse, y otra para el resto de la ventana.  "Modo
-oscuro", la casilla de abajo a la derecha de la ventana, oscurece las
-ventanas (el diccionario, sus diálogos y el editor) al instante.  Ambas
-elecciones se recuerdan en el archivo de configuración (véase "Ajustes y
-archivos"). Para abrir el programa desde el menú de aplicaciones, véase
+cuyas columnas deben alinearse, y otra para el resto de la ventana.  La
+luna (☾) de abajo a la derecha de la ventana oscurece al instante las
+ventanas (el diccionario, sus diálogos y el editor), y luego el sol (☀)
+las vuelve a aclarar.  Ambas elecciones se recuerdan en el archivo de
+configuración (véase "Ajustes y archivos"). Para abrir el programa desde el menú de aplicaciones, véase
 "Instalación" más arriba.
 
 La ventana tiene tres menús: Diccionario (el editor del diccionario, los
@@ -1021,6 +1020,33 @@ con `git diff`.
 Versiones
 ---------
 
+- 3.0:
+  - El nuevo primer número señala, con estos cambios, los de la 2.16: la
+    Licencia Pública General de GNU y los datos de Collatinus.
+  - El programa dice ahora de dónde viene su diccionario: WORDS, de
+    William Whitaker; la *Revised Medieval Latin Word-List* de R. E.
+    Latham; *Lengua latina. Vocabulario básico* de J. Echave-Sustaeta, y
+    Collatinus, de Yves Ouvrard y Philippe Verkerk.  Estas fuentes, y la
+    Licencia Pública General de GNU (versión 3 o posterior), están en
+    "Acerca de" (en la ventana, la terminal, la página web, `~A` y
+    `--version`), en una nueva última sección de la ayuda, "Fuentes y
+    licencia", en una nueva sección "Fuentes" de este README y al
+    comienzo de las descripciones de `docs/`.
+  - Los diccionarios y las personas a quienes Collatinus agradece su
+    léxico y sus traducciones reciben aquí también el agradecimiento: los
+    diccionarios de Gaffiot, Jeanneau, Du Cange y Lewis y Short, la
+    extensión del léxico de Philippe Verkerk, el LASLA de Lieja, Pede
+    Certo, Jean-Paul Woitrain, José Luis Redrejo y Philipp Roelli (véase
+    "Fuentes").  Los archivos tomados de Collatinus (`fr.xml`, `de.xml`,
+    `ca.xml`, `gl.xml`, `quantities.xml`) los nombran en su primer
+    comentario.
+  - El modo oscuro se elige ahora con una luna (☾), que se vuelve un sol
+    (☀) mientras la ventana o la página están oscuras, en lugar de la
+    casilla "Modo oscuro".  No necesita imágenes: son dos letras que
+    tienen las fuentes habituales.
+  - En la interfaz en inglés, el botón "Usual settings" de los Ajustes se
+    llama ahora "Default settings" (en español ya era "Ajustes por
+    defecto"), y su pregunta habla ahora del valor por defecto.
 - 2.16:
   - py-words se distribuye ahora bajo la Licencia Pública General de
     GNU, versión 3 o posterior (hasta la 2.15, la licencia MIT), para
@@ -1335,6 +1361,21 @@ El diccionario de py-words viene de estas obras:
   en francés, alemán, catalán y gallego, seis abreviaturas y la forma
   quaesumus (código de fuente H), y la idea de algunos trucos (véase
   "Los significados tomados de Collatinus" y "Las vocales largas").
+
+Collatinus, a su vez, agradece a otros su léxico y sus traducciones (en
+"Remerciements", la última página de su guía), y como esos datos están
+ahora en py-words, yo también se lo agradezco.  Su léxico se hizo con
+ayuda de los diccionarios de F. Gaffiot (el *Gaffiot 2016* de Gérard
+Gréco), de Gérard Jeanneau, de Du Cange (por la École nationale des
+chartes) y de Lewis y Short (los datos de la Perseus Digital Library), y
+del lematizador de William Whitaker; su extensión (`lem_ext.la`,
+`lem_ext.fr`, que py-words usa) la hizo Philippe Verkerk cotejando
+diccionarios digitales.  Las frecuencias de sus lemas vienen de los
+textos lematizados del LASLA de la Universidad de Lieja (Dominique
+Longrée y Gérald Purnelle).  Muchos errores se corrigieron gracias a
+Pede Certo (Emanuela Colombi y Luigi Tessarolo) y a Jean-Paul Woitrain.
+José Luis Redrejo coordinó las traducciones al español, al catalán y al
+gallego, y Philipp Roelli hizo posible el diccionario latín-alemán.
 
 Los significados en español, y las comparaciones con Latham y con
 Echave-Sustaeta, se hicieron con ayuda de Claude, el modelo de lenguaje

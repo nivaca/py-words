@@ -126,15 +126,15 @@
     <tr>“{value}” no puede ser {setting}: debe ser un solo signo de puntuación, distinto de los otros y de ~.</tr>
   </text>
   <text>
-    <en>Go back to the usual value of every setting?</en>
-    <tr>¿Volver al valor habitual de todos los ajustes?</tr>
+    <en>Go back to the default value of every setting?</en>
+    <tr>¿Volver al valor por defecto de todos los ajustes?</tr>
   </text>
   <text>
     <en>Forget the earlier searches (in the window and the command line)?</en>
     <tr>¿Olvidar las búsquedas anteriores (en la ventana y en la línea de órdenes)?</tr>
   </text>
   <text>
-    <en>Usual settings</en>
+    <en>Default settings</en>
     <tr>Ajustes por defecto</tr>
   </text>
   <text>
@@ -2425,8 +2425,8 @@ Claude (el modelo Claude Opus 5.5, de Anthropic).</tr>
     <tr>Fuentes y licencia</tr>
   </text>
   <text>
-    <en>The dictionary is that of WORDS, by William Whitaker (1936-2010), with additions from three other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, the meanings in French, German, Catalan and Galician, and some abbreviations (source code H).</en>
-    <tr>El diccionario es el de WORDS, de William Whitaker (1936-2010), con añadidos de otras tres obras.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, aportó sentidos, palabras y grafías medievales (código de fuente M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, aportó sentidos y palabras, en inglés y en español (código de fuente A).  Collatinus, de Yves Ouvrard y Philippe Verkerk, aportó las vocales largas de las raíces y las desinencias, los significados en francés, alemán, catalán y gallego, y algunas abreviaturas (código de fuente H).</tr>
+    <en>The dictionary is that of WORDS, by William Whitaker (1936-2010), with additions from three other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, the meanings in French, German, Catalan and Galician, and some abbreviations (source code H).  Collatinus, in its turn, made its lexicon with the help of the dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; the README names all the sources and people it thanks.</en>
+    <tr>El diccionario es el de WORDS, de William Whitaker (1936-2010), con añadidos de otras tres obras.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, aportó sentidos, palabras y grafías medievales (código de fuente M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, aportó sentidos y palabras, en inglés y en español (código de fuente A).  Collatinus, de Yves Ouvrard y Philippe Verkerk, aportó las vocales largas de las raíces y las desinencias, los significados en francés, alemán, catalán y gallego, y algunas abreviaturas (código de fuente H).  Collatinus, a su vez, hizo su léxico con ayuda de los diccionarios de Gaffiot, Jeanneau, Du Cange y Lewis y Short, entre otros; el README nombra todas las fuentes y personas a las que agradece.</tr>
   </text>
   <text>
     <en>{name} is free software, distributed under the GNU General Public License, version 3 or later (see LICENCE.txt): it can be used, copied, changed and shared, but a program that includes it must be shared under the same licence, with its source code.  The data of WORDS are free for any use, by permission of William Whitaker.  "About" gives the version and the credits.</en>
@@ -2483,8 +2483,8 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>Modo oscuro</tr>
   </text>
   <text>
-    <en>The look of the windows and the web page: dark_mode = true for dark, false for light (none: the web page follows the system).  Also changed with "Dark mode" in the window and on the web page.</en>
-    <tr>El aspecto de las ventanas y de la página web: dark_mode = true para oscuro, false para claro (si no hay: la página web sigue al sistema).  También se cambia con "Modo oscuro" en la ventana y en la página web.</tr>
+    <en>The look of the windows and the web page: dark_mode = true for dark, false for light (none: the web page follows the system).  Also changed with the moon (or sun) in the window and on the web page.</en>
+    <tr>El aspecto de las ventanas y de la página web: dark_mode = true para oscuro, false para claro (si no hay: la página web sigue al sistema).  También se cambia con la luna (o el sol) en la ventana y en la página web.</tr>
   </text>
   <!-- The help (guide.py) -->
   <text>
@@ -2540,16 +2540,16 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>En los resultados, haga clic en la primera palabra de una entrada para buscarla, o doble clic en cualquier palabra (una palabra de los significados se busca en latín).  Ponga el puntero sobre los códigos entre corchetes o sobre un análisis (GEN.PL) para ver qué significan.  El botón derecho copia o busca una palabra, y Ctrl y F buscan un texto en los resultados.</tr>
   </text>
   <text>
-    <en>Ctrl and + or − make the text larger or smaller (Ctrl and 0: as usual), and "Dark mode", at the bottom right, makes the window dark.</en>
-    <tr>Ctrl y + o − agrandan o achican el texto (Ctrl y 0: como de costumbre), y "Modo oscuro", abajo a la derecha, oscurece la ventana.</tr>
+    <en>Ctrl and + or − make the text larger or smaller (Ctrl and 0: as usual), and the moon at the bottom right makes the window dark (a sun, then, makes it light again).</en>
+    <tr>Ctrl y + o − agrandan o achican el texto (Ctrl y 0: como de costumbre), y la luna de abajo a la derecha oscurece la ventana (un sol, entonces, la vuelve a aclarar).</tr>
   </text>
   <text>
     <en>Type in the box at the top and press Enter, or "Look up"; the two choices below it give the direction of the search, "Meanings in" the language of the meanings, and "Fuzzy search" whether a word that finds nothing is followed by its near spellings.</en>
     <tr>Escriba en el cuadro de arriba y pulse Intro, o "Buscar"; las dos opciones de debajo dan la dirección de la búsqueda, "Significados en" el idioma de los significados, y "Búsqueda aproximada" si a una palabra que no encuentra nada le siguen sus grafías cercanas.</tr>
   </text>
   <text>
-    <en>The first word of each entry of the results is a link to its own search, and every search has its own address, which can be bookmarked.  "Dark mode" makes the page dark.  At the foot, "Earlier searches" lists the recent ones, "Settings" has the other settings (each with its help), "Help" is this text and "About" shows the version and the credits.</en>
-    <tr>La primera palabra de cada entrada de los resultados enlaza con su propia búsqueda, y cada búsqueda tiene su propia dirección, que puede guardarse en marcadores.  "Modo oscuro" oscurece la página.  Al pie, "Búsquedas anteriores" lista las recientes, "Ajustes" tiene los demás ajustes (cada uno con su ayuda), "Ayuda" es este texto y "Acerca de" muestra la versión y los créditos.</tr>
+    <en>The first word of each entry of the results is a link to its own search, and every search has its own address, which can be bookmarked.  The moon makes the page dark, and the sun light again.  At the foot, "Earlier searches" lists the recent ones, "Settings" has the other settings (each with its help), "Help" is this text and "About" shows the version and the credits.</en>
+    <tr>La primera palabra de cada entrada de los resultados enlaza con su propia búsqueda, y cada búsqueda tiene su propia dirección, que puede guardarse en marcadores.  La luna oscurece la página, y el sol la vuelve a aclarar.  Al pie, "Búsquedas anteriores" lista las recientes, "Ajustes" tiene los demás ajustes (cada uno con su ayuda), "Ayuda" es este texto y "Acerca de" muestra la versión y los créditos.</tr>
   </text>
   <text>
     <en>Reading the results</en>

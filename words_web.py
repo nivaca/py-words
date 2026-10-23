@@ -554,7 +554,7 @@ PAGE_TEXTS = {
     't_look_up': N_('Look up'), 't_meanings_in': N_('Meanings in'),
     't_change': N_('Change'), 't_earlier': N_('Earlier searches'),
     't_clear': N_('Clear history'), 't_settings': N_('Settings'),
-    't_apply': N_('Apply'), 't_usual': N_('Usual settings'),
+    't_apply': N_('Apply'), 't_usual': N_('Default settings'),
     't_kept': N_('Changes are kept for next time, also for the command '
                  'line and the window.'),
     't_interface': N_('Language of the interface'), 't_about': N_('About'),
@@ -566,7 +566,7 @@ APPEARANCE = 'appearance'               # (the section of config.toml)
 SCRIPT_TEXTS = {
     'j_forget': N_('Forget the earlier searches (also those of the window '
                    'and the command line)?'),
-    'j_usual': N_('Go back to the usual value of every setting?'),
+    'j_usual': N_('Go back to the default value of every setting?'),
 }
 
 PAGE = Template("""<!doctype html>
@@ -629,6 +629,16 @@ button.primary { background: var(--accent); color: var(--bg);
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .lang { display: flex; gap: 1rem; flex-basis: 100%; color: var(--muted); }
 form.meanings { color: var(--muted); margin: 0 0 .5rem; }
+/* dark mode: a moon makes the page dark, a sun light again (the box is
+   there, unseen, for the keyboard and the form) */
+#dark label { cursor: pointer; font-size: 1.25rem; line-height: 1; }
+#dark input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+#dark .mode::before { content: "\\263E\\FE0E"; }
+#dark input:checked + .mode::before { content: "\\2600\\FE0E"; }
+#dark input:focus-visible + .mode { outline: 2px solid var(--focus);
+  outline-offset: 2px; }
+.unseen { position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; }
 .row { display: flex; flex-wrap: wrap; gap: 0 1.5rem; align-items: baseline; }
 select { font: inherit; color: var(--fg); background: var(--bg);
   border: 1px solid var(--line); border-radius: 6px; padding: .2rem .4rem; }
@@ -717,8 +727,10 @@ $t_fuzzy</label>
 <input type="hidden" name="token" value="$token">
 <input type="hidden" name="q" value="$query">
 <input type="hidden" name="lang" value="$lang">
-<label><input type="checkbox" name="dark" value="1"$dark_checked>
-$t_dark</label>
+<label title="$t_dark">
+<input type="checkbox" name="dark" value="1"$dark_checked><span
+class="mode" aria-hidden="true"></span><span class="unseen">$t_dark</span>
+</label>
 <noscript><button>$t_change</button></noscript>
 </form>
 </div>

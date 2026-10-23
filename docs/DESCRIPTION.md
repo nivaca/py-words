@@ -15,9 +15,12 @@ Latin Word-List from British and Irish Sources*, for medieval senses,
 words and spellings; J. Echave-Sustaeta's *Lengua latina. Vocabulario
 básico*, for senses and words in English and in Spanish; and Collatinus,
 by Yves Ouvrard and Philippe Verkerk, for the long vowels and the
-meanings in French, German, Catalan and Galician.  py-words is free
-software, under the GNU General Public License, version 3 or later; the
-data of WORDS are free for any use, by permission of Whitaker.
+meanings in French, German, Catalan and Galician (Collatinus, in its
+turn, made its lexicon with the dictionaries of Gaffiot, Jeanneau, Du
+Cange and Lewis and Short, among others, and the README names all the
+sources and people it thanks).  py-words is free software, under the
+GNU General Public License, version 3 or later; the data of WORDS are
+free for any use, by permission of Whitaker.
 
 Nicolas Vaughan is Associate Professor of Literature at the School of Arts
 and Humanities of the Universidad de los Andes, Bogotá, Colombia.
@@ -357,4 +360,4 @@ version was tried in a browser controlled by a script (searches in both
 directions, the links of the results, the Back button, dark mode, the
 Spanish interface, and the settings that stay after reloading), from a
 local server and also in the published site.  The program has now 39
-files, around 13,900 lines.
+files, around 14,000 lines.

@@ -112,9 +112,14 @@ class SettingsDialogTests(unittest.TestCase):
 
     def test_boxes_in_the_window(self):
         """The settings are in the dialogue, but for "Fuzzy search", beside
-        "Meanings in"; and the window has the "Dark mode" box."""
+        "Meanings in"; and the window has the dark mode button: a moon,
+        and a sun while the window is dark."""
+        import words_gui
         self.assertEqual([b.cget('text') for b in self.boxes()],
-                         ['Fuzzy search', 'Dark mode'])
+                         ['Fuzzy search', words_gui.MOON])
+        self.app.dark.set(True)
+        self.assertEqual(self.app.dark_box.cget('text'), words_gui.SUN)
+        self.app.dark.set(False)
 
     def test_fuzzy_search(self):
         """The "Fuzzy search" box changes the setting, and keeps it."""

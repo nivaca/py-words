@@ -47,6 +47,7 @@ class WebTests(unittest.TestCase):
             page = self.call()[2]
             self.assertIn('<html lang="en">', page)    # (as the system)
             self.assertIn(box + '>', page)
+            self.assertIn('<label title="Dark mode">\n', page)  # (a moon)
             for body, saved, attribute, checked in (
                     (f'token={token}&dark=1', True, 'dark', ' checked'),
                     (f'token={token}', False, 'light', '')):

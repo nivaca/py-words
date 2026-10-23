@@ -152,7 +152,7 @@ for distributing it:
 
     $ python3 bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `py-words-v.2.16.zip` (with the version of the program), with
+This writes `py-words-v.3.0.zip` (with the version of the program), with
 the program inside a folder of the same name.  It contains the programs,
 the data, the icons and the documents.  It does not contain hidden files
 (`.git` ...), nor the things that are made when the program runs or is
@@ -192,10 +192,10 @@ history with the other programs, and it reads the dictionary again when
 an editor changes it.  Only this computer can access it, except if you
 say otherwise with `--host` (`--host 0.0.0.0` allows to use it from a
 phone in the same network); there are no passwords, so do this only in a
-network you trust.  Its box "Dark mode", next to "Meanings in", makes
-the page dark (and unticked, light; until you use it the first time, the
-page follows the system); it is the same setting as the one of the
-window.  It is not possible to edit the dictionary from the browser.
+network you trust.  Its moon (☾), next to "Meanings in", makes the page
+dark, and then the sun (☀) light again (until you use it the first
+time, the page follows the system); it is the same setting as the one of
+the window.  It is not possible to edit the dictionary from the browser.
 `--port` chooses the port and `--no-browser` does not open the browser;
 Ctrl-C stops the server.
 
@@ -292,9 +292,9 @@ and 0 puts again the normal size (in macOS, Command instead of Ctrl).
 "Font…", in the menu View and in the Settings of the window (and in the
 window of the editor), chooses the fonts: one of fixed width for the
 results, because their columns must be aligned, and another for the rest
-of the window.  "Dark mode", the box at the bottom right of the window,
-makes the windows dark (the dictionary, its dialogues and the editor)
-immediately.  Both choices are remembered in the configuration file (see
+of the window.  The moon (☾) at the bottom right of the window makes the
+windows dark at once (the dictionary, its dialogues and the editor), and
+then the sun (☀) makes them light again.  Both choices are remembered in the configuration file (see
 "Settings and files").  For starting the program from the applications
 menu, see "Installation" above.
 
@@ -1003,6 +1003,30 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.0:
+  - The new first number marks, with these changes, those of 2.16: the
+    GNU General Public License and the data of Collatinus.
+  - The program says now where its dictionary comes from: WORDS, by
+    William Whitaker; R. E. Latham's *Revised Medieval Latin Word-List*;
+    J. Echave-Sustaeta's *Lengua latina. Vocabulario básico*; and
+    Collatinus, by Yves Ouvrard and Philippe Verkerk.  These sources, and
+    the GNU General Public License (version 3 or later), are in "About"
+    (in the window, the terminal, the web page, `~A` and `--version`), in
+    a new last section of the help, "Sources and licence", in a new
+    section "Sources" of this README, and at the beginning of the
+    descriptions in `docs/`.
+  - The dictionaries and people that Collatinus thanks for its lexicon and
+    translations are thanked here too: the dictionaries of Gaffiot,
+    Jeanneau, Du Cange and Lewis and Short, the lexicon extension of
+    Philippe Verkerk, the LASLA of Liège, Pede Certo, Jean-Paul Woitrain,
+    José Luis Redrejo and Philipp Roelli (see "Sources").  The files taken
+    from Collatinus (`fr.xml`, `de.xml`, `ca.xml`, `gl.xml`,
+    `quantities.xml`) name them in their first comment.
+  - Dark mode is chosen now with a moon (☾), which becomes a sun (☀) while
+    the window or the page is dark, instead of the box "Dark mode".  It
+    needs no images: they are two letters that the usual fonts have.
+  - The button "Usual settings" of the Settings is now "Default settings",
+    and its question asks about the default values.
 - 2.16:
   - py-words is distributed now under the GNU General Public License,
     version 3 or later (until 2.15, the MIT License), so that it can take
@@ -1304,6 +1328,22 @@ The dictionary of py-words comes from these works:
   German, Catalan and Galician, six abbreviations and the form quaesumus
   (source code H), and the ideas of some tricks (see "The meanings from
   Collatinus" and "The long vowels").
+
+Collatinus, in its turn, thanks others for its lexicon and its
+translations (in "Remerciements", the last page of its guide), and as
+these data are now in py-words, I thank them too.  Its lexicon was made
+with the help of the dictionaries of F. Gaffiot (the *Gaffiot 2016* of
+Gérard Gréco), of Gérard Jeanneau, of Du Cange (by the École nationale
+des chartes) and of Lewis and Short (the data of the Perseus Digital
+Library), and of the lemmatiser of William Whitaker; its extension
+(`lem_ext.la`, `lem_ext.fr`, which py-words uses) was made by Philippe
+Verkerk by collating digital dictionaries.  The frequencies of its
+lemmas come from the lemmatised texts of the LASLA of the University of
+Liège (Dominique Longrée and Gérald Purnelle).  Many mistakes were
+corrected thanks to Pede Certo (Emanuela Colombi and Luigi Tessarolo)
+and to Jean-Paul Woitrain.  José Luis Redrejo coordinated the
+translations into Spanish, Catalan and Galician, and Philipp Roelli made
+possible the Latin-German dictionary.
 
 The Spanish meanings, and the comparisons with Latham and
 Echave-Sustaeta, were made with the help of Claude, the large language

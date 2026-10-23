@@ -9,7 +9,7 @@ import sys
 NAME = 'py-words'
 #  Al subir la versión: también el nombre del zip en los dos README, el
 #  título de docs/DESCRIPCIÓN_es.md y las notas de "Version"/"Versiones".
-VERSION = '2.16'
+VERSION = '3.0'
 URL = 'https://github.com/nivaca/py-words'
 
 #  The credits, with {name}, {version} and {url} for those above
