@@ -152,7 +152,7 @@ for distributing it:
 
     $ python3 bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `py-words-v.3.0.zip` (with the version of the program), with
+This writes `py-words-v.3.1.zip` (with the version of the program), with
 the program inside a folder of the same name.  It contains the programs,
 the data, the icons and the documents.  It does not contain hidden files
 (`.git` ...), nor the things that are made when the program runs or is
@@ -1014,6 +1014,19 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.1:
+  - The online version starts with a loading bar.  The download of
+    `py-words.zip` moves it by its bytes, and the other stages (loading
+    Python, unpacking, reading the dictionary) by how long they took at
+    the last visit in that browser; while Python reads the dictionary the
+    bar is moved by a CSS transition, which the browser animates even
+    when the page is busy.  After a new version, when the cache is made
+    again, it expects the longer time of that first reading.
+  - The online zip is smaller (3.2 MB instead of 4.4): the meanings in
+    French, German, Catalan and Galician are downloaded only the first
+    time their language is chosen.  The zip keeps only the start of
+    these files, with their names for the list "Meanings in"
+    (`pages/build.py`; a new test checks what it writes).
 - 3.0:
   - The new first number marks, with these changes, those of 2.16: the
     GNU General Public License and the data of Collatinus.

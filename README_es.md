@@ -155,7 +155,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `py-words-v.3.0.zip` (con la versión del programa), con el
+Eso escribe `py-words-v.3.1.zip` (con la versión del programa), con el
 programa dentro de una carpeta del mismo nombre.  Lleva los programas,
 los datos, los iconos y los documentos.  Deja fuera los archivos ocultos
 (`.git`...), lo que se genera al usar o editar el programa
@@ -1032,6 +1032,21 @@ con `git diff`.
 Versiones
 ---------
 
+- 3.1:
+  - La versión en línea arranca con una barra de carga.  La descarga de
+    `py-words.zip` la mueve según sus bytes, y las demás etapas (cargar
+    Python, descomprimir, leer el diccionario) según lo que tardaron en
+    la última visita en ese navegador; mientras Python lee el
+    diccionario, la barra avanza con una transición de CSS, que el
+    navegador anima aunque la página esté ocupada.  Tras una versión
+    nueva, cuando la caché se rehace, cuenta con el tiempo más largo de
+    esa primera lectura.
+  - El zip en línea es más pequeño (3,2 MB en lugar de 4,4): los
+    significados en francés, alemán, catalán y gallego se descargan solo
+    la primera vez que se elige su idioma.  El zip guarda solo el
+    comienzo de esos archivos, con sus nombres para la lista
+    "Significados en" (`pages/build.py`; una prueba nueva comprueba lo
+    que escribe).
 - 3.0:
   - El nuevo primer número señala, con estos cambios, los de la 2.16: la
     Licencia Pública General de GNU y los datos de Collatinus.

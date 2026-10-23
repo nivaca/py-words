@@ -350,7 +350,7 @@ tells all of it in detail.
 Testing
 -------
 
-The program has unit tests and regression tests (`tests/`), 268 in
+The program has unit tests and regression tests (`tests/`), 269 in
 total, that run with Python 3.11 (the oldest it supports) and with the
 last Python.  The regression tests run the inputs inherited from the Ada
 version and compare the output with expected files already revised.  The
