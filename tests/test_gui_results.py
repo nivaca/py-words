@@ -126,6 +126,6 @@ class WindowTests(unittest.TestCase):
         self.assertIn(('friend', True), examples)
 
     def test_pearse_codes_are_shown_as_they_are(self):
-        self.app.change_setting('do_pearse_codes', True)
+        self.app.change_setting('pearse_codes', True)
         self.look_up('arma')
         self.assertFalse(self.app.text.tag_ranges('headword'))

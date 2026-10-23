@@ -150,18 +150,18 @@ class FontTests(unittest.TestCase):
             os.path.abspath(__file__))), 'data')
         app = words_gui.App(self.root, data)
         self.wait_for(app, self.root)
-        self.assertFalse(app.setting('do_examples'))
-        app.change_setting('do_examples', True)
-        self.assertIs(config.section('parameters')['do_examples'], True)
+        self.assertFalse(app.setting('show_examples'))
+        app.change_setting('show_examples', True)
+        self.assertIs(config.section('parameters')['show_examples'], True)
         # the next window starts with it
-        self.assertTrue(app.session.settings.do_examples)
+        self.assertTrue(app.session.settings.show_examples)
         root = self.tk.Tk()
         again = None
         try:
             again = words_gui.App(root, data)
             self.wait_for(again, root)
-            self.assertTrue(again.setting('do_examples'))
-            self.assertTrue(again.session.settings.do_examples)
+            self.assertTrue(again.setting('show_examples'))
+            self.assertTrue(again.session.settings.show_examples)
         finally:
             root.destroy()
             del again, root

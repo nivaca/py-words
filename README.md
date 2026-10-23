@@ -309,7 +309,7 @@ in any word (a word of the meanings is looked up in Latin).  If you put
 the mouse over the codes in brackets or over an analysis (GEN.PL), a
 small box explains what they mean.  With the right button you can copy or
 look up a word, and Ctrl and F finds a text in the results.  When the
-developer mode do_pearse_codes is on, the results are shown as they are,
+developer mode pearse_codes is on, the results are shown as they are,
 without colours, because their layout is different.
 
     words.py                          interactive
@@ -373,8 +373,7 @@ After each word, the program shows what it can be:
           PERF PASSIVE PPL + verb TO_BE => PASSIVE perfect system
 
 For a dictionary entry it shows the principal parts and the grammar, the
-codes in brackets (see below; the developer mode show_dictionary_codes
-hides them), the meaning, and the forms that the word can be, written as
+codes in brackets (see below; the parameter show_codes hides them), the meaning, and the forms that the word can be, written as
 stem-ending.  If the word has a prefix, a suffix or an enclitic, or if a
 trick was necessary for finding it (a change of spelling, a syncopated
 perfect, two words written as one ...), this has its own line, followed
@@ -503,10 +502,28 @@ the command line, for one run.
 Settings and files
 ------------------
 
-The parameters (`#`) and the developer modes (`!`) are the ones of the
-original program; in their dialogues, `?` explains each one.  In the
-window, "Settings…" shows all of them, with what each one does; a change
-there is applied immediately.  They are kept, together with the fonts of
+The parameters (`#`) and the developer modes (`!`) come from the original
+program; in their dialogues, `?` explains each one.  In the window,
+"Settings…" shows all of them, with what each one does; a change there is
+applied immediately.  The parameters are of two kinds.  What the results
+show: show_dictionary_forms, show_only_meanings, use_glosses,
+show_long_vowels, show_codes, explain_codes (the age and frequency in
+words), show_examples, trim_output and trim_medieval.  How words are
+looked up: fuzzy_search, use_affixes, use_tricks, medieval_spellings,
+read_compounds, ignore_unknown_names, unknowns_only and near_entries.
+The developer modes are show_entry_source, pearse_codes, word_list_check
+and pause_in_screen_output.
+
+Until 3.1 there were 33 of them, many only for testing WORDS itself.
+Now some became one (show_age and show_frequency are explain_codes;
+show_dictionary and show_dictionary_line, show_entry_source), others were
+taken out, because they are always on as they usually were (the
+prefixes, suffixes and enclitics, syncope, the two words written as one,
+and leaving out archaic and uncommon forms with trim_output), and the
+rest received clearer names (do_fixes is use_affixes, do_tricks
+use_tricks, and so on).  A configuration file with the old names is read
+as before, and it is written again with the new ones; the old WORD.MOD
+and WORD.MDV files can keep their names.  They are kept, together with the fonts of
 the windows and (if you want) the data folder, in one configuration
 file, `config.toml`:
 
@@ -530,13 +547,13 @@ text, with a comment for each setting, and you can edit it by hand:
 
     [parameters]
     trim_output = true
-    do_examples = false
+    show_examples = false
     language = "en"          # the language of the meanings
     interface = "en"         # the language of the interface
     ...
 
     [developer]
-    use_prefixes = true
+    pearse_codes = false
     start_file_character = "@"
     ...
 
@@ -559,7 +576,7 @@ The original program could also write the results, the unknown words and
 some statistics to the files WORD.OUT, WORD.UNK and WORD.STA.  I took
 these settings out: to keep the results in a file, use `-o FILE` or
 redirect the output (`words.py -f text.txt > results.txt`), and for the
-unknown words of a text, the parameter do_unknowns_only.  A
+unknown words of a text, the parameter unknowns_only.  A
 configuration file that still has those settings is read without
 complaint, and they are dropped from it when it is saved again.
 
@@ -667,7 +684,7 @@ next time (the setting `language` in the configuration file, `en` if it
 does not say other thing).  `--language es` uses another one for one run
 of `words.py`, and `--languages` lists the ones that exist.  The search to
 Latin (`~E`, the second direction in the window, F2) goes from the
-language chosen.  The example glosses (`do_examples`) are in English, and
+language chosen.  The example glosses (`show_examples`) are in English, and
 they are shown only with English meanings.  `words_check.py` checks also
 the language files, and warns about meanings of ids that don't exist.
 

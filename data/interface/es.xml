@@ -102,14 +102,6 @@
     <tr>{name}: ajustes</tr>
   </text>
   <text>
-    <en>Parameters</en>
-    <tr>Parámetros</tr>
-  </text>
-  <text>
-    <en>The parameters (# in the command line).</en>
-    <tr>Los parámetros (# en la línea de órdenes).</tr>
-  </text>
-  <text>
     <en>Developer modes</en>
     <tr>Modos de desarrollo</tr>
   </text>
@@ -150,10 +142,6 @@
     <tr>Borrar historial</tr>
   </text>
   <text>
-    <en>Leave out the least likely results: forms that are only possible in theory, and archaic, medieval or uncommon ones when more common results were found (see the developer modes omit_archaic, omit_medieval and omit_uncommon).  A note says when something was left out.  In English-to-Latin lookups, show only the best six results.  Poets use unusual words and forms, so these can be trimmed wrongly.</en>
-    <tr>Omitir los resultados menos probables: formas solo posibles en teoría, y las arcaicas, medievales o poco comunes cuando se hallaron resultados más comunes (véanse los modos de desarrollo omit_archaic, omit_medieval y omit_uncommon).  Una nota avisa cuando se omitió algo.  En las búsquedas hacia el latín, mostrar solo los seis mejores resultados.  Los poetas usan palabras y formas poco comunes, que así pueden omitirse por error.</tr>
-  </text>
-  <text>
     <en>Show only the words that are not found, to check a text for words missing from the dictionary.</en>
     <tr>Mostrar solo las palabras que no se encuentran, para revisar en un texto las palabras que faltan en el diccionario.</tr>
   </text>
@@ -170,20 +158,8 @@
     <tr>Cuando una palabra no está en el diccionario, probarla como una palabra conocida con un prefijo o un sufijo.  Los resultados pueden ser menos fiables que los hallados directamente.</tr>
   </text>
   <text>
-    <en>When a word is still not found, try other spellings (ae for e, ph for f, assimilated prefixes ...), syncopated forms and two words written as one.  Such results are marked as such.</en>
-    <tr>Cuando una palabra sigue sin encontrarse, probar otras grafías (ae por e, ph por f, prefijos asimilados ...), formas sincopadas y dos palabras escritas como una.  Esos resultados se marcan como tales.</tr>
-  </text>
-  <text>
     <en>Show each entry with its principal parts and grammar (amicus, amici  noun, 2nd declension, masculine).</en>
     <tr>Mostrar cada entrada con sus partes principales y su gramática (amicus, amici  sustantivo, 2.ª declinación, masculino).</tr>
-  </text>
-  <text>
-    <en>Always show when a word or form was used (archaic, classical, medieval ...), not only when it is not "always".</en>
-    <tr>Mostrar siempre cuándo se usó una palabra o forma (arcaica, clásica, medieval ...), no solo cuando no es "siempre".</tr>
-  </text>
-  <text>
-    <en>Always show how frequent a word or form is, not only when it is uncommon.</en>
-    <tr>Mostrar siempre la frecuencia de una palabra o forma, no solo cuando es poco común.</tr>
   </text>
   <text>
     <en>Show an English pattern for each form ("~'s; of ~" for a genitive), with ~ standing for the meaning.</en>
@@ -218,72 +194,12 @@
     <tr>Guardar estos ajustes en el archivo de configuración, config.toml (en Linux, en ~/.config/py-words), para usarlos en el próximo inicio.  Es texto plano y también puede editarse; words.py --config muestra dónde está.</tr>
   </text>
   <text>
-    <en>Show which dictionary (general or special) each entry is from.</en>
-    <tr>Mostrar de qué diccionario (general o especial) es cada entrada.</tr>
-  </text>
-  <text>
-    <en>Show the number of each entry in its dictionary file.</en>
-    <tr>Mostrar el número de cada entrada en su archivo de diccionario.</tr>
-  </text>
-  <text>
     <en>Show the codes of each entry: age, area, geography, frequency and source, as in [XXXBO].</en>
     <tr>Mostrar los códigos de cada entrada: época, área, geografía, frecuencia y fuente, como en [XXXBO].</tr>
   </text>
   <text>
     <en>Start each line of the results with a code saying what it is (01 a form, 02 an entry, 03 a meaning, 05 an affix, 06 a trick, 00 an unknown word), for programs that read the output.</en>
     <tr>Empezar cada línea de los resultados con un código que dice qué es (01 una forma, 02 una entrada, 03 un significado, 05 un afijo, 06 un truco, 00 una palabra desconocida), para programas que leen la salida.</tr>
-  </text>
-  <text>
-    <en>Analyse only the first word of each line, for checking word lists.</en>
-    <tr>Analizar solo la primera palabra de cada línea, para revisar listas de palabras.</tr>
-  </text>
-  <text>
-    <en>With do_only_initial_word: accept only dictionary forms (nominative singular, first person present ...).</en>
-    <tr>Con do_only_initial_word: aceptar solo formas de diccionario (nominativo singular, primera persona del presente ...).</tr>
-  </text>
-  <text>
-    <en>Find words only with prefixes and suffixes.</en>
-    <tr>Hallar palabras solo con prefijos y sufijos.</tr>
-  </text>
-  <text>
-    <en>Try prefixes and suffixes even when the word was found without them.</en>
-    <tr>Probar prefijos y sufijos aunque la palabra se haya hallado sin ellos.</tr>
-  </text>
-  <text>
-    <en>Use prefixes when analysing words.</en>
-    <tr>Usar prefijos al analizar las palabras.</tr>
-  </text>
-  <text>
-    <en>Use suffixes when analysing words.</en>
-    <tr>Usar sufijos al analizar las palabras.</tr>
-  </text>
-  <text>
-    <en>Use enclitics (-que, -ne, -cumque ...).</en>
-    <tr>Usar enclíticos (-que, -ne, -cumque ...).</tr>
-  </text>
-  <text>
-    <en>With do_tricks, also try medieval spellings (e for ae, y for i, single for doubled consonants ...).</en>
-    <tr>Con do_tricks, probar también grafías medievales (e por ae, y por i, consonantes simples por dobles ...).</tr>
-  </text>
-  <text>
-    <en>Try syncopated perfects (amasti for amavisti).</en>
-    <tr>Probar perfectos sincopados (amasti por amavisti).</tr>
-  </text>
-  <text>
-    <en>With do_tricks, try an unknown word as two words written together.</en>
-    <tr>Con do_tricks, probar una palabra desconocida como dos palabras escritas juntas.</tr>
-  </text>
-  <text>
-    <en>With trim_output, leave out archaic forms when others were found.</en>
-    <tr>Con trim_output, omitir las formas arcaicas cuando se hallaron otras.</tr>
-  </text>
-  <text>
-    <en>With trim_output, leave out medieval forms when others were found.</en>
-    <tr>Con trim_output, omitir las formas medievales cuando se hallaron otras.</tr>
-  </text>
-  <text>
-    <en>With trim_output, leave out uncommon forms when others were found.</en>
-    <tr>Con trim_output, omitir las formas poco comunes cuando se hallaron otras.</tr>
   </text>
   <text>
     <en>In interactive use, pause after each screenful of results.</en>
@@ -2018,124 +1934,16 @@
     <tr>Recortar los resultados</tr>
   </text>
   <text>
-    <en>Do unknowns only</en>
-    <tr>Solo las desconocidas</tr>
-  </text>
-  <text>
     <en>Ignore unknown names</en>
     <tr>Ignorar los nombres desconocidos</tr>
-  </text>
-  <text>
-    <en>Do compounds</en>
-    <tr>Tiempos compuestos</tr>
-  </text>
-  <text>
-    <en>Do fixes</en>
-    <tr>Afijos</tr>
-  </text>
-  <text>
-    <en>Do tricks</en>
-    <tr>Trucos</tr>
-  </text>
-  <text>
-    <en>Do dictionary forms</en>
-    <tr>Formas de diccionario</tr>
-  </text>
-  <text>
-    <en>Show age</en>
-    <tr>Mostrar la época</tr>
-  </text>
-  <text>
-    <en>Show frequency</en>
-    <tr>Mostrar la frecuencia</tr>
-  </text>
-  <text>
-    <en>Do examples</en>
-    <tr>Ejemplos</tr>
   </text>
   <text>
     <en>Use glosses</en>
     <tr>Usar glosas</tr>
   </text>
   <text>
-    <en>Do only meanings</en>
-    <tr>Solo los significados</tr>
-  </text>
-  <text>
-    <en>Do stems for unknown</en>
-    <tr>Raíces de las desconocidas</tr>
-  </text>
-  <text>
     <en>Fuzzy search</en>
     <tr>Búsqueda aproximada</tr>
-  </text>
-  <text>
-    <en>Show dictionary</en>
-    <tr>Mostrar el diccionario</tr>
-  </text>
-  <text>
-    <en>Show dictionary line</en>
-    <tr>Mostrar la línea del diccionario</tr>
-  </text>
-  <text>
-    <en>Show dictionary codes</en>
-    <tr>Mostrar los códigos del diccionario</tr>
-  </text>
-  <text>
-    <en>Do pearse codes</en>
-    <tr>Códigos de Pearse</tr>
-  </text>
-  <text>
-    <en>Do only initial word</en>
-    <tr>Solo la primera palabra</tr>
-  </text>
-  <text>
-    <en>For word list check</en>
-    <tr>Revisión de listas de palabras</tr>
-  </text>
-  <text>
-    <en>Do only fixes</en>
-    <tr>Solo afijos</tr>
-  </text>
-  <text>
-    <en>Do fixes anyway</en>
-    <tr>Afijos de todos modos</tr>
-  </text>
-  <text>
-    <en>Use prefixes</en>
-    <tr>Usar prefijos</tr>
-  </text>
-  <text>
-    <en>Use suffixes</en>
-    <tr>Usar sufijos</tr>
-  </text>
-  <text>
-    <en>Use tackons</en>
-    <tr>Usar enclíticos</tr>
-  </text>
-  <text>
-    <en>Do medieval tricks</en>
-    <tr>Trucos medievales</tr>
-  </text>
-  <text>
-    <en>Do syncope</en>
-    <tr>Síncopa</tr>
-  </text>
-  <text>
-    <en>Do two words</en>
-    <tr>Dos palabras</tr>
-  </text>
-  <text>
-    <en>Omit archaic</en>
-    <tr>Omitir las arcaicas</tr>
-  </text>
-  <text>
-    <en>Omit medieval</en>
-    <tr>Omitir las medievales</tr>
-  </text>
-  <text>
-    <en>Omit uncommon</en>
-    <tr>Omitir las poco comunes</tr>
   </text>
   <text>
     <en>Pause in screen output</en>
@@ -2596,10 +2404,6 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>Cada letra puede ser:</tr>
   </text>
   <text>
-    <en>An entry can have more than one source: then the others follow the five letters, each after a + ([XXXCO+M] is also from source M).  The age, when it is known, and the frequency, when it is lesser or rarer, are also given in words after the codes (archaic, lesser ...).  The developer mode show_dictionary_codes hides the codes, and the dictionary editors explain each code of an entry as it is edited.</en>
-    <tr>Una entrada puede tener más de una fuente: entonces las demás van tras las cinco letras, cada una después de un + ([XXXCO+M] procede también de la fuente M).  La época, cuando se conoce, y la frecuencia, cuando es menor o más rara, también se dan en palabras tras los códigos (arcaico, menos frecuente...).  El modo de desarrollo show_dictionary_codes oculta los códigos, y los editores del diccionario explican cada código de una entrada mientras se edita.</tr>
-  </text>
-  <text>
     <en>The abbreviations of the analyses</en>
     <tr>Las abreviaturas de los análisis</tr>
   </text>
@@ -2745,10 +2549,6 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>Mostrar vocales largas</tr>
   </text>
   <text>
-    <en>Mark the long vowels of the stems in the forms (amīc-us), where data/quantities.xml knows them.  The endings are not marked, and neither are vowels long before two consonants.</en>
-    <tr>Marcar las vocales largas de las raíces en las formas (amīc-us), donde data/quantities.xml las conoce.  Las desinencias no se marcan, ni tampoco las vocales largas ante dos consonantes.</tr>
-  </text>
-  <text>
     <en>&lt;stems&gt; must have from one to four stems</en>
     <tr>&lt;stems&gt; debe tener de una a cuatro raíces</tr>
   </text>
@@ -2763,5 +2563,113 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
   <text>
     <en>"{marked}" is not the stem "{stem}" of the entry: it is not used</en>
     <tr>"{marked}" no es la raíz "{stem}" de la entrada: no se usa</tr>
+  </text>
+  <text>
+    <en>What the results show</en>
+    <tr>Qué muestran los resultados</tr>
+  </text>
+  <text>
+    <en>How words are looked up</en>
+    <tr>Cómo se buscan las palabras</tr>
+  </text>
+  <text>
+    <en>Parameters (# in the command line).</en>
+    <tr>Parámetros (# en la línea de órdenes).</tr>
+  </text>
+  <text>
+    <en>Show dictionary forms</en>
+    <tr>Mostrar las formas de diccionario</tr>
+  </text>
+  <text>
+    <en>Show only meanings</en>
+    <tr>Mostrar solo los significados</tr>
+  </text>
+  <text>
+    <en>Show codes</en>
+    <tr>Mostrar los códigos</tr>
+  </text>
+  <text>
+    <en>Explain codes</en>
+    <tr>Explicar los códigos</tr>
+  </text>
+  <text>
+    <en>Show examples</en>
+    <tr>Mostrar ejemplos</tr>
+  </text>
+  <text>
+    <en>Trim medieval</en>
+    <tr>Recortar las medievales</tr>
+  </text>
+  <text>
+    <en>Use affixes</en>
+    <tr>Usar afijos</tr>
+  </text>
+  <text>
+    <en>Use tricks</en>
+    <tr>Usar trucos</tr>
+  </text>
+  <text>
+    <en>Medieval spellings</en>
+    <tr>Grafías medievales</tr>
+  </text>
+  <text>
+    <en>Read compounds</en>
+    <tr>Leer tiempos compuestos</tr>
+  </text>
+  <text>
+    <en>Unknowns only</en>
+    <tr>Solo las desconocidas</tr>
+  </text>
+  <text>
+    <en>Near entries</en>
+    <tr>Entradas cercanas</tr>
+  </text>
+  <text>
+    <en>Show entry source</en>
+    <tr>Mostrar el origen de la entrada</tr>
+  </text>
+  <text>
+    <en>Pearse codes</en>
+    <tr>Códigos de Pearse</tr>
+  </text>
+  <text>
+    <en>Word list check</en>
+    <tr>Revisar listas de palabras</tr>
+  </text>
+  <text>
+    <en>Always say in words when a word or form was used (archaic, classical, medieval ...) and how frequent it is, not only when it is unusual.</en>
+    <tr>Decir siempre con palabras cuándo se usó una palabra o forma (arcaica, clásica, medieval ...) y qué tan frecuente es, no solo cuando es inusual.</tr>
+  </text>
+  <text>
+    <en>An entry can have more than one source: then the others follow the five letters, each after a + ([XXXCO+M] is also from source M).  The age, when it is known, and the frequency, when it is lesser or rarer, are also given in words after the codes (archaic, lesser ...).  The parameter show_codes hides the codes, and the dictionary editors explain each code of an entry as it is edited.</en>
+    <tr>Una entrada puede tener más de una fuente: entonces las demás van tras las cinco letras, cada una después de un + ([XXXCO+M] procede también de la fuente M).  La época, cuando se conoce, y la frecuencia, cuando es menor o más rara, también se dan en palabras tras los códigos (arcaico, menos frecuente...).  El parámetro show_codes oculta los códigos, y los editores del diccionario explican cada código de una entrada mientras se edita.</tr>
+  </text>
+  <text>
+    <en>Analyse only the first word of each line, and accept only dictionary forms (nominative singular, first person present ...), for checking word lists.</en>
+    <tr>Analizar solo la primera palabra de cada línea, y aceptar solo formas de diccionario (nominativo singular, primera persona del presente ...), para revisar listas de palabras.</tr>
+  </text>
+  <text>
+    <en>Leave out the least likely results: forms that are only possible in theory, and archaic or uncommon ones when more common results were found.  A note says when something was left out.  In the search to Latin, show only the best six results.  Poets use unusual words and forms, so these can be trimmed wrongly.</en>
+    <tr>Omitir los resultados menos probables: formas solo posibles en teoría, y las arcaicas o poco comunes cuando se hallaron resultados más comunes.  Una nota avisa cuando se omitió algo.  En la búsqueda hacia el latín, mostrar solo los seis mejores resultados.  Los poetas usan palabras y formas poco comunes, que así pueden omitirse por error.</tr>
+  </text>
+  <text>
+    <en>Mark the long vowels of the stems and endings in the forms (amīc-ōrum), where they are known.  Vowels long before two consonants are not marked, but for those before ns and nf.</en>
+    <tr>Marcar las vocales largas de las raíces y las desinencias en las formas (amīc-ōrum), donde se conocen.  Las vocales largas ante dos consonantes no se marcan, salvo ante ns y nf.</tr>
+  </text>
+  <text>
+    <en>Show which dictionary (general or special) each entry is from, and its number in that file.</en>
+    <tr>Mostrar de qué diccionario (general o especial) es cada entrada, y su número en ese archivo.</tr>
+  </text>
+  <text>
+    <en>When a word is still not found, try other spellings (ae for e, ph for f, assimilated prefixes ...) and two words written as one.  Such results are marked as such.</en>
+    <tr>Cuando una palabra sigue sin encontrarse, probar otras grafías (ae por e, ph por f, prefijos asimilados ...) y dos palabras escritas como una.  Esos resultados se marcan como tales.</tr>
+  </text>
+  <text>
+    <en>With trim_output, leave out also medieval forms when others were found.</en>
+    <tr>Con trim_output, omitir también las formas medievales cuando se hallaron otras.</tr>
+  </text>
+  <text>
+    <en>With use_tricks, also try medieval spellings (e for ae, y for i, michi for mihi, single for doubled consonants ...).</en>
+    <tr>Con use_tricks, probar también grafías medievales (e por ae, y por i, michi por mihi, consonantes simples por dobles ...).</tr>
   </text>
 </interface>

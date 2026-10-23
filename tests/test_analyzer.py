@@ -127,7 +127,7 @@ class AnalyzerTests(unittest.TestCase):
             self.assertEqual(r.readings[1].source.stems[0], stem, word)
 
     def test_medieval_spellings_need_the_setting(self):
-        self.az.settings.do_medieval_tricks = False
+        self.az.settings.medieval_spellings = False
         self.az.reset()
         self.assertTrue(self.analyze('hystorie').unknown)
 
@@ -168,8 +168,8 @@ class AnalyzerTests(unittest.TestCase):
         self.assertFalse(self.analyze('acu').trimmed)
 
     def test_settings_switch_off_fixes(self):
-        self.az.settings.do_fixes = False
-        self.az.settings.do_tricks = False
+        self.az.settings.use_affixes = False
+        self.az.settings.use_tricks = False
         self.az.reset()
         self.assertTrue(self.analyze('adcubitabimur').unknown)
 

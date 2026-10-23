@@ -148,8 +148,8 @@ CODES_MORE = N_('An entry can have more than one source: then the others '
                 'also from source M).  '
                 'The age, when it is known, and the frequency, when it is '
                 'lesser or rarer, are also given in words after the codes '
-                '(archaic, lesser ...).  The developer mode '
-                'show_dictionary_codes hides the codes, and the dictionary '
+                '(archaic, lesser ...).  The parameter '
+                'show_codes hides the codes, and the dictionary '
                 'editors explain each code of an entry as it is edited.')
 
 GLOSSES_TEXT = N_('The forms are written with the abbreviations of the '

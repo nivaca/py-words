@@ -420,7 +420,7 @@ def gloss_form(form: Form, glosses: dict[tuple[str, str], str],
 
 
 # ---------------------------------------------------------------------------
-#  Example glosses (the do_examples parameter)
+#  Example glosses (the show_examples parameter)
 
 def example(form: Form, entry: Entry | None) -> str | None:
     """How a form is put into English, with ~ for the word: "~'s; of ~"."""

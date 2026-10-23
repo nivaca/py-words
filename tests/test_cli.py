@@ -57,7 +57,7 @@ class SettingsTests(InTempDir):
         super().tearDown()
 
     def test_round_trip(self):
-        s = Settings(trim_output=False, do_examples=True, omit_archaic=False,
+        s = Settings(trim_output=False, show_examples=True, trim_medieval=True,
                      start_file_character='%')
         path = s.save('parameters')
         self.assertEqual(s.save('developer'), path)
@@ -70,15 +70,15 @@ class SettingsTests(InTempDir):
         """An old WORD.MOD is read, but the configuration file wins."""
         with open('WORD.MOD', 'w') as f:
             f.write('TRIM_OUTPUT   N\nDO_FIXES   N\n')
-        Settings(trim_output=True, do_fixes=True,
-                 do_examples=True).save('parameters')
+        Settings(trim_output=True, use_affixes=True,
+                 show_examples=True).save('parameters')
         s = Settings()
         messages = s.load('/nonexistent')
         # both were read, and [developer] was added to the file
         self.assertEqual(len(messages), 3)
         self.assertTrue(any(m.startswith('Completed the configuration')
                             for m in messages))
-        self.assertTrue(s.trim_output and s.do_fixes and s.do_examples)
+        self.assertTrue(s.trim_output and s.use_affixes and s.show_examples)
 
     def test_bad_config(self):
         os.makedirs(os.environ['WHITAKERS_WORDS_CONFIG'])
@@ -95,7 +95,7 @@ class SettingsTests(InTempDir):
         self.assertIn('start_file_character: must be one punctuation',
                       message)
         self.assertTrue(s.trim_output)
-        self.assertFalse(s.do_fixes)
+        self.assertFalse(s.use_affixes)
         self.assertEqual(s.start_file_character, '@')
         with open(path, 'w') as f:
             f.write('[parameters\n')
@@ -131,6 +131,33 @@ class SettingsTests(InTempDir):
         s.save('parameters', only=['trim_output'])
         self.assertNotIn('have_output_file', config.section('parameters'))
 
+    def test_renamed_settings(self):
+        """The names of earlier versions are read as the new ones (two
+        made one: on if either is; the new name wins), and the file is
+        written again with the new names."""
+        import config
+        os.makedirs(os.environ['WHITAKERS_WORDS_CONFIG'])
+        with open(config.config_path(), 'w') as f:
+            f.write('[parameters]\ndo_fixes = false\nshow_age = false\n'
+                    'show_frequency = true\ndo_tricks = false\n'
+                    'use_tricks = true\n[developer]\n'
+                    'show_dictionary_codes = false\nomit_archaic = false\n')
+        s = Settings()
+        self.assertEqual(s.load('/nonexistent'),
+                         [f'Using the settings in {config.config_path()}'])
+        self.assertFalse(s.use_affixes)
+        self.assertTrue(s.explain_codes)
+        self.assertTrue(s.use_tricks)
+        self.assertFalse(s.show_codes)      # (now a parameter)
+        saved = config.read()               # (written with the new names)
+        self.assertEqual(saved['parameters'], {
+            'use_tricks': True, 'use_affixes': False, 'explain_codes': True,
+            'show_codes': False})
+        self.assertEqual(saved['developer'], {})
+        t = Settings()
+        t.load('/nonexistent')
+        self.assertEqual(t, s)
+
     def test_bad_line(self):
         with open('WORD.MOD', 'w') as f:
             f.write('TRIM_OUTPUT   maybe\nDO_FIXES   N\n')
@@ -138,7 +165,7 @@ class SettingsTests(InTempDir):
         problems = s.read('WORD.MOD')
         self.assertEqual(len(problems), 1)
         self.assertTrue(s.trim_output)
-        self.assertFalse(s.do_fixes)
+        self.assertFalse(s.use_affixes)
 
 
 def run(*args, stdin=''):
@@ -217,7 +244,7 @@ class CommandLineTests(InTempDir):
             self.assertEqual(config.section('fonts'), {'text_size': 12})
             self.assertIs(config.section('parameters')['trim_output'],
                           False)
-            self.assertIn('use_prefixes', config.section('developer'))
+            self.assertIn('pearse_codes', config.section('developer'))
         finally:
             os.environ['WHITAKERS_WORDS_CONFIG'] = old
 
@@ -283,16 +310,17 @@ class InteractiveTests(InTempDir):
                        write=out.write), out
 
     def test_dictionary_line(self):
-        """show_dictionary_line gives each entry's number in its
+        """show_entry_source gives each entry's number in its
         dictionary file (not in the golden files: it changes whenever a
         word is added)."""
         session, out = self.session()
-        session.settings.show_dictionary_line = True
+        session.settings.show_entry_source = True
         session.process('amicorum')
         amicus = next(e for e in lexicon().entries
                       if e.meaning.startswith('friend, ally, disciple'))
         self.assertIn(f'amicus, amici  noun, 2nd declension, masculine  '
-                      f'[XXXBO]  (entry {amicus.id})', out.getvalue())
+                      f'[XXXBO]  (general dictionary)  (entry {amicus.id})',
+                      out.getvalue())
 
     def repl(self, *lines):
         session, out = self.session()
@@ -325,10 +353,10 @@ class InteractiveTests(InTempDir):
     def test_ctrl_c_stops_a_dialogue(self):
         session, out = self.repl('#', 'n', KeyboardInterrupt, 'amicus')
         self.assertIn('(interrupted)', out)
-        self.assertIn('amicus, amici', out)
-        self.assertFalse(session.settings.trim_output)  # (what was done)
+        self.assertIn('friend, ally', out)      # (without dictionary forms)
+        self.assertFalse(session.settings.show_dictionary_forms)  # (done)
         self.assertNotEqual(config.section('parameters').get(
-            'trim_output'), False)                  # (not saved)
+            'show_dictionary_forms'), False)        # (not saved)
 
     def test_ctrl_c_outside_interactive_mode(self):
         """Ctrl-C ends the program quietly (no traceback)."""
@@ -358,27 +386,31 @@ class InteractiveTests(InTempDir):
         self.assertIn('Cannot read missing.txt', out)
 
     def test_parameters_dialogue(self):
-        # trim_output: N; do_unknowns_only: Enter; then a space skips
+        # show_dictionary_forms: N; show_only_meanings: Enter; then a space
+        # skips the rest
         session, out = self.repl('#', 'n', '', ' ')
-        self.assertFalse(session.settings.trim_output)
+        self.assertIn('What the results show:', out)
+        self.assertFalse(session.settings.show_dictionary_forms)
         # (not saved: skipping the rest skips the question too)
-        self.assertNotEqual(config.section('parameters').get('trim_output'),
-                            False)
+        self.assertNotEqual(config.section('parameters').get(
+            'show_dictionary_forms'), False)
 
     def test_parameters_help_and_save(self):
-        # trim_output (after ?), then the others, the interface (Enter
-        # keeps it), and save
+        # show_dictionary_forms (after ?), then the others, the interface
+        # (Enter keeps it), and save
         replies = ['#', '?', 'y'] + [''] * (len(MODES) - 1) + ['', 'y']
         session, out = self.repl(*replies)
-        self.assertIn('Leave out the least likely results', out)
+        self.assertIn('Show each entry with its principal parts', out)
+        self.assertIn('How words are looked up:', out)
         self.assertIn(f'Saved in {config.config_path()}', out)
-        self.assertIs(config.section('parameters')['trim_output'], True)
+        self.assertIs(config.section('parameters')['show_dictionary_forms'],
+                      True)
         os.remove(config.config_path())
 
     def test_developer_modes(self):
-        # show_dictionary: Y, then stop
+        # show_entry_source: Y, then stop
         session, out = self.repl('!', 'y', ' ', 'rem')
-        self.assertTrue(session.settings.show_dictionary)
+        self.assertTrue(session.settings.show_entry_source)
         self.assertFalse(os.path.exists('WORD.STA'))
 
 

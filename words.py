@@ -48,7 +48,8 @@ from helptext import HELP
 from history import History
 from interface import tr
 from lexicon import Lexicon, default_datadir
-from settings import Settings, MODES, DEV_MODES, is_command_character
+from settings import (Settings, DEPENDS, DEV_MODES, GROUPS,
+                      is_command_character)
 from session import Session
 from xmldata import DataError
 
@@ -150,14 +151,24 @@ def _save(ask: Ask, say, settings: Settings, section: str) -> None:
         return
 
 
+def _yes_nos(settings: Settings, names, ask: Ask, say) -> None:
+    """Asks about the settings NAMES in turn, but for one that only makes
+    sense with another that is off (see settings.DEPENDS)."""
+    for name in names:
+        parent = DEPENDS.get(name)
+        if parent is None or getattr(settings, parent):
+            _yes_no(settings, name, ask, say)
+
+
 def change_parameters(session: Session, ask: Ask, say) -> None:
     """The # dialogue."""
     s = session.settings
     say(tr('Answer Y or N; Enter keeps the current value, ? gives help, '
            'a space skips the rest.'))
     try:
-        for name in MODES:
-            _yes_no(s, name, ask, say)
+        for heading, names in GROUPS[:2]:
+            say(tr(heading) + ':')
+            _yes_nos(s, names, ask, say)
         _interface(s, ask, say, session.lexicon.language_names())
         _save(ask, say, s, 'parameters')
     except _Skip:
@@ -171,19 +182,8 @@ def change_developer_modes(session: Session, ask: Ask, say) -> None:
     say(tr('Answer Y or N; Enter keeps the current value, ? gives help, '
            'a space skips the rest.  Developer modes are for special '
            'purposes.'))
-    skip = {'for_word_list_check': False,
-            'do_only_fixes': not s.do_fixes,
-            'do_fixes_anyway': not s.do_fixes,
-            'do_medieval_tricks': not s.do_tricks}
     try:
-        for name in DEV_MODES:
-            if name == 'for_word_list_check' and \
-                    not s.do_only_initial_word:
-                s.for_word_list_check = False
-                continue
-            if skip.get(name):
-                continue
-            _yes_no(s, name, ask, say)
+        _yes_nos(s, DEV_MODES, ask, say)
         for name in ('start_file_character', 'change_parameters_character',
                      'change_developer_modes_character'):
             _character(s, name, ask, say)

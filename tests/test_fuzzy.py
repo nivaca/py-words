@@ -96,7 +96,7 @@ class LatinTests(unittest.TestCase):
         self.assertIn('(near spellings: amicus)', out)
 
     def test_unknowns_only(self):
-        out = session(do_unknowns_only=True).lookup('amicuss est')
+        out = session(unknowns_only=True).lookup('amicuss est')
         self.assertIn('(near spellings: amicus)', out)
         self.assertNotIn('amicus, amici', out)
 

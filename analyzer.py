@@ -145,7 +145,7 @@ class Analyzer:
 
     def default_opts(self) -> Opts:
         s = self.settings
-        return Opts(s.do_fixes, s.do_only_fixes, s.use_prefixes)
+        return Opts(s.use_affixes)
 
     # -----------------------------------------------------------------
     #  Affixes
@@ -161,8 +161,7 @@ class Analyzer:
     def strip_suffix(self, word: str, suffix: Suffix) -> str:
         fix = suffix.fix
         n = len(word) - len(fix)
-        if self.settings.use_suffixes and n > 0 and \
-                _uv(word[n:]) == _uv(fix) and \
+        if n > 0 and _uv(word[n:]) == _uv(fix) and \
                 (not suffix.connect or word[n - 1] == suffix.connect):
             return word[:n]
         return word
@@ -170,8 +169,7 @@ class Analyzer:
     def strip_tackon(self, word: str, tackon: Tackon) -> str:
         fix = tackon.fix
         n = len(word) - len(fix)
-        if self.settings.use_tackons and n > 0 and \
-                _uv(word[n:]) == _uv(fix):
+        if n > 0 and _uv(word[n:]) == _uv(fix):
             return word[:n]
         return word
 
@@ -246,7 +244,7 @@ class Analyzer:
             length = len(ref.stem)
             if prefix is not None and opts.use_prefixes:
                 length += len(prefix.fix)
-            if suffix is not None and self.settings.use_suffixes:
+            if suffix is not None:
                 length += len(suffix.fix)
             for c in candidates:
                 if len(c.stem) != length:
@@ -300,7 +298,7 @@ class Analyzer:
         w = word.lower()
         if len(w) < fuzzy.SHORTEST:
             return []
-        plain = Opts(False, False, self.settings.use_prefixes)
+        plain = Opts(False)
         ranked = []
         for near in fuzzy.edits(w, fuzzy.latin_letters(w)):
             findings = self._word(near, plain, False)   # (not cached)
@@ -327,8 +325,7 @@ class Analyzer:
     def _stems(self, candidates, stems, opts: Opts,
                earlier: bool) -> list[Found]:
         refs = [] if opts.only_fixes else self.search(stems)
-        if opts.do_fixes and ((not earlier and not refs) or
-                              self.settings.do_fixes_anyway):
+        if opts.do_fixes and not earlier and not refs:
             # No stem of the word is in the dictionary: a prefix first
             return self._prefixed(stems, candidates, opts) or \
                 self._suffixed(stems, candidates, opts)
@@ -495,8 +492,7 @@ class Analyzer:
             findings = self.word(less, opts, bool(out))
             if not out and not findings:
                 findings = tricks.slury(self, less, opts, notes)
-            if self.settings.do_syncope and \
-                    not _is_esse(chain(out, findings)):
+            if not _is_esse(chain(out, findings)):
                 findings = chain(findings, tricks.syncope(self, less, opts,
                                                           notes))
             return marked(mark(tackon), findings) if findings else []
@@ -519,11 +515,11 @@ class Analyzer:
             out = self.prodelision(word, notes)
             est = bool(out)
         if not out and not (s.ignore_unknown_names and capitalized):
-            if s.do_tricks:
+            if s.use_tricks:
                 out = tricks.try_tricks(self, word, notes, capitalized) or \
                     self._tricks_enclitic(word, notes, capitalized)
         used_next = False
-        if out and s.do_compounds and not meanings_only:
+        if out and s.read_compounds and not meanings_only:
             if est:
                 #  (a compound keeps only the affixes: the mark goes back)
                 prodelision = out[0].marks[0]
@@ -532,7 +528,7 @@ class Analyzer:
                     out = marked(prodelision, out)
             else:
                 out, used_next = compounds(out, next_word, notes)
-        if s.do_fixes and not any(p.form.pos == Pos.ADV
+        if s.use_affixes and not any(p.form.pos == Pos.ADV
                                   for p in parses_of(out)):
             out = chain(out, adverbs(out, notes))
         findings, trimmed = sweep(out, s, all_caps, followed_by_period)
@@ -541,19 +537,18 @@ class Analyzer:
     def _passes(self, word: str, notes: dict) -> list[Found]:
         s = self.settings
         out = tricks.roman_numeral(word, notes)
-        first = Opts(False, s.do_only_fixes, s.use_prefixes)
+        first = Opts(False)
         out = chain(out, self.word(word, first, bool(out)))
         if not out:
             out = tricks.slury(self, word, first, notes)
-        if s.do_syncope and not _is_esse(out):
+        if not _is_esse(out):
             out = chain(out, tricks.syncope(self, word, first, notes))
         more = self.enclitic(word, out, first, notes)
         out = chain(out, more)
-        if not out and s.do_fixes:
-            second = Opts(True, True, s.use_prefixes)
+        if not out and s.use_affixes:
+            second = Opts(True, True)
             out = self.word(word, second, False)
-            if s.do_syncope:
-                out = chain(out, tricks.syncope(self, word, second, notes))
+            out = chain(out, tricks.syncope(self, word, second, notes))
             if not more:
                 out = chain(out, self.enclitic(word, out, second, notes))
         return out
@@ -564,8 +559,7 @@ class Analyzer:
         with the enclitic est."""
         w = word.lower()
         est = self.lex.tackons[ENCLITICS - 1]
-        if len(w) < 4 or not w.endswith('st') or \
-                not self.settings.use_tackons or _uv(est.fix) != 'est':
+        if len(w) < 4 or not w.endswith('st') or _uv(est.fix) != 'est':
             return []
         #  -ust, -ist: the s is that of -us, -is (amatust, omnist)
         tries = [w[:-1]] if w[-3] in 'ui' else []
@@ -607,7 +601,7 @@ class Analyzer:
                 word, next_word, is_capitalized(word), is_all_caps(word),
                 followed_by_period, meanings_only)
             results.append(result)
-            if self.settings.do_only_initial_word:
+            if self.settings.word_list_check:
                 break
         return results
 

@@ -4,44 +4,12 @@
 from interface import N_
 
 HELP = {
-    # Parameters (#, [parameters] in config.toml)
-    'trim_output':
-        N_('Leave out the least likely results: forms that are only '
-           'possible in theory, and archaic, medieval or uncommon ones '
-           'when more common results were found (see the developer modes '
-           'omit_archaic, omit_medieval and omit_uncommon).  A note says '
-           'when something was left out.  In English-to-Latin lookups, '
-           'show only the best six results.  Poets use unusual words and '
-           'forms, so these can be trimmed wrongly.'),
-    'do_unknowns_only':
-        N_('Show only the words that are not found, to check a text for '
-           'words missing from the dictionary.'),
-    'ignore_unknown_names':
-        N_('Do not try spelling tricks on an unknown word that is '
-           'capitalized: it is probably a name.'),
-    'do_compounds':
-        N_('Read a participle followed by a form of esse as a compound '
-           'tense (laudatus est: perfect passive).'),
-    'do_fixes':
-        N_('When a word is not in the dictionary, try it as a known word '
-           'with a prefix or suffix.  The results may be less reliable '
-           'than those found directly.'),
-    'do_tricks':
-        N_('When a word is still not found, try other spellings (ae for e, '
-           'ph for f, assimilated prefixes ...), syncopated forms and two '
-           'words written as one.  Such results are marked as such.'),
-    'do_dictionary_forms':
+    # Parameters (#, [parameters] in config.toml): what the results show
+    'show_dictionary_forms':
         N_('Show each entry with its principal parts and grammar (amicus, '
            'amici  noun, 2nd declension, masculine).'),
-    'show_age':
-        N_('Always show when a word or form was used (archaic, classical, '
-           'medieval ...), not only when it is not "always".'),
-    'show_frequency':
-        N_('Always show how frequent a word or form is, not only when it '
-           'is uncommon.'),
-    'do_examples':
-        N_('Show an English pattern for each form ("~\'s; of ~" for a '
-           'genitive), with ~ standing for the meaning.'),
+    'show_only_meanings':
+        N_('Show only the entries and their meanings, without the forms.'),
     'use_glosses':
         N_('Write the analyses of the forms in glossing abbreviations, as '
            'in the Leipzig Glossing Rules (GEN.PL, 2SG.PRF.ACT.IND); if '
@@ -49,15 +17,30 @@ HELP = {
            'active indicative).  The abbreviations are those of '
            'data/gloss.xml.'),
     'show_long_vowels':
-        N_('Mark the long vowels of the stems in the forms (amīc-us), where '
-           'data/quantities.xml knows them.  The endings are not marked, '
-           'and neither are vowels long before two consonants.'),
-    'do_only_meanings':
-        N_('Show only the entries and their meanings, without the forms.'),
-    'do_stems_for_unknown':
-        N_('For an unknown word, list the dictionary entries near where it '
-           'would be.  This can catch a word whose stem is in the '
-           'dictionary under another part of speech.'),
+        N_('Mark the long vowels of the stems and endings in the forms '
+           '(amīc-ōrum), where they are known.  Vowels long before two '
+           'consonants are not marked, but for those before ns and nf.'),
+    'show_codes':
+        N_('Show the codes of each entry: age, area, geography, frequency '
+           'and source, as in [XXXBO].'),
+    'explain_codes':
+        N_('Always say in words when a word or form was used (archaic, '
+           'classical, medieval ...) and how frequent it is, not only when '
+           'it is unusual.'),
+    'show_examples':
+        N_('Show an English pattern for each form ("~\'s; of ~" for a '
+           'genitive), with ~ standing for the meaning.'),
+    'trim_output':
+        N_('Leave out the least likely results: forms that are only '
+           'possible in theory, and archaic or uncommon ones when more '
+           'common results were found.  A note says when something was '
+           'left out.  In the search to Latin, show only the best six '
+           'results.  Poets use unusual words and forms, so these can be '
+           'trimmed wrongly.'),
+    'trim_medieval':
+        N_('With trim_output, leave out also medieval forms when others '
+           'were found.'),
+    # ... and how words are looked up
     'fuzzy_search':
         N_('When a word finds nothing as it is typed, look for the words '
            'one change away from it (a letter left out, added or changed, '
@@ -65,6 +48,30 @@ HELP = {
            'finds amicus, and, in the search to Latin, freind finds '
            'friend and wolfs finds wolf.  Exact results are shown as '
            'before.'),
+    'use_affixes':
+        N_('When a word is not in the dictionary, try it as a known word '
+           'with a prefix or suffix.  The results may be less reliable '
+           'than those found directly.'),
+    'use_tricks':
+        N_('When a word is still not found, try other spellings (ae for e, '
+           'ph for f, assimilated prefixes ...) and two words written as '
+           'one.  Such results are marked as such.'),
+    'medieval_spellings':
+        N_('With use_tricks, also try medieval spellings (e for ae, y for '
+           'i, michi for mihi, single for doubled consonants ...).'),
+    'read_compounds':
+        N_('Read a participle followed by a form of esse as a compound '
+           'tense (laudatus est: perfect passive).'),
+    'ignore_unknown_names':
+        N_('Do not try spelling tricks on an unknown word that is '
+           'capitalized: it is probably a name.'),
+    'unknowns_only':
+        N_('Show only the words that are not found, to check a text for '
+           'words missing from the dictionary.'),
+    'near_entries':
+        N_('For an unknown word, list the dictionary entries near where it '
+           'would be.  This can catch a word whose stem is in the '
+           'dictionary under another part of speech.'),
     'language':
         N_('The language of the meanings, and of the rest of the results '
            '(en, es ...).  The search to Latin is from this language.'),
@@ -77,46 +84,17 @@ HELP = {
            'It is plain text and can also be edited; words.py --config '
            'shows where it is.'),
     # Developer modes (!, [developer] in config.toml)
-    'show_dictionary':
-        N_('Show which dictionary (general or special) each entry is from.'),
-    'show_dictionary_line':
-        N_('Show the number of each entry in its dictionary file.'),
-    'show_dictionary_codes':
-        N_('Show the codes of each entry: age, area, geography, frequency '
-           'and source, as in [XXXBO].'),
-    'do_pearse_codes':
+    'show_entry_source':
+        N_('Show which dictionary (general or special) each entry is from, '
+           'and its number in that file.'),
+    'pearse_codes':
         N_('Start each line of the results with a code saying what it is '
            '(01 a form, 02 an entry, 03 a meaning, 05 an affix, 06 a '
            'trick, 00 an unknown word), for programs that read the output.'),
-    'do_only_initial_word':
-        N_('Analyse only the first word of each line, for checking word '
-           'lists.'),
-    'for_word_list_check':
-        N_('With do_only_initial_word: accept only dictionary forms '
-           '(nominative singular, first person present ...).'),
-    'do_only_fixes': N_('Find words only with prefixes and suffixes.'),
-    'do_fixes_anyway':
-        N_('Try prefixes and suffixes even when the word was found without '
-           'them.'),
-    'use_prefixes': N_('Use prefixes when analysing words.'),
-    'use_suffixes': N_('Use suffixes when analysing words.'),
-    'use_tackons': N_('Use enclitics (-que, -ne, -cumque ...).'),
-    'do_medieval_tricks':
-        N_('With do_tricks, also try medieval spellings (e for ae, y for '
-           'i, single for doubled consonants ...).'),
-    'do_syncope': N_('Try syncopated perfects (amasti for amavisti).'),
-    'do_two_words':
-        N_('With do_tricks, try an unknown word as two words written '
-           'together.'),
-    'omit_archaic':
-        N_('With trim_output, leave out archaic forms when others were '
-           'found.'),
-    'omit_medieval':
-        N_('With trim_output, leave out medieval forms when others were '
-           'found.'),
-    'omit_uncommon':
-        N_('With trim_output, leave out uncommon forms when others were '
-           'found.'),
+    'word_list_check':
+        N_('Analyse only the first word of each line, and accept only '
+           'dictionary forms (nominative singular, first person present '
+           '...), for checking word lists.'),
     'pause_in_screen_output':
         N_('In interactive use, pause after each screenful of results.'),
     'characters':

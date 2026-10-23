@@ -357,9 +357,7 @@ def slury(az: Analyzer, word: str, opts: Opts,
 
     def lookup(new):
         findings = az.word(new, plain, True)
-        if az.settings.do_syncope:
-            findings = chain(findings, syncope(az, new, plain, notes))
-        return findings
+        return chain(findings, syncope(az, new, plain, notes))
     t = _Tricks(az, word, notes, lookup, slurs=True)
     if t.s and t.s[0] in SLUR_TRICKS:
         t.table(SLUR_TRICKS[t.s[0]])
@@ -375,9 +373,7 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
 
     def lookup(new):
         findings = az.word(new, opts, True)
-        if s.do_syncope:
-            findings = chain(findings, syncope(az, new, opts, notes))
-        return findings
+        return chain(findings, syncope(az, new, opts, notes))
     t = _Tricks(az, word, notes, lookup)
     w = t.s
     if not w:
@@ -407,11 +403,11 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
                   lookup=lambda new: az.word(new, opts, True))
     if t.out:
         return t.out
-    if s.do_medieval_tricks:
+    if s.medieval_spellings:
         if _medieval_spellings(t) or t.table(MEDIEVAL_TRICKS):
             return t.out
         _double_consonants(t)
-    if s.do_two_words and not (s.ignore_unknown_names and capitalized):
+    if not (s.ignore_unknown_names and capitalized):
         _two_words(az, t, opts)
     if only_roman_digits(word):
         notes.pop(Origin.TRICK, None)

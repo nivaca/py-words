@@ -1,12 +1,10 @@
 # The options that add to each result: age and frequency, Pearse codes,
-# which dictionary it comes from, and the stems near an unknown word.
-# (show_dictionary_line is tested in test_cli.py: the entry numbers change
-# whenever a word is added to the dictionary.)
+# and the entries near an unknown word.  (show_entry_source is tested in
+# test_cli.py: the entry numbers change whenever a word is added to the
+# dictionary.)
 [parameters]
-show_age = true
-show_frequency = true
-do_stems_for_unknown = true
+explain_codes = true
+near_entries = true
 
 [developer]
-do_pearse_codes = true
-show_dictionary = true
+pearse_codes = true

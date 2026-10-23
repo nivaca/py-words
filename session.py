@@ -89,7 +89,7 @@ class Session:
             near = None
             spellings = []
             if result.unknown:
-                if self.settings.do_stems_for_unknown:
+                if self.settings.near_entries:
                     near = self.lexicon.neighbours(result.word)
                 spellings = self._near_spellings(result.word)
             out.append(self.renderer().word(result, near, spellings))

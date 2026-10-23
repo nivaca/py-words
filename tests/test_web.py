@@ -131,11 +131,11 @@ class WebTests(unittest.TestCase):
 
     def test_pearse_codes_as_they_are(self):
         try:
-            self.app.change({'do_pearse_codes': True})
+            self.app.change({'pearse_codes': True})
             page = self.call(query='q=arma')[2]
             self.assertNotIn('<span class="k-entry">', page)
         finally:
-            self.app.change({'do_pearse_codes': False})
+            self.app.change({'pearse_codes': False})
 
     def test_lookup(self):
         status, _, page = self.call(query='q=amicorum')

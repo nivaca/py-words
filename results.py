@@ -166,11 +166,11 @@ _DIC_STEMS = ('dic', 'duc', 'fac', 'fer')
 
 def allowed(p: Parse, settings: Settings) -> bool:
     """Whether a parse from the dictionary is a possible word, or (with
-    for_word_list_check) a dictionary form."""
+    word_list_check) a dictionary form."""
     if not from_dictionary(p.origin):
         return True
     f = p.form
-    check = settings.for_word_list_check
+    check = settings.word_list_check
     ok = True
     if f.pos == Pos.N and check:
         nominative = f.case in (Case.NOM, Case.X)
@@ -270,14 +270,12 @@ def _sort_and_trim(block: list[Parse], settings: Settings, all_caps: bool,
     def keep(p: Parse) -> bool:
         if not allowed(p, settings):
             return False
-        if not_only_archaic and settings.omit_archaic and \
-                p.infl.age == Age.A:
+        if not_only_archaic and p.infl.age == Age.A:
             return False
-        if not_only_medieval and settings.omit_medieval and \
+        if not_only_medieval and settings.trim_medieval and \
                 p.infl.age >= Age.F:
             return False
-        if not_only_uncommon and settings.omit_uncommon and \
-                p.infl.freq >= Freq.C:
+        if not_only_uncommon and p.infl.freq >= Freq.C:
             return False
         if has_abbreviation and all_caps and followed_by_period:
             # "M." is an abbreviation, not the Roman numeral

@@ -3,7 +3,7 @@ the command line) and developer mode (!), with what each one does.
 
 Changes apply at once and are kept in the configuration file, as those of
 the # and ! dialogues are when saved.  A setting that only makes sense
-with another (do_only_fixes needs do_fixes ...) is greyed out while
+with another (trim_medieval needs trim_output ...) is greyed out while
 that one is off, as the command line skips it.  The pause and
 the command characters only matter in the interactive command line; they
 are offered under their own heading.  At the top are the language of the
@@ -16,8 +16,8 @@ from tkinter import messagebox, ttk
 import interface
 from helptext import HELP
 from interface import tr
-from settings import (CHARACTERS, COMMAND_LINE, DEPENDS, DEV_MODES, MODES,
-                      ON_SCREEN, Settings, first_sentence,
+from settings import (CHARACTERS, COMMAND_LINE, DEPENDS, DEV_MODES, GROUPS,
+                      MODES, ON_SCREEN, Settings, first_sentence,
                       is_command_character, label)
 
 class SettingsDialog:
@@ -41,12 +41,12 @@ class SettingsDialog:
         self.interface_row(win, fonts)
         notebook = ttk.Notebook(win)
         notebook.pack(fill='both', expand=True, padx=8, pady=(8, 0))
-        for title, names, note in (
-                (tr('Parameters'), MODES, tr('The parameters (# in the '
-                                             'command line).')),
-                (tr('Developer modes'), DEV_MODES,
+        notes = (tr('Parameters (# in the command line).'),
+                 tr('Parameters (# in the command line).'),
                  tr('The developer modes (! in the command line), for '
-                    'special purposes.'))):
+                    'special purposes.'))
+        for (title, names), note in zip(GROUPS, notes):
+            title = tr(title)
             outer, frame = self.scrolled(notebook)
             notebook.add(outer, text=title)
             ttk.Label(frame, text=note, style='Muted.TLabel').pack(

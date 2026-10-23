@@ -144,10 +144,10 @@ class LanguageTests(unittest.TestCase):
 
     def test_examples_only_in_english(self):
         session = self.session()
-        session.settings.do_examples = True
+        session.settings.show_examples = True
         self.assertNotIn("~'s", session.lookup('amici'))
         session = self.session('en')
-        session.settings.do_examples = True
+        session.settings.show_examples = True
         self.assertIn("~'s", session.lookup('amici'))
 
     def test_unknown_language(self):

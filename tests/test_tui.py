@@ -136,14 +136,15 @@ class TerminalDictionaryTests(unittest.TestCase):
 
     def test_settings(self):
         import tomllib
-        # Trim output is the first setting: Space switches it off
+        # Show dictionary forms is the first setting: Space switches it
+        # off
         status, out = self.run_keys([(F3, 1), (' ', 0.5), ('\x1b', 0.5),
                                      (F10, 1)])
         self.assertEqual(status, 0)
         self.assertIn('Settings', out)
         with open(os.path.join(self.config, 'config.toml'), 'rb') as f:
             data = tomllib.load(f)
-        self.assertIs(data['parameters']['trim_output'], False)
+        self.assertIs(data['parameters']['show_dictionary_forms'], False)
         # (the pause stays as saved, for the command line)
         self.assertIs(data['developer']['pause_in_screen_output'], True)
 

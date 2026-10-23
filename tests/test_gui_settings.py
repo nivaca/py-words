@@ -82,14 +82,14 @@ class SettingsDialogTests(unittest.TestCase):
 
     def test_a_change_applies_and_is_saved(self):
         import config
-        self.toggle('do_examples')
-        self.assertTrue(self.app.session.settings.do_examples)
-        self.assertIs(config.section('parameters')['do_examples'], True)
+        self.toggle('show_examples')
+        self.assertTrue(self.app.session.settings.show_examples)
+        self.assertIs(config.section('parameters')['show_examples'], True)
         # a change made otherwise shows in the dialogue
-        self.app.change_setting('do_examples', False)
-        self.assertFalse(self.dialog.vars['do_examples'].get())
-        self.toggle('show_dictionary_line')
-        self.assertIs(config.section('developer')['show_dictionary_line'],
+        self.app.change_setting('show_examples', False)
+        self.assertFalse(self.dialog.vars['show_examples'].get())
+        self.toggle('show_entry_source')
+        self.assertIs(config.section('developer')['show_entry_source'],
                       True)
 
     def test_glosses(self):
@@ -137,19 +137,19 @@ class SettingsDialogTests(unittest.TestCase):
         self.assertTrue(app.fuzzy.get())
 
     def test_dependent_settings(self):
-        box = self.dialog.boxes['do_only_fixes']
+        box = self.dialog.boxes['medieval_spellings']
         self.assertFalse(box.instate(['disabled']))
-        self.toggle('do_fixes')
+        self.toggle('use_tricks')
         self.assertTrue(box.instate(['disabled']))
-        self.toggle('do_fixes')
+        self.toggle('use_tricks')
         self.assertFalse(box.instate(['disabled']))
 
     def test_pause_is_kept_for_the_command_line(self):
         import config
         self.assertFalse(self.app.session.settings.pause_in_screen_output)
         self.assertTrue(self.app.setting('pause_in_screen_output'))
-        self.toggle('do_examples')              # saves the parameters
-        self.toggle('show_dictionary')          # and the developer modes
+        self.toggle('show_examples')              # saves the parameters
+        self.toggle('show_entry_source')          # and the developer modes
         self.assertIs(config.section('developer')['pause_in_screen_output'],
                       True)                     # (not the window's False)
         self.toggle('pause_in_screen_output')
@@ -178,7 +178,7 @@ class SettingsDialogTests(unittest.TestCase):
 
     def test_usual_settings(self):
         import gui_settings
-        self.toggle('do_examples')
+        self.toggle('show_examples')
         self.toggle('trim_output')
         old = gui_settings.messagebox.askyesno
         gui_settings.messagebox.askyesno = lambda *a, **kw: True
@@ -186,7 +186,7 @@ class SettingsDialogTests(unittest.TestCase):
             self.dialog.usual()
         finally:
             gui_settings.messagebox.askyesno = old
-        self.assertFalse(self.app.setting('do_examples'))
+        self.assertFalse(self.app.setting('show_examples'))
         self.assertTrue(self.app.setting('trim_output'))
         self.assertTrue(self.dialog.vars['trim_output'].get())
 

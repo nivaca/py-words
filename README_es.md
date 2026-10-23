@@ -311,7 +311,7 @@ doble clic busca cualquier palabra (una palabra de los significados se
 busca en latín).  Si pone el puntero sobre los códigos entre corchetes o
 sobre un análisis (GEN.PL), un recuadro explica qué significan.  Con el
 botón derecho se copia o se busca una palabra, y Ctrl y F buscan un texto
-en los resultados.  Con el modo de desarrollo do_pearse_codes activado,
+en los resultados.  Con el modo de desarrollo pearse_codes activado,
 los resultados se muestran tal cual, sin colores, porque su disposición
 es otra.
 
@@ -378,8 +378,8 @@ significados en español):
           participio perfecto pasivo + verbo «ser» => sistema de perfecto pasivo
 
 De cada entrada del diccionario se muestran sus partes principales y su
-gramática, sus códigos entre corchetes (véase más abajo; el modo de desarrollo
-show_dictionary_codes los oculta), su significado y las formas que puede ser la
+gramática, sus códigos entre corchetes (véase más abajo; el parámetro
+show_codes los oculta), su significado y las formas que puede ser la
 palabra, como raíz-desinencia.  Un prefijo, sufijo o enclítico hallado en
 la palabra, o un truco necesario para hallarla (un cambio de grafía, un
 perfecto sincopado, dos palabras escritas como una ...), tiene una línea
@@ -513,10 +513,28 @@ y en la página web; F3 en `words_tui.py`; el diálogo `#`; o
 Ajustes y archivos
 ------------------
 
-Los parámetros (`#`) y los modos de desarrollo (`!`) son los del programa
+Los parámetros (`#`) y los modos de desarrollo (`!`) vienen del programa
 original; `?` en sus diálogos explica cada uno.  En la ventana, "Ajustes…"
 los muestra todos, con lo que hace cada uno; un cambio ahí se aplica al
-instante.  Se guardan, con las fuentes de las ventanas y (si se quiere)
+instante.  Los parámetros son de dos clases.  Qué muestran los
+resultados: show_dictionary_forms, show_only_meanings, use_glosses,
+show_long_vowels, show_codes, explain_codes (la época y la frecuencia en
+palabras), show_examples, trim_output y trim_medieval.  Cómo se buscan
+las palabras: fuzzy_search, use_affixes, use_tricks, medieval_spellings,
+read_compounds, ignore_unknown_names, unknowns_only y near_entries.  Los
+modos de desarrollo son show_entry_source, pearse_codes, word_list_check
+y pause_in_screen_output.
+
+Hasta la 3.1 había 33, muchos solo para probar el propio WORDS.  Ahora
+algunos se volvieron uno (show_age y show_frequency son
+explain_codes; show_dictionary y show_dictionary_line,
+show_entry_source), otros se quitaron, porque quedan siempre como solían
+estar (los prefijos, sufijos y enclíticos, la síncopa, las dos palabras
+escritas como una, y omitir las formas arcaicas y poco comunes con
+trim_output), y los demás recibieron nombres más claros (do_fixes es
+use_affixes, do_tricks es use_tricks, etc.).  Un archivo de configuración
+con los nombres viejos se lee como antes, y se vuelve a escribir con los
+nuevos; los viejos WORD.MOD y WORD.MDV pueden conservar sus nombres.  Se guardan, con las fuentes de las ventanas y (si se quiere)
 la carpeta de datos, en un archivo de configuración, `config.toml`:
 
 | Sistema | Archivo de configuración                                   |
@@ -540,13 +558,13 @@ editarse a mano:
 
     [parameters]
     trim_output = true
-    do_examples = false
+    show_examples = false
     language = "en"          # el idioma de los significados
     interface = "en"         # el idioma de la interfaz
     ...
 
     [developer]
-    use_prefixes = true
+    pearse_codes = false
     start_file_character = "@"
     ...
 
@@ -570,7 +588,7 @@ desconocidas y algunas estadísticas en los archivos WORD.OUT, WORD.UNK y
 WORD.STA.  Quité esos ajustes: para guardar los resultados en un
 archivo, use `-o ARCHIVO` o redirija la salida (`words.py -f texto.txt >
 resultados.txt`), y para las palabras desconocidas de un texto, el
-parámetro do_unknowns_only.  Un archivo de configuración que todavía los
+parámetro unknowns_only.  Un archivo de configuración que todavía los
 tenga se lee sin quejas, y se le quitan cuando se vuelve a guardar.
 
 Los archivos de datos
@@ -676,7 +694,7 @@ guarda para la próxima vez (el ajuste `language` del archivo de
 configuración, `en` salvo que diga otra cosa).  `--language es` usa otro
 para una ejecución de `words.py`, y `--languages` lista los que hay.  La
 búsqueda hacia el latín (`~E`, la segunda dirección en la ventana, F2) se
-hace desde el idioma elegido.  Los ejemplos de glosas (`do_examples`)
+hace desde el idioma elegido.  Los ejemplos de glosas (`show_examples`)
 están en inglés y solo se muestran con los significados en inglés.
 `words_check.py` también revisa los archivos de idioma y avisa de los
 significados de ids que no existen.

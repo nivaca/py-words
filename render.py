@@ -10,7 +10,7 @@ parts and grammar, its meaning, then the forms the word can be), an
 irregular form, an affix or enclitic found on the word, or a note on a
 trick that was needed to find it.  The meanings are in the language given
 (see languages.py), and so is the rest, if the language translates it
-(Language.text); the example glosses (do_examples) are English, and only
+(Language.text); the example glosses (show_examples) are English, and only
 shown with English meanings.
 """
 
@@ -26,7 +26,7 @@ from results import Origin, Parse, Reading, WordResult
 from reverse import Hit
 from settings import Settings
 
-#  Pearse codes (the do_pearse_codes developer mode): each line starts with
+#  Pearse codes (the pearse_codes developer mode): each line starts with
 #  a number saying what it is.
 UNKNOWN_CODE, FORM_CODE, ENTRY_CODE, MEANING_CODE, UNKNOWN_FILE_CODE, \
     AFFIX_CODE, TRICK_CODE = range(7)
@@ -58,10 +58,10 @@ class Renderer:
         the stems with their long vowels marked (Lexicon.long_stems)."""
         self.s = settings
         self.long_stems = long_stems or {}
-        self.meanings_only = meanings_only or settings.do_only_meanings
+        self.meanings_only = meanings_only or settings.show_only_meanings
         self.glosses = glosses or {}
         self.language = language
-        self.examples = settings.do_examples and (
+        self.examples = settings.show_examples and (
             language is None or language.is_reference)
         self.lines: list[str] = []
 
@@ -100,7 +100,7 @@ class Renderer:
         return describe_form(form, deponent, self.t)
 
     def line(self, text: str, indent: int = 0, code: int | None = None):
-        if self.s.do_pearse_codes and code is not None:
+        if self.s.pearse_codes and code is not None:
             text = f'{code:02d} {text}'
         else:
             text = ' ' * indent + text
@@ -126,7 +126,7 @@ class Renderer:
             if near:
                 self.line(self.t(f'(near spellings: {", ".join(near)})'), 2)
             return self.text()
-        if self.s.do_unknowns_only:
+        if self.s.unknowns_only:
             self.lines = []
             return ''
         shown = set()
@@ -171,26 +171,25 @@ class Renderer:
         else:
             title = f'-{a.fix}  ' + self.t('enclitic')
         self.line(title, 2, AFFIX_CODE)
-        if not self.s.do_dictionary_forms:
+        if not self.s.show_dictionary_forms:
             return
         self.line(self.meaning(a).strip(), 4, MEANING_CODE)
 
     def entry_header(self, entry: Entry) -> str:
         words = []
-        if self.s.do_dictionary_forms:
+        if self.s.show_dictionary_forms:
             words.append(principal_parts(entry, self.t))
             words.append(describe_part(entry.part, self.t))
-        if self.s.show_dictionary_codes:
+        if self.s.show_codes:
             words.append(f'[{entry.codes}]')
         flags = []
-        if self.s.show_age or entry.codes.age != Age.X:
+        if self.s.explain_codes or entry.codes.age != Age.X:
             flags.append(ENTRY_AGE.get(entry.codes.age))
-        if self.s.show_frequency or entry.codes.freq >= Freq.D:
+        if self.s.explain_codes or entry.codes.freq >= Freq.D:
             flags.append(ENTRY_FREQ.get(entry.codes.freq))
         words += [self.t(f) for f in flags if f]
-        if self.s.show_dictionary:
+        if self.s.show_entry_source:
             words.append(self.t(f'({entry.dictionary} dictionary)'))
-        if self.s.show_dictionary_line:
             words.append(self.t(f'(entry {entry.id})'))
         return '  '.join(w for w in words if w)
 
@@ -206,7 +205,7 @@ class Renderer:
 
     def unique(self, r: Reading, u: Unique):
         words = [u.word, self.t(POS_NAME.get(u.form.pos, ''))]
-        if self.s.show_dictionary_codes:
+        if self.s.show_codes:
             words.append(f'[{u.codes}]')
         self.line('  '.join(w for w in words if w), 2, ENTRY_CODE)
         self.line(self.meaning(u), 4, MEANING_CODE)
@@ -233,9 +232,9 @@ class Renderer:
             text = columns(stem_and_ending(self.marked(p.stem, entry),
                                            self.long_ending(p)), description)
         extra = []
-        if self.s.show_age or p.infl.age != Age.X:
+        if self.s.explain_codes or p.infl.age != Age.X:
             extra.append(FORM_AGE.get(p.infl.age))
-        if self.s.show_frequency or p.infl.freq >= Freq.C:
+        if self.s.explain_codes or p.infl.freq >= Freq.C:
             extra.append(FORM_FREQ.get(p.infl.freq))
         extra = [self.t(e) for e in extra if e]
         if extra:

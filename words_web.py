@@ -49,9 +49,9 @@ from layout import CODES, FORM_LINE, HEADWORD, analysis_of, kind_of
 from interface import N_, tr
 from lexicon import DICTIONARY, Lexicon, default_datadir
 from session import Session
-from settings import (COMMAND_LINE, DEPENDS, DEV_MODES, MODES, ON_SCREEN,
-                      Settings, ensure_config, first_sentence, label,
-                      section_of)
+from settings import (COMMAND_LINE, DEPENDS, DEV_MODES, GROUPS, MODES,
+                      ON_SCREEN, Settings, ensure_config, first_sentence,
+                      label, section_of)
 from version import NAME, VERSION, about
 from xmldata import DataError
 
@@ -291,7 +291,7 @@ class WebApp:
         link to its search, and the codes and analyses explained by their
         title (and by the page's script, for a tap).  With the Pearse codes
         (a developer mode) the layout is another one: as it is."""
-        if self.session.settings.do_pearse_codes:
+        if self.session.settings.pearse_codes:
             return esc(text)
         code = interface.code()
         if code not in self._glosses:
@@ -406,8 +406,8 @@ class WebApp:
 
     def settings_rows(self) -> str:
         out = []
-        for title, names in ((tr('Parameters'), MODES),
-                             (tr('Developer modes'), DEV_MODES)):
+        for title, names in GROUPS:
+            title = tr(title)
             rows = []
             for name in names:
                 if name not in SHOWN:

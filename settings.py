@@ -1,14 +1,15 @@
 """The settings of WORDS and the files that keep them.
 
-The parameters (changed with # in interactive mode) and the developer
-modes and command characters (changed with !) are kept in the
-configuration file, in its sections [parameters] and [developer] (see
-config.py), with the language of the meanings (see languages.py) and
-that of the interface (see interface.py):
+The parameters (changed with # in interactive mode: what the results show,
+and how words are looked up) and the developer modes and command
+characters (changed with !) are kept in the configuration file, in its
+sections [parameters] and [developer] (see config.py), with the language of
+the meanings (see languages.py) and that of the interface (see
+interface.py):
 
     [parameters]
     trim_output = true
-    do_fixes = false
+    use_affixes = false
     language = "en"
     interface = "en"
 
@@ -21,7 +22,8 @@ WORD.MDV (the developer modes and characters), one setting per line,
 
 looked for in the current folder, the program's folder and the data
 folder.  Names the program does not know (some older ones did nothing) are
-ignored.
+ignored.  The names of earlier versions (do_fixes, show_age ...) are read
+as their new ones (RENAMED), in both kinds of files.
 """
 
 from __future__ import annotations
@@ -36,21 +38,26 @@ from interface import N_, tr
 MODE_FILE = 'WORD.MOD'
 DEV_MODE_FILE = 'WORD.MDV'
 
-#  The parameters, in the order they are asked about
-MODES = (
-    'trim_output', 'do_unknowns_only', 'ignore_unknown_names',
-    'do_compounds', 'do_fixes', 'do_tricks', 'do_dictionary_forms',
-    'show_age', 'show_frequency', 'do_examples', 'use_glosses',
-    'show_long_vowels', 'do_only_meanings', 'do_stems_for_unknown',
-    'fuzzy_search')
+#  The parameters, in the order they are asked about: what the results
+#  show, and how words are looked up
+SHOWN = (
+    'show_dictionary_forms', 'show_only_meanings', 'use_glosses',
+    'show_long_vowels', 'show_codes', 'explain_codes', 'show_examples',
+    'trim_output', 'trim_medieval')
+LOOKUP = (
+    'fuzzy_search', 'use_affixes', 'use_tricks', 'medieval_spellings',
+    'read_compounds', 'ignore_unknown_names', 'unknowns_only',
+    'near_entries')
+MODES = SHOWN + LOOKUP
 
 DEV_MODES = (
-    'show_dictionary', 'show_dictionary_line', 'show_dictionary_codes',
-    'do_pearse_codes', 'do_only_initial_word', 'for_word_list_check',
-    'do_only_fixes', 'do_fixes_anyway', 'use_prefixes', 'use_suffixes',
-    'use_tackons', 'do_medieval_tricks', 'do_syncope', 'do_two_words',
-    'omit_archaic', 'omit_medieval', 'omit_uncommon',
+    'show_entry_source', 'pearse_codes', 'word_list_check',
     'pause_in_screen_output')
+
+#  The settings in groups, with their headings, for the dialogues
+GROUPS = ((N_('What the results show'), SHOWN),
+          (N_('How words are looked up'), LOOKUP),
+          (N_('Developer modes'), DEV_MODES))
 
 CHARACTERS = (('START_FILE_CHARACTER', 'start_file_character'),
               ('CHANGE_PARAMETERS_CHARACTER', 'change_parameters_character'),
@@ -68,17 +75,44 @@ LANGUAGES = ('language', 'interface')
 #  A setting that only makes sense with another one on (the dialogues
 #  skip it, or grey it out, while that one is off)
 DEPENDS = {
-    'for_word_list_check': 'do_only_initial_word',
-    'do_only_fixes': 'do_fixes',
-    'do_fixes_anyway': 'do_fixes',
-    'do_medieval_tricks': 'do_tricks',
+    'trim_medieval': 'trim_output',
+    'medieval_spellings': 'use_tricks',
 }
 
-#  Settings of earlier versions, which wrote the files WORD.OUT, WORD.UNK
-#  and WORD.STA: a configuration file that still has them is not wrong
+#  The names of earlier versions (until 3.1) and the settings that took
+#  their place.  Two old ones that became one (show_age and
+#  show_frequency) make it on if either is.
+RENAMED = {
+    'do_dictionary_forms': 'show_dictionary_forms',
+    'do_only_meanings': 'show_only_meanings',
+    'show_dictionary_codes': 'show_codes',
+    'show_age': 'explain_codes',
+    'show_frequency': 'explain_codes',
+    'do_examples': 'show_examples',
+    'omit_medieval': 'trim_medieval',
+    'do_fixes': 'use_affixes',
+    'do_tricks': 'use_tricks',
+    'do_medieval_tricks': 'medieval_spellings',
+    'do_compounds': 'read_compounds',
+    'do_unknowns_only': 'unknowns_only',
+    'do_stems_for_unknown': 'near_entries',
+    'show_dictionary': 'show_entry_source',
+    'show_dictionary_line': 'show_entry_source',
+    'do_pearse_codes': 'pearse_codes',
+    'do_only_initial_word': 'word_list_check',
+}
+MERGED = {'explain_codes', 'show_entry_source'}
+
+#  Settings of earlier versions that are gone: the files WORD.OUT, WORD.UNK
+#  and WORD.STA (until 2.15), and switches that were only for testing
+#  WORDS, now always as they usually were (until 3.1).  A configuration
+#  file that still has them is not wrong.
 REMOVED = ('have_output_file', 'write_output_to_file',
            'write_unknowns_to_file', 'have_statistics_file',
-           'write_statistics_file', 'include_unknown_context')
+           'write_statistics_file', 'include_unknown_context',
+           'for_word_list_check', 'do_only_fixes', 'do_fixes_anyway',
+           'use_prefixes', 'use_suffixes', 'use_tackons', 'do_syncope',
+           'do_two_words', 'omit_archaic', 'omit_uncommon')
 
 #  Settings that only the interactive command line uses
 COMMAND_LINE = ('pause_in_screen_output',)
@@ -97,7 +131,7 @@ def section_of(name: str) -> str:
 
 
 def label(name: str) -> str:
-    """'do_only_fixes' -> 'Do only fixes' (in the language of the
+    """'use_affixes' -> 'Use affixes' (in the language of the
     interface)."""
     return tr(name.replace('_', ' ').capitalize())
 
@@ -109,42 +143,31 @@ def first_sentence(text: str) -> str:
 
 @dataclass
 class Settings:
-    # Parameters (WORD.MOD)
-    trim_output: bool = True
-    do_unknowns_only: bool = False
-    ignore_unknown_names: bool = True
-    do_compounds: bool = True
-    do_fixes: bool = True
-    do_tricks: bool = True
-    do_dictionary_forms: bool = True
-    show_age: bool = False
-    show_frequency: bool = False
-    do_examples: bool = False
+    # Parameters (WORD.MOD): what the results show ...
+    show_dictionary_forms: bool = True
+    show_only_meanings: bool = False
     use_glosses: bool = True
     show_long_vowels: bool = True
-    do_only_meanings: bool = False
-    do_stems_for_unknown: bool = False
+    show_codes: bool = True
+    explain_codes: bool = False
+    show_examples: bool = False
+    trim_output: bool = True
+    trim_medieval: bool = False
+    # ... and how words are looked up
     fuzzy_search: bool = True
+    use_affixes: bool = True
+    use_tricks: bool = True
+    medieval_spellings: bool = True
+    read_compounds: bool = True
+    ignore_unknown_names: bool = True
+    unknowns_only: bool = False
+    near_entries: bool = False
     language: str = 'en'
     interface: str = 'en'
     # Developer modes (WORD.MDV)
-    show_dictionary: bool = False
-    show_dictionary_line: bool = False
-    show_dictionary_codes: bool = True
-    do_pearse_codes: bool = False
-    do_only_initial_word: bool = False
-    for_word_list_check: bool = False
-    do_only_fixes: bool = False
-    do_fixes_anyway: bool = False
-    use_prefixes: bool = True
-    use_suffixes: bool = True
-    use_tackons: bool = True
-    do_medieval_tricks: bool = True
-    do_syncope: bool = True
-    do_two_words: bool = True
-    omit_archaic: bool = True
-    omit_medieval: bool = False
-    omit_uncommon: bool = True
+    show_entry_source: bool = False
+    pearse_codes: bool = False
+    word_list_check: bool = False
     pause_in_screen_output: bool = True
     # Command characters (WORD.MDV)
     start_file_character: str = '@'
@@ -195,6 +218,7 @@ class Settings:
                    'settings in use', path=made))
         if data.get('parameters') or data.get('developer'):
             problems = self.apply_config(data)
+            self.rename_old(data)
             where = config.config_path()
             if problems:
                 messages.append(tr('{path} has errors ({problems}); the '
@@ -211,12 +235,18 @@ class Settings:
         configuration file say; returns their problems."""
         problems = []
         characters = {attr for _, attr in CHARACTERS}
+        given = {key for name in ('parameters', 'developer')
+                 for key in data.get(name, {})}
+        old = []
         for name, allowed in (('parameters', MODES + LANGUAGES),
                               ('developer', DEV_MODES + tuple(characters))):
             for key, value in data.get(name, {}).items():
                 if key in REMOVED:
                     continue
-                if key not in allowed:
+                if key in RENAMED:
+                    if RENAMED[key] not in given and isinstance(value, bool):
+                        old.append((key, value))  # (if not, the new wins)
+                elif key not in allowed:
                     problems.append(tr('[{section}] {key}: unknown setting',
                                        section=name, key=key))
                 elif key in LANGUAGES:
@@ -238,6 +268,7 @@ class Settings:
                 else:
                     problems.append(tr('{key}: must be true or false',
                                        key=key))
+        self.set_old(old)
         return problems
 
     def config_section(self, name: str) -> dict:
@@ -260,14 +291,48 @@ class Settings:
         if only is not None:
             values = {**{key: value for key, value
                          in config.read().get(name, values).items()
-                         if key not in REMOVED},
+                         if key not in REMOVED and key not in RENAMED},
                       **{key: values[key] for key in only if key in values}}
         return config.update(name, values)
+
+    def rename_old(self, data: dict):
+        """Writes the configuration file DATA again with the names of this
+        version, if it has old ones (each with the value it gave), and
+        without the settings that are gone.  Nothing happens if it cannot
+        be written."""
+        sections = {name: dict(data.get(name, {}))
+                    for name in ('parameters', 'developer')}
+        old = [key for keys in sections.values() for key in keys
+               if key in RENAMED or key in REMOVED]
+        if not old:
+            return
+        for name, keys in sections.items():
+            for key in list(keys):
+                if key in RENAMED:
+                    new = RENAMED[key]
+                    sections[section_of(new)].setdefault(
+                        new, getattr(self, new))
+                if key in RENAMED or key in REMOVED:
+                    del keys[key]
+        try:
+            config.write({**config.read(), **sections})
+        except (OSError, config.ConfigError):
+            pass
+
+    def set_old(self, old: list[tuple[str, bool]]):
+        """Sets what the OLD settings (name, value) say through the ones
+        that took their place (two old ones made one: on if either is)."""
+        values: dict[str, list[bool]] = {}
+        for name, value in old:
+            values.setdefault(RENAMED[name], []).append(value)
+        for new, given in values.items():
+            setattr(self, new, any(given) if new in MERGED else given[-1])
 
     def read(self, path: str) -> list[str]:
         """Sets what the settings file PATH says; returns its problems."""
         problems = []
         characters = dict(CHARACTERS)
+        old = []
         with open(path, encoding='latin-1') as f:
             for number, line in enumerate(f, 1):
                 words = line.split()
@@ -281,16 +346,19 @@ class Settings:
                     else:
                         problems.append(tr('line {number}: bad character',
                                            number=number))
-                elif name.lower() in MODES + DEV_MODES:
+                elif name.lower() in MODES + DEV_MODES + tuple(RENAMED):
                     reply = words[1].upper() if len(words) > 1 else ''
                     if reply not in ('Y', 'N'):
                         problems.append(tr('line {number}: expected Y or N',
                                            number=number))
+                    elif name.lower() in RENAMED:
+                        old.append((name.lower(), reply == 'Y'))
                     else:
                         setattr(self, name.lower(), reply == 'Y')
                 elif name.upper() != name:
                     problems.append(tr('line {number}: unexpected text',
                                        number=number))
+        self.set_old(old)
         return problems
 
 

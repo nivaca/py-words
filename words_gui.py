@@ -422,7 +422,7 @@ class App:
     def show_results(self, text: str, to_latin: bool):
         self.shown = (text, to_latin)
         plain = self.session is None or \
-            self.session.settings.do_pearse_codes   # (another layout)
+            self.session.settings.pearse_codes   # (another layout)
         self.results.show(text, to_latin, styled=not plain)
 
     def show(self, result, to_latin=False):
