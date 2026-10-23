@@ -345,6 +345,9 @@ quietem
   quies, quietis  noun, 3rd declension, feminine  [XXXBX]
     quiet, calm, rest, peace; sleep;
     quiet-em       ACC.SG
+  quieto, quietare, quietavi, quietatus  verb, 1st conjugation, transitive  [FXXCM]  medieval
+    quit, discharge;
+    quiet-em       1SG.PRS.ACT.SBJV
 
 postera
   posterus, postera -um, posterior -or -us, postremus -a -um  adjective, 1st/2nd declension  [XXXBO]
@@ -3130,7 +3133,12 @@ furentes
 
 barcaei
   (unknown)
-  (near spellings: barcae, barcai)
+  (near spellings: barcari, barcae, barcai)
+
+barcari
+  barcarius, barcari(i)  noun, 2nd declension, masculine  [FXXFM]  medieval  very rare
+    ship-maker;
+    barcari        GEN.SG  (early)
 
 barcae
   barca, barcae  noun, 1st declension, feminine  [XXXIO]  inscriptions
@@ -5023,7 +5031,7 @@ inter
 
 cresia
   (unknown)
-  (near spellings: caesia, cressa, cremia)
+  (near spellings: caesia, cresta, cressa)
 
 caesia
   caesius, caesia -um, -, caesissumus -a -um  adjective, 1st/2nd declension  [XXXCO]
@@ -5035,17 +5043,15 @@ caesia
     caesi-a        VOC.PL.N
     caesi-a        ACC.PL.N
 
+cresta
+  cresto, crestare, crestavi, crestatus  verb, 1st conjugation, transitive  [FXXCM]  medieval
+    fit (a wall or roof) with ridge-pieces;
+    crest-a        2SG.PRS.ACT.IMP
+
 cressa
   cresso, cressare, cressavi, cressatus  verb, 1st conjugation  [XXXDM]  lesser
     increase (size/number/honor), multiply; thrive;
     cress-a        2SG.PRS.ACT.IMP
-
-cremia
-  cremium, cremii  noun, 2nd declension, neuter  [XXXEO]  uncommon
-    firewood; (singular or collective); dry fire-wood (pl.), brush-wood (L+S);
-    cremi-a        NOM.PL
-    cremi-a        VOC.PL
-    cremi-a        ACC.PL
 
 fixit
   figo, figere, fixi, fixus  verb, 3rd conjugation  [XXXBX]
@@ -5133,6 +5139,10 @@ liquitque
   (less likely forms are not shown)
 
 volatile
+  volatil, volatilis  noun, 3rd declension, neuter  [FXXCM]  medieval
+    fowl;
+    volatil-e      LOC.SG
+    volatil-e      DAT.SG  (early)
   volatilis, volatilis, volatile  adjective, 3rd declension  [XXXDX]  lesser
     equipped to fly, flying fleeing, fleeting transient;
     volatil-e      NOM.SG.N
@@ -5788,6 +5798,9 @@ luna
 premit
   premo, premere, pressi, pressus  verb, 3rd conjugation  [XXXAA]
     press, press hard, pursue; oppress; overwhelm; check, repress;
+    prem-it        3SG.PRS.ACT.IND
+  premio, premire, premivi, premitus  verb, 4th conjugation, transitive  [FXXCM]  medieval
+    reward;
     prem-it        3SG.PRS.ACT.IND
 
 suadentque
@@ -7322,6 +7335,9 @@ communem
   communis, communis, commune  adjective, 3rd declension  [XXXAO]
     shared/possessed/used by two/all parties; affecting whole state/community;
     commun-em      ACC.SG.C
+  communo, communare, communavi, communatus  verb, 1st conjugation, intransitive  [FXXCM]  medieval
+    have rights of common;
+    commun-em      1SG.PRS.ACT.SBJV
 
 hunc
   hic, haec, hoc  pronoun, adjectival  [XXXAX]
@@ -10107,6 +10123,10 @@ mixtique
     mixt-i         PRF.PASS.PTCP.GEN.SG.N
     mixt-i         PRF.PASS.PTCP.NOM.PL.M
     mixt-i         PRF.PASS.PTCP.VOC.PL.M
+  mixtum, mixti  noun, 2nd declension, neuter  [EXXCM]  later
+    special allowance of food, breakfast (monastic);
+    mixt-i         GEN.SG
+    mixt-i         LOC.SG
   syncope: Syncope s/x => +is
     Syncopated perfect sometimes drops the 'is' after 's' or 'x'
   meio, meere, mixi, mictus  verb, 3rd conjugation  [XXXDX]  lesser
@@ -10300,6 +10320,9 @@ fronde
 premit
   premo, premere, pressi, pressus  verb, 3rd conjugation  [XXXAA]
     press, press hard, pursue; oppress; overwhelm; check, repress;
+    prem-it        3SG.PRS.ACT.IND
+  premio, premire, premivi, premitus  verb, 4th conjugation, transitive  [FXXCM]  medieval
+    reward;
     prem-it        3SG.PRS.ACT.IND
 
 crinem
@@ -14236,6 +14259,11 @@ et
     and, and even; also, even;  (et ... et = both ... and);
 
 variis
+  varium, vari(i)  noun, 2nd declension, neuter  [FXXCM]  medieval
+    "vair", squirrel fur;
+    vari-is        LOC.PL
+    vari-is        DAT.PL
+    vari-is        ABL.PL
   varius, varia, varium  adjective, 1st/2nd declension  [XXXAX]
     different; various, diverse; changing; colored; party colored, variegated;
     vari-is        DAT.PL
@@ -16758,7 +16786,13 @@ prolem
 
 ausoniam
   (unknown)
-  (near spellings: absoniam)
+  (near spellings: assoniam, absoniam)
+
+assoniam
+  assonio, assonire, assonivi, assonitus  verb, 4th conjugation, transitive  [FLXCM]  medieval
+    essoin, excuse from appearing in court (leg.);
+    assoni-am      1SG.PRS.ACT.SBJV
+    assoni-am      1SG.FUT.ACT.IND
 
 absoniam
   absonia, absoniae  noun, 1st declension, feminine  [FDXEZ]  medieval  uncommon
@@ -19042,6 +19076,9 @@ continuo
   (less likely forms are not shown)
 
 invadit
+  invadio, invadire, invadivi, invaditus  verb, 4th conjugation, transitive  [FXXCM]  medieval
+    pledge, mortgage;
+    invad-it       3SG.PRS.ACT.IND
   invado, invadere, invasi, invasus  verb, 3rd conjugation  [XXXBX]
     enter, attempt; invade; take possession of; attack (with in +acc.);
     invad-it       3SG.PRS.ACT.IND
@@ -22368,7 +22405,7 @@ sed
 
 troia
   (unknown)
-  (near spellings: tria)
+  (near spellings: tria, croia, trona)
 
 tria
   tres -es -ia, tertius -a -um, terni -ae -a, ter  numeral, 3  [XXXAX]
@@ -22376,6 +22413,20 @@ tria
     tr-ia          NOM.PL.N.CARD
     tr-ia          VOC.PL.N.CARD
     tr-ia          ACC.PL.N.CARD
+
+croia
+  croia, croiae  noun, 1st declension, feminine  [FXXCM]  medieval
+    "cruive", fish-trap (Scotland);
+    croi-a         NOM.SG
+    croi-a         VOC.SG
+    croi-a         ABL.SG
+
+trona
+  tronum, troni  noun, 2nd declension, neuter  [FXXCM]  medieval
+    "tron", weigh-beam;
+    tron-a         NOM.PL
+    tron-a         VOC.PL
+    tron-a         ACC.PL
 
 antiqua
   antiquum, antiqui  noun, 2nd declension, neuter  [DXXES]  late  uncommon
@@ -22410,7 +22461,7 @@ maneret
 
 troia
   (unknown)
-  (near spellings: tria)
+  (near spellings: tria, croia, trona)
 
 tria
   tres -es -ia, tertius -a -um, terni -ae -a, ter  numeral, 3  [XXXAX]
@@ -22418,6 +22469,20 @@ tria
     tr-ia          NOM.PL.N.CARD
     tr-ia          VOC.PL.N.CARD
     tr-ia          ACC.PL.N.CARD
+
+croia
+  croia, croiae  noun, 1st declension, feminine  [FXXCM]  medieval
+    "cruive", fish-trap (Scotland);
+    croi-a         NOM.SG
+    croi-a         VOC.SG
+    croi-a         ABL.SG
+
+trona
+  tronum, troni  noun, 2nd declension, neuter  [FXXCM]  medieval
+    "tron", weigh-beam;
+    tron-a         NOM.PL
+    tron-a         VOC.PL
+    tron-a         ACC.PL
 
 per
   per  preposition, with the accusative  [XXXAX]
@@ -24665,6 +24730,11 @@ recidiva
     recidiv-a      NOM.PL.N
     recidiv-a      VOC.PL.N
     recidiv-a      ACC.PL.N
+  recidiva, recidivae  noun, 1st declension, feminine  [FXXCM]  medieval
+    recurrence, relapse;
+    recidiv-a      NOM.SG
+    recidiv-a      VOC.SG
+    recidiv-a      ABL.SG
 
 manu
   manus, manus  noun, 4th declension, feminine  [XXXAX]
@@ -40314,6 +40384,10 @@ mori
 varioque
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
+  varium, vari(i)  noun, 2nd declension, neuter  [FXXCM]  medieval
+    "vair", squirrel fur;
+    vari-o         DAT.SG
+    vari-o         ABL.SG
   varius, varia, varium  adjective, 1st/2nd declension  [XXXAX]
     different; various, diverse; changing; colored; party colored, variegated;
     vari-o         DAT.SG.M
@@ -40643,6 +40717,11 @@ moras
   (less likely forms are not shown)
 
 varium
+  varium, vari(i)  noun, 2nd declension, neuter  [FXXCM]  medieval
+    "vair", squirrel fur;
+    vari-um        NOM.SG
+    vari-um        VOC.SG
+    vari-um        ACC.SG
   varius, varia, varium  adjective, 1st/2nd declension  [XXXAX]
     different; various, diverse; changing; colored; party colored, variegated;
     vari-um        NOM.SG.N
@@ -40661,6 +40740,7 @@ varium
     vari-um        VOC.SG.N
     vari-um        ACC.SG.M
     vari-um        ACC.SG.N
+  (less likely forms are not shown)
 
 et
   et  conjunction  [XXXAX]

@@ -20,7 +20,7 @@ Sobre esa base hay varias interfaces: la línea de órdenes (`words.py`), la ven
 
 Los datos son seis archivos XML más uno por idioma, todos descritos por un esquema (`words.xsd`):
 
-- `dictionary.xml`: 39 592 entradas.
+- `dictionary.xml`: 43 176 entradas.
 - `inflections.xml`: 1 797 desinencias.
 - `uniques.xml`: 79 formas irregulares.
 - `addons.xml`: 343 prefijos, sufijos y enclíticos.
@@ -70,6 +70,8 @@ Todo el diccionario se tradujo del inglés al español (`languages/es.xml`) con 
 Se tradujo por lotes y por significado, así que un significado compartido por varias entradas se tradujo una sola vez. La traducción sigue de cerca el inglés. Conserva los sentidos y su orden (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD, Ecc, PASS, GEN…) y el latín entre corchetes, del que solo se traduce el lado inglés. Escribe "c/" por "w/", "a. C." y "d. C." por BC y AD, y da las medidas en el sistema métrico. Respeta el inglés aun donde es raro, y solo lo corrige donde está claramente mal, como en las capacidades del efá y del gomor hebreos, que el inglés exageraba unas treinta veces.
 
 Después, una segunda pasada leyó cada entrada traducida junto a su original y corrigió unas 260: sentidos repetidos, palabras ambiguas o equivocadas ("de nuevo" por *newly*, "librería" por *bookcase*) y faltas de ortografía. Como toda traducción de este tamaño, seguro que todavía tiene errores; los editores del diccionario permiten corregirlos fácilmente.
+
+Después, el diccionario se comparó con dos listas más, también con ayuda de Claude: el vocabulario básico latín-español de J. Echave-Sustaeta, que corrigió 321 entradas y añadió 254, y la lista de latín medieval de R. E. Latham, que añadió sus sentidos medievales (2444 entradas), corrigió 21 significados y sumó 1140 palabras y categorías gramaticales que faltaban, todas con sus significados en español. El README explica cómo se hizo.
 
 ## Validación
 

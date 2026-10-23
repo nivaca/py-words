@@ -685,6 +685,27 @@ ex-consul; *recitatio*; the noun *ornatus*; *timiditas*; *inrisus*).
 All of them have the source code A, Echave-Sustaeta: after their own
 source, when they had one other than X (`source="O A"`), or alone.
 
+Later in October 2026 the dictionary was compared also with R. E.
+Latham's *Revised Medieval Latin Word-List from British and Irish
+Sources*.  This was done with the help of Claude, the large language
+model of Anthropic (the model Claude Opus 5.5, `claude-opus-5-5`), at the
+request and under the direction of Nicolas Vaughan, in two steps.  First,
+for the words that the dictionary already had, the medieval senses of
+Latham that our entries lacked were added, each one in a new entry after
+the old ones, as WORDS does with medieval senses (2,444 entries).  61
+entries more were added where Latham uses a word as another part of
+speech (the noun *coronatus*, a tonsured cleric), and 21 meanings were
+corrected (*humiditas* had the meanings of *humilitas*).  Second, 1,079
+words that the dictionary did not have were added: the ones that Latham
+marks as frequent (\*), and also the doubtful (†) and glossary-only (‡)
+ones with a clear meaning.  Their grammar was inferred from their form.
+Spelling variants of a word already added, and lines that the scanned
+text of the list left unreadable, were left out.  All these entries have
+the source code M, Latham, an age from the earliest date he gives, and a
+frequency from his marks (C for the frequent words, F for the doubtful
+ones); their Spanish meanings were translated in the same work.  With
+them the dictionary has 43,176 entries.
+
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations
 (L+S, OLD, Ecc, PASS, GEN ...), and the Latin in brackets

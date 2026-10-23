@@ -26,7 +26,7 @@ game
     limestone, lime; chalk, goal, goal-line (chalk mark), end of life; game piece;
   talus, tali  noun, 2nd declension, masculine  [XBXBO]
     ankle; ankle/pastern bone; sheep knucklebone (marked for dice); dice game (pl.);
-  (22 more not shown)
+  (23 more not shown)
 
 ate
   tripudium, tripudi(i)  noun, 2nd declension, neuter  [XXXDX]  lesser
@@ -45,7 +45,7 @@ grain
     |favorable, fair (wind/current); fortunate, propitious; smooth, w/the grain;
   granum, grani  noun, 2nd declension, neuter  [XXXDX]  lesser
     grain; seed;
-  (62 more not shown)
+  (63 more not shown)
 
 fresh
   novus, nova -um, novior -or -us, novissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
@@ -75,7 +75,7 @@ air
     sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
   coelum, coeli  noun, 2nd declension, neuter  [XSXAS]
     sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
-  (56 more not shown)
+  (57 more not shown)
 
 came
   convenit, convenire, convenit, conventus est  verb, 4th conjugation, impersonal  [XXXCO]
@@ -96,7 +96,7 @@ in
     before, in front; in view of, because of;
   super  preposition, with the ablative  [XXXAX]
     over (space), above, upon, in addition to; during (time); concerning; beyond;
-  (41 more not shown)
+  (42 more not shown)
 
 a
   (no match)
@@ -197,13 +197,13 @@ money
     money; property;
   argentum, argenti  noun, 2nd declension, neuter  [XXXBO]
     silver; money, cash; silver-plate; [argentum vivum => quicksilver/mercury];
+  beveragium, beveragi(i)  noun, 2nd declension, neuter  [FXXCM]  medieval
+    drink-money;
   moneta, monetae  noun, 1st declension, feminine  [XXXCO]
     money/coinage; die on which coin is struck, stamp; mint, temple striking coins;
   arca, arcae  noun, 1st declension, feminine  [XXXBO]
     box, chest; strong-box, coffer; wealth, money; coffin, bier; cell, cage; ark;
-  lamina, laminae  noun, 1st declension, feminine  [XXXBO]
-    plate; veneer; thin sheet of metal/other material; (blade); money/cash;
-  (28 more not shown)
+  (29 more not shown)
 
 do
   facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
@@ -330,5 +330,5 @@ stop
     stop/cease/desist (from); give up, leave/stand off; dissociate oneself;
   mansio, mansionis  noun, 3rd declension, feminine  [XXXBO]
     lodging, stop; day's journey, stage; staying away; abode/quarters/home/dwelling;
-  (26 more not shown)
+  (27 more not shown)
 

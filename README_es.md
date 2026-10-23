@@ -695,6 +695,29 @@ continuaciones y 5 palabras nuevas (*consularis*, el excónsul;
 tienen el código de fuente A, Echave-Sustaeta: tras su propia fuente,
 cuando tenían una distinta de X (`source="O A"`), o sola.
 
+Más tarde, en octubre de 2026, se comparó también el diccionario con la
+*Revised Medieval Latin Word-List from British and Irish Sources* de R.
+E. Latham.  Se hizo con ayuda de Claude, el modelo de lenguaje de
+Anthropic (el modelo Claude Opus 5.5, `claude-opus-5-5`), a petición y
+bajo la dirección de Nicolas Vaughan, en dos pasos.  Primero, para las
+palabras que el diccionario ya tenía, se añadieron los sentidos
+medievales de Latham que faltaban en nuestras entradas, cada uno en una
+entrada nueva tras las antiguas, como hace WORDS con los sentidos
+medievales (2444 entradas).  Se añadieron otras 61 entradas donde Latham
+usa una palabra como otra categoría gramatical (el sustantivo
+*coronatus*, clérigo tonsurado), y se corrigieron 21 significados
+(*humiditas* tenía los significados de *humilitas*).  Después se
+añadieron 1079 palabras que el diccionario no tenía: las que Latham
+marca como frecuentes (\*), y también las dudosas (†) y las de glosarios
+(‡) que tienen un significado claro.  Su gramática se dedujo de su
+forma.  Se dejaron fuera las variantes ortográficas de una palabra ya
+añadida y las líneas que el texto escaneado de la lista dejó ilegibles.
+Todas estas entradas tienen el código de fuente M, Latham, una época
+según la fecha más antigua que él da y una frecuencia según sus marcas
+(C para las frecuentes, F para las dudosas); sus significados en español
+se tradujeron en el mismo trabajo.  Con ellas el diccionario tiene
+43 176 entradas.
+
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,
 Ecc, PASS, GEN ...) y el latín entre corchetes (`[domi => en casa]`);
