@@ -342,6 +342,11 @@
     <xs:restriction base="xs:string"><xs:pattern value="[A-Za-z]{0,7}"/></xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="longEnding">
+    <xs:annotation><xs:documentation>An ending with its long vowels marked: letters and ā ē ī ō ū ȳ, at most 7.</xs:documentation></xs:annotation>
+    <xs:restriction base="xs:string"><xs:pattern value="[A-Za-zāēīōūȳĀĒĪŌŪȲ]{1,7}"/></xs:restriction>
+  </xs:simpleType>
+
   <xs:simpleType name="connect">
     <xs:annotation><xs:documentation>The letter that must follow a prefix (or precede a suffix).</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string"><xs:pattern value="."/></xs:restriction>
@@ -490,6 +495,11 @@
             <xs:attributeGroup ref="qual"/>
             <xs:attribute name="key" type="key" use="required"/>
             <xs:attribute name="ending" type="ending" default=""/>
+            <xs:attribute name="long" type="longEnding">
+              <xs:annotation><xs:documentation>The ending with its long
+                vowels marked (ābat), when it has some; from
+                Collatinus.</xs:documentation></xs:annotation>
+            </xs:attribute>
             <xs:attribute name="age" type="age" default="X"/>
             <xs:attribute name="freq" type="freq" default="X"/>
           </xs:complexType>

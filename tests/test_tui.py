@@ -92,7 +92,7 @@ class TerminalDictionaryTests(unittest.TestCase):
             ('arma virumque cano Troiae qui primus ab oris\r', 2),
             (PGDN, 0.5), (F10, 1)])
         self.assertEqual(status, 0)
-        self.assertIn('amīc-orum', out)
+        self.assertIn('amīc-ōrum', out)
         self.assertIn('GEN.PL', out)
         self.assertIn('more ↓', out)            # (a long result scrolls)
 

@@ -388,13 +388,13 @@ otro idioma, el resto también está en ese idioma, en la medida en que su
 archivo lo traduce (`sustantivo, 2.ª declinación, masculino`; véase "Los
 idiomas de los significados").
 
-La raíz de una forma muestra sus vocales largas, cuando se conocen:
-amīc-us, rēg-is, fēlīc-em (el parámetro show_long_vowels las oculta).
-Vienen de `data/quantities.xml`, que hice a partir de los lemas de
-Collatinus (véase "Las vocales largas" más abajo).  Por ahora solo se
-marcan las raíces, no las desinencias, así que am-abat no dice que su a
-es larga; y las marcas que se escriben en una palabra se siguen quitando
-antes del análisis, así que rosā muestra todas las lecturas de rosa.
+Una forma muestra sus vocales largas, en la raíz y en la desinencia,
+cuando se conocen: amīc-ōrum, rēg-is, am-ābat, ros-ā (el parámetro
+show_long_vowels las oculta).  Las raíces vienen de
+`data/quantities.xml` y las desinencias de `data/inflections.xml`, ambos
+hechos a partir de Collatinus (véase "Las vocales largas" más abajo).
+Las marcas que se escriben en una palabra se siguen quitando antes del
+análisis, así que rosā muestra todas las lecturas de rosa.
 
 ### Los códigos entre corchetes
 
@@ -714,14 +714,26 @@ Lo hice a partir de los lemas y los modelos de Collatinus (`lemmes.la`,
 `lem_ext.la`, `modeles.la`): cada entrada se emparejó con un lema como
 para los significados de arriba, y sus raíces se buscaron entre las que
 construye el modelo del lema.  Se emparejaron unas 30 000 entradas, y
-19 447 de ellas tienen alguna vocal larga.  Collatinus marca la cantidad
+20 297 de ellas tienen alguna vocal larga.  Collatinus marca la cantidad
 de las sílabas, para escandir versos, así que marca también las vocales
 que solo son largas por posición (cōrd por cor, cordis); por eso se
 quitaron las marcas ante dos consonantes (o x o z), y una vocal larga
-allí por naturaleza (rēx, āctum) no se marca.  Tampoco se marcan los
-diptongos (ae, au, oe).  `words_check.py` comprueba que cada raíz marcada
-tenga las letras de la raíz de su entrada; una raíz cambiada después en
-el diccionario simplemente pierde sus marcas.
+allí por naturaleza (rēx, āctum) no se marca.  Solo ante ns y nf las
+conservé, porque allí una vocal siempre es larga (amāns, īnfāns).
+Tampoco se marcan los diptongos (ae, au, oe).  `words_check.py`
+comprueba que cada raíz marcada tenga las letras de la raíz de su
+entrada; una raíz cambiada después en el diccionario simplemente pierde
+sus marcas.
+
+Las desinencias se marcan en `data/inflections.xml`, con el atributo
+`long` (`ending="abat" long="ābat"`).  Construí todas las formas que los
+modelos de Collatinus dan para los lemas emparejados, con sus
+cantidades, y puse cada una junto a la desinencia de py-words que hace
+la misma forma de la misma entrada; una desinencia recibió las marcas en
+que coinciden al menos nueve de cada diez de sus formas.  Así se
+marcaron 731 desinencias.  Algunas quedan sin marcar porque su cantidad
+depende de la palabra: el ablativo -e o -ī de los adjetivos de la 3.ª
+declinación, -imur en legimur y audīmur, -ei en diēī y reī.
 
 ### Los significados en español
 

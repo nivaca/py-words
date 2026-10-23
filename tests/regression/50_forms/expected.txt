@@ -9,40 +9,40 @@ amicus
 amici
   amicus, amici  noun, 2nd declension, masculine  [XXXBO]
     friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
-    amīc-i         GEN.SG
+    amīc-ī         GEN.SG
       ~'s; of ~
-    amīc-i         LOC.SG
+    amīc-ī         LOC.SG
       at ~ (place where)
-    amīc-i         NOM.PL
-    amīc-i         VOC.PL
+    amīc-ī         NOM.PL
+    amīc-ī         VOC.PL
   amicus, amica -um, amicior -or -us, amicissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-    amīc-i         GEN.SG.M
-    amīc-i         GEN.SG.N
-    amīc-i         NOM.PL.M
-    amīc-i         VOC.PL.M
+    amīc-ī         GEN.SG.M
+    amīc-ī         GEN.SG.N
+    amīc-ī         NOM.PL.M
+    amīc-ī         VOC.PL.M
   amicio, amicire, amicui, amictus  verb, 4th conjugation, transitive  [XXXBO]
     clothe, cover, dress; wrap about; surround; veil; clothe with words;
-    amic-i         2SG.PRS.ACT.IMP
+    amic-ī         2SG.PRS.ACT.IMP
       you ~!
   amicio, amicire, amixi, amictus  verb, 4th conjugation, transitive  [XXXBO]
     clothe, cover, dress; wrap about; surround; veil; clothe with words;
-    amic-i         2SG.PRS.ACT.IMP
+    amic-ī         2SG.PRS.ACT.IMP
       you ~!
 
 amico
   amicus, amici  noun, 2nd declension, masculine  [XXXBO]
     friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
-    amīc-o         DAT.SG
+    amīc-ō         DAT.SG
       for _ (purpose, reference); to ~ (w/adjectives); to ~ (double dative)
-    amīc-o         ABL.SG
+    amīc-ō         ABL.SG
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
   amicus, amica -um, amicior -or -us, amicissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-    amīc-o         DAT.SG.M
-    amīc-o         DAT.SG.N
-    amīc-o         ABL.SG.M
-    amīc-o         ABL.SG.N
+    amīc-ō         DAT.SG.M
+    amīc-ō         DAT.SG.N
+    amīc-ō         ABL.SG.M
+    amīc-ō         ABL.SG.N
   amico, amicare, -, -  verb, 1st conjugation, transitive  [XXXFO]  very rare
     propitiate, make friendly to oneself;
     amīc-o         1SG.PRS.ACT.IND
@@ -74,41 +74,41 @@ amice
 amicorum
   amicus, amici  noun, 2nd declension, masculine  [XXXBO]
     friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
-    amīc-orum      GEN.PL
+    amīc-ōrum      GEN.PL
       ~'s; of ~
   amicus, amica -um, amicior -or -us, amicissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-    amīc-orum      GEN.PL.M
-    amīc-orum      GEN.PL.N
+    amīc-ōrum      GEN.PL.M
+    amīc-ōrum      GEN.PL.N
 
 amicis
   amica, amicae  noun, 1st declension, feminine  [XXXCO]
     female friend; girl friend, sweetheart; patron; mistress, concubine; courtesan;
     amīc-is        LOC.PL
       at ~ (place where)
-    amīc-is        DAT.PL
+    amīc-īs        DAT.PL
       for _ (purpose, reference); to ~ (w/adjectives); to ~ (double dative)
-    amīc-is        ABL.PL
+    amīc-īs        ABL.PL
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
   amicus, amici  noun, 2nd declension, masculine  [XXXBO]
     friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
     amīc-is        LOC.PL
       at ~ (place where)
-    amīc-is        DAT.PL
+    amīc-īs        DAT.PL
       for _ (purpose, reference); to ~ (w/adjectives); to ~ (double dative)
-    amīc-is        ABL.PL
+    amīc-īs        ABL.PL
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
   amicus, amica -um, amicior -or -us, amicissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-    amīc-is        DAT.PL
-    amīc-is        ABL.PL
+    amīc-īs        DAT.PL
+    amīc-īs        ABL.PL
   amicio, amicire, amicui, amictus  verb, 4th conjugation, transitive  [XXXBO]
     clothe, cover, dress; wrap about; surround; veil; clothe with words;
-    amic-is        2SG.PRS.ACT.IND
+    amic-īs        2SG.PRS.ACT.IND
       you ~
   amicio, amicire, amixi, amictus  verb, 4th conjugation, transitive  [XXXBO]
     clothe, cover, dress; wrap about; surround; veil; clothe with words;
-    amic-is        2SG.PRS.ACT.IND
+    amic-īs        2SG.PRS.ACT.IND
       you ~
 
 puella
@@ -116,7 +116,7 @@ puella
     girl, (female) child/daughter; maiden; young woman/wife; sweetheart; slavegirl;
     puell-a        NOM.SG
     puell-a        VOC.SG
-    puell-a        ABL.SG
+    puell-ā        ABL.SG
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
 
 rex
@@ -185,25 +185,25 @@ manus
     hand, fist; team; gang, band of soldiers; handwriting; (elephant's) trunk;
     man-us         NOM.SG
     man-us         VOC.SG
-    man-us         GEN.SG
+    man-ūs         GEN.SG
       ~'s; of ~
-    man-us         NOM.PL
-    man-us         VOC.PL
-    man-us         ACC.PL
+    man-ūs         NOM.PL
+    man-ūs         VOC.PL
+    man-ūs         ACC.PL
   manus, manus  noun, 4th declension, feminine  [XXXAA]
     force, violence; power, control; handful of men;
     man-us         NOM.SG
     man-us         VOC.SG
-    man-us         GEN.SG
+    man-ūs         GEN.SG
       ~'s; of ~
-    man-us         NOM.PL
-    man-us         VOC.PL
-    man-us         ACC.PL
+    man-ūs         NOM.PL
+    man-ūs         VOC.PL
+    man-ūs         ACC.PL
 
 cornu
   cornus, cornus  noun, 4th declension, feminine  [XXXCO]
     cornel-cherry-tree (Cornus mas); cornel wood; javelin (of cornel wood);
-    corn-u         ABL.SG
+    corn-ū         ABL.SG
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
   cornu, cornus  noun, 4th declension, neuter  [XXXAO]
     horn; hoof; beak/tusk/claw; bow; horn/trumpet; end, wing of army; mountain top;
@@ -211,7 +211,7 @@ cornu
     corn-u         VOC.SG
     corn-u         DAT.SG
       for _ (purpose, reference); to ~ (w/adjectives); to ~ (double dative)
-    corn-u         ABL.SG
+    corn-ū         ABL.SG
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
     corn-u         ACC.SG
   (less likely forms are not shown)
@@ -219,25 +219,25 @@ cornu
 res
   res, rei  noun, 5th declension, feminine  [XXXAX]
     thing; event/affair/business; fact; cause; property; [~ familiaris => property];
-    r-es           NOM.SG
-    r-es           VOC.SG
-    r-es           NOM.PL
-    r-es           VOC.PL
-    r-es           ACC.PL
+    r-ēs           NOM.SG
+    r-ēs           VOC.SG
+    r-ēs           NOM.PL
+    r-ēs           VOC.PL
+    r-ēs           ACC.PL
   res, rei  noun, 5th declension, feminine  [XXXAA]
     circumstances; reality; wealth; [res publica => state; res gestae => exploits]
-    r-es           NOM.SG
-    r-es           VOC.SG
-    r-es           NOM.PL
-    r-es           VOC.PL
-    r-es           ACC.PL
+    r-ēs           NOM.SG
+    r-ēs           VOC.SG
+    r-ēs           NOM.PL
+    r-ēs           VOC.PL
+    r-ēs           ACC.PL
   res, rei  noun, 5th declension, feminine  [FSXEM]  medieval  uncommon
     reality, essence (phil.);
-    r-es           NOM.SG
-    r-es           VOC.SG
-    r-es           NOM.PL
-    r-es           VOC.PL
-    r-es           ACC.PL
+    r-ēs           NOM.SG
+    r-ēs           VOC.SG
+    r-ēs           NOM.PL
+    r-ēs           VOC.PL
+    r-ēs           ACC.PL
   res, undeclined  noun, undeclined, neuter  [DEQEW]  late  uncommon
     res; (20th letter of Hebrew alphabet); (transliterate as R);
     res
@@ -246,18 +246,18 @@ res
 acies
   acies, aciei  noun, 5th declension, feminine  [XXXAO]
     sharpness, sharp edge, point; battle line/array; sight, glance; pupil of eye;
-    aci-es         NOM.SG
-    aci-es         VOC.SG
-    aci-es         NOM.PL
-    aci-es         VOC.PL
-    aci-es         ACC.PL
+    aci-ēs         NOM.SG
+    aci-ēs         VOC.SG
+    aci-ēs         NOM.PL
+    aci-ēs         VOC.PL
+    aci-ēs         ACC.PL
   acies, aciei  noun, 5th declension, feminine  [FXXEM]  medieval  uncommon
     scaling-ladder;
-    aci-es         NOM.SG
-    aci-es         VOC.SG
-    aci-es         NOM.PL
-    aci-es         VOC.PL
-    aci-es         ACC.PL
+    aci-ēs         NOM.SG
+    aci-ēs         VOC.SG
+    aci-ēs         NOM.PL
+    aci-ēs         VOC.PL
+    aci-ēs         ACC.PL
 
 ingenium
   ingenium, ingenii  noun, 2nd declension, neuter  [EXXDB]  later  lesser
@@ -396,13 +396,13 @@ fortis
     chance; luck, fortune; accident;
     fort-is        GEN.SG
       ~'s; of ~
-    fort-is        ACC.PL  (early)
+    fort-īs        ACC.PL  (early)
   fortis, forte, fortior -or -us, fortissimus -a -um  adjective, 3rd declension  [XXXAX]
     strong, powerful, mighty, vigorous, firm, steadfast, courageous, brave, bold;
     fort-is        NOM.SG.C
     fort-is        VOC.SG.C
     fort-is        GEN.SG
-    fort-is        ACC.PL.C
+    fort-īs        ACC.PL.C
   (less likely forms are not shown)
 
 felix
@@ -520,10 +520,10 @@ amo
 amas
   ama, amae  noun, 1st declension, feminine  [XXXDO]  lesser
     bucket; water bucket; (esp. fireman's bucket);
-    am-as          ACC.PL
+    am-ās          ACC.PL
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-as          2SG.PRS.ACT.IND
+    am-ās          2SG.PRS.ACT.IND
       you ~
 
 amat
@@ -535,32 +535,32 @@ amat
 amamus
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-amus        1PL.PRS.ACT.IND
+    am-āmus        1PL.PRS.ACT.IND
       we ~
 
 amatis
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-atis        2PL.PRS.ACT.IND
+    am-ātis        2PL.PRS.ACT.IND
       you ~
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    amāt-is        PRF.PASS.PTCP.DAT.PL
+    amāt-īs        PRF.PASS.PTCP.DAT.PL
       ~ed  PERF PASSIVE PPL often used as ADJ or N (amatus => belov.ed)
-    amāt-is        PRF.PASS.PTCP.ABL.PL
+    amāt-īs        PRF.PASS.PTCP.ABL.PL
       ~ed  PERF PASSIVE PPL often used as ADJ or N (amatus => belov.ed)
   amata, amatae  noun, 1st declension, feminine  [XXXFO]  very rare
     loved one, beloved (woman);
     amāt-is        LOC.PL
       at ~ (place where)
-    amāt-is        DAT.PL
+    amāt-īs        DAT.PL
       for _ (purpose, reference); to ~ (w/adjectives); to ~ (double dative)
-    amāt-is        ABL.PL
+    amāt-īs        ABL.PL
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
   amatus, amata, amatum  adjective, 1st/2nd declension  [XXXEO]  uncommon
     loved, beloved;
-    amat-is        DAT.PL
-    amat-is        ABL.PL
+    amat-īs        DAT.PL
+    amat-īs        ABL.PL
 
 amant
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
@@ -571,19 +571,19 @@ amant
 amabam
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-abam        1SG.IMPF.ACT.IND
+    am-ābam        1SG.IMPF.ACT.IND
       I ~ed/was ~ing
 
 amabo
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-abo         1SG.FUT.ACT.IND
+    am-ābo         1SG.FUT.ACT.IND
       I shall ~
 
 amavi
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    amāv-i         1SG.PRF.ACT.IND
+    amāv-ī         1SG.PRF.ACT.IND
       I have ~ed
 
 amaveram
@@ -607,7 +607,7 @@ amem
 amarem
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-arem        1SG.IMPF.ACT.SBJV
+    am-ārem        1SG.IMPF.ACT.SBJV
       I may/must/should ~
 
 amaverim
@@ -627,17 +627,17 @@ ama
     bucket; water bucket; (esp. fireman's bucket);
     am-a           NOM.SG
     am-a           VOC.SG
-    am-a           ABL.SG
+    am-ā           ABL.SG
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-a           2SG.PRS.ACT.IMP
+    am-ā           2SG.PRS.ACT.IMP
       you ~!
 
 amate
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-ate         2PL.PRS.ACT.IMP
+    am-āte         2PL.PRS.ACT.IMP
       (you) ~!
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
@@ -654,11 +654,11 @@ amate
 amare
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-are         PRS.ACT.INF
+    am-āre         PRS.ACT.INF
       to ~
-    am-are         2SG.PRS.PASS.IND  (early)
+    am-āre         2SG.PRS.PASS.IND  (early)
       you are/are being ~ed
-    am-are         2SG.PRS.PASS.IMP
+    am-āre         2SG.PRS.PASS.IMP
       you be ~ed!
   amarus, amara -um, amarior -or -us, amarissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
     bitter, brackish, pungent; harsh, shrill; sad, calamitous; ill-natured, caustic;
@@ -670,7 +670,7 @@ amare
     Syncopated perfect often drops the 'v' and contracts vowel
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    amāv-ere       3PL.PRF.ACT.IND
+    amāv-ēre       3PL.PRF.ACT.IND
       they have ~ed
 
 amavisse
@@ -682,7 +682,7 @@ amavisse
 amaturus
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    amāt-urus      FUT.ACT.PTCP.NOM.SG.M
+    amāt-ūrus      FUT.ACT.PTCP.NOM.SG.M
       about/going/intending/destined to ~  FUT ACTIVE PPL often used as ADJ or N
 
 amatus
@@ -697,21 +697,21 @@ amatus
 amans
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-ans         PRS.ACT.PTCP.NOM.SG
+    am-āns         PRS.ACT.PTCP.NOM.SG
       ~ing  PRES ACTIVE PPL often used as ADJ or N (lov.ing, curl.y)
-    am-ans         PRS.ACT.PTCP.VOC.SG
+    am-āns         PRS.ACT.PTCP.VOC.SG
       ~ing  PRES ACTIVE PPL often used as ADJ or N (lov.ing, curl.y)
-    am-ans         PRS.ACT.PTCP.ACC.SG.N
+    am-āns         PRS.ACT.PTCP.ACC.SG.N
       ~ing  PRES ACTIVE PPL often used as ADJ or N (lov.ing, curl.y)
   amans, amantis  noun, 3rd declension, masculine/feminine  [XXXCO]
     lover, sweetheart; mistress; one who is fond/affectionate;
-    amans          NOM.SG
-    amans          VOC.SG
+    amāns          NOM.SG
+    amāns          VOC.SG
   amans, amantis (gen.), amantior -or -us, amantissimus -a -um  adjective, 3rd declension  [XXXCO]
     loving/fond/affectionate; beloved/dear to; friendly/kind; having love/affection;
-    amans          NOM.SG
-    amans          VOC.SG
-    amans          ACC.SG.N
+    amāns          NOM.SG
+    amāns          VOC.SG
+    amāns          ACC.SG.N
 
 amandum
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
@@ -761,20 +761,20 @@ amor
 amaris
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-aris        2SG.PRS.PASS.IND
+    am-āris        2SG.PRS.PASS.IND
       you are/are being ~ed
   amarum, amari  noun, 2nd declension, neuter  [XXXEC]  uncommon
     bitterness; unpleasantness; (often pl.);
     amār-is        LOC.PL
       at ~ (place where)
-    amār-is        DAT.PL
+    amār-īs        DAT.PL
       for _ (purpose, reference); to ~ (w/adjectives); to ~ (double dative)
-    amār-is        ABL.PL
+    amār-īs        ABL.PL
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
   amarus, amara -um, amarior -or -us, amarissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
     bitter, brackish, pungent; harsh, shrill; sad, calamitous; ill-natured, caustic;
-    amār-is        DAT.PL
-    amār-is        ABL.PL
+    amār-īs        DAT.PL
+    amār-īs        ABL.PL
   syncope: Syncope   r => v.r
     Syncopated perfect often drops the 'v' and contracts vowel
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
@@ -787,19 +787,19 @@ amaris
 amatur
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-atur        3SG.PRS.PASS.IND
+    am-ātur        3SG.PRS.PASS.IND
       he/it is/is being ~ed
 
 amabar
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-abar        1SG.IMPF.PASS.IND
+    am-ābar        1SG.IMPF.PASS.IND
       I was/was being ~ed
 
 amabor
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-abor        1SG.FUT.PASS.IND
+    am-ābor        1SG.FUT.PASS.IND
       I shall be ~ed
 
 amer
@@ -811,26 +811,26 @@ amer
 amarer
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-arer        1SG.IMPF.PASS.SBJV
+    am-ārer        1SG.IMPF.PASS.SBJV
       I may/must/should be ~ed
 
 amari
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-ari         PRS.PASS.INF
+    am-ārī         PRS.PASS.INF
       to be ~ed
   amarum, amari  noun, 2nd declension, neuter  [XXXEC]  uncommon
     bitterness; unpleasantness; (often pl.);
-    amār-i         GEN.SG
+    amār-ī         GEN.SG
       ~'s; of ~
-    amār-i         LOC.SG
+    amār-ī         LOC.SG
       at ~ (place where)
   amarus, amara -um, amarior -or -us, amarissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
     bitter, brackish, pungent; harsh, shrill; sad, calamitous; ill-natured, caustic;
-    amār-i         GEN.SG.M
-    amār-i         GEN.SG.N
-    amār-i         NOM.PL.M
-    amār-i         VOC.PL.M
+    amār-ī         GEN.SG.M
+    amār-ī         GEN.SG.N
+    amār-ī         NOM.PL.M
+    amār-ī         VOC.PL.M
 
 moneo
   moneo, monere, monui, monitus  verb, 2nd conjugation  [XXXAX]
@@ -898,26 +898,26 @@ eo
     eō             POS
   is, ea, id  pronoun, personal  [XXXAX]
     he/she/it/they (by GENDER/NUMBER); DEMONST: that, he/she/it, they/them;
-    e-o            ABL.SG.M
-    e-o            ABL.SG.N
+    e-ō            ABL.SG.M
+    e-ō            ABL.SG.N
   idem, eadem, idem  pronoun, demonstrative  [XXXAX]
     (w/-dem ONLY, idem, eadem, idem) same, the same, the very same, also;
-    e-o            ABL.SG.M
-    e-o            ABL.SG.N
+    e-ō            ABL.SG.M
+    e-ō            ABL.SG.N
 
 fero
   ferus, feri  noun, 2nd declension, masculine/feminine  [XXXDX]  lesser
     wild beast/animal; wild/untamed horse/boar;
-    fer-o          DAT.SG
+    fer-ō          DAT.SG
       for _ (purpose, reference); to ~ (w/adjectives); to ~ (double dative)
-    fer-o          ABL.SG
+    fer-ō          ABL.SG
       from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
   ferus, fera, ferum  adjective, 1st/2nd declension  [XXXAX]
     wild, savage; uncivilized; untamed; fierce;
-    fer-o          DAT.SG.M
-    fer-o          DAT.SG.N
-    fer-o          ABL.SG.M
-    fer-o          ABL.SG.N
+    fer-ō          DAT.SG.M
+    fer-ō          DAT.SG.N
+    fer-ō          ABL.SG.M
+    fer-ō          ABL.SG.N
   fero, ferre, tuli, latus  verb, 3rd conjugation  [XXXAX]
     bring, bear; tell/speak of; consider; carry off, win, receive, produce; get;
     fer-o          1SG.PRS.ACT.IND
@@ -948,11 +948,11 @@ volo
 memini
   memini, meminisse, -  verb, 2nd conjugation, perfect with present meaning  [XXXAO]
     remember  (PERF form, PRES force); keep in mind, pay heed to; be sure; recall;
-    memin-i        1SG.PRF.ACT.IND
+    memin-ī        1SG.PRF.ACT.IND
       I have ~ed
   memini, meminisse, -  verb, 2nd conjugation, perfect with present meaning  [XXXAA]
     mention;
-    memin-i        1SG.PRF.ACT.IND
+    memin-ī        1SG.PRF.ACT.IND
       I have ~ed
 
 collibuit
@@ -1069,9 +1069,9 @@ duo
 tres
   tres -es -ia, tertius -a -um, terni -ae -a, ter  numeral, 3  [XXXAX]
     3 - (CARD answers 'how many');
-    tr-es          NOM.PL.C.CARD
-    tr-es          VOC.PL.C.CARD
-    tr-es          ACC.PL.C.CARD
+    tr-ēs          NOM.PL.C.CARD
+    tr-ēs          VOC.PL.C.CARD
+    tr-ēs          ACC.PL.C.CARD
 
 tertius
   tres -es -ia, tertius -a -um, terni -ae -a, ter  numeral, 3  [XXXAX]
@@ -1086,8 +1086,8 @@ centensimus
 biseni
   biseni, bisenae, bisena  numeral, distributive, 12  [XXXFW]  very rare
     12 each/apiece/times/fold/together/at a time - 'how many each'; by 12s;
-    bisen-i        NOM.PL.M.DISTR
-    bisen-i        VOC.PL.M.DISTR
+    bisen-ī        NOM.PL.M.DISTR
+    bisen-ī        VOC.PL.M.DISTR
 
 ambo
   ambo, ambae, ambo  numeral, cardinal  [XXXBO]
@@ -1139,49 +1139,49 @@ heu
 amemus
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-emus        1PL.PRS.ACT.SBJV
+    am-ēmus        1PL.PRS.ACT.SBJV
       let us ~
 
 amato
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-ato         2SG.FUT.ACT.IMP
+    am-ātō         2SG.FUT.ACT.IMP
       you (shall) ~!
-    am-ato         3SG.FUT.ACT.IMP
+    am-ātō         3SG.FUT.ACT.IMP
       he/it (shall) ~!
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    amāt-o         PRF.PASS.PTCP.DAT.SG.M
+    amāt-ō         PRF.PASS.PTCP.DAT.SG.M
       ~ed  PERF PASSIVE PPL often used as ADJ or N (amatus => belov.ed)
-    amāt-o         PRF.PASS.PTCP.DAT.SG.N
+    amāt-ō         PRF.PASS.PTCP.DAT.SG.N
       ~ed  PERF PASSIVE PPL often used as ADJ or N (amatus => belov.ed)
-    amāt-o         PRF.PASS.PTCP.ABL.SG.M
+    amāt-ō         PRF.PASS.PTCP.ABL.SG.M
       ~ed  PERF PASSIVE PPL often used as ADJ or N (amatus => belov.ed)
-    amāt-o         PRF.PASS.PTCP.ABL.SG.N
+    amāt-ō         PRF.PASS.PTCP.ABL.SG.N
       ~ed  PERF PASSIVE PPL often used as ADJ or N (amatus => belov.ed)
   amatus, amata, amatum  adjective, 1st/2nd declension  [XXXEO]  uncommon
     loved, beloved;
-    amat-o         DAT.SG.M
-    amat-o         DAT.SG.N
-    amat-o         ABL.SG.M
-    amat-o         ABL.SG.N
+    amat-ō         DAT.SG.M
+    amat-ō         DAT.SG.N
+    amat-ō         ABL.SG.M
+    amat-ō         ABL.SG.N
 
 amatote
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-atote       2PL.FUT.ACT.IMP
+    am-ātōte       2PL.FUT.ACT.IMP
       you (shall) ~!
 
 amabitur
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-abitur      3SG.FUT.PASS.IND
+    am-ābitur      3SG.FUT.PASS.IND
       he/it will be ~ed
 
 amabuntur
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    am-abuntur     3PL.FUT.PASS.IND
+    am-ābuntur     3PL.FUT.PASS.IND
       they will be ~ed
 
 amatus
@@ -1196,7 +1196,7 @@ amatus
 amati
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    amāt-i         PRF.PASS.PTCP.NOM.PL.M
+    amāt-ī         PRF.PASS.PTCP.NOM.PL.M
       ~ed  PERF PASSIVE PPL often used as ADJ or N (amatus => belov.ed)
     participle + sunt  3PL.PRF.PASS.IND
       PERF PASSIVE PPL + verb TO_BE => PASSIVE perfect system

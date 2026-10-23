@@ -118,10 +118,10 @@ LINES = (
        'before a meaning says that it is not translated, and is given in '
        'English.'),
     N_('Then come the forms the word can be: the stem and the ending, '
-       'separated by a hyphen (amīc-orum, with the long vowels of the stem '
-       'marked), and what the form is, in the abbreviations listed below '
+       'separated by a hyphen (amīc-ōrum, with the long vowels marked), '
+       'and what the form is, in the abbreviations listed below '
        '(GEN.PL: genitive plural) or, with the setting use_glosses off, in '
-       'words.  One spelling can be several forms: the amīc-orum of the '
+       'words.  One spelling can be several forms: the amīc-ōrum of the '
        'adjective is GEN.PL.M and GEN.PL.N.'),
     N_('A line before an entry may say how the word was found: a prefix, a '
        'suffix or an enclitic (-que, -ne, -ve) that was taken off, with '

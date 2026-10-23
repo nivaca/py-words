@@ -231,7 +231,7 @@ class Renderer:
                 description = ', '.join(
                     x for x in (pos and self.t(pos), description) if x)
             text = columns(stem_and_ending(self.marked(p.stem, entry),
-                                           p.infl.ending), description)
+                                           self.long_ending(p)), description)
         extra = []
         if self.s.show_age or p.infl.age != Age.X:
             extra.append(FORM_AGE.get(p.infl.age))
@@ -262,6 +262,13 @@ class Renderer:
             if m != '-' and fold(s) == fold(stem):
                 return marked_like(stem, m)
         return stem
+
+    def long_ending(self, p: Parse) -> str:
+        """P's ending with its long vowels marked, if show_long_vowels is
+        on (abat -> ābat)."""
+        if self.s.show_long_vowels and p.infl.long:
+            return marked_like(p.infl.ending, p.infl.long)
+        return p.infl.ending
 
     def neighbour(self, entry: Entry):
         self.line(self.t('near:') + ' ' + self.entry_header(entry), 2,

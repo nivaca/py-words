@@ -206,9 +206,9 @@ class CommandLineTests(InTempDir):
 
     def test_glosses_or_words(self):
         """use_glosses (on by usual) and --glosses / --no-glosses."""
-        self.assertIn('amāv-isti      2SG.PRF.ACT.IND',
+        self.assertIn('amāv-istī      2SG.PRF.ACT.IND',
                       run('amavisti').stdout.decode())
-        self.assertIn('amāv-isti      2nd person singular perfect active '
+        self.assertIn('amāv-istī      2nd person singular perfect active '
                       'indicative', run('--no-glosses', 'amavisti')
                       .stdout.decode())
         config_dir = os.path.join(self.tmp.name, 'config')

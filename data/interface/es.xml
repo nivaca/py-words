@@ -1382,6 +1382,10 @@
     <tr>solo puede contener letras</tr>
   </text>
   <text>
+    <en>is not the ending with long marks</en>
+    <tr>no es la terminación con marcas de vocal larga</tr>
+  </text>
+  <text>
     <en>is longer than {n} letters</en>
     <tr>tiene más de {n} letras</tr>
   </text>
@@ -2596,8 +2600,8 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>La línea siguiente es el significado.  Sus sentidos se separan con punto y coma, primero los más comunes; una barra separa alternativas (consejero/cortesano), y los paréntesis dan el contexto.  [en] antes de un significado indica que no está traducido y se da en inglés.</tr>
   </text>
   <text>
-    <en>Then come the forms the word can be: the stem and the ending, separated by a hyphen (amīc-orum, with the long vowels of the stem marked), and what the form is, in the abbreviations listed below (GEN.PL: genitive plural) or, with the setting use_glosses off, in words.  One spelling can be several forms: the amīc-orum of the adjective is GEN.PL.M and GEN.PL.N.</en>
-    <tr>Luego vienen las formas que puede ser la palabra: la raíz y la desinencia, separadas por un guion (amīc-orum, con las vocales largas de la raíz marcadas), y qué forma es, con las abreviaturas que se listan más abajo (GEN.PL: genitivo plural) o, con el ajuste use_glosses desactivado, en palabras.  Una misma grafía puede ser varias formas: el amīc-orum del adjetivo es GEN.PL.M y GEN.PL.N.</tr>
+    <en>Then come the forms the word can be: the stem and the ending, separated by a hyphen (amīc-ōrum, with the long vowels marked), and what the form is, in the abbreviations listed below (GEN.PL: genitive plural) or, with the setting use_glosses off, in words.  One spelling can be several forms: the amīc-ōrum of the adjective is GEN.PL.M and GEN.PL.N.</en>
+    <tr>Luego vienen las formas que puede ser la palabra: la raíz y la desinencia, separadas por un guion (amīc-ōrum, con las vocales largas marcadas), y qué forma es, con las abreviaturas que se listan más abajo (GEN.PL: genitivo plural) o, con el ajuste use_glosses desactivado, en palabras.  Una misma grafía puede ser varias formas: el amīc-ōrum del adjetivo es GEN.PL.M y GEN.PL.N.</tr>
   </text>
   <text>
     <en>A line before an entry may say how the word was found: a prefix, a suffix or an enclitic (-que, -ne, -ve) that was taken off, with its meaning, or a spelling trick (spelling: ...), with a sentence on what was done.</en>

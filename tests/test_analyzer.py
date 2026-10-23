@@ -318,7 +318,7 @@ class GlossTests(unittest.TestCase):
     def test_in_the_output(self):
         from session import Session
         out = Session(lexicon(), Settings()).lookup_latin('amicorum')
-        self.assertIn('amīc-orum      GEN.PL', out)
+        self.assertIn('amīc-ōrum      GEN.PL', out)
 
     def test_words_without_gloss_xml(self):
         from session import Session
@@ -328,7 +328,7 @@ class GlossTests(unittest.TestCase):
             out = Session(lex, Settings()).lookup_latin('amicorum')
         finally:
             lex.glosses = saved
-        self.assertIn('amīc-orum      genitive plural', out)
+        self.assertIn('amīc-ōrum      genitive plural', out)
 
 
 class EnglishTests(unittest.TestCase):
@@ -371,7 +371,8 @@ class LexiconTests(unittest.TestCase):
 
 
 class LongVowelTests(unittest.TestCase):
-    """The long vowels of the stems (data/quantities.xml)."""
+    """The long vowels of the stems (data/quantities.xml) and of the
+    endings (data/inflections.xml)."""
 
     def test_marked_like(self):
         self.assertEqual(model.unmarked('amīc'), 'amic')
@@ -395,6 +396,20 @@ class LongVowelTests(unittest.TestCase):
         settings.show_long_vowels = False
         self.assertIn('amic-us', session.lookup('amicus'))
         self.assertNotIn('amīc', session.lookup('amicus'))
+
+    def test_endings(self):
+        """The long vowels of the endings (long in inflections.xml)."""
+        longs = {(i.form.pos, i.form.case, i.ending): i.long
+                 for es in lexicon().endings.values() for i in es
+                 if i.form.decl.which == 1 and i.long}
+        self.assertEqual(longs[(Pos.N, model.Case.ABL, 'a')], 'ā')
+        self.assertEqual(longs[(Pos.N, model.Case.GEN, 'arum')], 'ārum')
+        settings = Settings()
+        session = Session(lexicon(), settings, write=lambda text: None)
+        self.assertIn('am-ābat', session.lookup('amabat'))
+        self.assertIn('am-āns', session.lookup('amans'))
+        settings.show_long_vowels = False
+        self.assertIn('am-abat', session.lookup('amabat'))
 
 
 if __name__ == '__main__':

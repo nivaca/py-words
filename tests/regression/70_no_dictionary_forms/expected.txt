@@ -6,7 +6,7 @@ arma
     arm-a          ACC.PL
   [XWXAO]
     equip, fit with armor; arm; strengthen; rouse, stir; incite war; rig (ship);
-    arm-a          2SG.PRS.ACT.IMP
+    arm-ā          2SG.PRS.ACT.IMP
 
 virumque
   -que  enclitic
@@ -29,18 +29,18 @@ virumque
 cano
   [XBXCO]
     gray hairs (pl.); old age;
-    can-o          DAT.SG
-    can-o          ABL.SG
+    can-ō          DAT.SG
+    can-ō          ABL.SG
   [XXXFS]  very rare
     wicker basket (used for food/flowers and in sacrifices);
-    can-o          DAT.SG
-    can-o          ABL.SG
+    can-ō          DAT.SG
+    can-ō          ABL.SG
   [XXXBO]
     white, gray; aged, old, wise; hoary; foamy, white-capped; white w/snow/frost;
-    cān-o          DAT.SG.M
-    cān-o          DAT.SG.N
-    cān-o          ABL.SG.M
-    cān-o          ABL.SG.N
+    cān-ō          DAT.SG.M
+    cān-ō          DAT.SG.N
+    cān-ō          ABL.SG.M
+    cān-ō          ABL.SG.N
   [EXXFS]  later  very rare
     sing, celebrate, chant; crow; recite; play (music)/sound (horn); foretell;
     can-o          1SG.PRS.ACT.IND
@@ -51,11 +51,11 @@ cano
 amicorum
   [XXXBO]
     friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
-    amīc-orum      GEN.PL
+    amīc-ōrum      GEN.PL
   [XXXAO]
     friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-    amīc-orum      GEN.PL.M
-    amīc-orum      GEN.PL.N
+    amīc-ōrum      GEN.PL.M
+    amīc-ōrum      GEN.PL.N
 
 aspis
   [EXAEW]  later  uncommon
@@ -105,5 +105,5 @@ amasti
     Syncopated perfect often drops the 'v' and contracts vowel
   [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    amāv-isti      2SG.PRF.ACT.IND
+    amāv-istī      2SG.PRF.ACT.IND
 

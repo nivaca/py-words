@@ -380,13 +380,12 @@ results.  When the meanings are in another language, the rest is also in
 that language, as far as its file translates it (`sustantivo, 2.ª
 declinación, masculino`; see "The languages of the meanings").
 
-The stem of a form shows its long vowels, when they are known: amīc-us,
-rēg-is, fēlīc-em (the parameter show_long_vowels hides them).  They come
-from `data/quantities.xml`, which I made from the lemmas of Collatinus
-(see "The long vowels" below).  For now only the stems are marked, not
-the endings, so am-abat does not say that its a is long; and the marks
-typed in a word are still taken away before the analysis, so rosā shows
-all the readings of rosa.
+A form shows its long vowels, in the stem and in the ending, when they
+are known: amīc-ōrum, rēg-is, am-ābat, ros-ā (the parameter
+show_long_vowels hides them).  The stems come from `data/quantities.xml`
+and the endings from `data/inflections.xml`, both made from Collatinus
+(see "The long vowels" below).  The marks typed in a word are still
+taken away before the analysis, so rosā shows all the readings of rosa.
 
 ### The codes in brackets
 
@@ -702,15 +701,26 @@ vowels marked, or `-` where they are not known:
 I made it from the lemmas and the models of Collatinus (`lemmes.la`,
 `lem_ext.la`, `modeles.la`): each entry was matched to a lemma as for the
 meanings above, and its stems were found among the stems that the model
-of the lemma builds.  About 30,000 entries were matched, and 19,447 of
+of the lemma builds.  About 30,000 entries were matched, and 20,297 of
 them have some long vowel.  Collatinus marks the length of the
 syllables, for scanning verse, so it marks also the vowels that are long
 only by position (cōrd for cor, cordis); the marks before two consonants
 (or x or z) were therefore left out, and a vowel long there by nature
-(rēx, āctum) is not marked.  The diphthongs (ae, au, oe) are not marked
-either.  `words_check.py` checks that each marked stem has the letters
-of the stem of its entry; a stem changed later in the dictionary simply
-loses its marks.
+(rēx, āctum) is not marked.  Only before ns and nf I kept them, because
+a vowel there is always long (amāns, īnfāns).  The diphthongs (ae, au,
+oe) are not marked either.  `words_check.py` checks that each marked
+stem has the letters of the stem of its entry; a stem changed later in
+the dictionary simply loses its marks.
+
+The endings are marked in `data/inflections.xml`, with the attribute
+`long` (`ending="abat" long="ābat"`).  I built all the forms that the
+models of Collatinus give for the matched lemmas, with their quantities,
+and put each one beside the ending of py-words that makes the same form
+of the same entry; an ending got the marks on which at least nine of
+ten of its forms agree.  731 endings were marked this way.  Some endings
+stay unmarked because their length depends on the word: the ablative
+-e or -ī of the adjectives of the 3rd declension, -imur in legimur and
+audīmur, -ei in diēī and reī.
 
 ### The Spanish meanings
 

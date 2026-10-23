@@ -361,12 +361,15 @@ NO_FORM = Form()
 @dataclass(frozen=True, slots=True)
 class Inflection:
     """An ending: added to stem number KEY (1-4; 0 for any) of a word whose
-    grammar fits FORM, it makes that form."""
+    grammar fits FORM, it makes that form.  LONG is the ending with its
+    long vowels marked (abat -> ābat), or '' if it has none or they are
+    not known."""
     form: Form
     key: int = 0
     ending: str = ''
     age: Age = Age.X
     freq: Freq = Freq.X
+    long: str = ''
 
 
 NO_INFLECTION = Inflection(NO_FORM)

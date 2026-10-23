@@ -36,7 +36,8 @@ from interface import tr
 from model import (
     Pos, Gender, Case, Number, Comparison, NumeralSort, Tense, Voice, Mood,
     NounKind, PronounKind, VerbKind, Age, Freq, Area, Geo, Source, Decl,
-    Codes, Part, Form, Inflection, Entry, Unique, Prefix, Suffix, Tackon)
+    Codes, Part, Form, Inflection, Entry, Unique, Prefix, Suffix, Tackon,
+    unmarked)
 
 SCHEMA = 'words.xsd'
 MAX_STEM = 18                   # letters in a stem, form or affix
@@ -472,6 +473,10 @@ def entry_from_fields(attrs: dict, stems: list[str], meaning: str,
     return _entry(_Reader('entry', el), id, dictionary)
 
 
+_LONG_ENDING = re.compile(r'[a-zA-ZāēīōūȳĀĒĪŌŪȲ]{1,' + str(MAX_ENDING) +
+                          '}')
+
+
 def read_inflections(path: str, errors=None) -> list[tuple[Inflection, int]]:
     def inflection(r: _Reader, n: int) -> Inflection:
         _expect(r, 'inflection')
@@ -486,10 +491,14 @@ def read_inflections(path: str, errors=None) -> list[tuple[Inflection, int]]:
         if len(ending) > MAX_ENDING:
             r.bad('ending', ending, tr('is longer than {n} letters',
                                        n=MAX_ENDING))
+        long = r.raw('long', '')
+        if long and (not _LONG_ENDING.fullmatch(long) or
+                     unmarked(long) != ending):
+            r.bad('long', long, tr('is not the ending with long marks'))
         age = r.enum('age', Age, Age.X)
         freq = r.enum('freq', Freq, Freq.X)
         r.done()
-        return Inflection(form, key, ending, age, freq)
+        return Inflection(form, key, ending, age, freq, long)
     return _read(path, 'inflections', errors, inflection)
 
 
@@ -909,7 +918,10 @@ def _attrs(pairs) -> str:
 HEADERS = {
     'dictionary': 'The WORDS dictionary: one <entry> per dictionary entry. '
                   'See words.xsd.',
-    'inflections': 'The inflectional endings used by WORDS. See words.xsd.',
+    'inflections': 'The inflectional endings used by WORDS. The long '
+                   'vowels of the endings (long) were taken from the '
+                   'models of Collatinus 11, by Yves Ouvrard and Philippe '
+                   'Verkerk (GNU GPL, version 2 or later). See words.xsd.',
     'uniques': 'Irregular forms that are not built from a stem and an '
                'ending. See words.xsd.',
     'addons': 'Prefixes, suffixes and enclitics (tackons). See words.xsd.',
@@ -999,7 +1011,8 @@ def entry_lines(entry: Entry) -> list[str]:
 
 def inflection_xml(infl: Inflection) -> str:
     pairs = form_attrs(infl.form) + [('key', str(infl.key)),
-                                     ('ending', infl.ending),
+                                     ('ending', infl.ending)] + \
+        ([('long', infl.long)] if infl.long else []) + [
                                      ('age', infl.age.name),
                                      ('freq', infl.freq.name)]
     return f'<inflection{_attrs(pairs)}/>'

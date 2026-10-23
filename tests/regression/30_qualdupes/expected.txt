@@ -5,7 +5,7 @@ ludica
     game, play, sport, pastime, entertainment, fun; school, elementary school;
     ludic-a        adjective, NOM.SG.F
     ludic-a        adjective, VOC.SG.F
-    ludic-a        adjective, ABL.SG.F
+    ludic-ā        adjective, ABL.SG.F
     ludic-a        adjective, NOM.PL.N
     ludic-a        adjective, VOC.PL.N
     ludic-a        adjective, ACC.PL.N
@@ -15,7 +15,7 @@ ludica
     actress; female gladiator;
     ludic-a        adjective, NOM.SG.F
     ludic-a        adjective, VOC.SG.F
-    ludic-a        adjective, ABL.SG.F
+    ludic-ā        adjective, ABL.SG.F
     ludic-a        adjective, NOM.PL.N
     ludic-a        adjective, VOC.PL.N
     ludic-a        adjective, ACC.PL.N
@@ -23,7 +23,7 @@ ludica
     dancer; stage performer;
     ludic-a        adjective, NOM.SG.F
     ludic-a        adjective, VOC.SG.F
-    ludic-a        adjective, ABL.SG.F
+    ludic-ā        adjective, ABL.SG.F
     ludic-a        adjective, NOM.PL.N
     ludic-a        adjective, VOC.PL.N
     ludic-a        adjective, ACC.PL.N
