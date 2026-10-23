@@ -150,7 +150,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `py-words-v.2.14.zip` (con la versión del programa), con el
+Eso escribe `py-words-v.2.15.zip` (con la versión del programa), con el
 programa dentro de una carpeta del mismo nombre.  Lleva los programas,
 los datos, los iconos y los documentos.  Deja fuera los archivos ocultos
 (`.git`...), lo que se genera al usar o editar el programa
@@ -923,15 +923,18 @@ con `git diff`.
 Versiones
 ---------
 
+- 2.15:
+  - El diccionario se comparó con la lista de latín medieval de R. E.
+    Latham, y ahora tiene 44 380 entradas (antes, 39 846), todas con sus
+    significados en español (véase "Los significados en español").  De
+    ella vinieron 2444 sentidos medievales de palabras que el diccionario
+    ya tenía, 21 significados corregidos, 1140 palabras y categorías
+    gramaticales nuevas y 1204 variantes ortográficas.  Estas entradas
+    tienen el código de fuente M, Latham.
 - 2.14:
-  - El diccionario se comparó con dos obras más, y ahora tiene 44 380
-    entradas (antes, 39 592), todas con sus significados en español
-    (véase "Los significados en español").  Del vocabulario básico
-    latín-español de J. Echave-Sustaeta, se corrigieron 321 entradas y se
-    añadieron 254.  De la lista de latín medieval de R. E. Latham vinieron
-    2444 sentidos medievales de palabras que el diccionario ya tenía, 21
-    significados corregidos, 1140 palabras y categorías gramaticales
-    nuevas y 1204 variantes ortográficas.
+  - El diccionario se comparó con el vocabulario básico latín-español de
+    J. Echave-Sustaeta: se corrigieron 321 entradas y se añadieron 254, en
+    inglés y en español (véase "Los significados en español").
   - Una entrada puede tener ahora varias fuentes (`source="O M"`), y los
     códigos las muestran con "+" (`[XXXCO+M]`); los editores del
     diccionario tienen un campo "otras fuentes" para ellas, y

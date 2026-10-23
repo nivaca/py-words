@@ -1,4 +1,4 @@
-# py-words 2.14: descripción
+# py-words 2.15: descripción
 
 ## Análisis
 

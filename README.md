@@ -147,7 +147,7 @@ for distributing it:
 
     $ python3 bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `py-words-v.2.14.zip` (with the version of the program), with
+This writes `py-words-v.2.15.zip` (with the version of the program), with
 the program inside a folder of the same name.  It contains the programs,
 the data, the icons and the documents.  It does not contain hidden files
 (`.git` ...), nor the things that are made when the program runs or is
@@ -908,14 +908,17 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 2.15:
+  - The dictionary was compared with the medieval word-list of R. E.
+    Latham, and it has now 44,380 entries (39,846 before), all with their
+    Spanish meanings (see "The Spanish meanings").  It gave 2,444 medieval
+    senses of words that the dictionary had, 21 corrected meanings, 1,140
+    new words and parts of speech, and 1,204 spelling variants.  These
+    entries have the source code M, Latham.
 - 2.14:
-  - The dictionary was compared with two more works, and it has now 44,380
-    entries (39,592 before), all with their Spanish meanings (see "The
-    Spanish meanings").  From the Latin-Spanish basic vocabulary of J.
-    Echave-Sustaeta, 321 entries were corrected and 254 added.  From the
-    medieval word-list of R. E. Latham came 2,444 medieval senses of words
-    that the dictionary had, 21 corrected meanings, 1,140 new words and
-    parts of speech, and 1,204 spelling variants.
+  - The dictionary was compared with the Latin-Spanish basic vocabulary of
+    J. Echave-Sustaeta: 321 entries were corrected and 254 added, in
+    English and in Spanish (see "The Spanish meanings").
   - An entry can have now several sources (`source="O M"`), and the codes
     show them with "+" (`[XXXCO+M]`); the dictionary editors have a field
     "other sources" for them, and `words_check.py` checks each one.  The
