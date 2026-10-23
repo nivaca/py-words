@@ -18,7 +18,7 @@ from typing import TYPE_CHECKING
 from collections.abc import Callable
 
 from model import (Pos, Case, Number, NumeralSort, Decl, Form, Inflection,
-                    Freq)
+                    Freq, medieval_fold)
 from results import (Origin, Parse, Found, trick_mark, marked, found, chain,
                      parses_of, shown, from_dictionary)
 
@@ -416,7 +416,7 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
     if t.out:
         return t.out
     if s.do_medieval_tricks:
-        if t.table(MEDIEVAL_TRICKS):
+        if _medieval_spellings(t) or t.table(MEDIEVAL_TRICKS):
             return t.out
         _double_consonants(t)
     if s.do_two_words and not (s.ignore_unknown_names and capitalized):
@@ -428,6 +428,58 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
         return [Found((_numeral(word, Freq.D),),
                       (trick_mark('Bad Roman Numeral?'),))]
     return t.out
+
+
+#  At most this many respellings are tried for one word
+MOST_RESPELLINGS = 40
+
+
+def _medieval_spellings(t: _Tricks) -> bool:
+    """Several medieval spellings in one word (hystorie for historiae,
+    phylosophia for philosophia, michi for mihi), found by comparing its
+    stems and endings with the dictionary's under `medieval_fold`.  The
+    first group of respellings that finds something is kept, and of it
+    those of the most frequent entries."""
+    from analyzer import best_freq
+    for group in _respellings(t.az.lex, t.s):
+        kept = []
+        for new in group:
+            findings = t.lookup(new)
+            if findings and not _ends_with_tackon(findings):
+                kept.append((best_freq(findings), new, findings))
+        if kept:
+            best = min(freq for freq, *_ in kept)
+            found_as = [new for freq, new, _ in kept if freq == best]
+            for freq, new, findings in kept:
+                if freq == best:
+                    t.out = chain(t.out, marked(
+                        trick_mark(f'Medieval {t.s} -> {new}'), findings))
+            t.notes[Origin.TRICK] = (f"'{t.s}' may be a medieval spelling "
+                                     f"of {', '.join(found_as)}")
+            t.az.put_stat('TRICK   MEDV at ', t.word, ' '.join(found_as))
+            return True
+    return False
+
+
+def _respellings(lex, word: str) -> list[list[str]]:
+    """The classical spellings that WORD may stand for, in groups to try
+    in turn: ch read as h (michi, nichil); then each dictionary stem and
+    ending equal to a split of WORD under `medieval_fold`."""
+    groups = [[word.replace('ch', 'h')]] if 'ch' in word else []
+    out = {}
+    for z in range(min(7, len(word) - 1), -1, -1):
+        stems = lex.medieval_stems.get(medieval_fold(word[:len(word) - z]),
+                                       ())
+        if not stems:
+            continue
+        ends = [''] if z == 0 else \
+            lex.medieval_endings.get(
+                medieval_fold(word[-z:], doubles=False), ())
+        for stem in stems:
+            for end in ends:
+                if stem + end != word:
+                    out[stem + end] = None
+    return groups + [list(out)[:MOST_RESPELLINGS]]
 
 
 def _double_consonants(t: _Tricks):

@@ -230,6 +230,10 @@
   <text en="A doubled consonant may be rendered by just the single  MEDIEVAL">Una consonante doble puede ser representada por una sola  MEDIEVAL</text>
   <text en="It is very likely a compound number    {1} + {2}">Muy probablemente es un número compuesto    {1} + {2}</text>
   <text en="May be 2 words combined ({1}+{2}) If not obvious, probably incorrect">Pueden ser 2 palabras unidas ({1}+{2}). Si no es obvio, probablemente sea incorrecto</text>
+  <text en="Medieval {1} -&gt; {2}">Grafía medieval {1} -&gt; {2}</text>
+  <text en="'{1}' may be a medieval spelling of {2}">'{1}' puede ser una grafía medieval de {2}</text>
+  <text en="Prodelision {1} -&gt; {2} est">Prodelisión {1} -&gt; {2} est</text>
+  <text en="A final '-st' may stand for 'est' ({1} est)">Una '-st' final puede representar 'est' ({1} est)</text>
   <text en="Syncopated perfect ivi can drop 'v' without contracting vowel">El perfecto sincopado en ivi puede perder la 'v' sin contraer la vocal</text>
   <text en="Syncopated perfect often drops the 'v' and contracts vowel">El perfecto sincopado suele perder la 'v' y contraer la vocal</text>
   <text en="Syncopated perfect sometimes drops the 'is' after 's' or 'x'">El perfecto sincopado a veces pierde el 'is' tras 's' o 'x'</text>

@@ -841,6 +841,21 @@ AMĪCUS son todas amicus, y cælum es caelum.  Como el diccionario no
 registra la cantidad de las vocales, las marcas no sirven para elegir
 entre formas (rosā muestra todas las lecturas de rosa).
 
+Los trucos de WORDS cambian una sola cosa cada vez, así que una palabra
+medieval con dos cambios, como hystorie por historiae, no se encontraba.
+Con los trucos medievales, `tricks._medieval_spellings` compara ahora
+las raíces y desinencias de la palabra con las del diccionario según
+`model.medieval_fold`, que escribe e por ae y oe, i por y, f por ph,
+nada por h, ci por ti ante vocal, mn por mpn y consonantes simples por
+las dobles (solo en las raíces).  Así se encuentran hystorie,
+phylosophia, dyabolus, ecclesie e ympnus, y también michi y nichil (ch
+leída como h).  Se queda con las grafías de las entradas más
+frecuentes.  Además, una -st final puede representar est tras vocal, m o
+s (amatust, factumst, bonast, opust: amatus est, factum est, bona est,
+opus est); esto lo hace `Analyzer.prodelision`, y un participio hallado
+así forma el tiempo compuesto con ese est.  Tomé las dos ideas de
+Collatinus, pero el código es nuevo.
+
 La búsqueda aproximada no busca de otra manera: hace la búsqueda de
 siempre con otras grafías.  `fuzzy.edits` genera todas las que están a un
 cambio de la palabra (unas 350 para una palabra de siete letras).  Desde
@@ -1184,14 +1199,20 @@ digital.  Su léxico no registra la cantidad de las vocales.
 Licencia
 --------
 
-py-words se distribuye bajo la licencia MIT (véase
+py-words se distribuye bajo la Licencia Pública General de GNU (GPL),
+versión 3 o (a su elección) cualquier versión posterior (véase
 [LICENCE.txt](LICENCE.txt)): cualquiera puede usarlo, copiarlo,
-modificarlo y redistribuirlo, también con fines comerciales, siempre que
-se conserven los avisos de copyright, que reconocen a Nicolas Vaughan
-(<nivaca@fastmail.com>, 2026) por el programa en Python y a William A.
-Whitaker (1936-2010) por WORDS y los datos de su diccionario.  El permiso
-original de Whitaker, que admite cualquier uso de su programa y sus
-datos, dice (en su inglés original):
+modificarlo y redistribuirlo, también con fines comerciales, pero un
+programa modificado o mayor que lo incluya debe distribuirse bajo la
+misma licencia, con su código fuente.  Los avisos de copyright reconocen
+a Nicolas Vaughan (<nivaca@fastmail.com>, 2026) por el programa en Python
+y a William A. Whitaker (1936-2010) por WORDS y los datos de su
+diccionario.  Hasta la versión 2.15, py-words se distribuía bajo la
+licencia MIT; la cambié por la GPL para que el programa pueda incluir
+código de Collatinus, de Yves Ouvrard y Philippe Verkerk, que también
+está bajo la GPL.  El permiso original de Whitaker, que admite cualquier
+uso de su programa y sus datos (así que también bajo la GPL), dice (en
+su inglés original):
 
 WORDS, a Latin dictionary, by Colonel William Whitaker (USAF, Retired)
 

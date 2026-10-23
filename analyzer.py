@@ -25,7 +25,7 @@ from model import (Pos, Case, Number, Gender, Comparison, NumeralSort,
                     Tense, Voice, Mood, Freq, Decl, Form, Inflection,
                     Prefix, Suffix, Tackon, fold, pos_fits, key_fits)
 from results import (Origin, Parse, Found, WordResult, mark, marked, found,
-                      chain, parses_of, sweep, group, AFFIX_POS)
+                      trick_mark, chain, parses_of, sweep, group, AFFIX_POS)
 from settings import Settings
 
 MAX_STEM = 18
@@ -315,7 +315,7 @@ class Analyzer:
         for near in fuzzy.edits(w, fuzzy.latin_letters(w)):
             findings = self._word(near, plain, False)   # (not cached)
             if findings:
-                ranked.append((_best_freq(findings),
+                ranked.append((best_freq(findings),
                                fuzzy.likely(w, near), near))
         return [near for *_, near in sorted(ranked)[:most]]
 
@@ -525,13 +525,24 @@ class Analyzer:
         notes: dict[Origin, str] = {}
         self.word_number += 1
         out = self._passes(word, notes)
+        est = False         # est written in the word (amatust)
+        if not out:
+            out = self.prodelision(word, notes)
+            est = bool(out)
         if not out and not (s.ignore_unknown_names and capitalized):
             if s.do_tricks:
                 out = tricks.try_tricks(self, word, notes, capitalized) or \
                     self._tricks_enclitic(word, notes, capitalized)
         used_next = False
         if out and s.do_compounds and not meanings_only:
-            out, used_next = compounds(out, next_word, notes)
+            if est:
+                #  (a compound keeps only the affixes: the mark goes back)
+                prodelision = out[0].marks[0]
+                out, _ = compounds(out, 'est', notes)
+                if out[0].marks[:1] != (prodelision,):
+                    out = marked(prodelision, out)
+            else:
+                out, used_next = compounds(out, next_word, notes)
         if s.do_fixes and not any(p.form.pos == Pos.ADV
                                   for p in parses_of(out)):
             out = chain(out, adverbs(out, notes))
@@ -557,6 +568,29 @@ class Analyzer:
             if not more:
                 out = chain(out, self.enclitic(word, out, second, notes))
         return out
+
+    def prodelision(self, word: str, notes: dict) -> list[Found]:
+        """est written -st, its e lost after a vowel, m or s (amatust,
+        factumst, bonast for amatus est, factum est, bona est), marked
+        with the enclitic est."""
+        w = word.lower()
+        est = self.lex.tackons[ENCLITICS - 1]
+        if len(w) < 4 or not w.endswith('st') or \
+                not self.settings.use_tackons or _uv(est.fix) != 'est':
+            return []
+        #  -ust, -ist: the s is that of -us, -is (amatust, omnist)
+        tries = [w[:-1]] if w[-3] in 'ui' else []
+        if w[-3] in 'aeioum':
+            tries.append(w[:-2])
+        for less in tries:
+            findings = self.word(less, self.default_opts(), False)
+            if findings:
+                notes[Origin.TRICK] = (f"A final '-st' may stand for 'est' "
+                                       f"({less} est)")
+                self.put_stat('TRICK   PROD at ', word, less + ' est')
+                return marked(trick_mark(f'Prodelision {w} -> {less} est'),
+                              marked(mark(est), findings))
+        return []
 
     def _tricks_enclitic(self, word: str, notes: dict,
                          capitalized: bool) -> list[Found]:
@@ -592,7 +626,7 @@ class Analyzer:
         return results
 
 
-def _best_freq(findings: list[Found]) -> int:
+def best_freq(findings: list[Found]) -> int:
     """How frequent the most frequent entry of FINDINGS is (1, for A, is
     the most; an entry without a frequency counts as D)."""
     best = len(Freq)

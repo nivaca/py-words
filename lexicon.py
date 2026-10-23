@@ -244,6 +244,7 @@ class Lexicon:
         lex._reverse = {}
         lex._cache = None
         lex.__dict__.pop('_sorted_stems', None)
+        lex.__dict__.pop('medieval_stems', None)
         lex._index_stems()
         return lex
 
@@ -291,6 +292,19 @@ class Lexicon:
         return self.special if name == 'special' else self.entries
 
     @cached_property
+    def medieval_stems(self) -> dict[str, list[str]]:
+        """The dictionary stems (as folded keys of `stems`) by their
+        `model.medieval_fold`."""
+        return _grouped(self.stems, model.medieval_fold)
+
+    @cached_property
+    def medieval_endings(self) -> dict[str, list[str]]:
+        """The endings (keys of `endings`) by their `model.medieval_fold`
+        (without the doubled consonants: amicuss is not amicus)."""
+        return _grouped(self.endings,
+                        lambda e: model.medieval_fold(e, doubles=False))
+
+    @cached_property
     def _sorted_stems(self) -> list[tuple[str, int]]:
         """(folded stem, entry id) for the general dictionary, in order."""
         return sorted((key, ref.entry.id) for key, refs in self.stems.items()
@@ -309,6 +323,14 @@ class Lexicon:
 
 #  Only words ending in one of these letters can have a (non-blank) ending.
 ENDING_LETTERS = frozenset('acdeimnorstu')
+
+
+def _grouped(keys, key) -> dict[str, list[str]]:
+    """KEYS grouped by KEY(k)."""
+    out = defaultdict(list)
+    for k in keys:
+        out[key(k)].append(k)
+    return dict(out)
 
 
 # ---------------------------------------------------------------------------

@@ -45413,14 +45413,11 @@ habebat
     hab-ebat       3SG.IMPF.ACT.IND
 
 annam
-  spelling: Two words
-    May be 2 words combined (an+nam) If not obvious, probably incorrect
-  an  conjunction  [XXXCO]
-    can it be that (introduces question expecting negative answer/further question);
-  an  conjunction  [XXXAO]
-    whether; (utrum ... an = whether ... or); or; either;
-  nam  conjunction  [XXXAX]
-    for, on the other hand; for instance;
+  spelling: Medieval annam -> anam
+    'annam' may be a medieval spelling of anam
+  anus, ana, anum  adjective, 1st/2nd declension  [XXXBO]
+    old (of female persons and things), aged;
+    an-am          ACC.SG.F
 
 cara
   carus, cara -um, carior -or -us, carissimus -a -um  adjective, 1st/2nd declension  [XXXAO]

@@ -7,6 +7,7 @@ default.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from enum import IntEnum
 from typing import NamedTuple
@@ -467,4 +468,23 @@ def fold(s: str) -> str:
     """S in lower case with v as u and j as i: the key under which WORDS
     compares Latin spellings."""
     return s.lower().translate(_FOLD)
+
+
+_SPELLINGS = [('ae', 'e'), ('oe', 'e'), ('y', 'i'), ('ph', 'f'), ('h', '')]
+_TI = re.compile(r'ti(?=[aeiou]|$)')
+_MPN = re.compile(r'mpn')
+_DOUBLE = re.compile(r'([^aeiou])\1')
+
+
+def medieval_fold(s: str, doubles: bool = True) -> str:
+    """S folded (see `fold`) and with the spellings that vary in late and
+    medieval Latin made alike: e for ae and oe, i for y, f for ph, no h,
+    ci for ti before a vowel (or at the end of S: a stem), mn for mpn and
+    (if DOUBLES) single consonants for doubled ones."""
+    s = fold(s)
+    for old, new in _SPELLINGS:
+        s = s.replace(old, new)
+    s = _TI.sub('ci', s)
+    s = _MPN.sub('mn', s)
+    return _DOUBLE.sub(r'\1', s) if doubles else s
 

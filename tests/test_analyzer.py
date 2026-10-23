@@ -113,6 +113,44 @@ class AnalyzerTests(unittest.TestCase):
         self.assertEqual(r.readings[0].origin, Origin.TRICK)
         self.assertIn(Origin.TRICK, r.notes)
 
+    def test_medieval_spellings(self):
+        # several changes at once: y, h, ae, ph, ch for h
+        for word, stem in (('hystorie', 'histori'),
+                           ('phylosophia', 'philosophi'),
+                           ('dyabolus', 'diabol'), ('michi', 'ego'),
+                           ('ecclesie', 'ecclesi'), ('ympnus', 'hymn')):
+            r = self.analyze(word)
+            self.assertEqual(r.readings[0].origin, Origin.TRICK, word)
+            self.assertIn('medieval spelling', r.notes[Origin.TRICK])
+            self.assertEqual(r.readings[1].source.stems[0], stem, word)
+
+    def test_medieval_spellings_need_the_setting(self):
+        self.az.settings.do_medieval_tricks = False
+        self.az.reset()
+        self.assertTrue(self.analyze('hystorie').unknown)
+
+    def test_doubled_letters_in_an_ending_are_not_medieval(self):
+        r = self.analyze('amicuss')
+        self.assertNotIn('medieval', r.notes.get(Origin.TRICK, ''))
+
+    def test_prodelision(self):
+        for word, stem in (('factumst', 'faci'), ('bonast', 'bon'),
+                           ('opust', 'opus'), ('omnist', 'omn')):
+            r = self.analyze(word)
+            self.assertEqual(r.readings[0].origin, Origin.TRICK, word)
+            self.assertEqual(r.readings[1].source.fix, 'est', word)
+            self.assertIn(stem, [rd.source.stems[0]
+                                 for rd in r.readings[2:]], word)
+
+    def test_prodelision_makes_a_compound_tense(self):
+        r, used = self.az.analyze_word('amatust', 'non')
+        self.assertFalse(used)
+        self.assertEqual(r.readings[0].origin, Origin.TRICK)
+        compound = [p for rd in r.readings for p in rd.forms
+                    if p.origin == Origin.COMPOUND]
+        self.assertEqual(compound[0].form.tvm,
+                         (Tense.PERF, Voice.PASSIVE, Mood.IND))
+
     def test_roman_numeral(self):
         r = self.analyze('MCMXCIV')
         self.assertEqual(r.readings[0].origin, Origin.ROMAN)
