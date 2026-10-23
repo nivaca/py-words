@@ -62,6 +62,10 @@ aspis
     asp, venomous snake of North Africa;
     aspis          NOM.SG
     aspis          VOC.SG
+  [GXXFM]  neo-Latin  very rare
+    newt, eft;
+    aspis          NOM.SG
+    aspis          VOC.SG
   [XXACO]
     asp, venomous snake of North Africa;
     aspis          NOM.SG
@@ -73,6 +77,9 @@ xyzzyq
 redeo
   [XXXAX]
     return, go back, give back; fall back on, revert to; respond, pay back;
+    rede-o         1SG.PRS.ACT.IND
+  [FLXEM]  medieval  uncommon
+    revert (leg.);
     rede-o         1SG.PRS.ACT.IND
 
 inamicus

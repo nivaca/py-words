@@ -59,6 +59,10 @@ virtus
     army; host; mighty works (pl.); class of Angels; [Dominus ~ => Lord of hosts];
     virtus         NOM.SG
     virtus         VOC.SG
+  virtus, virtutis  noun, 3rd declension, feminine  [FSXEM]  medieval  uncommon
+    virtue, property (alch.);
+    virtus         NOM.SG
+    virtus         VOC.SG
 
 animo
   animus, animi  noun, 2nd declension, masculine  [XXXAO]
@@ -71,6 +75,9 @@ animo
     anim-o         ABL.SG
   animo, animare, animavi, animatus  verb, 1st conjugation, transitive  [XXXBO]
     animate, give/bring life; revive, refresh; rouse, animate; inspire; blow;
+    anim-o         1SG.PRS.ACT.IND
+  animo, animare, animavi, animatus  verb, 1st conjugation, transitive  [FXXEM]  medieval  uncommon
+    support (proposals);
     anim-o         1SG.PRS.ACT.IND
 
 multusque

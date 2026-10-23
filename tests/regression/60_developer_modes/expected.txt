@@ -63,6 +63,10 @@ aspis
 03 asp, venomous snake of North Africa;
 01 aspis          NOM.SG  (always, most frequent)
 01 aspis          VOC.SG  (always, most frequent)
+02 aspis, aspidis  noun, 3rd declension, feminine  [GXXFM]  neo-Latin  very rare  (general dictionary)
+03 newt, eft;
+01 aspis          NOM.SG  (always, most frequent)
+01 aspis          VOC.SG  (always, most frequent)
 02 aspis, aspidos/is  noun, 3rd declension, feminine  [XXACO]  common  (general dictionary)
 03 asp, venomous snake of North Africa;
 01 aspis          NOM.SG  (always, most frequent)
@@ -92,6 +96,9 @@ xyzzyq
 redeo
 02 redeo, redire, redivi(ii), reditus  verb, irregular  [XXXAX]  very frequent  (general dictionary)
 03 return, go back, give back; fall back on, revert to; respond, pay back;
+01 rede-o         1SG.PRS.ACT.IND  (always, most frequent)
+02 redeo, redire, redivi(ii), reditus  verb, irregular  [FLXEM]  medieval  uncommon  (general dictionary)
+03 revert (leg.);
 01 rede-o         1SG.PRS.ACT.IND  (always, most frequent)
 
 inamicus

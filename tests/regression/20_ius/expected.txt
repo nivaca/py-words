@@ -2,4 +2,7 @@ nullius
   nullus, nulla, nullum (gen -ius)  adjective, 1st/2nd declension  [XXXAX]
     no; none, not any; (PRONominal ADJ)
     null-ius       GEN.SG
+  nullus, nulla, nullum (gen -ius)  adjective, 1st/2nd declension  [FXXCM]  medieval
+    null, invalid, illegal;
+    null-ius       GEN.SG
 

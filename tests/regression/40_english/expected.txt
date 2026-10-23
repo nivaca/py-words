@@ -11,7 +11,7 @@ wild
     wild, frightful, rough, bristly, standing on end, unkempt; grim; horrible;
   impotens, (gen.), impotentis  adjective, 3rd declension  [XXXBX]
     powerless, impotent, wild, headstrong; having no control (over), incapable (of);
-  (33 more not shown)
+  (34 more not shown)
 
 game
   ludus, ludi  noun, 2nd declension, masculine  [XXXBX]
@@ -26,7 +26,7 @@ game
     limestone, lime; chalk, goal, goal-line (chalk mark), end of life; game piece;
   talus, tali  noun, 2nd declension, masculine  [XBXBO]
     ankle; ankle/pastern bone; sheep knucklebone (marked for dice); dice game (pl.);
-  (21 more not shown)
+  (22 more not shown)
 
 ate
   tripudium, tripudi(i)  noun, 2nd declension, neuter  [XXXDX]  lesser
@@ -45,7 +45,7 @@ grain
     |favorable, fair (wind/current); fortunate, propitious; smooth, w/the grain;
   granum, grani  noun, 2nd declension, neuter  [XXXDX]  lesser
     grain; seed;
-  (59 more not shown)
+  (62 more not shown)
 
 fresh
   novus, nova -um, novior -or -us, novissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
@@ -60,7 +60,7 @@ fresh
     fresh, green; blooming,youthful;
   crudus, cruda -um, crudior -or -us, crudissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     |youthful/hardy/vigorous; fresh/green/immature; undigested; w/undigested food;
-  (9 more not shown)
+  (11 more not shown)
 
 air
   spiritus, spiritus  noun, 4th declension, masculine  [XXXAA]
@@ -75,7 +75,7 @@ air
     sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
   coelum, coeli  noun, 2nd declension, neuter  [XSXAS]
     sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
-  (55 more not shown)
+  (56 more not shown)
 
 came
   convenit, convenire, convenit, conventus est  verb, 4th conjugation, impersonal  [XXXCO]
@@ -96,7 +96,7 @@ in
     before, in front; in view of, because of;
   super  preposition, with the ablative  [XXXAX]
     over (space), above, upon, in addition to; during (time); concerning; beyond;
-  (40 more not shown)
+  (41 more not shown)
 
 a
   (no match)
@@ -188,7 +188,7 @@ free
     free (man); unimpeded; void of; independent, outspoken/frank; free from tribute;
   solvo, solvere, solvi, solutus  verb, 3rd conjugation  [XXXAX]
     loosen, release, unbind, untie, free; open; set sail; scatter; pay off/back;
-  (92 more not shown)
+  (94 more not shown)
 
 money
   aes, aeris  noun, 3rd declension, neuter  [XXXAO]
@@ -203,7 +203,7 @@ money
     box, chest; strong-box, coffer; wealth, money; coffin, bier; cell, cage; ark;
   lamina, laminae  noun, 1st declension, feminine  [XXXBO]
     plate; veneer; thin sheet of metal/other material; (blade); money/cash;
-  (23 more not shown)
+  (28 more not shown)
 
 do
   facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
@@ -243,7 +243,7 @@ great
     |great (achievement); mighty; distinguished; skilled; bold/confident; proud;
   nimius, nimia, nimium  adjective, 1st/2nd declension  [XXXAX]
     excessive, too great;
-  (37 more not shown)
+  (38 more not shown)
 
 grammer
   (no match)
@@ -260,8 +260,9 @@ grammar
     grammar; philology;
   grammaticus, grammatica, grammaticum  adjective, 1st/2nd declension  [XXXDX]  lesser
     grammatical, of grammar;
-  chria, chriae  noun, 1st declension, feminine  [XGXFO]  very rare
-    topic of general application set for study/exercise in grammar/rhetoric school;
+  grammaticus, grammatici  noun, 2nd declension, masculine  [FXXEM]  medieval  uncommon
+    grammar-school pupil;
+  (1 more not shown)
 
 rammer
   fistuca, fistucae  noun, 1st declension, feminine  [XXXEC]  uncommon
@@ -314,7 +315,7 @@ say
     add, insert, bring/attach to, say in addition; increase; impart; associate;
   ait, -, -  verb, irregular, impersonal  [XXXAO]
     he says (ait), it is said; they say (aiunt);
-  (31 more not shown)
+  (32 more not shown)
 
 stop
   consisto, consistere, constiti, constitus  verb, 3rd conjugation  [XXXAO]
@@ -329,5 +330,5 @@ stop
     stop/cease/desist (from); give up, leave/stand off; dissociate oneself;
   mansio, mansionis  noun, 3rd declension, feminine  [XXXBO]
     lodging, stop; day's journey, stage; staying away; abode/quarters/home/dwelling;
-  (25 more not shown)
+  (26 more not shown)
 

@@ -124,6 +124,10 @@ rex
     king;
     rex            NOM.SG
     rex            VOC.SG
+  rex, regis  noun, 3rd declension, masculine  [FXXEM]  medieval  uncommon
+    king (at chess) [~ scaccorum];
+    rex            NOM.SG
+    rex            VOC.SG
 
 corpus
   corpus, corporis  noun, 3rd declension, neuter  [XXXAO]
@@ -136,6 +140,11 @@ corpus
     corpus         NOM.SG
     corpus         VOC.SG
     corpus         ACC.SG
+  corpus, corporis  noun, 3rd declension, neuter  [FXXEM]  medieval  uncommon
+    bodily service in time of war;
+    corpus         NOM.SG
+    corpus         VOC.SG
+    corpus         ACC.SG
 
 mare
   mare  adjective  [XXXFO]
@@ -143,6 +152,15 @@ mare
     mare           NOM.SG.N
   mare, maris  noun, 3rd declension, neuter  [XXXAX]
     sea; sea water;
+    mare           NOM.SG
+    mare           VOC.SG
+    mar-e          LOC.SG
+      at ~ (place where)
+    mar-e          DAT.SG  (early)
+      for _ (purpose, reference); to ~ (w/adjectives); to ~ (double dative)
+    mare           ACC.SG
+  mare, maris  noun, 3rd declension, neuter  [FXXEM]  medieval  uncommon
+    mere, lake;
     mare           NOM.SG
     mare           VOC.SG
     mar-e          LOC.SG
@@ -213,6 +231,13 @@ res
     r-es           NOM.PL
     r-es           VOC.PL
     r-es           ACC.PL
+  res, rei  noun, 5th declension, feminine  [FSXEM]  medieval  uncommon
+    reality, essence (phil.);
+    r-es           NOM.SG
+    r-es           VOC.SG
+    r-es           NOM.PL
+    r-es           VOC.PL
+    r-es           ACC.PL
   res, undeclined  noun, undeclined, neuter  [DEQEW]  late  uncommon
     res; (20th letter of Hebrew alphabet); (transliterate as R);
     res
@@ -221,6 +246,13 @@ res
 acies
   acies, aciei  noun, 5th declension, feminine  [XXXAO]
     sharpness, sharp edge, point; battle line/array; sight, glance; pupil of eye;
+    aci-es         NOM.SG
+    aci-es         VOC.SG
+    aci-es         NOM.PL
+    aci-es         VOC.PL
+    aci-es         ACC.PL
+  acies, aciei  noun, 5th declension, feminine  [FXXEM]  medieval  uncommon
+    scaling-ladder;
     aci-es         NOM.SG
     aci-es         VOC.SG
     aci-es         NOM.PL
@@ -250,6 +282,10 @@ aspis
     asp, venomous snake of North Africa;
     aspis          NOM.SG
     aspis          VOC.SG
+  aspis, aspidis  noun, 3rd declension, feminine  [GXXFM]  neo-Latin  very rare
+    newt, eft;
+    aspis          NOM.SG
+    aspis          VOC.SG
   aspis, aspidos/is  noun, 3rd declension, feminine  [XXACO]
     asp, venomous snake of North Africa;
     aspis          NOM.SG
@@ -277,6 +313,9 @@ ille
 ipse
   ipse, ipsa, ipsum  pronoun  [XXXAO]
     himself/herself/itself; the very/real/actual one; in person; themselves (pl.);
+    ips-e          NOM.SG.M
+  ipse, ipsa, ipsum  pronoun  [FXXEM]  medieval  uncommon
+    the same;
     ips-e          NOM.SG.M
 
 qui
@@ -388,6 +427,10 @@ maximus
       ~est; most/very
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAA]
     [natu maior/maximus => older/eldest; maiores => ancestors]
+    maxi-mus       NOM.SG.M.SPRL
+      ~est; most/very
+  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [FXXEM]  medieval  uncommon
+    senior, the elder;
     maxi-mus       NOM.SG.M.SPRL
       ~est; most/very
   maximus, maxima, maximum  adjective, superlative  [XXXAO]
@@ -806,10 +849,18 @@ audio
     hear, listen, accept, agree with; obey; harken, pay attention; be able to hear;
     audi-o         1SG.PRS.ACT.IND
       I ~
+  audio, audire, audivi, auditus  verb, 4th conjugation  [FXXEM]  medieval  uncommon
+    audit (account);
+    audi-o         1SG.PRS.ACT.IND
+      I ~
 
 capio
   capio, capere, cepi, captus  verb, 3rd conjugation, transitive  [XXXAO]
     take hold, seize; grasp; take bribe; arrest/capture; put on; occupy; captivate;
+    capi-o         1SG.PRS.ACT.IND
+      I ~
+  capio, capere, cepi, captus  verb, 3rd conjugation, transitive  [FXXEM]  medieval  uncommon
+    receive, exact (payments);
     capi-o         1SG.PRS.ACT.IND
       I ~
   capio, capionis  noun, 3rd declension, feminine  [XXXCO]
@@ -885,6 +936,10 @@ volo
     fly;
     vol-o          1SG.PRS.ACT.IND
       I ~
+  volo, volare, volavi, volatus  verb, 1st conjugation  [EXXEM]  later  uncommon
+    evaporate;
+    vol-o          1SG.PRS.ACT.IND
+      I ~
   volo, volonis  noun, 3rd declension, masculine  [XWXEC]  uncommon
     volunteers (pl.); (in the Second Punic War);
     volo           NOM.SG
@@ -921,6 +976,12 @@ accidit
       it has ~ed
   accido, accidere, accidi, -  verb, 3rd conjugation  [XXXAO]
     fall upon/down/to/at or near, descend, alight; happen, occur; happen to (DAT);
+    accid-it       3SG.PRS.ACT.IND
+      he/it ~s
+    accid-it       3SG.PRF.ACT.IND
+      he/it has ~ed
+  accido, accidere, accidi, -  verb, 3rd conjugation  [FXXEM]  medieval  uncommon
+    accrue, fall to the share of;
     accid-it       3SG.PRS.ACT.IND
       he/it ~s
     accid-it       3SG.PRF.ACT.IND
@@ -1037,6 +1098,10 @@ ambo
     amb-o          VOC.PL.N.CARD
     amb-o          ACC.PL.M.CARD  (early)
     amb-o          ACC.PL.N.CARD
+  ambo, ambonis  noun, 3rd declension, masculine  [FEXEM]  medieval  uncommon
+    ambo, pulpit, lectern (eccl.);
+    ambo           NOM.SG
+    ambo           VOC.SG
   (less likely forms are not shown)
 
 totiens
@@ -1190,6 +1255,10 @@ audeo
 gaudeo
   gaudeo, gaudere, gavisus sum  verb, 2nd conjugation, semi-deponent  [XXXAX]
     be glad, rejoice;
+    gaud-eo        1SG.PRS.ACT.IND
+      I ~
+  gaudeo, gaudere, gavisus sum  verb, 2nd conjugation, semi-deponent  [FXXCM]  medieval
+    enjoy the use of, possess [~ me de];
     gaud-eo        1SG.PRS.ACT.IND
       I ~
 
