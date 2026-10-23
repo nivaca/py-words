@@ -9,8 +9,13 @@ palabras latinas flexionadas (y líneas enteras de latín) en sus formas y
 entradas de diccionario, con sus significados en inglés o en español, y
 busca el latín de palabras inglesas o españolas.  Los significados en
 español, y el resto de los resultados en español, se tradujeron del
-inglés (véase "Los significados en español"); pueden añadirse otros
-idiomas.
+inglés (véase "Los significados en español"); algunos significados
+están también en francés, alemán, catalán y gallego, y pueden añadirse
+otros idiomas.  El diccionario es el de WORDS, ampliado con la lista de
+latín medieval de R. E. Latham y el vocabulario básico latín-español de
+J. Echave-Sustaeta, y las vocales largas vienen de Collatinus (véase
+"Fuentes").  Es software libre, bajo la Licencia Pública General de GNU
+(véase "Licencia").
 
 Lo escribí yo, Nicolas Vaughan (<nivaca@fastmail.com> y
 <n.vaughan@uniandes.edu.co>), en 2026.  Empezó como una traducción fiel
@@ -1300,7 +1305,40 @@ Antecedentes
 WORDS lo escribió el coronel William Whitaker (USAF, retirado), que murió
 en 2010.  La versión en Ada en que se basa esta adaptación es una versión
 depurada de su programa, mantenida como ejercicio de preservación
-digital.  Su léxico no registra la cantidad de las vocales.
+digital.  Su léxico no registra la cantidad de las vocales; py-words la
+toma de Collatinus.
+
+Fuentes
+-------
+
+El diccionario de py-words viene de estas obras:
+
+- WORDS, de William Whitaker (1936-2010): el programa, sus análisis, sus
+  desinencias y formas irregulares, y casi todo el diccionario, en la
+  versión en Ada que se mantiene en
+  [mk270/whitakers-words](https://github.com/mk270/whitakers-words).
+  Whitaker hizo su diccionario a partir de muchos otros (el Oxford Latin
+  Dictionary, Lewis y Short, Du Cange…), que nombran los códigos de
+  fuente de las entradas (`data/sources.xml`).
+- R. E. Latham, *Revised Medieval Latin Word-List from British and Irish
+  Sources* (Londres: Oxford University Press para la British Academy,
+  1965): 2444 sentidos medievales de palabras que el diccionario ya
+  tenía, 21 significados corregidos, 1140 palabras nuevas y 1204
+  variantes ortográficas (código de fuente M; véase "Los significados
+  en español").
+- J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entradas
+  corregidas y 254 añadidas, en inglés y en español (código de fuente A;
+  véase "Los significados en español").
+- Collatinus 11, de Yves Ouvrard y Philippe Verkerk
+  (<https://outils.biblissima.fr/collatinus/>), bajo la GPL de GNU:
+  las vocales largas de las raíces y las desinencias, los significados
+  en francés, alemán, catalán y gallego, seis abreviaturas y la forma
+  quaesumus (código de fuente H), y la idea de algunos trucos (véase
+  "Los significados tomados de Collatinus" y "Las vocales largas").
+
+Los significados en español, y las comparaciones con Latham y con
+Echave-Sustaeta, se hicieron con ayuda de Claude, el modelo de lenguaje
+de Anthropic (véase "Los significados en español").
 
 Licencia
 --------

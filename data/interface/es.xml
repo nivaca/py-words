@@ -2395,18 +2395,42 @@ confianza; el diccionario no puede editarse desde el navegador.</tr>
 {url}
 Based on WORDS by William Whitaker (1936-2010), via the Ada version at
 https://github.com/mk270/whitakers-words
-Code © 2026 Nicolas Vaughan (nivaca@fastmail.com); dictionary data by
-William Whitaker, free for any use.
+Sources of the dictionary: WORDS, by William Whitaker; R. E. Latham,
+Revised Medieval Latin Word-List (medieval words, senses and spellings);
+J. Echave-Sustaeta, Lengua latina. Vocabulario básico (Latin-Spanish);
+Collatinus, by Yves Ouvrard and Philippe Verkerk (long vowels, and the
+meanings in French, German, Catalan and Galician).
+Code © 2026 Nicolas Vaughan (nivaca@fastmail.com), under the GNU General
+Public License, version 3 or later (see LICENCE.txt).  The data of WORDS,
+by William Whitaker, are free for any use.
 The Spanish meanings were translated from the English with the help of
 Claude (the model Claude Opus 5.5, by Anthropic).</en>
     <tr>{name} {version}, un diccionario de latín de Nicolas Vaughan
 {url}
 Basado en WORDS de William Whitaker (1936-2010), a través de la versión en Ada de
 https://github.com/mk270/whitakers-words
-Código © 2026 Nicolas Vaughan (nivaca@fastmail.com); datos del diccionario de
-William Whitaker, de uso libre.
+Fuentes del diccionario: WORDS, de William Whitaker; R. E. Latham,
+Revised Medieval Latin Word-List (palabras, sentidos y grafías medievales);
+J. Echave-Sustaeta, Lengua latina. Vocabulario básico (latín-español);
+Collatinus, de Yves Ouvrard y Philippe Verkerk (vocales largas, y los
+significados en francés, alemán, catalán y gallego).
+Código © 2026 Nicolas Vaughan (nivaca@fastmail.com), bajo la Licencia Pública
+General de GNU, versión 3 o posterior (véase LICENCE.txt).  Los datos de
+WORDS, de William Whitaker, son de uso libre.
 Los significados en español se tradujeron del inglés con ayuda de
 Claude (el modelo Claude Opus 5.5, de Anthropic).</tr>
+  </text>
+  <text>
+    <en>Sources and licence</en>
+    <tr>Fuentes y licencia</tr>
+  </text>
+  <text>
+    <en>The dictionary is that of WORDS, by William Whitaker (1936-2010), with additions from three other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, the meanings in French, German, Catalan and Galician, and some abbreviations (source code H).</en>
+    <tr>El diccionario es el de WORDS, de William Whitaker (1936-2010), con añadidos de otras tres obras.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, aportó sentidos, palabras y grafías medievales (código de fuente M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, aportó sentidos y palabras, en inglés y en español (código de fuente A).  Collatinus, de Yves Ouvrard y Philippe Verkerk, aportó las vocales largas de las raíces y las desinencias, los significados en francés, alemán, catalán y gallego, y algunas abreviaturas (código de fuente H).</tr>
+  </text>
+  <text>
+    <en>{name} is free software, distributed under the GNU General Public License, version 3 or later (see LICENCE.txt): it can be used, copied, changed and shared, but a program that includes it must be shared under the same licence, with its source code.  The data of WORDS are free for any use, by permission of William Whitaker.  "About" gives the version and the credits.</en>
+    <tr>{name} es software libre, distribuido bajo la Licencia Pública General de GNU, versión 3 o posterior (véase LICENCE.txt): se puede usar, copiar, modificar y compartir, pero un programa que lo incluya debe compartirse bajo la misma licencia, con su código fuente.  Los datos de WORDS son de uso libre, con permiso de William Whitaker.  "Acerca de" da la versión y los créditos.</tr>
   </text>
   <text>
     <en>Nicolas Vaughan is Associate Professor of Literature at the School of

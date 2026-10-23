@@ -168,6 +168,24 @@ SETTINGS = N_('Each setting has its own help: in the Settings of the window '
               'everyone, the developer modes for special purposes; the '
               'programs share them.')
 
+SOURCES = (
+    N_('The dictionary is that of WORDS, by William Whitaker (1936-2010), '
+       'with additions from three other works.  R. E. Latham, Revised '
+       'Medieval Latin Word-List from British and Irish Sources, gave '
+       'medieval senses, words and spellings (source code M).  '
+       'J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses '
+       'and words, in English and in Spanish (source code A).  Collatinus, '
+       'by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the '
+       'stems and endings, the meanings in French, German, Catalan and '
+       'Galician, and some abbreviations (source code H).'),
+    N_('{name} is free software, distributed under the GNU General Public '
+       'License, version 3 or later (see LICENCE.txt): it can be used, '
+       'copied, changed and shared, but a program that includes it must be '
+       'shared under the same licence, with its source code.  The data of '
+       'WORDS are free for any use, by permission of William Whitaker.  '
+       '"About" gives the version and the credits.'),
+)
+
 
 def blocks(session, using) -> list[Block]:
     """The help, for the program whose own paragraphs are USING (blocks),
@@ -183,6 +201,8 @@ def blocks(session, using) -> list[Block]:
     out += codes(session.lexicon.datadir)
     out += glosses(session)
     out += [('h', tr('Settings')), ('p', tr(SETTINGS))]
+    out += [('h', tr('Sources and licence'))]
+    out += [('p', tr(t, name=NAME)) for t in SOURCES]
     return out
 
 

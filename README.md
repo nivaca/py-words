@@ -9,8 +9,13 @@ analyses inflected Latin words (and also complete lines of Latin) into
 their forms and dictionary entries, with the meanings in English or in
 Spanish, and it finds the Latin for English or Spanish words.  The
 Spanish meanings, and the rest of the results in Spanish, were
-translated from the English (see "The Spanish meanings"); it is possible
-to add other languages.
+translated from the English (see "The Spanish meanings"); some meanings
+are also in French, German, Catalan and Galician, and it is possible to
+add other languages.  The dictionary is the one of WORDS, enlarged with
+R. E. Latham's medieval word-list and J. Echave-Sustaeta's Latin-Spanish
+basic vocabulary, and the long vowels come from Collatinus (see
+"Sources").  It is free software, under the GNU General Public License
+(see "Licensing").
 
 I am Nicolas Vaughan (<nivaca@fastmail.com> and <n.vaughan@uniandes.edu.co>),
 and I wrote it in 2026.  First it was a faithful translation of the Ada
@@ -1270,7 +1275,39 @@ Background
 WORDS was written by Colonel William Whitaker (USAF, Retired), who died in
 2010.  The Ada version on which this port is based is a cleaned version of
 his programme, maintained as an exercise of digital preservation.  Its
-lexicon does not register the length of the vowels.
+lexicon does not register the length of the vowels; py-words takes them
+from Collatinus.
+
+Sources
+-------
+
+The dictionary of py-words comes from these works:
+
+- WORDS, by William Whitaker (1936-2010): the program, its analyses, its
+  inflections and irregular forms, and almost all of the dictionary, in
+  the Ada version maintained at
+  [mk270/whitakers-words](https://github.com/mk270/whitakers-words).
+  Whitaker made his dictionary from many others (the Oxford Latin
+  Dictionary, Lewis and Short, Du Cange ...), which the source codes of
+  the entries name (`data/sources.xml`).
+- R. E. Latham, *Revised Medieval Latin Word-List from British and Irish
+  Sources* (London: Oxford University Press for the British Academy,
+  1965): 2,444 medieval senses of words that the dictionary had, 21
+  corrected meanings, 1,140 new words and 1,204 spelling variants
+  (source code M; see "The Spanish meanings").
+- J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entries
+  corrected and 254 added, in English and in Spanish (source code A; see
+  "The Spanish meanings").
+- Collatinus 11, by Yves Ouvrard and Philippe Verkerk
+  (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL:
+  the long vowels of the stems and endings, the meanings in French,
+  German, Catalan and Galician, six abbreviations and the form quaesumus
+  (source code H), and the ideas of some tricks (see "The meanings from
+  Collatinus" and "The long vowels").
+
+The Spanish meanings, and the comparisons with Latham and
+Echave-Sustaeta, were made with the help of Claude, the large language
+model of Anthropic (see "The Spanish meanings").
 
 Licensing
 ---------
