@@ -208,3 +208,37 @@ class LanguageTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class SiteTests(unittest.TestCase):
+    """The static site (pages/build.py): what app.js expects to find."""
+
+    def test_languages_downloaded_when_chosen(self):
+        import importlib.util
+        import tempfile
+        import zipfile
+        import languages
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        spec = importlib.util.spec_from_file_location(
+            'build', os.path.join(root, 'pages', 'build.py'))
+        build = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(build)
+        with tempfile.TemporaryDirectory() as out:
+            build.build(out)
+            beside = sorted(os.listdir(os.path.join(out, 'languages')))
+            with zipfile.ZipFile(os.path.join(out, 'py-words.zip')) as z:
+                z.extractall(os.path.join(out, 'unpacked'))
+                names = set(z.namelist())
+            data = os.path.join(out, 'unpacked', 'data')
+            self.assertIn('words.py', names)
+            self.assertIn('data/dictionary.xml', names)
+            for code, path in languages.files(data).items():
+                with open(path, encoding='utf-8') as f:
+                    text = f.read()
+                if code in build.IN_ZIP:
+                    self.assertNotIn(build.STUB, text)
+                    self.assertNotIn(code + '.xml', beside)
+                else:               # (only the start, with the name)
+                    self.assertIn(build.STUB, text)
+                    self.assertIn(code + '.xml', beside)
+            self.assertEqual(languages.names(data)['fr'], 'French')

@@ -30,6 +30,61 @@ function seconds() {
   return ((performance.now() - started) / 1000).toFixed(1) + ' s';
 }
 
+// The loading bar.  Each stage of the start has its share of the bar, as
+// long as it took at the last visit (kept in localStorage), or a guess.
+// The download of the zip moves it by its bytes, and the loading of
+// Python by the time it is expected to take.  While Python unpacks and
+// reads the dictionary the page cannot run, so the bar is sent then with
+// a CSS transition to near the end of the stage, in the time expected:
+// the browser animates it all the same.  A new zip (a new version) makes
+// the dictionary's cache new as well, and reading it takes longer: that
+// time is kept apart (readFresh), by the size of the zip.
+
+const TIMING = 'py-words/timing';
+const GUESS = {start: 6, unpack: 1, read: 6};   // (seconds)
+
+function lastTiming() {
+  try {
+    return JSON.parse(localStorage.getItem(TIMING)) || {};
+  } catch (e) {
+    return {};
+  }
+}
+
+const bar = {
+  shares: {}, done: 0,
+  plan(times) {
+    const total = times.start + times.unpack + times.read;
+    for (const stage in times) this.shares[stage] = times[stage] / total;
+  },
+  set(fraction, seconds = 0.2) {
+    const fill = document.getElementById('bar');
+    if (!fill) return;
+    fill.style.transition = 'transform ' + seconds + 's linear';
+    fill.style.transform = 'scaleX(' + fraction + ')';
+    fill.parentNode.setAttribute('aria-valuenow',
+                                 Math.round(fraction * 100));
+  },
+  part(stage, fraction) {               // (FRACTION of STAGE is done)
+    this.set(this.done + this.shares[stage] * Math.min(fraction, 0.97));
+  },
+  slide(stage, seconds) {               // (nothing to measure in STAGE)
+    this.set(this.done + this.shares[stage] * 0.95, seconds);
+  },
+  end(stage) {
+    this.done += this.shares[stage];
+    this.set(this.done);
+  },
+};
+
+function painted() {
+  //  (the bar's new transition starts before Python keeps the page busy;
+  //  not waiting long in a tab in the background, which paints nothing)
+  return Promise.race([
+    new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))),
+    new Promise(r => setTimeout(r, 100))]);
+}
+
 function loadScript(src) {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
@@ -107,6 +162,10 @@ with zipfile.ZipFile('/py-words.zip') as z:
 os.remove('/py-words.zip')
 `;
 
+//  The languages but English and Spanish come in the zip as the start of
+//  their file only (see pages/build.py); the whole file is downloaded the
+//  first time the language is used, and given the date of the start, so
+//  that the cache of the language is still good at the next visit.
 const BOOT = `
 import io, os, sys
 os.environ['WHITAKERS_WORDS_CONFIG'] = '${STATE}/config'
@@ -114,7 +173,31 @@ os.environ['WHITAKERS_WORDS_HISTORY'] = '${STATE}/history'
 os.environ['WHITAKERS_WORDS_CACHE'] = CACHE_FOLDER
 os.chdir('${HOME}')
 sys.path.insert(0, '${HOME}')
-import interface, words_web
+import interface, languages, lexicon, words_web
+from pyodide.http import open_url
+
+STUB = 'py-words: downloaded when chosen'
+_language = lexicon.Lexicon.language
+
+
+def language(self, code=languages.REFERENCE):
+    path = languages.files(self.datadir).get(code)
+    if path and code not in self._languages:
+        with open(path, encoding='utf-8') as f:
+            start = f.read(200)
+        if STUB in start:
+            try:
+                text = open_url('languages/' + code + '.xml').read()
+            except Exception as e:
+                raise LookupError('cannot download it: ' + str(e))
+            when = os.stat(path).st_mtime
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(text)
+            os.utime(path, (when, when))
+    return _language(self, code)
+
+
+lexicon.Lexicon.language = language
 from settings import ensure_config
 ensure_config()
 interface.use_configured()
@@ -214,16 +297,35 @@ window.addEventListener('popstate', () => {
 
 // Starting
 
-async function download(name, tries = 3) {
+async function download(name, progress, tries = 3) {
   //  (a download cut off, by the network or the browser, is tried again;
   //  a copy the browser kept is used only if the server says it is
-  //  current, so that a new version is seen at once)
+  //  current, so that a new version is seen at once.  PROGRESS is told
+  //  the part downloaded, if the server gives the size)
   for (let i = 1; ; i++) {
     try {
       const answer = await fetch(name, {cache: 'no-cache'});
       if (!answer.ok) throw new Error('cannot load ' + name + ': ' +
                                       answer.status);
-      return await answer.arrayBuffer();
+      const size = Number(answer.headers.get('Content-Length'));
+      if (!size || !answer.body) return await answer.arrayBuffer();
+      const reader = answer.body.getReader();
+      const chunks = [];
+      let got = 0;
+      for (;;) {
+        const {done, value} = await reader.read();
+        if (done) break;
+        chunks.push(value);
+        got += value.length;
+        progress(Math.min(got / size, 1));
+      }
+      const all = new Uint8Array(got);
+      let at = 0;
+      for (const chunk of chunks) {
+        all.set(chunk, at);
+        at += chunk.length;
+      }
+      return all.buffer;
     } catch (e) {
       if (i >= tries) throw e;
       await new Promise(r => setTimeout(r, 500 * i));
@@ -232,27 +334,66 @@ async function download(name, tries = 3) {
 }
 
 async function main() {
+  const last = lastTiming();
+  const times = {};
+  for (const stage in GUESS) times[stage] = last[stage] || GUESS[stage];
+  bar.plan(times);
+  let zipPart = null, pythonReady = false;
+  const ticking = setInterval(() => {
+    const python = pythonReady ? 1 :
+      (performance.now() - started) / 1000 / times.start;
+    bar.part('start', zipPart === null ? python : Math.min(python, zipPart));
+  }, 100);
+  const took = {};
+  let mark = started;
+  function lap(stage) {
+    const now = performance.now();
+    took[stage] = (now - mark) / 1000;
+    mark = now;
+    bar.end(stage);
+  }
   try {
     status('Loading Python…');
-    const zip = download('py-words.zip');      // (at the same time)
+    const zip = download('py-words.zip',            // (at the same time)
+                         part => { zipPart = part; });
     zip.catch(() => {});                // (its error is reported below)
     await loadScript(PYODIDE + 'pyodide.js');
     pyodide = await loadPyodide({indexURL: PYODIDE});
+    pythonReady = true;
     status('Loading the dictionary…  (' + seconds() + ')');
-    pyodide.FS.writeFile('/py-words.zip', new Uint8Array(await zip));
+    const bytes = new Uint8Array(await zip);
+    clearInterval(ticking);
+    lap('start');
+    bar.slide('unpack', times.unpack);
+    await painted();
+    pyodide.FS.writeFile('/py-words.zip', bytes);
     await pyodide.runPythonAsync(UNPACK);
     pyodide.FS.mkdirTree(STATE + '/config');
     restore();
     await openCache();
+    lap('unpack');
     status('Reading the dictionary…  (' + seconds() + ')');
-    await new Promise(r => setTimeout(r, 0));  // (to show the message)
+    const fresh = last.size !== bytes.length;
+    took.size = bytes.length;
+    took.readFresh = last.readFresh;
+    bar.slide('read', fresh ? last.readFresh || Math.max(times.read,
+                                                         GUESS.read)
+                            : times.read);
+    await painted();                    // (to show the message and the bar)
     pyodide.globals.set('CACHE_FOLDER', cached ? CACHE : '');
     await pyodide.runPythonAsync(BOOT);
     call = pyodide.globals.get('call');
+    lap('read');
+    if (fresh) took.readFresh = took.read;
+    try {
+      localStorage.setItem(TIMING, JSON.stringify(took));
+    } catch (e) {}                      // (no localStorage: guesses)
     console.log('py-words ready in ' + seconds());
     request('GET', '/', location.search.slice(1), '', false);
   } catch (e) {
+    clearInterval(ticking);
     status('');
+    document.querySelector('.bar')?.remove();
     const p = document.createElement('p');
     p.className = 'error';
     p.textContent = 'py-words could not start: ' + e;

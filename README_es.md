@@ -975,6 +975,18 @@ IndexedDB del navegador, de modo que solo la primera visita, y la
 primera tras una versión nueva, leen el XML (cerca de un segundo; la
 caché tarda un cuarto).
 
+Los idiomas de los significados que no son el inglés ni el español no
+van en el zip, que solo guarda el comienzo de sus archivos (su nombre,
+para la lista "Significados en"); `pages/build.py` pone los archivos
+completos a su lado, en `languages/`, y la página descarga uno la
+primera vez que se elige su idioma.  Así el zip es más pequeño (3,2 MB
+en lugar de 4,4).  Mientras la página arranca, una barra muestra cuánto
+falta: la descarga del zip la mueve según sus bytes, y las demás etapas
+según lo que tardaron en la última visita en ese navegador (guardado en
+su almacenamiento local).  Mientras Python lee el diccionario la página
+no puede hacer nada, así que entonces la barra avanza con una transición
+de CSS, que el navegador anima de todos modos.
+
 Cambios respecto del programa original
 --------------------------------------
 

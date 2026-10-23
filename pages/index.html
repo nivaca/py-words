@@ -11,17 +11,28 @@ body { margin: 0; font: 16px/1.5 system-ui, -apple-system, "Segoe UI",
   sans-serif; background: #fbfaf7; color: #1d1d1b; }
 @media (prefers-color-scheme: dark) {
   body { background: #1b1b1d; color: #e8e6e1; }
+  .bar { background: #3a3a3e; }
+  .bar div { background: #e8957f; }
 }
 .loading { max-width: 40rem; margin: 20vh auto; padding: 1rem;
   text-align: center; }
 .loading h1 { font-size: 1.4rem; margin: 0 0 .5rem; }
 .loading p { color: #6b6a66; }
 .loading .error { color: #b00020; white-space: pre-wrap; text-align: left; }
+.bar { max-width: 24rem; height: 6px; margin: 1.2rem auto .4rem;
+  background: #e4e1da; border-radius: 3px; overflow: hidden; }
+.bar div { height: 100%; background: #8a2c1f; transform: scaleX(0);
+  transform-origin: left; }
+@media (prefers-reduced-motion: reduce) {
+  .bar div { transition: none !important; }
+}
 </style>
 </head>
 <body>
 <div class="loading">
 <h1>py-words</h1>
+<div class="bar" role="progressbar" aria-label="Loading" aria-valuemin="0"
+  aria-valuemax="100" aria-valuenow="0"><div id="bar"></div></div>
 <p id="status">Loading…</p>
 <noscript><p class="error">This page needs JavaScript: the dictionary runs
 in the browser.</p></noscript>

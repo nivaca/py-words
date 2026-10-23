@@ -959,6 +959,17 @@ browser, so only the first visit, and the first one after a new
 version, read the XML (around one second; the cache takes a quarter of
 this).
 
+The languages of the meanings other than English and Spanish are not in
+the zip, which keeps only the start of their files (their name, for the
+list "Meanings in"); `pages/build.py` puts the whole files beside it, in
+`languages/`, and the page downloads one the first time its language is
+chosen.  So the zip is smaller (3.2 MB instead of 4.4).  While the page
+starts, a bar shows how far it is: the download of the zip moves it by
+its bytes, and the other stages by how long they took at the last visit
+in that browser (kept in its local storage).  While Python reads the
+dictionary the page cannot do anything, so the bar is moved then by a
+CSS transition, which the browser animates all the same.
+
 Changes from the original program
 ---------------------------------
 
