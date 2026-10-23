@@ -86,12 +86,12 @@ xyzzyq
 03 athlete;
 02 near: yatus, yata, yatum  adjective, 1st/2nd declension  [XXXFX]  very rare  (general dictionary)
 03 gaped;
+02 near: ydimptitas, ydimptitatis  noun, 3rd declension, feminine  [FXXCM]  medieval  common  (general dictionary)
+03 identity, sameness;
 02 near: zabulus, zabuli  noun, 2nd declension, masculine  [EEXCM]  later  common  (general dictionary)
 03 devil; The Devil, Satan, Prince of Evil/Darkness; evil one;
 02 near: zaeta, zaetae  noun, 1st declension, feminine  [XXXCS]  common  (general dictionary)
 03 room (house); cabin (ship); compartment (train); out building, annex; out house;
-02 near: zaeta, zaetae  noun, 1st declension, feminine  [XBXFS]  very rare  (general dictionary)
-03 |diet, regimen; course of treatment, way/mode of living prescribed by physician;
 
 redeo
 02 redeo, redire, redivi(ii), reditus  verb, irregular  [XXXAX]  very frequent  (general dictionary)

@@ -1,4 +1,4 @@
-# py-words 2.13: descripción
+# py-words 2.14: descripción
 
 ## Análisis
 
@@ -20,7 +20,7 @@ Sobre esa base hay varias interfaces: la línea de órdenes (`words.py`), la ven
 
 Los datos son seis archivos XML más uno por idioma, todos descritos por un esquema (`words.xsd`):
 
-- `dictionary.xml`: 43 176 entradas.
+- `dictionary.xml`: 44 380 entradas.
 - `inflections.xml`: 1 797 desinencias.
 - `uniques.xml`: 79 formas irregulares.
 - `addons.xml`: 343 prefijos, sufijos y enclíticos.
@@ -71,7 +71,7 @@ Se tradujo por lotes y por significado, así que un significado compartido por v
 
 Después, una segunda pasada leyó cada entrada traducida junto a su original y corrigió unas 260: sentidos repetidos, palabras ambiguas o equivocadas ("de nuevo" por *newly*, "librería" por *bookcase*) y faltas de ortografía. Como toda traducción de este tamaño, seguro que todavía tiene errores; los editores del diccionario permiten corregirlos fácilmente.
 
-Después, el diccionario se comparó con dos listas más, también con ayuda de Claude: el vocabulario básico latín-español de J. Echave-Sustaeta, que corrigió 321 entradas y añadió 254, y la lista de latín medieval de R. E. Latham, que añadió sus sentidos medievales (2444 entradas), corrigió 21 significados y sumó 1140 palabras y categorías gramaticales que faltaban, todas con sus significados en español. El README explica cómo se hizo.
+Después, el diccionario se comparó con dos listas más, también con ayuda de Claude: el vocabulario básico latín-español de J. Echave-Sustaeta, que corrigió 321 entradas y añadió 254, y la lista de latín medieval de R. E. Latham, que añadió sus sentidos medievales (2444 entradas), corrigió 21 significados y sumó 1140 palabras y categorías gramaticales que faltaban y 1204 variantes ortográficas, todas con sus significados en español. El README explica cómo se hizo.
 
 ## Validación
 

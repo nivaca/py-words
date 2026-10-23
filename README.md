@@ -147,7 +147,7 @@ for distributing it:
 
     $ python3 bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `py-words-v.2.13.zip` (with the version of the program), with
+This writes `py-words-v.2.14.zip` (with the version of the program), with
 the program inside a folder of the same name.  It contains the programs,
 the data, the icons and the documents.  It does not contain hidden files
 (`.git` ...), nor the things that are made when the program runs or is
@@ -699,12 +699,15 @@ corrected (*humiditas* had the meanings of *humilitas*).  Second, 1,079
 words that the dictionary did not have were added: the ones that Latham
 marks as frequent (\*), and also the doubtful (†) and glossary-only (‡)
 ones with a clear meaning.  Their grammar was inferred from their form.
-Spelling variants of a word already added, and lines that the scanned
-text of the list left unreadable, were left out.  All these entries have
+Last, 1,204 spelling variants that Latham gives for these words (and for
+words that the dictionary had) were added, each with the meaning of its
+word; very short variants, which would be confused with common Latin
+words, and lines that the scanned text of the list left unreadable were
+left out.  All these entries have
 the source code M, Latham, an age from the earliest date he gives, and a
 frequency from his marks (C for the frequent words, F for the doubtful
 ones); their Spanish meanings were translated in the same work.  With
-them the dictionary has 43,176 entries.
+them the dictionary has 44,380 entries.
 
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations
@@ -905,6 +908,21 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 2.14:
+  - The dictionary was compared with two more works, and it has now 44,380
+    entries (39,592 before), all with their Spanish meanings (see "The
+    Spanish meanings").  From the Latin-Spanish basic vocabulary of J.
+    Echave-Sustaeta, 321 entries were corrected and 254 added.  From the
+    medieval word-list of R. E. Latham came 2,444 medieval senses of words
+    that the dictionary had, 21 corrected meanings, 1,140 new words and
+    parts of speech, and 1,204 spelling variants.
+  - An entry can have now several sources (`source="O M"`), and the codes
+    show them with "+" (`[XXXCO+M]`); the dictionary editors have a field
+    "other sources" for them, and `words_check.py` checks each one.  The
+    new source code A is Echave-Sustaeta.
+  - The menus of the window (the menu bar, its menus and the menu of the
+    right button) follow now the dark mode too.
+  - `tools/screenshots.py` makes the pictures of this README.
 - 2.13:
   - The Spanish texts of the programs and of the README address the user
     with "usted" and not with "tú" (for example "Escriba una palabra… y

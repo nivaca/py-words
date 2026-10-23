@@ -150,7 +150,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `py-words-v.2.13.zip` (con la versión del programa), con el
+Eso escribe `py-words-v.2.14.zip` (con la versión del programa), con el
 programa dentro de una carpeta del mismo nombre.  Lleva los programas,
 los datos, los iconos y los documentos.  Deja fuera los archivos ocultos
 (`.git`...), lo que se genera al usar o editar el programa
@@ -710,13 +710,16 @@ usa una palabra como otra categoría gramatical (el sustantivo
 añadieron 1079 palabras que el diccionario no tenía: las que Latham
 marca como frecuentes (\*), y también las dudosas (†) y las de glosarios
 (‡) que tienen un significado claro.  Su gramática se dedujo de su
-forma.  Se dejaron fuera las variantes ortográficas de una palabra ya
-añadida y las líneas que el texto escaneado de la lista dejó ilegibles.
+forma.  Por último, se añadieron 1204 variantes ortográficas que Latham
+da para estas palabras (y para palabras que el diccionario ya tenía),
+cada una con el significado de su palabra; se dejaron fuera las
+variantes muy cortas, que se confundirían con palabras latinas comunes,
+y las líneas que el texto escaneado de la lista dejó ilegibles.
 Todas estas entradas tienen el código de fuente M, Latham, una época
 según la fecha más antigua que él da y una frecuencia según sus marcas
 (C para las frecuentes, F para las dudosas); sus significados en español
 se tradujeron en el mismo trabajo.  Con ellas el diccionario tiene
-43 176 entradas.
+44 380 entradas.
 
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,
@@ -920,6 +923,23 @@ con `git diff`.
 Versiones
 ---------
 
+- 2.14:
+  - El diccionario se comparó con dos obras más, y ahora tiene 44 380
+    entradas (antes, 39 592), todas con sus significados en español
+    (véase "Los significados en español").  Del vocabulario básico
+    latín-español de J. Echave-Sustaeta, se corrigieron 321 entradas y se
+    añadieron 254.  De la lista de latín medieval de R. E. Latham vinieron
+    2444 sentidos medievales de palabras que el diccionario ya tenía, 21
+    significados corregidos, 1140 palabras y categorías gramaticales
+    nuevas y 1204 variantes ortográficas.
+  - Una entrada puede tener ahora varias fuentes (`source="O M"`), y los
+    códigos las muestran con "+" (`[XXXCO+M]`); los editores del
+    diccionario tienen un campo "otras fuentes" para ellas, y
+    `words_check.py` revisa cada una.  El nuevo código de fuente A es
+    Echave-Sustaeta.
+  - Los menús de la ventana (la barra de menús, sus menús y el menú del
+    botón derecho) siguen ahora también el modo oscuro.
+  - `tools/screenshots.py` hace las imágenes de este README.
 - 2.13:
   - Los textos en español de los programas y del README tratan al usuario
     de usted, y no de tú (por ejemplo, "Escriba una palabra… y pulse

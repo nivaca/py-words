@@ -5031,7 +5031,19 @@ inter
 
 cresia
   (unknown)
-  (near spellings: caesia, cresta, cressa)
+  (near spellings: bresia, caesia, cresta)
+
+bresia
+  bresium, bresi(i)  noun, 2nd declension, neuter  [EXXCM]  later
+    malt;
+    bresi-a        NOM.PL
+    bresi-a        VOC.PL
+    bresi-a        ACC.PL
+  bresia, bresiae  noun, 1st declension, feminine  [EXXCM]  later
+    malt;
+    bresi-a        NOM.SG
+    bresi-a        VOC.SG
+    bresi-a        ABL.SG
 
 caesia
   caesius, caesia -um, -, caesissumus -a -um  adjective, 1st/2nd declension  [XXXCO]
@@ -5047,11 +5059,6 @@ cresta
   cresto, crestare, crestavi, crestatus  verb, 1st conjugation, transitive  [FXXCM]  medieval
     fit (a wall or roof) with ridge-pieces;
     crest-a        2SG.PRS.ACT.IMP
-
-cressa
-  cresso, cressare, cressavi, cressatus  verb, 1st conjugation  [XXXDM]  lesser
-    increase (size/number/honor), multiply; thrive;
-    cress-a        2SG.PRS.ACT.IMP
 
 fixit
   figo, figere, fixi, fixus  verb, 3rd conjugation  [XXXBX]
@@ -33636,6 +33643,10 @@ eumenidum
     eumenid-um     GEN.PL
 
 veluti
+  velutum, veluti  noun, 2nd declension, neuter  [FXXCM]  medieval
+    velvet;
+    velut-i        GEN.SG
+    velut-i        LOC.SG
   veluti  adverb  [XXXBX]
     just as, as if;
     veluti         POS

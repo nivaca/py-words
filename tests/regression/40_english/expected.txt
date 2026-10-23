@@ -96,7 +96,7 @@ in
     before, in front; in view of, because of;
   super  preposition, with the ablative  [XXXAX]
     over (space), above, upon, in addition to; during (time); concerning; beyond;
-  (42 more not shown)
+  (44 more not shown)
 
 a
   (no match)
@@ -150,15 +150,15 @@ are
     ball (play/decorative); sphere; mortar, vessel in which things are pounded;
   mortarium, mortarii  noun, 2nd declension, neuter  [XXXCO]
     mortar; bowl/trough in which materials are pounded/ground
+  prontuarium, prontuari(i)  noun, 2nd declension, neuter  [EXXCM]  later
+    cupboard; store room; place where things are stored ready for use;
   isto  adverb  [XXXDX]  lesser
     thither, to you, to where you are; in that matter; to the point you reached;
   istuc  adverb  [XXXDX]  lesser
     thither, to you, to where you are; in that direction; to that subject/point;
   isti  adverb  [XXXDX]  lesser
     there, in that place; where you are; herein, in this affair;
-  istic  adverb  [XXXDX]  lesser
-    there, over there, in that place; where you are; herein, in this affair;
-  (21 more not shown)
+  (22 more not shown)
 
 fun
   delicia, deliciae  noun, 1st declension, feminine  [XXXAO]
@@ -330,5 +330,5 @@ stop
     stop/cease/desist (from); give up, leave/stand off; dissociate oneself;
   mansio, mansionis  noun, 3rd declension, feminine  [XXXBO]
     lodging, stop; day's journey, stage; staying away; abode/quarters/home/dwelling;
-  (27 more not shown)
+  (32 more not shown)
 

@@ -211,12 +211,12 @@ mistakes.  Like any translation of this size, surely it has still some
 mistakes; the editors make easy to correct them.
 
 Later the dictionary was compared with two more lists, also with the
-help of Claude: the Latin-Spanish basic vocabulary of J.
-Echave-Sustaeta, which corrected 321 entries and added 254, and the
+help of Claude: the Latin-Spanish basic vocabulary of
+J. Echave-Sustaeta, which corrected 321 entries and added 254, and the
 medieval word-list of R. E. Latham, which added its medieval senses
 (2,444 entries), corrected 21 meanings, and added 1,140 missing words
-and parts of speech, all with their Spanish meanings.  The README tells
-how it was done.
+and parts of speech and 1,204 spelling variants, all with their Spanish
+meanings.  The README tells how it was done.
 
 6. In the browser
 -----------------
