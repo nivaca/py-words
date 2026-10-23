@@ -95,11 +95,6 @@ class LatinTests(unittest.TestCase):
         out = session(ignore_unknown_names=False).lookup('Amicuss')
         self.assertIn('(near spellings: amicus)', out)
 
-    def test_words_of_the_line(self):
-        s = session()
-        s.lookup('amicuss est')
-        self.assertEqual(s.analyzer.word_number, 2)
-
     def test_unknowns_only(self):
         out = session(do_unknowns_only=True).lookup('amicuss est')
         self.assertIn('(near spellings: amicus)', out)

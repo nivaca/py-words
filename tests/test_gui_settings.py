@@ -132,19 +132,12 @@ class SettingsDialogTests(unittest.TestCase):
         self.assertTrue(app.fuzzy.get())
 
     def test_dependent_settings(self):
-        here = os.getcwd()
-        os.chdir(self.tmp.name)                 # (WORD.OUT is made here)
-        self.addCleanup(os.chdir, here)
-        box = self.dialog.boxes['write_output_to_file']
-        self.assertTrue(box.instate(['disabled']))
-        self.toggle('have_output_file')
+        box = self.dialog.boxes['do_only_fixes']
         self.assertFalse(box.instate(['disabled']))
-        self.toggle('write_output_to_file')
-        self.assertTrue(self.app.setting('write_output_to_file'))
-        self.toggle('have_output_file')         # off again: so is this
-        self.assertFalse(self.app.setting('write_output_to_file'))
+        self.toggle('do_fixes')
         self.assertTrue(box.instate(['disabled']))
-        self.app.session.close()
+        self.toggle('do_fixes')
+        self.assertFalse(box.instate(['disabled']))
 
     def test_pause_is_kept_for_the_command_line(self):
         import config

@@ -114,6 +114,23 @@ class SettingsTests(InTempDir):
         self.assertEqual(s.read('WORD.MDV'), [])
         self.assertTrue(s.pause_in_screen_output)
 
+    def test_removed_settings(self):
+        """The settings of the files WORD.OUT, WORD.UNK and WORD.STA,
+        which no longer exist, are passed over in silence, and dropped
+        when the section is saved again."""
+        import config
+        os.makedirs(os.environ['WHITAKERS_WORDS_CONFIG'])
+        with open(config.config_path(), 'w') as f:
+            f.write('[parameters]\nhave_output_file = true\n'
+                    'trim_output = false\n[developer]\n'
+                    'write_statistics_file = true\n')
+        s = Settings()
+        self.assertEqual(s.load('/nonexistent'),
+                         [f'Using the settings in {config.config_path()}'])
+        self.assertFalse(s.trim_output)
+        s.save('parameters', only=['trim_output'])
+        self.assertNotIn('have_output_file', config.section('parameters'))
+
     def test_bad_line(self):
         with open('WORD.MOD', 'w') as f:
             f.write('TRIM_OUTPUT   maybe\nDO_FIXES   N\n')
@@ -341,7 +358,7 @@ class InteractiveTests(InTempDir):
         self.assertIn('Cannot read missing.txt', out)
 
     def test_parameters_dialogue(self):
-        # trim_output: N; have_output_file: Enter; then a space skips
+        # trim_output: N; do_unknowns_only: Enter; then a space skips
         session, out = self.repl('#', 'n', '', ' ')
         self.assertFalse(session.settings.trim_output)
         # (not saved: skipping the rest skips the question too)
@@ -349,42 +366,20 @@ class InteractiveTests(InTempDir):
                             False)
 
     def test_parameters_help_and_save(self):
-        # trim_output (after ?), then the others but write_output_to_file,
-        # the interface (Enter keeps it), and save
-        replies = ['#', '?', 'y'] + [''] * (len(MODES) - 2) + ['', 'y']
+        # trim_output (after ?), then the others, the interface (Enter
+        # keeps it), and save
+        replies = ['#', '?', 'y'] + [''] * (len(MODES) - 1) + ['', 'y']
         session, out = self.repl(*replies)
         self.assertIn('Leave out the least likely results', out)
         self.assertIn(f'Saved in {config.config_path()}', out)
         self.assertIs(config.section('parameters')['trim_output'], True)
         os.remove(config.config_path())
 
-    def test_developer_modes_and_files(self):
-        # have_statistics_file: Y, write_statistics_file: Y, then stop
-        session, out = self.repl('!', 'y', 'y', ' ', 'amasti')
-        self.assertTrue(session.settings.write_statistics_file)
-        session.close()
-        with open('WORD.STA') as f:
-            self.assertIn('SYNCOPE', f.read())
-
-    def test_unknowns_file(self):
-        session, out = self.session()
-        session.settings.write_unknowns_to_file = True
-        session.settings_changed()
-        session.process('rem xqzv')
-        session.close()
-        with open('WORD.UNK') as f:
-            self.assertIn('xqzv', f.read())
-
-    def test_output_file(self):
-        session, out = self.session()
-        session.settings.have_output_file = True
-        session.settings.write_output_to_file = True
-        session.settings_changed()
-        session.process('rem')
-        session.close()
-        self.assertEqual(out.getvalue(), '')
-        with open('WORD.OUT') as f:
-            self.assertIn('res, rei', f.read())
+    def test_developer_modes(self):
+        # show_dictionary: Y, then stop
+        session, out = self.repl('!', 'y', ' ', 'rem')
+        self.assertTrue(session.settings.show_dictionary)
+        self.assertFalse(os.path.exists('WORD.STA'))
 
 
 class ConvertTests(InTempDir):

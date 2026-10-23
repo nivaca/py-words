@@ -242,10 +242,8 @@ anteriores, el modo oscuro.  Cada búsqueda tiene su propia dirección
 (`https://nicolasvaughan.org/py-words/?q=amicus+est`), que se puede
 guardar en marcadores.  Los ajustes y el historial se guardan en el
 navegador (en su almacenamiento local), así que no se comparten con los
-programas del equipo ni con otros navegadores.  Hay cosas que en línea
-no aplican: los ajustes de los archivos de salida (WORD.OUT, WORD.UNK y
-las estadísticas) no hacen nada, y el diccionario no se puede editar.
-Hace falta un navegador más o menos reciente, y conexión para arrancar.
+programas del equipo ni con otros navegadores.  En línea no se puede
+editar el diccionario.  Hace falta un navegador más o menos reciente, y conexión para arrancar.
 
 El sitio se construye a partir de `pages/`:
 
@@ -563,9 +561,13 @@ y WORD.MDV (los modos de desarrollo), se siguen leyendo si los hay, en la
 carpeta actual o en la del programa, pero el archivo de configuración
 tiene prioridad.
 
-Si se le pide, el programa escribe en la carpeta actual WORD.OUT (los
-resultados), WORD.UNK (las palabras desconocidas) y WORD.STA
-(estadísticas sobre los trucos y afijos usados).
+El programa original podía escribir también los resultados, las palabras
+desconocidas y algunas estadísticas en los archivos WORD.OUT, WORD.UNK y
+WORD.STA.  Quité esos ajustes: para guardar los resultados en un
+archivo, use `-o ARCHIVO` o redirija la salida (`words.py -f texto.txt >
+resultados.txt`), y para las palabras desconocidas de un texto, el
+parámetro do_unknowns_only.  Un archivo de configuración que todavía los
+tenga se lee sin quejas, y se le quitan cuando se vuelve a guardar.
 
 Los archivos de datos
 ---------------------
@@ -882,7 +884,7 @@ Cómo funciona
 | `render.py`   | el texto de los resultados                                    |
 | `layout.py`   | qué es cada línea de los resultados (para la ventana y la página) |
 | `settings.py` | los parámetros y modos de desarrollo, y sus archivos          |
-| `session.py`  | una sesión: idioma, archivos de salida                        |
+| `session.py`  | una sesión: los ajustes, el idioma                            |
 | `editor.py`   | la edición del diccionario: lo que comparten los dos editores |
 | `config.py`   | el archivo de configuración, config.toml                      |
 | `interface.py`| el idioma de la interfaz: tr() traduce sus textos             |
@@ -944,8 +946,8 @@ las letras intercambiadas y las duplicadas o sin duplicar).  Hacia el
 latín, `ReverseIndex.near` se queda con las palabras del índice que
 encuentran entradas de la categoría pedida, ordenadas por su mejor
 entrada, y `reverse.spelled` les devuelve las tildes ("corazon" se
-muestra como "corazón").  Ninguna de estas consultas pasa por la caché ni
-por las estadísticas.  Cuesta unos diez milisegundos por palabra latina
+muestra como "corazón").  Ninguna de estas consultas pasa por la caché.
+Cuesta unos diez milisegundos por palabra latina
 desconocida, y menos de uno en la búsqueda hacia el latín.  `Session`
 decide cuándo usarla (el ajuste está activado, no se encontró nada, la
 palabra tiene al menos tres letras y no es un nombre ignorado ni una

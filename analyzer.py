@@ -16,7 +16,6 @@ from __future__ import annotations
 import re
 import unicodedata
 from dataclasses import dataclass, replace
-from collections.abc import Callable
 
 import fuzzy
 import tricks
@@ -135,13 +134,9 @@ def _abbreviation(part) -> bool:
 
 
 class Analyzer:
-    def __init__(self, lexicon: Lexicon, settings: Settings,
-                 stat: Callable[[str], None] | None = None):
+    def __init__(self, lexicon: Lexicon, settings: Settings):
         self.lex = lexicon
         self.settings = settings
-        self.stat = stat or (lambda line: None)
-        self.line_number = 0
-        self.word_number = 0
         self._cache: dict[tuple, tuple[Parse, ...]] = {}
 
     def reset(self):
@@ -151,11 +146,6 @@ class Analyzer:
     def default_opts(self) -> Opts:
         s = self.settings
         return Opts(s.do_fixes, s.do_only_fixes, s.use_prefixes)
-
-    def put_stat(self, caption: str, word: str, detail: str):
-        """A line for the statistics file (WORD.STA)."""
-        self.stat(f'{caption}{self.line_number:<8d}{self.word_number:<4d}   '
-                  f'{word[:20]:<20}   {detail}')
 
     # -----------------------------------------------------------------
     #  Affixes
@@ -523,7 +513,6 @@ class Analyzer:
         used to make a compound tense."""
         s = self.settings
         notes: dict[Origin, str] = {}
-        self.word_number += 1
         out = self._passes(word, notes)
         est = False         # est written in the word (amatust)
         if not out:
@@ -587,7 +576,6 @@ class Analyzer:
             if findings:
                 notes[Origin.TRICK] = (f"A final '-st' may stand for 'est' "
                                        f"({less} est)")
-                self.put_stat('TRICK   PROD at ', word, less + ' est')
                 return marked(trick_mark(f'Prodelision {w} -> {less} est'),
                               marked(mark(est), findings))
         return []
@@ -605,8 +593,6 @@ class Analyzer:
                      meanings_only: bool = False) -> list[WordResult]:
         """Analyses each word of a line of Latin.  Text after '--' is a
         comment."""
-        self.line_number += 1
-        self.word_number = 0
         words = split_line(line)
         results = []
         skip = False

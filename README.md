@@ -239,10 +239,9 @@ settings, the earlier searches, the dark mode.  Each search has its own
 address (`https://nicolasvaughan.org/py-words/?q=amicus+est`), useful for
 the bookmarks.  The settings and the history are kept in the browser (in
 its local storage), so they are not shared with the programs in your
-computer, nor with other browsers.  Some things don't apply online: the
-settings for the output files (WORD.OUT, WORD.UNK and the statistics) do
-nothing, and it is not possible to edit the dictionary.  You need a more
-or less recent browser, and a connection for starting it.
+computer, nor with other browsers.  It is not possible to edit the
+dictionary online.  You need a more or less recent browser, and a
+connection for starting it.
 
 The site is built from `pages/`:
 
@@ -551,9 +550,13 @@ WORD.MDV (the developer modes), are still read if they exist, in the
 current folder or in the folder of the program, but the configuration
 file has priority.
 
-If you ask for it, the program writes in the current directory WORD.OUT
-(the results), WORD.UNK (the unknown words) and WORD.STA (statistics about
-the tricks and affixes used).
+The original program could also write the results, the unknown words and
+some statistics to the files WORD.OUT, WORD.UNK and WORD.STA.  I took
+these settings out: to keep the results in a file, use `-o FILE` or
+redirect the output (`words.py -f text.txt > results.txt`), and for the
+unknown words of a text, the parameter do_unknowns_only.  A
+configuration file that still has those settings is read without
+complaint, and they are dropped from it when it is saved again.
 
 The data files
 --------------
@@ -867,7 +870,7 @@ How it works
 | `render.py`   | the text of the results                                       |
 | `layout.py`   | what each line of the results is (for the window and the page) |
 | `settings.py` | the parameters and developer modes, and their files           |
-| `session.py`  | a session: language, output files                             |
+| `session.py`  | a session: the settings, the language                         |
 | `editor.py`   | editing the dictionary: what the two editors share            |
 | `config.py`   | the configuration file, config.toml                           |
 | `interface.py`| the language of the interface: tr() translates its texts      |
@@ -928,8 +931,7 @@ exchanged, and the letters doubled or not doubled).  To Latin,
 `ReverseIndex.near` keeps the words of the index that find entries of
 the part of speech asked, ordered by their best entry, and
 `reverse.spelled` gives them back their accents ("corazon" is shown as
-"corazón").  None of these searches go to the cache or to the
-statistics.  It costs around ten milliseconds for an unknown Latin word,
+"corazón").  None of these searches go to the cache.  It costs around ten milliseconds for an unknown Latin word,
 and less than one in the search to Latin.  `Session` decides when to use
 it (the setting is on, nothing was found, the word has at least three
 letters and it is not an ignored name or a word that the search to Latin

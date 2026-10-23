@@ -75,8 +75,9 @@ passing arguments.  There is no shared mutable state.
 The output received a new layout, more easy to read, and the command line
 a modern one (`argparse`).  What the users really use was kept: the
 settings files WORD.MOD and WORD.MDV, in their original format, with the
-`#` and `!` dialogues; the output files WORD.OUT, WORD.UNK and WORD.STA;
-and the developer modes.  The result has around 6,700 lines, in modules
+`#` and `!` dialogues, and the developer modes.  (The output files
+WORD.OUT, WORD.UNK and WORD.STA were kept at first, and taken out
+later.)  The result has around 6,700 lines, in modules
 organised by task (see "How it works" in the README).
 
 Checking the redesign
@@ -280,8 +281,7 @@ it is a word of the dictionary by itself, with stems and endings,
 irregular forms, qu- pronouns and tackons, but without prefixes,
 suffixes or tricks (with them, almost any string can be read as
 something).  These searches don't use the cache, because some hundreds
-for each unknown word would fill it, and they don't write statistics; all
-together they take around ten milliseconds.  To Latin, a spelling stays
+for each unknown word would fill it; all together they take around ten milliseconds.  To Latin, a spelling stays
 if it is a word of the index of the meanings that finds entries of the
 part of speech asked.  The index keeps its words without capitals or
 accents, so each one is written again as its meaning writes it.
@@ -295,7 +295,7 @@ the word is not a name with capital letter (when the unknown names are
 ignored) nor one of the words that the search to Latin never looks for
 ("the", "la" ...).  The results of the near spellings come after a note,
 `(near spellings: amicus)` or `(near words: friend)`, as if they were
-written, but they don't count as words of the line in WORD.UNK.  The
+written.  The
 words of one or two letters are left out, because almost all of them are
 at one change of another ("is": "as", "if", "in").
 

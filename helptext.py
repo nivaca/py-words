@@ -13,21 +13,9 @@ HELP = {
            'when something was left out.  In English-to-Latin lookups, '
            'show only the best six results.  Poets use unusual words and '
            'forms, so these can be trimmed wrongly.'),
-    'have_output_file':
-        N_('Create the file WORD.OUT (in the current directory), which can '
-           'receive the results instead of the screen; see '
-           'write_output_to_file.  An existing WORD.OUT is overwritten.'),
-    'write_output_to_file':
-        N_('Send the results to WORD.OUT instead of the screen.  It can be '
-           'turned on and off during a session, to keep only some '
-           'results.  Only offered when have_output_file is on.'),
     'do_unknowns_only':
-        N_('Show only the words that are not found.  Useful with '
-           'write_unknowns_to_file, to check a text for words missing from '
-           'the dictionary.'),
-    'write_unknowns_to_file':
-        N_('Write the words that are not found to the file WORD.UNK (in '
-           'the current directory), with their line and word numbers.'),
+        N_('Show only the words that are not found, to check a text for '
+           'words missing from the dictionary.'),
     'ignore_unknown_names':
         N_('Do not try spelling tricks on an unknown word that is '
            'capitalized: it is probably a name.'),
@@ -89,14 +77,6 @@ HELP = {
            'It is plain text and can also be edited; words.py --config '
            'shows where it is.'),
     # Developer modes (!, [developer] in config.toml)
-    'have_statistics_file':
-        N_('Create the file WORD.STA (in the current directory) for '
-           'statistics on the tricks and affixes used; see '
-           'write_statistics_file.'),
-    'write_statistics_file':
-        N_('Write the statistics to WORD.STA.  It can be turned on and off '
-           'during a session.  Only offered when have_statistics_file is '
-           'on.'),
     'show_dictionary':
         N_('Show which dictionary (general or special) each entry is from.'),
     'show_dictionary_line':
@@ -128,8 +108,6 @@ HELP = {
     'do_two_words':
         N_('With do_tricks, try an unknown word as two words written '
            'together.'),
-    'include_unknown_context':
-        N_('Write the whole line, as well as the word, to WORD.UNK.'),
     'omit_archaic':
         N_('With trim_output, leave out archaic forms when others were '
            'found.'),

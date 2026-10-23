@@ -22,10 +22,6 @@ class WebTests(unittest.TestCase):
         cls.app = words_web.WebApp(default_datadir(),
                                    {'localhost', '127.0.0.1'})
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.app.close()
-
     def call(self, path='/', query='', method='GET', body='',
              host='127.0.0.1:8000'):
         env = {'PATH_INFO': path, 'QUERY_STRING': query,
@@ -188,7 +184,6 @@ class LanguageTests(unittest.TestCase):
 
     def tearDown(self):
         self.app.change({'language': 'en'})     # (the tests' own config)
-        self.app.close()
         self.tmp.cleanup()
 
     call = WebTests.call

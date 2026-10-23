@@ -38,21 +38,19 @@ DEV_MODE_FILE = 'WORD.MDV'
 
 #  The parameters, in the order they are asked about
 MODES = (
-    'trim_output', 'have_output_file', 'write_output_to_file',
-    'do_unknowns_only', 'write_unknowns_to_file', 'ignore_unknown_names',
+    'trim_output', 'do_unknowns_only', 'ignore_unknown_names',
     'do_compounds', 'do_fixes', 'do_tricks', 'do_dictionary_forms',
     'show_age', 'show_frequency', 'do_examples', 'use_glosses',
     'show_long_vowels', 'do_only_meanings', 'do_stems_for_unknown',
     'fuzzy_search')
 
 DEV_MODES = (
-    'have_statistics_file', 'write_statistics_file', 'show_dictionary',
-    'show_dictionary_line', 'show_dictionary_codes', 'do_pearse_codes',
-    'do_only_initial_word', 'for_word_list_check', 'do_only_fixes',
-    'do_fixes_anyway', 'use_prefixes', 'use_suffixes', 'use_tackons',
-    'do_medieval_tricks', 'do_syncope', 'do_two_words',
-    'include_unknown_context', 'omit_archaic', 'omit_medieval',
-    'omit_uncommon', 'pause_in_screen_output')
+    'show_dictionary', 'show_dictionary_line', 'show_dictionary_codes',
+    'do_pearse_codes', 'do_only_initial_word', 'for_word_list_check',
+    'do_only_fixes', 'do_fixes_anyway', 'use_prefixes', 'use_suffixes',
+    'use_tackons', 'do_medieval_tricks', 'do_syncope', 'do_two_words',
+    'omit_archaic', 'omit_medieval', 'omit_uncommon',
+    'pause_in_screen_output')
 
 CHARACTERS = (('START_FILE_CHARACTER', 'start_file_character'),
               ('CHANGE_PARAMETERS_CHARACTER', 'change_parameters_character'),
@@ -70,13 +68,17 @@ LANGUAGES = ('language', 'interface')
 #  A setting that only makes sense with another one on (the dialogues
 #  skip it, or grey it out, while that one is off)
 DEPENDS = {
-    'write_output_to_file': 'have_output_file',
-    'write_statistics_file': 'have_statistics_file',
     'for_word_list_check': 'do_only_initial_word',
     'do_only_fixes': 'do_fixes',
     'do_fixes_anyway': 'do_fixes',
     'do_medieval_tricks': 'do_tricks',
 }
+
+#  Settings of earlier versions, which wrote the files WORD.OUT, WORD.UNK
+#  and WORD.STA: a configuration file that still has them is not wrong
+REMOVED = ('have_output_file', 'write_output_to_file',
+           'write_unknowns_to_file', 'have_statistics_file',
+           'write_statistics_file', 'include_unknown_context')
 
 #  Settings that only the interactive command line uses
 COMMAND_LINE = ('pause_in_screen_output',)
@@ -109,10 +111,7 @@ def first_sentence(text: str) -> str:
 class Settings:
     # Parameters (WORD.MOD)
     trim_output: bool = True
-    have_output_file: bool = False
-    write_output_to_file: bool = False
     do_unknowns_only: bool = False
-    write_unknowns_to_file: bool = False
     ignore_unknown_names: bool = True
     do_compounds: bool = True
     do_fixes: bool = True
@@ -129,8 +128,6 @@ class Settings:
     language: str = 'en'
     interface: str = 'en'
     # Developer modes (WORD.MDV)
-    have_statistics_file: bool = False
-    write_statistics_file: bool = False
     show_dictionary: bool = False
     show_dictionary_line: bool = False
     show_dictionary_codes: bool = True
@@ -145,7 +142,6 @@ class Settings:
     do_medieval_tricks: bool = True
     do_syncope: bool = True
     do_two_words: bool = True
-    include_unknown_context: bool = True
     omit_archaic: bool = True
     omit_medieval: bool = False
     omit_uncommon: bool = True
@@ -218,6 +214,8 @@ class Settings:
         for name, allowed in (('parameters', MODES + LANGUAGES),
                               ('developer', DEV_MODES + tuple(characters))):
             for key, value in data.get(name, {}).items():
+                if key in REMOVED:
+                    continue
                 if key not in allowed:
                     problems.append(tr('[{section}] {key}: unknown setting',
                                        section=name, key=key))
@@ -260,7 +258,9 @@ class Settings:
         another window, may have changed since); None: all of them."""
         values = self.config_section(name)
         if only is not None:
-            values = {**config.read().get(name, values),
+            values = {**{key: value for key, value
+                         in config.read().get(name, values).items()
+                         if key not in REMOVED},
                       **{key: values[key] for key in only if key in values}}
         return config.update(name, values)
 

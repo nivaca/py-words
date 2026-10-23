@@ -216,35 +216,34 @@ def syncope(az: Analyzer, word: str, opts: Opts,
          lambda i: s[:i] + 'v' + s[i:] if s[i - 1:i + 1] == 'ii' else None,
          'Syncope  ii => ivi',
          "Syncopated perfect ivi can drop 'v' without contracting vowel",
-         ' SYNCOPE  ivi at ', False),
+         False),
         (range(n - 2, 0, -1),
          lambda i: s[:i] + 'vi' + s[i:]
          if s[i - 1:i + 1] in ('as', 'es', 'is', 'os') else None,
          'Syncope   s => vis',
          "Syncopated perfect often drops the 'v' and contracts vowel",
-         'SYNCOPE  vis at ', True),
+         True),
         (range(n - 2, 1, -1),
          lambda i: s[:i] + 've' + s[i:]
          if s[i - 1:i + 1] in ('ar', 'er', 'or') else None,
          'Syncope   r => v.r',
          "Syncopated perfect often drops the 'v' and contracts vowel",
-         'SYNCOPE  ver at ', False),
+         False),
         (range(n - 3, 0, -1),
          lambda i: s[:i] + 'v' + s[i:] if s[i - 1:i + 2] == 'ier' else None,
          'Syncope  ier=>iver',
          "Syncopated perfect often drops the 'v' and contracts vowel",
-         'SYNCOPE  ier at ', False),
+         False),
         (range(n - 2, 0, -1),
          lambda i: s[:i] + 'is' + s[i:] if s[i - 1] in 'sx' else None,
          'Syncope s/x => +is',
          "Syncopated perfect sometimes drops the 'is' after 's' or 'x'",
-         'SYNCOPEx/sis at ', False),
+         False),
     ]
-    for positions, change, label, note, caption, any_form in rules:
+    for positions, change, label, note, any_form in rules:
         findings, new = first(positions, change, label)
         if _is_perfect(findings):
             notes[Origin.SYNCOPE] = note
-            az.put_stat(caption, word, shown(findings)[1].stem)
             return findings
         if findings and any_form:
             return findings
@@ -266,24 +265,23 @@ class _Tricks:
     """Applies spelling rules to a word, keeping the first that works."""
 
     def __init__(self, az: Analyzer, word: str, notes: dict,
-                 lookup: Callable[[str], list[Found]], stat: str):
+                 lookup: Callable[[str], list[Found]], slurs: bool = False):
         self.az = az
         self.word = word
         self.s = word.lower()
         self.notes = notes
         self.lookup = lookup            # word -> findings
-        self.stat_kind = stat           # 'TRICK' or 'SLURY'
+        self.slurs = slurs              # (the slur rules)
         self.out: list[Found] = []
 
-    def attempt(self, label: str, new: str, note: str, caption: str,
-                accept=None, lookup=None) -> bool:
+    def attempt(self, label: str, new: str, note: str, accept=None,
+                lookup=None) -> bool:
         findings = (lookup or self.lookup)(new)
         if accept is not None:
             findings = found(p for p in parses_of(findings) if accept(p))
         if findings and not _ends_with_tackon(findings):
             self.out = chain(self.out, marked(trick_mark(label), findings))
             self.notes[Origin.TRICK] = note
-            self.az.put_stat(caption, self.word, label)
             return True
         return False
 
@@ -292,8 +290,7 @@ class _Tricks:
         if len(s) >= len(x1) + 2 and s.startswith(x1):
             return self.attempt(
                 f'Word mod {x1}/{x2}', x2 + s[len(x1):],
-                note or f"An initial '{x1}' may have replaced usual '{x2}'",
-                f'{self.stat_kind:<5}   FLIP at ')
+                note or f"An initial '{x1}' may have replaced usual '{x2}'")
         return False
 
     def flip_flop(self, x1, x2) -> bool:
@@ -301,10 +298,9 @@ class _Tricks:
         for a, b in ((x1, x2), (x2, x1)):
             if len(s) >= len(a) + 2 and s.startswith(a):
                 if self.attempt(f'Word mod {a}/{b}', b + s[len(a):],
-                                f"An initial '{a}' may be rendered by '{b}'",
-                                f'{self.stat_kind:<5}  FLOP at '):
+                                f"An initial '{a}' may be rendered by '{b}'"):
                     return True
-                if self.stat_kind == 'SLURY':
+                if self.slurs:
                     return False        # slurs only try the reverse if
                                         # the word does not start with X1
         return False
@@ -314,8 +310,7 @@ class _Tricks:
         for i in _places(s, x1):
             if self.attempt(
                     f'Word mod {x1}/{x2}', s[:i] + x2 + s[i + len(x1):],
-                    f"An internal '{x1}' might be rendered by '{x2}'",
-                    'TRICK   INTR at '):
+                    f"An internal '{x1}' might be rendered by '{x2}'"):
                 return True
         return False
 
@@ -329,14 +324,12 @@ class _Tricks:
         if s.startswith(x1) and s[n] not in VOWELS:
             return self.attempt(
                 f'Slur {x1}/{x1[:-1]}~', x1[:-1] + s[n] + s[n:],
-                f"An initial '{x1}' may be rendered by {x1[:-1]}~",
-                'SLURY   SLUR at ')
+                f"An initial '{x1}' may be rendered by {x1[:-1]}~")
         if s.startswith(x1[:-1]) and s[n - 1] == s[n] and \
                 s[n] not in VOWELS:
             return self.attempt(
                 f'Slur {x1[:-1]}~/{x1}', x1 + s[n:],
-                f"An initial '{x1[:-1]}~' may be rendered by {x1}",
-                'SLURY   SLUR at ')
+                f"An initial '{x1[:-1]}~' may be rendered by {x1}")
         return False
 
     def table(self, rules) -> bool:
@@ -367,7 +360,7 @@ def slury(az: Analyzer, word: str, opts: Opts,
         if az.settings.do_syncope:
             findings = chain(findings, syncope(az, new, plain, notes))
         return findings
-    t = _Tricks(az, word, notes, lookup, 'SLURY')
+    t = _Tricks(az, word, notes, lookup, slurs=True)
     if t.s and t.s[0] in SLUR_TRICKS:
         t.table(SLUR_TRICKS[t.s[0]])
     return t.out
@@ -385,7 +378,7 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
         if s.do_syncope:
             findings = chain(findings, syncope(az, new, opts, notes))
         return findings
-    t = _Tricks(az, word, notes, lookup, 'TRICK')
+    t = _Tricks(az, word, notes, lookup)
     w = t.s
     if not w:
         return []
@@ -407,7 +400,6 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
         # Adjectives of the 1st/2nd declension: -iis written -is
         t.attempt('Word mod iis -> is', w[:-2] + 'iis',
                   "A Terminal 'iis' on ADJ 1 1 DAT/ABL P might drop 'i'",
-                  'TRICK  ADJIS at ',
                   accept=lambda p: p.form.pos == Pos.ADJ and
                   p.form.decl == Decl(1, 1) and
                   p.form.case in (Case.DAT, Case.ABL) and
@@ -456,7 +448,6 @@ def _medieval_spellings(t: _Tricks) -> bool:
                         trick_mark(f'Medieval {t.s} -> {new}'), findings))
             t.notes[Origin.TRICK] = (f"'{t.s}' may be a medieval spelling "
                                      f"of {', '.join(found_as)}")
-            t.az.put_stat('TRICK   MEDV at ', t.word, ' '.join(found_as))
             return True
     return False
 
@@ -527,7 +518,7 @@ def _double_consonants(t: _Tricks):
             if t.attempt(f'Word mod {s[i]} -> {s[i]}{s[i]}',
                          s[:i + 1] + s[i:],
                          'A doubled consonant may be rendered by just the '
-                         'single  MEDIEVAL', 'TRICK   2CON at '):
+                         'single  MEDIEVAL'):
                 return
 
 
@@ -552,7 +543,6 @@ def _two_words(az: Analyzer, t: _Tricks, opts: Opts):
         if together:
             t.notes[Origin.TRICK] = (f'May be 2 words declined together '
                                      f'({s[:i]}+{s[i:]})')
-            az.put_stat('TRICK   2DCL at ', t.word, s[:i] + '+' + s[i:])
             t.out = chain(t.out, marked(trick_mark('Two words'),
                                         chain(*together)))
             return
@@ -573,10 +563,8 @@ def _two_words(az: Analyzer, t: _Tricks, opts: Opts):
             for f in findings])
         t.notes[Origin.TRICK] = 'It is very likely a compound number' \
             f'    {s[:i]} + {s[i:]}'
-        az.put_stat('TRICK   2NUM at ', t.word, s[:i] + '+' + s[i:])
     else:
         t.notes[Origin.TRICK] = (f'May be 2 words combined ({s[:i]}+'
                                  f'{s[i:]}) If not obvious, probably '
                                  'incorrect')
-        az.put_stat('TRICK   2WDS at ', t.word, s[:i] + '+' + s[i:])
     t.out = chain(t.out, marked(trick_mark('Two words'), findings))

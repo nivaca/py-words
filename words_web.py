@@ -69,8 +69,6 @@ HOME_PAGE = 'https://nicolasvaughan.org'
 
 #  The settings the page offers: those of the window (the pause and the
 #  command characters only matter in the interactive command line)
-#  TODO: en línea (Pyodide) los ajustes de WORD.OUT, WORD.UNK y las
-#  estadísticas no hacen nada; habría que esconderlos allí.
 SHOWN = tuple(n for n in MODES + DEV_MODES
               if n not in COMMAND_LINE + ON_SCREEN)
 
@@ -122,9 +120,6 @@ class WebApp:
         self._glosses: dict[str, dict[str, str]] = {}
         self._codes: dict[tuple, str] = {}
 
-    def close(self):
-        self.session.close()
-
     def _mtime(self) -> float | None:
         try:
             return os.path.getmtime(os.path.join(self.datadir, DICTIONARY))
@@ -138,7 +133,6 @@ class WebApp:
             return
         old = self.session
         self.session = Session(Lexicon.load(self.datadir), old.settings)
-        old.close()
         self.mtime = mtime
         self.message = tr('The dictionary was changed, and read again.')
 
@@ -534,7 +528,7 @@ class WebApp:
             for name, value in values.items():
                 setattr(self.saved, name, value)
                 setattr(self.session.settings, name, value)
-            self.session.settings_changed()     # (output files, cache)
+            self.session.settings_changed()     # (language, cache)
             try:
                 for section in {section_of(name) for name in values}:
                     self.saved.save(section, only=[
@@ -913,7 +907,6 @@ def main(argv=None):
     try:
         server = serve(app, args.host, args.port)
     except OSError as e:
-        app.close()
         sys.exit('words_web.py: ' + tr('cannot listen on {host} port '
                                        '{port}: {error}', host=args.host,
                                        port=args.port or PORT,
@@ -932,7 +925,6 @@ def main(argv=None):
         print()
     finally:
         server.server_close()
-        app.close()
 
 
 if __name__ == '__main__':

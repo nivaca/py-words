@@ -291,7 +291,7 @@ class App:
         with self.lock:
             if name not in COMMAND_LINE:
                 setattr(self.session.settings, name, value)
-            self.session.settings_changed()     # (output files, cache)
+            self.session.settings_changed()     # (language, cache)
             try:
                 self.saved.save(section, only=[name])
             except (OSError, ConfigError) as e:

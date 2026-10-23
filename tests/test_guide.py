@@ -134,7 +134,6 @@ class ProgramTests(unittest.TestCase):
         self.assertIn('&quot;Help&quot; and &quot;About&quot;, below', page)
         self.assertIn('<h3>The codes in brackets</h3>', page)
         self.assertIn('At the foot, "Earlier searches" lists', page)
-        app.close()
 
 
 if __name__ == '__main__':

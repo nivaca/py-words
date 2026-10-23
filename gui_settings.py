@@ -3,8 +3,8 @@ the command line) and developer mode (!), with what each one does.
 
 Changes apply at once and are kept in the configuration file, as those of
 the # and ! dialogues are when saved.  A setting that only makes sense
-with another (write_output_to_file needs have_output_file ...) is greyed
-out while that one is off, as the command line skips it.  The pause and
+with another (do_only_fixes needs do_fixes ...) is greyed out while
+that one is off, as the command line skips it.  The pause and
 the command characters only matter in the interactive command line; they
 are offered under their own heading.  At the top are the language of the
 interface and the fonts of the windows.

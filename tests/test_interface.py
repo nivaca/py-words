@@ -153,14 +153,11 @@ class ProgramTests(unittest.TestCase):
     def test_web_page(self):
         import words_web
         app = words_web.WebApp(os.path.join(ROOT, 'data'))
-        try:
-            interface.use('es')
-            status = []
-            body = b''.join(app({'REQUEST_METHOD': 'GET', 'PATH_INFO': '/',
-                                 'QUERY_STRING': ''},
-                                lambda s, h: status.append(s))).decode()
-        finally:
-            app.close()
+        interface.use('es')
+        status = []
+        body = b''.join(app({'REQUEST_METHOD': 'GET', 'PATH_INFO': '/',
+                             'QUERY_STRING': ''},
+                            lambda s, h: status.append(s))).decode()
         self.assertEqual(status, ['200 OK'])
         self.assertIn('<html lang="es">', body)
         self.assertIn('Búsquedas anteriores', body)
@@ -224,13 +221,10 @@ class KeptTests(unittest.TestCase):
     def test_web_page(self):
         import words_web
         app = words_web.WebApp(os.path.join(ROOT, 'data'))
-        try:
-            body = f'token={app.token}&interface=es'.encode()
-            app({'REQUEST_METHOD': 'POST', 'PATH_INFO': '/interface',
-                 'CONTENT_LENGTH': str(len(body)),
-                 'wsgi.input': io.BytesIO(body)}, lambda s, h: None)
-        finally:
-            app.close()
+        body = f'token={app.token}&interface=es'.encode()
+        app({'REQUEST_METHOD': 'POST', 'PATH_INFO': '/interface',
+             'CONTENT_LENGTH': str(len(body)),
+             'wsgi.input': io.BytesIO(body)}, lambda s, h: None)
         self.assertEqual(interface.code(), 'es')
         self.assertEqual(self.kept(), 'es')
         self.assertEqual(self.meanings(), 'es')     # (they follow it)

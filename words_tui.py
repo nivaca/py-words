@@ -249,7 +249,6 @@ class DictionaryTUI(Screen):
             self.message = tr('Loading the dictionary again…')
             self.draw()
             old = self.session
-            old.close()
             self.session = Session(Lexicon.load(self.datadir), old.settings)
             self.session.reverse = old.reverse
             self.message = tr('The dictionary was saved and read again.')
@@ -373,19 +372,16 @@ def run(screen, datadir):
     curses.use_default_colors()
     screen.keypad(True)
     tui = DictionaryTUI(screen, datadir)
-    try:
-        while True:
-            tui.draw()
-            try:
-                ch = screen.get_wch()
-            except KeyboardInterrupt:
-                ch = ctrl('c')
-            if ch == curses.KEY_RESIZE:
-                continue
-            if not tui.handle(ch):
-                return
-    finally:
-        tui.session.close()
+    while True:
+        tui.draw()
+        try:
+            ch = screen.get_wch()
+        except KeyboardInterrupt:
+            ch = ctrl('c')
+        if ch == curses.KEY_RESIZE:
+            continue
+        if not tui.handle(ch):
+            return
 
 
 def main(argv=None):

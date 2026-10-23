@@ -157,12 +157,7 @@ def change_parameters(session: Session, ask: Ask, say) -> None:
            'a space skips the rest.'))
     try:
         for name in MODES:
-            if name == 'write_output_to_file' and not s.have_output_file:
-                s.write_output_to_file = False
-                continue
             _yes_no(s, name, ask, say)
-            if name == 'have_output_file':
-                session.settings_changed()
         _interface(s, ask, say, session.lexicon.language_names())
         _save(ask, say, s, 'parameters')
     except _Skip:
@@ -176,8 +171,7 @@ def change_developer_modes(session: Session, ask: Ask, say) -> None:
     say(tr('Answer Y or N; Enter keeps the current value, ? gives help, '
            'a space skips the rest.  Developer modes are for special '
            'purposes.'))
-    skip = {'write_statistics_file': not s.have_statistics_file,
-            'for_word_list_check': False,
+    skip = {'for_word_list_check': False,
             'do_only_fixes': not s.do_fixes,
             'do_fixes_anyway': not s.do_fixes,
             'do_medieval_tricks': not s.do_tricks}
@@ -190,9 +184,6 @@ def change_developer_modes(session: Session, ask: Ask, say) -> None:
             if skip.get(name):
                 continue
             _yes_no(s, name, ask, say)
-            if name == 'have_statistics_file':
-                session.settings_changed()
-                skip['write_statistics_file'] = not s.have_statistics_file
         for name in ('start_file_character', 'change_parameters_character',
                      'change_developer_modes_character'):
             _character(s, name, ask, say)
@@ -518,7 +509,6 @@ def _main(argv: list[str] | None, meanings_only: bool):
         print(session.notice, file=sys.stderr)
     if args.guide:
         out.write(help_text(session))
-        session.close()
         return
     try:
         if interactive:
@@ -538,7 +528,6 @@ def _main(argv: list[str] | None, meanings_only: bool):
     except BrokenPipeError:
         pass
     finally:
-        session.close()
         if out is not sys.stdout:
             out.close()
 
