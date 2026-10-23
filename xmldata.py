@@ -547,6 +547,40 @@ def read_addons(path: str, errors=None):
     return _read(path, 'addons', errors, addon)
 
 
+#  A stem with its long vowels marked (data/quantities.xml), or '-'
+_LONG_STEM = re.compile(r'-|[a-zA-ZāēīōūȳĀĒĪŌŪȲ]{1,' + str(MAX_STEM) + '}')
+
+
+def read_quantities(path: str, errors=None) -> list[tuple[tuple[int, tuple[
+        str, ...]], int]]:
+    """The long vowels of the stems of entries: a list of ((entry id,
+    stems), line), each stem with its long vowels marked (amīc), or '-'
+    where they are not known."""
+    seen = {}
+
+    def stems(r: _Reader, n: int) -> tuple[int, tuple[str, ...]]:
+        _expect(r, 'stems')
+        value = r.raw('entry')
+        if not value.isdigit() or not 0 < int(value) < MAX_UID:
+            r.bad('entry', value, tr('must be a whole number above 0'))
+        uid = int(value)
+        r.done()
+        r.children({})
+        marked = tuple(r.el.content.split())
+        if not 0 < len(marked) <= 4:
+            r.fail(tr('<stems> must have from one to four stems'))
+        for m in marked:
+            if not _LONG_STEM.fullmatch(m):
+                r.fail(tr('the stem "{text}" may only contain letters, '
+                          'with long marks on vowels (ā), or be -', text=m))
+        if uid in seen:
+            r.fail(tr('{what} is already on line {line}',
+                      what=f'entry="{uid}"', line=seen[uid]))
+        seen[uid] = r.el.line
+        return uid, marked
+    return _read(path, 'quantities', errors, stems)
+
+
 def read_sources(path: str, errors=None) -> list[tuple[tuple[str, str],
                                                         int]]:
     """The sources that the source codes of the entries stand for: a list

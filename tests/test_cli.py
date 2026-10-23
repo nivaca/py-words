@@ -136,12 +136,12 @@ class CommandLineTests(InTempDir):
     def test_words(self):
         out = run('amicus').stdout.decode()
         self.assertIn('amicus, amici  noun, 2nd declension', out)
-        self.assertIn('amic-us', out)
+        self.assertIn('amīc-us', out)
 
     def test_meanings_only(self):
         out = run('-m', 'amicus').stdout.decode()
         self.assertIn('friend, ally', out)
-        self.assertNotIn('amic-us', out)
+        self.assertNotIn('amīc-us', out)
 
     def test_config_is_made_at_the_first_start(self):
         folder = tempfile.mkdtemp()
@@ -206,9 +206,9 @@ class CommandLineTests(InTempDir):
 
     def test_glosses_or_words(self):
         """use_glosses (on by usual) and --glosses / --no-glosses."""
-        self.assertIn('amav-isti      2SG.PRF.ACT.IND',
+        self.assertIn('amāv-isti      2SG.PRF.ACT.IND',
                       run('amavisti').stdout.decode())
-        self.assertIn('amav-isti      2nd person singular perfect active '
+        self.assertIn('amāv-isti      2nd person singular perfect active '
                       'indicative', run('--no-glosses', 'amavisti')
                       .stdout.decode())
         config_dir = os.path.join(self.tmp.name, 'config')
@@ -331,7 +331,7 @@ class InteractiveTests(InTempDir):
     def test_language(self):
         _, out = self.repl('~E', 'friend', '~L', 'amicus')
         self.assertIn('English to Latin', out)
-        self.assertIn('amic-us', out)
+        self.assertIn('amīc-us', out)
 
     def test_file(self):
         with open('words.txt', 'w') as f:

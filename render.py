@@ -21,7 +21,7 @@ from forms import (principal_parts, describe_part, describe_form,
                     deponent, stem_and_ending, POS_NAME)
 from languages import Language
 from model import Pos, Age, Freq, NumeralSort, Entry, Form, Unique, \
-    Prefix, Suffix, Tackon
+    Prefix, Suffix, Tackon, fold, marked_like
 from results import Origin, Parse, Reading, WordResult
 from reverse import Hit
 from settings import Settings
@@ -50,11 +50,14 @@ TRICK_TITLE = {Origin.TRICK: 'spelling', Origin.SYNCOPE: 'syncope'}
 class Renderer:
     def __init__(self, settings: Settings, meanings_only: bool = False,
                  glosses: dict[tuple[str, str], str] | None = None,
-                 language: Language | None = None):
+                 language: Language | None = None,
+                 long_stems: dict[int, tuple[str, ...]] | None = None):
         """GLOSSES: the abbreviations for the analyses (from gloss.xml);
         without them the analyses are in words.  LANGUAGE: that of the
-        meanings (None: those of the data files, in English)."""
+        meanings (None: those of the data files, in English).  LONG_STEMS:
+        the stems with their long vowels marked (Lexicon.long_stems)."""
         self.s = settings
+        self.long_stems = long_stems or {}
         self.meanings_only = meanings_only or settings.do_only_meanings
         self.glosses = glosses or {}
         self.language = language
@@ -227,8 +230,8 @@ class Renderer:
                 pos = POS_NAME.get(p.form.pos)
                 description = ', '.join(
                     x for x in (pos and self.t(pos), description) if x)
-            text = columns(stem_and_ending(p.stem, p.infl.ending),
-                           description)
+            text = columns(stem_and_ending(self.marked(p.stem, entry),
+                                           p.infl.ending), description)
         extra = []
         if self.s.show_age or p.infl.age != Age.X:
             extra.append(FORM_AGE.get(p.infl.age))
@@ -246,6 +249,19 @@ class Renderer:
             gloss = example(p.form, entry)
             if gloss:
                 self.line(gloss, 6)
+
+    def marked(self, stem: str, entry: Entry | None) -> str:
+        """STEM with its long vowels marked, if it is one of ENTRY's stems
+        and show_long_vowels is on (amic -> amīc)."""
+        marked = self.long_stems.get(entry.uid) \
+            if entry is not None and self.s.show_long_vowels and \
+            entry.dictionary == 'general' else None
+        if not marked:
+            return stem
+        for m, s in zip(marked, entry.stems):
+            if m != '-' and fold(s) == fold(stem):
+                return marked_like(stem, m)
+        return stem
 
     def neighbour(self, entry: Entry):
         self.line(self.t('near:') + ' ' + self.entry_header(entry), 2,

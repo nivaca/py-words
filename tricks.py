@@ -17,8 +17,8 @@ import re
 from typing import TYPE_CHECKING
 from collections.abc import Callable
 
-from model import (Pos, Case, Number, NumeralSort, Decl, Form, Inflection,
-                    Freq, medieval_fold)
+from model import (Pos, Case, Number, Gender, NumeralSort, Decl, Form,
+                    Inflection, Freq, medieval_fold)
 from results import (Origin, Parse, Found, trick_mark, marked, found, chain,
                      parses_of, shown, from_dictionary)
 
@@ -482,6 +482,43 @@ def _respellings(lex, word: str) -> list[list[str]]:
     return groups + [list(out)[:MOST_RESPELLINGS]]
 
 
+DECLINED = (Pos.N, Pos.ADJ, Pos.PRON, Pos.NUM, Pos.VPAR)
+
+
+def _agree(p: Parse, q: Parse) -> bool:
+    """Whether the declined forms P and Q agree: in case and number, and
+    in gender unless both are nouns."""
+    a, b = p.form, q.form
+    if a.case != b.case or a.number != b.number or a.case == Case.X:
+        return False
+    if a.pos == b.pos == Pos.N:
+        return True
+    genders = {a.gender, b.gender} - {Gender.X}
+    return len(genders) < 2 or genders in ({Gender.C, Gender.M},
+                                           {Gender.C, Gender.F})
+
+
+def _declined_together(first: list[Found],
+                       second: list[Found]) -> list[list[Found]]:
+    """The forms of FIRST and of SECOND that agree with a form of the
+    other (res publica, ius iurandum), if there are any."""
+    one = [p for p in parses_of(first) if p.form.pos in DECLINED]
+    two = [q for q in parses_of(second) if q.form.pos in DECLINED]
+    pairs = [(p, q) for p in one for q in two if _agree(p, q)]
+    if not pairs:
+        return []
+    kept = {id(x) for pair in pairs for x in pair}
+
+    def keep(findings):
+        out = []
+        for f in findings:
+            parses = tuple(p for p in f.parses if id(p) in kept)
+            if parses:
+                out.append(Found(parses, f.marks))
+        return out
+    return [keep(first), keep(second)]
+
+
 def _double_consonants(t: _Tricks):
     """Medieval writers often wrote a doubled consonant as one."""
     s = t.s
@@ -496,10 +533,12 @@ def _double_consonants(t: _Tricks):
 
 def _two_words(az: Analyzer, t: _Tricks, opts: Opts):
     """Two words written as one: the first is the shortest found word at
-    the start that is not a common prefix."""
+    the start that is not a common prefix; but two words declined
+    together (rempublicam, iurisiurandi) come first."""
     s = t.s
     if len(s) < 5:
         return
+    split = None
     for i in range(2, len(s) - 2):
         if s[:i] in COMMON_PREFIXES:
             continue
@@ -509,23 +548,35 @@ def _two_words(az: Analyzer, t: _Tricks, opts: Opts):
         second = az.word(s[i:], opts, True)
         if not second or _ends_with_tackon(second):
             continue
-        findings = chain(first, second)
-        numbers = any(p.form.pos == Pos.NUM for p in parses_of(first)) and \
-            any(p.form.pos == Pos.NUM for p in parses_of(second))
-        if numbers and az.settings.trim_output:
-            #  only the numerals (the marks stay)
-            findings = chain([Found(tuple(
-                p for p in f.parses if p.form.pos == Pos.NUM or
-                not (from_dictionary(p.origin) or
-                     p.origin == Origin.UNIQUE)), f.marks)
-                for f in findings])
-            t.notes[Origin.TRICK] = 'It is very likely a compound number' \
-                f'    {s[:i]} + {s[i:]}'
-            az.put_stat('TRICK   2NUM at ', t.word, s[:i] + '+' + s[i:])
-        else:
-            t.notes[Origin.TRICK] = (f'May be 2 words combined ({s[:i]}+'
-                                     f'{s[i:]}) If not obvious, probably '
-                                     'incorrect')
-            az.put_stat('TRICK   2WDS at ', t.word, s[:i] + '+' + s[i:])
-        t.out = chain(t.out, marked(trick_mark('Two words'), findings))
+        together = _declined_together(first, second)
+        if together:
+            t.notes[Origin.TRICK] = (f'May be 2 words declined together '
+                                     f'({s[:i]}+{s[i:]})')
+            az.put_stat('TRICK   2DCL at ', t.word, s[:i] + '+' + s[i:])
+            t.out = chain(t.out, marked(trick_mark('Two words'),
+                                        chain(*together)))
+            return
+        if split is None:
+            split = i, first, second
+    if split is None:
         return
+    i, first, second = split
+    findings = chain(first, second)
+    numbers = any(p.form.pos == Pos.NUM for p in parses_of(first)) and \
+        any(p.form.pos == Pos.NUM for p in parses_of(second))
+    if numbers and az.settings.trim_output:
+        #  only the numerals (the marks stay)
+        findings = chain([Found(tuple(
+            p for p in f.parses if p.form.pos == Pos.NUM or
+            not (from_dictionary(p.origin) or
+                 p.origin == Origin.UNIQUE)), f.marks)
+            for f in findings])
+        t.notes[Origin.TRICK] = 'It is very likely a compound number' \
+            f'    {s[:i]} + {s[i:]}'
+        az.put_stat('TRICK   2NUM at ', t.word, s[:i] + '+' + s[i:])
+    else:
+        t.notes[Origin.TRICK] = (f'May be 2 words combined ({s[:i]}+'
+                                 f'{s[i:]}) If not obvious, probably '
+                                 'incorrect')
+        az.put_stat('TRICK   2WDS at ', t.word, s[:i] + '+' + s[i:])
+    t.out = chain(t.out, marked(trick_mark('Two words'), findings))

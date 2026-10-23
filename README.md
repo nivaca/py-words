@@ -380,6 +380,14 @@ results.  When the meanings are in another language, the rest is also in
 that language, as far as its file translates it (`sustantivo, 2.ª
 declinación, masculino`; see "The languages of the meanings").
 
+The stem of a form shows its long vowels, when they are known: amīc-us,
+rēg-is, fēlīc-em (the parameter show_long_vowels hides them).  They come
+from `data/quantities.xml`, which I made from the lemmas of Collatinus
+(see "The long vowels" below).  For now only the stems are marked, not
+the endings, so am-abat does not say that its a is long; and the marks
+typed in a word are still taken away before the analysis, so rosā shows
+all the readings of rosa.
+
 ### The codes in brackets
 
 The five letters in brackets after an entry, for example the `[XXXBO]` of
@@ -559,6 +567,7 @@ The data files
 | `addons.xml`      | prefixes, suffixes and enclitics (tackons) |
 | `sources.xml`     | the names of the sources (dictionaries ...) |
 | `gloss.xml`       | the glossing abbreviations of the analyses |
+| `quantities.xml`  | the long vowels of the stems of the entries |
 | `special.xml`     | (optional) a second, special dictionary    |
 | `languages/`      | the languages of the meanings, one file each |
 | `interface/`      | the languages of the interface, one file each (those next to the program are used) |
@@ -654,6 +663,54 @@ Latin (`~E`, the second direction in the window, F2) goes from the
 language chosen.  The example glosses (`do_examples`) are in English, and
 they are shown only with English meanings.  `words_check.py` checks also
 the language files, and warns about meanings of ids that don't exist.
+
+### The meanings from Collatinus
+
+The French, German, Catalan and Galician meanings (`fr.xml`, `de.xml`,
+`ca.xml`, `gl.xml`) come from Collatinus 11, the Latin lemmatiser of
+Yves Ouvrard and Philippe Verkerk, which gives a short translation of
+each of its lemmas in these languages (its files `lemmes.fr` and so on,
+under the GNU General Public License).  I matched each lemma of
+Collatinus to our entries by its citation form, its part of speech and,
+for the nouns, its genitive and gender; a proper name goes only with a
+proper name, and when two lemmas claim the same entry neither is used.
+The translation goes to the most frequent entry of the lemma, and not
+to the entries that continue it (`|`) or to its medieval senses, which
+keep the English.  So French translates 23,044 entries (it uses also
+`lem_ext.fr`, the larger list of Collatinus), German 6,301, Catalan
+7,624 and Galician 7,699; the rest is shown in English, marked `[en]`.
+The German file of Collatinus has many lines left in French, and these
+were not taken.  Collatinus has also Italian and Portuguese, but they
+were translated by machine from the French and have mistakes like
+*furtum* "volo" (the French *vol* is both "theft" and "flight"), so I
+did not take them.  The grammar, the labels and the notes of these four
+files (the `<text>`s), and their lists for the search to Latin, were
+translated with the help of Claude, the large language model of
+Anthropic (the model Claude Opus 5.5, `claude-opus-5-5`), in October
+2026.  The meanings are the short ones of Collatinus, sometimes with its
+own mistakes (*nervus*, "fers, prison"), and they can be corrected in
+the files or with the dictionary editors.
+
+### The long vowels
+
+`data/quantities.xml` gives the stems of an entry with their long
+vowels marked, or `-` where they are not known:
+
+    <stems entry="3014">amīc amīc</stems>
+    <stems entry="2870">am am amāv amāt</stems>
+
+I made it from the lemmas and the models of Collatinus (`lemmes.la`,
+`lem_ext.la`, `modeles.la`): each entry was matched to a lemma as for the
+meanings above, and its stems were found among the stems that the model
+of the lemma builds.  About 30,000 entries were matched, and 19,447 of
+them have some long vowel.  Collatinus marks the length of the
+syllables, for scanning verse, so it marks also the vowels that are long
+only by position (cōrd for cor, cordis); the marks before two consonants
+(or x or z) were therefore left out, and a vowel long there by nature
+(rēx, āctum) is not marked.  The diphthongs (ae, au, oe) are not marked
+either.  `words_check.py` checks that each marked stem has the letters
+of the stem of its entry; a stem changed later in the dictionary simply
+loses its marks.
 
 ### The Spanish meanings
 
@@ -841,7 +898,13 @@ It keeps the respellings of the most frequent entries.  Also, a final
 opust: amatus est, factum est, bona est, opus est); this is
 `Analyzer.prodelision`, and a participle found this way makes the
 compound tense with that est.  I took the two ideas from Collatinus, but
-the code is new.
+the code is new.  Two words declined together, written as one
+(rempublicam, reipublicae, rerumpublicarum, usumfructum), are now read
+with the forms of both that agree in case, number and (unless both are
+nouns) gender, instead of all the forms of each.  From the small lists
+of Collatinus came also five abbreviations of praenomina that the
+dictionary did not have (Agr., Opet., Sert., Vol., Vop.), Kalen. for the
+Kalends, and the irregular quaesumus.
 
 The fuzzy search is not a new way of searching; it is the normal search,
 but with other spellings.  `fuzzy.edits` makes all the spellings at one

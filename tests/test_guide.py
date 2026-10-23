@@ -55,7 +55,7 @@ class GuideTests(unittest.TestCase):
         self.assertIn('This is what py-words shows for amicorum:', text)
         self.assertIn('amicus, amici  noun, 2nd declension, masculine  '
                       '[XXXBO]', text)
-        self.assertIn('amic-orum      GEN.PL', text)
+        self.assertIn('amīc-orum      GEN.PL', text)
         #  (in words, if the glosses are off)
         self.assertIn('genitive plural', self.text(use_glosses=False))
 

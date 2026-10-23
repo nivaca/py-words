@@ -470,6 +470,25 @@ def fold(s: str) -> str:
     return s.lower().translate(_FOLD)
 
 
+#  The long vowels, as data/quantities.xml marks them (see `unmarked`)
+LONG_VOWELS = 'āēīōūȳĀĒĪŌŪȲ'
+_UNMARK = str.maketrans(LONG_VOWELS, 'aeiouyAEIOUY')
+
+
+def unmarked(s: str) -> str:
+    """S without its long marks: amīc -> amic."""
+    return s.translate(_UNMARK)
+
+
+def marked_like(s: str, marked: str) -> str:
+    """S with the long marks of MARKED, the same letters (compared by
+    `fold`) with long marks: ('amic', 'amīc') -> 'amīc'.  S itself if
+    they are not the same letters."""
+    if fold(unmarked(marked)) != fold(s):
+        return s
+    return ''.join(m if m in LONG_VOWELS else c for c, m in zip(s, marked))
+
+
 _SPELLINGS = [('ae', 'e'), ('oe', 'e'), ('y', 'i'), ('ph', 'f'), ('h', '')]
 _TI = re.compile(r'ti(?=[aeiou]|$)')
 _MPN = re.compile(r'mpn')

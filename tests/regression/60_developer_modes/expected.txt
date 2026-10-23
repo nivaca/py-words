@@ -21,10 +21,10 @@ virumque
 01 vir-um         ACC.SG  (always, most frequent)
 02 vis, viris  noun, 3rd declension, feminine  [XXXAX]  very frequent  (general dictionary)
 03 strength (bodily) (pl.), force, power, might, violence; resources; large body;
-01 vir-um         GEN.PL  (always, sometimes)
+01 vīr-um         GEN.PL  (always, sometimes)
 02 vis, viris  noun, 3rd declension, feminine  [XXXAA]  very frequent  (general dictionary)
 03 troops;
-01 vir-um         GEN.PL  (always, sometimes)
+01 vīr-um         GEN.PL  (always, sometimes)
   (less likely forms are not shown)
 
 cano
@@ -38,10 +38,10 @@ cano
 01 can-o          ABL.SG  (always, most frequent)
 02 canus, cana, canum  adjective, 1st/2nd declension  [XXXBO]  frequent  (general dictionary)
 03 white, gray; aged, old, wise; hoary; foamy, white-capped; white w/snow/frost;
-01 can-o          DAT.SG.M  (always, most frequent)
-01 can-o          DAT.SG.N  (always, most frequent)
-01 can-o          ABL.SG.M  (always, most frequent)
-01 can-o          ABL.SG.N  (always, most frequent)
+01 cān-o          DAT.SG.M  (always, most frequent)
+01 cān-o          DAT.SG.N  (always, most frequent)
+01 cān-o          ABL.SG.M  (always, most frequent)
+01 cān-o          ABL.SG.N  (always, most frequent)
 02 cano, canere, cani, canitus  verb, 3rd conjugation  [EXXFS]  later  very rare  (general dictionary)
 03 sing, celebrate, chant; crow; recite; play (music)/sound (horn); foretell;
 01 can-o          1SG.PRS.ACT.IND  (always, most frequent)
@@ -52,11 +52,11 @@ cano
 amicorum
 02 amicus, amici  noun, 2nd declension, masculine  [XXXBO]  frequent  (general dictionary)
 03 friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
-01 amic-orum      GEN.PL  (always, most frequent)
+01 amīc-orum      GEN.PL  (always, most frequent)
 02 amicus, amica -um, amicior -or -us, amicissimus -a -um  adjective, 1st/2nd declension  [XXXAO]  very frequent  (general dictionary)
 03 friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-01 amic-orum      GEN.PL.M  (always, most frequent)
-01 amic-orum      GEN.PL.N  (always, most frequent)
+01 amīc-orum      GEN.PL.M  (always, most frequent)
+01 amīc-orum      GEN.PL.N  (always, most frequent)
 
 aspis
 02 aspis, aspidis  noun, 3rd declension, feminine  [EXAEW]  later  uncommon  (general dictionary)
@@ -106,7 +106,7 @@ inamicus
 03 not -, un-, -less;
 02 amicus, amica -um, amicior -or -us, amicissimus -a -um  adjective, 1st/2nd declension  [XXXAO]  very frequent  (general dictionary)
 03 friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-01 amic-us        NOM.SG.M  (always, most frequent)
+01 amīc-us        NOM.SG.M  (always, most frequent)
 
 XIV
 02 XIV  Roman numeral
@@ -115,15 +115,15 @@ XIV
 quamdiu
 02 quamdiu  adverb  [XXXBO]  frequent  (general dictionary)
 03 for how long?; how long (ago)?; how long!, what a long time!; until; as long as;
-01 quamdiu        POS  (always, most frequent)
+01 quamdiū        POS  (always, most frequent)
 02 quamdiu  adverb  [XXXBO]  frequent  (general dictionary)
 03 for the preceding period until; up to the time that; inasmuch as; (quam diu);
-01 quamdiu        POS  (always, most frequent)
+01 quamdiū        POS  (always, most frequent)
 
 amasti
 06 syncope: Syncope   s => vis
 06 Syncopated perfect often drops the 'v' and contracts vowel
 02 amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]  very frequent  (general dictionary)
 03 love, like; fall in love with; be fond of; have a tendency to;
-01 amav-isti      2SG.PRF.ACT.IND  (always, most frequent)
+01 amāv-isti      2SG.PRF.ACT.IND  (always, most frequent)
 

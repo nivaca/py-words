@@ -92,7 +92,7 @@ class TerminalDictionaryTests(unittest.TestCase):
             ('arma virumque cano Troiae qui primus ab oris\r', 2),
             (PGDN, 0.5), (F10, 1)])
         self.assertEqual(status, 0)
-        self.assertIn('amic-orum', out)
+        self.assertIn('amīc-orum', out)
         self.assertIn('GEN.PL', out)
         self.assertIn('more ↓', out)            # (a long result scrolls)
 
@@ -102,7 +102,7 @@ class TerminalDictionaryTests(unittest.TestCase):
         status, out = self.run_keys([
             ('amicorum\r', 1.5), (UP + UP + '\r', 1.5), (F10, 1)])
         self.assertEqual(status, 0)
-        self.assertIn('laudat-us', out)         # (from an earlier session)
+        self.assertIn('laudāt-us', out)         # (from an earlier session)
         with open(self.history) as f:
             self.assertEqual(f.read().split(),
                              ['laudatus', 'amicorum', 'laudatus'])

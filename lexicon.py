@@ -8,7 +8,8 @@
 * `endings` and `blank_endings`: the inflections, by folded ending;
 * `qu_endings`: the endings of the qu- pronouns (qui, quis, ...), which are
   only tried on words beginning with qu or cu;
-* `uniques`, by folded form; and the prefixes, suffixes and tackons.
+* `uniques`, by folded form; and the prefixes, suffixes and tackons;
+* `long_stems`: the long vowels of the stems (quantities.xml).
 
 The languages of the meanings (`language(code)`) and their indexes for
 the search to Latin (`reverse(code)`) are read when first needed.
@@ -48,8 +49,9 @@ UNIQUES = 'uniques.xml'
 ADDONS = 'addons.xml'
 SOURCES = 'sources.xml'
 GLOSSES = 'gloss.xml'
+QUANTITIES = 'quantities.xml'
 DATA_FILES = (DICTIONARY, SPECIAL, INFLECTIONS, UNIQUES, ADDONS, SOURCES,
-              GLOSSES)
+              GLOSSES, QUANTITIES)
 
 #  The program's folder, and the data folder in it
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -145,6 +147,9 @@ class Lexicon:
     #  code): abbreviation}, as ('case', 'GEN'): 'GEN' ({}: none, and the
     #  analyses are in words)
     glosses: dict[tuple[str, str], str] = field(default_factory=dict)
+    #  the long vowels of the stems, from quantities.xml: {entry id: its
+    #  stems with the long vowels marked, '-' where they are not known}
+    long_stems: dict[int, tuple[str, ...]] = field(default_factory=dict)
     datadir: str = ''
     #  the languages read, and their indexes for the search to Latin
     _languages: dict[str, Language] = field(default_factory=dict)
@@ -190,6 +195,9 @@ class Lexicon:
         if os.path.isfile(path(GLOSSES)):
             lex.glosses = {(g.category, g.code): g.abbreviation
                            for g, _ in xmldata.read_glosses(path(GLOSSES))}
+        if os.path.isfile(path(QUANTITIES)):
+            lex.long_stems = dict(
+                m for m, _ in xmldata.read_quantities(path(QUANTITIES)))
         return lex
 
     def language_names(self) -> dict[str, str]:

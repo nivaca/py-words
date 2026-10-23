@@ -160,7 +160,7 @@ class InstallTests(unittest.TestCase):
             ['sh', command], input=b'amicorum\n\n\n',
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
             env=dict(os.environ, TERM='dumb'))
-        self.assertIn(b'amic-orum', result.stdout)
+        self.assertIn('amīc-orum'.encode(), result.stdout)
         # it is replaced when installed again, and removed
         words_install.install_macos()
         self.assertEqual(words_install.uninstall_macos(), apps)

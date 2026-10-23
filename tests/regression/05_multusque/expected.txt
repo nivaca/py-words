@@ -27,8 +27,8 @@ multa
 viri
   virus, viri  noun, 2nd declension, neuter  [XXXAO]
     venom (sg.), poisonous secretion of snakes/creatures/plants; acrid element;
-    vir-i          GEN.SG
-    vir-i          LOC.SG
+    vīr-i          GEN.SG
+    vīr-i          LOC.SG
   virum, viri  noun, 2nd declension, neuter  [GBXEK]  neo-Latin  uncommon
     virus;
     vir-i          GEN.SG
@@ -41,28 +41,28 @@ viri
     vir-i          VOC.PL
   vis, viris  noun, 3rd declension, feminine  [XXXAX]
     strength (bodily) (pl.), force, power, might, violence; resources; large body;
-    vir-i          LOC.SG  (early)
-    vir-i          DAT.SG
-    vir-i          ABL.SG
+    vīr-i          LOC.SG  (early)
+    vīr-i          DAT.SG
+    vīr-i          ABL.SG
   vis, viris  noun, 3rd declension, feminine  [XXXAA]
     troops;
-    vir-i          LOC.SG  (early)
-    vir-i          DAT.SG
-    vir-i          ABL.SG
+    vīr-i          LOC.SG  (early)
+    vīr-i          DAT.SG
+    vīr-i          ABL.SG
 
 virtus
   virtus, virtutis  noun, 3rd declension, feminine  [XXXAX]
     strength/power; courage/bravery; worth/manliness/virtue/character/excellence;
-    virtus         NOM.SG
-    virtus         VOC.SG
+    virtūs         NOM.SG
+    virtūs         VOC.SG
   virtus, virtutis  noun, 3rd declension, feminine  [EEXCR]  later
     army; host; mighty works (pl.); class of Angels; [Dominus ~ => Lord of hosts];
-    virtus         NOM.SG
-    virtus         VOC.SG
+    virtūs         NOM.SG
+    virtūs         VOC.SG
   virtus, virtutis  noun, 3rd declension, feminine  [FSXEM]  medieval  uncommon
     virtue, property (alch.);
-    virtus         NOM.SG
-    virtus         VOC.SG
+    virtūs         NOM.SG
+    virtūs         VOC.SG
 
 animo
   animus, animi  noun, 2nd declension, masculine  [XXXAO]

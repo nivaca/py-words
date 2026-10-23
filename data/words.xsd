@@ -622,6 +622,39 @@
     </xs:unique>
   </xs:element>
 
+  <!-- quantities.xml -->
+
+  <xs:element name="quantities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="stems" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation><xs:documentation>The stems of the entry with
+            this id, in order, with their long vowels marked (amīc), or -
+            where they are not known.  words_check.py checks that each one
+            has the letters of the entry's stem.
+          </xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="longStems">
+                <xs:attribute name="entry" type="id" use="required"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:unique name="quantityEntry">
+      <xs:selector xpath="stems"/>
+      <xs:field xpath="@entry"/>
+    </xs:unique>
+  </xs:element>
+
+  <xs:simpleType name="longStems">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(-|[a-zA-ZāēīōūȳĀĒĪŌŪȲ]+)( (-|[a-zA-ZāēīōūȳĀĒĪŌŪȲ]+)){0,3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <!-- gloss.xml -->
 
   <xs:element name="glosses">

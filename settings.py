@@ -42,7 +42,8 @@ MODES = (
     'do_unknowns_only', 'write_unknowns_to_file', 'ignore_unknown_names',
     'do_compounds', 'do_fixes', 'do_tricks', 'do_dictionary_forms',
     'show_age', 'show_frequency', 'do_examples', 'use_glosses',
-    'do_only_meanings', 'do_stems_for_unknown', 'fuzzy_search')
+    'show_long_vowels', 'do_only_meanings', 'do_stems_for_unknown',
+    'fuzzy_search')
 
 DEV_MODES = (
     'have_statistics_file', 'write_statistics_file', 'show_dictionary',
@@ -121,6 +122,7 @@ class Settings:
     show_frequency: bool = False
     do_examples: bool = False
     use_glosses: bool = True
+    show_long_vowels: bool = True
     do_only_meanings: bool = False
     do_stems_for_unknown: bool = False
     fuzzy_search: bool = True

@@ -20,10 +20,10 @@ virumque
     vir-um         ACC.SG
   [XXXAX]
     strength (bodily) (pl.), force, power, might, violence; resources; large body;
-    vir-um         GEN.PL
+    vīr-um         GEN.PL
   [XXXAA]
     troops;
-    vir-um         GEN.PL
+    vīr-um         GEN.PL
   (less likely forms are not shown)
 
 cano
@@ -37,10 +37,10 @@ cano
     can-o          ABL.SG
   [XXXBO]
     white, gray; aged, old, wise; hoary; foamy, white-capped; white w/snow/frost;
-    can-o          DAT.SG.M
-    can-o          DAT.SG.N
-    can-o          ABL.SG.M
-    can-o          ABL.SG.N
+    cān-o          DAT.SG.M
+    cān-o          DAT.SG.N
+    cān-o          ABL.SG.M
+    cān-o          ABL.SG.N
   [EXXFS]  later  very rare
     sing, celebrate, chant; crow; recite; play (music)/sound (horn); foretell;
     can-o          1SG.PRS.ACT.IND
@@ -51,11 +51,11 @@ cano
 amicorum
   [XXXBO]
     friend, ally, disciple; loved one; patron; counselor/courtier (to a prince);
-    amic-orum      GEN.PL
+    amīc-orum      GEN.PL
   [XXXAO]
     friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-    amic-orum      GEN.PL.M
-    amic-orum      GEN.PL.N
+    amīc-orum      GEN.PL.M
+    amīc-orum      GEN.PL.N
 
 aspis
   [EXAEW]  later  uncommon
@@ -86,7 +86,7 @@ inamicus
   in-  prefix
   [XXXAO]
     friendly, dear, fond of; supporting (political), loyal, devoted; loving;
-    amic-us        NOM.SG.M
+    amīc-us        NOM.SG.M
 
 XIV
   XIV  Roman numeral
@@ -95,15 +95,15 @@ XIV
 quamdiu
   [XXXBO]
     for how long?; how long (ago)?; how long!, what a long time!; until; as long as;
-    quamdiu        POS
+    quamdiū        POS
   [XXXBO]
     for the preceding period until; up to the time that; inasmuch as; (quam diu);
-    quamdiu        POS
+    quamdiū        POS
 
 amasti
   syncope: Syncope   s => vis
     Syncopated perfect often drops the 'v' and contracts vowel
   [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
-    amav-isti      2SG.PRF.ACT.IND
+    amāv-isti      2SG.PRF.ACT.IND
 

@@ -710,8 +710,8 @@
     <tr>{n} errores</tr>
   </text>
   <text>
-    <en>&lt;{root}&gt; is not a WORDS data file (the root must be &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;language&gt; or &lt;interface&gt;)</en>
-    <tr>&lt;{root}&gt; no es un archivo de datos de WORDS (la raíz debe ser &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;language&gt; o &lt;interface&gt;)</tr>
+    <en>&lt;{root}&gt; is not a WORDS data file (the root must be &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;quantities&gt;, &lt;language&gt; or &lt;interface&gt;)</en>
+    <tr>&lt;{root}&gt; no es un archivo de datos de WORDS (la raíz debe ser &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;quantities&gt;, &lt;language&gt; o &lt;interface&gt;)</tr>
   </text>
   <text>
     <en>{pos} is not a dictionary part of speech</en>
@@ -2206,6 +2206,22 @@
     <tr>español</tr>
   </text>
   <text>
+    <en>French</en>
+    <tr>francés</tr>
+  </text>
+  <text>
+    <en>German</en>
+    <tr>alemán</tr>
+  </text>
+  <text>
+    <en>Catalan</en>
+    <tr>catalán</tr>
+  </text>
+  <text>
+    <en>Galician</en>
+    <tr>gallego</tr>
+  </text>
+  <text>
     <en>error</en>
     <tr>error</tr>
   </text>
@@ -2580,8 +2596,8 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>La línea siguiente es el significado.  Sus sentidos se separan con punto y coma, primero los más comunes; una barra separa alternativas (consejero/cortesano), y los paréntesis dan el contexto.  [en] antes de un significado indica que no está traducido y se da en inglés.</tr>
   </text>
   <text>
-    <en>Then come the forms the word can be: the stem and the ending, separated by a hyphen (amic-orum), and what the form is, in the abbreviations listed below (GEN.PL: genitive plural) or, with the setting use_glosses off, in words.  One spelling can be several forms: the amic-orum of the adjective is GEN.PL.M and GEN.PL.N.</en>
-    <tr>Luego vienen las formas que puede ser la palabra: la raíz y la desinencia, separadas por un guion (amic-orum), y qué forma es, con las abreviaturas que se listan más abajo (GEN.PL: genitivo plural) o, con el ajuste use_glosses desactivado, en palabras.  Una misma grafía puede ser varias formas: el amic-orum del adjetivo es GEN.PL.M y GEN.PL.N.</tr>
+    <en>Then come the forms the word can be: the stem and the ending, separated by a hyphen (amīc-orum, with the long vowels of the stem marked), and what the form is, in the abbreviations listed below (GEN.PL: genitive plural) or, with the setting use_glosses off, in words.  One spelling can be several forms: the amīc-orum of the adjective is GEN.PL.M and GEN.PL.N.</en>
+    <tr>Luego vienen las formas que puede ser la palabra: la raíz y la desinencia, separadas por un guion (amīc-orum, con las vocales largas de la raíz marcadas), y qué forma es, con las abreviaturas que se listan más abajo (GEN.PL: genitivo plural) o, con el ajuste use_glosses desactivado, en palabras.  Una misma grafía puede ser varias formas: el amīc-orum del adjetivo es GEN.PL.M y GEN.PL.N.</tr>
   </text>
   <text>
     <en>A line before an entry may say how the word was found: a prefix, a suffix or an enclitic (-que, -ne, -ve) that was taken off, with its meaning, or a spelling trick (spelling: ...), with a sentence on what was done.</en>
@@ -2747,5 +2763,29 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
   <text>
     <en>Double-click any word of the results to look it up (a word of the meanings is looked up in Latin), and point at the codes in brackets or at an analysis (GEN.PL), or tap them, to see what they mean.</en>
     <tr>Haga doble clic en cualquier palabra de los resultados para buscarla (una palabra de los significados se busca en latín), y ponga el puntero sobre los códigos entre corchetes o sobre un análisis (GEN.PL), o tóquelos, para ver qué significan.</tr>
+  </text>
+  <text>
+    <en>Show long vowels</en>
+    <tr>Mostrar vocales largas</tr>
+  </text>
+  <text>
+    <en>Mark the long vowels of the stems in the forms (amīc-us), where data/quantities.xml knows them.  The endings are not marked, and neither are vowels long before two consonants.</en>
+    <tr>Marcar las vocales largas de las raíces en las formas (amīc-us), donde data/quantities.xml las conoce.  Las desinencias no se marcan, ni tampoco las vocales largas ante dos consonantes.</tr>
+  </text>
+  <text>
+    <en>&lt;stems&gt; must have from one to four stems</en>
+    <tr>&lt;stems&gt; debe tener de una a cuatro raíces</tr>
+  </text>
+  <text>
+    <en>the stem "{text}" may only contain letters, with long marks on vowels (ā), or be -</en>
+    <tr>la raíz "{text}" solo puede contener letras, con marcas de cantidad larga en las vocales (ā), o ser -</tr>
+  </text>
+  <text>
+    <en>there is no entry with the id {id}: these stems are not used</en>
+    <tr>no hay ninguna entrada con el id {id}: estas raíces no se usan</tr>
+  </text>
+  <text>
+    <en>"{marked}" is not the stem "{stem}" of the entry: it is not used</en>
+    <tr>"{marked}" no es la raíz "{stem}" de la entrada: no se usa</tr>
   </text>
 </interface>

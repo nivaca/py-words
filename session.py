@@ -84,7 +84,8 @@ class Session:
 
     def renderer(self) -> Renderer:
         return Renderer(self.settings, self.meanings_only,
-                        self.lexicon.glosses, self.language)
+                        self.lexicon.glosses, self.language,
+                        self.lexicon.long_stems)
 
     def close(self):
         for f in (self.output, self.unknowns, self.stats):

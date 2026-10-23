@@ -80,4 +80,5 @@
   <unique id="77" pos="V" conj="6 2" tense="PRES" voice="ACTIVE" mood="IND" person="3" number="S" kind="X" age="X" area="X" geo="X" freq="A" source="X"><form>vult</form><meaning>be willing; wish;</meaning></unique>
   <unique id="78" pos="V" conj="6 2" tense="PRES" voice="ACTIVE" mood="IND" person="2" number="P" kind="X" age="X" area="X" geo="X" freq="A" source="X"><form>vultis</form><meaning>be willing; wish;</meaning></unique>
   <unique id="79" pos="ADJ" decl="3 1" case="NOM" number="S" gender="X" comparison="POS" age="X" area="X" geo="X" freq="C" source="X"><form>exspes</form><meaning>hopeless; (only NOM S);</meaning></unique>
+  <unique id="80" pos="V" conj="3 1" tense="PRES" voice="ACTIVE" mood="IND" person="1" number="P" kind="X" age="X" area="X" geo="X" freq="C" source="H"><form>quaesumus</form><meaning>we beg, we ask, we pray; (old form of quaesimus);</meaning></unique>
 </uniques>

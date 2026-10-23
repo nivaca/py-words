@@ -148,7 +148,7 @@ class CommandLineHistoryTests(unittest.TestCase):
         self.assertEqual(History(self.path).items,
                          ['amicorum', '#', 'laudatus'])
         out = self.session([up + up + up + '\r'])
-        self.assertIn('amic-orum', out)
+        self.assertIn('amīc-orum', out)
 
 
 class WindowHistoryTests(unittest.TestCase):
@@ -186,7 +186,7 @@ class WindowHistoryTests(unittest.TestCase):
             app.entry.insert(0, 'amicorum')
             app.lookup()
             for _ in range(800):
-                if 'amic-orum' in app.text.get('1.0', 'end'):
+                if 'amīc-orum' in app.text.get('1.0', 'end'):
                     break
                 root.update()
                 root.after(25)

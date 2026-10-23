@@ -13,7 +13,9 @@ from lexicon import Lexicon
 from model import (Pos, Case, Number, Tense, Voice,
                                      Mood, Decl)
 from results import Origin
+from session import Session
 from settings import Settings
+import model
 import tricks
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -316,7 +318,7 @@ class GlossTests(unittest.TestCase):
     def test_in_the_output(self):
         from session import Session
         out = Session(lexicon(), Settings()).lookup_latin('amicorum')
-        self.assertIn('amic-orum      GEN.PL', out)
+        self.assertIn('amīc-orum      GEN.PL', out)
 
     def test_words_without_gloss_xml(self):
         from session import Session
@@ -326,7 +328,7 @@ class GlossTests(unittest.TestCase):
             out = Session(lex, Settings()).lookup_latin('amicorum')
         finally:
             lex.glosses = saved
-        self.assertIn('amic-orum      genitive plural', out)
+        self.assertIn('amīc-orum      genitive plural', out)
 
 
 class EnglishTests(unittest.TestCase):
@@ -366,6 +368,33 @@ class LexiconTests(unittest.TestCase):
         refs = [r for r in lexicon().lookup('meli')
                 if r.part.pos == Pos.ADJ]
         self.assertEqual([r.key for r in refs], [3])     # bonus, melior
+
+
+class LongVowelTests(unittest.TestCase):
+    """The long vowels of the stems (data/quantities.xml)."""
+
+    def test_marked_like(self):
+        self.assertEqual(model.unmarked('amīc'), 'amic')
+        self.assertEqual(model.marked_like('amic', 'amīc'), 'amīc')
+        self.assertEqual(model.marked_like('Iulian', 'jūliān'), 'Iūliān')
+        self.assertEqual(model.marked_like('amic', 'rēg'), 'amic')
+
+    def test_the_data(self):
+        marked = {e.stems[:2]: lexicon().long_stems[e.uid]
+                  for e in lexicon().entries
+                  if e.uid in lexicon().long_stems}
+        self.assertEqual(marked[('amic', 'amic')][:2], ('amīc', 'amīc'))
+        self.assertEqual(marked[('am', 'am')][2:], ('amāv', 'amāt'))
+        #  not by position: cor, cordis
+        self.assertNotIn(('cor', 'cord'), marked)
+
+    def test_in_the_forms(self):
+        settings = Settings()
+        session = Session(lexicon(), settings, write=lambda text: None)
+        self.assertIn('amīc-us', session.lookup('amicus'))
+        settings.show_long_vowels = False
+        self.assertIn('amic-us', session.lookup('amicus'))
+        self.assertNotIn('amīc', session.lookup('amicus'))
 
 
 if __name__ == '__main__':

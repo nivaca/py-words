@@ -5,10 +5,10 @@
 
 With no FILE, checks the data files in the data directory: dictionary.xml
 (and special.xml, if there is one), inflections.xml, uniques.xml,
-addons.xml, sources.xml, gloss.xml and the language files in languages/,
-and the files of the languages of the interface (data/interface/ next to
-the program).  Each problem is reported as FILE:LINE: error|warning:
-message.
+addons.xml, sources.xml, gloss.xml, quantities.xml and the language files
+in languages/, and the files of the languages of the interface
+(data/interface/ next to the program).  Each problem is reported as
+FILE:LINE: error|warning: message.
 
 Errors are elements WORDS cannot read: malformed XML, unknown or missing
 codes, stems with characters other than letters, an id used twice, and so
@@ -32,7 +32,7 @@ import languages, lexicon, xmldata
 from interface import tr
 from settings import ensure_config
 from lexicon import default_datadir
-from model import Pos, stems_used
+from model import Pos, stems_used, fold, unmarked
 
 MEANING_SHOWN = 80          # a longer meaning is cut in some places
 
@@ -95,6 +95,9 @@ class Checker:
                 xmldata.read_sources(path, errors)
             elif root == 'glosses':
                 xmldata.read_glosses(path, errors)
+            elif root == 'quantities':
+                self.check_quantities(
+                    path, xmldata.read_quantities(path, errors))
             elif root == 'language':
                 self.check_language(path, errors)
             elif root == 'interface':
@@ -108,7 +111,8 @@ class Checker:
                     path, 1, tr('<{root}> is not a WORDS data file (the '
                                 'root must be <dictionary>, <inflections>, '
                                 '<uniques>, <addons>, <sources>, <glosses>, '
-                                '<language> or <interface>)', root=root)))
+                                '<quantities>, <language> or <interface>)',
+                                root=root)))
         except xmldata.DataError as e:
             errors.append(e)            # the file could not be parsed
         for e in errors:
@@ -137,6 +141,28 @@ class Checker:
                                id=record.uid, line=seen[record.uid]))
             else:
                 seen[record.uid] = line
+
+    def check_quantities(self, path, items):
+        """Each marked stem has the letters of the entry's stem (that of
+        the dictionary.xml in the same folder)."""
+        dictionary = os.path.join(os.path.dirname(path), lexicon.DICTIONARY)
+        if not os.path.isfile(dictionary):
+            return
+        stems = {e.uid: e.stems
+                 for e, _ in xmldata.read_dictionary(dictionary, [])}
+        for (uid, marked), line in items:
+            if uid not in stems:
+                self.report(path, line, 'warning',
+                            tr('there is no entry with the id {id}: these '
+                               'stems are not used', id=uid))
+                continue
+            for k, m in enumerate(marked):
+                stem = stems[uid][k] if k < len(stems[uid]) else ''
+                if m != '-' and fold(unmarked(m)) != fold(stem):
+                    self.report(path, line, 'warning',
+                                tr('"{marked}" is not the stem "{stem}" of '
+                                   'the entry: it is not used',
+                                   marked=m, stem=stem))
 
     def check_language(self, path, errors):
         data = xmldata.read_language(path, errors)

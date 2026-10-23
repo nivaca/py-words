@@ -60,6 +60,10 @@ HELP = {
            'not, in words (genitive plural, 2nd person singular perfect '
            'active indicative).  The abbreviations are those of '
            'data/gloss.xml.'),
+    'show_long_vowels':
+        N_('Mark the long vowels of the stems in the forms (amīc-us), where '
+           'data/quantities.xml knows them.  The endings are not marked, '
+           'and neither are vowels long before two consonants.'),
     'do_only_meanings':
         N_('Show only the entries and their meanings, without the forms.'),
     'do_stems_for_unknown':

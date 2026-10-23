@@ -229,6 +229,7 @@
   <text en="A Terminal 'iis' on ADJ 1 1 DAT/ABL P might drop 'i'">Un 'iis' final de ADJ 1 1 DAT/ABL P puede perder una 'i'</text>
   <text en="A doubled consonant may be rendered by just the single  MEDIEVAL">Una consonante doble puede ser representada por una sola  MEDIEVAL</text>
   <text en="It is very likely a compound number    {1} + {2}">Muy probablemente es un número compuesto    {1} + {2}</text>
+  <text en="May be 2 words declined together ({1}+{2})">Pueden ser 2 palabras declinadas juntas ({1}+{2})</text>
   <text en="May be 2 words combined ({1}+{2}) If not obvious, probably incorrect">Pueden ser 2 palabras unidas ({1}+{2}). Si no es obvio, probablemente sea incorrecto</text>
   <text en="Medieval {1} -&gt; {2}">Grafía medieval {1} -&gt; {2}</text>
   <text en="'{1}' may be a medieval spelling of {2}">'{1}' puede ser una grafía medieval de {2}</text>
@@ -333,6 +334,7 @@
   <meaning unique="77">querer; desear;</meaning> <!-- vult -->
   <meaning unique="78">querer; desear;</meaning> <!-- vultis -->
   <meaning unique="79">desesperado, sin esperanza; (solo NOM S);</meaning> <!-- exspes -->
+  <meaning unique="80">rogamos, pedimos, suplicamos; (forma antigua de quaesimus);</meaning> <!-- quaesumus -->
 
   <!-- Prefixes, suffixes and enclitics (addons.xml) -->
   <meaning addon="1">¿hay alguno...que? ¿acaso alguno? (c/qui, a veces c/nam) (interrogación apasionada);</meaning> <!-- ec- prefix -->
@@ -45060,4 +45062,10 @@
   <meaning entry="44415">restos de naufragio, derecho de pecio; algas;</meaning> <!-- warekkum, warekki -->
   <meaning entry="44416">regalo del anfitrión al huésped; regalo (otro); cuadro que representa tal regalo;</meaning> <!-- exennium, exenni(i) -->
   <meaning entry="44417">casa de huéspedes; posada, caravasar; hospital/asilo para forasteros/viajeros; hospicio;</meaning> <!-- xenodicium, xenodici(i) -->
+  <meaning entry="44418">Agripa (praenomen romano); (abr. Agr.);</meaning> <!-- Agr., abb. -->
+  <meaning entry="44419">Ópiter (praenomen romano); (abr. Opet.);</meaning> <!-- Opet., abb. -->
+  <meaning entry="44420">Sertor (praenomen romano); (abr. Sert.);</meaning> <!-- Sert., abb. -->
+  <meaning entry="44421">Volerón (praenomen romano); (abr. Vol.);</meaning> <!-- Vol., abb. -->
+  <meaning entry="44422">Vopisco (praenomen romano); (abr. Vop.);</meaning> <!-- Vop., abb. -->
+  <meaning entry="44423">calendas (pl.), día 1.º del mes; abr. Kal./Kalen.;</meaning> <!-- Kalen., abb. -->
 </language>

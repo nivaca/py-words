@@ -388,6 +388,14 @@ otro idioma, el resto también está en ese idioma, en la medida en que su
 archivo lo traduce (`sustantivo, 2.ª declinación, masculino`; véase "Los
 idiomas de los significados").
 
+La raíz de una forma muestra sus vocales largas, cuando se conocen:
+amīc-us, rēg-is, fēlīc-em (el parámetro show_long_vowels las oculta).
+Vienen de `data/quantities.xml`, que hice a partir de los lemas de
+Collatinus (véase "Las vocales largas" más abajo).  Por ahora solo se
+marcan las raíces, no las desinencias, así que am-abat no dice que su a
+es larga; y las marcas que se escriben en una palabra se siguen quitando
+antes del análisis, así que rosā muestra todas las lecturas de rosa.
+
 ### Los códigos entre corchetes
 
 Las cinco letras entre corchetes que siguen a una entrada, como el
@@ -570,6 +578,7 @@ Los archivos de datos
 | `addons.xml`         | prefijos, sufijos y enclíticos (tackons)   |
 | `sources.xml`        | los nombres de las fuentes (diccionarios ...) |
 | `gloss.xml`          | las abreviaturas de glosado de los análisis |
+| `quantities.xml`     | las vocales largas de las raíces de las entradas |
 | `special.xml`        | (opcional) un segundo diccionario, especial |
 | `languages/`         | los idiomas de los significados, un archivo por idioma |
 | `interface/`         | los idiomas de la interfaz, un archivo por idioma (se usan los que están junto al programa) |
@@ -665,6 +674,54 @@ hace desde el idioma elegido.  Los ejemplos de glosas (`do_examples`)
 están en inglés y solo se muestran con los significados en inglés.
 `words_check.py` también revisa los archivos de idioma y avisa de los
 significados de ids que no existen.
+
+### Los significados tomados de Collatinus
+
+Los significados en francés, alemán, catalán y gallego (`fr.xml`,
+`de.xml`, `ca.xml`, `gl.xml`) vienen de Collatinus 11, el lematizador
+latino de Yves Ouvrard y Philippe Verkerk, que da una traducción breve de
+cada uno de sus lemas en estos idiomas (sus archivos `lemmes.fr`, etc.,
+bajo la Licencia Pública General de GNU).  Emparejé cada lema de
+Collatinus con nuestras entradas por su forma de cita, su categoría y,
+en los sustantivos, su genitivo y su género; un nombre propio solo va con
+un nombre propio, y cuando dos lemas reclaman la misma entrada no se usa
+ninguno.  La traducción va a la entrada más frecuente del lema, y no a
+las entradas que la continúan (`|`) ni a sus sentidos medievales, que
+conservan el inglés.  Así, el francés traduce 23 044 entradas (usa
+también `lem_ext.fr`, la lista más amplia de Collatinus), el alemán 6301,
+el catalán 7624 y el gallego 7699; el resto se muestra en inglés, marcado
+`[en]`.  El archivo alemán de Collatinus tiene muchas líneas que quedaron
+en francés, y esas no se tomaron.  Collatinus tiene también italiano y
+portugués, pero se tradujeron automáticamente del francés y tienen
+errores como *furtum* "volo" (el francés *vol* es a la vez "robo" y
+"vuelo"), así que no los tomé.  La gramática, las etiquetas y las notas
+de estos cuatro archivos (los `<text>`), y sus listas para la búsqueda
+hacia el latín, se tradujeron con la ayuda de Claude, el gran modelo de
+lenguaje de Anthropic (el modelo Claude Opus 5.5, `claude-opus-5-5`), en
+octubre de 2026.  Los significados son los breves de Collatinus, a veces
+con sus propios errores (*nervus*, "fers, prison"), y se pueden corregir
+en los archivos o con los editores del diccionario.
+
+### Las vocales largas
+
+`data/quantities.xml` da las raíces de una entrada con sus vocales largas
+marcadas, o `-` donde no se conocen:
+
+    <stems entry="3014">amīc amīc</stems>
+    <stems entry="2870">am am amāv amāt</stems>
+
+Lo hice a partir de los lemas y los modelos de Collatinus (`lemmes.la`,
+`lem_ext.la`, `modeles.la`): cada entrada se emparejó con un lema como
+para los significados de arriba, y sus raíces se buscaron entre las que
+construye el modelo del lema.  Se emparejaron unas 30 000 entradas, y
+19 447 de ellas tienen alguna vocal larga.  Collatinus marca la cantidad
+de las sílabas, para escandir versos, así que marca también las vocales
+que solo son largas por posición (cōrd por cor, cordis); por eso se
+quitaron las marcas ante dos consonantes (o x o z), y una vocal larga
+allí por naturaleza (rēx, āctum) no se marca.  Tampoco se marcan los
+diptongos (ae, au, oe).  `words_check.py` comprueba que cada raíz marcada
+tenga las letras de la raíz de su entrada; una raíz cambiada después en
+el diccionario simplemente pierde sus marcas.
 
 ### Los significados en español
 
@@ -854,7 +911,14 @@ frecuentes.  Además, una -st final puede representar est tras vocal, m o
 s (amatust, factumst, bonast, opust: amatus est, factum est, bona est,
 opus est); esto lo hace `Analyzer.prodelision`, y un participio hallado
 así forma el tiempo compuesto con ese est.  Tomé las dos ideas de
-Collatinus, pero el código es nuevo.
+Collatinus, pero el código es nuevo.  Dos palabras declinadas juntas y
+escritas como una (rempublicam, reipublicae, rerumpublicarum,
+usumfructum) se leen ahora con las formas de ambas que concuerdan en
+caso, número y (salvo si las dos son sustantivos) género, en lugar de
+todas las formas de cada una.  De las listas pequeñas de Collatinus
+vinieron también cinco abreviaturas de praenomina que el diccionario no
+tenía (Agr., Opet., Sert., Vol., Vop.), Kalen. por las calendas, y el
+irregular quaesumus.
 
 La búsqueda aproximada no busca de otra manera: hace la búsqueda de
 siempre con otras grafías.  `fuzzy.edits` genera todas las que están a un

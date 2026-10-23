@@ -16421,6 +16421,11 @@
     <stem>agoranom</stem>
     <meaning>market inspector, Grecian magistrate who inspected provisions/regulated market;</meaning>
   </entry>
+  <entry id="44418" pos="N" decl="9 8" gender="M" kind="N" age="X" area="X"
+    geo="X" freq="E" source="H">
+    <stem>Agr</stem>
+    <meaning>Agrippa (Roman praenomen); (abb. Agr.);</meaning>
+  </entry>
   <entry id="2367" pos="ADJ" decl="3 2" comparison="POS" age="D" area="A"
     geo="X" freq="F" source="S">
     <stem>agral</stem>
@@ -178392,6 +178397,11 @@
     <stem>kalatori</stem>
     <meaning>pertaining to a servant of a priest;</meaning>
   </entry>
+  <entry id="44423" pos="N" decl="9 8" gender="M" kind="T" age="X" area="X"
+    geo="X" freq="E" source="H">
+    <stem>Kalen</stem>
+    <meaning>Kalends (pl.), 1st of month; abb. Kal./Kalen.;</meaning>
+  </entry>
   <entry id="25093" pos="N" decl="1 1" gender="F" kind="T" age="X" area="X"
     geo="X" freq="B" source="O">
     <stem>Kalend</stem>
@@ -204294,6 +204304,11 @@
     <stem>opertori</stem>
     <stem>opertori</stem>
     <meaning>garment or coverlet (of fur);</meaning>
+  </entry>
+  <entry id="44419" pos="N" decl="9 8" gender="M" kind="N" age="X" area="X"
+    geo="X" freq="E" source="H">
+    <stem>Opet</stem>
+    <meaning>Opiter (Roman praenomen); (abb. Opet.);</meaning>
   </entry>
   <entry id="28744" pos="N" decl="2 1" gender="M" kind="T" age="E" area="A"
     geo="X" freq="F" source="W">
@@ -250556,6 +250571,11 @@
     <stem>sert</stem>
     <meaning>linked, connected;</meaning>
   </entry>
+  <entry id="44420" pos="N" decl="9 8" gender="M" kind="N" age="X" area="X"
+    geo="X" freq="E" source="H">
+    <stem>Sert</stem>
+    <meaning>Sertor (Roman praenomen); (abb. Sert.);</meaning>
+  </entry>
   <entry id="34955" pos="N" decl="1 1" gender="F" kind="T" age="X" area="A"
     geo="X" freq="N" source="S">
     <stem>sertul</stem>
@@ -275603,6 +275623,11 @@
     <stem>unquam</stem>
     <meaning>at any time, ever; at some time;</meaning>
   </entry>
+  <entry id="44421" pos="N" decl="9 8" gender="M" kind="N" age="X" area="X"
+    geo="X" freq="E" source="H">
+    <stem>Vol</stem>
+    <meaning>Volero (Roman praenomen); (abb. Vol.);</meaning>
+  </entry>
   <entry id="43169" pos="N" decl="1 1" gender="F" kind="T" age="F" area="X"
     geo="X" freq="C" source="M">
     <stem>volat</stem>
@@ -275626,6 +275651,11 @@
     <stem>volitiv</stem>
     <stem>volitiv</stem>
     <meaning>volitional;</meaning>
+  </entry>
+  <entry id="44422" pos="N" decl="9 8" gender="M" kind="N" age="X" area="X"
+    geo="X" freq="E" source="H">
+    <stem>Vop</stem>
+    <meaning>Vopiscus (Roman praenomen); (abb. Vop.);</meaning>
   </entry>
   <entry id="43637" pos="N" decl="2 2" gender="N" kind="T" age="F" area="X"
     geo="X" freq="C" source="M">
