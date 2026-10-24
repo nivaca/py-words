@@ -12,8 +12,10 @@ Spanish meanings, and the rest of the results in Spanish, were
 translated from the English (see "The Spanish meanings"); it is possible
 to add other languages.  The dictionary is the one of WORDS, enlarged with
 R. E. Latham's medieval word-list, J. Echave-Sustaeta's Latin-Spanish
-basic vocabulary and the rare words of Lewis and Short, and the long
-vowels come from Collatinus and Lewis and Short (see "Sources").  It is free software, under the GNU General Public License
+basic vocabulary, the rare words of Lewis and Short and the rare words
+and proper names of R. de Miguel's Latin-Spanish dictionary, and the
+long vowels come from Collatinus, Lewis and Short and De Miguel (see
+"Sources").  It is free software, under the GNU General Public License
 (see "Licensing").
 
 I am Nicolas Vaughan (<nivaca@fastmail.com> and <n.vaughan@uniandes.edu.co>),
@@ -424,7 +426,7 @@ and taken from the Oxford Latin Dictionary.  The letters are:
   Latin Dictionary; P Souter, Later Latin; Q other dictionaries; R Plater
   and White, Vulgate grammar; S Lewis and Short; T found in a translation; U
   Du Cange; V Blatt, Saxo; W Whitaker's guess; Y temporary; Z sent by a
-  user.
+  user; and, in lower case, m De Miguel, Nuevo diccionario latino-español.
 
 When the age is known, it is written also in words after the codes, and
 the same with the frequency when it is lesser or more rare (`archaic`,
@@ -800,6 +802,31 @@ an area from its subject notes, and the frequency E, or F for words
 attested only once.  1,566 of them have also the long vowels of the
 headword of Lewis and Short (`data/quantities.xml`).  With them the
 dictionary has 47,446 entries.
+
+Then, still in October 2026, I added the words and proper names of
+Raimundo de Miguel and the Marqués de Morante's *Nuevo diccionario
+latino-español etimológico* (Leipzig, 1867) that WORDS did not have,
+from a digital text of the book.  Of its 60,000 headwords, 44,000 are
+ordinary words, but only 2,800 of them were neither in our dictionary
+nor read already by the program (participles, compounds, other
+spellings); of its 16,000 proper names, 14,600 were missing.  As with
+Lewis and Short, the grammar was taken from what De Miguel gives (the
+genitive or the principal parts, the gender), each new entry was kept
+only if the analyzer reads its headword as its dictionary form, and
+about 520 were left out because they only added a strange reading to a
+frequent word (the active forms of some deponents, such as *loquo*,
+which De Miguel gives, were kept).  The Spanish meanings were shortened
+from De Miguel's own, and the English ones translated from them, with
+the help of Claude (the model Claude Opus 5.5, `claude-opus-5-5`), at
+the request and under the direction of Nicolas Vaughan; 69 more entries
+were left out then, and 228 names that were really common words which
+the program read already.  So 12,918 entries were added, 1,813 words
+and 11,105 names (the peoples, towns, rivers and persons of the ancient
+world, and some later ones), with the source code m (in lower case,
+because all the capitals were taken), the age F or H when De Miguel
+marks a word as medieval or modern, and the frequency E.  5,966 of them
+have also the long vowels of the headword of De Miguel
+(`data/quantities.xml`).  With them the dictionary has 60,364 entries.
 
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations
@@ -1367,6 +1394,12 @@ The dictionary of py-words comes from these works:
   <https://github.com/PerseusDL/lexica/> on 23 October 2026.  The
   licence of this text, CC BY-SA 4.0, allows to use it in a program under
   the GPL version 3, as py-words is.
+- R. de Miguel and the Marqués de Morante, *Nuevo diccionario
+  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 1,813
+  rare words and 11,105 proper names that WORDS did not have, in Spanish
+  and in English (source code m; see "The Spanish meanings"), with the
+  long vowels of 5,966 of their headwords.  The book is in the public
+  domain.
 - Collatinus 11, by Yves Ouvrard and Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL:
   the long vowels of the stems and endings, six abbreviations and the
@@ -1389,8 +1422,8 @@ Liège (Dominique Longrée and Gérald Purnelle).  Many mistakes were
 corrected thanks to Pede Certo (Emanuela Colombi and Luigi Tessarolo)
 and to Jean-Paul Woitrain.
 
-The Spanish meanings, and the comparisons with Latham and
-Echave-Sustaeta, were made with the help of Claude, the large language
+The Spanish meanings, the comparisons with Latham and Echave-Sustaeta,
+and the English meanings of De Miguel were made with the help of Claude, the large language
 model of Anthropic (see "The Spanish meanings").
 
 Licensing

@@ -360,16 +360,11 @@ postera
     poster-a       ACC.PL.N
 
 phoebea
-  -e  suffix
-    make of;
-  Phoebe, Phoebes  noun, 1st declension, feminine  [XEXDS]  lesser
-    Diana; moon goddess;
-    phoebe-a       adjective, NOM.SG.F
-    phoebe-a       adjective, VOC.SG.F
-    phoebe-ā       adjective, ABL.SG.F
-    phoebe-a       adjective, NOM.PL.N
-    phoebe-a       adjective, VOC.PL.N
-    phoebe-a       adjective, ACC.PL.N
+  Phoebeum, Phoebei  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    temple of Apollo;
+    phoebē-a       NOM.PL
+    phoebē-a       VOC.PL
+    phoebē-a       ACC.PL
 
 lustrabat
   lustro, lustrare, lustravi, lustratus  verb, 1st conjugation  [XXXCO]
@@ -514,6 +509,11 @@ anna
   anno, annare, annavi, annatus  verb, 1st conjugation, intransitive  [XXXCO]
     swim to/towards, approach by swimming; sail to/towards; brought by sea (goods);
     ann-ā          2SG.PRS.ACT.IMP
+  Anna, Annae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Anna (sister of Dido);
+    ann-a          NOM.SG
+    ann-a          VOC.SG
+    ann-ā          ABL.SG
 
 soror
   soror, sororis  noun, 3rd declension, feminine  [XXXAX]
@@ -1405,6 +1405,11 @@ anna
   anno, annare, annavi, annatus  verb, 1st conjugation, intransitive  [XXXCO]
     swim to/towards, approach by swimming; sail to/towards; brought by sea (goods);
     ann-ā          2SG.PRS.ACT.IMP
+  Anna, Annae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Anna (sister of Dido);
+    ann-a          NOM.SG
+    ann-a          VOC.SG
+    ann-ā          ABL.SG
 
 fatebor
   fateor, fateri, fassus sum  verb, 2nd conjugation, deponent  [XXXAX]
@@ -1772,33 +1777,12 @@ umbras
     umbr-ās        2SG.PRS.ACT.IND
 
 erebi
-  (unknown)
-  (near spellings: erexi, eremi)
-
-erexi
-  erigo, erigere, erexi, erectus  verb, 3rd conjugation  [XXXBX]
-    raise, erect, build; rouse, excite, stimulate;
-    ērex-ī         1SG.PRF.ACT.IND
-
-eremi
-  eremus, eremi  noun, 2nd declension, masculine  [DXXCS]  late
-    wilderness, wasteland, desert;
-    erem-ī         GEN.SG
-    erem-ī         LOC.SG
-    erem-ī         NOM.PL
-    erem-ī         VOC.PL
-  eremus, eremi  noun, 2nd declension, masculine  [EXXEM]  later  uncommon
-    hermitage, monastery;
-    erem-ī         GEN.SG
-    erem-ī         LOC.SG
-    erem-ī         NOM.PL
-    erem-ī         VOC.PL
-  eremus, erema, eremum  adjective, 1st/2nd declension  [DXXCS]  late
-    waste, desert;
-    erem-ī         GEN.SG.M
-    erem-ī         GEN.SG.N
-    erem-ī         NOM.PL.M
-    erem-ī         VOC.PL.M
+  Erebus, Erebi  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Erebus; the underworld;
+    ereb-ī         GEN.SG
+    ereb-ī         LOC.SG
+    ereb-ī         NOM.PL
+    ereb-ī         VOC.PL
 
 noctemque
   -que  enclitic
@@ -2137,6 +2121,11 @@ anna
   anno, annare, annavi, annatus  verb, 1st conjugation, intransitive  [XXXCO]
     swim to/towards, approach by swimming; sail to/towards; brought by sea (goods);
     ann-ā          2SG.PRS.ACT.IMP
+  Anna, Annae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Anna (sister of Dido);
+    ann-a          NOM.SG
+    ann-a          VOC.SG
+    ann-ā          ABL.SG
 
 refert
   refero, referre, rettuli, relatus  verb, 3rd conjugation  [XXXAO]
@@ -2369,6 +2358,11 @@ praemia
     praemi-a       ACC.PL
 
 noris
+  Norum, Nori  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    Nora (town of Sardinia);
+    nor-is         LOC.PL
+    nor-īs         DAT.PL
+    nor-īs         ABL.PL
   syncope: Syncope   r => v.r
     Syncopated perfect often drops the 'v' and contracts vowel
   nosco, noscere, novi, notus  verb, 3rd conjugation, transitive  [XXXAO]
@@ -2386,6 +2380,11 @@ noris
   novo, novare, novavi, novatus  verb, 1st conjugation  [XXXDX]  lesser
     make new, renovate; renew, refresh, change;
     nov-ēris       2SG.PRS.PASS.SBJV
+  Noverus, Noveri  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    town near Burdigala;
+    nover-is       LOC.PL
+    nover-īs       DAT.PL
+    nover-īs       ABL.PL
   novi, novisse, notus  verb, 3rd conjugation, perfect with present meaning  [XXXDX]  lesser
     know, know of; know how, be able (to); experience;  (PERF form, PRES force);
     nov-eris       2SG.PRF.ACT.SBJV
@@ -2614,13 +2613,10 @@ despectus
     despect-us     PRF.PASS.PTCP.NOM.SG.M
 
 iarbas
-  spelling: Two words
-    May be 2 words combined (iar+bas) If not obvious, probably incorrect
-  bas, baseos/is  noun, 3rd declension, feminine  [XXXBO]
-    pedestal; base, point of attachment; foundation, support; chord (of an arc);
-    bas            NOM.SG
-    bas            VOC.SG
-  (less likely forms are not shown)
+  Iarbas, Iarbae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    Iarbas (king of Gaetulia);
+    iārb-ās        NOM.SG
+    iārb-ās        ACC.PL
 
 ductoresque
   -que  enclitic
@@ -2845,6 +2841,11 @@ consederis
     cōnsēd-eris    2SG.FUT.PRF.ACT.IND
 
 arvis
+  Arva, Arvae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    town of Hyrcania;
+    arv-is         LOC.PL
+    arv-īs         DAT.PL
+    arv-īs         ABL.PL
   arva, arvae  noun, 1st declension, feminine  [BAXFO]  early  very rare
     arable land, plowed field; soil, region; countryside; dry land; lowlands, plain;
     arv-is         LOC.PL
@@ -2871,16 +2872,14 @@ hinc
     hinc           POS
 
 gaetulae
-  (unknown)
-  (near spellings: paetulae)
-
-paetulae
-  paetulus, paetula, paetulum  adjective, 1st/2nd declension  [XXXEC]  uncommon
-    with a slight cast in the eyes, squinting;
-    paetul-ae      GEN.SG.F
-    paetul-ae      DAT.SG.F
-    paetul-ae      NOM.PL.F
-    paetul-ae      VOC.PL.F
+  spelling: Word mod ae/e
+    An internal 'ae' might be rendered by 'e'
+  Getulus, Getula, Getulum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Gaetulian;
+    getul-ae       GEN.SG.F
+    getul-ae       DAT.SG.F
+    getul-ae       NOM.PL.F
+    getul-ae       VOC.PL.F
 
 urbes
   urbs, urbis  noun, 3rd declension, feminine  [XXXAX]
@@ -2946,32 +2945,13 @@ et
     and, and even; also, even;  (et ... et = both ... and);
 
 numidae
-  (unknown)
-  (near spellings: tumidae, umidae, fumidae)
-
-tumidae
-  tumidus, tumida, tumidum  adjective, 1st/2nd declension  [XXXBX]
-    swollen, swelling, distended; puffed up with pride or self; confidence;
-    tumid-ae       GEN.SG.F
-    tumid-ae       DAT.SG.F
-    tumid-ae       NOM.PL.F
-    tumid-ae       VOC.PL.F
-
-umidae
-  umidus, umida, umidum  adjective, 1st/2nd declension  [XXXBX]
-    damp, moist, dank, wet, humid;
-    ūmid-ae        GEN.SG.F
-    ūmid-ae        DAT.SG.F
-    ūmid-ae        NOM.PL.F
-    ūmid-ae        VOC.PL.F
-
-fumidae
-  fumidus, fumida, fumidum  adjective, 1st/2nd declension  [XXXDX]  lesser
-    full of smoke, smoky;
-    fūmid-ae       GEN.SG.F
-    fūmid-ae       DAT.SG.F
-    fūmid-ae       NOM.PL.F
-    fūmid-ae       VOC.PL.F
+  Numida, Numidae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    Numida (man's name);
+    numid-ae       GEN.SG
+    numid-ae       LOC.SG
+    numid-ae       DAT.SG
+    numid-ae       NOM.PL
+    numid-ae       VOC.PL
 
 infreni
   infrenus, infrena, infrenum  adjective, 1st/2nd declension  [XXXDX]  lesser
@@ -3137,28 +3117,18 @@ furentes
     fur-entēs      PRS.ACT.PTCP.ACC.PL.C
 
 barcaei
-  (unknown)
-  (near spellings: barcari, barcae, barcai)
-
-barcari
-  barcarius, barcari(i)  noun, 2nd declension, masculine  [FXXFM]  medieval  very rare
-    ship-maker;
-    barcari        GEN.SG  (early)
-
-barcae
-  barca, barcae  noun, 1st declension, feminine  [XXXIO]  inscriptions
-    small boat; bark, barge;
-    barc-ae        GEN.SG
-    barc-ae        LOC.SG
-    barc-ae        DAT.SG
-    barc-ae        NOM.PL
-    barc-ae        VOC.PL
-
-barcai
-  barca, barcae  noun, 1st declension, feminine  [XXXIO]  inscriptions
-    small boat; bark, barge;
-    barc-ai        GEN.SG  (early, uncommon)
-    barc-ai        DAT.SG  (early, inscriptions)
+  Barcaeus, Barcaei  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the people of Barce (in Africa);
+    barcae-ī       GEN.SG
+    barcae-ī       LOC.SG
+    barcae-ī       NOM.PL
+    barcae-ī       VOC.PL
+  Barcaeus, Barcaea, Barcaeum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of Barce;
+    barcae-ī       GEN.SG.M
+    barcae-ī       GEN.SG.N
+    barcae-ī       NOM.PL.M
+    barcae-ī       VOC.PL.M
 
 quid
   pronoun, interrogative  [XXXAO]
@@ -3251,6 +3221,12 @@ germanique
     germān-ī       GEN.SG.N
     germān-ī       NOM.PL.M
     germān-ī       VOC.PL.M
+  Germanus, Germani  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Germans;
+    germān-ī       GEN.SG
+    germān-ī       LOC.SG
+    germān-ī       NOM.PL
+    germān-ī       VOC.PL
 
 minas
   mina, minae  noun, 1st declension, feminine  [XSQCO]
@@ -3581,6 +3557,16 @@ teucrum
     Trojan; originally brother of Ajax;
     tēucr-um       ACC.SG
     tēucr-um       GEN.PL  (uncommon)
+  Teucrus, Teucri  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans;
+    teucr-um       ACC.SG
+    teucr-um       GEN.PL  (uncommon)
+  Teucrus, Teucra, Teucrum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Trojan;
+    teucr-um       NOM.SG.N
+    teucr-um       VOC.SG.N
+    teucr-um       ACC.SG.M
+    teucr-um       ACC.SG.N
 
 comitantibus
   comito, comitare, comitavi, comitatus  verb, 1st conjugation, transitive  [XXXCO]
@@ -3791,6 +3777,10 @@ pelago
     sea; the open sea, the main; (-us neuter, only sing.);
     pelag-ō        DAT.SG
     pelag-ō        ABL.SG
+  Pelago, Pelagonis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    Pelago (man's name);
+    pelago         NOM.SG
+    pelago         VOC.SG
 
 desaevit
   desaevio, desaevire, desaevi, desaevitus  verb, 4th conjugation, intransitive  [XXXEO]  uncommon
@@ -3817,16 +3807,10 @@ aquosus
     aquōs-us       NOM.SG.M
 
 orion
-  spelling: Two words
-    May be 2 words combined (or+ion) If not obvious, probably incorrect
-  Ion, undeclined  noun, undeclined, feminine  [XEXCS]
-    Isis; daughter of Inachus;
-    ion
-  Ion, Ionis  noun, 3rd declension, feminine  [XEXCS]
-    Isis; daughter of Inachus;
-    Īōn            NOM.SG
-    Īōn            VOC.SG
-  (less likely forms are not shown)
+  Orion, Orionis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    Orion (hunter; constellation);
+    orion          NOM.SG
+    orion          VOC.SG
 
 quassataeque
   -que  enclitic
@@ -3915,6 +3899,11 @@ dictis
     dict-īs        PRF.PASS.PTCP.ABL.PL
   dictum, dicti  noun, 2nd declension, neuter  [XXXCO]
     words/utterance/remark; one's word/promise; saying/maxim; bon mot, witticism;
+    dict-is        LOC.PL
+    dict-īs        DAT.PL
+    dict-īs        ABL.PL
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
     dict-is        LOC.PL
     dict-īs        DAT.PL
     dict-īs        ABL.PL
@@ -4220,7 +4209,12 @@ cereri
     cerēr-ī        DAT.SG
 
 phoeboque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Phoebus, Phoebi  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Phoebus, Apollo; the sun;
+    phoeb-ō        DAT.SG
+    phoeb-ō        ABL.SG
 
 patrique
   -que  enclitic
@@ -4235,31 +4229,12 @@ patrique
     patr-ī         DAT.SG
 
 lyaeo
-  (unknown)
-  (near spellings: lyabo, lyato, lyceo)
-
-lyabo
-  lyo, lyare, lyavi, lyatus  verb, 1st conjugation, transitive  [XXXES]  uncommon
-    make liquid, liquefy;
-    ly-ābo         1SG.FUT.ACT.IND
-
-lyato
-  lyo, lyare, lyavi, lyatus  verb, 1st conjugation, transitive  [XXXES]  uncommon
-    make liquid, liquefy;
-    ly-ātō         2SG.FUT.ACT.IMP
-    ly-ātō         3SG.FUT.ACT.IMP
-  lyo, lyare, lyavi, lyatus  verb, 1st conjugation, transitive  [XXXES]  uncommon
-    make liquid, liquefy;
-    lyat-ō         PRF.PASS.PTCP.DAT.SG.M
-    lyat-ō         PRF.PASS.PTCP.DAT.SG.N
-    lyat-ō         PRF.PASS.PTCP.ABL.SG.M
-    lyat-ō         PRF.PASS.PTCP.ABL.SG.N
-
-lyceo
-  lyceum, lycei  noun, 2nd declension, neuter  [XGHEO]  uncommon
-    gymnasium of Aristotle; Cicero's Tusculan gymnasium; high school (Ecc); college;
-    lyce-ō         DAT.SG
-    lyce-ō         ABL.SG
+  Lyaeus, Lyaea, Lyaeum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of Bacchus;
+    lyae-ō         DAT.SG.M
+    lyae-ō         DAT.SG.N
+    lyae-ō         ABL.SG.M
+    lyae-ō         ABL.SG.N
 
 iunoni
   Juno, Junonis  noun, 3rd declension, feminine  [AEIBX]  archaic
@@ -4814,6 +4789,7 @@ medullas
   medulla, medullae  noun, 1st declension, feminine  [XXXBX]
     marrow, kernel; innermost part; quintessence;
     medull-ās      ACC.PL
+  (less likely forms are not shown)
 
 interea
   interea  adverb  [XXXAX]
@@ -5052,35 +5028,25 @@ inter
     inter          ACC
 
 cresia
-  (unknown)
-  (near spellings: bresia, caesia, cresta)
-
-bresia
-  bresium, bresi(i)  noun, 2nd declension, neuter  [EXXCM]  later
-    malt;
-    bresi-a        NOM.PL
-    bresi-a        VOC.PL
-    bresi-a        ACC.PL
-  bresia, bresiae  noun, 1st declension, feminine  [EXXCM]  later
-    malt;
-    bresi-a        NOM.SG
-    bresi-a        VOC.SG
-    bresi-ā        ABL.SG
-
-caesia
-  caesius, caesia -um, -, caesissumus -a -um  adjective, 1st/2nd declension  [XXXCO]
-    gray, gray-blue, steel-colored; having gray/gray-blue/steel-colored eyes;
-    caesi-a        NOM.SG.F
-    caesi-a        VOC.SG.F
-    caesi-ā        ABL.SG.F
-    caesi-a        NOM.PL.N
-    caesi-a        VOC.PL.N
-    caesi-a        ACC.PL.N
-
-cresta
-  cresto, crestare, crestavi, crestatus  verb, 1st conjugation, transitive  [FXXCM]  medieval
-    fit (a wall or roof) with ridge-pieces;
-    crest-ā        2SG.PRS.ACT.IMP
+  spelling: Medieval cresia -> cressia
+    'cresia' may be a medieval spelling of cressia, croesia
+  Cressius, Cressia, Cressium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Cretan;
+    cressi-a       NOM.SG.F
+    cressi-a       VOC.SG.F
+    cressi-ā       ABL.SG.F
+    cressi-a       NOM.PL.N
+    cressi-a       VOC.PL.N
+    cressi-a       ACC.PL.N
+  spelling: Medieval cresia -> croesia
+  Croesius, Croesia, Croesium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of Croesus;
+    croesi-a       NOM.SG.F
+    croesi-a       VOC.SG.F
+    croesi-ā       ABL.SG.F
+    croesi-a       NOM.PL.N
+    croesi-a       VOC.PL.N
+    croesi-a       ACC.PL.N
 
 fixit
   figo, figere, fixi, fixus  verb, 3rd conjugation  [XXXBX]
@@ -5268,57 +5234,9 @@ peragrat
     peragr-at      3SG.PRS.ACT.IND
 
 dictaeos
-  spelling: Two words
-    May be 2 words combined (dicta+eos) If not obvious, probably incorrect
-  dico, dicere, dixi, dictus  verb, 3rd conjugation  [XXXAO]
-    say, declare, state; allege, declare positively; assert; plead (case);
-    dict-a         PRF.PASS.PTCP.NOM.SG.F
-    dict-a         PRF.PASS.PTCP.VOC.SG.F
-    dict-ā         PRF.PASS.PTCP.ABL.SG.F
-    dict-a         PRF.PASS.PTCP.NOM.PL.N
-    dict-a         PRF.PASS.PTCP.VOC.PL.N
-    dict-a         PRF.PASS.PTCP.ACC.PL.N
-  dico, dicere, dixi, dictus  verb, 3rd conjugation  [XXXAO]
-    talk/speak; make speech; play (instrument); pronounce, articulate; utter; mean;
-    dict-a         PRF.PASS.PTCP.NOM.SG.F
-    dict-a         PRF.PASS.PTCP.VOC.SG.F
-    dict-ā         PRF.PASS.PTCP.ABL.SG.F
-    dict-a         PRF.PASS.PTCP.NOM.PL.N
-    dict-a         PRF.PASS.PTCP.VOC.PL.N
-    dict-a         PRF.PASS.PTCP.ACC.PL.N
-  dico, dicere, dixi, dictus  verb, 3rd conjugation  [XXXAO]
-    name/call; appoint, fix/set (date); designate, declare intention of giving;
-    dict-a         PRF.PASS.PTCP.NOM.SG.F
-    dict-a         PRF.PASS.PTCP.VOC.SG.F
-    dict-ā         PRF.PASS.PTCP.ABL.SG.F
-    dict-a         PRF.PASS.PTCP.NOM.PL.N
-    dict-a         PRF.PASS.PTCP.VOC.PL.N
-    dict-a         PRF.PASS.PTCP.ACC.PL.N
-  dico, dicere, dixi, dictus  verb, 3rd conjugation  [FXXCM]  medieval
-    command, enjoin;
-    dict-a         PRF.PASS.PTCP.NOM.SG.F
-    dict-a         PRF.PASS.PTCP.VOC.SG.F
-    dict-ā         PRF.PASS.PTCP.ABL.SG.F
-    dict-a         PRF.PASS.PTCP.NOM.PL.N
-    dict-a         PRF.PASS.PTCP.VOC.PL.N
-    dict-a         PRF.PASS.PTCP.ACC.PL.N
-  dictum, dicti  noun, 2nd declension, neuter  [XXXCO]
-    words/utterance/remark; one's word/promise; saying/maxim; bon mot, witticism;
-    dict-a         NOM.PL
-    dict-a         VOC.PL
-    dict-a         ACC.PL
-  dicto, dictare, dictavi, dictatus  verb, 1st conjugation, transitive  [XXXBO]
-    dictate (for writing/speaking); compose; draw up; order/prescribe; fix (survey);
-    dict-ā         2SG.PRS.ACT.IMP
-  dicto, dictare, dictavi, dictatus  verb, 1st conjugation, transitive  [XXXBO]
-    say/declare/assert repeatedly/habitually/often/frequently; reiterate; recite;
-    dict-ā         2SG.PRS.ACT.IMP
-  is, ea, id  pronoun, personal  [XXXAX]
-    he/she/it/they (by GENDER/NUMBER); DEMONST: that, he/she/it, they/them;
-    e-ōs           ACC.PL.M
-  idem, eadem, idem  pronoun, demonstrative  [XXXAX]
-    (w/-dem ONLY, idem, eadem, idem) same, the same, the very same, also;
-    e-ōs           ACC.PL.M
+  Dictaeus, Dictaea, Dictaeum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Dictaean, Cretan;
+    dictae-ōs      ACC.PL.M
 
 haeret
   haereo, haerere, haesi, haesus  verb, 2nd conjugation  [XXXBX]
@@ -5345,6 +5263,9 @@ lateri
     later-ī        GEN.SG.N
     later-ī        NOM.PL.M
     later-ī        VOC.PL.M
+  Laterium, Lateri(i)  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    Quintus Cicero's villa at Arpinum;
+    lateri         GEN.SG  (early)
   latus, lateris  noun, 3rd declension, neuter  [XXXAX]
     side; flank;
     later-i        LOC.SG  (early)
@@ -5454,11 +5375,12 @@ ducit
 sidoniasque
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
-  spelling: Word mod d/t
-    An internal 'd' might be rendered by 't'
-  sitonia, sitoniae  noun, 1st declension, feminine  [XXXES]  uncommon
-    the office of a sitona, purveyance;
-    sītōni-ās      ACC.PL
+  Sidonia, Sidoniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Sidon and its territory;
+    sīdoni-ās      ACC.PL
+  Sidonius, Sidonia, Sidonium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Sidonian, Phoenician;
+    sīdoni-ās      ACC.PL.F
 
 ostentat
   ostento, ostentare, ostentavi, ostentatus  verb, 1st conjugation  [XXXDX]  lesser
@@ -6036,19 +5958,15 @@ gremio
     gremi-ō        ABL.SG
 
 ascanium
-  spelling: Two words
-    May be 2 words combined (as+canium) If not obvious, probably incorrect
-  as, assis  noun, 3rd declension, masculine  [XLXAO]
-    penny, copper coin; a pound; one, whole, unit; circular flap/valve; round slice;
-    ās             NOM.SG
-    ās             VOC.SG
-  canes, canis  noun, 3rd declension, masculine/feminine  [BAXDO]  early  lesser
-    dog; hound; subordinate; "jackal"; dog-star/fish; lowest dice throw; clamp;
-    can-ium        GEN.PL
-  canis, canis  noun, 3rd declension, masculine/feminine  [XAXAO]
-    dog; hound; subordinate; "jackal"; dog-star/fish; lowest dice throw; clamp;
-    can-ium        GEN.PL
-  (less likely forms are not shown)
+  Ascania, Ascaniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Ascania (part of Bithynia);
+    ascani-um      GEN.PL  (uncommon)
+  Ascanius, Ascania, Ascanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Ascanian (of the lake of Nicaea);
+    ascani-um      NOM.SG.N
+    ascani-um      VOC.SG.N
+    ascani-um      ACC.SG.M
+    ascani-um      ACC.SG.N
 
 genitoris
   genitor, genitoris  noun, 3rd declension, masculine  [XXXBX]
@@ -6600,20 +6518,19 @@ venerem
   (less likely forms are not shown)
 
 saturnia
-  (unknown)
-  (near spellings: satureia)
-
-satureia
-  satureia, satureiae  noun, 1st declension, feminine  [XAXEC]  uncommon
-    herb (savory);
-    saturei-a      NOM.SG
-    saturei-a      VOC.SG
-    saturei-ā      ABL.SG
-  satureium, satureii  noun, 2nd declension, neuter  [XAXEC]  uncommon
-    herb (savory)i (pl.)
-    saturēi-a      NOM.PL
-    saturēi-a      VOC.PL
-    saturēi-a      ACC.PL
+  Saturnia, Saturniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Saturnia (Juno);
+    sāturni-a      NOM.SG
+    sāturni-a      VOC.SG
+    sāturni-ā      ABL.SG
+  Saturnius, Saturnia, Saturnium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of Saturn; Saturnian;
+    sāturni-a      NOM.SG.F
+    sāturni-a      VOC.SG.F
+    sāturni-ā      ABL.SG.F
+    sāturni-a      NOM.PL.N
+    sāturni-a      VOC.PL.N
+    sāturni-a      ACC.PL.N
 
 dictis
   dico, dicere, dixi, dictus  verb, 3rd conjugation  [XXXAO]
@@ -6634,6 +6551,11 @@ dictis
     dict-īs        PRF.PASS.PTCP.ABL.PL
   dictum, dicti  noun, 2nd declension, neuter  [XXXCO]
     words/utterance/remark; one's word/promise; saying/maxim; bon mot, witticism;
+    dict-is        LOC.PL
+    dict-īs        DAT.PL
+    dict-īs        ABL.PL
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
     dict-is        LOC.PL
     dict-īs        DAT.PL
     dict-īs        ABL.PL
@@ -6895,6 +6817,11 @@ femina
     femin-a        ACC.PL
 
 victa
+  Victa, Victae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    goddess of food;
+    vict-a         NOM.SG
+    vict-a         VOC.SG
+    vict-ā         ABL.SG
   vinco, vincere, vici, victus  verb, 3rd conjugation  [XXXAA]
     conquer, defeat, excel; outlast; succeed; master; (intr.) prevail, win;
     vict-a         PRF.PASS.PTCP.NOM.SG.F
@@ -7506,35 +7433,12 @@ tuae
     tu-ae          VOC.PL.F
 
 tyrios
-  (unknown)
-  (near spellings: syrios, tyris, tyros)
-
-syrios
-  Syrius, Syrii  noun, 2nd declension, masculine  [XXQCO]
-    Syrian, of Syria; (name of a variety of dark-skinned pear);
-    syri-ōs        ACC.PL
-  (less likely forms are not shown)
-
-tyris
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
-
-tyros
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-ōs         ACC.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-os         NOM.SG
-    tyr-ōs         ACC.PL
+  Tyrius, Tyrii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Tyrians; Carthaginians;
+    tyri-ōs        ACC.PL
+  Tyrius, Tyria, Tyrium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Tyrian; Phoenician; purple;
+    tyri-ōs        ACC.PL.M
   (less likely forms are not shown)
 
 permittere
@@ -7589,6 +7493,9 @@ olli
     oll-ī          GEN.SG.N
     oll-ī          NOM.PL.M
     oll-ī          VOC.PL.M
+  Ollius, Olli(i)  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Oglio (river); Ollius;
+    olli           GEN.SG  (early)
 
 quo
   pronoun, relative  [XXXAO]
@@ -7994,6 +7901,9 @@ sequatur
   sequor, sequi, secutus sum  verb, 3rd conjugation, deponent  [XXXAO]
     support/back/side with; obey, observe; pursue/chase; range/spread over; attain;
     sequ-ātur      3SG.PRS.SBJV
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-ātur      3SG.PRS.PASS.SBJV
 
 sed
   sed  conjunction  [XXXAX]
@@ -8069,16 +7979,13 @@ velit
     vel-it         3SG.PRS.ACT.SBJV
 
 tyriis
-  -i  suffix
-    art or craft done by the person (abstract noun of person); office of, -ship;
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
+  Tyrius, Tyrii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Tyrians; Carthaginians;
     tyri-is        LOC.PL
     tyri-īs        DAT.PL
     tyri-īs        ABL.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyri-is        LOC.PL
+  Tyrius, Tyria, Tyrium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Tyrian; Phoenician; purple;
     tyri-īs        DAT.PL
     tyri-īs        ABL.PL
 
@@ -8088,7 +7995,13 @@ urbem
     urb-em         ACC.SG
 
 troiaque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Troia, Troiae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Troy;
+    trōi-a         NOM.SG
+    trōi-a         VOC.SG
+    trōi-ā         ABL.SG
 
 profectis
   proficio, proficere, profeci, profectus  verb, 3rd conjugation  [XXXAA]
@@ -8236,6 +8149,10 @@ sequar
     support/back/side with; obey, observe; pursue/chase; range/spread over; attain;
     sequ-ar        1SG.PRS.SBJV
     sequ-ar        1SG.FUT.IND
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-ar        1SG.PRS.PASS.SBJV
+    sequ-ar        1SG.FUT.PASS.IND
 
 tum
   tum  adverb  [XXXAX]
@@ -8953,6 +8870,9 @@ et
     and, and even; also, even;  (et ... et = both ... and);
 
 troianus
+  Troianus, Troiani  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans;
+    trōiān-us      NOM.SG
   Trojanus, Trojana, Trojanum  adjective, 1st/2nd declension  [XXXFS]  very rare
     Trojan;
     trōiān-us      NOM.SG.M
@@ -9140,7 +9060,16 @@ risit
     rīs-it         3SG.PRF.ACT.IND
 
 cytherea
-  (unknown)
+  -e  suffix
+    make of;
+  Cytherum, Cytheri  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    Cythera (island);
+    cythere-a      adjective, NOM.SG.F
+    cythere-a      adjective, VOC.SG.F
+    cythere-ā      adjective, ABL.SG.F
+    cythere-a      adjective, NOM.PL.N
+    cythere-a      adjective, VOC.PL.N
+    cythere-a      adjective, ACC.PL.N
 
 repertis
   reperio, reperire, repperi, repertus  verb, 4th conjugation, transitive  [XXXAO]
@@ -9653,11 +9582,12 @@ caterva
     caterv-ā       ABL.SG
 
 sidoniam
-  spelling: Word mod d/t
-    An internal 'd' might be rendered by 't'
-  sitonia, sitoniae  noun, 1st declension, feminine  [XXXES]  uncommon
-    the office of a sitona, purveyance;
-    sītōni-am      ACC.SG
+  Sidonia, Sidoniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Sidon and its territory;
+    sīdoni-am      ACC.SG
+  Sidonius, Sidonia, Sidonium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Sidonian, Phoenician;
+    sīdoni-am      ACC.SG.F
 
 picto
   pictus, picta -um, pictior -or -us, pictissimus -a -um  adjective, 1st/2nd declension  [XXXCO]
@@ -10052,17 +9982,24 @@ hibernam
     hībern-am      ACC.SG.F
 
 lyciam
-  -i  suffix
-    art or craft done by the person (abstract noun of person); office of, -ship;
-  lycos, lyci  noun, 2nd declension, masculine  [XXXES]  uncommon
-    a kind of spider;
+  Lycia, Lyciae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Lycia;
     lyci-am        ACC.SG
+  Lycius, Lycia, Lycium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Lycian;
+    lyci-am        ACC.SG.F
 
 xanthique
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
   xanthos, xanthi  noun, 2nd declension, masculine  [XXXES]  uncommon
     a precious stone of a golden color;
+    xanth-ī        GEN.SG
+    xanth-ī        LOC.SG
+    xanth-ī        NOM.PL
+    xanth-ī        VOC.PL
+  Xanthus, Xanthi  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Xanthus (river of the Troad; of Lycia);
     xanth-ī        GEN.SG
     xanth-ī        LOC.SG
     xanth-ī        NOM.PL
@@ -10105,17 +10042,11 @@ ac
     and, and also, and besides;
 
 delum
-  spelling: Word mod d/t
-    An internal 'd' might be rendered by 't'
-  telum, teli  noun, 2nd declension, neuter  [XWXAA]
-    dart, spear; weapon, javelin; bullet (gun); missile;
-    tēl-um         NOM.SG
-    tēl-um         VOC.SG
-    tēl-um         ACC.SG
-  telis, telis  noun, 3rd declension, feminine  [XAXNO]  Pliny
-    fenugreek (herb);
-    tēl-um         GEN.PL
-  (less likely forms are not shown)
+  spelling: Word mod del/dil
+    An initial 'del' may be rendered by 'dil'
+  Dila, Dilae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    port of Gaul;
+    dil-um         GEN.PL  (uncommon)
 
 maternam
   maternus, materna, maternum  adjective, 1st/2nd declension  [XXXBX]
@@ -10227,7 +10158,17 @@ cretesque
   (less likely forms are not shown)
 
 dryopesque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Dryope, Dryopes  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Dryope (a nymph);
+    dryop-ēs       GEN.SG
+    dryop-es       LOC.SG  (infrequent)
+  Dryop, Dryopis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    the Dryopes;
+    dryop-ēs       NOM.PL
+    dryop-ēs       VOC.PL
+    dryop-ēs       ACC.PL
 
 fremunt
   fremo, fremere, fremui, fremitus  verb, 3rd conjugation  [XXXDA]  lesser
@@ -10257,7 +10198,12 @@ pictique
     pict-ī         PRF.PASS.PTCP.VOC.PL.M
 
 agathyrsi
-  (unknown)
+  Agathyrsus, Agathyrsi  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Agathyrsi (Scythian people);
+    agathyrs-ī     GEN.SG
+    agathyrs-ī     LOC.SG
+    agathyrs-ī     NOM.PL
+    agathyrs-ī     VOC.PL
 
 ipse
   ipse, ipsa, ipsum  pronoun  [XXXAO]
@@ -10286,32 +10232,12 @@ iugis
     iūg-īs         ACC.PL.C
 
 cynthi
-  (unknown)
-  (near spellings: cyathi, canthi, cysthi)
-
-cyathi
-  cyathus, cyathi  noun, 2nd declension, masculine  [XSXCO]
-    1/12 sextarius/pint; shot (liquid measure); 10 drachmae (dry measure);
-    cyath-ī        GEN.SG
-    cyath-ī        LOC.SG
-    cyath-ī        NOM.PL
-    cyath-ī        VOC.PL
-
-canthi
-  canthus, canthi  noun, 2nd declension, masculine  [XXXEO]  uncommon
-    tire, iron ring around a carriage wheel; wheel;
-    canth-ī        GEN.SG
-    canth-ī        LOC.SG
-    canth-ī        NOM.PL
-    canth-ī        VOC.PL
-
-cysthi
-  cysthos, cysthi  noun, 2nd declension, masculine  [DBXFS]  late  very rare
-    female pudenda/exterior genitalia;
-    cysth-ī        GEN.SG
-    cysth-ī        LOC.SG
-    cysth-ī        NOM.PL
-    cysth-ī        VOC.PL
+  Cynthus, Cynthi  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Mount Cynthus (in Delos);
+    cynth-ī        GEN.SG
+    cynth-ī        LOC.SG
+    cynth-ī        NOM.PL
+    cynth-ī        VOC.PL
 
 graditur
   gradior, gradi, gressus sum  verb, 3rd conjugation, deponent  [XXXDX]  lesser
@@ -10981,13 +10907,9 @@ puer
     puer           VOC.SG
 
 ascanius
-  (unknown)
-  (near spellings: arcanius)
-
-arcanius
-  arcano, arcanius, arcanissime  adverb  [XXXEO]  uncommon
-    secretly, in confidence; in one's inner thoughts, privately;
-    arcanius       CMPR
+  Ascanius, Ascania, Ascanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Ascanian (of the lake of Nicaea);
+    ascani-us      NOM.SG.M
 
 mediis
   medius, medii  noun, 2nd declension, masculine  [XXXDS]  lesser
@@ -11119,6 +11041,10 @@ dari
   do, dare, dedi, datus  verb, 1st conjugation, transitive  [FXXEM]  medieval  uncommon
     give in marriage;
     d-ārī          PRS.PASS.INF
+  Daron, Dari  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    town of Egypt on the Arabian Gulf;
+    dar-ī          GEN.SG
+    dar-ī          LOC.SG
 
 pecora
   pecus, pecoris  noun, 3rd declension, neuter  [XXXAX]
@@ -11346,42 +11272,18 @@ et
     and, and even; also, even;  (et ... et = both ... and);
 
 tyrii
-  (unknown)
-  (near spellings: tyri, syrii, tyris)
-
-tyri
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-ī          GEN.SG
-    tyr-ī          LOC.SG
-    tyr-ī          NOM.PL
-    tyr-ī          VOC.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-ī          GEN.SG
-    tyr-ī          LOC.SG
-    tyr-ī          NOM.PL
-    tyr-ī          VOC.PL
-
-syrii
-  Syrius, Syrii  noun, 2nd declension, masculine  [XXQCO]
-    Syrian, of Syria; (name of a variety of dark-skinned pear);
-    syri-ī         GEN.SG
-    syri-ī         LOC.SG
-    syri-ī         NOM.PL
-    syri-ī         VOC.PL
-
-tyris
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
+  Tyrius, Tyrii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Tyrians; Carthaginians;
+    tyri-ī         GEN.SG
+    tyri-ī         LOC.SG
+    tyri-ī         NOM.PL
+    tyri-ī         VOC.PL
+  Tyrius, Tyria, Tyrium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Tyrian; Phoenician; purple;
+    tyri-ī         GEN.SG.M
+    tyri-ī         GEN.SG.N
+    tyri-ī         NOM.PL.M
+    tyri-ī         VOC.PL.M
 
 comites
   comes, comitis  noun, 3rd declension, masculine  [ELXCM]  later
@@ -11429,7 +11331,11 @@ iuventus
     iuventūs       VOC.SG
 
 dardaniusque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Dardanius, Dardania, Dardanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Dardanian, Trojan;
+    dardani-us     NOM.SG.M
 
 nepos
   nepos, nepotis  noun, 3rd declension, masculine/feminine  [XXXAX]
@@ -11608,6 +11514,9 @@ et
     and, and even; also, even;  (et ... et = both ... and);
 
 troianus
+  Troianus, Troiani  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans;
+    trōiān-us      NOM.SG
   Trojanus, Trojana, Trojanum  adjective, 1st/2nd declension  [XXXFS]  very rare
     Trojan;
     trōiān-us      NOM.SG.M
@@ -12539,7 +12448,12 @@ coeo
     coe-o          1SG.PRS.ACT.IND
 
 enceladoque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Enceladus, Enceladi  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Enceladus (a giant);
+    encelad-ō      DAT.SG
+    encelad-ō      ABL.SG
 
 sororem
   soror, sororis  noun, 3rd declension, feminine  [XXXAX]
@@ -13534,6 +13448,10 @@ aeneam
     aene-am        ACC.SG.F
 
 troiano
+  Troianus, Troiani  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans;
+    trōiān-ō       DAT.SG
+    trōiān-ō       ABL.SG
   Trojanus, Trojana, Trojanum  adjective, 1st/2nd declension  [XXXFS]  very rare
     Trojan;
     trōiān-ō       DAT.SG.M
@@ -13982,13 +13900,9 @@ detorquet
     dētorqu-et     3SG.PRS.ACT.IND
 
 iarban
-  (unknown)
-  (near spellings: carban)
-
-carban
-  carbas, carbae  noun, 1st declension, masculine  [XSXEO]  uncommon
-    easterly wind; east-northeast wind (L+S);
-    carb-ān        ACC.SG
+  Iarbas, Iarbae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    Iarbas (king of Gaetulia);
+    iārb-ān        ACC.SG
 
 incenditque
   -que  enclitic
@@ -14037,6 +13951,11 @@ dictis
     dict-is        LOC.PL
     dict-īs        DAT.PL
     dict-īs        ABL.PL
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
+    dict-is        LOC.PL
+    dict-īs        DAT.PL
+    dict-īs        ABL.PL
 
 atque
   atque  conjunction  [XXXAO]
@@ -14076,6 +13995,11 @@ hammone
   ammoneo, ammonere, ammonui, ammonitus  verb, 2nd conjugation, transitive  [XXXAO]
     admonish, remind, prompt; suggest, advise, raise; persuade, urge; warn, caution;
     ammon-ē        2SG.PRS.ACT.IMP
+  Ammon, Ammonis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    Ammon (title of Jupiter in Libya);
+    ammon-e        LOC.SG
+    ammon-e        DAT.SG  (early)
+    ammon-e        ABL.SG
 
 satus
   satus, sata, satum  adjective, 1st/2nd declension  [XXXDX]  lesser
@@ -14113,6 +14037,16 @@ rapta
 
 garamantide
   (unknown)
+  (near spellings: garamantice)
+
+garamantice
+  Garamanticus, Garamantica, Garamanticum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Garamantian;
+    garamantic-e   VOC.SG.M
+  -e  suffix: adverb from adjective
+  Garamanticus, Garamantica, Garamanticum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Garamantian;
+    garamantic-e   adverb, POS
 
 nympha
   nympha, nymphae  noun, 1st declension, feminine  [XYHAO]
@@ -14341,6 +14275,11 @@ florentia
     flōrent-ia     NOM.PL.N
     flōrent-ia     VOC.PL.N
     flōrent-ia     ACC.PL.N
+  Florentia, Florentiae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Florence;
+    flōrēnti-a     NOM.SG
+    flōrēnti-a     VOC.SG
+    flōrēnti-ā     ABL.SG
 
 limina
   limen, liminis  noun, 3rd declension, neuter  [XXXAX]
@@ -14660,6 +14599,26 @@ nunc
 
 maurusia
   (unknown)
+  (near spellings: maurusie, maurusii, maurusio)
+
+maurusie
+  Maurusius, Maurusii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Moors;
+    maurūsi-e      VOC.SG
+
+maurusii
+  Maurusius, Maurusii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Moors;
+    maurūsi-ī      GEN.SG
+    maurūsi-ī      LOC.SG
+    maurūsi-ī      NOM.PL
+    maurūsi-ī      VOC.PL
+
+maurusio
+  Maurusius, Maurusii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Moors;
+    maurūsi-ō      DAT.SG
+    maurūsi-ō      ABL.SG
 
 pictis
   pictus, picta -um, pictior -or -us, pictissimus -a -um  adjective, 1st/2nd declension  [XXXCO]
@@ -14703,16 +14662,12 @@ toris
     tor-īs         ABL.PL
 
 lenaeum
-  spelling: Two words
-    May be 2 words combined (lena+eum) If not obvious, probably incorrect
-  is, ea, id  pronoun, personal  [XXXAX]
-    he/she/it/they (by GENDER/NUMBER); DEMONST: that, he/she/it, they/them;
-    e-um           ACC.SG.M
-  lena, lenae  noun, 1st declension, feminine  [XXXDX]  lesser
-    procuress; brothel-keeper;
-    lēn-a          NOM.SG
-    lēn-a          VOC.SG
-    lēn-ā          ABL.SG
+  Lenaeus, Lenaea, Lenaeum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of Bacchus; of wine;
+    lēnae-um       NOM.SG.N
+    lēnae-um       VOC.SG.N
+    lēnae-um       ACC.SG.M
+    lēnae-um       ACC.SG.N
 
 libat
   libo, libare, libavi, libatus  verb, 1st conjugation  [XXXBX]
@@ -15063,6 +15018,10 @@ pretio
     preti-ō        ABL.SG
   pretium, preti(i)  noun, 2nd declension, neuter  [FXXEA]  medieval  uncommon
     [operae pretium est => it is worthwhile];
+    preti-ō        DAT.SG
+    preti-ō        ABL.SG
+  Pretius, Preti(i)  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Pretius (man's name);
     preti-ō        DAT.SG
     preti-ō        ABL.SG
 
@@ -15443,25 +15402,19 @@ comitatu
   (less likely forms are not shown)
 
 maeonia
-  (unknown)
-  (near spellings: paeonia, maronia)
-
-paeonia
-  paeonius, paeonia, paeonium  adjective, 1st/2nd declension  [XPXDS]  lesser
-    healing; of the god of medicine;
-    paeoni-a       NOM.SG.F
-    paeoni-a       VOC.SG.F
-    paeoni-ā       ABL.SG.F
-    paeoni-a       NOM.PL.N
-    paeoni-a       VOC.PL.N
-    paeoni-a       ACC.PL.N
-
-maronia
-  maronion, maronii  noun, 2nd declension, neuter  [XXXES]  uncommon
-    the greater centaury;
-    maroni-a       NOM.PL
-    maroni-a       VOC.PL
-    maroni-a       ACC.PL
+  Maeonia, Maeoniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Maeonia, Lydia; Etruria;
+    maeoni-a       NOM.SG
+    maeoni-a       VOC.SG
+    maeoni-ā       ABL.SG
+  Maeonius, Maeonia, Maeonium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Maeonian, Lydian; Homeric;
+    maeoni-a       NOM.SG.F
+    maeoni-a       VOC.SG.F
+    maeoni-ā       ABL.SG.F
+    maeoni-a       NOM.PL.N
+    maeoni-a       VOC.PL.N
+    maeoni-a       ACC.PL.N
 
 mentum
   mens, mentis  noun, 3rd declension, feminine  [XXXAX]
@@ -15654,6 +15607,11 @@ dictis
     dict-īs        PRF.PASS.PTCP.ABL.PL
   dictum, dicti  noun, 2nd declension, neuter  [XXXCO]
     words/utterance/remark; one's word/promise; saying/maxim; bon mot, witticism;
+    dict-is        LOC.PL
+    dict-īs        DAT.PL
+    dict-īs        ABL.PL
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
     dict-is        LOC.PL
     dict-īs        DAT.PL
     dict-īs        ABL.PL
@@ -15929,9 +15887,30 @@ pennis
     penn-is        LOC.PL
     penn-īs        DAT.PL
     penn-īs        ABL.PL
+  Pennus, Penni  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Pennus (Roman surname);
+    penn-is        LOC.PL
+    penn-īs        DAT.PL
+    penn-īs        ABL.PL
 
 dardaniumque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Dardania, Dardaniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Dardania; Troy;
+    dardani-um     GEN.PL  (uncommon)
+  Dardanium, Dardani(i)  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    town near Troy;
+    dardani-um     NOM.SG
+    dardani-um     VOC.SG
+    dardani-um     ACC.SG
+    dardani-um     GEN.PL  (uncommon)
+  Dardanius, Dardania, Dardanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Dardanian, Trojan;
+    dardani-um     NOM.SG.N
+    dardani-um     VOC.SG.N
+    dardani-um     ACC.SG.M
+    dardani-um     ACC.SG.N
 
 ducem
   dux, ducis  noun, 3rd declension, masculine  [XXXAX]
@@ -15939,18 +15918,14 @@ ducem
     duc-em         ACC.SG
 
 tyria
-  -i  suffix
-    art or craft done by the person (abstract noun of person); office of, -ship;
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyri-a         NOM.SG
-    tyri-a         VOC.SG
-    tyri-ā         ABL.SG
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyri-a         NOM.SG
-    tyri-a         VOC.SG
-    tyri-ā         ABL.SG
+  Tyrius, Tyria, Tyrium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Tyrian; Phoenician; purple;
+    tyri-a         NOM.SG.F
+    tyri-a         VOC.SG.F
+    tyri-ā         ABL.SG.F
+    tyri-a         NOM.PL.N
+    tyri-a         VOC.PL.N
+    tyri-a         ACC.PL.N
 
 karthagine
   Karthago, Karthaginis  noun, 3rd declension, feminine  [XXACO]
@@ -16161,6 +16136,11 @@ dicta
   dicto, dictare, dictavi, dictatus  verb, 1st conjugation, transitive  [XXXBO]
     say/declare/assert repeatedly/habitually/often/frequently; reiterate; recite;
     dict-ā         2SG.PRS.ACT.IMP
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
+    dict-a         NOM.SG
+    dict-a         VOC.SG
+    dict-ā         ABL.SG
 
 per
   per  preposition, with the accusative  [XXXAX]
@@ -16224,7 +16204,18 @@ promisit
     prōmīs-it      3SG.PRF.ACT.IND
 
 graiumque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Graius, Graii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Greeks;
+    grāi-um        ACC.SG
+    grāi-um        GEN.PL  (uncommon)
+  Graius, Graia, Graium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Greek;
+    grāi-um        NOM.SG.N
+    grāi-um        VOC.SG.N
+    grāi-um        ACC.SG.M
+    grāi-um        ACC.SG.N
 
 ideo
   ideo  adverb  [XXXAX]
@@ -16450,6 +16441,18 @@ teucri
     tēucr-ī        LOC.SG
     tēucr-ī        NOM.PL
     tēucr-ī        VOC.PL
+  Teucrus, Teucri  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans;
+    teucr-ī        GEN.SG
+    teucr-ī        LOC.SG
+    teucr-ī        NOM.PL
+    teucr-ī        VOC.PL
+  Teucrus, Teucra, Teucrum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Trojan;
+    teucr-ī        GEN.SG.M
+    teucr-ī        GEN.SG.N
+    teucr-ī        NOM.PL.M
+    teucr-ī        VOC.PL.M
 
 proderet
   prodo, prodere, prodidi, proditus  verb, 3rd conjugation, transitive  [XXXAO]
@@ -16669,7 +16672,14 @@ laborem
     labor-em       ACC.SG
 
 ascanione
-  (unknown)
+  -ne  enclitic
+    -ne = is it not that (enclitic); or ...(introduces a question or alternative);
+  Ascanius, Ascania, Ascanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Ascanian (of the lake of Nicaea);
+    ascani-ō       DAT.SG.M
+    ascani-ō       DAT.SG.N
+    ascani-ō       ABL.SG.M
+    ascani-ō       ABL.SG.N
 
 pater
   pater, patris  noun, 3rd declension, masculine  [XXXAX]
@@ -16848,39 +16858,28 @@ prolem
     prōl-em        ACC.SG
 
 ausoniam
-  (unknown)
-  (near spellings: assoniam, absoniam)
-
-assoniam
-  assonio, assonire, assonivi, assonitus  verb, 4th conjugation, transitive  [FLXCM]  medieval
-    essoin, excuse from appearing in court (leg.);
-    assoni-am      1SG.PRS.ACT.SBJV
-    assoni-am      1SG.FUT.ACT.IND
-
-absoniam
-  absonia, absoniae  noun, 1st declension, feminine  [FDXEZ]  medieval  uncommon
-    harshness; discordance;
-    absoni-am      ACC.SG
+  Ausonia, Ausoniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Ausonia, Italy;
+    ausoni-am      ACC.SG
+  Ausonius, Ausonia, Ausonium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Ausonian, Italian;
+    ausoni-am      ACC.SG.F
 
 et
   et  conjunction  [XXXAX]
     and, and even; also, even;  (et ... et = both ... and);
 
 lavinia
-  (unknown)
-  (near spellings: lacinia)
-
-lacinia
-  lacinia, laciniae  noun, 1st declension, feminine  [XXXCO]
-    edge/fringe/hem of garment; strip/rag of cloth; fringe/protuberance/border/flap;
-    lacini-a       NOM.SG
-    lacini-a       VOC.SG
-    lacini-ā       ABL.SG
-  lacinia, laciniae  noun, 1st declension, feminine  [XXXCO]
-    small group; garments (pl.), dress;
-    lacini-a       NOM.SG
-    lacini-a       VOC.SG
-    lacini-ā       ABL.SG
+  Lavinia, Laviniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Lavinia (wife of Aeneas);
+    lavini-a       NOM.SG
+    lavini-a       VOC.SG
+    lavini-ā       ABL.SG
+  Lavinium, Lavini(i)  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    Lavinium (town of Latium);
+    lavini-a       NOM.PL
+    lavini-a       VOC.PL
+    lavini-a       ACC.PL
 
 respicit
   respicio, respicere, respexi, respectus  verb, 3rd conjugation  [XXXAA]
@@ -16891,6 +16890,11 @@ respicit
     respic-it      3SG.PRS.ACT.IND
 
 arva
+  Arva, Arvae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    town of Hyrcania;
+    arv-a          NOM.SG
+    arv-a          VOC.SG
+    arv-ā          ABL.SG
   arva, arvae  noun, 1st declension, feminine  [BAXFO]  early  very rare
     arable land, plowed field; soil, region; countryside; dry land; lowlands, plain;
     arv-a          NOM.SG
@@ -17040,6 +17044,11 @@ patris
   pater, patris  noun, 3rd declension, masculine  [XXXAA]
     ancestors (pl.); senators (pl.);
     patr-is        GEN.SG
+  Patra, Patrae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Patrae (Patras);
+    patr-is        LOC.PL
+    patr-īs        DAT.PL
+    patr-īs        ABL.PL
   (less likely forms are not shown)
 
 magni
@@ -17675,6 +17684,14 @@ cernit
     cern-it        3SG.PRS.ACT.IND
 
 atlantis
+  Atlant, Atlantis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    a people of Libya;
+    atlānt-is      GEN.SG
+    atlānt-īs      ACC.PL  (uncommon)
+  Atlantis, Atlantidis  noun, 3rd declension, feminine  [XXXEm]  uncommon
+    daughter of Atlas; Atlantis;
+    atlantis       NOM.SG
+    atlantis       VOC.SG
   atlas, atlantis  noun, 3rd declension, masculine  [GXXEK]  neo-Latin  uncommon
     atlas (of geography);
     atlant-is      GEN.SG
@@ -17698,6 +17715,9 @@ duri
     dūr-ī          GEN.SG.N
     dūr-ī          NOM.PL.M
     dūr-ī          VOC.PL.M
+  Durius, Duri(i)  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Douro (river);
+    dūri           GEN.SG  (early)
 
 caelum
   caelus, caeli  noun, 2nd declension, masculine  [BSXAO]  early
@@ -17766,6 +17786,14 @@ fulcit
     fulc-it        3SG.PRS.ACT.IND
 
 atlantis
+  Atlant, Atlantis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    a people of Libya;
+    atlānt-is      GEN.SG
+    atlānt-īs      ACC.PL  (uncommon)
+  Atlantis, Atlantidis  noun, 3rd declension, feminine  [XXXEm]  uncommon
+    daughter of Atlas; Atlantis;
+    atlantis       NOM.SG
+    atlantis       VOC.SG
   atlas, atlantis  noun, 3rd declension, masculine  [GXXEK]  neo-Latin  uncommon
     atlas (of geography);
     atlant-is      GEN.SG
@@ -18163,7 +18191,9 @@ nitens
     nīt-ēns        PRS.PTCP.ACC.SG.N
 
 cyllenius
-  (unknown)
+  Cyllenius, Cyllenia, Cyllenium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Cyllenian; of Mercury;
+    cyllēni-us     NOM.SG.M
 
 alis
   ala, alae  noun, 1st declension, feminine  [XXXAO]
@@ -18602,7 +18632,14 @@ avo
     av-ō           ABL.SG
 
 cyllenia
-  (unknown)
+  Cyllenius, Cyllenia, Cyllenium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Cyllenian; of Mercury;
+    cyllēni-a      NOM.SG.F
+    cyllēni-a      VOC.SG.F
+    cyllēni-ā      ABL.SG.F
+    cyllēni-a      NOM.PL.N
+    cyllēni-a      VOC.PL.N
+    cyllēni-a      ACC.PL.N
 
 proles
   proles, prolis  noun, 3rd declension, feminine  [XXXBO]
@@ -18855,7 +18892,18 @@ erat
     -erat          3SG.IMPF.ACT.IND
 
 tyrioque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Tyrius, Tyrii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Tyrians; Carthaginians;
+    tyri-ō         DAT.SG
+    tyri-ō         ABL.SG
+  Tyrius, Tyria, Tyrium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Tyrian; Phoenician; purple;
+    tyri-ō         DAT.SG.M
+    tyri-ō         DAT.SG.N
+    tyri-ō         ABL.SG.M
+    tyri-ō         ABL.SG.N
 
 ardebat
   ardeo, ardere, arsi, arsus  verb, 2nd conjugation  [XXXAO]
@@ -19596,6 +19644,11 @@ libycis
     Libyan; African;
     libyc-īs       DAT.PL
     libyc-īs       ABL.PL
+  Libycus, Libyci  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    a people of Cisalpine Gaul;
+    libyc-is       LOC.PL
+    libyc-īs       DAT.PL
+    libyc-īs       ABL.PL
 
 teris
   tero, terere, trivi, tritus  verb, 3rd conjugation  [XXXBA]
@@ -19608,6 +19661,11 @@ otia
     oti-a          NOM.PL
     oti-a          VOC.PL
     oti-a          ACC.PL
+  otion, otii  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    limpet, abalone;
+    ōti-a          NOM.PL
+    ōti-a          VOC.PL
+    ōti-a          ACC.PL
   (less likely forms are not shown)
 
 terris
@@ -19756,19 +19814,15 @@ laborem
     labor-em       ACC.SG
 
 ascanium
-  spelling: Two words
-    May be 2 words combined (as+canium) If not obvious, probably incorrect
-  as, assis  noun, 3rd declension, masculine  [XLXAO]
-    penny, copper coin; a pound; one, whole, unit; circular flap/valve; round slice;
-    ās             NOM.SG
-    ās             VOC.SG
-  canes, canis  noun, 3rd declension, masculine/feminine  [BAXDO]  early  lesser
-    dog; hound; subordinate; "jackal"; dog-star/fish; lowest dice throw; clamp;
-    can-ium        GEN.PL
-  canis, canis  noun, 3rd declension, masculine/feminine  [XAXAO]
-    dog; hound; subordinate; "jackal"; dog-star/fish; lowest dice throw; clamp;
-    can-ium        GEN.PL
-  (less likely forms are not shown)
+  Ascania, Ascaniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Ascania (part of Bithynia);
+    ascani-um      GEN.PL  (uncommon)
+  Ascanius, Ascania, Ascanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Ascanian (of the lake of Nicaea);
+    ascani-um      NOM.SG.N
+    ascani-um      VOC.SG.N
+    ascani-um      ACC.SG.M
+    ascani-um      ACC.SG.N
 
 surgentem
   surgo, surgere, surrexi, surrectus  verb, 3rd conjugation  [XXXAA]
@@ -19914,7 +19968,9 @@ tali
     tāl-ī          ABL.SG
 
 cyllenius
-  (unknown)
+  Cyllenius, Cyllenia, Cyllenium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Cyllenian; of Mercury;
+    cyllēni-us     NOM.SG.M
 
 ore
   oro, orere, -, -  verb, 3rd conjugation  [EXXEX]  later  uncommon
@@ -20702,6 +20758,10 @@ sergestumque
     gest-um        VOC.SG
   Ser, Seris  noun, 3rd declension, masculine/feminine  [XXXDO]  lesser
     Chinese (people); inhabitants of region beyond Scythia and India;
+    sēr            NOM.SG
+    sēr            VOC.SG
+  Ser, Seris  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    the Seres (Chinese);
     sēr            NOM.SG
     sēr            VOC.SG
 
@@ -21698,6 +21758,9 @@ thyias
   thyia, thyiae  noun, 1st declension, feminine  [XAXES]  uncommon
     citrus tree (Greek name for);
     thȳi-ās        ACC.PL
+  Thyia, Thyiae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    the Bacchantes;
+    thyi-ās        ACC.PL
 
 ubi
   ubi  adverb  [XXXBX]
@@ -21768,6 +21831,11 @@ orgia
     orgi-a         NOM.PL
     orgi-a         VOC.PL
     orgi-a         ACC.PL
+  orgium, orgii  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    orgies, Bacchic rites;
+    orgi-a         NOM.PL
+    orgi-a         VOC.PL
+    orgi-a         ACC.PL
 
 nocturnusque
   -que  enclitic
@@ -21797,7 +21865,10 @@ clamore
     clāmor-e       ABL.SG
 
 cithaeron
-  (unknown)
+  Cithaeron, Cithaeronis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    Mount Cithaeron;
+    cithaeron      NOM.SG
+    cithaeron      VOC.SG
 
 tandem
   tandem  adverb  [XXXBS]
@@ -22354,6 +22425,11 @@ non
     nōn            POS
 
 arva
+  Arva, Arvae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    town of Hyrcania;
+    arv-a          NOM.SG
+    arv-a          VOC.SG
+    arv-ā          ABL.SG
   arva, arvae  noun, 1st declension, feminine  [BAXFO]  early  very rare
     arable land, plowed field; soil, region; countryside; dry land; lowlands, plain;
     arv-a          NOM.SG
@@ -22434,29 +22510,11 @@ sed
     unless, except;
 
 troia
-  (unknown)
-  (near spellings: tria, croia, trona)
-
-tria
-  tres -es -ia, tertius -a -um, terni -ae -a, ter  numeral, 3  [XXXAX]
-    3 - (CARD answers 'how many');
-    tr-ia          NOM.PL.N.CARD
-    tr-ia          VOC.PL.N.CARD
-    tr-ia          ACC.PL.N.CARD
-
-croia
-  croia, croiae  noun, 1st declension, feminine  [FXXCM]  medieval
-    "cruive", fish-trap (Scotland);
-    croi-a         NOM.SG
-    croi-a         VOC.SG
-    croi-ā         ABL.SG
-
-trona
-  tronum, troni  noun, 2nd declension, neuter  [FXXCM]  medieval
-    "tron", weigh-beam;
-    tron-a         NOM.PL
-    tron-a         VOC.PL
-    tron-a         ACC.PL
+  Troia, Troiae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Troy;
+    trōi-a         NOM.SG
+    trōi-a         VOC.SG
+    trōi-ā         ABL.SG
 
 antiqua
   antiquum, antiqui  noun, 2nd declension, neuter  [DXXES]  late  uncommon
@@ -22490,29 +22548,11 @@ maneret
     man-ēret       3SG.IMPF.ACT.SBJV
 
 troia
-  (unknown)
-  (near spellings: tria, croia, trona)
-
-tria
-  tres -es -ia, tertius -a -um, terni -ae -a, ter  numeral, 3  [XXXAX]
-    3 - (CARD answers 'how many');
-    tr-ia          NOM.PL.N.CARD
-    tr-ia          VOC.PL.N.CARD
-    tr-ia          ACC.PL.N.CARD
-
-croia
-  croia, croiae  noun, 1st declension, feminine  [FXXCM]  medieval
-    "cruive", fish-trap (Scotland);
-    croi-a         NOM.SG
-    croi-a         VOC.SG
-    croi-ā         ABL.SG
-
-trona
-  tronum, troni  noun, 2nd declension, neuter  [FXXCM]  medieval
-    "tron", weigh-beam;
-    tron-a         NOM.PL
-    tron-a         VOC.PL
-    tron-a         ACC.PL
+  Troia, Troiae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Troy;
+    trōi-a         NOM.SG
+    trōi-a         VOC.SG
+    trōi-ā         ABL.SG
 
 per
   per  preposition, with the accusative  [XXXAX]
@@ -22553,13 +22593,9 @@ aequor
     aequor         ACC.SG
 
 mene
-  -ne  enclitic
-    -ne = is it not that (enclitic); or ...(introduces a question or alternative);
-  pronoun, personal  [XXXAX]
-    I, me (PERS); myself (REFLEX);
-    m-e            ABL.SG.C
-    m-e            ACC.SG.C
-  (less likely forms are not shown)
+  Menos, Meni  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Menos (Egyptian inventor of letters);
+    men-e          VOC.SG
 
 fugis
   fuga, fugae  noun, 1st declension, feminine  [XXXAX]
@@ -23012,6 +23048,9 @@ gentes
 nomadumque
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Nomad, Nomadis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    the Nomads;
+    nomad-um       GEN.PL
   nomas, nomados/is  noun, 3rd declension, masculine  [XXXEO]  uncommon
     nomad, esp. a Numidian; nomads (pl.), certain wandering pastoral tribes;
     nomad-um       GEN.PL
@@ -23038,42 +23077,18 @@ infensi
     īnfēns-ī       VOC.PL.M
 
 tyrii
-  (unknown)
-  (near spellings: tyri, syrii, tyris)
-
-tyri
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-ī          GEN.SG
-    tyr-ī          LOC.SG
-    tyr-ī          NOM.PL
-    tyr-ī          VOC.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-ī          GEN.SG
-    tyr-ī          LOC.SG
-    tyr-ī          NOM.PL
-    tyr-ī          VOC.PL
-
-syrii
-  Syrius, Syrii  noun, 2nd declension, masculine  [XXQCO]
-    Syrian, of Syria; (name of a variety of dark-skinned pear);
-    syri-ī         GEN.SG
-    syri-ī         LOC.SG
-    syri-ī         NOM.PL
-    syri-ī         VOC.PL
-
-tyris
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
+  Tyrius, Tyrii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Tyrians; Carthaginians;
+    tyri-ī         GEN.SG
+    tyri-ī         LOC.SG
+    tyri-ī         NOM.PL
+    tyri-ī         VOC.PL
+  Tyrius, Tyria, Tyrium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Tyrian; Phoenician; purple;
+    tyri-ī         GEN.SG.M
+    tyri-ī         GEN.SG.N
+    tyri-ī         NOM.PL.M
+    tyri-ī         VOC.PL.M
 
 te
   pronoun, personal  [XXXAX]
@@ -23380,7 +23395,10 @@ mea
     me-ā           2SG.PRS.ACT.IMP
 
 pygmalion
-  (unknown)
+  Pygmalion, Pygmalionis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    Pygmalion;
+    pygmalion      NOM.SG
+    pygmalion      VOC.SG
 
 dum
   dum  conjunction  [XXXAX]
@@ -23428,27 +23446,20 @@ ducat
     dūc-at         3SG.PRS.ACT.SBJV
 
 gaetulus
-  (unknown)
-  (near spellings: paetulus, baetulus)
-
-paetulus
-  paetulus, paetula, paetulum  adjective, 1st/2nd declension  [XXXEC]  uncommon
-    with a slight cast in the eyes, squinting;
-    paetul-us      NOM.SG.M
-
-baetulus
-  baetulus, baetuli  noun, 2nd declension, masculine  [XXXNO]  Pliny
-    species of meteoric stone;
-    baetul-us      NOM.SG
+  spelling: Word mod ae/e
+    An internal 'ae' might be rendered by 'e'
+  Getulus, Getuli  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Gaetulians;
+    getul-us       NOM.SG
+  Getulus, Getula, Getulum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Gaetulian;
+    getul-us       NOM.SG.M
 
 iarbas
-  spelling: Two words
-    May be 2 words combined (iar+bas) If not obvious, probably incorrect
-  bas, baseos/is  noun, 3rd declension, feminine  [XXXBO]
-    pedestal; base, point of attachment; foundation, support; chord (of an arc);
-    bas            NOM.SG
-    bas            VOC.SG
-  (less likely forms are not shown)
+  Iarbas, Iarbae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    Iarbas (king of Gaetulia);
+    iārb-ās        NOM.SG
+    iārb-ās        ACC.PL
 
 saltem
   salto, saltare, saltavi, saltatus  verb, 1st conjugation  [XXXDX]  lesser
@@ -24321,6 +24332,10 @@ loquar
     speak, tell; talk; mention; say, utter; phrase;
     loqu-ar        1SG.PRS.SBJV
     loqu-ar        1SG.FUT.IND
+  loquo, loquere, -, -  verb, 3rd conjugation, intransitive  [XXXEm]  uncommon
+    speak;
+    loqu-ar        1SG.PRS.PASS.SBJV
+    loqu-ar        1SG.FUT.PASS.IND
 
 neque
   neque  adverb  [XXXDX]  lesser
@@ -24666,28 +24681,12 @@ colerem
     col-erem       1SG.IMPF.ACT.SBJV
 
 priami
-  (unknown)
-  (near spellings: primi)
-
-primi
-  primus, primi  noun, 2nd declension, masculine  [XXXDX]  lesser
-    chiefs (pl.), nobles;
-    prim-ī         GEN.SG
-    prim-ī         LOC.SG
-    prim-ī         NOM.PL
-    prim-ī         VOC.PL
-  primus, prima, primum  adjective, 1st/2nd declension  [XXXAX]
-    first, foremost/best, chief, principal; nearest/next; [in primis => especially];
-    prīm-ī         GEN.SG.M
-    prīm-ī         GEN.SG.N
-    prīm-ī         NOM.PL.M
-    prīm-ī         VOC.PL.M
-  unus -a -um, primus -a -um, singuli -ae -a, semel  numeral, 1  [XXXAX]
-    1th - (ORD, 'in series'); (a/the) 1th (part) (fract w/pars?);
-    prim-ī         GEN.SG.M.ORD
-    prim-ī         GEN.SG.N.ORD
-    prim-ī         NOM.PL.M.ORD
-    prim-ī         VOC.PL.M.ORD
+  Priamus, Priami  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Priam;
+    priam-ī        GEN.SG
+    priam-ī        LOC.SG
+    priam-ī        NOM.PL
+    priam-ī        VOC.PL
 
 tecta
   tectum, tecti  noun, 2nd declension, neuter  [XXXBO+A]
@@ -24797,19 +24796,18 @@ posuissem
     posu-issem     1SG.PLUP.ACT.SBJV
 
 pergama
-  spelling: Two words
-    May be 2 words combined (perg+ama) If not obvious, probably incorrect
-  ama, amae  noun, 1st declension, feminine  [XXXDO]  lesser
-    bucket; water bucket; (esp. fireman's bucket);
-    am-a           NOM.SG
-    am-a           VOC.SG
-    am-ā           ABL.SG
-  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
-    love, like; fall in love with; be fond of; have a tendency to;
-    am-ā           2SG.PRS.ACT.IMP
-  (less likely forms are not shown)
+  Pergamum, Pergami  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    Pergama (citadel of Troy); Troy;
+    pergam-a       NOM.PL
+    pergam-a       VOC.PL
+    pergam-a       ACC.PL
 
 victis
+  Victa, Victae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    goddess of food;
+    vict-is        LOC.PL
+    vict-īs        DAT.PL
+    vict-īs        ABL.PL
   vinco, vincere, vici, victus  verb, 3rd conjugation  [XXXAA]
     conquer, defeat, excel; outlast; succeed; master; (intr.) prevail, win;
     vict-īs        PRF.PASS.PTCP.DAT.PL
@@ -24857,7 +24855,9 @@ magnam
     magn-am        ACC.SG.F
 
 gryneus
-  (unknown)
+  Gryneus, Grynea, Gryneum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Grynean (of Apollo);
+    grynē-us       NOM.SG.M
 
 apollo
   Apollo, Apollinis  noun, 3rd declension, masculine  [XEXBO]
@@ -24871,15 +24871,19 @@ italiam
     Ītali-am       ACC.SG
 
 lyciae
-  -i  suffix
-    art or craft done by the person (abstract noun of person); office of, -ship;
-  lycos, lyci  noun, 2nd declension, masculine  [XXXES]  uncommon
-    a kind of spider;
+  Lycia, Lyciae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Lycia;
     lyci-ae        GEN.SG
     lyci-ae        LOC.SG
     lyci-ae        DAT.SG
     lyci-ae        NOM.PL
     lyci-ae        VOC.PL
+  Lycius, Lycia, Lycium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Lycian;
+    lyci-ae        GEN.SG.F
+    lyci-ae        DAT.SG.F
+    lyci-ae        NOM.PL.F
+    lyci-ae        VOC.PL.F
 
 iussere
   jubeo, jubere, jussi, jussus  verb, 2nd conjugation, transitive  [XXXAO]
@@ -25096,20 +25100,31 @@ tandem
     tandem         POS
 
 ausonia
-  (unknown)
-  (near spellings: absonia)
-
-absonia
-  absonia, absoniae  noun, 1st declension, feminine  [FDXEZ]  medieval  uncommon
-    harshness; discordance;
-    absoni-a       NOM.SG
-    absoni-a       VOC.SG
-    absoni-ā       ABL.SG
+  Ausonia, Ausoniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Ausonia, Italy;
+    ausoni-a       NOM.SG
+    ausoni-a       VOC.SG
+    ausoni-ā       ABL.SG
+  Ausonius, Ausonia, Ausonium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Ausonian, Italian;
+    ausoni-a       NOM.SG.F
+    ausoni-a       VOC.SG.F
+    ausoni-ā       ABL.SG.F
+    ausoni-a       NOM.PL.N
+    ausoni-a       VOC.PL.N
+    ausoni-a       ACC.PL.N
 
 teucros
   Teucer, Teucri  noun, 2nd declension, masculine  [XWGES]  uncommon
     Trojan; originally brother of Ajax;
     tēucr-ōs       ACC.PL
+  Teucrus, Teucri  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans;
+    teucr-ōs       ACC.PL
+  Teucrus, Teucra, Teucrum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Trojan;
+    teucr-ōs       ACC.PL.M
+  (less likely forms are not shown)
 
 considere
   consido, considere, consedi, consessus  verb, 3rd conjugation, intransitive  [XXXAO]
@@ -25230,17 +25245,21 @@ patris
   pater, patris  noun, 3rd declension, masculine  [XXXAA]
     ancestors (pl.); senators (pl.);
     patr-is        GEN.SG
+  Patra, Patrae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Patrae (Patras);
+    patr-is        LOC.PL
+    patr-īs        DAT.PL
+    patr-īs        ABL.PL
   (less likely forms are not shown)
 
 anchisae
-  spelling: Word mod h/
-    An internal 'h' might be rendered by ''
-  ancisus, ancisa, ancisum  adjective, 1st/2nd declension  [XXXFO]  very rare
-    cut up, chopped up; cut around/away;
-    ancīs-ae       GEN.SG.F
-    ancīs-ae       DAT.SG.F
-    ancīs-ae       NOM.PL.F
-    ancīs-ae       VOC.PL.F
+  Anchises, Anchisae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    Anchises (father of Aeneas);
+    anchīs-ae      GEN.SG
+    anchīs-ae      LOC.SG
+    anchīs-ae      DAT.SG
+    anchīs-ae      NOM.PL
+    anchīs-ae      VOC.PL
 
 quotiens
   quotiens  adverb  [XXXAX]
@@ -25388,13 +25407,9 @@ puer
     puer           VOC.SG
 
 ascanius
-  (unknown)
-  (near spellings: arcanius)
-
-arcanius
-  arcano, arcanius, arcanissime  adverb  [XXXEO]  uncommon
-    secretly, in confidence; in one's inner thoughts, privately;
-    arcanius       CMPR
+  Ascanius, Ascania, Ascanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Ascanian (of the lake of Nicaea);
+    ascani-us      NOM.SG.M
 
 capitisque
   -que  enclitic
@@ -25527,6 +25542,11 @@ fatalibus
     fatal-ibus     ABL.PL
 
 arvis
+  Arva, Arvae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    town of Hyrcania;
+    arv-is         LOC.PL
+    arv-īs         DAT.PL
+    arv-īs         ABL.PL
   arva, arvae  noun, 1st declension, feminine  [BAXFO]  early  very rare
     arable land, plowed field; soil, region; countryside; dry land; lowlands, plain;
     arv-is         LOC.PL
@@ -25886,6 +25906,9 @@ sequor
   sequor, sequi, secutus sum  verb, 3rd conjugation, deponent  [XXXAO]
     support/back/side with; obey, observe; pursue/chase; range/spread over; attain;
     sequ-or        1SG.PRS.IND
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-or        1SG.PRS.PASS.IND
 
 talia
   talis, talis, tale  adjective, 3rd declension  [XXXAX]
@@ -25960,6 +25983,9 @@ tuetur
   tuor, tuari, -  verb, 1st conjugation, deponent  [XXXCS]
     see, look at; protect, watch; uphold; (form of tueor);
     tu-ētur        3SG.PRS.SBJV
+  tueo, tuere, -, -  verb, 2nd conjugation  [XXXEm]  uncommon
+    watch, defend, protect;
+    tu-ētur        3SG.PRS.PASS.IND
 
 huc
   huc  adverb  [XXXAX]
@@ -26163,7 +26189,12 @@ nec
     nor, and..not; not..either, not even;
 
 dardanus
-  (unknown)
+  Dardanus, Dardani  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans; the Romans;
+    dardan-us      NOM.SG
+  Dardanus, Dardana, Dardanum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Dardanian, Trojan;
+    dardan-us      NOM.SG.M
 
 auctor
   aucto, auctare, auctavi, auctatus  verb, 1st conjugation, transitive  [XXXEO]  uncommon
@@ -26203,6 +26234,10 @@ duris
     hardy; painful, difficult;
     dūr-īs         DAT.PL
     dūr-īs         ABL.PL
+  Duris, Duridis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    Duris (historian of Samos);
+    dūris          NOM.SG
+    dūris          VOC.SG
 
 genuit
   gigno, gignere, genui, genitus  verb, 3rd conjugation  [XXXAA]
@@ -26240,10 +26275,18 @@ horrens
     horr-ēns       PRS.ACT.PTCP.ACC.SG.N
 
 caucasus
-  (unknown)
+  Caucasus, Caucasi  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Caucasus;
+    caūcas-us      NOM.SG
 
 hyrcanaeque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  spelling: Word mod ae/e
+    An internal 'ae' might be rendered by 'e'
+  Hyrcanus, Hyrcani  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Hyrcanians;
+    hyrcān-e       VOC.SG
 
 admorunt
   spelling: Slur ad/a~
@@ -26662,13 +26705,9 @@ nec
     nor, and..not; not..either, not even;
 
 saturnius
-  (unknown)
-  (near spellings: saturninus)
-
-saturninus
-  Saturninus, Saturnini  noun, 2nd declension, masculine  [XXXCZ]
-    Saturninus; (revolutionary tribune);
-    sāturnīn-us    NOM.SG
+  Saturnius, Saturnia, Saturnium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of Saturn; Saturnian;
+    sāturni-us     NOM.SG.M
 
 haec
   hic, haec, hoc  pronoun, adjectival  [XXXAX]
@@ -26972,6 +27011,15 @@ furiis
     furi-is        LOC.PL
     furi-īs        DAT.PL
     furi-īs        ABL.PL
+  Furia, Furiae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    the Furies;
+    furi-is        LOC.PL
+    furi-īs        DAT.PL
+    furi-īs        ABL.PL
+  Furius, Furia, Furium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of the Furii;
+    fūri-īs        DAT.PL
+    fūri-īs        ABL.PL
 
 incensa
   incendo, incendere, incendi, incensus  verb, 3rd conjugation, transitive  [XXXAO]
@@ -27057,15 +27105,19 @@ nunc
     nunc           POS
 
 lyciae
-  -i  suffix
-    art or craft done by the person (abstract noun of person); office of, -ship;
-  lycos, lyci  noun, 2nd declension, masculine  [XXXES]  uncommon
-    a kind of spider;
+  Lycia, Lyciae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Lycia;
     lyci-ae        GEN.SG
     lyci-ae        LOC.SG
     lyci-ae        DAT.SG
     lyci-ae        NOM.PL
     lyci-ae        VOC.PL
+  Lycius, Lycia, Lycium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Lycian;
+    lyci-ae        GEN.SG.F
+    lyci-ae        DAT.SG.F
+    lyci-ae        NOM.PL.F
+    lyci-ae        VOC.PL.F
 
 sortes
   sors, sortis  noun, 3rd declension, feminine  [XXXAA]
@@ -27425,6 +27477,11 @@ dicta
   dicto, dictare, dictavi, dictatus  verb, 1st conjugation, transitive  [XXXBO]
     say/declare/assert repeatedly/habitually/often/frequently; reiterate; recite;
     dict-ā         2SG.PRS.ACT.IMP
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
+    dict-a         NOM.SG
+    dict-a         VOC.SG
+    dict-ā         ABL.SG
 
 refello
   refello, refellere, refelli, -  verb, 3rd conjugation  [XXXDX]  lesser
@@ -27452,6 +27509,11 @@ sequere
     support/back/side with; obey, observe; pursue/chase; range/spread over; attain;
     sequ-ere       2SG.PRS.IMP
     sequ-ēre       2SG.FUT.IND
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-ere       PRS.ACT.INF
+    sequ-ere       2SG.PRS.PASS.IMP
+    sequ-ēre       2SG.FUT.PASS.IND
   (less likely forms are not shown)
 
 italiam
@@ -27682,6 +27744,10 @@ sequar
     support/back/side with; obey, observe; pursue/chase; range/spread over; attain;
     sequ-ar        1SG.PRS.SBJV
     sequ-ar        1SG.FUT.IND
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-ar        1SG.PRS.PASS.SBJV
+    sequ-ar        1SG.FUT.PASS.IND
 
 atris
   ater, atra -um, atrior -or -us, aterrimus -a -um  adjective, 1st/2nd declension  [XXXAO]
@@ -27995,6 +28061,11 @@ dictis
     dict-is        LOC.PL
     dict-īs        DAT.PL
     dict-īs        ABL.PL
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
+    dict-is        LOC.PL
+    dict-īs        DAT.PL
+    dict-īs        ABL.PL
 
 sermonem
   sermo, sermonis  noun, 3rd declension, masculine  [XXXDA]  lesser
@@ -28040,6 +28111,9 @@ fugit
     fūg-it         3SG.PRF.ACT.IND
 
 seque
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-e         2SG.PRS.ACT.IMP
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
   pronoun, reflexive  [XXXAX]
@@ -28243,6 +28317,7 @@ membra
     membr-a        NOM.PL
     membr-a        VOC.PL
     membr-a        ACC.PL
+  (less likely forms are not shown)
 
 marmoreo
   marmoreus, marmorea, marmoreum  adjective, 1st/2nd declension  [XXXDX]  lesser
@@ -28408,6 +28483,11 @@ dictis
     dict-īs        PRF.PASS.PTCP.ABL.PL
   dictum, dicti  noun, 2nd declension, neuter  [XXXCO]
     words/utterance/remark; one's word/promise; saying/maxim; bon mot, witticism;
+    dict-is        LOC.PL
+    dict-īs        DAT.PL
+    dict-īs        ABL.PL
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
     dict-is        LOC.PL
     dict-īs        DAT.PL
     dict-īs        ABL.PL
@@ -28635,6 +28715,18 @@ teucri
     tēucr-ī        LOC.SG
     tēucr-ī        NOM.PL
     tēucr-ī        VOC.PL
+  Teucrus, Teucri  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans;
+    teucr-ī        GEN.SG
+    teucr-ī        LOC.SG
+    teucr-ī        NOM.PL
+    teucr-ī        VOC.PL
+  Teucrus, Teucra, Teucrum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Trojan;
+    teucr-ī        GEN.SG.M
+    teucr-ī        GEN.SG.N
+    teucr-ī        NOM.PL.M
+    teucr-ī        VOC.PL.M
 
 incumbunt
   incumbo, incumbere, incumbui, incumbitus  verb, 3rd conjugation  [XXXBX]
@@ -28872,6 +28964,9 @@ cernas
   cerno, cernere, crevi, cretus  verb, 3rd conjugation, transitive  [XXXAO]
     sift, separate, distinguish, discern, resolve, determine; see; examine; decide;
     cern-ās        2SG.PRS.ACT.SBJV
+  Cerna, Cernae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Cerne (island off Africa);
+    cern-ās        ACC.PL
 
 totaque
   -que  enclitic
@@ -29253,6 +29348,9 @@ semita
     sēmit-a        NOM.SG
     sēmit-a        VOC.SG
     sēmit-ā        ABL.SG
+  semito, semitare, semitavi, semitatus  verb, 1st conjugation, transitive  [XXXEm]  uncommon
+    divide by paths;
+    sēmit-ā        2SG.PRS.ACT.IMP
 
 fervet
   ferveo, fervere, ferbui, -  verb, 2nd conjugation, intransitive  [XXXAO]
@@ -29854,6 +29952,11 @@ anna
   anno, annare, annavi, annatus  verb, 1st conjugation, intransitive  [XXXCO]
     swim to/towards, approach by swimming; sail to/towards; brought by sea (goods);
     ann-ā          2SG.PRS.ACT.IMP
+  Anna, Annae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Anna (sister of Dido);
+    ann-a          NOM.SG
+    ann-a          VOC.SG
+    ann-ā          ABL.SG
 
 vides
   video, videre, vidi, visus  verb, 2nd conjugation  [XXXAX]
@@ -30142,6 +30245,11 @@ anna
   anno, annare, annavi, annatus  verb, 1st conjugation, intransitive  [XXXCO]
     swim to/towards, approach by swimming; sail to/towards; brought by sea (goods);
     ann-ā          2SG.PRS.ACT.IMP
+  Anna, Annae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Anna (sister of Dido);
+    ann-a          NOM.SG
+    ann-a          VOC.SG
+    ann-ā          ABL.SG
 
 mihi
   pronoun, personal  [XXXAX]
@@ -30458,21 +30566,20 @@ cum
     cum            ABL
 
 danais
-  spelling: Two words
-    May be 2 words combined (da+nais) If not obvious, probably incorrect
-  do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
-    give; dedicate; sell; pay; grant/bestow/impart/offer/lend; devote; allow; make;
-    d-ā            2SG.PRS.ACT.IMP
-  do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
-    surrender/give over; send to die; ascribe/attribute; give birth/produce; utter;
-    d-ā            2SG.PRS.ACT.IMP
-  do, dare, dedi, datus  verb, 1st conjugation, transitive  [FXXEM]  medieval  uncommon
-    give in marriage;
-    d-ā            2SG.PRS.ACT.IMP
-  Nais, Naidos/is  noun, 3rd declension, feminine  [XXXDX]  lesser
-    Naiad; water nymph; nymph;
-    nais           NOM.SG
-    nais           VOC.SG
+  Danae, Danaes  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Danae (mother of Perseus);
+    dana-is        LOC.PL
+    dana-īs        DAT.PL
+    dana-īs        ABL.PL
+  Danaus, Danai  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Greeks;
+    dana-is        LOC.PL
+    dana-īs        DAT.PL
+    dana-īs        ABL.PL
+  Danaus, Danaa, Danaum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Greek;
+    dana-īs        DAT.PL
+    dana-īs        ABL.PL
 
 troianam
   Trojanus, Trojana, Trojanum  adjective, 1st/2nd declension  [XXXFS]  very rare
@@ -30496,30 +30603,11 @@ gentem
     gent-em        ACC.SG
 
 aulide
-  (unknown)
-  (near spellings: ualide, auide, adlide)
-
-ualide
-  validus, valida, validum  adjective, 1st/2nd declension  [XXXAX]
-    strong, powerful; valid;
-    ualid-e        VOC.SG.M
-  -e  suffix: adverb from adjective
-  validus, valida, validum  adjective, 1st/2nd declension  [XXXAX]
-    strong, powerful; valid;
-    ualid-e        adverb, POS
-
-auide
-  avidus, avida -um, avidior -or -us, avidissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    greedy, eager, ardent, desirous of; avaricious, insatiable; lustful, passionate;
-    auid-e         VOC.SG.M
-  avide, avidius, avidissime  adverb  [XXXCO]
-    greedily, hungrily, avariciously; eagerly, impatiently;
-    auidē          POS
-
-adlide
-  adlido, adlidere, adlisi, adlisus  verb, 3rd conjugation, transitive  [XXXCO]
-    dash/crush against, bruise; ruin, damage; shipwreck; (PASS) suffer damage;
-    ādlīd-e        2SG.PRS.ACT.IMP
+  Aulis, Aulidis  noun, 3rd declension, feminine  [XXXEm]  uncommon
+    Aulis (port of Boeotia);
+    aulid-e        LOC.SG
+    aulid-e        DAT.SG  (early)
+    aulid-e        ABL.SG
 
 iuravi
   juro, jurare, juravi, juratus  verb, 1st conjugation  [XXXAX]
@@ -30545,17 +30633,11 @@ ad
     ad             ACC
 
 pergama
-  spelling: Two words
-    May be 2 words combined (perg+ama) If not obvious, probably incorrect
-  ama, amae  noun, 1st declension, feminine  [XXXDO]  lesser
-    bucket; water bucket; (esp. fireman's bucket);
-    am-a           NOM.SG
-    am-a           VOC.SG
-    am-ā           ABL.SG
-  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
-    love, like; fall in love with; be fond of; have a tendency to;
-    am-ā           2SG.PRS.ACT.IMP
-  (less likely forms are not shown)
+  Pergamum, Pergami  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    Pergama (citadel of Troy); Troy;
+    pergam-a       NOM.PL
+    pergam-a       VOC.PL
+    pergam-a       ACC.PL
 
 misi
   mitto, mittere, misi, missus  verb, 3rd conjugation  [XXXAA]
@@ -30579,17 +30661,21 @@ patris
   pater, patris  noun, 3rd declension, masculine  [XXXAA]
     ancestors (pl.); senators (pl.);
     patr-is        GEN.SG
+  Patra, Patrae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Patrae (Patras);
+    patr-is        LOC.PL
+    patr-īs        DAT.PL
+    patr-īs        ABL.PL
   (less likely forms are not shown)
 
 anchisae
-  spelling: Word mod h/
-    An internal 'h' might be rendered by ''
-  ancisus, ancisa, ancisum  adjective, 1st/2nd declension  [XXXFO]  very rare
-    cut up, chopped up; cut around/away;
-    ancīs-ae       GEN.SG.F
-    ancīs-ae       DAT.SG.F
-    ancīs-ae       NOM.PL.F
-    ancīs-ae       VOC.PL.F
+  Anchises, Anchisae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    Anchises (father of Aeneas);
+    anchīs-ae      GEN.SG
+    anchīs-ae      LOC.SG
+    anchīs-ae      DAT.SG
+    anchīs-ae      NOM.PL
+    anchīs-ae      VOC.PL
 
 cineres
   ciner, cineris  noun, 3rd declension, masculine/feminine  [XXXFS]  very rare
@@ -30705,6 +30791,11 @@ dicta
   dicto, dictare, dictavi, dictatus  verb, 1st conjugation, transitive  [XXXBO]
     say/declare/assert repeatedly/habitually/often/frequently; reiterate; recite;
     dict-ā         2SG.PRS.ACT.IMP
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
+    dict-a         NOM.SG
+    dict-a         VOC.SG
+    dict-ā         ABL.SG
 
 neget
   nego, negare, negavi, negatus  verb, 1st conjugation  [XXXAX]
@@ -30926,6 +31017,11 @@ ferentis
   fero, ferre, tuli, latus  verb, 3rd conjugation  [XXXAA]
     endure; propose (law); declare;
     fer-entis      PRS.ACT.PTCP.GEN.SG
+  Ferentum, Ferenti  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    Forentum (town of Apulia);
+    ferēnt-is      LOC.PL
+    ferēnt-īs      DAT.PL
+    ferēnt-īs      ABL.PL
 
 non
   Non., abb.  noun, abbreviation, masculine  [XXXDX]  lesser
@@ -31192,6 +31288,9 @@ me
   (less likely forms are not shown)
 
 victam
+  Victa, Victae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    goddess of food;
+    vict-am        ACC.SG
   vinco, vincere, vici, victus  verb, 3rd conjugation  [XXXAA]
     conquer, defeat, excel; outlast; succeed; master; (intr.) prevail, win;
     vict-am        PRF.PASS.PTCP.ACC.SG.F
@@ -32370,6 +32469,9 @@ tueri
   tueor, tueri, tutus sum  verb, 2nd conjugation, deponent  [XXXDA]  lesser
     see, look at; protect, watch; uphold; gaze at; defend; look after, keep;
     tu-ērī         PRS.INF
+  tueo, tuere, -, -  verb, 2nd conjugation  [XXXEm]  uncommon
+    watch, defend, protect;
+    tu-ērī         PRS.PASS.INF
 
 quo
   pronoun, relative  [XXXAO]
@@ -33609,35 +33711,12 @@ et
     and, and even; also, even;  (et ... et = both ... and);
 
 tyrios
-  (unknown)
-  (near spellings: syrios, tyris, tyros)
-
-syrios
-  Syrius, Syrii  noun, 2nd declension, masculine  [XXQCO]
-    Syrian, of Syria; (name of a variety of dark-skinned pear);
-    syri-ōs        ACC.PL
-  (less likely forms are not shown)
-
-tyris
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
-
-tyros
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-ōs         ACC.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-os         NOM.SG
-    tyr-ōs         ACC.PL
+  Tyrius, Tyrii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Tyrians; Carthaginians;
+    tyri-ōs        ACC.PL
+  Tyrius, Tyria, Tyrium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Tyrian; Phoenician; purple;
+    tyri-ōs        ACC.PL.M
   (less likely forms are not shown)
 
 deserta
@@ -33697,6 +33776,12 @@ terra
     terr-ā         ABL.SG
 
 eumenidum
+  Eumenid, Eumenidis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    the Eumenides, the Furies;
+    eumenid-um     GEN.PL
+  Eumenis, Eumenidis  noun, 3rd declension, feminine  [XXXEm]  uncommon
+    one of the Furies;
+    eumenid-um     GEN.PL
   Euminis, Eumenidos/is  noun, 3rd declension, feminine  [XEXEO]  uncommon
     Fury/Eumenide; (usu. pl.); (euphemistically) the gracious/benevolent ones;
     eumenid-um     GEN.PL
@@ -33743,13 +33828,9 @@ agmina
     agmin-a        ACC.PL
 
 pentheus
-  (unknown)
-  (near spellings: entheus)
-
-entheus
-  entheus, enthea, entheum  adjective, 1st/2nd declension  [DXXES]  late  uncommon
-    divinely inspired; inspiring;
-    enthe-us       NOM.SG.M
+  Pentheus, Penthea, Pentheum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of Pentheus;
+    penthe-us      NOM.SG.M
 
 et
   et  conjunction  [XXXAX]
@@ -33811,34 +33892,21 @@ ostendere
   (less likely forms are not shown)
 
 thebas
-  (unknown)
-  (near spellings: tuebas, thecas, theas)
-
-tuebas
-  (unknown)
-
-thecas
-  theca, thecae  noun, 1st declension, feminine  [XXXCO]
-    case, box; that which encloses, envelope/cover/hull/sheath (L+S); vagina;
-    thēc-ās        ACC.PL
-  theca, thecae  noun, 1st declension, feminine  [GXXEK]  neo-Latin  uncommon
-    suitcase;
-    thēc-ās        ACC.PL
-  theca, thecae  noun, 1st declension, feminine  [FXXEM]  medieval  uncommon
-    money-box;
-    thēc-ās        ACC.PL
-
-theas
-  thea, theae  noun, 1st declension, feminine  [GXXEK]  neo-Latin  uncommon
-    tea;
-    the-ās         ACC.PL
+  Theba, Thebae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Thebe (town of Cilicia);
+    thēb-ās        ACC.PL
+  Thebe, Thebes  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Thebe (nymph); Thebes;
+    thēb-ās        ACC.PL
 
 aut
   aut  conjunction  [XXXAO]
     or, or rather/else; either...or (aut...aut) (emphasizing one);
 
 agamemnonius
-  (unknown)
+  Agamemnonius, Agamemnonia, Agamemnonium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of Agamemnon;
+    agamemnoni-us  NOM.SG.M
 
 scaenis
   scaena, scaenae  noun, 1st declension, feminine  [XXXDX]  lesser
@@ -34025,6 +34093,12 @@ furias
   furio, furiare, furiavi, furiatus  verb, 1st conjugation  [XXXDX]  lesser
     madden, enrage;
     furi-ās        2SG.PRS.ACT.IND
+  Furia, Furiae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    the Furies;
+    furi-ās        ACC.PL
+  Furius, Furia, Furium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of the Furii;
+    fūri-ās        ACC.PL.F
 
 evicta
   evinco, evincere, evici, evictus  verb, 3rd conjugation  [XXXDX]  lesser
@@ -34183,6 +34257,11 @@ dictis
     dict-īs        PRF.PASS.PTCP.ABL.PL
   dictum, dicti  noun, 2nd declension, neuter  [XXXCO]
     words/utterance/remark; one's word/promise; saying/maxim; bon mot, witticism;
+    dict-is        LOC.PL
+    dict-īs        DAT.PL
+    dict-īs        ABL.PL
+  Dicta, Dictae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Mount Dicte (in Crete);
     dict-is        LOC.PL
     dict-īs        DAT.PL
     dict-īs        ABL.PL
@@ -34604,7 +34683,24 @@ mihi
     m-ihi          DAT.SG.C
 
 massylae
-  (unknown)
+  spelling: Two words
+    May be 2 words combined (mas+sylae) If not obvious, probably incorrect
+  mas, maris  noun, 3rd declension, masculine  [XXXCO]
+    male (human/animal/plant); man;
+    mās            NOM.SG
+    mās            VOC.SG
+  mas, (gen.), maris  adjective, 3rd declension  [XXXCO]
+    male; masculine, of the male sex; manly, virile, brave, noble; G:masculine;
+    mās            NOM.SG
+    mās            VOC.SG
+    mās            ACC.SG.N
+  Syla, Sylae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    the Sila (mountain of Bruttium);
+    syl-ae         GEN.SG
+    syl-ae         LOC.SG
+    syl-ae         DAT.SG
+    syl-ae         NOM.PL
+    syl-ae         VOC.PL
 
 gentis
   gens, gentis  noun, 3rd declension, feminine  [XXXAX]
@@ -34638,16 +34734,12 @@ sacerdos
     sacerdōs       VOC.SG
 
 hesperidum
-  spelling: Two words
-    May be 2 words combined (hesperi+dum) If not obvious, probably incorrect
-  dum  conjunction  [XXXAX]
-    while, as long as, until; provided that;
-  Hesperus, Hesperi  noun, 2nd declension, masculine  [XXXDX]  lesser
-    evening-star;
-    hesper-ī       GEN.SG
-    hesper-ī       LOC.SG
-    hesper-ī       NOM.PL
-    hesper-ī       VOC.PL
+  Hesperid, Hesperidis  noun, 3rd declension, feminine  [XXXEm]  uncommon
+    the Hesperides;
+    hesperid-um    GEN.PL
+  Hesperis, (gen.), Hesperidis  adjective, 3rd declension  [XXXEm]  uncommon
+    Hesperian; dame's violet;
+    hesperid-um    GEN.PL
 
 templi
   templum, templi  noun, 2nd declension, neuter  [XXXAA]
@@ -35610,6 +35702,12 @@ quo
     whither, in what place, where;
 
 perii
+  Perius, Peri(i)  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Perius (son of Aegyptus);
+    peri-ī         GEN.SG  (late)
+    peri-ī         LOC.SG
+    peri-ī         NOM.PL
+    peri-ī         VOC.PL
   syncope: Syncope  ii => ivi
     Syncopated perfect ivi can drop 'v' without contracting vowel
   pereo, perire, perivi(ii), peritus  verb, irregular  [XXXAX]
@@ -35826,6 +35924,11 @@ anna
   anno, annare, annavi, annatus  verb, 1st conjugation, intransitive  [XXXCO]
     swim to/towards, approach by swimming; sail to/towards; brought by sea (goods);
     ann-ā          2SG.PRS.ACT.IMP
+  Anna, Annae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Anna (sister of Dido);
+    ann-a          NOM.SG
+    ann-a          VOC.SG
+    ann-ā          ABL.SG
 
 novis
   novus, nova -um, novior -or -us, novissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
@@ -36521,20 +36624,10 @@ deos
 erebumque
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
-  spelling: Two words
-    May be 2 words combined (ere+bum) If not obvious, probably incorrect
-  bus, bus  noun, 4th declension, masculine/feminine  [BAXDO]  early  lesser
-    ox, bull; cow; cattle (pl.); (odd form mostly in Varro);
-    b-um           ACC.SG
-    b-um           GEN.PL  (classical, uncommon)
-  erus, eri  noun, 2nd declension, masculine  [XXXDX]  lesser
-    master, owner;
-    er-e           VOC.SG
-  eris, eris  noun, 3rd declension, masculine  [XAXFO]  very rare
-    hedgehog;
-    er-e           LOC.SG
-    er-e           DAT.SG  (early)
-    er-e           ABL.SG
+  Erebus, Erebi  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Erebus; the underworld;
+    ereb-um        ACC.SG
+    ereb-um        GEN.PL  (uncommon)
 
 chaosque
   -que  enclitic
@@ -36552,7 +36645,9 @@ tergeminamque
     tergemin-am    ACC.SG.F
 
 hecaten
-  (unknown)
+  Hecate, Hecates  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Hecate;
+    hecat-ēn       ACC.SG
 
 tria
   tres -es -ia, tertius -a -um, terni -ae -a, ter  numeral, 3  [XXXAX]
@@ -38224,6 +38319,9 @@ experiar
 nomadumque
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Nomad, Nomadis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    the Nomads;
+    nomad-um       GEN.PL
   nomas, nomados/is  noun, 3rd declension, masculine  [XXXEO]  uncommon
     nomad, esp. a Numidian; nomads (pl.), certain wandering pastoral tribes;
     nomad-um       GEN.PL
@@ -38237,6 +38335,9 @@ petam
     seek, strive for, solicit;
     pet-am         1SG.PRS.ACT.SBJV
     pet-am         1SG.FUT.ACT.IND
+  Peta, Petae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    goddess of petitions;
+    pet-am         ACC.SG
 
 conubia
   conubium, conubi(i)  noun, 2nd declension, neuter  [XXXBO]
@@ -38372,6 +38473,16 @@ teucrum
     Trojan; originally brother of Ajax;
     tēucr-um       ACC.SG
     tēucr-um       GEN.PL  (uncommon)
+  Teucrus, Teucri  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans;
+    teucr-um       ACC.SG
+    teucr-um       GEN.PL  (uncommon)
+  Teucrus, Teucra, Teucrum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Trojan;
+    teucr-um       NOM.SG.N
+    teucr-um       VOC.SG.N
+    teucr-um       ACC.SG.M
+    teucr-um       ACC.SG.N
 
 iussa
   jubeo, jubere, jussi, jussus  verb, 2nd conjugation, transitive  [XXXAO]
@@ -38397,6 +38508,10 @@ sequar
     support/back/side with; obey, observe; pursue/chase; range/spread over; attain;
     sequ-ar        1SG.PRS.SBJV
     sequ-ar        1SG.FUT.IND
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-ar        1SG.PRS.PASS.SBJV
+    sequ-ar        1SG.FUT.PASS.IND
 
 quiane
   -ne  enclitic
@@ -38708,6 +38823,21 @@ accipiet
     accipi-et      3SG.FUT.ACT.IND
 
 nescis
+  Nesca, Nescae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    town of Arabia;
+    nesc-is        LOC.PL
+    nesc-īs        DAT.PL
+    nesc-īs        ABL.PL
+  Nescas, Nescae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    Nescas (painter);
+    nesc-is        LOC.PL
+    nesc-īs        DAT.PL
+    nesc-īs        ABL.PL
+  Nescus, Nesci  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    a people of India;
+    nesc-is        LOC.PL
+    nesc-īs        DAT.PL
+    nesc-īs        ABL.PL
   nescio, nescire, nescivi, nescitus  verb, 4th conjugation  [XXXAO]
     not know (how); be ignorant/unfamiliar/unaware/unacquainted/unable/unwilling;
     nesc-īs        2SG.PRS.ACT.IND
@@ -38755,7 +38885,12 @@ necdum
     and/but not yet;
 
 laomedonteae
-  (unknown)
+  Laomedonteus, Laomedontea, Laomedonteum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    of Laomedon; Trojan;
+    lāomedontē-ae  GEN.SG.F
+    lāomedontē-ae  DAT.SG.F
+    lāomedontē-ae  NOM.PL.F
+    lāomedontē-ae  VOC.PL.F
 
 sentis
   sentus, senta, sentum  adjective, 1st/2nd declension  [XXXDX]  lesser
@@ -38876,16 +39011,13 @@ an
     whether; (utrum ... an = whether ... or); or; either;
 
 tyriis
-  -i  suffix
-    art or craft done by the person (abstract noun of person); office of, -ship;
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
+  Tyrius, Tyrii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Tyrians; Carthaginians;
     tyri-is        LOC.PL
     tyri-īs        DAT.PL
     tyri-īs        ABL.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyri-is        LOC.PL
+  Tyrius, Tyria, Tyrium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Tyrian; Phoenician; purple;
     tyri-īs        DAT.PL
     tyri-īs        ABL.PL
 
@@ -38992,13 +39124,19 @@ quos
     qu-os          ACC.PL.M
 
 sidonia
-  spelling: Word mod d/t
-    An internal 'd' might be rendered by 't'
-  sitonia, sitoniae  noun, 1st declension, feminine  [XXXES]  uncommon
-    the office of a sitona, purveyance;
-    sītōni-a       NOM.SG
-    sītōni-a       VOC.SG
-    sītōni-ā       ABL.SG
+  Sidonia, Sidoniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Sidon and its territory;
+    sīdoni-a       NOM.SG
+    sīdoni-a       VOC.SG
+    sīdoni-ā       ABL.SG
+  Sidonius, Sidonia, Sidonium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Sidonian, Phoenician;
+    sīdoni-a       NOM.SG.F
+    sīdoni-a       VOC.SG.F
+    sīdoni-ā       ABL.SG.F
+    sīdoni-a       NOM.PL.N
+    sīdoni-a       VOC.PL.N
+    sīdoni-a       ACC.PL.N
 
 vix
   vix  adverb  [XXXAO]
@@ -39048,6 +39186,10 @@ pelago
     sea; the open sea, the main; (-us neuter, only sing.);
     pelag-ō        DAT.SG
     pelag-ō        ABL.SG
+  Pelago, Pelagonis  noun, 3rd declension, masculine  [XXXEm]  uncommon
+    Pelago (man's name);
+    pelago         NOM.SG
+    pelago         VOC.SG
 
 et
   et  conjunction  [XXXAX]
@@ -40055,6 +40197,7 @@ membra
     membr-a        NOM.PL
     membr-a        VOC.PL
     membr-a        ACC.PL
+  (less likely forms are not shown)
 
 decora
   decorum, decori  noun, 2nd declension, neuter  [XXXCS]
@@ -40286,6 +40429,11 @@ cernis
   cerno, cernere, crevi, cretus  verb, 3rd conjugation, transitive  [XXXAO]
     sift, separate, distinguish, discern, resolve, determine; see; examine; decide;
     cern-is        2SG.PRS.ACT.IND
+  Cerna, Cernae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Cerne (island off Africa);
+    cern-is        LOC.PL
+    cern-īs        DAT.PL
+    cern-īs        ABL.PL
 
 demens
   demo, demere, dempsi, demptus  verb, 3rd conjugation, transitive  [XXXBO]
@@ -41156,6 +41304,9 @@ citi
     cit-ī          GEN.SG.N
     cit-ī          NOM.PL.M
     cit-ī          VOC.PL.M
+  Citium, Citi(i)  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    Citium (town of Cyprus);
+    citi           GEN.SG  (early)
 
 deus
   deus  noun  [XEXCX]
@@ -41293,6 +41444,9 @@ sequimur
   sequor, sequi, secutus sum  verb, 3rd conjugation, deponent  [XXXAO]
     support/back/side with; obey, observe; pursue/chase; range/spread over; attain;
     sequ-imur      1PL.PRS.IND
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-imur      1PL.PRS.PASS.IND
 
 te
   pronoun, personal  [XXXAX]
@@ -41818,18 +41972,12 @@ terras
     terr-ās        ACC.PL
 
 tithoni
-  (unknown)
-  (near spellings: titioni)
-
-titioni
-  titio, titionis  noun, 3rd declension, masculine  [XXXDO]  lesser
-    firebrand, piece of burning wood;
-    titiōn-i       LOC.SG  (early)
-    titiōn-ī       DAT.SG
-  titio, titionis  noun, 3rd declension, feminine  [XXXDO]  lesser
-    firebrand, piece of burning wood;
-    tition-i       LOC.SG  (early)
-    tition-ī       DAT.SG
+  Tithonus, Tithoni  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Tithonus;
+    tīthōn-ī       GEN.SG
+    tīthōn-ī       LOC.SG
+    tīthōn-ī       NOM.PL
+    tīthōn-ī       VOC.PL
 
 croceum
   croceus, crocea, croceum  adjective, 1st/2nd declension  [XXXCO]
@@ -42304,6 +42452,9 @@ sequentur
   sequor, sequi, secutus sum  verb, 3rd conjugation, deponent  [XXXAO]
     support/back/side with; obey, observe; pursue/chase; range/spread over; attain;
     sequ-entur     3PL.FUT.IND
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-entur     3PL.FUT.PASS.IND
 
 deripientque
   -que  enclitic
@@ -42391,6 +42542,9 @@ citi
     cit-ī          GEN.SG.N
     cit-ī          NOM.PL.M
     cit-ī          VOC.PL.M
+  Citium, Citi(i)  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    Citium (town of Cyprus);
+    citi           GEN.SG  (early)
 
 flammas
   flamma, flammae  noun, 1st declension, feminine  [XXXAX]
@@ -42455,6 +42609,9 @@ loquor
   loquor, loqui, locutus sum  verb, 3rd conjugation, deponent  [XXXAX]
     speak, tell; talk; mention; say, utter; phrase;
     loqu-or        1SG.PRS.IND
+  loquo, loquere, -, -  verb, 3rd conjugation, intransitive  [XXXEm]  uncommon
+    speak;
+    loqu-or        1SG.PRS.PASS.IND
 
 aut
   aut  conjunction  [XXXAO]
@@ -43052,19 +43209,15 @@ ferro
     ferr-ō         ABL.SG
 
 ascanium
-  spelling: Two words
-    May be 2 words combined (as+canium) If not obvious, probably incorrect
-  as, assis  noun, 3rd declension, masculine  [XLXAO]
-    penny, copper coin; a pound; one, whole, unit; circular flap/valve; round slice;
-    ās             NOM.SG
-    ās             VOC.SG
-  canes, canis  noun, 3rd declension, masculine/feminine  [BAXDO]  early  lesser
-    dog; hound; subordinate; "jackal"; dog-star/fish; lowest dice throw; clamp;
-    can-ium        GEN.PL
-  canis, canis  noun, 3rd declension, masculine/feminine  [XAXAO]
-    dog; hound; subordinate; "jackal"; dog-star/fish; lowest dice throw; clamp;
-    can-ium        GEN.PL
-  (less likely forms are not shown)
+  Ascania, Ascaniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Ascania (part of Bithynia);
+    ascani-um      GEN.PL  (uncommon)
+  Ascanius, Ascania, Ascanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Ascanian (of the lake of Nicaea);
+    ascani-um      NOM.SG.N
+    ascani-um      VOC.SG.N
+    ascani-um      ACC.SG.M
+    ascani-um      ACC.SG.N
 
 patriisque
   -que  enclitic
@@ -43642,22 +43795,23 @@ nocturnisque
     nocturn-īs     ABL.PL
 
 hecate
-  spelling: Two words
-    May be 2 words combined (he+cate) If not obvious, probably incorrect
-  catus, cati  noun, 2nd declension, masculine  [EABCM]  later
-    cat; wild cat; kind of trout; siege engine; male cat (L+S);
-    cat-e          VOC.SG
-  catus, cata, catum  adjective, 1st/2nd declension  [XXXCO]
-    knowing, clever, shrewd, wise, prudent, circumspect; shrill/clear (sound);
-    cat-e          VOC.SG.M
-  cate  adverb  [XXXEO]  uncommon
-    well, sagaciously, wisely, intelligently; clearly; slyly, craftily, artfully;
-    catē           POS
-  he, undeclined  noun, undeclined, neuter  [DEQEW]  late  uncommon
-    he; (5th letter of Hebrew alphabet); (transliterate as H);
-    he
+  Hecate, Hecates  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Hecate;
+    hecat-ē        NOM.SG
+    hecat-ē        VOC.SG
+    hecat-ē        ABL.SG
+  Hecates, Hecatis  noun, 3rd declension, feminine  [XXXEm]  uncommon
+    island near Delos;
+    hecat-e        LOC.SG
+    hecat-e        DAT.SG  (early)
+    hecat-e        ABL.SG
 
 triviis
+  Trivia, Triviae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Trivia (Diana of the crossroads);
+    trivi-is       LOC.PL
+    trivi-īs       DAT.PL
+    trivi-īs       ABL.PL
   trivium, trivi(i)  noun, 2nd declension, neuter  [XXXCO]
     place where three roads meet; "the gutter", breeding place of course manners;
     trivi-is       LOC.PL
@@ -44585,42 +44739,18 @@ o
     Oh!;
 
 tyrii
-  (unknown)
-  (near spellings: tyri, syrii, tyris)
-
-tyri
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-ī          GEN.SG
-    tyr-ī          LOC.SG
-    tyr-ī          NOM.PL
-    tyr-ī          VOC.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-ī          GEN.SG
-    tyr-ī          LOC.SG
-    tyr-ī          NOM.PL
-    tyr-ī          VOC.PL
-
-syrii
-  Syrius, Syrii  noun, 2nd declension, masculine  [XXQCO]
-    Syrian, of Syria; (name of a variety of dark-skinned pear);
-    syri-ī         GEN.SG
-    syri-ī         LOC.SG
-    syri-ī         NOM.PL
-    syri-ī         VOC.PL
-
-tyris
-  Tyrus, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
-  Tyros, Tyri  noun, 2nd declension, feminine  [XXQCO]
-    Tyre; (city on the Phoenician coast); (famous for crimson dye Tyrian purple);
-    tyr-is         LOC.PL
-    tyr-īs         DAT.PL
-    tyr-īs         ABL.PL
+  Tyrius, Tyrii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Tyrians; Carthaginians;
+    tyri-ī         GEN.SG
+    tyri-ī         LOC.SG
+    tyri-ī         NOM.PL
+    tyri-ī         VOC.PL
+  Tyrius, Tyria, Tyrium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Tyrian; Phoenician; purple;
+    tyri-ī         GEN.SG.M
+    tyri-ī         GEN.SG.N
+    tyri-ī         NOM.PL.M
+    tyri-ī         VOC.PL.M
 
 stirpem
   stirps, stirpis  noun, 3rd declension, feminine  [GXXEK]  neo-Latin  uncommon
@@ -44715,6 +44845,11 @@ odiis
     odi-īs         ABL.PL
   odium, odi(i)  noun, 2nd declension, neuter  [XXXAO]
     hatred (manifested by/towards group), hostility; object of hate/odium;
+    odi-is         LOC.PL
+    odi-īs         DAT.PL
+    odi-īs         ABL.PL
+  Odia, Odiae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    one of the Sporades;
     odi-is         LOC.PL
     odi-īs         DAT.PL
     odi-īs         ABL.PL
@@ -44958,7 +45093,9 @@ face
   (less likely forms are not shown)
 
 dardanios
-  (unknown)
+  Dardanius, Dardania, Dardanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Dardanian, Trojan;
+    dardani-ōs     ACC.PL.M
 
 ferroque
   -que  enclitic
@@ -44979,6 +45116,9 @@ sequare
   sequor, sequi, secutus sum  verb, 3rd conjugation, deponent  [XXXAO]
     support/back/side with; obey, observe; pursue/chase; range/spread over; attain;
     sequ-āre       2SG.PRS.SBJV
+  sequo, sequere, -, -  verb, 3rd conjugation  [XXXEm]  uncommon
+    follow;
+    sequ-āre       2SG.PRS.PASS.SBJV
 
 colonos
   colonus, coloni  noun, 2nd declension, masculine  [XAXBO]
@@ -45365,7 +45505,7 @@ breviter
 
 barcen
   (unknown)
-  (near spellings: bracen, narcen)
+  (near spellings: bracen, barcan, narcen)
 
 bracen
   braces, bracae  noun, 1st declension, feminine  [XAFNS]  Pliny
@@ -45374,6 +45514,11 @@ bracen
   braces, bracae  noun, 1st declension, feminine  [EXXCM]  later
     malt;
     brac-ēn        ACC.SG
+
+barcan
+  Barcas, Barcae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    Barca (head of Hamilcar's family);
+    barc-ān        ACC.SG
 
 narcen
   narce, narces  noun, 1st declension, feminine  [XXXES]  uncommon
@@ -45490,11 +45635,9 @@ habebat
     hab-ēbat       3SG.IMPF.ACT.IND
 
 annam
-  spelling: Medieval annam -> anam
-    'annam' may be a medieval spelling of anam
-  anus, ana, anum  adjective, 1st/2nd declension  [XXXBO]
-    old (of female persons and things), aged;
-    an-am          ACC.SG.F
+  Anna, Annae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Anna (sister of Dido);
+    ann-am         ACC.SG
 
 cara
   carus, cara -um, carior -or -us, carissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
@@ -45933,7 +46076,18 @@ curis
   (less likely forms are not shown)
 
 dardaniique
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  Dardanium, Dardani(i)  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    town near Troy;
+    dardani-ī      GEN.SG  (late)
+    dardani-ī      LOC.SG
+  Dardanius, Dardania, Dardanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Dardanian, Trojan;
+    dardani-ī      GEN.SG.M
+    dardani-ī      GEN.SG.N
+    dardani-ī      NOM.PL.M
+    dardani-ī      VOC.PL.M
 
 rogum
   rogus, rogi  noun, 2nd declension, masculine  [XXXAX]
@@ -46322,7 +46476,21 @@ recludit
     reclūd-it      3SG.PRS.ACT.IND
 
 dardanium
-  (unknown)
+  Dardania, Dardaniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Dardania; Troy;
+    dardani-um     GEN.PL  (uncommon)
+  Dardanium, Dardani(i)  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    town near Troy;
+    dardani-um     NOM.SG
+    dardani-um     VOC.SG
+    dardani-um     ACC.SG
+    dardani-um     GEN.PL  (uncommon)
+  Dardanius, Dardania, Dardanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Dardanian, Trojan;
+    dardani-um     NOM.SG.N
+    dardani-um     VOC.SG.N
+    dardani-um     ACC.SG.M
+    dardani-um     ACC.SG.N
 
 non
   Non., abb.  noun, abbreviation, masculine  [XXXDX]  lesser
@@ -47131,7 +47299,19 @@ numquam
     numquam        POS
 
 dardaniae
-  (unknown)
+  Dardania, Dardaniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Dardania; Troy;
+    dardani-ae     GEN.SG
+    dardani-ae     LOC.SG
+    dardani-ae     DAT.SG
+    dardani-ae     NOM.PL
+    dardani-ae     VOC.PL
+  Dardanius, Dardania, Dardanium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Dardanian, Trojan;
+    dardani-ae     GEN.SG.F
+    dardani-ae     DAT.SG.F
+    dardani-ae     NOM.PL.F
+    dardani-ae     VOC.PL.F
 
 tetigissent
   tango, tangere, tetigi, tactus  verb, 3rd conjugation  [XXXAX]
@@ -47407,7 +47587,12 @@ alto
     alt-ō          ABL.SG.N
 
 dardanus
-  (unknown)
+  Dardanus, Dardani  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Trojans; the Romans;
+    dardan-us      NOM.SG
+  Dardanus, Dardana, Dardanum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Dardanian, Trojan;
+    dardan-us      NOM.SG.M
 
 et
   et  conjunction  [XXXAX]
@@ -47666,6 +47851,11 @@ atria
     atri-a         NOM.PL
     atri-a         VOC.PL
     atri-a         ACC.PL
+  Atria, Atriae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Atria (Adria, town of Venetia);
+    atri-a         NOM.SG
+    atri-a         VOC.SG
+    atri-ā         ABL.SG
 
 concussam
   concussus, concussa, concussum  adjective, 1st/2nd declension  [DXXFS]  late  very rare
@@ -48798,7 +48988,13 @@ patresque
     pātr-ēs        2SG.PRS.ACT.SBJV
 
 sidonios
-  (unknown)
+  Sidonius, Sidonii  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    the Sidonians;
+    sīdoni-ōs      ACC.PL
+  Sidonius, Sidonia, Sidonium  adjective, 1st/2nd declension  [XXXEm]  uncommon
+    Sidonian, Phoenician;
+    sīdoni-ōs      ACC.PL.M
+  (less likely forms are not shown)
 
 urbemque
   -que  enclitic
@@ -49873,14 +50069,11 @@ flavum
     flāv-um        ACC.SG.N
 
 proserpina
-  spelling: Two words
-    May be 2 words combined (proserp+ina) If not obvious, probably incorrect
-  ina, inae  noun, 1st declension, feminine  [XXXEO]  uncommon
-    fiber; sinew, tendon; strip; papyrus/paper fiber;
-    īn-a           NOM.SG
-    īn-a           VOC.SG
-    īn-ā           ABL.SG
-  (less likely forms are not shown)
+  Proserpina, Proserpinae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Proserpina;
+    proserpin-a    NOM.SG
+    proserpin-a    VOC.SG
+    proserpin-ā    ABL.SG
 
 vertice
   vertex, verticis  noun, 3rd declension, masculine  [XXXDX]  lesser
@@ -50050,6 +50243,11 @@ roscida
 pennis
   penna, pennae  noun, 1st declension, feminine  [XXXBX]
     feather, wing;
+    penn-is        LOC.PL
+    penn-īs        DAT.PL
+    penn-īs        ABL.PL
+  Pennus, Penni  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Pennus (Roman surname);
     penn-is        LOC.PL
     penn-īs        DAT.PL
     penn-īs        ABL.PL

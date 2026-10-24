@@ -924,7 +924,9 @@ HEADERS = {
                   'http://www.perseus.tufts.edu, with funding from The '
                   'National Endowment for the Humanities. Data accessed '
                   'from https://github.com/PerseusDL/lexica/ on '
-                  '2026-10-23.',
+                  '2026-10-23. The entries with source code m come from R. '
+                  'de Miguel and the Marqués de Morante, Nuevo diccionario '
+                  'latino-español etimológico (Leipzig, 1867).',
     'inflections': 'The inflectional endings used by WORDS. The long '
                    'vowels of the endings (long) were taken from the '
                    'models of Collatinus 11, by Yves Ouvrard and Philippe '

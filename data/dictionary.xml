@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- The WORDS dictionary: one <entry> per dictionary entry. See words.xsd. The entries with source code S that were added in October 2026 come from Lewis and Short, A Latin Dictionary (Oxford, 1879): text provided under a CC BY-SA license by Perseus Digital Library, http://www.perseus.tufts.edu, with funding from The National Endowment for the Humanities. Data accessed from https://github.com/PerseusDL/lexica/ on 2026-10-23. -->
+<!-- The WORDS dictionary: one <entry> per dictionary entry. See words.xsd. The entries with source code S that were added in October 2026 come from Lewis and Short, A Latin Dictionary (Oxford, 1879): text provided under a CC BY-SA license by Perseus Digital Library, http://www.perseus.tufts.edu, with funding from The National Endowment for the Humanities. Data accessed from https://github.com/PerseusDL/lexica/ on 2026-10-23. The entries with source code m come from R. de Miguel and the Marqués de Morante, Nuevo diccionario latino-español etimológico (Leipzig, 1867). -->
 <dictionary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="words.xsd">
   <entry id="1" pos="N" decl="9 8" gender="M" kind="N" age="X" area="X" geo="X"

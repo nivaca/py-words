@@ -25,15 +25,20 @@ CREDITS_TEXT = (
     'Spanish);\n'
     'C. T. Lewis and C. Short, A Latin Dictionary (rare words; text of the\n'
     'Perseus Digital Library, CC BY-SA 4.0);\n'
+    'R. de Miguel and the Marqués de Morante, Nuevo diccionario latino-\n'
+    'español etimológico, 1867 (rare words and proper names, Latin-'
+    'Spanish);\n'
     'Collatinus, by Yves Ouvrard and Philippe Verkerk (long vowels).\n'
     'Code © 2026 Nicolas Vaughan (nivaca@fastmail.com), under the GNU '
     'General\n'
     'Public License, version 3 or later (see LICENCE.txt).  The data of '
     'WORDS,\n'
     'by William Whitaker, are free for any use.\n'
-    'The Spanish meanings were translated from the English with the help '
-    'of\n'
-    'Claude (the model Claude Opus 5.5, by Anthropic).')
+    'The Spanish meanings were translated from the English (those of De '
+    'Miguel,\n'
+    'the other way round) with the help of Claude (the model Claude Opus '
+    '5.5,\n'
+    'by Anthropic).')
 CREDITS = CREDITS_TEXT.format(name=NAME, version=VERSION, url=URL)
 
 #  A word about the author

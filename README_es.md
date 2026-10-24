@@ -12,8 +12,10 @@ español, y el resto de los resultados en español, se tradujeron del
 inglés (véase "Los significados en español"); pueden añadirse otros
 idiomas.  El diccionario es el de WORDS, ampliado con la lista de
 latín medieval de R. E. Latham, el vocabulario básico latín-español de
-J. Echave-Sustaeta y las palabras raras de Lewis y Short, y las vocales
-largas vienen de Collatinus y de Lewis y Short (véase "Fuentes").  Es software libre, bajo la Licencia Pública General de GNU
+J. Echave-Sustaeta, las palabras raras de Lewis y Short y las palabras
+raras y los nombres propios del diccionario latino-español de R. de
+Miguel, y las vocales largas vienen de Collatinus, de Lewis y Short y de
+De Miguel (véase "Fuentes").  Es software libre, bajo la Licencia Pública General de GNU
 (véase "Licencia").
 
 Lo escribí yo, Nicolas Vaughan (<nivaca@fastmail.com> y
@@ -434,7 +436,8 @@ Latin Dictionary.  Las letras son:
   Oxford Latin Dictionary; P Souter, Later Latin; Q otros diccionarios; R
   Plater and White, Vulgate grammar; S Lewis and Short; T hallada en una
   traducción; U Du Cange; V Blatt, Saxo; W conjetura de Whitaker; Y
-  provisional; Z enviada por un usuario.
+  provisional; Z enviada por un usuario; y, en minúscula, m De Miguel,
+  Nuevo diccionario latino-español.
 
 Si se conoce la época, también se escribe con palabras tras los códigos, y
 lo mismo la frecuencia cuando es menor o más rara (`arcaico`, `menos
@@ -814,6 +817,32 @@ materia, y la frecuencia E, o F para las palabras atestiguadas una sola
 vez.  1566 de ellas tienen además las vocales largas del lema de Lewis y
 Short (`data/quantities.xml`).  Con ellas el diccionario tiene 47 446
 entradas.
+
+Luego, todavía en octubre de 2026, añadí las palabras y los nombres
+propios del *Nuevo diccionario latino-español etimológico* de Raimundo
+de Miguel y el Marqués de Morante (Leipzig, 1867) que WORDS no tenía, a
+partir de un texto digital del libro.  De sus 60 000 lemas, 44 000 son
+palabras ordinarias, pero solo 2800 de ellas no estaban en nuestro
+diccionario ni las leía ya el programa (participios, compuestos, otras
+grafías); de sus 16 000 nombres propios faltaban 14 600.  Como con Lewis
+y Short, la gramática se tomó de lo que da De Miguel (el genitivo o las
+partes principales, el género), cada entrada nueva se conservó solo si
+el analizador lee su lema como su forma de diccionario, y unas 520 se
+dejaron fuera porque solo añadían una lectura extraña a una palabra
+frecuente (las formas activas de algunos deponentes, como *loquo*, que
+da De Miguel, se conservaron).  Los significados en español se
+abreviaron de los del propio De Miguel, y los ingleses se tradujeron de
+ellos, con ayuda de Claude (el modelo Claude Opus 5.5,
+`claude-opus-5-5`), a petición y bajo la dirección de Nicolas Vaughan;
+entonces se dejaron fuera otras 69 entradas, y 228 nombres que en
+realidad eran palabras comunes que el programa ya leía.  Así se
+añadieron 12 918 entradas, 1813 palabras y 11 105 nombres (los pueblos,
+ciudades, ríos y personas del mundo antiguo, y algunos posteriores), con
+el código de fuente m (en minúscula, porque todas las mayúsculas estaban
+ocupadas), la época F o H cuando De Miguel marca una palabra como
+medieval o moderna, y la frecuencia E.  5966 de ellas tienen además las
+vocales largas del lema de De Miguel (`data/quantities.xml`).  Con ellas
+el diccionario tiene 60 364 entradas.
 
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,
@@ -1406,6 +1435,12 @@ El diccionario de py-words viene de estas obras:
   mención que pide Perseus, que se deja en inglés.)  La licencia de este
   texto, CC BY-SA 4.0, permite usarlo en un programa bajo la GPL versión
   3, como py-words.
+- R. de Miguel y el Marqués de Morante, *Nuevo diccionario
+  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 1813
+  palabras raras y 11 105 nombres propios que WORDS no tenía, en español
+  y en inglés (código de fuente m; véase "Los significados en español"),
+  con las vocales largas de 5966 de sus lemas.  El libro es de dominio
+  público.
 - Collatinus 11, de Yves Ouvrard y Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), bajo la GPL de GNU:
   las vocales largas de las raíces y las desinencias, seis abreviaturas
@@ -1428,8 +1463,9 @@ textos lematizados del LASLA de la Universidad de Lieja (Dominique
 Longrée y Gérald Purnelle).  Muchos errores se corrigieron gracias a
 Pede Certo (Emanuela Colombi y Luigi Tessarolo) y a Jean-Paul Woitrain.
 
-Los significados en español, y las comparaciones con Latham y con
-Echave-Sustaeta, se hicieron con ayuda de Claude, el modelo de lenguaje
+Los significados en español, las comparaciones con Latham y con
+Echave-Sustaeta y los significados ingleses de De Miguel se hicieron con
+ayuda de Claude, el modelo de lenguaje
 de Anthropic (véase "Los significados en español").
 
 Licencia

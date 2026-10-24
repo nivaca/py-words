@@ -9,13 +9,15 @@ version of WORDS maintained in
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words).  Here
 I explain how it was made, in eight stages.
 
-The dictionary has five sources: WORDS, by William Whitaker, for the
+The dictionary has six sources: WORDS, by William Whitaker, for the
 program and almost all of the entries; R. E. Latham's *Revised Medieval
 Latin Word-List from British and Irish Sources*, for medieval senses,
 words and spellings; J. Echave-Sustaeta's *Lengua latina. Vocabulario
 básico*, for senses and words in English and in Spanish; Lewis and
 Short's *A Latin Dictionary*, in the text of the Perseus Digital Library
-(CC BY-SA 4.0), for 3,060 rare words; and Collatinus, by Yves Ouvrard
+(CC BY-SA 4.0), for 3,060 rare words; R. de Miguel and the Marqués de
+Morante's *Nuevo diccionario latino-español etimológico*, for 1,813 rare
+words and 11,105 proper names; and Collatinus, by Yves Ouvrard
 and Philippe Verkerk, for the long vowels (Collatinus, in its turn, made
 its lexicon with the dictionaries of Gaffiot, Jeanneau, Du
 Cange and Lewis and Short, among others, and the README names all the
@@ -236,8 +238,11 @@ meanings.  Last, 3,060 rare words of Lewis and Short's *A Latin
 Dictionary* that WORDS did not have were added from the text of the
 Perseus Digital Library: their grammar came from what Lewis and Short
 gives, each entry was kept only if the analyzer reads its headword back,
-and the meanings were revised and translated into Spanish.  The README
-tells how it was done.
+and the meanings were revised and translated into Spanish.  Then, in
+the same way, 12,918 words and proper names of the Latin-Spanish
+dictionary of R. de Miguel and the Marqués de Morante (1867) were
+added, with their English meanings translated from the Spanish.  The
+README tells how it was done.
 
 6. In the browser
 -----------------

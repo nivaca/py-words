@@ -561,6 +561,14 @@ amatis
     loved, beloved;
     amat-īs        DAT.PL
     amat-īs        ABL.PL
+  Amata, Amatae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    a people of India;
+    amāt-is        LOC.PL
+      at ~ (place where)
+    amāt-īs        DAT.PL
+      for _ (purpose, reference); to ~ (w/adjectives); to ~ (double dative)
+    amāt-īs        ABL.PL
+      from _ (separ); because of ~ (cause); than ~ (compar); of ~ (circumstance)
 
 amant
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
@@ -724,6 +732,7 @@ amandum
       to (/must) be ~ed  FUT PASSIVE PPL, often used as gerund or gerundive (for ~ing/to ~)
     am-andum       FUT.PASS.PTCP.ACC.SG.N
       to (/must) be ~ed  FUT PASSIVE PPL, often used as gerund or gerundive (for ~ing/to ~)
+  (less likely forms are not shown)
 
 amatum
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
@@ -1039,6 +1048,10 @@ loquor
     speak, tell; talk; mention; say, utter; phrase;
     loqu-or        1SG.PRS.IND
       I ~
+  loquo, loquere, -, -  verb, 3rd conjugation, intransitive  [XXXEm]  uncommon
+    speak;
+    loqu-or        1SG.PRS.PASS.IND
+      I am/am being ~ed
 
 eleison
   eleison, undeclined  verb, undeclined  [EEHDE]  later  lesser

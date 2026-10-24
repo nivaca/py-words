@@ -74,7 +74,7 @@ aspis
 
 xyzzyq
 00 (unknown)
-02 near: xylophytum, xylophyti  noun, 2nd declension, neuter  [XXXES]  uncommon
+02 near: xylophyton, xylophyti  noun, 2nd declension, neuter  [XXXEm]  uncommon
 03 comfrey;
 02 near: xyris, xyridis  noun, 3rd declension, feminine  [XXXES]  uncommon
 03 wild iris;
@@ -88,10 +88,10 @@ xyzzyq
 03 gaped;
 02 near: ydimptitas, ydimptitatis  noun, 3rd declension, feminine  [FXXCM]  medieval  common
 03 identity, sameness;
-02 near: zabulus, zabuli  noun, 2nd declension, masculine  [EEXCM]  later  common
-03 devil; The Devil, Satan, Prince of Evil/Darkness; evil one;
-02 near: zaeta, zaetae  noun, 1st declension, feminine  [XXXCS]  common
-03 room (house); cabin (ship); compartment (train); out building, annex; out house;
+02 near: ymnificatus, ymnificata, ymnificatum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+03 celebrated with hymns;
+02 near: zaberna, zabernae  noun, 1st declension, feminine  [XXXEm]  uncommon
+03 bag, saddle-bag;
 
 redeo
 02 redeo, redire, redivi(ii), reditus  verb, irregular  [XXXAX]  very frequent
