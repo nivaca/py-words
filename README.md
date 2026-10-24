@@ -8,9 +8,10 @@ inflectional morphology: it is William Whitaker's WORDS, in Python.  It
 analyses inflected Latin words (and also complete lines of Latin) into
 their forms and dictionary entries, with the meanings in English or in
 Spanish, and it finds the Latin for English or Spanish words.  The
-Spanish meanings, and the rest of the results in Spanish, were
-translated from the English (see "The Spanish meanings"); it is possible
-to add other languages.  The dictionary is the one of WORDS, enlarged with
+Spanish meanings come from De Miguel's and Echave-Sustaeta's
+Latin-Spanish dictionaries wherever they have the word; the others, and
+the rest of the results in Spanish, were translated from the English
+(see "The Spanish meanings").  It is possible to add other languages.  The dictionary is the one of WORDS, enlarged with
 R. E. Latham's medieval word-list, J. Echave-Sustaeta's Latin-Spanish
 basic vocabulary, the rare words of Lewis and Short and the rare words
 and proper names of R. de Miguel's Latin-Spanish dictionary, and the
@@ -828,6 +829,30 @@ marks a word as medieval or modern, and the frequency E.  5,966 of them
 have also the long vowels of the headword of De Miguel
 (`data/quantities.xml`).  With them the dictionary has 60,364 entries.
 
+Last, I wanted the Spanish meanings to come, as far as possible, from
+the two Latin-Spanish dictionaries rather than from a translation.  For
+every entry that De Miguel also has (some 27,000), his definition was
+set beside our English, and the Spanish meaning was rewritten in his
+own words, with modern spelling and only the senses that belong to that
+entry; where De Miguel has another sense or another word of the same
+spelling, the translation stayed.  The 575 entries of Echave-Sustaeta
+that De Miguel does not cover got his gloss, in a few words.  Then I
+went through what the three new sources still had and our dictionary
+did not: 847 more words and names of De Miguel whose grammar the first
+pass could not work out, 59 more rare words of Lewis and Short, and
+8,897 medieval words of Latham (derivatives and spellings of the words
+already taken, each with its own gloss, age and mark).  Each was kept
+only if the analyzer reads it, and not if it added a reading to a
+frequent word.  All this was done with the help of Claude (the model
+Claude Opus 5.5, `claude-opus-5-5`), at the request and under the
+direction of Nicolas Vaughan.  Now the dictionary has 70,167 entries;
+37,111 Spanish meanings come from De Miguel and 171 from
+Echave-Sustaeta, and the other 32,885 are still translations.  In
+`data/languages/es.xml` a meaning taken from a dictionary carries its
+source code (`<meaning entry="12" source="m">`); a meaning without it
+is a translation.  When you change a meaning in the editors, the code
+goes away, since the text is no longer the dictionary's.
+
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations
 (L+S, OLD, Ecc, PASS, GEN ...), and the Latin in brackets
@@ -1380,13 +1405,15 @@ The dictionary of py-words comes from these works:
 - R. E. Latham, *Revised Medieval Latin Word-List from British and Irish
   Sources* (London: Oxford University Press for the British Academy,
   1965): 2,444 medieval senses of words that the dictionary had, 21
-  corrected meanings, 1,140 new words and 1,204 spelling variants
-  (source code M; see "The Spanish meanings").
+  corrected meanings, 1,140 new words and 1,204 spelling variants, and
+  later 8,897 more medieval words, derivatives and spellings (source
+  code M; see "The Spanish meanings").
 - J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entries
-  corrected and 254 added, in English and in Spanish (source code A; see
-  "The Spanish meanings").
+  corrected and 254 added, in English and in Spanish, and the Spanish
+  meanings of 171 entries that De Miguel does not cover (source code A;
+  see "The Spanish meanings").
 - C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon
-  Press, 1879): 3,060 rare words that WORDS did not have (source code S;
+  Press, 1879): 3,119 rare words that WORDS did not have (source code S;
   see "The Spanish meanings"), with the long vowels of their headwords.
   Text provided under a CC BY-SA license by Perseus Digital Library,
   <http://www.perseus.tufts.edu>, with funding from The National
@@ -1395,11 +1422,11 @@ The dictionary of py-words comes from these works:
   licence of this text, CC BY-SA 4.0, allows to use it in a program under
   the GPL version 3, as py-words is.
 - R. de Miguel and the Marqués de Morante, *Nuevo diccionario
-  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 1,813
-  rare words and 11,105 proper names that WORDS did not have, in Spanish
-  and in English (source code m; see "The Spanish meanings"), with the
-  long vowels of 5,966 of their headwords.  The book is in the public
-  domain.
+  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 13,765
+  rare words and proper names that WORDS did not have, in Spanish and in
+  English (source code m), with the long vowels of 5,966 of their
+  headwords, and the Spanish meanings of 37,111 entries in all (see "The
+  Spanish meanings").  The book is in the public domain.
 - Collatinus 11, by Yves Ouvrard and Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL:
   the long vowels of the stems and endings, six abbreviations and the
@@ -1422,9 +1449,11 @@ Liège (Dominique Longrée and Gérald Purnelle).  Many mistakes were
 corrected thanks to Pede Certo (Emanuela Colombi and Luigi Tessarolo)
 and to Jean-Paul Woitrain.
 
-The Spanish meanings, the comparisons with Latham and Echave-Sustaeta,
-and the English meanings of De Miguel were made with the help of Claude, the large language
-model of Anthropic (see "The Spanish meanings").
+The translated Spanish meanings, the comparisons with Latham and
+Echave-Sustaeta, the Spanish meanings rewritten from De Miguel and
+Echave-Sustaeta, and the English meanings of De Miguel were made with
+the help of Claude, the large language model of Anthropic (see "The
+Spanish meanings").
 
 Licensing
 ---------

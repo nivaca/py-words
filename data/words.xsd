@@ -815,7 +815,9 @@
             the entry (of dictionary.xml), special entry (special.xml),
             irregular form (uniques.xml) or affix (addons.xml) with this id,
             or of an entry built into the program (builtin="esse").  One
-            of the attributes is given.</xs:documentation></xs:annotation>
+            of the attributes is given.  source: the dictionary the meaning
+            was taken from (a source code, as in dictionary.xml), when it
+            was not translated from the English.</xs:documentation></xs:annotation>
           <xs:complexType>
             <xs:simpleContent>
               <xs:extension base="meaning">
@@ -830,6 +832,7 @@
                     </xs:restriction>
                   </xs:simpleType>
                 </xs:attribute>
+                <xs:attribute name="source" type="source"/>
               </xs:extension>
             </xs:simpleContent>
           </xs:complexType>

@@ -8,9 +8,10 @@ morfología flexiva: WORDS, de William Whitaker, en Python.  Analiza
 palabras latinas flexionadas (y líneas enteras de latín) en sus formas y
 entradas de diccionario, con sus significados en inglés o en español, y
 busca el latín de palabras inglesas o españolas.  Los significados en
-español, y el resto de los resultados en español, se tradujeron del
-inglés (véase "Los significados en español"); pueden añadirse otros
-idiomas.  El diccionario es el de WORDS, ampliado con la lista de
+español vienen de los diccionarios latín-español de De Miguel y de
+Echave-Sustaeta dondequiera que tienen la palabra; los demás, y el resto
+de los resultados en español, se tradujeron del inglés (véase "Los
+significados en español").  Pueden añadirse otros idiomas.  El diccionario es el de WORDS, ampliado con la lista de
 latín medieval de R. E. Latham, el vocabulario básico latín-español de
 J. Echave-Sustaeta, las palabras raras de Lewis y Short y las palabras
 raras y los nombres propios del diccionario latino-español de R. de
@@ -844,6 +845,31 @@ medieval o moderna, y la frecuencia E.  5966 de ellas tienen además las
 vocales largas del lema de De Miguel (`data/quantities.xml`).  Con ellas
 el diccionario tiene 60 364 entradas.
 
+Por último, quise que los significados en español vinieran, en lo
+posible, de los dos diccionarios latín-español y no de una traducción.
+Para cada entrada que también tiene De Miguel (unas 27 000), se puso su
+definición junto a nuestro inglés, y el significado en español se
+reescribió con sus propias palabras, con ortografía moderna y solo los
+sentidos que corresponden a esa entrada; donde De Miguel tiene otro
+sentido u otra palabra de la misma grafía, se quedó la traducción.  Las
+575 entradas de Echave-Sustaeta que De Miguel no cubre recibieron su
+glosa, en pocas palabras.  Luego revisé lo que las tres fuentes nuevas
+aún tenían y nuestro diccionario no: 847 palabras y nombres más de De
+Miguel cuya gramática la primera pasada no pudo resolver, 59 palabras
+raras más de Lewis y Short y 8897 palabras medievales de Latham
+(derivados y grafías de las palabras ya tomadas, cada una con su glosa,
+su época y su marca).  Cada una se conservó solo si el analizador la
+lee, y no si añadía una lectura a una palabra frecuente.  Todo esto se
+hizo con ayuda de Claude (el modelo Claude Opus 5.5, `claude-opus-5-5`),
+a petición y bajo la dirección de Nicolas Vaughan.  Ahora el
+diccionario tiene 70 167 entradas; 37 111 significados en español vienen
+de De Miguel y 171 de Echave-Sustaeta, y los otros 32 885 siguen siendo
+traducciones.  En `data/languages/es.xml` un significado tomado de un
+diccionario lleva su código de fuente (`<meaning entry="12"
+source="m">`); uno sin él es una traducción.  Cuando usted cambia un
+significado en los editores, el código desaparece, pues el texto ya no
+es el del diccionario.
+
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,
 Ecc, PASS, GEN ...) y el latín entre corchetes (`[domi => en casa]`);
@@ -1420,13 +1446,15 @@ El diccionario de py-words viene de estas obras:
   Sources* (Londres: Oxford University Press para la British Academy,
   1965): 2444 sentidos medievales de palabras que el diccionario ya
   tenía, 21 significados corregidos, 1140 palabras nuevas y 1204
-  variantes ortográficas (código de fuente M; véase "Los significados
-  en español").
+  variantes ortográficas, y después 8897 palabras medievales más,
+  derivados y grafías (código de fuente M; véase "Los significados en
+  español").
 - J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entradas
-  corregidas y 254 añadidas, en inglés y en español (código de fuente A;
+  corregidas y 254 añadidas, en inglés y en español, y los significados
+  en español de 171 entradas que De Miguel no cubre (código de fuente A;
   véase "Los significados en español").
 - C. T. Lewis y C. Short, *A Latin Dictionary* (Oxford: Clarendon Press,
-  1879): 3060 palabras raras que WORDS no tenía (código de fuente S;
+  1879): 3119 palabras raras que WORDS no tenía (código de fuente S;
   véase "Los significados en español"), con las vocales largas de sus
   lemas.  Text provided under a CC BY-SA license by Perseus Digital
   Library, <http://www.perseus.tufts.edu>, with funding from The National
@@ -1436,10 +1464,11 @@ El diccionario de py-words viene de estas obras:
   texto, CC BY-SA 4.0, permite usarlo en un programa bajo la GPL versión
   3, como py-words.
 - R. de Miguel y el Marqués de Morante, *Nuevo diccionario
-  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 1813
-  palabras raras y 11 105 nombres propios que WORDS no tenía, en español
-  y en inglés (código de fuente m; véase "Los significados en español"),
-  con las vocales largas de 5966 de sus lemas.  El libro es de dominio
+  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 13 765
+  palabras raras y nombres propios que WORDS no tenía, en español y en
+  inglés (código de fuente m), con las vocales largas de 5966 de sus
+  lemas, y los significados en español de 37 111 entradas en total
+  (véase "Los significados en español").  El libro es de dominio
   público.
 - Collatinus 11, de Yves Ouvrard y Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), bajo la GPL de GNU:
@@ -1463,10 +1492,11 @@ textos lematizados del LASLA de la Universidad de Lieja (Dominique
 Longrée y Gérald Purnelle).  Muchos errores se corrigieron gracias a
 Pede Certo (Emanuela Colombi y Luigi Tessarolo) y a Jean-Paul Woitrain.
 
-Los significados en español, las comparaciones con Latham y con
-Echave-Sustaeta y los significados ingleses de De Miguel se hicieron con
-ayuda de Claude, el modelo de lenguaje
-de Anthropic (véase "Los significados en español").
+Los significados en español traducidos, las comparaciones con Latham y
+con Echave-Sustaeta, los significados en español reescritos a partir de
+De Miguel y de Echave-Sustaeta y los significados ingleses de De Miguel
+se hicieron con ayuda de Claude, el modelo de lenguaje de Anthropic
+(véase "Los significados en español").
 
 Licencia
 --------

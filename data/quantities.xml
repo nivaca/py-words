@@ -45,6 +45,7 @@
   <stems entry="49260">Abantē Abantē</stems>
   <stems entry="49262">Abaōrt Abaōrt</stems>
   <stems entry="47518">abaptīst abaptīst</stems>
+  <stems entry="60437">Abarīmon</stems>
   <stems entry="49265">Abaritān Abaritān</stems>
   <stems entry="49267">Abāsc Abāsc</stems>
   <stems entry="31">abbās abbāt</stems>
@@ -77,6 +78,7 @@
   <stems entry="49282">Abellīn Abellīn</stems>
   <stems entry="49283">Abellīn Abellīn</stems>
   <stems entry="49281">Abellināt Abellināt</stems>
+  <stems entry="60441">Abeōn Abeōn</stems>
   <stems entry="67">abequit abequit abequitāv abequitāt</stems>
   <stems entry="49284">Aberdōn Aberdōn</stems>
   <stems entry="69">aberr aberr aberrāv aberrāt</stems>
@@ -366,6 +368,7 @@
   <stems entry="524">acētōs acētōs</stems>
   <stems entry="49358">Achāi Achāi</stems>
   <stems entry="49359">Achāias Achāiad</stems>
+  <stems entry="60449">Achamothiān Achamothiān</stems>
   <stems entry="49361">Acharnān Acharnān</stems>
   <stems entry="535">achāt achāt</stems>
   <stems entry="39621">achāt achāt</stems>
@@ -398,6 +401,7 @@
   <stems entry="560">acināri acināri</stems>
   <stems entry="44425">acināti acināti</stems>
   <stems entry="561">acinātici acinātici</stems>
+  <stems entry="60456">Acinēt Acinēt</stems>
   <stems entry="562">acinōs acinōs</stems>
   <stems entry="563">acipēnser acipēnser</stems>
   <stems entry="564">acipēnsis acipēns</stems>
@@ -430,6 +434,7 @@
   <stems entry="611">ācrimōni ācrimōni</stems>
   <stems entry="49410">Acrisiōn Acrisiōn</stems>
   <stems entry="49411">Acrisiōnē Acrisiōnē</stems>
+  <stems entry="60461">Acrisiōniad Acrisiōniad</stems>
   <stems entry="612">ācritās ācritāt</stems>
   <stems entry="613">ācriter</stems>
   <stems entry="614">ācritūdo ācritūdin</stems>
@@ -856,6 +861,7 @@
   <stems entry="1432">ādrēp ādrēp ādreps</stems>
   <stems entry="1436">ādreptīv ādreptīv</stems>
   <stems entry="49472">Adriāc Adriāc</stems>
+  <stems entry="60464">Adriānōpolis Adriānōpol</stems>
   <stems entry="1437">ādrīd ādrīd ādrīs ādrīs</stems>
   <stems entry="39797">ādrīd ādrīd ādrīs ādrīs</stems>
   <stems entry="49473">Adriēns Adriēns</stems>
@@ -1045,6 +1051,8 @@
   <stems entry="1864">aēdōn aēdōn</stems>
   <stems entry="1865">aēdoni aēdoni</stems>
   <stems entry="49499">Aedōnis Aedōnid</stems>
+  <stems entry="60467">Aeēt Aeēt</stems>
+  <stems entry="60468">Aeētias Aeētiad</stems>
   <stems entry="49506">Aegetīn Aegetīn</stems>
   <stems entry="1870">Aegīd Aegīd</stems>
   <stems entry="49508">Aegiēns Aegiēns</stems>
@@ -1054,6 +1062,7 @@
   <stems entry="49511">Aegīnēt Aegīnēt</stems>
   <stems entry="49512">Aegīnētes Aegīnēt</stems>
   <stems entry="49513">Aegīnetic Aegīnetic</stems>
+  <stems entry="60472">Aegīss Aegīss</stems>
   <stems entry="49517">Aegīsth Aegīsth</stems>
   <stems entry="1880">aegocerōs aegocerōt</stems>
   <stems entry="1882">aegōli aegōli</stems>
@@ -1333,13 +1342,16 @@
   <stems entry="2414">āl āl</stems>
   <stems entry="49685">Alabānd Alabānd</stems>
   <stems entry="49686">Alabānd Alabānd</stems>
+  <stems entry="60492">Alabandiāc Alabandiāc</stems>
   <stems entry="47565">alabandīn alabandīn</stems>
   <stems entry="47566">alabāstr alabāstr</stems>
   <stems entry="2419">alabastrīt alabastrīt</stems>
   <stems entry="2422">alabēt alabēt</stems>
   <stems entry="2425">alacritās alacritāt</stems>
+  <stems entry="60494">Alamānn Alamānn</stems>
   <stems entry="49692">Alān Alān</stems>
   <stems entry="49694">Alān Alān</stems>
+  <stems entry="60495">Alānder Alāndr</stems>
   <stems entry="49693">Alāni Alāni</stems>
   <stems entry="2428">ālār ālār</stems>
   <stems entry="2430">ālāri ālāri</stems>
@@ -1389,10 +1401,12 @@
   <stems entry="2473">albūc albūc</stems>
   <stems entry="2474">albuēlis albuēl</stems>
   <stems entry="2475">albūgo albūgin</stems>
+  <stems entry="60499">Albulātes Albulāt</stems>
   <stems entry="2477">albūmen albūmin</stems>
   <stems entry="2478">albūment albūment</stems>
   <stems entry="2484">alcēdo alcēdin</stems>
   <stems entry="47567">alcēdoni alcēdoni</stems>
+  <stems entry="60500">Alcēst Alcēst</stems>
   <stems entry="49727">Alcetiēns Alcetiēns</stems>
   <stems entry="49731">Alcibiadē Alcibiadē</stems>
   <stems entry="49734">Alcīd Alcīd</stems>
@@ -1417,6 +1431,7 @@
   <stems entry="2520">āleo āleōn</stems>
   <stems entry="2524">āles ālit</stems>
   <stems entry="49768">Alēsi Alēsi</stems>
+  <stems entry="60502">Alēsiensis Alēsiens</stems>
   <stems entry="49772">Alethī Alethī</stems>
   <stems entry="49775">Alēti Alēti</stems>
   <stems entry="49773">Aletīn Aletīn</stems>
@@ -1589,6 +1604,7 @@
   <stems entry="2872">amābil amābil amābili amābilissi</stems>
   <stems entry="2873">amābilitas amābilitāt</stems>
   <stems entry="2874">amābiliter</stems>
+  <stems entry="60512">Amafāni Amafāni</stems>
   <stems entry="49841">Amalecīt Amalecīt</stems>
   <stems entry="47580">amalgāma amalgāmat</stems>
   <stems entry="49842">Amalthē Amalthē</stems>
@@ -1654,6 +1670,7 @@
   <stems entry="2929">ambecīs ambecīs</stems>
   <stems entry="2930">ambēd ambēd ambēd ambēs</stems>
   <stems entry="2931">ambēd ambēs</stems>
+  <stems entry="60513">ambēgn ambēgn</stems>
   <stems entry="2932">ambestrix ambestrīc</stems>
   <stems entry="2933">ambi amb ambīv ambīt</stems>
   <stems entry="49866">Ambiān Ambiān</stems>
@@ -1805,12 +1822,14 @@
   <stems entry="47587">amygdaloīdes amygdaloīd</stems>
   <stems entry="49952">Amymōn Amymōn</stems>
   <stems entry="49953">Amymōni Amymōni</stems>
+  <stems entry="60518">Amynānder Amynāndr</stems>
   <stems entry="49960">Amythāon Amythāon</stems>
   <stems entry="3268">ān ān</stems>
   <stems entry="3269">ān ān</stems>
   <stems entry="47589">anabāthm anabāthm</stems>
   <stems entry="3279">anabolī anabolī</stems>
   <stems entry="49963">Anabūr Anabūr</stems>
+  <stems entry="60519">Anachārsis Anachārsid</stems>
   <stems entry="3282">anachōrēsis anachōrēs</stems>
   <stems entry="3283">anachōrēt anachōrēt</stems>
   <stems entry="3284">anachōrētic anachōrētic</stems>
@@ -1850,6 +1869,7 @@
   <stems entry="3354">anatīn anatīn</stems>
   <stems entry="3355">anatīn anatīn</stems>
   <stems entry="3363">anatrēsis anatrēs</stems>
+  <stems entry="60521">Anāur Anāur</stems>
   <stems entry="49988">Anaxagorē Anaxagorē</stems>
   <stems entry="49991">Anaxilā Anaxilā</stems>
   <stems entry="49994">Anazarbēn Anazarbēn</stems>
@@ -1857,6 +1877,7 @@
   <stems entry="49998">Anchariān Anchariān</stems>
   <stems entry="50001">Anchiāl Anchiāl</stems>
   <stems entry="50004">Anchīs Anchīs</stems>
+  <stems entry="60523">Anchīsae Anchīsae</stems>
   <stems entry="50005">Anchīsiad Anchīsiad</stems>
   <stems entry="47603">anchīstr anchīstr</stems>
   <stems entry="47605">anchracōsis anchracōs</stems>
@@ -2033,6 +2054,7 @@
   <stems entry="3641">antachāt antachāt</stems>
   <stems entry="50082">Antaeōpolis Antaeōpol</stems>
   <stems entry="3642">antagōnist antagōnist</stems>
+  <stems entry="60529">Antāndr Antāndr</stems>
   <stems entry="3647">antāri antāri</stems>
   <stems entry="50086">Antariān Antariān</stems>
   <stems entry="3651">anteā</stems>
@@ -2159,6 +2181,7 @@
   <stems entry="3896">antizēugmen antizēugmen</stems>
   <stems entry="3902">Antōni Antōni</stems>
   <stems entry="50152">Antoniān Antoniān</stems>
+  <stems entry="60532">Antoniāster Antoniāstr</stems>
   <stems entry="50155">Antonīn Antonīn</stems>
   <stems entry="50153">Antonīniān Antonīniān</stems>
   <stems entry="50154">Antonīnias Antonīniad</stems>
@@ -2226,6 +2249,7 @@
   <stems entry="3969">aphrodīsiac aphrodīsiac</stems>
   <stems entry="50219">Aphrodīsias Aphrodīsiad</stems>
   <stems entry="50220">Aphrodīsiēns Aphrodīsiēns</stems>
+  <stems entry="60537">Aphrodīt Aphrodīt</stems>
   <stems entry="50222">Aphroditopolīt Aphroditopolīt</stems>
   <stems entry="47628">apiāc apiāc</stems>
   <stems entry="3979">apiāci apiāci</stems>
@@ -2656,6 +2680,7 @@
   <stems entry="50417">Argyrūnt Argyrūnt</stems>
   <stems entry="4722">arhythmāt arhythmāt</stems>
   <stems entry="50419">Ariāc Ariāc</stems>
+  <stems entry="60545">Ariādn Ariādn</stems>
   <stems entry="50422">Arialdūn Arialdūn</stems>
   <stems entry="50423">Ariān Ariān</stems>
   <stems entry="50424">Ariān Ariān</stems>
@@ -2805,6 +2830,7 @@
   <stems entry="4950">artuātim</stems>
   <stems entry="4952">artūt artūt</stems>
   <stems entry="50542">Arubiān Arubiān</stems>
+  <stems entry="60555">Arūcci</stems>
   <stems entry="50544">Aruccitān Aruccitān</stems>
   <stems entry="50553">Arvēns Arvēns</stems>
   <stems entry="50554">Arvērn Arvērn</stems>
@@ -2850,6 +2876,7 @@
   <stems entry="5010">asclēpias asclēpiad</stems>
   <stems entry="50578">Asclēpiodor Asclēpiodor</stems>
   <stems entry="50579">Asclēpiodot Asclēpiodot</stems>
+  <stems entry="60557">Asclētario Asclētarion</stems>
   <stems entry="50581">Ascodrogīt Ascodrogīt</stems>
   <stems entry="50582">Ascomārc Ascomārc</stems>
   <stems entry="5012">ascopēr ascopēr</stems>
@@ -3005,6 +3032,7 @@
   <stems entry="50717">Athēnāis Athēnāid</stems>
   <stems entry="5353">Athēniēns Athēniēns</stems>
   <stems entry="5354">Athēniēnsis Athēniēns</stems>
+  <stems entry="60570">Athēnodōr Athēnodōr</stems>
   <stems entry="50719">Athēnodōt Athēnodōt</stems>
   <stems entry="50720">Athēnopolis Athēnopol</stems>
   <stems entry="5355">athēr athēr</stems>
@@ -3041,6 +3069,7 @@
   <stems entry="5387">ātricapill ātricapill</stems>
   <stems entry="5388">ātricapill ātricapill</stems>
   <stems entry="5389">ātricolor ātricolor</stems>
+  <stems entry="60575">Atrīd Atrīd</stems>
   <stems entry="5390">ātriēnsis ātriēns</stems>
   <stems entry="5391">ātriol ātriol</stems>
   <stems entry="5392">ātriplex ātriplex</stems>
@@ -3083,6 +3112,7 @@
   <stems entry="50773">Attiān Attiān</stems>
   <stems entry="5447">Atticē</stems>
   <stems entry="5448">atticiss atticiss atticissāv atticissāt</stems>
+  <stems entry="60576">atticūrges atticūrg</stems>
   <stems entry="50778">Attilān Attilān</stems>
   <stems entry="5452">attill attill attillāv attillāt</stems>
   <stems entry="5458">attitul attitul attitulāv attitulāt</stems>
@@ -3121,6 +3151,7 @@
   <stems entry="5522">auctōr auctōr - auctōrāt</stems>
   <stems entry="5523">auctōrābil auctōrābil</stems>
   <stems entry="5525">auctōrāment auctōrāment</stems>
+  <stems entry="60577">auctōrātici auctōrātici</stems>
   <stems entry="5528">auctōritās auctōritāt</stems>
   <stems entry="5529">auctōritās auctōritāt</stems>
   <stems entry="5534">auctrix auctrīc</stems>
@@ -3162,6 +3193,7 @@
   <stems entry="50883">Aveniōnēns Aveniōnēns</stems>
   <stems entry="50886">Aventicēns Aventicēns</stems>
   <stems entry="50888">Aventīn Aventīn</stems>
+  <stems entry="60580">Aventīnēns Aventīnēns</stems>
   <stems entry="5576">aufer aufer abstul ablāt</stems>
   <stems entry="5577">aufer aufer - ablāt</stems>
   <stems entry="50793">Aufidēn Aufidēn</stems>
@@ -3410,6 +3442,7 @@
   <stems entry="50956">Baetulonēns Baetulonēns</stems>
   <stems entry="50957">Baetūri Baetūri</stems>
   <stems entry="50958">Bagān Bagān</stems>
+  <stems entry="60588">bagaūd bagaūd</stems>
   <stems entry="47676">bagō bagō</stems>
   <stems entry="50959">Bāgrad Bāgrad</stems>
   <stems entry="50960">Bāi Bāi</stems>
@@ -3482,6 +3515,7 @@
   <stems entry="6136">baptizātio baptizātiōn</stems>
   <stems entry="6137">baptizātor baptizātor</stems>
   <stems entry="51001">Barābb Barābb</stems>
+  <stems entry="60591">Baraxmālch Baraxmālch</stems>
   <stems entry="6147">barbarē</stems>
   <stems entry="51003">Barbariān Barbariān</stems>
   <stems entry="6152">barbaricāri barbaricāri</stems>
@@ -3497,6 +3531,7 @@
   <stems entry="51015">Barcīno Barcīnon</stems>
   <stems entry="51017">Barcinōn Barcinōn</stems>
   <stems entry="51016">Barcinōnēns Barcinōnēns</stems>
+  <stems entry="60594">Barderāt Barderāt</stems>
   <stems entry="51019">Bardisān Bardisān</stems>
   <stems entry="6173">bardīt bardīt</stems>
   <stems entry="51023">Barēn Barēn</stems>
@@ -3558,6 +3593,7 @@
   <stems entry="51099">Belbīn Belbīn</stems>
   <stems entry="51100">Belbinīt Belbinīt</stems>
   <stems entry="51101">Belēnd Belēnd</stems>
+  <stems entry="60607">Belīal</stems>
   <stems entry="51106">Bēlīd Bēlīd</stems>
   <stems entry="51107">Belīppo Belīppon</stems>
   <stems entry="51108">Belisān Belisān</stems>
@@ -3657,6 +3693,7 @@
   <stems entry="47682">bētonic bētonic</stems>
   <stems entry="51188">Betriacēns Betriacēns</stems>
   <stems entry="6451">bētull bētull</stems>
+  <stems entry="60613">Bezābd Bezābd</stems>
   <stems entry="51194">Biānor Biānor</stems>
   <stems entry="51195">Biānt Biānt</stems>
   <stems entry="51197">Bibāct Bibāct</stems>
@@ -3801,6 +3838,7 @@
   <stems entry="51264">Blāvi Blāvi</stems>
   <stems entry="51263">Blaundēni Blaundēni</stems>
   <stems entry="51268">Blērān Blērān</stems>
+  <stems entry="60619">Blesēns Blesēns</stems>
   <stems entry="6777">bo bo boāv boāt</stems>
   <stems entry="51275">Boanērg Boanērg</stems>
   <stems entry="6779">boāri boāri</stems>
@@ -3809,10 +3847,12 @@
   <stems entry="51291">Boeōt Boeōt</stems>
   <stems entry="51290">Boeōtārch Boeōtārch</stems>
   <stems entry="51292">Boeōti Boeōti</stems>
+  <stems entry="60620">Boeōti Boeōti</stems>
   <stems entry="51293">Boeōtis Boeōtid</stems>
   <stems entry="6784">boēth boēth</stems>
   <stems entry="51296">Bogudiān Bogudiān</stems>
   <stems entry="51297">Bohēmi Bohēmi</stems>
+  <stems entry="60622">Bohēmi Bohēmi</stems>
   <stems entry="6785">bōi bōi</stems>
   <stems entry="51303">Bolelāsg Bolelāsg</stems>
   <stems entry="6794">bōlēt bōlēt</stems>
@@ -3925,6 +3965,7 @@
   <stems entry="51389">Brigiān Brigiān</stems>
   <stems entry="51391">Brigobānn Brigobānn</stems>
   <stems entry="51392">Brilēss Brilēss</stems>
+  <stems entry="60628">Brīmo Brīmon</stems>
   <stems entry="6987">brīs brīs</stems>
   <stems entry="51395">Brisāc Brisāc</stems>
   <stems entry="51397">Brisē Brisē</stems>
@@ -3971,6 +4012,7 @@
   <stems entry="7036">būbali būbali</stems>
   <stems entry="7037">būbalīn būbalīn</stems>
   <stems entry="39908">būbalīn būbalīn</stems>
+  <stems entry="60631">Būbasis Būbasid</stems>
   <stems entry="51449">Būbass Būbass</stems>
   <stems entry="51450">Būbastis Būbastid</stems>
   <stems entry="51455">Bubetān Bubetān</stems>
@@ -4071,6 +4113,7 @@
   <stems entry="7188">bustuāri bustuāri</stems>
   <stems entry="7189">būsyc būsyc</stems>
   <stems entry="7190">būteo būteōn</stems>
+  <stems entry="60633">Buthrōt Buthrōt</stems>
   <stems entry="51500">Buthrōti Buthrōti</stems>
   <stems entry="7193">būtio būtiōn</stems>
   <stems entry="51507">Butuntīn Butuntīn</stems>
@@ -4098,6 +4141,7 @@
   <stems entry="51541">Cabillōn Cabillōn</stems>
   <stems entry="51539">Cabillonēns Cabillonēns</stems>
   <stems entry="51542">Cabīr Cabīr</stems>
+  <stems entry="60634">Cabīr Cabīr</stems>
   <stems entry="51544">Caburrēns Caburrēns</stems>
   <stems entry="51546">Cabylēt Cabylēt</stems>
   <stems entry="7227">Cāc Cāc</stems>
@@ -4488,6 +4532,7 @@
   <stems entry="39947">candēl candēl</stems>
   <stems entry="7839">candēlāber candēlābr</stems>
   <stems entry="7841">candēlābr candēlābr</stems>
+  <stems entry="60649">candēlifer candēlifer</stems>
   <stems entry="7843">candēns candent</stems>
   <stems entry="7846">candēt candēt</stems>
   <stems entry="7847">candic candic candicāv candicāt</stems>
@@ -4849,6 +4894,7 @@
   <stems entry="39979">cass cass cassāv cassāt</stems>
   <stems entry="8424">cass cass cassāv cassāt</stems>
   <stems entry="8425">cassābund cassābund</stems>
+  <stems entry="60657">Cassānder Cassāndr</stems>
   <stems entry="51973">Cassāndr Cassāndr</stems>
   <stems entry="51974">Cassandreēns Cassandreēns</stems>
   <stems entry="51975">Cassandreēns Cassandreēns</stems>
@@ -4857,6 +4903,7 @@
   <stems entry="51980">Cassiān Cassiān</stems>
   <stems entry="8431">cassidāri cassidāri</stems>
   <stems entry="8432">cassidīle cassidīl</stems>
+  <stems entry="60658">Cassiepē Cassiepē</stems>
   <stems entry="51982">Cassīn Cassīn</stems>
   <stems entry="51983">Cassiōdōr Cassiōdōr</stems>
   <stems entry="8435">cassīt cassīt</stems>
@@ -4943,6 +4990,7 @@
   <stems entry="8607">catēnāt catēnāt</stems>
   <stems entry="39988">catēnāt catēnāt</stems>
   <stems entry="8608">catēnātio catēnātiōn</stems>
+  <stems entry="60659">catenōpli catenōpli</stems>
   <stems entry="8609">catēnul catēnul</stems>
   <stems entry="8611">catervāri catervāri</stems>
   <stems entry="8612">catervātim</stems>
@@ -4950,6 +4998,7 @@
   <stems entry="8620">cathedrālici cathedrālici</stems>
   <stems entry="8621">cathedrāri cathedrāri</stems>
   <stems entry="8623">cathēdrātic cathēdrātic</stems>
+  <stems entry="60660">Cathēmerinon</stems>
   <stems entry="8628">cathetēr cathetēr</stems>
   <stems entry="8629">cathetērism cathetērism</stems>
   <stems entry="8633">catholicē</stems>
@@ -4964,6 +5013,7 @@
   <stems entry="8641">catillo catillōn</stems>
   <stems entry="8642">catīn catīn</stems>
   <stems entry="8643">catīn catīn</stems>
+  <stems entry="60661">Catinēns Catinēns</stems>
   <stems entry="52032">Catiniēns Catiniēns</stems>
   <stems entry="8644">catīnul catīnul</stems>
   <stems entry="8646">catlītio catlītiōn</stems>
@@ -5071,6 +5121,7 @@
   <stems entry="52075">Cebrēni Cebrēni</stems>
   <stems entry="52076">Cebrēnis Cebrēnid</stems>
   <stems entry="52077">Cebrēnn Cebrēnn</stems>
+  <stems entry="60664">Cecīn Cecīn</stems>
   <stems entry="8805">cēd cēd cess cess</stems>
   <stems entry="8806">cēd cēd cess cess</stems>
   <stems entry="40016">cēd cēd cess cess</stems>
@@ -5227,6 +5278,7 @@
   <stems entry="9038">cēpe cēp</stems>
   <stems entry="9039">cēpēt cēpēt</stems>
   <stems entry="9043">cephalaeōt cephalaeōt</stems>
+  <stems entry="60668">Cephallēn Cephallēn</stems>
   <stems entry="9050">cephalo cephalōn</stems>
   <stems entry="52157">Cephaloeditān Cephaloeditān</stems>
   <stems entry="52159">Cephalonnēs Cephalonnēs</stems>
@@ -5421,6 +5473,7 @@
   <stems entry="9359">charactērism charactērism</stems>
   <stems entry="52252">Charāx Charāx</stems>
   <stems entry="47728">charaxāri charaxāri</stems>
+  <stems entry="60673">Charīclo Charīclon</stems>
   <stems entry="52255">Charidēm Charidēm</stems>
   <stems entry="52256">Charīn Charīn</stems>
   <stems entry="52259">Charīsi Charīsi</stems>
@@ -5460,6 +5513,7 @@
   <stems entry="9425">chernītis chernītid</stems>
   <stems entry="52280">Cherrōn Cherrōn</stems>
   <stems entry="52283">Chersonēns Chersonēns</stems>
+  <stems entry="60675">Chersonēs Chersonēs</stems>
   <stems entry="52286">Chēsi Chēsi</stems>
   <stems entry="52285">Chēsipp Chēsipp</stems>
   <stems entry="9435">Chī Chī</stems>
@@ -5493,6 +5547,7 @@
   <stems entry="9476">chīrurgi chīrurgi</stems>
   <stems entry="9478">chīrurgic chīrurgic</stems>
   <stems entry="47739">chlōasma chlōasmat</stems>
+  <stems entry="60676">Chlōr Chlōr</stems>
   <stems entry="9488">chlōrē chlōrē</stems>
   <stems entry="9489">chlōriōn chlōriōn</stems>
   <stems entry="52303">Chlōris Chlōrid</stems>
@@ -5591,6 +5646,7 @@
   <stems entry="9680">cibōri cibōri</stems>
   <stems entry="40024">cibōri cibōri</stems>
   <stems entry="52349">Cibōt Cibōt</stems>
+  <stems entry="60679">Cibyrātic Cibyrātic</stems>
   <stems entry="9681">cicād cicād</stems>
   <stems entry="9682">cicaro cicarōn</stems>
   <stems entry="9683">cicātrīc cicātrīc cicātrīcāv cicātrīcāt</stems>
@@ -5975,6 +6031,7 @@
   <stems entry="10385">claxendix claxendīc</stems>
   <stems entry="52445">Clāzomen Clāzomen</stems>
   <stems entry="52446">Clāzomeni Clāzomeni</stems>
+  <stems entry="60687">Cleānder Cleāndr</stems>
   <stems entry="52448">Cleanthē Cleanthē</stems>
   <stems entry="52447">Cleānthes Cleānth</stems>
   <stems entry="10386">clēma clēmat</stems>
@@ -6019,6 +6076,7 @@
   <stems entry="10434">clīnic clīnic</stems>
   <stems entry="10440">clīnopal clīnopal</stems>
   <stems entry="47752">clīnopodi clīnopodi</stems>
+  <stems entry="60688">Clīo Clīon</stems>
   <stems entry="10446">clipe clipe clipeāv clipeāt</stems>
   <stems entry="10447">clipeāt clipeāt</stems>
   <stems entry="52473">Clīsobor Clīsobor</stems>
@@ -6076,6 +6134,7 @@
   <stems entry="10528">clūsūr clūsūr</stems>
   <stems entry="52507">Cluviān Cluviān</stems>
   <stems entry="52508">Cluviān Cluviān</stems>
+  <stems entry="60690">Clymenēi Clymenēi</stems>
   <stems entry="52512">Clymenēid Clymenēid</stems>
   <stems entry="52513">Clymenēis Clymenēid</stems>
   <stems entry="10539">clystēr clystēr</stems>
@@ -6186,6 +6245,7 @@
   <stems entry="10727">coctīv coctīv</stems>
   <stems entry="10732">coctūr coctūr</stems>
   <stems entry="10733">coctūrāri coctūrāri</stems>
+  <stems entry="60693">Cōcyt Cōcyt</stems>
   <stems entry="52534">Cōcyti Cōcyti</stems>
   <stems entry="10737">cōd cōd</stems>
   <stems entry="52535">Codān Codān</stems>
@@ -8800,6 +8860,7 @@
   <stems entry="15150">cultūr cultūr</stems>
   <stems entry="40309">cultūr cultūr</stems>
   <stems entry="52906">Culucitān Culucitān</stems>
+  <stems entry="60705">Cūmae Cūmae</stems>
   <stems entry="52907">Cūmān Cūmān</stems>
   <stems entry="52909">Cūmān Cūmān</stems>
   <stems entry="52910">Cūmān Cūmān</stems>
@@ -8983,6 +9044,7 @@
   <stems entry="52936">Cutiliēns Cutiliēns</stems>
   <stems entry="15412">cutio cutiōn</stems>
   <stems entry="15421">cȳane cȳane</stems>
+  <stems entry="60709">Cybēb Cybēb</stems>
   <stems entry="52943">Cybelēi Cybelēi</stems>
   <stems entry="52945">Cybiosāct Cybiosāct</stems>
   <stems entry="52946">Cybīstr Cybīstr</stems>
@@ -9002,6 +9064,7 @@
   <stems entry="52956">Cyllēn Cyllēn</stems>
   <stems entry="52957">Cyllēni Cyllēni</stems>
   <stems entry="15469">cȳma cȳmat</stems>
+  <stems entry="60711">Cymānder Cymāndr</stems>
   <stems entry="15470">cȳmati cȳmati</stems>
   <stems entry="15471">cȳmati cȳmati</stems>
   <stems entry="15472">cȳmatil cȳmatil</stems>
@@ -9010,6 +9073,7 @@
   <stems entry="15490">cȳmōs cȳmōs</stems>
   <stems entry="15491">cȳmul cȳmul</stems>
   <stems entry="52967">Cynēt Cynēt</stems>
+  <stems entry="60713">Cynossēma Cynossēmat</stems>
   <stems entry="15562">Cypriān Cypriān</stems>
   <stems entry="15563">cyprīn cyprīn</stems>
   <stems entry="15566">cyprīn cyprīn</stems>
@@ -9022,6 +9086,7 @@
   <stems entry="52985">Cyrnē Cyrnē</stems>
   <stems entry="47801">cyrneāri cyrneāri</stems>
   <stems entry="52986">Cyrrhēst Cyrrhēst</stems>
+  <stems entry="60715">Cytēri Cytēri</stems>
   <stems entry="52994">Cythēr Cythēr</stems>
   <stems entry="52997">Cythērēi Cythērēi</stems>
   <stems entry="52995">Cythērēias Cythērēiad</stems>
@@ -9098,6 +9163,7 @@
   <stems entry="15691">datio datiōn</stems>
   <stems entry="15692">datīv datīv</stems>
   <stems entry="15693">datīv datīv</stems>
+  <stems entry="60725">Dāv Dāv</stems>
   <stems entry="53101">Davēll Davēll</stems>
   <stems entry="15699">Dāvīd</stems>
   <stems entry="15701">dē</stems>
@@ -9654,6 +9720,7 @@
   <stems entry="16346">dēl dēl dēlēv dēlēt</stems>
   <stems entry="16347">dēl dēl dēlēv dēlēt</stems>
   <stems entry="16348">dēl dēl dēlēv dēlēt</stems>
+  <stems entry="60727">Dēl Dēl</stems>
   <stems entry="16349">dēlāb dēlāb - dēlaps</stems>
   <stems entry="16350">dēlāb dēlāb - dēlaps</stems>
   <stems entry="16351">dēlabōr dēlabōr dēlabōrāv dēlabōrāt</stems>
@@ -10211,6 +10278,7 @@
   <stems entry="16961">dērōs dērōs</stems>
   <stems entry="53180">Derpāt Derpāt</stems>
   <stems entry="53183">Dertōn Dertōn</stems>
+  <stems entry="60729">Dertōs Dertōs</stems>
   <stems entry="53184">Dertūsān Dertūsān</stems>
   <stems entry="53185">Dertūsān Dertūsān</stems>
   <stems entry="16962">dēru dēru dēru</stems>
@@ -10484,6 +10552,7 @@
   <stems entry="17264">dēturb dēturb dēturbāv dēturbāt</stems>
   <stems entry="17265">dēturb dēturb dēturbāv dēturbāt</stems>
   <stems entry="17267">dēturp dēturp dēturpāv dēturpāt</stems>
+  <stems entry="60730">Deūcalid Deūcalid</stems>
   <stems entry="53191">Deūcalion Deūcalion</stems>
   <stems entry="53192">Deūcaliōne Deūcaliōne</stems>
   <stems entry="53198">Dēvōn Dēvōn</stems>
@@ -10598,6 +10667,7 @@
   <stems entry="17429">diāconic diāconic</stems>
   <stems entry="17431">diāconic diāconic</stems>
   <stems entry="17432">diāconiss diāconiss</stems>
+  <stems entry="60732">diacoprēgias</stems>
   <stems entry="47832">diacymīn diacymīn</stems>
   <stems entry="17437">diadēm diadēm</stems>
   <stems entry="17438">diadēma diadēmat</stems>
@@ -10631,6 +10701,7 @@
   <stems entry="53210">diānītis diānītid</stems>
   <stems entry="17514">diapantōn</stems>
   <stems entry="17515">diapās diapās</stems>
+  <stems entry="60733">diapēdēsis diapēdēs</stems>
   <stems entry="17519">diaphōni diaphōni</stems>
   <stems entry="40446">diaphōni diaphōni</stems>
   <stems entry="17521">diaphorēsis diaphorēs</stems>
@@ -10691,6 +10762,7 @@
   <stems entry="17646">dīdūc dīdūc dīdux dīduct</stems>
   <stems entry="17647">dīdūc dīdūc dīdux dīduct</stems>
   <stems entry="17648">dīductio dīductiōn</stems>
+  <stems entry="60740">Didymāon Didymāon</stems>
   <stems entry="17650">diēcul diēcul</stems>
   <stems entry="53232">Diēns Diēns</stems>
   <stems entry="17651">diērect diērect</stems>
@@ -11398,6 +11470,7 @@
   <stems entry="53406">Dūlichi Dūlichi</stems>
   <stems entry="53407">Dūlichi Dūlichi</stems>
   <stems entry="53409">Dūlopolis Dūlopol</stems>
+  <stems entry="60755">Dūlorēst Dūlorēst</stems>
   <stems entry="18568">dūm dūm</stems>
   <stems entry="53410">Dumān Dumān</stems>
   <stems entry="18569">dūmēt dūmēt</stems>
@@ -11482,11 +11555,13 @@
   <stems entry="18661">ēbulli ēbull ēbullīv ēbullīt</stems>
   <stems entry="18663">eburāri eburāri</stems>
   <stems entry="18665">eburāt eburāt</stems>
+  <stems entry="60759">Eburodūn Eburodūn</stems>
   <stems entry="53460">Eburodūnens Eburodūnens</stems>
   <stems entry="53462">Eburōvīc Eburōvīc</stems>
   <stems entry="53463">Ebusitān Ebusitān</stems>
   <stems entry="53466">Ebutiān Ebutiān</stems>
   <stems entry="18671">ēcastor</stems>
+  <stems entry="60760">eccēntr eccēntr</stems>
   <stems entry="47907">ecchymōma ecchymōmat</stems>
   <stems entry="18686">ecclēsiastic ecclēsiastic</stems>
   <stems entry="18688">ecclēsiastic ecclēsiastic</stems>
@@ -11662,6 +11737,7 @@
   <stems entry="47923">ēlacat ēlacat</stems>
   <stems entry="53520">Elaeēns Elaeēns</stems>
   <stems entry="53521">Elaeēns Elaeēns</stems>
+  <stems entry="60763">ēlaeomeli</stems>
   <stems entry="47924">ēlaeomoloch ēlaeomoloch</stems>
   <stems entry="44580">elaeōn elaeōn</stems>
   <stems entry="47925">ēlaeosacchar ēlaeosacchar</stems>
@@ -11721,6 +11797,7 @@
   <stems entry="18961">ēlev ēlev ēlevāv ēlevāt</stems>
   <stems entry="40557">ēlev ēlev ēlevāv ēlevāt</stems>
   <stems entry="18962">ēlevātio ēlevātiōn</stems>
+  <stems entry="60768">Eleūsīni Eleūsīni</stems>
   <stems entry="18965">ēlici ēlic ēlicu ēlicit</stems>
   <stems entry="40568">ēlici ēlic ēlicu ēlicit</stems>
   <stems entry="18966">ēlīd ēlīd ēlīs ēlīs</stems>
@@ -11740,6 +11817,7 @@
   <stems entry="44592">ēlingu ēlingu ēlinguav ēlinguat</stems>
   <stems entry="18975">ēliqu ēliqu ēliquāv ēliquāt</stems>
   <stems entry="40570">ēliqu ēliqu ēliquāv ēliquāt</stems>
+  <stems entry="60771">Elisē Elisē</stems>
   <stems entry="18978">ēlix ēlic</stems>
   <stems entry="18979">ēlix ēlix</stems>
   <stems entry="44593">elleborīt elleborīt</stems>
@@ -11826,6 +11904,7 @@
   <stems entry="19056">ēminenter</stems>
   <stems entry="19057">ēminenti ēminenti</stems>
   <stems entry="19058">ēminenti ēminenti</stems>
+  <stems entry="60772">ēminīsc ēminīsc - ēminment</stems>
   <stems entry="19060">ēminul ēminul</stems>
   <stems entry="19061">ēminus</stems>
   <stems entry="19062">ēmīr ēmīr - ēmīrāt</stems>
@@ -11887,6 +11966,7 @@
   <stems entry="47952">encathēsma encathēsmat</stems>
   <stems entry="44619">encautāri encautāri</stems>
   <stems entry="47953">encephalocēl encephalocēl</stems>
+  <stems entry="60774">encheirēsis encheirēs</stems>
   <stems entry="19133">enchīridi enchīridi</stems>
   <stems entry="19136">encombōma encombōmat</stems>
   <stems entry="44621">encōmiograph encōmiograph</stems>
@@ -11915,8 +11995,10 @@
   <stems entry="19163">ēnīt ēnīt - ēnix</stems>
   <stems entry="19164">ēnitesc ēnitesc ēnitu</stems>
   <stems entry="19165">ēnixē</stems>
+  <stems entry="60777">enneacrūn enneacrūn</stems>
   <stems entry="44626">enneadecaetēris enneadecaetērid</stems>
   <stems entry="47963">enneagōn enneagōn</stems>
+  <stems entry="60778">enneaphthōng enneaphthōng</stems>
   <stems entry="47965">enneātic enneātic</stems>
   <stems entry="53618">Ennēns Ennēns</stems>
   <stems entry="53620">Enniān Enniān</stems>
@@ -11943,6 +12025,7 @@
   <stems entry="47966">enterocystocēl enterocystocēl</stems>
   <stems entry="47967">enterohydrocēl enterohydrocēl</stems>
   <stems entry="47969">enterooepiplocēl enterooepiplocēl</stems>
+  <stems entry="60779">enterostenōsis enterostenōs</stems>
   <stems entry="44633">entheāt entheāt</stems>
   <stems entry="19177">enthēc enthēc</stems>
   <stems entry="44635">enthūsiast enthūsiast</stems>
@@ -11960,6 +12043,7 @@
   <stems entry="19194">ēnunti ēnunti ēnuntiāv ēnuntiāt</stems>
   <stems entry="19196">ēnuntiātio ēnuntiātiōn</stems>
   <stems entry="19197">ēnuntiātio ēnuntiātiōn</stems>
+  <stems entry="60780">enūrēsis enūrēs</stems>
   <stems entry="19198">ēnūtri ēnūtr ēnūtrīv ēnūtrīt</stems>
   <stems entry="53631">Enyāli Enyāli</stems>
   <stems entry="19200">eō</stems>
@@ -12000,6 +12084,7 @@
   <stems entry="53657">Epicharmī Epicharmī</stems>
   <stems entry="47984">epicherēma epicherēmat</stems>
   <stems entry="19228">epichīrēma epichīrēmat</stems>
+  <stems entry="60786">epichrōsis epichrōs</stems>
   <stems entry="19231">epicōp epicōp</stems>
   <stems entry="53659">Epicrān Epicrān</stems>
   <stems entry="53661">Epictēt Epictēt</stems>
@@ -12038,6 +12123,7 @@
   <stems entry="48003">epiplocēl epiplocēl</stems>
   <stems entry="19263">epirēdi epirēdi</stems>
   <stems entry="40598">epirēdi epirēdi</stems>
+  <stems entry="60791">Epirōt Epirōt</stems>
   <stems entry="53685">Epirōtic Epirōtic</stems>
   <stems entry="44673">episcēni episcēni</stems>
   <stems entry="19265">episcopāl episcopāl</stems>
@@ -12106,6 +12192,7 @@
   <stems entry="53718">Ergetīn Ergetīn</stems>
   <stems entry="53720">Ergīn Ergīn</stems>
   <stems entry="19344">ergō</stems>
+  <stems entry="60796">Erīchtho Erīcht</stems>
   <stems entry="53723">Erīcūs Erīcūs</stems>
   <stems entry="19347">ērig ērig ērex ērect</stems>
   <stems entry="44704">ērigeron ērigeront</stems>
@@ -12113,6 +12200,7 @@
   <stems entry="19349">ērināce ērināce</stems>
   <stems entry="40606">ērināce ērināce</stems>
   <stems entry="53729">Erīnn Erīnn</stems>
+  <stems entry="60799">Erīnnys Erīnn</stems>
   <stems entry="19351">ēripi ērip ēripu ērept</stems>
   <stems entry="44708">ērīv ērīv ērīvav ērīvat</stems>
   <stems entry="53736">Erizēn Erizēn</stems>
@@ -12165,6 +12253,7 @@
   <stems entry="19396">ēs ēs</stems>
   <stems entry="53756">Esāi Esāi</stems>
   <stems entry="53755">Esāiān Esāiān</stems>
+  <stems entry="60803">Esaū</stems>
   <stems entry="53757">Esbonīt Esbonīt</stems>
   <stems entry="53758">Escām Escām</stems>
   <stems entry="19398">escāri escāri</stems>
@@ -12205,6 +12294,7 @@
   <stems entry="48045">ēvadātici ēvadātici</stems>
   <stems entry="48046">ēvadimōni ēvadimōni</stems>
   <stems entry="48047">ēvallefaci ēvallefac</stems>
+  <stems entry="60811">Evānder Evāndr</stems>
   <stems entry="48048">ēvānitūr ēvānitūr</stems>
   <stems entry="44751">ēvapōrātīv ēvapōrātīv</stems>
   <stems entry="53909">Evārch Evārch</stems>
@@ -12218,6 +12308,7 @@
   <stems entry="53791">Eūcheri Eūcheri</stems>
   <stems entry="53792">Eūcheri Eūcheri</stems>
   <stems entry="53794">Euclīdes Euclīd</stems>
+  <stems entry="60806">eucnēm eucnēm</stems>
   <stems entry="53795">Euctēmon Euctēmon</stems>
   <stems entry="53798">Eudām Eudām</stems>
   <stems entry="53800">Eudēm Eudēm</stems>
@@ -12606,6 +12697,7 @@
   <stems entry="19980">expurg expurg expurgāv expurgāt</stems>
   <stems entry="19981">expurgāt expurgāt</stems>
   <stems entry="19982">expurgātiō expurgātiōn</stems>
+  <stems entry="60817">Exquilīn Exquilīn</stems>
   <stems entry="19986">exquīr exquīr exquīsīv exquīsīt</stems>
   <stems entry="40655">exquīr exquīr exquīsīv exquīsīt</stems>
   <stems entry="19987">exquīsīt exquīsīt</stems>
@@ -12617,6 +12709,7 @@
   <stems entry="19992">exsatur exsatur exsaturāv exsaturāt</stems>
   <stems entry="19993">exsaturābil exsaturābil</stems>
   <stems entry="19994">exsaturāt exsaturāt</stems>
+  <stems entry="60818">exscīsāt exscīsāt</stems>
   <stems entry="19997">exscre exscre exscreāv exscreāt</stems>
   <stems entry="19998">exscrīb exscrīb exscrips exscript</stems>
   <stems entry="44818">exsecātio exsecātion</stems>
@@ -12697,6 +12790,7 @@
   <stems entry="20154">extrūd extrūd extrūs extrūs</stems>
   <stems entry="48080">extrūnc extrūnc</stems>
   <stems entry="44825">extūber extūber extūberav extūberat</stems>
+  <stems entry="60820">extuberāscens extuberāscent</stems>
   <stems entry="44824">extūberātio extūberātion</stems>
   <stems entry="20157">extund extund extud extūs</stems>
   <stems entry="20158">exturb exturb exturbāv exturbāt</stems>
@@ -12815,6 +12909,7 @@
   <stems entry="20311">famēlic famēlic famēlici famēlicissi</stems>
   <stems entry="20312">fāmen fāmin</stems>
   <stems entry="20313">famēs fam</stems>
+  <stems entry="60822">famēscens famēscent</stems>
   <stems entry="20314">fāmigerābil fāmigerābil</stems>
   <stems entry="44841">fāmigerāt fāmigerāt</stems>
   <stems entry="44840">fāmigerātio fāmigerātion</stems>
@@ -12833,6 +12928,7 @@
   <stems entry="20332">fān fān</stems>
   <stems entry="20333">fān fān fānāv fānāt</stems>
   <stems entry="20335">fānātic fānātic</stems>
+  <stems entry="60823">Fānēster Fānēstr</stems>
   <stems entry="53967">Fānēstr Fānēstr</stems>
   <stems entry="53968">Fanniān Fanniān</stems>
   <stems entry="20341">fānul fānul</stems>
@@ -13435,6 +13531,7 @@
   <stems entry="21110">frūmentātio frūmentātiōn</stems>
   <stems entry="21111">frūmentātor frūmentātor</stems>
   <stems entry="21113">frūnisc frūnisc - frūnīt</stems>
+  <stems entry="60835">Frūsinas Frūsinat</stems>
   <stems entry="54132">Frūsino Frūsinon</stems>
   <stems entry="21115">frustātim</stems>
   <stems entry="21116">frustillātim</stems>
@@ -13536,6 +13633,7 @@
   <stems entry="21230">fūr fūr - fūrāt</stems>
   <stems entry="21232">fūrax fūrāc</stems>
   <stems entry="21236">furcill furcill furcillāv furcillāt</stems>
+  <stems entry="60838">Furfān Furfān</stems>
   <stems entry="54151">Furfōnēns Furfōnēns</stems>
   <stems entry="54156">Fūri Fūri</stems>
   <stems entry="21241">furiāl furiāl</stems>
@@ -13631,6 +13729,7 @@
   <stems entry="21339">gargarizātio gargarizātiōn</stems>
   <stems entry="54249">Gargiliān Gargiliān</stems>
   <stems entry="54251">Garīt Garīt</stems>
+  <stems entry="60844">Garīzim</stems>
   <stems entry="54252">Garocēll Garocēll</stems>
   <stems entry="21340">garri garr garrīv garrīt</stems>
   <stems entry="21341">garrīt garrīt</stems>
@@ -13759,6 +13858,7 @@
   <stems entry="21498">germin germin germināv germināt</stems>
   <stems entry="21500">germinātio germinātiōn</stems>
   <stems entry="54362">Germisār Germisār</stems>
+  <stems entry="60847">Gerōni Gerōni</stems>
   <stems entry="44950">gerontē gerontē</stems>
   <stems entry="21501">gerontocomī gerontocomī</stems>
   <stems entry="21505">gerro gerrōn</stems>
@@ -13782,6 +13882,7 @@
   <stems entry="21523">gibberōs gibberōs</stems>
   <stems entry="21525">Gigantē Gigantē</stems>
   <stems entry="48160">gigārt gigārt</stems>
+  <stems entry="60850">Gigārtho Gigārth</stems>
   <stems entry="44955">gigēri gigēri</stems>
   <stems entry="54388">Gigūrr Gigūrr</stems>
   <stems entry="54391">Gindarēn Gindarēn</stems>
@@ -13822,6 +13923,7 @@
   <stems entry="54408">Glessāri Glessāri</stems>
   <stems entry="21565">glēucin glēucin</stems>
   <stems entry="44976">glīn glīn</stems>
+  <stems entry="60854">glīn glīn</stems>
   <stems entry="54409">Glinditiōn Glinditiōn</stems>
   <stems entry="48168">glīri glīri</stems>
   <stems entry="21566">glīs glīr</stems>
@@ -14083,6 +14185,7 @@
   <stems entry="21913">hālit hālit hālitāv hālitāt</stems>
   <stems entry="21915">hallēc hallēc</stems>
   <stems entry="21917">hallūcinātor hallūcinātor</stems>
+  <stems entry="60871">Halmydēss Halmydēss</stems>
   <stems entry="54575">Halōn Halōn</stems>
   <stems entry="54576">Halonnēs Halonnēs</stems>
   <stems entry="21919">hālūcin hālūcin - hālūcināt</stems>
@@ -14174,6 +14277,7 @@
   <stems entry="22042">helluātio helluātiōn</stems>
   <stems entry="22043">helluo helluōn</stems>
   <stems entry="54677">Hēlor Hēlor</stems>
+  <stems entry="60883">hēlōsis hēlōs</stems>
   <stems entry="54678">Hēlōt Hēlōt</stems>
   <stems entry="22045">hēlu hēlu - hēluāt</stems>
   <stems entry="45064">helvenāc helvenāc</stems>
@@ -14192,6 +14296,7 @@
   <stems entry="48209">hēmerōt hēmerōt</stems>
   <stems entry="45069">hēmicadi hēmicadi</stems>
   <stems entry="22055">hēmicill hēmicill</stems>
+  <stems entry="60886">hēmicranē hēmicranē</stems>
   <stems entry="22056">hēmicrāni hēmicrāni</stems>
   <stems entry="48210">hēmicrani hēmicrani</stems>
   <stems entry="45070">hēmicycl hēmicycl</stems>
@@ -14254,6 +14359,8 @@
   <stems entry="54728">Herbulēns Herbulēns</stems>
   <stems entry="54729">Hercāt Hercāt</stems>
   <stems entry="54730">Hercē Hercē</stems>
+  <stems entry="60888">Herculāne Herculāne</stems>
+  <stems entry="60889">Herculāne Herculāne</stems>
   <stems entry="54731">Herculānēns Herculānēns</stems>
   <stems entry="54733">Herculē Herculē</stems>
   <stems entry="22093">Herculēs Hercul</stems>
@@ -14288,6 +14395,7 @@
   <stems entry="54765">Hermodōr Hermodōr</stems>
   <stems entry="54767">Hermogeniān Hermogeniān</stems>
   <stems entry="54768">Hermolā Hermolā</stems>
+  <stems entry="60892">Hermonāss Hermonāss</stems>
   <stems entry="54771">Hermotīm Hermotīm</stems>
   <stems entry="45093">hermūbotan hermūbotan</stems>
   <stems entry="45094">hermūpo hermūpo</stems>
@@ -14319,6 +14427,7 @@
   <stems entry="54803">Hetrūsc Hetrūsc</stems>
   <stems entry="45102">hettēmatic hettēmatic</stems>
   <stems entry="22141">hēu</stems>
+  <stems entry="60895">Heurēsis Heurēs</stems>
   <stems entry="22143">hēus</stems>
   <stems entry="22144">Hēv Hēv</stems>
   <stems entry="45104">hexaclīn hexaclīn</stems>
@@ -14348,11 +14457,13 @@
   <stems entry="54812">Hienipēns Hienipēns</stems>
   <stems entry="54813">Hienipēns Hienipēns</stems>
   <stems entry="54814">Hierābrīg Hierābrīg</stems>
+  <stems entry="60897">Hierācom Hierācom</stems>
   <stems entry="54815">Hierācomēt Hierācomēt</stems>
   <stems entry="54816">Hierāpolis Hierāpol</stems>
   <stems entry="54817">Hierāpolīt Hierāpolīt</stems>
   <stems entry="54818">Hierāpolītān Hierāpolītān</stems>
   <stems entry="54819">Hierāpytn Hierāpytn</stems>
+  <stems entry="60898">Hierāsycamīn Hierāsycamīn</stems>
   <stems entry="22185">hierātic hierātic</stems>
   <stems entry="22186">Hiērēmī Hiērēmī</stems>
   <stems entry="54822">Hiericontīn Hiericontīn</stems>
@@ -14409,6 +14520,7 @@
   <stems entry="22237">hirūdo hirūdin</stems>
   <stems entry="22238">hirundinīn hirundinīn</stems>
   <stems entry="22239">hirundō hirundin</stems>
+  <stems entry="60903">Hispāll Hispāll</stems>
   <stems entry="22243">Hispān Hispān</stems>
   <stems entry="54896">Hispān Hispān</stems>
   <stems entry="54897">Hispān Hispān</stems>
@@ -14580,8 +14692,11 @@
   <stems entry="54969">Hydruntīn Hydruntīn</stems>
   <stems entry="54971">Hydrūss Hydrūss</stems>
   <stems entry="54972">Hyetūss Hyetūss</stems>
+  <stems entry="60909">Hygē Hygē</stems>
+  <stems entry="60910">Hygīn Hygīn</stems>
   <stems entry="48267">hygrōma hygrōmat</stems>
   <stems entry="54976">Hylāt Hylāt</stems>
+  <stems entry="60913">Hymētt Hymētt</stems>
   <stems entry="54982">Hymētti Hymētti</stems>
   <stems entry="22488">hymnāri hymnāri</stems>
   <stems entry="22490">hymniz hymniz hymnizāv hymnizāt</stems>
@@ -14598,6 +14713,8 @@
   <stems entry="45191">hyperīc hyperīc</stems>
   <stems entry="55003">Hyperiōni Hyperiōni</stems>
   <stems entry="55002">Hyperiōnis Hyperiōnid</stems>
+  <stems entry="60916">hyperostōsis hyperostōs</stems>
+  <stems entry="60917">hypersarcōsis hypersarcōs</stems>
   <stems entry="45196">hypnōtic hypnōtic</stems>
   <stems entry="45197">hypnōtic hypnōtic</stems>
   <stems entry="48284">hypocratēriform hypocratēriform</stems>
@@ -14621,6 +14738,7 @@
   <stems entry="40841">hyssōp hyssōp</stems>
   <stems entry="22549">hyssōp hyssōp</stems>
   <stems entry="55027">Hystāspes Hystāsp</stems>
+  <stems entry="60920">hysterocēl hysterocēl</stems>
   <stems entry="48297">hysterotōmi hysterotōmi</stems>
   <stems entry="48298">hystriciāsis hystriciās</stems>
   <stems entry="45218">hystricōs hystricōs</stems>
@@ -14658,7 +14776,9 @@
   <stems entry="55064">Iāsi Iāsi</stems>
   <stems entry="55062">Iāsid Iāsid</stems>
   <stems entry="45221">īasiōn īasiōn</stems>
+  <stems entry="60922">Iāsion Iāsion</stems>
   <stems entry="55063">Iāsis Iāsid</stems>
+  <stems entry="60923">Iāso Iās</stems>
   <stems entry="55065">Iāson Iāson</stems>
   <stems entry="55067">Iāsoni Iāsoni</stems>
   <stems entry="55066">Iāsonid Iāsonid</stems>
@@ -14793,6 +14913,7 @@
   <stems entry="22706">illig illig illigāv illigāt</stems>
   <stems entry="22708">illin illin illēv illit</stems>
   <stems entry="55160">Illiturgēns Illiturgēns</stems>
+  <stems entry="60930">Illitūrgi</stems>
   <stems entry="55161">Illiturgītān Illiturgītān</stems>
   <stems entry="22713">illō</stems>
   <stems entry="22714">illōc</stems>
@@ -14814,6 +14935,7 @@
   <stems entry="22728">illustr illustr illustrāv illustrāt</stems>
   <stems entry="42645">illustrātio illustrātiōn</stems>
   <stems entry="22732">illūt illūt</stems>
+  <stems entry="60931">Ilōrci</stems>
   <stems entry="55165">Ilorcītān Ilorcītān</stems>
   <stems entry="55166">Ilōt Ilōt</stems>
   <stems entry="55175">Ilvāt Ilvāt</stems>
@@ -15587,6 +15709,7 @@
   <stems entry="23750">īnful īnful</stems>
   <stems entry="23752">īnfulci īnfulc īnfuls īnfult</stems>
   <stems entry="23753">īnfulg īnfulg īnfuls</stems>
+  <stems entry="60935">infūmābul infūmābul</stems>
   <stems entry="23754">īnfund īnfund īnfūd īnfūs</stems>
   <stems entry="40930">īnfund īnfund īnfūd īnfūs</stems>
   <stems entry="23756">īnfundibul īnfundibul</stems>
@@ -16013,6 +16136,7 @@
   <stems entry="24448">interfectrix interfectrīc</stems>
   <stems entry="24449">interfī interf - interfact</stems>
   <stems entry="24450">interfici interfic interfēc interfect</stems>
+  <stems entry="60939">interfrīng interfrīng</stems>
   <stems entry="24452">interfulgēns interfulgent</stems>
   <stems entry="24453">interfūs interfūs</stems>
   <stems entry="45369">interfūsio interfūsion</stems>
@@ -16211,6 +16335,8 @@
   <stems entry="55239">Iōp Iōp</stems>
   <stems entry="55377">Jordānes Jordān</stems>
   <stems entry="55378">Jōsēph Jōsēph</stems>
+  <stems entry="60961">Jōseph</stems>
+  <stems entry="60962">Jōsue</stems>
   <stems entry="24732">iōtacism iōtacism</stems>
   <stems entry="55379">Jōvi Jōvi</stems>
   <stems entry="55386">Jōvi Jōvi</stems>
@@ -16314,6 +16440,7 @@
   <stems entry="24833">irruptio irruptiōn</stems>
   <stems entry="55267">Isaflēns Isaflēns</stems>
   <stems entry="45411">īsagōgic īsagōgic</stems>
+  <stems entry="60945">Isāi Isāi</stems>
   <stems entry="55268">Isāiān Isāiān</stems>
   <stems entry="55273">Isaūr Isaūr</stems>
   <stems entry="55274">Isaūr Isaūr</stems>
@@ -16362,6 +16489,7 @@
   <stems entry="55340">Itūrae Itūrae</stems>
   <stems entry="55341">Itūrae Itūrae</stems>
   <stems entry="55388">Jūdae Jūdae</stems>
+  <stems entry="60963">Jūdith</stems>
   <stems entry="55389">Jugātīn Jugātīn</stems>
   <stems entry="43795">jugulātrix jugulātrīc</stems>
   <stems entry="45425">jugūment jugūment jugūmentav jugūmentat</stems>
@@ -16534,6 +16662,7 @@
   <stems entry="25102">Karthāgo Karthāgin</stems>
   <stems entry="25110">lab lab labāv labāt</stems>
   <stems entry="25111">lāb lāb - laps</stems>
+  <stems entry="60965">Labatānis</stems>
   <stems entry="55431">Labeāt Labeāt</stems>
   <stems entry="25116">lābēcul lābēcul</stems>
   <stems entry="25117">labefaci labefac labefēc labefact</stems>
@@ -16609,6 +16738,7 @@
   <stems entry="25202">laetābund laetābund</stems>
   <stems entry="45435">laetāmen laetāmin</stems>
   <stems entry="25203">laetāns laetant</stems>
+  <stems entry="60967">laetāster laetāstr</stems>
   <stems entry="25204">laetātio laetātiōn</stems>
   <stems entry="25205">laetē</stems>
   <stems entry="45436">laeticulōs laeticulōs</stems>
@@ -16769,6 +16899,7 @@
   <stems entry="25343">lāser lāser</stems>
   <stems entry="25344">lāserpīci lāserpīci</stems>
   <stems entry="48380">lāserpitiāt lāserpitiāt</stems>
+  <stems entry="60972">lāserpitifer lāserpitifer</stems>
   <stems entry="25346">lass lass lassāv lassāt</stems>
   <stems entry="25347">lassesc lassesc lassescāv</stems>
   <stems entry="25348">lassitūdō lassitūdin</stems>
@@ -16976,6 +17107,7 @@
   <stems entry="25576">lētāl lētāl</stems>
   <stems entry="55745">Letāndr Letāndr</stems>
   <stems entry="25578">lēth lēth</stems>
+  <stems entry="60985">Lēth Lēth</stems>
   <stems entry="25579">Lēthae Lēthae</stems>
   <stems entry="25580">lētharg lētharg</stems>
   <stems entry="25581">lēthargic lēthargic</stems>
@@ -16993,9 +17125,11 @@
   <stems entry="55759">Leucītān Leucītān</stems>
   <stems entry="45495">leucochrȳs leucochrȳs</stems>
   <stems entry="45496">leucocō leucocō</stems>
+  <stems entry="60986">leucōma leucōmat</stems>
   <stems entry="45503">leucophaeāt leucophaeāt</stems>
   <stems entry="48402">leucostīct leucostīct</stems>
   <stems entry="45508">leucozōm leucozōm</stems>
+  <stems entry="60989">lēvir lēvir</stems>
   <stems entry="45514">lēvītōnāri lēvītōnāri</stems>
   <stems entry="25594">levāmen levāmin</stems>
   <stems entry="25595">levāment levāment</stems>
@@ -17192,6 +17326,7 @@
   <stems entry="25815">lītigiōs lītigiōs</stems>
   <stems entry="25816">lītorāl lītorāl</stems>
   <stems entry="25817">lītore lītore</stems>
+  <stems entry="60991">litōtes litōt</stems>
   <stems entry="25821">litterāl litterāl</stems>
   <stems entry="25822">litterāri litterāri</stems>
   <stems entry="25823">litterāt litterāt</stems>
@@ -17287,6 +17422,7 @@
   <stems entry="25939">lōrīc lōrīc</stems>
   <stems entry="41100">lōrīc lōrīc</stems>
   <stems entry="45565">lōrīcātio lōrīcātion</stems>
+  <stems entry="60994">lorīcifer lorīcifer</stems>
   <stems entry="25942">lōt lōt</stems>
   <stems entry="55898">Lotharīng Lotharīng</stems>
   <stems entry="55900">Lotophagītis Lotophagītid</stems>
@@ -17480,6 +17616,7 @@
   <stems entry="56000">Lycomēdē Lycomēdē</stems>
   <stems entry="55999">Lycomēdes Lycomēd</stems>
   <stems entry="45589">lycophōs lycophōt</stems>
+  <stems entry="60996">Lycōre Lycōre</stems>
   <stems entry="56004">Lycōrias Lycōriad</stems>
   <stems entry="56005">Lycōris Lycōrid</stems>
   <stems entry="56006">Lycōrm Lycōrm</stems>
@@ -17502,6 +17639,7 @@
   <stems entry="26119">lyncūri lyncūri</stems>
   <stems entry="56031">Lyrcēi Lyrcēi</stems>
   <stems entry="56035">Lyrnēss Lyrnēss</stems>
+  <stems entry="60998">Lȳsander Lȳsandr</stems>
   <stems entry="56036">Lȳsiac Lȳsiac</stems>
   <stems entry="56037">Lȳsiad Lȳsiad</stems>
   <stems entry="56038">Lȳsias Lȳsiad</stems>
@@ -17522,6 +17660,7 @@
   <stems entry="56056">Maccocalīng Maccocalīng</stems>
   <stems entry="56057">Macedoniān Macedoniān</stems>
   <stems entry="56059">Macellīn Macellīn</stems>
+  <stems entry="60999">Maceprāct Maceprāct</stems>
   <stems entry="26137">mācer mācer mācerāv mācerāt</stems>
   <stems entry="26139">māceri māceri</stems>
   <stems entry="48432">maceriātio maceriātion</stems>
@@ -17601,6 +17740,7 @@
   <stems entry="26238">magnitūdō magnitūdin</stems>
   <stems entry="26239">magnoperē</stems>
   <stems entry="56146">Māgo Māgon</stems>
+  <stems entry="61006">Māgog</stems>
   <stems entry="56148">Māgōniān Māgōniān</stems>
   <stems entry="56149">Māgonti Māgonti</stems>
   <stems entry="56153">Māgull Māgull</stems>
@@ -17814,6 +17954,7 @@
   <stems entry="26495">marīt marīt</stems>
   <stems entry="26496">marīt marīt marītāv marītāt</stems>
   <stems entry="45658">marmarītis marmarītid</stems>
+  <stems entry="61010">Marmēss Marmēss</stems>
   <stems entry="26504">marmorāt marmorāt</stems>
   <stems entry="26506">Maro Marōn</stems>
   <stems entry="56307">Marōh Marōh</stems>
@@ -17967,6 +18108,7 @@
   <stems entry="56432">Medārd Medārd</stems>
   <stems entry="56433">Medauriān Medauriān</stems>
   <stems entry="26631">medēl medēl</stems>
+  <stems entry="61016">medēlifer medēlifer</stems>
   <stems entry="56436">Medēn Medēn</stems>
   <stems entry="26633">medēns medent</stems>
   <stems entry="26637">medi medi mediāv mediāt</stems>
@@ -18080,6 +18222,7 @@
   <stems entry="56549">Memacēn Memacēn</stems>
   <stems entry="26738">membrān membrān</stems>
   <stems entry="26739">membrātim</stems>
+  <stems entry="61021">Membrēs Membrēs</stems>
   <stems entry="56553">Memmiān Memmiān</stems>
   <stems entry="26742">memor memor memorāv memorāt</stems>
   <stems entry="26743">memorābil memorābil</stems>
@@ -18113,12 +18256,14 @@
   <stems entry="56580">Menelāe Menelāe</stems>
   <stems entry="56582">Menelāi Menelāi</stems>
   <stems entry="56581">Menelāis Menelāid</stems>
+  <stems entry="61024">Menelāit Menelāit</stems>
   <stems entry="56585">Menēni Menēni</stems>
   <stems entry="56584">Menēniān Menēniān</stems>
   <stems entry="45708">mēni mēni</stems>
   <stems entry="45707">mēning mēning</stems>
   <stems entry="56593">Menobārd Menobārd</stems>
   <stems entry="45709">mēnogeni mēnogeni</stems>
+  <stems entry="61026">menoīd menoīd</stems>
   <stems entry="56601">Menōsc Menōsc</stems>
   <stems entry="26766">mēns mēns</stems>
   <stems entry="41156">mēns mēns</stems>
@@ -18293,6 +18438,7 @@
   <stems entry="56740">Milōniān Milōniān</stems>
   <stems entry="26961">mīm mīm</stems>
   <stems entry="26962">mīm mīm</stems>
+  <stems entry="61033">mimāllis mimāllid</stems>
   <stems entry="56747">Mimnērm Mimnērm</stems>
   <stems entry="26963">mīmograph mīmograph</stems>
   <stems entry="26964">mīmul mīmul</stems>
@@ -18481,6 +18627,7 @@
   <stems entry="45774">molochināri molochināri</stems>
   <stems entry="48505">molochīt molochīt</stems>
   <stems entry="56832">Molorchē Molorchē</stems>
+  <stems entry="61040">Molpē Molpē</stems>
   <stems entry="27196">moltātic moltātic</stems>
   <stems entry="45775">molūcr molūcr</stems>
   <stems entry="45777">molybdītis molybdītid</stems>
@@ -18515,6 +18662,7 @@
   <stems entry="48509">monocentaūr monocentaūr</stems>
   <stems entry="27233">monocerōs monocerōt</stems>
   <stems entry="48511">monochrōm monochrōm</stems>
+  <stems entry="61042">monochrōmat monochrōmat</stems>
   <stems entry="45785">monocnēm monocnēm</stems>
   <stems entry="48512">monocotylēdo monocotylēdon</stems>
   <stems entry="45786">monocrēpis monocrēpid</stems>
@@ -18526,6 +18674,7 @@
   <stems entry="45795">monolōr monolōr</stems>
   <stems entry="48519">monopōl monopōl</stems>
   <stems entry="45798">monoptōt monoptōt</stems>
+  <stems entry="61046">monoptōt monoptōt</stems>
   <stems entry="48521">monoschēm monoschēm</stems>
   <stems entry="56850">Monosīll Monosīll</stems>
   <stems entry="27259">mōns mont</stems>
@@ -18594,6 +18743,7 @@
   <stems entry="56883">Mosēi Mosēi</stems>
   <stems entry="56885">Mosellē Mosellē</stems>
   <stems entry="27332">Mōsēs Mōs</stems>
+  <stems entry="61047">mostellāri mostellāri</stems>
   <stems entry="56889">Mostēn Mostēn</stems>
   <stems entry="27333">mōt mōt</stems>
   <stems entry="27334">mōt mōt mōtāv mōtāt</stems>
@@ -18621,6 +18771,7 @@
   <stems entry="27348">mūcinni mūcinni</stems>
   <stems entry="27349">mūcor mūcor</stems>
   <stems entry="27350">mucro mucrōn</stems>
+  <stems entry="61048">mūger</stems>
   <stems entry="27351">mugi mūg mūgīv mūgīt</stems>
   <stems entry="27353">mūgilis mūgil</stems>
   <stems entry="56901">Mūgillān Mūgillān</stems>
@@ -18822,6 +18973,7 @@
   <stems entry="27589">mȳthologic mȳthologic</stems>
   <stems entry="27595">n n nāv</stems>
   <stems entry="27596">n n nēv nēt</stems>
+  <stems entry="61052">Nābūchodonosor</stems>
   <stems entry="45884">naccīn naccīn</stems>
   <stems entry="57019">Naeviān Naeviān</stems>
   <stems entry="57022">Nāiad Nāiad</stems>
@@ -19028,6 +19180,7 @@
   <stems entry="57160">Neodūn Neodūn</stems>
   <stems entry="27817">neomēni neomēni</stems>
   <stems entry="45918">neōteric neōteric</stems>
+  <stems entry="61061">nepēnthes</stems>
   <stems entry="57164">Nepesīn Nepesīn</stems>
   <stems entry="57165">Nepesīn Nepesīn</stems>
   <stems entry="57166">Nephelēias Nephelēiad</stems>
@@ -19069,6 +19222,7 @@
   <stems entry="57201">Nerulān Nerulān</stems>
   <stems entry="57202">Nerulīn Nerulīn</stems>
   <stems entry="57203">Nerulōnēns Nerulōnēns</stems>
+  <stems entry="61064">Nervolāri Nervolāri</stems>
   <stems entry="27848">nervōs nervōs</stems>
   <stems entry="57213">Nescaniēns Nescaniēns</stems>
   <stems entry="27850">nesci nesc nescīv nescīt</stems>
@@ -19094,6 +19248,7 @@
   <stems entry="57240">Nīcaeēns Nīcaeēns</stems>
   <stems entry="57241">Nīcaeēns Nīcaeēns</stems>
   <stems entry="57242">Nīcaen Nīcaen</stems>
+  <stems entry="61065">Nīcānder Nīcāndr</stems>
   <stems entry="57244">Nīcānor Nīcānor</stems>
   <stems entry="57245">Nīcasi Nīcasi</stems>
   <stems entry="57246">Nīcātor Nīcātor</stems>
@@ -19154,6 +19309,7 @@
   <stems entry="45936">nīli nīli</stems>
   <stems entry="57281">Nīliac Nīliac</stems>
   <stems entry="57282">Nīlicol Nīlicol</stems>
+  <stems entry="61067">Nīligen Nīligen</stems>
   <stems entry="57283">Nīlis Nīlid</stems>
   <stems entry="57284">Nīlōtic Nīlōtic</stems>
   <stems entry="57285">Nīlōtis Nīlōtid</stems>
@@ -19667,6 +19823,7 @@
   <stems entry="28546">octōgēnsim</stems>
   <stems entry="57470">Octōgēs Octōgēs</stems>
   <stems entry="48602">octōgēssis octōgēss</stems>
+  <stems entry="61079">octōgōn octōgōn</stems>
   <stems entry="28549">octōiug octōiug</stems>
   <stems entry="28550">octōnāri octōnāri</stems>
   <stems entry="28551">octōphor octōphor</stems>
@@ -19763,6 +19920,7 @@
   <stems entry="57550">Oīcl Oīcl</stems>
   <stems entry="57551">Oīle Oīle</stems>
   <stems entry="57552">Oīlid Oīlid</stems>
+  <stems entry="61083">Olān Olān</stems>
   <stems entry="57556">Olariōnēns Olariōnēns</stems>
   <stems entry="57557">Olariōnēns Olariōnēns</stems>
   <stems entry="57559">Olaurēns Olaurēns</stems>
@@ -19787,6 +19945,7 @@
   <stems entry="57575">Olisipōnēns Olisipōnēns</stems>
   <stems entry="28666">olīv olīv</stems>
   <stems entry="28667">olīv olīv</stems>
+  <stems entry="61085">olīvans olīvant</stems>
   <stems entry="28669">olīvēt olīvēt</stems>
   <stems entry="28670">olīvifer olīvifer</stems>
   <stems entry="28671">olīvitas olīvitāt</stems>
@@ -19951,6 +20110,7 @@
   <stems entry="28879">ōrātōriē</stems>
   <stems entry="28880">ōrātrix ōrātrīc</stems>
   <stems entry="57667">Oratūr Oratūr</stems>
+  <stems entry="61089">Orāx Orāx</stems>
   <stems entry="28882">orb orb orbāv orbāt</stems>
   <stems entry="41312">orb orb orbāv orbāt</stems>
   <stems entry="28883">orbātor orbātor</stems>
@@ -20084,6 +20244,7 @@
   <stems entry="29029">ostentātio ostentātiōn</stems>
   <stems entry="29030">ostentātor ostentātor</stems>
   <stems entry="57795">Osteōdes Osteōd</stems>
+  <stems entry="61097">osteosarcōsis osteosarcōs</stems>
   <stems entry="48636">osteosteātoma osteosteātomat</stems>
   <stems entry="29033">ostiāri ostiāri</stems>
   <stems entry="29034">ostiāri ostiāri</stems>
@@ -20201,6 +20362,7 @@
   <stems entry="29142">pāgell pāgell</stems>
   <stems entry="29145">pāgin pāgin</stems>
   <stems entry="29146">pāginul pāginul</stems>
+  <stems entry="61101">Pagoārg Pagoārg</stems>
   <stems entry="46151">pagūr pagūr</stems>
   <stems entry="29147">pāl pāl</stems>
   <stems entry="29148">pāl pāl</stems>
@@ -20209,6 +20371,7 @@
   <stems entry="46152">palacrān palacrān</stems>
   <stems entry="57890">Palaepharsāl Palaepharsāl</stems>
   <stems entry="57892">Palaepolītān Palaepolītān</stems>
+  <stems entry="61105">Palaescamānder Palaescamāndr</stems>
   <stems entry="57893">Palaescēpsis Palaescēps</stems>
   <stems entry="57894">Palaesimūnd Palaesimūnd</stems>
   <stems entry="57895">Palaesimūnd Palaesimūnd</stems>
@@ -20693,6 +20856,7 @@
   <stems entry="58250">Peltēn Peltēn</stems>
   <stems entry="58251">Peltuīn Peltuīn</stems>
   <stems entry="58252">Peltuīn Peltuīn</stems>
+  <stems entry="61111">Peltuīnas Peltuīnat</stems>
   <stems entry="58254">Pēlūsi Pēlūsi</stems>
   <stems entry="58255">Pēlūsi Pēlūsi</stems>
   <stems entry="58253">Pēlūsiān Pēlūsiān</stems>
@@ -20736,6 +20900,7 @@
   <stems entry="29753">pēnsio pēnsiōn</stems>
   <stems entry="29754">pēnsit pēnsit pēnsitāv pēnsitāt</stems>
   <stems entry="29755">pēnsitātio pēnsitātiōn</stems>
+  <stems entry="61112">pentadōr pentadōr</stems>
   <stems entry="48689">pentaetēric pentaetēric</stems>
   <stems entry="48690">pentagōn pentagōn</stems>
   <stems entry="46260">pentagōni pentagōni</stems>
@@ -20886,6 +21051,7 @@
   <stems entry="29982">perhonōrificē</stems>
   <stems entry="29986">perhūmān perhūmān</stems>
   <stems entry="29987">perhūmāniter</stems>
+  <stems entry="61114">Periānder Periāndr</stems>
   <stems entry="46289">perichristāri perichristāri</stems>
   <stems entry="29990">perīclit perīclit - perīclitāt</stems>
   <stems entry="39465">perīclit perīclit - perīclitāt</stems>
@@ -21245,6 +21411,7 @@
   <stems entry="58506">Phīdipp Phīdipp</stems>
   <stems entry="58505">Phīdippides Phīdippid</stems>
   <stems entry="58507">Phīdon Phīdon</stems>
+  <stems entry="61125">Phīdyl Phīdyl</stems>
   <stems entry="58512">Philadēlph Philadēlph</stems>
   <stems entry="58510">Philadelphēn Philadelphēn</stems>
   <stems entry="58514">Philagriān Philagriān</stems>
@@ -21272,6 +21439,7 @@
   <stems entry="58545">Philīsc Philīsc</stems>
   <stems entry="58548">Philīst Philīst</stems>
   <stems entry="58547">Philistīn Philistīn</stems>
+  <stems entry="61126">Philocōmasi Philocōmasi</stems>
   <stems entry="58553">Philocrātes Philocrāt</stems>
   <stems entry="58554">Philoctētae Philoctētae</stems>
   <stems entry="58556">Philodēm Philodēm</stems>
@@ -21288,7 +21456,9 @@
   <stems entry="30430">philosoph philosoph - philosophāt</stems>
   <stems entry="58575">Philosophiān Philosophiān</stems>
   <stems entry="30433">philosophicē</stems>
+  <stems entry="61128">philosophūmen philosophūmen</stems>
   <stems entry="30436">phīm phīm</stems>
+  <stems entry="61129">Phīne Phīne</stems>
   <stems entry="58588">Phīnid Phīnid</stems>
   <stems entry="58591">Phintiēns Phintiēns</stems>
   <stems entry="30439">phlebotom phlebotom phlebotomāv phlebotomāt</stems>
@@ -21314,7 +21484,9 @@
   <stems entry="30446">phoenīcopter phoenīcopter</stems>
   <stems entry="46379">phoenīcūr phoenīcūr</stems>
   <stems entry="58629">Phoenīcus Phoenīcunt</stems>
+  <stems entry="61132">Phoenīss Phoenīss</stems>
   <stems entry="30447">phoenix phoenīc</stems>
+  <stems entry="61133">Pholegāndr Pholegāndr</stems>
   <stems entry="30448">phōnasc phōnasc</stems>
   <stems entry="48732">phonēma phonēmat</stems>
   <stems entry="58636">Phorōne Phorōne</stems>
@@ -21451,6 +21623,7 @@
   <stems entry="58731">Pīsae Pīsae</stems>
   <stems entry="58732">Pīsān Pīsān</stems>
   <stems entry="58733">Pīsān Pīsān</stems>
+  <stems entry="61141">Pīsānder Pīsāndr</stems>
   <stems entry="58734">Pīsātil Pīsātil</stems>
   <stems entry="46408">pīsātio pīsātion</stems>
   <stems entry="58738">Pisaūr Pisaūr</stems>
@@ -21488,9 +21661,12 @@
   <stems entry="58762">Pītharat Pītharat</stems>
   <stems entry="48743">pithēc pithēc</stems>
   <stems entry="58763">Pithēcūs Pithēcūs</stems>
+  <stems entry="61142">Pītho Pīthon</stems>
   <stems entry="58765">Pitholā Pitholā</stems>
   <stems entry="58767">Pitināt Pitināt</stems>
   <stems entry="58769">Pitōni Pitōni</stems>
+  <stems entry="61145">Pitthēi Pitthēi</stems>
+  <stems entry="61144">Pitthēis Pitthēid</stems>
   <stems entry="30646">pītuīt pītuīt</stems>
   <stems entry="30648">pītuītōs pītuītōs</stems>
   <stems entry="58772">Pitulān Pitulān</stems>
@@ -21622,6 +21798,7 @@
   <stems entry="30785">plūme plūme</stems>
   <stems entry="41444">plūme plūme</stems>
   <stems entry="30786">plūmesc plūmesc</stems>
+  <stems entry="61152">plūmiger plūmiger</stems>
   <stems entry="30787">plūmipēs plūmiped</stems>
   <stems entry="30788">plūmōs plūmōs</stems>
   <stems entry="30790">plūrāl plūrāl</stems>
@@ -21699,6 +21876,7 @@
   <stems entry="58893">Polybēt Polybēt</stems>
   <stems entry="48755">polycārp polycārp</stems>
   <stems entry="58896">Polycārp Polycārp</stems>
+  <stems entry="61154">polychrēst polychrēst</stems>
   <stems entry="58900">Polyclēt Polyclēt</stems>
   <stems entry="58899">Polyclētē Polyclētē</stems>
   <stems entry="48756">polycnēm polycnēm</stems>
@@ -21716,11 +21894,13 @@
   <stems entry="58920">Polynīces Polynīc</stems>
   <stems entry="46459">polyōnym polyōnym</stems>
   <stems entry="48760">polyōnym polyōnym</stems>
+  <stems entry="61155">Polypēmon Polypēmon</stems>
   <stems entry="58921">Polyphēm Polyphēm</stems>
   <stems entry="58923">polypleūr polypleūr</stems>
   <stems entry="48761">polyplūsi polyplūsi</stems>
   <stems entry="48762">polypsēph polypsēph</stems>
   <stems entry="46461">polyptōt polyptōt</stems>
+  <stems entry="61157">polyrrhīz polyrrhīz</stems>
   <stems entry="48764">polysīgma polysīgmat</stems>
   <stems entry="58927">Polytīmet Polytīmet</stems>
   <stems entry="46465">polyzōn polyzōn</stems>
@@ -22259,6 +22439,7 @@
   <stems entry="59074">Priscilliānist Priscilliānist</stems>
   <stems entry="46525">prīvātīci prīvātīci</stems>
   <stems entry="59078">Prīvērn Prīvērn</stems>
+  <stems entry="61164">Privērnas Privērnat</stems>
   <stems entry="31689">prīv prīv</stems>
   <stems entry="31690">prīv prīv prīvāv prīvāt</stems>
   <stems entry="31691">prīvāt prīvāt</stems>
@@ -22508,6 +22689,7 @@
   <stems entry="31950">prōnub prōnub</stems>
   <stems entry="41513">prōnub prōnub</stems>
   <stems entry="46549">prōnub prōnub</stems>
+  <stems entry="61166">prōnubans prōnubant</stems>
   <stems entry="31951">prōnunti prōnunti prōnuntiāv prōnuntiāt</stems>
   <stems entry="31952">prōnuntiātio prōnuntiātiōn</stems>
   <stems entry="41514">prōnuntiātio prōnuntiātiōn</stems>
@@ -22611,6 +22793,7 @@
   <stems entry="32068">prosēuch prosēuch</stems>
   <stems entry="32069">prōsili prōsil prosilīv</stems>
   <stems entry="32070">prōsili prōsil prōsilu</stems>
+  <stems entry="61169">prosmelōd prosmelōd</stems>
   <stems entry="32072">prōsocer prōsocer</stems>
   <stems entry="32073">prosōdi prosōdi</stems>
   <stems entry="46560">prosōdiac prosōdiac</stems>
@@ -22751,6 +22934,7 @@
   <stems entry="46601">psȳchrolūsi psȳchrolūsi</stems>
   <stems entry="46602">psȳchrolūt psȳchrolūt</stems>
   <stems entry="46606">pterōma pterōmat</stems>
+  <stems entry="61171">pterōt pterōt</stems>
   <stems entry="46608">pterygōma pterygōmat</stems>
   <stems entry="46609">ptōchē ptōchē</stems>
   <stems entry="32231">ptōchī ptōchī</stems>
@@ -23065,6 +23249,7 @@
   <stems entry="32749">quercēt quercēt</stems>
   <stems entry="42924">quercīn quercīn</stems>
   <stems entry="32750">querēl querēl</stems>
+  <stems entry="61174">querēlans querēlant</stems>
   <stems entry="32753">querimōni querimōni</stems>
   <stems entry="32758">querquētulān querquētulān</stems>
   <stems entry="32761">quī</stems>
@@ -23739,6 +23924,7 @@
   <stems entry="48835">rhīnocorax rhīnocorac</stems>
   <stems entry="59228">Rhīntōnic Rhīntōnic</stems>
   <stems entry="59229">Rhīp Rhīp</stems>
+  <stems entry="61185">Rhīpae Rhīpae</stems>
   <stems entry="59230">Rhīphearm Rhīphearm</stems>
   <stems entry="46755">rhīzi rhīzi</stems>
   <stems entry="46756">rhīzotom rhīzotom</stems>
@@ -23947,6 +24133,7 @@
   <stems entry="33970">sacrific sacrific sacrificāv sacrificāt</stems>
   <stems entry="59279">Sacripōrt Sacripōrt</stems>
   <stems entry="33979">sacrōsanct sacrōsanct</stems>
+  <stems entry="61191">Sacrōvir Sacrōvir</stems>
   <stems entry="59280">Sacrōvirān Sacrōvirān</stems>
   <stems entry="33982">saeclār saeclār</stems>
   <stems entry="33986">saeculār saeculār</stems>
@@ -23969,6 +24156,7 @@
   <stems entry="34015">sagitt sagitt sagittāv sagittāt</stems>
   <stems entry="34017">sagittāri sagittāri</stems>
   <stems entry="34018">sagittāt sagittāt</stems>
+  <stems entry="61192">Sagūnt Sagūnt</stems>
   <stems entry="59284">Saguntīn Saguntīn</stems>
   <stems entry="59285">Saguntīn Saguntīn</stems>
   <stems entry="34026">sāl sāl</stems>
@@ -24117,6 +24305,7 @@
   <stems entry="59332">sarcītor sarcītor</stems>
   <stems entry="59333">sarcocēl sarcocēl</stems>
   <stems entry="59334">sarcōma sarcōmat</stems>
+  <stems entry="61195">Sarcōpt Sarcōpt</stems>
   <stems entry="46829">sarcōsis sarcōs</stems>
   <stems entry="42997">sarculātio sarculātiōn</stems>
   <stems entry="46830">sardachāt sardachāt</stems>
@@ -24165,6 +24354,7 @@
   <stems entry="59371">Satricān Satricān</stems>
   <stems entry="59372">Satricān Satricān</stems>
   <stems entry="59373">satūll satūll satūllav satūllat</stems>
+  <stems entry="61199">satūll satūll</stems>
   <stems entry="34242">satūr satūr satūrāv satūrāt</stems>
   <stems entry="34244">saturēi saturēi</stems>
   <stems entry="59374">Sāturio Sāturion</stems>
@@ -24201,6 +24391,7 @@
   <stems entry="48887">scaeōma scaeōmat</stems>
   <stems entry="34290">scāl scāl</stems>
   <stems entry="34297">scalprāt scalprāt</stems>
+  <stems entry="61200">Scamānder Scamāndr</stems>
   <stems entry="48888">scamēll scamēll</stems>
   <stems entry="34299">scammōne scammōne</stems>
   <stems entry="34300">scammōni scammōni</stems>
@@ -24627,12 +24818,15 @@
   <stems entry="34840">septentrio septentriōn</stems>
   <stems entry="34842">septentriōnāl septentriōnāl</stems>
   <stems entry="34843">septentriōnāri septentriōnāri</stems>
+  <stems entry="61207">septicēps septicēps</stems>
   <stems entry="34847">septiēs</stems>
   <stems entry="34848">septifāri septifāri</stems>
   <stems entry="46903">septigrāni septigrāni</stems>
   <stems entry="34854">septimān septimān</stems>
+  <stems entry="61208">septimātr septimātr</stems>
   <stems entry="48941">septimontiāl septimontiāl</stems>
   <stems entry="59482">Septimulēi Septimulēi</stems>
+  <stems entry="61209">septimunciēns septimunciēns</stems>
   <stems entry="48942">septizōni septizōni</stems>
   <stems entry="34860">septuāgēnāri septuāgēnāri</stems>
   <stems entry="48943">septuāgēssis septuāgēss</stems>
@@ -24757,6 +24951,7 @@
   <stems entry="59522">Sexitān Sexitān</stems>
   <stems entry="46914">sextāne sextāne</stems>
   <stems entry="35051">sextāns sextant</stems>
+  <stems entry="61213">sexticēps sexticēps</stems>
   <stems entry="35057">Sextīl Sextīl</stems>
   <stems entry="59525">Sextiliān Sextiliān</stems>
   <stems entry="59527">Sextīll Sextīll</stems>
@@ -25332,6 +25527,7 @@
   <stems entry="35881">stratēgēma stratēgēmat</stems>
   <stems entry="47052">stratiōt stratiōt</stems>
   <stems entry="35883">stratiōtic stratiōtic</stems>
+  <stems entry="61220">Stratonīcē Stratonīcē</stems>
   <stems entry="59672">Stratonīcēns Stratonīcēns</stems>
   <stems entry="35884">strātōri strātōri</stems>
   <stems entry="35885">strēn strēn</stems>
@@ -25651,6 +25847,7 @@
   <stems entry="36369">suffrāgātōri suffrāgātōri</stems>
   <stems entry="36371">suffrāgo suffrāgin</stems>
   <stems entry="47108">suffrēnātio suffrēnātion</stems>
+  <stems entry="61227">suffrēndens suffrēndent</stems>
   <stems entry="36372">suffric suffric suffricāv suffricāt</stems>
   <stems entry="47109">suffrīgid suffrīgid</stems>
   <stems entry="36374">suffugi suffūg suffūg</stems>
@@ -25893,6 +26090,7 @@
   <stems entry="49037">symplēct symplēct</stems>
   <stems entry="59722">Symplēgad Symplēgad</stems>
   <stems entry="36735">symptōma symptōmat</stems>
+  <stems entry="61230">syncellīt syncellīt</stems>
   <stems entry="59723">Syncerāst Syncerāst</stems>
   <stems entry="49041">synchrīsma synchrīsmat</stems>
   <stems entry="36748">syncop syncop syncopāv syncopāt</stems>
@@ -25902,8 +26100,10 @@
   <stems entry="47158">syncrāsis syncrās</stems>
   <stems entry="59724">Synecdēm Synecdēm</stems>
   <stems entry="47160">synecdochicē</stems>
+  <stems entry="61231">synēches synēche</stems>
   <stems entry="49044">synecphōnēsis synecphōnēs</stems>
   <stems entry="49045">synērg synērg</stems>
+  <stems entry="61233">Synīstor Synīstor</stems>
   <stems entry="47163">synīzēsis synīzēs</stems>
   <stems entry="47164">synochītis synochītid</stems>
   <stems entry="47166">synōnēt synōnēt</stems>
@@ -26047,6 +26247,7 @@
   <stems entry="49074">tellūmo tellūmon</stems>
   <stems entry="36970">tellūs tellūr</stems>
   <stems entry="41913">tellūs tellūr</stems>
+  <stems entry="61247">Telmēssis Telmēssid</stems>
   <stems entry="36971">telo telōn</stems>
   <stems entry="36972">telōnāri telōnāri</stems>
   <stems entry="36974">telōne telōne</stems>
@@ -26073,6 +26274,7 @@
   <stems entry="36998">tempestīv tempestīv</stems>
   <stems entry="41917">tempestīv tempestīv</stems>
   <stems entry="36999">tempestuōs tempestuōs</stems>
+  <stems entry="61248">tempēstus tempēstut</stems>
   <stems entry="37001">temporāl temporāl</stems>
   <stems entry="37002">temporāne temporāne</stems>
   <stems entry="37003">temporāri temporāri</stems>
@@ -26177,6 +26379,7 @@
   <stems entry="49087">tētartēmori tētartēmori</stems>
   <stems entry="49088">tetartēmori tetartēmori</stems>
   <stems entry="47236">tethalassōmen tethalassōmen</stems>
+  <stems entry="61252">Tēthys Tēthy</stems>
   <stems entry="47237">tētragnathi tētragnathi</stems>
   <stems entry="37183">tetragōn tetragōn</stems>
   <stems entry="37184">tetragōn tetragōn</stems>
@@ -26204,6 +26407,7 @@
   <stems entry="37207">textrix textrīc</stems>
   <stems entry="37208">textūr textūr</stems>
   <stems entry="47248">thalamēg thalamēg</stems>
+  <stems entry="61255">Thalāss Thalāss</stems>
   <stems entry="47249">thalassīt thalassīt</stems>
   <stems entry="49102">thalassomētr thalassomētr</stems>
   <stems entry="59856">Thalētic Thalētic</stems>
@@ -26211,6 +26415,7 @@
   <stems entry="49103">thaliētr thaliētr</stems>
   <stems entry="59860">Thargēli Thargēli</stems>
   <stems entry="59864">Thaumantē Thaumantē</stems>
+  <stems entry="61256">Theamēdes Theamēd</stems>
   <stems entry="37217">theātr theātr</stems>
   <stems entry="37218">theātrāl theātrāl</stems>
   <stems entry="37219">theātric theātric</stems>
@@ -26254,6 +26459,7 @@
   <stems entry="37248">thermopōt thermopōt thermopōtāv thermopōtāt</stems>
   <stems entry="59911">Thērodamantē Thērodamantē</stems>
   <stems entry="37250">thērotrophī thērotrophī</stems>
+  <stems entry="61259">Thersāndr Thersāndr</stems>
   <stems entry="59914">Thersīt Thersīt</stems>
   <stems entry="37251">thēsaur thēsaur</stems>
   <stems entry="41940">thēsaur thēsaur</stems>
@@ -26367,6 +26573,7 @@
   <stems entry="37336">tintinn tintinn tintinnāv tintinnāt</stems>
   <stems entry="37337">tintinnābul tintinnābul</stems>
   <stems entry="49123">tīphyn tīphyn</stems>
+  <stems entry="61262">Tīphys Tīphy</stems>
   <stems entry="37339">tīrō tīrōn</stems>
   <stems entry="60017">Tīrōniān Tīrōniān</stems>
   <stems entry="37341">tīruncul tīruncul</stems>
@@ -26433,6 +26640,7 @@
   <stems entry="37379">tomācl tomācl</stems>
   <stems entry="37380">tomācul tomācul</stems>
   <stems entry="37382">tōment tōment</stems>
+  <stems entry="61264">tomīcl tomīcl</stems>
   <stems entry="60050">Tomitān Tomitān</stems>
   <stems entry="37383">tōmix tōmic</stems>
   <stems entry="37392">tond tond totond tōns</stems>
@@ -26846,6 +27054,7 @@
   <stems entry="37908">trutin trutin trutināv trutināt</stems>
   <stems entry="49169">trygēt trygēt</stems>
   <stems entry="49170">trygōdes trygōd</stems>
+  <stems entry="61269">Tuāti</stems>
   <stems entry="37922">tūber tūber</stems>
   <stems entry="47367">tūberans tūberant</stems>
   <stems entry="37923">tūbercul tūbercul</stems>
@@ -26927,6 +27136,7 @@
   <stems entry="60218">Tydīd Tydīd</stems>
   <stems entry="47385">tympanīt tympanīt</stems>
   <stems entry="47386">tympanītic tympanītic</stems>
+  <stems entry="61272">tympanīzans tympanīzant</stems>
   <stems entry="60223">Tyndaritān Tyndaritān</stems>
   <stems entry="60224">Tyndaritān Tyndaritān</stems>
   <stems entry="60225">Typhōe Typhōe</stems>
@@ -27275,9 +27485,11 @@
   <stems entry="47421">ūtrubīdem</stems>
   <stems entry="38349">utrubīque</stems>
   <stems entry="38354">ūv ūv</stems>
+  <stems entry="61273">ūvens ūvent</stems>
   <stems entry="38355">ūvesc ūvesc</stems>
   <stems entry="38356">ūvid ūvid</stems>
   <stems entry="38357">ūvidul ūvidul</stems>
+  <stems entry="61274">ūvifer ūvifer</stems>
   <stems entry="60405">Vulcānal Vulcānal</stems>
   <stems entry="60406">Vulcānāl Vulcānāl</stems>
   <stems entry="60407">Vulcāni Vulcāni</stems>
@@ -27813,6 +28025,7 @@
   <stems entry="47486">xērophthalmi xērophthalmi</stems>
   <stems entry="39252">Xerxēs Xerx</stems>
   <stems entry="49237">ymnificāt ymnificāt</stems>
+  <stems entry="61278">ynitalōpex ynitalōpec</stems>
   <stems entry="49238">zabērn zabērn</stems>
   <stems entry="39270">zāmi zāmi</stems>
   <stems entry="47493">zāplūt zāplūt</stems>

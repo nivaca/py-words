@@ -10042,11 +10042,10 @@ ac
     and, and also, and besides;
 
 delum
-  spelling: Word mod del/dil
-    An initial 'del' may be rendered by 'dil'
-  Dila, Dilae  noun, 1st declension, feminine  [XXXEm]  uncommon
-    port of Gaul;
-    dil-um         GEN.PL  (uncommon)
+  Delos, Deli  noun, 2nd declension, feminine  [XXXEm]  uncommon
+    Delos, Aegean island sacred to Apollo;
+    dēl-um         ACC.SG
+    dēl-um         GEN.PL  (uncommon)
 
 maternam
   maternus, materna, maternum  adjective, 1st/2nd declension  [XXXBX]
@@ -15024,6 +15023,7 @@ pretio
     Pretius (man's name);
     preti-ō        DAT.SG
     preti-ō        ABL.SG
+  (less likely forms are not shown)
 
 posuit
   pono, ponere, posui, positus  verb, 3rd conjugation, transitive  [XXXAO]
@@ -20742,6 +20742,26 @@ visa
 
 mnesthea
   (unknown)
+  (near spellings: mnesthee, mnesthei, mnestheo)
+
+mnesthee
+  Mnestheus, Mnesthei  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Mnestheus, companion of Aeneas;
+    mnesthe-e      VOC.SG
+
+mnesthei
+  Mnestheus, Mnesthei  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Mnestheus, companion of Aeneas;
+    mnesthe-ī      GEN.SG
+    mnesthe-ī      LOC.SG
+    mnesthe-ī      NOM.PL
+    mnesthe-ī      VOC.PL
+
+mnestheo
+  Mnestheus, Mnesthei  noun, 2nd declension, masculine  [XXXEm]  uncommon
+    Mnestheus, companion of Aeneas;
+    mnesthe-ō      DAT.SG
+    mnesthe-ō      ABL.SG
 
 sergestumque
   -que  enclitic
@@ -25003,7 +25023,9 @@ arces
     arc-ēs         ACC.PL
 
 phoenissam
-  (unknown)
+  Phoenissa, Phoenissae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Phoenician woman; Dido, queen descended from Tyre;
+    phoenīss-am    ACC.SG
 
 libycaeque
   -que  enclitic
@@ -38001,7 +38023,11 @@ animi
     anim-ī         VOC.PL
 
 phoenissa
-  (unknown)
+  Phoenissa, Phoenissae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Phoenician woman; Dido, queen descended from Tyre;
+    phoenīss-a     NOM.SG
+    phoenīss-a     VOC.SG
+    phoenīss-ā     ABL.SG
 
 nec
   nec  adverb  [XXXDX]  lesser
@@ -45504,26 +45530,9 @@ breviter
     breviter       POS
 
 barcen
-  (unknown)
-  (near spellings: bracen, barcan, narcen)
-
-bracen
-  braces, bracae  noun, 1st declension, feminine  [XAFNS]  Pliny
-    Gallic name of a particularly white grain (ble blanc de Dauphine); (sandala);
-    brac-ēn        ACC.SG
-  braces, bracae  noun, 1st declension, feminine  [EXXCM]  later
-    malt;
-    brac-ēn        ACC.SG
-
-barcan
-  Barcas, Barcae  noun, 1st declension, masculine  [XXXEm]  uncommon
-    Barca (head of Hamilcar's family);
-    barc-ān        ACC.SG
-
-narcen
-  narce, narces  noun, 1st declension, feminine  [XXXES]  uncommon
-    a numbness, torpor;
-    narc-ēn        ACC.SG
+  Barce, Barces  noun, 1st declension, feminine  [XXXEm]  uncommon
+    Barce, city of Africa (Ptolemais); woman's name;
+    barc-ēn        ACC.SG
 
 nutricem
   nutrico, nutricare, nutricavi, nutricatus  verb, 1st conjugation, transitive  [XXXCO]

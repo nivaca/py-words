@@ -29,7 +29,7 @@ import re
 from collections.abc import Callable, Iterator
 from typing import NamedTuple
 from xml.parsers import expat
-from xml.sax.saxutils import escape, quoteattr
+from xml.sax.saxutils import escape, quoteattr, unescape
 
 from interface import tr
 
@@ -690,6 +690,9 @@ class LanguageData(NamedTuple):
     #  the texts of the results it translates, by their English (with its
     #  spaces made single)
     texts: dict[str, str] = {}
+    #  the dictionary a meaning was taken from (source="m"), by its key,
+    #  for the meanings that were not translated from the English
+    sources: dict[tuple[str, int | str], Source] = {}
 
 
 _PLACEHOLDER = re.compile(r'\{\d\}')
@@ -705,6 +708,7 @@ def read_language(path: str, errors=None) -> LanguageData:
     numerals = {}
     meanings = {}
     texts = {}
+    sources = {}
     seen = {}
 
     def item(r: _Reader, n: int):
@@ -755,8 +759,12 @@ def read_language(path: str, errors=None) -> LanguageData:
                 if not value.isdigit() or not 0 < int(value) < MAX_UID:
                     r.bad(kind, value, tr('must be the id of one'))
                 which = int(value)
+            source = r.enum('source', Source) \
+                if 'source' in r.el.attrs else None
             r.done()
             key = (kind, which)
+            if source is not None:
+                sources[key] = source
         if key in seen:
             r.fail(tr('{what} is already on line {line}',
                       what=f'{key[0]} {key[1]}', line=seen[key]))
@@ -794,15 +802,18 @@ def read_language(path: str, errors=None) -> LanguageData:
         r.fail(tr('the language has no name'))
     return LanguageData(code, name, native, reference == 'yes',
                         frozenset(noise), tuple(common), numerals, meanings,
-                        texts)
+                        texts, sources)
 
 
-def language_xml(kind: str, which, text: str) -> str:
-    """A <meaning> of a language file."""
-    return f'<meaning{_attrs([(kind, str(which))])}>{escape(text)}</meaning>'
+def language_xml(kind: str, which, text: str, source: str = '') -> str:
+    """A <meaning> of a language file (SOURCE: the code of the dictionary
+    it was taken from, if any)."""
+    pairs = [(kind, str(which))] + ([('source', source)] if source else [])
+    return f'<meaning{_attrs(pairs)}>{escape(text)}</meaning>'
 
 
-_MEANING_LINE = re.compile(r'(\s*)<meaning (\w+)="([^"]*)">.*?</meaning>')
+_MEANING_LINE = re.compile(r'(\s*)<meaning (\w+)="([^"]*)"'
+                           r'(?: source="([^"]*)")?>(.*?)</meaning>')
 
 
 def update_language(path: str, changes: dict[tuple[str, int], str | None],
@@ -812,8 +823,9 @@ def update_language(path: str, changes: dict[tuple[str, int], str | None],
     is not there yet goes among the others of its kind, in the order of the
     ids.  NOTES: the comment after a meaning changed or added (its entry's
     dictionary form; without one, a meaning changed keeps its comment).
-    The rest of the file stays as it is.  Returns whether the file was
-    changed."""
+    The rest of the file stays as it is; a meaning whose text changes
+    loses its source="..." (it is no longer the dictionary's).  Returns
+    whether the file was changed."""
     with open(path, encoding='utf-8') as f:
         lines = f.read().split('\n')
     notes = notes or {}
@@ -827,10 +839,10 @@ def update_language(path: str, changes: dict[tuple[str, int], str | None],
                 out[m.group(2), int(m.group(3))] = i
         return out
 
-    def line_of(indent, key, text, rest=''):
+    def line_of(indent, key, text, rest='', source=''):
         """The line of a meaning; REST: what followed it (kept if there is
         no note)."""
-        out = indent + language_xml(key[0], key[1], text)
+        out = indent + language_xml(key[0], key[1], text, source)
         return out + (' ' + comment(' ' + notes[key] + ' ')
                       if key in notes else rest)
 
@@ -843,7 +855,9 @@ def update_language(path: str, changes: dict[tuple[str, int], str | None],
                 del lines[i]
             else:
                 m = _MEANING_LINE.match(lines[i])
-                new = line_of(m.group(1), key, text, lines[i][m.end():])
+                same = text == unescape(m.group(5))
+                new = line_of(m.group(1), key, text, lines[i][m.end():],
+                              (m.group(4) or '') if same else '')
                 if new == lines[i]:
                     continue
                 lines[i] = new

@@ -17,6 +17,7 @@ import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import xmldata
 from editor import Editor, Editing, Fields, plain_message
+from model import Source
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -329,6 +330,25 @@ class TranslationTests(WithData):
         self.assertLess(self.es_text().index('unique="1"'),
                         self.es_text().index('unique="9"'))
         xmldata.read_language(self.es)                  # (still good)
+
+    def test_source_of_a_meaning(self):
+        """source="m" is read; it stays while the text is the same, and
+        goes when the text is changed."""
+        xmldata.update_language(self.es, {('entry', 2): 'dos;'})
+        with open(self.es, encoding='utf-8') as f:
+            text = f.read()
+        with open(self.es, 'w', encoding='utf-8') as f:
+            f.write(text.replace('<meaning entry="2">',
+                                 '<meaning entry="2" source="m">'))
+        data = xmldata.read_language(self.es)
+        self.assertEqual(data.sources, {('entry', 2): Source.m})
+        self.assertEqual(data.meanings['entry', 2], 'dos;')
+        self.assertFalse(xmldata.update_language(self.es,
+                                                 {('entry', 2): 'dos;'}))
+        self.assertIn('<meaning entry="2" source="m">dos;', self.es_text())
+        self.assertTrue(xmldata.update_language(self.es,
+                                                {('entry', 2): 'el dos;'}))
+        self.assertIn('<meaning entry="2">el dos;', self.es_text())
 
     def test_terminal(self):
         """The meaning in Spanish, changed in words_edit.py; then F7 to

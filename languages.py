@@ -11,11 +11,14 @@ languages/CODE.xml in the data folder (see words.xsd):
       <meaning unique="3">...</meaning>         of dictionary.xml with id
       <meaning addon="40">...</meaning>         12, of an irregular form,
       <meaning builtin="esse">...</meaning>     of an affix, of esse
+      <meaning entry="13" source="m">...</meaning>  taken from a dictionary
     </language>
 
 English (en.xml, reference="yes") has no <meaning>s: its meanings are
 those of the data files.  Another language gives the meanings it
-translates; the others are shown in English, marked [en], as are the
+translates (source="...": the dictionary a meaning was taken from, by its
+code in sources.xml, when it was not translated from the English); the
+others are shown in English, marked [en], as are the
 numerals it does not say.  The search from a language to Latin (~E) looks
 in its meanings.
 

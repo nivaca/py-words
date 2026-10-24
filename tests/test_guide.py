@@ -93,7 +93,7 @@ class GuideTests(unittest.TestCase):
         self.assertIn('B  frecuencia  frecuente', text)
         self.assertIn('Caso: NOM nominativo, GEN genitivo', text)
         self.assertIn('Persona: 1 primera persona', text)
-        self.assertIn('amigo, aliado', text)
+        self.assertIn('amigo político, aliado', text)
         self.assertIn('X  general o desconocida', text)
 
     def test_html(self):

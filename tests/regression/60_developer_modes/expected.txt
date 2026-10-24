@@ -84,14 +84,14 @@ xyzzyq
 03 the director of a xystus (a covered training-ground);
 02 near: xysticus, xystici  noun, 2nd declension, masculine  [XXXDX]  lesser
 03 athlete;
+02 near: yara, yarae  noun, 1st declension, feminine  [FXXEM]  medieval  uncommon
+03 yare, fish-lock (Sc. & Durham);
 02 near: yatus, yata, yatum  adjective, 1st/2nd declension  [XXXFX]  very rare
 03 gaped;
+02 near: yburthananseca, yburthanansecae  noun, 1st declension, feminine  [GXXEM]  neo-Latin  uncommon
+03 byrthynsak, back-bearing theft (Sc.);
 02 near: ydimptitas, ydimptitatis  noun, 3rd declension, feminine  [FXXCM]  medieval  common
 03 identity, sameness;
-02 near: ymnificatus, ymnificata, ymnificatum  adjective, 1st/2nd declension  [XXXEm]  uncommon
-03 celebrated with hymns;
-02 near: zaberna, zabernae  noun, 1st declension, feminine  [XXXEm]  uncommon
-03 bag, saddle-bag;
 
 redeo
 02 redeo, redire, redivi(ii), reditus  verb, irregular  [XXXAX]  very frequent
