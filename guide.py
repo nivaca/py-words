@@ -181,8 +181,8 @@ SOURCES = (
        'not have (source code S, as other entries of WORDS taken from it).  '
        'Collatinus, '
        'by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the '
-       'stems and endings, the meanings in French, German, Catalan and '
-       'Galician, and some abbreviations (source code H).  Collatinus, '
+       'stems and endings, and some abbreviations (source code H).  '
+       'Collatinus, '
        'in its turn, made its lexicon with the help of the dictionaries '
        'of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; '
        'the README names all the sources and people it thanks.'),

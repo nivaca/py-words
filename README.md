@@ -9,9 +9,8 @@ analyses inflected Latin words (and also complete lines of Latin) into
 their forms and dictionary entries, with the meanings in English or in
 Spanish, and it finds the Latin for English or Spanish words.  The
 Spanish meanings, and the rest of the results in Spanish, were
-translated from the English (see "The Spanish meanings"); some meanings
-are also in French, German, Catalan and Galician, and it is possible to
-add other languages.  The dictionary is the one of WORDS, enlarged with
+translated from the English (see "The Spanish meanings"); it is possible
+to add other languages.  The dictionary is the one of WORDS, enlarged with
 R. E. Latham's medieval word-list, J. Echave-Sustaeta's Latin-Spanish
 basic vocabulary and the rare words of Lewis and Short, and the long
 vowels come from Collatinus and Lewis and Short (see "Sources").  It is free software, under the GNU General Public License
@@ -688,33 +687,6 @@ language chosen.  The example glosses (`show_examples`) are in English, and
 they are shown only with English meanings.  `words_check.py` checks also
 the language files, and warns about meanings of ids that don't exist.
 
-### The meanings from Collatinus
-
-The French, German, Catalan and Galician meanings (`fr.xml`, `de.xml`,
-`ca.xml`, `gl.xml`) come from Collatinus 11, the Latin lemmatiser of
-Yves Ouvrard and Philippe Verkerk, which gives a short translation of
-each of its lemmas in these languages (its files `lemmes.fr` and so on,
-under the GNU General Public License).  I matched each lemma of
-Collatinus to our entries by its citation form, its part of speech and,
-for the nouns, its genitive and gender; a proper name goes only with a
-proper name, and when two lemmas claim the same entry neither is used.
-The translation goes to the most frequent entry of the lemma, and not
-to the entries that continue it (`|`) or to its medieval senses, which
-keep the English.  So French translates 23,044 entries (it uses also
-`lem_ext.fr`, the larger list of Collatinus), German 6,301, Catalan
-7,624 and Galician 7,699; the rest is shown in English, marked `[en]`.
-The German file of Collatinus has many lines left in French, and these
-were not taken.  Collatinus has also Italian and Portuguese, but they
-were translated by machine from the French and have mistakes like
-*furtum* "volo" (the French *vol* is both "theft" and "flight"), so I
-did not take them.  The grammar, the labels and the notes of these four
-files (the `<text>`s), and their lists for the search to Latin, were
-translated with the help of Claude, the large language model of
-Anthropic (the model Claude Opus 5.5, `claude-opus-5-5`), in October
-2026.  The meanings are the short ones of Collatinus, sometimes with its
-own mistakes (*nervus*, "fers, prison"), and they can be corrected in
-the files or with the dictionary editors.
-
 ### The long vowels
 
 `data/quantities.xml` gives the stems of an entry with their long
@@ -724,9 +696,12 @@ vowels marked, or `-` where they are not known:
     <stems entry="2870">am am amāv amāt</stems>
 
 I made it from the lemmas and the models of Collatinus (`lemmes.la`,
-`lem_ext.la`, `modeles.la`): each entry was matched to a lemma as for the
-meanings above, and its stems were found among the stems that the model
-of the lemma builds.  About 30,000 entries were matched, and 20,297 of
+`lem_ext.la`, `modeles.la`): I matched each lemma of Collatinus to our
+entries by its citation form, its part of speech and, for the nouns, its
+genitive and gender (a proper name goes only with a proper name, and
+when two lemmas claim the same entry neither is used), and the stems of
+the entry were found among the stems that the model of the lemma
+builds.  About 30,000 entries were matched, and 20,297 of
 them have some long vowel.  Collatinus marks the length of the
 syllables, for scanning verse, so it marks also the vowels that are long
 only by position (cōrd for cor, cordis); the marks before two consonants
@@ -1001,12 +976,7 @@ browser, so only the first visit, and the first one after a new
 version, read the XML (around one second; the cache takes a quarter of
 this).
 
-The languages of the meanings other than English and Spanish are not in
-the zip, which keeps only the start of their files (their name, for the
-list "Meanings in"); `pages/build.py` puts the whole files beside it, in
-`languages/`, and the page downloads one the first time its language is
-chosen.  So the zip is smaller (3.2 MB instead of 4.4).  While the page
-starts, a bar shows how far it is: the download of the zip moves it by
+While the page starts, a bar shows how far it is: the download of the zip moves it by
 its bytes, and the other stages by how long they took at the last visit
 in that browser (kept in its local storage).  While Python reads the
 dictionary the page cannot do anything, so the bar is moved then by a
@@ -1399,26 +1369,25 @@ The dictionary of py-words comes from these works:
   the GPL version 3, as py-words is.
 - Collatinus 11, by Yves Ouvrard and Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL:
-  the long vowels of the stems and endings, the meanings in French,
-  German, Catalan and Galician, six abbreviations and the form quaesumus
-  (source code H), and the ideas of some tricks (see "The meanings from
-  Collatinus" and "The long vowels").
+  the long vowels of the stems and endings, six abbreviations and the
+  form quaesumus (source code H), and the ideas of some tricks (see "The
+  long vowels").  Until 3.1 py-words had also meanings in French,
+  German, Catalan and Galician from Collatinus; I took them out
+  afterwards, to keep only English and Spanish.
 
-Collatinus, in its turn, thanks others for its lexicon and its
-translations (in "Remerciements", the last page of its guide), and as
-these data are now in py-words, I thank them too.  Its lexicon was made
+Collatinus, in its turn, thanks others for its lexicon (in
+"Remerciements", the last page of its guide), and as these data are now
+in py-words, I thank them too.  Its lexicon was made
 with the help of the dictionaries of F. Gaffiot (the *Gaffiot 2016* of
 Gérard Gréco), of Gérard Jeanneau, of Du Cange (by the École nationale
 des chartes) and of Lewis and Short (the data of the Perseus Digital
 Library), and of the lemmatiser of William Whitaker; its extension
-(`lem_ext.la`, `lem_ext.fr`, which py-words uses) was made by Philippe
+(`lem_ext.la`, which py-words uses) was made by Philippe
 Verkerk by collating digital dictionaries.  The frequencies of its
 lemmas come from the lemmatised texts of the LASLA of the University of
 Liège (Dominique Longrée and Gérald Purnelle).  Many mistakes were
 corrected thanks to Pede Certo (Emanuela Colombi and Luigi Tessarolo)
-and to Jean-Paul Woitrain.  José Luis Redrejo coordinated the
-translations into Spanish, Catalan and Galician, and Philipp Roelli made
-possible the Latin-German dictionary.
+and to Jean-Paul Woitrain.
 
 The Spanish meanings, and the comparisons with Latham and
 Echave-Sustaeta, were made with the help of Claude, the large language

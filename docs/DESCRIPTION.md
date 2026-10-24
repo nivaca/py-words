@@ -15,10 +15,9 @@ Latin Word-List from British and Irish Sources*, for medieval senses,
 words and spellings; J. Echave-Sustaeta's *Lengua latina. Vocabulario
 básico*, for senses and words in English and in Spanish; Lewis and
 Short's *A Latin Dictionary*, in the text of the Perseus Digital Library
-(CC BY-SA 4.0), for 3,060 rare words; and Collatinus,
-by Yves Ouvrard and Philippe Verkerk, for the long vowels and the
-meanings in French, German, Catalan and Galician (Collatinus, in its
-turn, made its lexicon with the dictionaries of Gaffiot, Jeanneau, Du
+(CC BY-SA 4.0), for 3,060 rare words; and Collatinus, by Yves Ouvrard
+and Philippe Verkerk, for the long vowels (Collatinus, in its turn, made
+its lexicon with the dictionaries of Gaffiot, Jeanneau, Du
 Cange and Lewis and Short, among others, and the README names all the
 sources and people it thanks).  py-words is free software, under the
 GNU General Public License, version 3 or later; the data of WORDS are
@@ -334,11 +333,9 @@ is under the GPL, so in 2.16 py-words changed from the MIT License to
 the GPL (version 3 or later) to be able to take from it.  Its lemmas
 were matched with the entries of the dictionary by the citation form,
 the part of speech and, for nouns, the genitive and the gender; an entry
-claimed by two lemmas was left out.  From this came four new languages
-of the meanings, French (23,044 entries), German (6,301), Catalan
-(7,624) and Galician (7,699), with the rest of the results translated
-too; Italian and Portuguese were left out, because Collatinus translated
-them by machine from the French.
+claimed by two lemmas was left out.  From this came, for a while, four
+new languages of the meanings (French, German, Catalan and Galician);
+they were taken out after 3.1, to keep only English and Spanish.
 
 The second thing were the long vowels.  From the lemmas and models of
 Collatinus I took the quantities of the stems of 20,297 entries

@@ -9,9 +9,8 @@ palabras latinas flexionadas (y líneas enteras de latín) en sus formas y
 entradas de diccionario, con sus significados en inglés o en español, y
 busca el latín de palabras inglesas o españolas.  Los significados en
 español, y el resto de los resultados en español, se tradujeron del
-inglés (véase "Los significados en español"); algunos significados
-están también en francés, alemán, catalán y gallego, y pueden añadirse
-otros idiomas.  El diccionario es el de WORDS, ampliado con la lista de
+inglés (véase "Los significados en español"); pueden añadirse otros
+idiomas.  El diccionario es el de WORDS, ampliado con la lista de
 latín medieval de R. E. Latham, el vocabulario básico latín-español de
 J. Echave-Sustaeta y las palabras raras de Lewis y Short, y las vocales
 largas vienen de Collatinus y de Lewis y Short (véase "Fuentes").  Es software libre, bajo la Licencia Pública General de GNU
@@ -699,33 +698,6 @@ están en inglés y solo se muestran con los significados en inglés.
 `words_check.py` también revisa los archivos de idioma y avisa de los
 significados de ids que no existen.
 
-### Los significados tomados de Collatinus
-
-Los significados en francés, alemán, catalán y gallego (`fr.xml`,
-`de.xml`, `ca.xml`, `gl.xml`) vienen de Collatinus 11, el lematizador
-latino de Yves Ouvrard y Philippe Verkerk, que da una traducción breve de
-cada uno de sus lemas en estos idiomas (sus archivos `lemmes.fr`, etc.,
-bajo la Licencia Pública General de GNU).  Emparejé cada lema de
-Collatinus con nuestras entradas por su forma de cita, su categoría y,
-en los sustantivos, su genitivo y su género; un nombre propio solo va con
-un nombre propio, y cuando dos lemas reclaman la misma entrada no se usa
-ninguno.  La traducción va a la entrada más frecuente del lema, y no a
-las entradas que la continúan (`|`) ni a sus sentidos medievales, que
-conservan el inglés.  Así, el francés traduce 23 044 entradas (usa
-también `lem_ext.fr`, la lista más amplia de Collatinus), el alemán 6301,
-el catalán 7624 y el gallego 7699; el resto se muestra en inglés, marcado
-`[en]`.  El archivo alemán de Collatinus tiene muchas líneas que quedaron
-en francés, y esas no se tomaron.  Collatinus tiene también italiano y
-portugués, pero se tradujeron automáticamente del francés y tienen
-errores como *furtum* "volo" (el francés *vol* es a la vez "robo" y
-"vuelo"), así que no los tomé.  La gramática, las etiquetas y las notas
-de estos cuatro archivos (los `<text>`), y sus listas para la búsqueda
-hacia el latín, se tradujeron con la ayuda de Claude, el gran modelo de
-lenguaje de Anthropic (el modelo Claude Opus 5.5, `claude-opus-5-5`), en
-octubre de 2026.  Los significados son los breves de Collatinus, a veces
-con sus propios errores (*nervus*, "fers, prison"), y se pueden corregir
-en los archivos o con los editores del diccionario.
-
 ### Las vocales largas
 
 `data/quantities.xml` da las raíces de una entrada con sus vocales largas
@@ -735,9 +707,12 @@ marcadas, o `-` donde no se conocen:
     <stems entry="2870">am am amāv amāt</stems>
 
 Lo hice a partir de los lemas y los modelos de Collatinus (`lemmes.la`,
-`lem_ext.la`, `modeles.la`): cada entrada se emparejó con un lema como
-para los significados de arriba, y sus raíces se buscaron entre las que
-construye el modelo del lema.  Se emparejaron unas 30 000 entradas, y
+`lem_ext.la`, `modeles.la`): emparejé cada lema de Collatinus con
+nuestras entradas por su forma de cita, su categoría y, en los
+sustantivos, su genitivo y su género (un nombre propio solo va con un
+nombre propio, y cuando dos lemas reclaman la misma entrada no se usa
+ninguno), y las raíces de la entrada se buscaron entre las que construye
+el modelo del lema.  Se emparejaron unas 30 000 entradas, y
 20 297 de ellas tienen alguna vocal larga.  Collatinus marca la cantidad
 de las sílabas, para escandir versos, así que marca también las vocales
 que solo son largas por posición (cōrd por cor, cordis); por eso se
@@ -1019,12 +994,7 @@ IndexedDB del navegador, de modo que solo la primera visita, y la
 primera tras una versión nueva, leen el XML (cerca de un segundo; la
 caché tarda un cuarto).
 
-Los idiomas de los significados que no son el inglés ni el español no
-van en el zip, que solo guarda el comienzo de sus archivos (su nombre,
-para la lista "Significados en"); `pages/build.py` pone los archivos
-completos a su lado, en `languages/`, y la página descarga uno la
-primera vez que se elige su idioma.  Así el zip es más pequeño (3,2 MB
-en lugar de 4,4).  Mientras la página arranca, una barra muestra cuánto
+Mientras la página arranca, una barra muestra cuánto
 falta: la descarga del zip la mueve según sus bytes, y las demás etapas
 según lo que tardaron en la última visita en ese navegador (guardado en
 su almacenamiento local).  Mientras Python lee el diccionario la página
@@ -1438,25 +1408,25 @@ El diccionario de py-words viene de estas obras:
   3, como py-words.
 - Collatinus 11, de Yves Ouvrard y Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), bajo la GPL de GNU:
-  las vocales largas de las raíces y las desinencias, los significados
-  en francés, alemán, catalán y gallego, seis abreviaturas y la forma
-  quaesumus (código de fuente H), y la idea de algunos trucos (véase
-  "Los significados tomados de Collatinus" y "Las vocales largas").
+  las vocales largas de las raíces y las desinencias, seis abreviaturas
+  y la forma quaesumus (código de fuente H), y la idea de algunos trucos
+  (véase "Las vocales largas").  Hasta la 3.1 py-words tenía también
+  significados en francés, alemán, catalán y gallego tomados de
+  Collatinus; después los quité, para quedarme solo con el inglés y el
+  español.
 
-Collatinus, a su vez, agradece a otros su léxico y sus traducciones (en
-"Remerciements", la última página de su guía), y como esos datos están
-ahora en py-words, yo también se lo agradezco.  Su léxico se hizo con
+Collatinus, a su vez, agradece a otros su léxico (en "Remerciements", la
+última página de su guía), y como esos datos están ahora en py-words, yo
+también se lo agradezco.  Su léxico se hizo con
 ayuda de los diccionarios de F. Gaffiot (el *Gaffiot 2016* de Gérard
 Gréco), de Gérard Jeanneau, de Du Cange (por la École nationale des
 chartes) y de Lewis y Short (los datos de la Perseus Digital Library), y
-del lematizador de William Whitaker; su extensión (`lem_ext.la`,
-`lem_ext.fr`, que py-words usa) la hizo Philippe Verkerk cotejando
+del lematizador de William Whitaker; su extensión
+(`lem_ext.la`, que py-words usa) la hizo Philippe Verkerk cotejando
 diccionarios digitales.  Las frecuencias de sus lemas vienen de los
 textos lematizados del LASLA de la Universidad de Lieja (Dominique
 Longrée y Gérald Purnelle).  Muchos errores se corrigieron gracias a
 Pede Certo (Emanuela Colombi y Luigi Tessarolo) y a Jean-Paul Woitrain.
-José Luis Redrejo coordinó las traducciones al español, al catalán y al
-gallego, y Philipp Roelli hizo posible el diccionario latín-alemán.
 
 Los significados en español, y las comparaciones con Latham y con
 Echave-Sustaeta, se hicieron con ayuda de Claude, el modelo de lenguaje

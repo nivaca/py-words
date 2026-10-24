@@ -189,40 +189,6 @@ class LanguageTests(unittest.TestCase):
         self.assertEqual(settings.language, 'es')
 
 
-class CollatinusLanguagesTests(unittest.TestCase):
-    """The languages whose meanings come from Collatinus."""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.lexicon = Lexicon.load(DATA)
-        cls.heart = next(e for e in cls.lexicon.entries
-                         if e.stems[:2] == ('cor', 'cord') and
-                         e.part.pos == Pos.N)
-
-    def test_names(self):
-        names = self.lexicon.language_names()
-        for code, name in (('fr', 'French'), ('de', 'German'),
-                           ('ca', 'Catalan'), ('gl', 'Galician')):
-            self.assertEqual(names[code], name)
-
-    def test_meanings_and_texts(self):
-        for code, heart, noun in (('fr', 'coeur', 'nom'),
-                                  ('de', 'Herz', 'Substantiv'),
-                                  ('ca', 'cor', 'substantiu'),
-                                  ('gl', 'corazón', 'substantivo')):
-            language = self.lexicon.language(code)
-            self.assertIn(heart, language.meaning(self.heart), code)
-            self.assertEqual(language.text('noun'), noun)
-            self.assertEqual(language.text('2nd declension')[:1], '2')
-
-    def test_reverse(self):
-        settings = Settings()
-        settings.language = 'fr'
-        session = Session(self.lexicon, settings, write=lambda text: None)
-        session.set_language('E')
-        self.assertIn('canis, canis', session.lookup('chien'))
-
-
 class IdTests(unittest.TestCase):
 
     def setUp(self):

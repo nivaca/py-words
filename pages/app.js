@@ -162,10 +162,6 @@ with zipfile.ZipFile('/py-words.zip') as z:
 os.remove('/py-words.zip')
 `;
 
-//  The languages but English and Spanish come in the zip as the start of
-//  their file only (see pages/build.py); the whole file is downloaded the
-//  first time the language is used, and given the date of the start, so
-//  that the cache of the language is still good at the next visit.
 const BOOT = `
 import io, os, sys
 os.environ['WHITAKERS_WORDS_CONFIG'] = '${STATE}/config'
@@ -173,31 +169,7 @@ os.environ['WHITAKERS_WORDS_HISTORY'] = '${STATE}/history'
 os.environ['WHITAKERS_WORDS_CACHE'] = CACHE_FOLDER
 os.chdir('${HOME}')
 sys.path.insert(0, '${HOME}')
-import interface, languages, lexicon, words_web
-from pyodide.http import open_url
-
-STUB = 'py-words: downloaded when chosen'
-_language = lexicon.Lexicon.language
-
-
-def language(self, code=languages.REFERENCE):
-    path = languages.files(self.datadir).get(code)
-    if path and code not in self._languages:
-        with open(path, encoding='utf-8') as f:
-            start = f.read(200)
-        if STUB in start:
-            try:
-                text = open_url('languages/' + code + '.xml').read()
-            except Exception as e:
-                raise LookupError('cannot download it: ' + str(e))
-            when = os.stat(path).st_mtime
-            with open(path, 'w', encoding='utf-8') as f:
-                f.write(text)
-            os.utime(path, (when, when))
-    return _language(self, code)
-
-
-lexicon.Lexicon.language = language
+import interface, words_web
 from settings import ensure_config
 ensure_config()
 interface.use_configured()
