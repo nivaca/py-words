@@ -309,6 +309,7 @@
       <xs:enumeration value="W"/>
       <xs:enumeration value="Y"/>
       <xs:enumeration value="Z"/>
+      <xs:enumeration value="m"/>
     </xs:restriction>
   </xs:simpleType>
 

@@ -225,6 +225,8 @@ class Source(IntEnum):
     W = 23
     Y = 24
     Z = 25
+    #  Codes added to WORDS's (all its capitals are taken): lowercase
+    m = 26          # De Miguel, Latin-Spanish dictionary (1867)
 
 
 Kind = NounKind | PronounKind | VerbKind | None
