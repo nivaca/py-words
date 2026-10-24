@@ -9,11 +9,13 @@ version of WORDS maintained in
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words).  Here
 I explain how it was made, in eight stages.
 
-The dictionary has four sources: WORDS, by William Whitaker, for the
+The dictionary has five sources: WORDS, by William Whitaker, for the
 program and almost all of the entries; R. E. Latham's *Revised Medieval
 Latin Word-List from British and Irish Sources*, for medieval senses,
 words and spellings; J. Echave-Sustaeta's *Lengua latina. Vocabulario
-básico*, for senses and words in English and in Spanish; and Collatinus,
+básico*, for senses and words in English and in Spanish; Lewis and
+Short's *A Latin Dictionary*, in the text of the Perseus Digital Library
+(CC BY-SA 4.0), for 3,060 rare words; and Collatinus,
 by Yves Ouvrard and Philippe Verkerk, for the long vowels and the
 meanings in French, German, Catalan and Galician (Collatinus, in its
 turn, made its lexicon with the dictionaries of Gaffiot, Jeanneau, Du
@@ -231,7 +233,12 @@ J. Echave-Sustaeta, which corrected 321 entries and added 254, and the
 medieval word-list of R. E. Latham, which added its medieval senses
 (2,444 entries), corrected 21 meanings, and added 1,140 missing words
 and parts of speech and 1,204 spelling variants, all with their Spanish
-meanings.  The README tells how it was done.
+meanings.  Last, 3,060 rare words of Lewis and Short's *A Latin
+Dictionary* that WORDS did not have were added from the text of the
+Perseus Digital Library: their grammar came from what Lewis and Short
+gives, each entry was kept only if the analyzer reads its headword back,
+and the meanings were revised and translated into Spanish.  The README
+tells how it was done.
 
 6. In the browser
 -----------------

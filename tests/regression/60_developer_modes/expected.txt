@@ -74,14 +74,14 @@ aspis
 
 xyzzyq
 00 (unknown)
-02 near: xviratus, xviratus  noun, 4th declension, masculine  [XXXDO]  lesser
-03 office of decemvir; abb. xviratus;
-02 near: xylon, xyli  noun, 2nd declension, neuter  [XAXNO]  Pliny
-03 cotton (plant);
-02 near: xylophonum, xylophoni  noun, 2nd declension, neuter  [GDXEK]  neo-Latin  uncommon
-03 xylophone;
+02 near: xylophytum, xylophyti  noun, 2nd declension, neuter  [XXXES]  uncommon
+03 comfrey;
+02 near: xyris, xyridis  noun, 3rd declension, feminine  [XXXES]  uncommon
+03 wild iris;
 02 near: xystus, xysti  noun, 2nd declension, masculine  [XXXDX]  lesser
 03 shaded/colonnaded walk; covered way used for winter athletic exercise;
+02 near: xystarches, xystarchae  noun, 1st declension, masculine  [XXXES]  uncommon
+03 the director of a xystus (a covered training-ground);
 02 near: xysticus, xystici  noun, 2nd declension, masculine  [XXXDX]  lesser
 03 athlete;
 02 near: yatus, yata, yatum  adjective, 1st/2nd declension  [XXXFX]  very rare

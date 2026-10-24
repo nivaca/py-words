@@ -2420,6 +2420,11 @@ aut
     or, or rather/else; either...or (aut...aut) (emphasizing one);
 
 manis
+  manon, mani  noun, 2nd declension, neuter  [XXXES]  uncommon
+    a kind of soft sponge;
+    mān-is         LOC.PL
+    mān-īs         DAT.PL
+    mān-īs         ABL.PL
   manis, manis  noun, 3rd declension, masculine  [XXXDX]  lesser
     shades/ghosts of dead (pl.); gods of Lower World; corpse/remains; underworld;
     mānis          NOM.SG
@@ -4231,7 +4236,24 @@ patrique
 
 lyaeo
   (unknown)
-  (near spellings: lyceo)
+  (near spellings: lyabo, lyato, lyceo)
+
+lyabo
+  lyo, lyare, lyavi, lyatus  verb, 1st conjugation, transitive  [XXXES]  uncommon
+    make liquid, liquefy;
+    ly-ābo         1SG.FUT.ACT.IND
+
+lyato
+  lyo, lyare, lyavi, lyatus  verb, 1st conjugation, transitive  [XXXES]  uncommon
+    make liquid, liquefy;
+    ly-ātō         2SG.FUT.ACT.IMP
+    ly-ātō         3SG.FUT.ACT.IMP
+  lyo, lyare, lyavi, lyatus  verb, 1st conjugation, transitive  [XXXES]  uncommon
+    make liquid, liquefy;
+    lyat-ō         PRF.PASS.PTCP.DAT.SG.M
+    lyat-ō         PRF.PASS.PTCP.DAT.SG.N
+    lyat-ō         PRF.PASS.PTCP.ABL.SG.M
+    lyat-ō         PRF.PASS.PTCP.ABL.SG.N
 
 lyceo
   lyceum, lycei  noun, 2nd declension, neuter  [XGHEO]  uncommon
@@ -5430,7 +5452,13 @@ ducit
     dūc-it         3SG.PRS.ACT.IND
 
 sidoniasque
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  spelling: Word mod d/t
+    An internal 'd' might be rendered by 't'
+  sitonia, sitoniae  noun, 1st declension, feminine  [XXXES]  uncommon
+    the office of a sitona, purveyance;
+    sītōni-ās      ACC.PL
 
 ostentat
   ostento, ostentare, ostentavi, ostentatus  verb, 1st conjugation  [XXXDX]  lesser
@@ -5835,6 +5863,7 @@ sidera
     sīder-a        NOM.PL
     sīder-a        VOC.PL
     sīder-a        ACC.PL
+  (less likely forms are not shown)
 
 somnos
   somnus, somni  noun, 2nd declension, masculine  [XXXAX]
@@ -9624,13 +9653,11 @@ caterva
     caterv-ā       ABL.SG
 
 sidoniam
-  (unknown)
-  (near spellings: simoniam)
-
-simoniam
-  simonia, simoniae  noun, 1st declension, feminine  [EEXCV]  later
-    simony; buying/selling of a benefice/ecclesiastical position;
-    simoni-am      ACC.SG
+  spelling: Word mod d/t
+    An internal 'd' might be rendered by 't'
+  sitonia, sitoniae  noun, 1st declension, feminine  [XXXES]  uncommon
+    the office of a sitona, purveyance;
+    sītōni-am      ACC.SG
 
 picto
   pictus, picta -um, pictior -or -us, pictissimus -a -um  adjective, 1st/2nd declension  [XXXCO]
@@ -10025,10 +10052,21 @@ hibernam
     hībern-am      ACC.SG.F
 
 lyciam
-  (unknown)
+  -i  suffix
+    art or craft done by the person (abstract noun of person); office of, -ship;
+  lycos, lyci  noun, 2nd declension, masculine  [XXXES]  uncommon
+    a kind of spider;
+    lyci-am        ACC.SG
 
 xanthique
-  (unknown)
+  -que  enclitic
+    -que = and (enclitic, translated before attached word); completes plerus/uter;
+  xanthos, xanthi  noun, 2nd declension, masculine  [XXXES]  uncommon
+    a precious stone of a golden color;
+    xanth-ī        GEN.SG
+    xanth-ī        LOC.SG
+    xanth-ī        NOM.PL
+    xanth-ī        VOC.PL
 
 fluenta
   fluentum, fluenti  noun, 2nd declension, neuter  [XXXDO]  lesser
@@ -11636,6 +11674,14 @@ pronuba
     prōnub-a       NOM.SG
     prōnub-a       VOC.SG
     prōnub-ā       ABL.SG
+  pronubus, pronuba, pronubum  adjective, 1st/2nd declension  [XXXES]  uncommon
+    of or belonging to marriage, bridal;
+    prōnub-a       NOM.SG.F
+    prōnub-a       VOC.SG.F
+    prōnub-ā       ABL.SG.F
+    prōnub-a       NOM.PL.N
+    prōnub-a       VOC.PL.N
+    prōnub-a       ACC.PL.N
 
 iuno
   Juno, Junonis  noun, 3rd declension, feminine  [AEIBX]  archaic
@@ -15398,7 +15444,7 @@ comitatu
 
 maeonia
   (unknown)
-  (near spellings: paeonia)
+  (near spellings: paeonia, maronia)
 
 paeonia
   paeonius, paeonia, paeonium  adjective, 1st/2nd declension  [XPXDS]  lesser
@@ -15409,6 +15455,13 @@ paeonia
     paeoni-a       NOM.PL.N
     paeoni-a       VOC.PL.N
     paeoni-a       ACC.PL.N
+
+maronia
+  maronion, maronii  noun, 2nd declension, neuter  [XXXES]  uncommon
+    the greater centaury;
+    maroni-a       NOM.PL
+    maroni-a       VOC.PL
+    maroni-a       ACC.PL
 
 mentum
   mens, mentis  noun, 3rd declension, feminine  [XXXAX]
@@ -16584,6 +16637,9 @@ molitur
   molior, moliri, molitus sum  verb, 4th conjugation, deponent  [XXXBA]
     heave;
     mōl-ītur       3SG.PRS.IND
+  molio, molire, molivi, molitus  verb, 4th conjugation, transitive  [DXXFS]  late  very rare
+    build, erect; set in motion, start;
+    mōl-ītur       3SG.PRS.PASS.IND
 
 laude
   laus, laudis  noun, 3rd declension, feminine  [XXXAA]
@@ -19668,6 +19724,9 @@ moliris
   molior, moliri, molitus sum  verb, 4th conjugation, deponent  [XXXBA]
     heave;
     mōl-īris       2SG.PRS.IND
+  molio, molire, molivi, molitus  verb, 4th conjugation, transitive  [DXXFS]  late  very rare
+    build, erect; set in motion, start;
+    mōl-īris       2SG.PRS.PASS.IND
 
 laude
   laus, laudis  noun, 3rd declension, feminine  [XXXAA]
@@ -22146,6 +22205,9 @@ moliris
   molior, moliri, molitus sum  verb, 4th conjugation, deponent  [XXXBA]
     heave;
     mōl-īris       2SG.PRS.IND
+  molio, molire, molivi, molitus  verb, 4th conjugation, transitive  [DXXFS]  late  very rare
+    build, erect; set in motion, start;
+    mōl-īris       2SG.PRS.PASS.IND
 
 sidere
   sido, sidere, sidi, -  verb, 3rd conjugation  [XXXDA]  lesser
@@ -23118,6 +23180,7 @@ sidera
     sīder-a        NOM.PL
     sīder-a        VOC.PL
     sīder-a        ACC.PL
+  (less likely forms are not shown)
 
 adibam
   adeo, adire, adivi(ii), aditus  verb, irregular  [XXXAO]
@@ -24805,7 +24868,15 @@ italiam
     Ītali-am       ACC.SG
 
 lyciae
-  (unknown)
+  -i  suffix
+    art or craft done by the person (abstract noun of person); office of, -ship;
+  lycos, lyci  noun, 2nd declension, masculine  [XXXES]  uncommon
+    a kind of spider;
+    lyci-ae        GEN.SG
+    lyci-ae        LOC.SG
+    lyci-ae        DAT.SG
+    lyci-ae        NOM.PL
+    lyci-ae        VOC.PL
 
 iussere
   jubeo, jubere, jussi, jussus  verb, 2nd conjugation, transitive  [XXXAO]
@@ -26190,6 +26261,9 @@ ubera
     ūber-a         NOM.PL
     ūber-a         VOC.PL
     ūber-a         ACC.PL
+  ubero, uberare, uberavi, uberatus  verb, 1st conjugation, intransitive  [XXXES]  uncommon
+    be fruitful, bear fruit;
+    ūber-ā         2SG.PRS.ACT.IMP
 
 tigres
   tigris, tigris  noun, 3rd declension, masculine  [XAXCT]
@@ -26980,7 +27054,15 @@ nunc
     nunc           POS
 
 lyciae
-  (unknown)
+  -i  suffix
+    art or craft done by the person (abstract noun of person); office of, -ship;
+  lycos, lyci  noun, 2nd declension, masculine  [XXXES]  uncommon
+    a kind of spider;
+    lyci-ae        GEN.SG
+    lyci-ae        LOC.SG
+    lyci-ae        DAT.SG
+    lyci-ae        NOM.PL
+    lyci-ae        VOC.PL
 
 sortes
   sors, sortis  noun, 3rd declension, feminine  [XXXAA]
@@ -27816,6 +27898,11 @@ haec
     h-aec          ACC.PL.N
 
 manis
+  manon, mani  noun, 2nd declension, neuter  [XXXES]  uncommon
+    a kind of soft sponge;
+    mān-is         LOC.PL
+    mān-īs         DAT.PL
+    mān-īs         ABL.PL
   manis, manis  noun, 3rd declension, masculine  [XXXDX]  lesser
     shades/ghosts of dead (pl.); gods of Lower World; corpse/remains; underworld;
     mānis          NOM.SG
@@ -30521,6 +30608,11 @@ cineres
 manisve
   -ve  enclitic
     -ve = or if you will (enclitic); or as you please; or;             rare
+  manon, mani  noun, 2nd declension, neuter  [XXXES]  uncommon
+    a kind of soft sponge;
+    mān-is         LOC.PL
+    mān-īs         DAT.PL
+    mān-īs         ABL.PL
   manis, manis  noun, 3rd declension, masculine  [XXXDX]  lesser
     shades/ghosts of dead (pl.); gods of Lower World; corpse/remains; underworld;
     mānis          NOM.SG
@@ -33646,6 +33738,12 @@ agmina
 
 pentheus
   (unknown)
+  (near spellings: entheus)
+
+entheus
+  entheus, enthea, entheum  adjective, 1st/2nd declension  [DXXES]  late  uncommon
+    divinely inspired; inspiring;
+    enthe-us       NOM.SG.M
 
 et
   et  conjunction  [XXXAX]
@@ -34926,6 +35024,7 @@ sidera
     sīder-a        NOM.PL
     sīder-a        VOC.PL
     sīder-a        ACC.PL
+  (less likely forms are not shown)
 
 retro
   retro  adverb  [XXXBX]
@@ -34951,6 +35050,11 @@ movet
     mōv-et         3SG.PRS.ACT.IND
 
 manis
+  manon, mani  noun, 2nd declension, neuter  [XXXES]  uncommon
+    a kind of soft sponge;
+    mān-is         LOC.PL
+    mān-īs         DAT.PL
+    mān-īs         ABL.PL
   manis, manis  noun, 3rd declension, masculine  [XXXDX]  lesser
     shades/ghosts of dead (pl.); gods of Lower World; corpse/remains; underworld;
     mānis          NOM.SG
@@ -36922,6 +37026,7 @@ sidera
     sīder-a        NOM.PL
     sīder-a        VOC.PL
     sīder-a        ACC.PL
+  (less likely forms are not shown)
 
 tum
   tum  adverb  [XXXAX]
@@ -37288,6 +37393,7 @@ sidera
     sīder-a        NOM.PL
     sīder-a        VOC.PL
     sīder-a        ACC.PL
+  (less likely forms are not shown)
 
 lapsu
   labor, labi, lapsus sum  verb, 3rd conjugation, deponent  [XXXBA]
@@ -38880,15 +38986,13 @@ quos
     qu-os          ACC.PL.M
 
 sidonia
-  (unknown)
-  (near spellings: simonia)
-
-simonia
-  simonia, simoniae  noun, 1st declension, feminine  [EEXCV]  later
-    simony; buying/selling of a benefice/ecclesiastical position;
-    simoni-a       NOM.SG
-    simoni-a       VOC.SG
-    simoni-ā       ABL.SG
+  spelling: Word mod d/t
+    An internal 'd' might be rendered by 't'
+  sitonia, sitoniae  noun, 1st declension, feminine  [XXXES]  uncommon
+    the office of a sitona, purveyance;
+    sītōni-a       NOM.SG
+    sītōni-a       VOC.SG
+    sītōni-ā       ABL.SG
 
 vix
   vix  adverb  [XXXAO]
@@ -41301,6 +41405,7 @@ sidera
     sīder-a        NOM.PL
     sīder-a        VOC.PL
     sīder-a        ACC.PL
+  (less likely forms are not shown)
 
 caelo
   caelus, caeli  noun, 2nd declension, masculine  [BSXAO]  early
@@ -45254,7 +45359,7 @@ breviter
 
 barcen
   (unknown)
-  (near spellings: bracen)
+  (near spellings: bracen, narcen)
 
 bracen
   braces, bracae  noun, 1st declension, feminine  [XAFNS]  Pliny
@@ -45263,6 +45368,11 @@ bracen
   braces, bracae  noun, 1st declension, feminine  [EXXCM]  later
     malt;
     brac-ēn        ACC.SG
+
+narcen
+  narce, narces  noun, 1st declension, feminine  [XXXES]  uncommon
+    a numbness, torpor;
+    narc-ēn        ACC.SG
 
 nutricem
   nutrico, nutricare, nutricavi, nutricatus  verb, 1st conjugation, transitive  [XXXCO]

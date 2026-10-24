@@ -12,9 +12,9 @@ Spanish meanings, and the rest of the results in Spanish, were
 translated from the English (see "The Spanish meanings"); some meanings
 are also in French, German, Catalan and Galician, and it is possible to
 add other languages.  The dictionary is the one of WORDS, enlarged with
-R. E. Latham's medieval word-list and J. Echave-Sustaeta's Latin-Spanish
-basic vocabulary, and the long vowels come from Collatinus (see
-"Sources").  It is free software, under the GNU General Public License
+R. E. Latham's medieval word-list, J. Echave-Sustaeta's Latin-Spanish
+basic vocabulary and the rare words of Lewis and Short, and the long
+vowels come from Collatinus and Lewis and Short (see "Sources").  It is free software, under the GNU General Public License
 (see "Licensing").
 
 I am Nicolas Vaughan (<nivaca@fastmail.com> and <n.vaughan@uniandes.edu.co>),
@@ -801,6 +801,31 @@ frequency from his marks (C for the frequent words, F for the doubtful
 ones); their Spanish meanings were translated in the same work.  With
 them the dictionary has 44,380 entries.
 
+Last, also in October 2026, I added the rare words of Lewis and Short's
+*A Latin Dictionary* (Oxford, 1879) that WORDS did not have, from the
+digital text of the Perseus Digital Library (CC BY-SA 4.0; see
+"Sources").  Of its 51,600 entries, about 21,000 ordinary words were not
+in our dictionary, but almost 10,000 of them the program read already
+(participles, compounds, other spellings) and almost 8,000 are only
+cross-references (*v. ab*).  For the rest, the grammar was taken from
+what Lewis and Short gives (the genitive or the principal parts, the
+gender, the conjugation), and the meaning from the italic glosses of its
+first senses, in our short style; then each new entry was tried, and it
+was kept only if the analyzer reads its headword as its dictionary form.
+The meanings were revised one by one and translated into Spanish with
+the help of Claude (the model Claude Opus 5.5, `claude-opus-5-5`), at
+the request and under the direction of Nicolas Vaughan; about 460 words
+whose grammar or meaning was not clear, and 26 names and titles, were
+left out, and also 31 that only added a strange reading to a frequent
+word (*nome*, an ulcer, read *nomen* as its accusative).  So 3,060
+entries were added, with the source code S (the code
+that WORDS already gave to Lewis and Short), an age from Lewis and
+Short's notes (ante-class. B, post-class. D, late or ecclesiastical E),
+an area from its subject notes, and the frequency E, or F for words
+attested only once.  1,566 of them have also the long vowels of the
+headword of Lewis and Short (`data/quantities.xml`).  With them the
+dictionary has 47,446 entries.
+
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations
 (L+S, OLD, Ecc, PASS, GEN ...), and the Latin in brackets
@@ -1363,6 +1388,15 @@ The dictionary of py-words comes from these works:
 - J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entries
   corrected and 254 added, in English and in Spanish (source code A; see
   "The Spanish meanings").
+- C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon
+  Press, 1879): 3,060 rare words that WORDS did not have (source code S;
+  see "The Spanish meanings"), with the long vowels of their headwords.
+  Text provided under a CC BY-SA license by Perseus Digital Library,
+  <http://www.perseus.tufts.edu>, with funding from The National
+  Endowment for the Humanities.  Data accessed from
+  <https://github.com/PerseusDL/lexica/> on 23 October 2026.  The
+  licence of this text, CC BY-SA 4.0, allows to use it in a program under
+  the GPL version 3, as py-words is.
 - Collatinus 11, by Yves Ouvrard and Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL:
   the long vowels of the stems and endings, the meanings in French,

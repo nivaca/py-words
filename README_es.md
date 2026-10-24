@@ -12,9 +12,9 @@ español, y el resto de los resultados en español, se tradujeron del
 inglés (véase "Los significados en español"); algunos significados
 están también en francés, alemán, catalán y gallego, y pueden añadirse
 otros idiomas.  El diccionario es el de WORDS, ampliado con la lista de
-latín medieval de R. E. Latham y el vocabulario básico latín-español de
-J. Echave-Sustaeta, y las vocales largas vienen de Collatinus (véase
-"Fuentes").  Es software libre, bajo la Licencia Pública General de GNU
+latín medieval de R. E. Latham, el vocabulario básico latín-español de
+J. Echave-Sustaeta y las palabras raras de Lewis y Short, y las vocales
+largas vienen de Collatinus y de Lewis y Short (véase "Fuentes").  Es software libre, bajo la Licencia Pública General de GNU
 (véase "Licencia").
 
 Lo escribí yo, Nicolas Vaughan (<nivaca@fastmail.com> y
@@ -814,6 +814,32 @@ según la fecha más antigua que él da y una frecuencia según sus marcas
 se tradujeron en el mismo trabajo.  Con ellas el diccionario tiene
 44 380 entradas.
 
+Por último, también en octubre de 2026, añadí las palabras raras de *A
+Latin Dictionary* de Lewis y Short (Oxford, 1879) que WORDS no tenía, a
+partir del texto digital de la Perseus Digital Library (CC BY-SA 4.0;
+véase "Fuentes").  De sus 51 600 entradas, unas 21 000 palabras
+ordinarias no estaban en nuestro diccionario, pero casi 10 000 de ellas
+el programa ya las leía (participios, compuestos, otras grafías) y casi
+8000 son solo remisiones (*v. ab*).  Para el resto, la gramática se tomó
+de lo que da Lewis y Short (el genitivo o las partes principales, el
+género, la conjugación), y el significado de las glosas en cursiva de
+sus primeros sentidos, en nuestro estilo breve; luego se probó cada
+entrada nueva, y solo se conservó si el analizador lee su lema como su
+forma de diccionario.  Los significados se revisaron uno por uno y se
+tradujeron al español con ayuda de Claude (el modelo Claude Opus 5.5,
+`claude-opus-5-5`), a petición y bajo la dirección de Nicolas Vaughan;
+se dejaron fuera unas 460 palabras cuya gramática o significado no
+estaban claros, 26 nombres y títulos, y también 31 que solo añadían una
+lectura extraña a una palabra frecuente (*nome*, una úlcera, leía
+*nomen* como su acusativo).  Así se añadieron 3060
+entradas, con el código de fuente S (el que WORDS ya daba a Lewis y
+Short), una época según las notas de Lewis y Short (ante-class. B,
+post-class. D, tardío o eclesiástico E), un área según sus notas de
+materia, y la frecuencia E, o F para las palabras atestiguadas una sola
+vez.  1566 de ellas tienen además las vocales largas del lema de Lewis y
+Short (`data/quantities.xml`).  Con ellas el diccionario tiene 47 446
+entradas.
+
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,
 Ecc, PASS, GEN ...) y el latín entre corchetes (`[domi => en casa]`);
@@ -1400,6 +1426,16 @@ El diccionario de py-words viene de estas obras:
 - J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entradas
   corregidas y 254 añadidas, en inglés y en español (código de fuente A;
   véase "Los significados en español").
+- C. T. Lewis y C. Short, *A Latin Dictionary* (Oxford: Clarendon Press,
+  1879): 3060 palabras raras que WORDS no tenía (código de fuente S;
+  véase "Los significados en español"), con las vocales largas de sus
+  lemas.  Text provided under a CC BY-SA license by Perseus Digital
+  Library, <http://www.perseus.tufts.edu>, with funding from The National
+  Endowment for the Humanities.  Data accessed from
+  <https://github.com/PerseusDL/lexica/> on 23 October 2026.  (Es la
+  mención que pide Perseus, que se deja en inglés.)  La licencia de este
+  texto, CC BY-SA 4.0, permite usarlo en un programa bajo la GPL versión
+  3, como py-words.
 - Collatinus 11, de Yves Ouvrard y Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), bajo la GPL de GNU:
   las vocales largas de las raíces y las desinencias, los significados

@@ -11,7 +11,7 @@ wild
     wild, frightful, rough, bristly, standing on end, unkempt; grim; horrible;
   impotens, (gen.), impotentis  adjective, 3rd declension  [XXXBX]
     powerless, impotent, wild, headstrong; having no control (over), incapable (of);
-  (34 more not shown)
+  (35 more not shown)
 
 game
   ludus, ludi  noun, 2nd declension, masculine  [XXXBX]
@@ -45,7 +45,7 @@ grain
     |favorable, fair (wind/current); fortunate, propitious; smooth, w/the grain;
   granum, grani  noun, 2nd declension, neuter  [XXXDX]  lesser
     grain; seed;
-  (63 more not shown)
+  (67 more not shown)
 
 fresh
   novus, nova -um, novior -or -us, novissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
@@ -60,7 +60,7 @@ fresh
     fresh, green; blooming,youthful;
   crudus, cruda -um, crudior -or -us, crudissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     |youthful/hardy/vigorous; fresh/green/immature; undigested; w/undigested food;
-  (11 more not shown)
+  (13 more not shown)
 
 air
   spiritus, spiritus  noun, 4th declension, masculine  [XXXAA]
@@ -96,7 +96,7 @@ in
     before, in front; in view of, because of;
   super  preposition, with the ablative  [XXXAX]
     over (space), above, upon, in addition to; during (time); concerning; beyond;
-  (44 more not shown)
+  (45 more not shown)
 
 a
   (no match)
@@ -158,7 +158,7 @@ are
     thither, to you, to where you are; in that direction; to that subject/point;
   isti  adverb  [XXXDX]  lesser
     there, in that place; where you are; herein, in this affair;
-  (22 more not shown)
+  (23 more not shown)
 
 fun
   delicia, deliciae  noun, 1st declension, feminine  [XXXAO]
@@ -188,7 +188,7 @@ free
     free (man); unimpeded; void of; independent, outspoken/frank; free from tribute;
   solvo, solvere, solvi, solutus  verb, 3rd conjugation  [XXXAX]
     loosen, release, unbind, untie, free; open; set sail; scatter; pay off/back;
-  (94 more not shown)
+  (97 more not shown)
 
 money
   aes, aeris  noun, 3rd declension, neuter  [XXXAO]
@@ -203,7 +203,7 @@ money
     money/coinage; die on which coin is struck, stamp; mint, temple striking coins;
   arca, arcae  noun, 1st declension, feminine  [XXXBO]
     box, chest; strong-box, coffer; wealth, money; coffin, bier; cell, cage; ark;
-  (29 more not shown)
+  (31 more not shown)
 
 do
   facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
@@ -262,7 +262,7 @@ grammar
     grammatical, of grammar;
   grammaticus, grammatici  noun, 2nd declension, masculine  [FXXEM]  medieval  uncommon
     grammar-school pupil;
-  (1 more not shown)
+  (2 more not shown)
 
 rammer
   fistuca, fistucae  noun, 1st declension, feminine  [XXXEC]  uncommon
@@ -286,7 +286,7 @@ hard
     difficult, troublesome; hard; hard to please/manage/deal with/carry out;
   callosus, callosa -um, callosior -or -us, callosissimus -a -um  adjective, 1st/2nd declension  [XXXCO]
     tough, hard/thick-skinned; made hard/tough by use; callused, indurated;
-  (19 more not shown)
+  (22 more not shown)
 
 never
   numquam  adverb  [XXXAX]
@@ -315,7 +315,7 @@ say
     add, insert, bring/attach to, say in addition; increase; impart; associate;
   ait, -, -  verb, irregular, impersonal  [XXXAO]
     he says (ait), it is said; they say (aiunt);
-  (32 more not shown)
+  (33 more not shown)
 
 stop
   consisto, consistere, constiti, constitus  verb, 3rd conjugation  [XXXAO]

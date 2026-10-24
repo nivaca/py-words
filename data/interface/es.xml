@@ -2206,6 +2206,8 @@ https://github.com/mk270/whitakers-words
 Sources of the dictionary: WORDS, by William Whitaker; R. E. Latham,
 Revised Medieval Latin Word-List (medieval words, senses and spellings);
 J. Echave-Sustaeta, Lengua latina. Vocabulario básico (Latin-Spanish);
+C. T. Lewis and C. Short, A Latin Dictionary (rare words; text of the
+Perseus Digital Library, CC BY-SA 4.0);
 Collatinus, by Yves Ouvrard and Philippe Verkerk (long vowels, and the
 meanings in French, German, Catalan and Galician).
 Code © 2026 Nicolas Vaughan (nivaca@fastmail.com), under the GNU General
@@ -2220,6 +2222,8 @@ https://github.com/mk270/whitakers-words
 Fuentes del diccionario: WORDS, de William Whitaker; R. E. Latham,
 Revised Medieval Latin Word-List (palabras, sentidos y grafías medievales);
 J. Echave-Sustaeta, Lengua latina. Vocabulario básico (latín-español);
+C. T. Lewis y C. Short, A Latin Dictionary (palabras raras; texto de la
+Perseus Digital Library, CC BY-SA 4.0);
 Collatinus, de Yves Ouvrard y Philippe Verkerk (vocales largas, y los
 significados en francés, alemán, catalán y gallego).
 Código © 2026 Nicolas Vaughan (nivaca@fastmail.com), bajo la Licencia Pública
@@ -2233,8 +2237,8 @@ Claude (el modelo Claude Opus 5.5, de Anthropic).</tr>
     <tr>Fuentes y licencia</tr>
   </text>
   <text>
-    <en>The dictionary is that of WORDS, by William Whitaker (1936-2010), with additions from three other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, the meanings in French, German, Catalan and Galician, and some abbreviations (source code H).  Collatinus, in its turn, made its lexicon with the help of the dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; the README names all the sources and people it thanks.</en>
-    <tr>El diccionario es el de WORDS, de William Whitaker (1936-2010), con añadidos de otras tres obras.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, aportó sentidos, palabras y grafías medievales (código de fuente M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, aportó sentidos y palabras, en inglés y en español (código de fuente A).  Collatinus, de Yves Ouvrard y Philippe Verkerk, aportó las vocales largas de las raíces y las desinencias, los significados en francés, alemán, catalán y gallego, y algunas abreviaturas (código de fuente H).  Collatinus, a su vez, hizo su léxico con ayuda de los diccionarios de Gaffiot, Jeanneau, Du Cange y Lewis y Short, entre otros; el README nombra todas las fuentes y personas a las que agradece.</tr>
+    <en>The dictionary is that of WORDS, by William Whitaker (1936-2010), with additions from four other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Lewis and Short, A Latin Dictionary, in the text of the Perseus Digital Library (CC BY-SA 4.0), gave some 3,000 rare words that WORDS did not have (source code S, as other entries of WORDS taken from it).  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, the meanings in French, German, Catalan and Galician, and some abbreviations (source code H).  Collatinus, in its turn, made its lexicon with the help of the dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; the README names all the sources and people it thanks.</en>
+    <tr>El diccionario es el de WORDS, de William Whitaker (1936-2010), con añadidos de otras cuatro obras.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, aportó sentidos, palabras y grafías medievales (código de fuente M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, aportó sentidos y palabras, en inglés y en español (código de fuente A).  Lewis y Short, A Latin Dictionary, en el texto de la Perseus Digital Library (CC BY-SA 4.0), aportó unas 3000 palabras raras que WORDS no tenía (código de fuente S, como otras entradas de WORDS tomadas de él).  Collatinus, de Yves Ouvrard y Philippe Verkerk, aportó las vocales largas de las raíces y las desinencias, los significados en francés, alemán, catalán y gallego, y algunas abreviaturas (código de fuente H).  Collatinus, a su vez, hizo su léxico con ayuda de los diccionarios de Gaffiot, Jeanneau, Du Cange y Lewis y Short, entre otros; el README nombra todas las fuentes y personas a las que agradece.</tr>
   </text>
   <text>
     <en>{name} is free software, distributed under the GNU General Public License, version 3 or later (see LICENCE.txt): it can be used, copied, changed and shared, but a program that includes it must be shared under the same licence, with its source code.  The data of WORDS are free for any use, by permission of William Whitaker.  "About" gives the version and the credits.</en>

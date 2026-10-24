@@ -23,6 +23,8 @@ CREDITS_TEXT = (
     'spellings);\n'
     'J. Echave-Sustaeta, Lengua latina. Vocabulario básico (Latin-'
     'Spanish);\n'
+    'C. T. Lewis and C. Short, A Latin Dictionary (rare words; text of the\n'
+    'Perseus Digital Library, CC BY-SA 4.0);\n'
     'Collatinus, by Yves Ouvrard and Philippe Verkerk (long vowels, and '
     'the\n'
     'meanings in French, German, Catalan and Galician).\n'

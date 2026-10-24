@@ -917,7 +917,14 @@ def _attrs(pairs) -> str:
 
 HEADERS = {
     'dictionary': 'The WORDS dictionary: one <entry> per dictionary entry. '
-                  'See words.xsd.',
+                  'See words.xsd. The entries with source code S that were '
+                  'added in October 2026 come from Lewis and Short, A Latin '
+                  'Dictionary (Oxford, 1879): text provided under a CC '
+                  'BY-SA license by Perseus Digital Library, '
+                  'http://www.perseus.tufts.edu, with funding from The '
+                  'National Endowment for the Humanities. Data accessed '
+                  'from https://github.com/PerseusDL/lexica/ on '
+                  '2026-10-23.',
     'inflections': 'The inflectional endings used by WORDS. The long '
                    'vowels of the endings (long) were taken from the '
                    'models of Collatinus 11, by Yves Ouvrard and Philippe '
