@@ -24149,6 +24149,9 @@ negabo
   nego, negare, negavi, negatus  verb, 1st conjugation  [XXXAX]
     deny, refuse; say ... not;
     neg-ābo        1SG.FUT.ACT.IND
+  nego, negare, negavi, negatus  verb, 1st conjugation, transitive  [FEXEM]  medieval  uncommon
+    abjure Christianity;
+    neg-ābo        1SG.FUT.ACT.IND
 
 promeritam
   promereo, promerere, promerui, promeritus  verb, 2nd conjugation  [XXXDX]  lesser
@@ -30706,6 +30709,9 @@ dicta
 neget
   nego, negare, negavi, negatus  verb, 1st conjugation  [XXXAX]
     deny, refuse; say ... not;
+    neg-et         3SG.PRS.ACT.SBJV
+  nego, negare, negavi, negatus  verb, 1st conjugation, transitive  [FEXEM]  medieval  uncommon
+    abjure Christianity;
     neg-et         3SG.PRS.ACT.SBJV
 
 duras

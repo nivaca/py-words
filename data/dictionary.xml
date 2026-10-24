@@ -206443,14 +206443,6 @@
     <stem>zzz</stem>
     <meaning>deny, refuse; say ... not;</meaning>
   </entry>
-  <entry id="41234" pos="V" conj="8 1" kind="X" age="F" area="X" geo="X"
-    freq="E" source="M">
-    <stem>neg</stem>
-    <stem>neg</stem>
-    <stem>negass</stem>
-    <stem>zzz</stem>
-    <meaning>abjure Christianity;</meaning>
-  </entry>
   <entry id="27781" pos="V" conj="1 1" kind="X" age="X" area="X" geo="X"
     freq="A" source="X">
     <stem>neg</stem>
@@ -206458,6 +206450,14 @@
     <stem>negav</stem>
     <stem>negat</stem>
     <meaning>deny, refuse; say ... not;</meaning>
+  </entry>
+  <entry id="41234" pos="V" conj="1 1" kind="TRANS" age="F" area="E" geo="X"
+    freq="E" source="M">
+    <stem>neg</stem>
+    <stem>neg</stem>
+    <stem>negav</stem>
+    <stem>negat</stem>
+    <meaning>abjure Christianity;</meaning>
   </entry>
   <entry id="45915" pos="ADJ" decl="1 1" comparison="POS" age="X" area="X"
     geo="X" freq="E" source="S">
