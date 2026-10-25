@@ -27,8 +27,12 @@ jobs:
         with:
           # El mismo Python que trae Pyodide (PYODIDE en pages/app.js)
           python-version: '3.12'      # (that of Pyodide 0.26)
+      # A virtual display (Xvfb), so that the tests of the windows run too
+      # instead of being skipped
+      - name: Virtual display
+        run: sudo apt-get install -y xvfb fonts-dejavu
       - name: Tests
-        run: python3 -m unittest discover -s tests
+        run: xvfb-run -a python3 -m unittest discover -s tests
       - name: Build the site
         run: python3 pages/build.py -o site
       - uses: actions/configure-pages@v6
