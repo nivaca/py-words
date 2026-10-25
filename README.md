@@ -875,7 +875,7 @@ is a translation.  When you change a meaning in the editors, the code
 goes away, since the text is no longer the dictionary's.
 
 The same was done for English with Lewis and Short.  Every entry he has
-(32,097 of them) shows his definition: the glosses in italics of his
+(31,755 of them) shows his definition: the glosses in italics of his
 senses, without the citations, the Latin examples and the notes on
 grammar, after which the results say "(Lewis and Short)".  An entry
 takes his definition only if it shares words with ours, so a medieval
@@ -1122,7 +1122,7 @@ Version
     `data/languages/es.xml` such a meaning carries its source
     (`source="m"`), and the results say it after the meaning: "(De
     Miguel)".
-  - The English meanings come from Lewis and Short (32,097, his
+  - The English meanings come from Lewis and Short (31,755, his
     definitions made from his glosses) where he has the word and the
     sense; the others are those of WORDS.  They are in
     `data/languages/en.xml` (`source="S"`), and the results say "(Lewis
@@ -1477,7 +1477,7 @@ The dictionary of py-words comes from these works:
 - C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon
   Press, 1879): 6,653 rare words and 1,783 names that WORDS did not have
   (source code S), with the long vowels of their headwords, and the
-  English definitions of 32,097 entries (see "The Spanish meanings").
+  English definitions of 31,755 entries (see "The Spanish meanings").
   Text provided under a CC BY-SA license by Perseus Digital Library,
   <http://www.perseus.tufts.edu>, with funding from The National
   Endowment for the Humanities.  Data accessed from

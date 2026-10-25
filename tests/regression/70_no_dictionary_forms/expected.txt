@@ -5,7 +5,7 @@ arma
     arm-a          VOC.PL
     arm-a          ACC.PL
   [XWXAO]
-    to furnish with weapons, to arm, equip, contra; To arm, equip, furnish; To excite, stir up, rouse, provoke; To furnish with something needful, with the munitions of war, to fit out, equip, armed, equipped, fitted with armor, an armed man; armed, furnished, pos; (Lewis and Short)
+    to furnish with weapons, to arm, equip; To arm, equip, furnish; To excite, stir up, rouse, provoke; To furnish with something needful, with the munitions of war, to fit out, equip, armed, equipped, fitted with armor, an armed man; armed, furnished; (Lewis and Short)
     arm-ā          2SG.PRS.ACT.IMP
 
 virumque
@@ -16,13 +16,13 @@ virumque
     vir-um         VOC.SG
     vir-um         ACC.SG
   [XXXAX]
-    a male person, a man; A man, a husband, the male, mate; A man; a man, a man of courage, principle, honor, one who deserves the name of a man; man, soldier; a foot-soldier, with horse and foot, with might and main; each man, every man, singled out; Human beings; Manhood, virility; (Lewis and Short)
+    a male person, a man; A man, a husband, the male, mate; a man of courage, principle, honor, one who deserves the name of a man; man, soldier; a foot-soldier; each man, every man; Human beings; Manhood, virility; (Lewis and Short)
     vir-um         ACC.SG
   [XXXAX]
-    strength, force, vigor, power, energy, virtue; Energy, virtue, potency; Juno; Hostile strength, force, violence; force, violence; Quantity, number, abundance; military forces, troops; the virile forces, organs; Mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
+    strength, force, vigor, power, energy, virtue; Energy, virtue, potency; Hostile strength, force, violence; force, violence; Quantity, number, abundance; military forces, troops; the virile forces, organs; Mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
     vīr-um         GEN.PL
   [XXXAA]
-    strength, force, vigor, power, energy, virtue; Energy, virtue, potency; Juno; Hostile strength, force, violence; force, violence; Quantity, number, abundance; military forces, troops; the virile forces, organs; Mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
+    strength, force, vigor, power, energy, virtue; energy, virtue, potency; hostile strength, force, violence; force, violence; quantity, number, abundance; military forces, troops; the virile forces, organs; mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
     vīr-um         GEN.PL
   (less likely forms are not shown)
 
@@ -42,10 +42,10 @@ cano
     cān-ō          ABL.SG.M
     cān-ō          ABL.SG.N
   [EXXFS]  later  very rare
-    imp, to produce melodious sounds, to make something the subject of one, s singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one, s singing, playing; to sing, play; to sing for one, s self, to consult only one, s own advantage; ever the old tune; to sing, to cause to resound, to celebrate in song, to sing of, croaked; to celebrate, to trumpet abroad, to sing, preach to the deaf; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
+    to produce melodious sounds, to make something the subject of one's singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one's singing, playing; to sing, play; to sing for one's self, to consult only one's own advantage; to sing, to cause to resound, to celebrate in song, to sing of, to croak; to celebrate, to trumpet abroad; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
     can-o          1SG.PRS.ACT.IND
   [XXXAO]
-    imp, to produce melodious sounds, to make something the subject of one, s singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one, s singing, playing; to sing, play; to sing for one, s self, to consult only one, s own advantage; ever the old tune; to sing, to cause to resound, to celebrate in song, to sing of, croaked; to celebrate, to trumpet abroad, to sing, preach to the deaf; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
+    to produce melodious sounds, to make something the subject of one's singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one's singing, playing; to sing, play; to sing for one's self, to consult only one's own advantage; to sing, to cause to resound, to celebrate in song, to sing of, to croak; to celebrate, to trumpet abroad; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
     can-o          1SG.PRS.ACT.IND
 
 amicorum
@@ -76,7 +76,7 @@ xyzzyq
 
 redeo
   [XXXAX]
-    pres, fut; come back; to turn back, re turn, turn around; manner; come back, had never been reconciled, had never been at variance, to come to one, s self, to recover one, s senses, returned to his true form; to go back, to recur; ire; To come in, to arise, proceed; To come to, be brought, reduced to; to arrive at, reach, attain, sank, sloped down, descended, have descended to me, have not reached, are not registered upon; (Lewis and Short)
+    to come back; to turn back, return, turn around; to come to one's self, recover one's senses; to go back, recur; To come in, arise, proceed; To come to, be brought, reduced to; to arrive at, reach, attain; to sink, slope down, descend; (Lewis and Short)
     rede-o         1SG.PRS.ACT.IND
   [FLXEM]  medieval  uncommon
     revert (leg.);
@@ -94,16 +94,16 @@ XIV
 
 quamdiu
   [XXXBO]
-    how long ago? how long?; Rel; as long as, until, during; Until; inasmuch as, in that; (Lewis and Short)
+    how long ago? how long?; as long as, until, during; Until; inasmuch as, in that; (Lewis and Short)
     quamdiū        POS
   [XXXBO]
-    how long ago? how long?; Rel; as long as, until, during; Until; inasmuch as, in that; (Lewis and Short)
+    how long ago? how long?; as long as, until, during; Until; inasmuch as, in that; (Lewis and Short)
     quamdiū        POS
 
 amasti
   syncope: Syncope   s => vis
     Syncopated perfect often drops the 'v' and contracts vowel
   [XXXAO]
-    to like, to love; to love with all one's heart, so may the gods love me, by the love of the gods, most assuredly, bless me!, God, the gods bless you!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in, loves to remain shut, is constantly closed; to like one for something, to be obliged to one for something, to be under obligation, be thankful; Anter, I like you, am much obliged to you, I shall like you, if you say, that for me, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron, their most, pleasant things; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
+    to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     amāv-istī      2SG.PRF.ACT.IND
 

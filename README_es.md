@@ -893,7 +893,7 @@ significado en los editores, el código desaparece, pues el texto ya no
 es el del diccionario.
 
 Lo mismo se hizo con el inglés y Lewis y Short.  Cada entrada que él
-tiene (32 097) muestra su definición: las glosas en cursiva de sus
+tiene (31 755) muestra su definición: las glosas en cursiva de sus
 sentidos, sin las citas, los ejemplos latinos ni las notas de
 gramática, y tras ella los resultados dicen "(Lewis and Short)".  Una
 entrada toma su definición solo si comparte palabras con la nuestra,
@@ -1148,7 +1148,7 @@ Versiones
     `data/languages/es.xml` un significado así lleva su fuente
     (`source="m"`), y los resultados la dicen tras el significado: "(De
     Miguel)".
-  - Los significados en inglés vienen de Lewis y Short (32 097, sus
+  - Los significados en inglés vienen de Lewis y Short (31 755, sus
     definiciones hechas con sus glosas) donde él tiene la palabra y el
     sentido; los demás son los de WORDS.  Están en
     `data/languages/en.xml` (`source="S"`), y los resultados dicen "(Lewis
@@ -1521,7 +1521,7 @@ El diccionario de py-words viene de estas obras:
 - C. T. Lewis y C. Short, *A Latin Dictionary* (Oxford: Clarendon Press,
   1879): 6653 palabras raras y 1783 nombres que WORDS no tenía (código
   de fuente S), con las vocales largas de sus lemas, y las definiciones
-  inglesas de 32 097 entradas (véase "Los significados en español").
+  inglesas de 31 755 entradas (véase "Los significados en español").
   Text provided under a CC BY-SA license by Perseus Digital Library, <http://www.perseus.tufts.edu>, with funding from The National
   Endowment for the Humanities.  Data accessed from
   <https://github.com/PerseusDL/lexica/> on 23 October 2026.  (Es la

@@ -1,6 +1,6 @@
 multa
   multa, multae  noun, 1st declension, feminine  [XLXCO]
-    a penalty, a fine, amercement, mulct, a fine in cattle, a pecuniary fine, I condemn him to pay, fine him, pecuniary fine, to contend on both sides whether or not the proposed fine should be paid; a penalty; (Lewis and Short)
+    a penalty, a fine, amercement, mulct; a fine in cattle, a pecuniary fine; (Lewis and Short)
     mult-a         NOM.SG
     mult-a         VOC.SG
     mult-ā         ABL.SG
@@ -10,10 +10,10 @@ multa
     mult-a         VOC.PL
     mult-a         ACC.PL
   multo, multare, multavi, multatus  verb, 1st conjugation, transitive  [XLXCO]
-    to punish, to punish with his vows, by granting the object of his vows; (Lewis and Short)
+    to punish; (Lewis and Short)
     mult-ā         2SG.PRS.ACT.IMP
   multus, multa -um, -, plurimus -a -um  adjective, 1st/2nd declension  [XXXAX]
-    much, great, many; Posit; at such length, many things, much, a good many, many others, many a one, much, great, abundant, the many, the common mass, the multitude, one of the multitude, a man of no distinction, not to be prolix, in short, much, greatly, very; Too much, overmuch, excessive; much-speaking, diffuse, prolix; Frequent, frequently present; much, very much, greatly, very, often, frequently, far; by much, much, a great deal, far, by far; verbs; by far, by much, by far; far, greatly, very; long, much; more; about; more than this, too much by a finger, a finger too much; of more value, of a higher price, for more, higher, dearer; more and more; many; The mass, the multitude; the dead; The greater number, the majority; most, very much, many, thickest, very much indeed, exceedingly, for the most part, commonly, usually; (Lewis and Short)
+    much, great, many; many things, much, a good many, many others, many a one; much, great, abundant; the many, the common mass, the multitude; one of the multitude, a man of no distinction; in short; much, greatly, very; Too much, overmuch, excessive; much-speaking, diffuse, prolix; Frequent, frequently present; much, very much, greatly, very, often, frequently, far; by much, much, a great deal, far, by far; far, greatly, very; long, much; more; about; more than this, too much; of more value, of a higher price, for more, higher, dearer; more and more; many; The mass, the multitude; the dead; The greater number, the majority; most, very much, many, thickest, very much indeed, exceedingly; for the most part, commonly, usually; (Lewis and Short)
     mult-a         NOM.SG.F
     mult-a         VOC.SG.F
     mult-ā         ABL.SG.F
@@ -34,25 +34,25 @@ viri
     vir-ī          GEN.SG
     vir-ī          LOC.SG
   vir, viri  noun, 2nd declension, masculine  [XXXAX]
-    a male person, a man; A man, a husband, the male, mate; A man; a man, a man of courage, principle, honor, one who deserves the name of a man; man, soldier; a foot-soldier, with horse and foot, with might and main; each man, every man, singled out; Human beings; Manhood, virility; (Lewis and Short)
+    a male person, a man; A man, a husband, the male, mate; a man of courage, principle, honor, one who deserves the name of a man; man, soldier; a foot-soldier; each man, every man; Human beings; Manhood, virility; (Lewis and Short)
     vir-ī          GEN.SG
     vir-ī          LOC.SG
     vir-ī          NOM.PL
     vir-ī          VOC.PL
   vis, viris  noun, 3rd declension, feminine  [XXXAX]
-    strength, force, vigor, power, energy, virtue; Energy, virtue, potency; Juno; Hostile strength, force, violence; force, violence; Quantity, number, abundance; military forces, troops; the virile forces, organs; Mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
+    strength, force, vigor, power, energy, virtue; Energy, virtue, potency; Hostile strength, force, violence; force, violence; Quantity, number, abundance; military forces, troops; the virile forces, organs; Mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
     vīr-i          LOC.SG  (early)
     vīr-ī          DAT.SG
     vīr-ī          ABL.SG
   vis, viris  noun, 3rd declension, feminine  [XXXAA]
-    strength, force, vigor, power, energy, virtue; Energy, virtue, potency; Juno; Hostile strength, force, violence; force, violence; Quantity, number, abundance; military forces, troops; the virile forces, organs; Mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
+    strength, force, vigor, power, energy, virtue; energy, virtue, potency; hostile strength, force, violence; force, violence; quantity, number, abundance; military forces, troops; the virile forces, organs; mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
     vīr-i          LOC.SG  (early)
     vīr-ī          DAT.SG
     vīr-ī          ABL.SG
 
 virtus
   virtus, virtutis  noun, 3rd declension, feminine  [XXXAX]
-    manliness, manhood, strength, vigor; bravery, capacity; worth, excellence, virtue; worth, value, power, strength; by the aid, merit of the gods, the gods be thanked; Moral perfection, virtue; Virtue; Military talents, courage, valor, bravery, gallantry, fortitude; Obstinacy; (Lewis and Short)
+    manliness, manhood, strength, vigor; bravery, capacity; worth, excellence, virtue; worth, value, power, strength; by the aid, merit of the gods; Moral perfection, virtue; Virtue; Military talents, courage, valor, bravery, gallantry, fortitude; Obstinacy; (Lewis and Short)
     virtūs         NOM.SG
     virtūs         VOC.SG
   virtus, virtutis  noun, 3rd declension, feminine  [EEXCR]  later
@@ -66,15 +66,15 @@ virtus
 
 animo
   animus, animi  noun, 2nd declension, masculine  [XXXAO]
-    the rational soul in man, corpus, the senses, independently of the body; the intellect, the sensibility, the will, the understanding, the reason, reason, intellect, the two, parts, The will, animus, mens, ratio; the reason, intellect, mind; the memory; Consciousness, the vital power; judgment, according to my mind; The imagination, the fancy; The power of feeling, the sensibility, the heart, the feelings, affections, inclinations, disposition, passions; heart, soul, spirit, feeling, inclination, affection, passion, mind and heart, in mind and heart, entertains his mind and delights his heart, thought, from the heart, from the bottom of one's heart, deeply, truly, sincerely; verbs, pitying him in her heart; disposition, character; Courage, spirit, to be of good courage, hope; arrogance, pride, can bear the arrogance and pride; Violent passion, vehemence, wrath; patience, contentedness, an even mind, with even mind, patiently, of merry heart; Agreeable feeling, pleasure, for the sake of amusement; Disposition toward any one, kind, friendly feeling, affection, kindness, liberality, my heart, my soul; The power of willing, the will, inclination, purpose, design, intention, we had it in mind to send, my mind inclines to tell of, to have a mind for, to aim at, to resolve upon doing something; the Divine Mind, the Mind of God; (Lewis and Short)
+    the rational soul in man, the senses, independently of the body; the intellect, the sensibility, the will, the understanding, the reason, reason, intellect; The will; the reason, intellect, mind; the memory; Consciousness, the vital power; judgment, according to my mind; The imagination, the fancy; The power of feeling, the sensibility, the heart, the feelings, affections, inclinations, disposition, passions; heart, soul, spirit, feeling, inclination, affection, passion, mind and heart, in mind and heart, thought, from the heart, from the bottom of one's heart, deeply, truly, sincerely; disposition, character; Courage, spirit, to be of good courage, hope; arrogance, pride; Violent passion, vehemence, wrath; patience, contentedness, an even mind, with even mind, patiently; Agreeable feeling, pleasure, for the sake of amusement; Disposition toward any one, kind, friendly feeling, affection, kindness, liberality, my heart, my soul; The power of willing, the will, inclination, purpose, design, intention, to have a mind for, to aim at, to resolve upon doing something; the Divine Mind, the Mind of God; (Lewis and Short)
     anim-ō         DAT.SG
     anim-ō         ABL.SG
   animus, animi  noun, 2nd declension, masculine  [XXXAA]
-    the rational soul in man, corpus, the senses, independently of the body; the intellect, the sensibility, the will, the understanding, the reason, reason, intellect, the two, parts, The will, animus, mens, ratio; the reason, intellect, mind; the memory; Consciousness, the vital power; judgment, according to my mind; The imagination, the fancy; The power of feeling, the sensibility, the heart, the feelings, affections, inclinations, disposition, passions; heart, soul, spirit, feeling, inclination, affection, passion, mind and heart, in mind and heart, entertains his mind and delights his heart, thought, from the heart, from the bottom of one's heart, deeply, truly, sincerely; verbs, pitying him in her heart; disposition, character; Courage, spirit, to be of good courage, hope; arrogance, pride, can bear the arrogance and pride; Violent passion, vehemence, wrath; patience, contentedness, an even mind, with even mind, patiently, of merry heart; Agreeable feeling, pleasure, for the sake of amusement; Disposition toward any one, kind, friendly feeling, affection, kindness, liberality, my heart, my soul; The power of willing, the will, inclination, purpose, design, intention, we had it in mind to send, my mind inclines to tell of, to have a mind for, to aim at, to resolve upon doing something; the Divine Mind, the Mind of God; (Lewis and Short)
+    the rational soul in man; the intellect, the sensibility, the will, the understanding, the reason; the reason, intellect, mind; the memory; consciousness, the vital power; judgment; the imagination, the fancy; the power of feeling, the sensibility, the heart, the feelings, affections, inclinations, disposition, passions; heart, soul, spirit, feeling, inclination, affection, passion, mind and heart; thought; from the heart, from the bottom of one's heart, deeply, truly, sincerely; disposition, character; courage, spirit, hope; arrogance, pride; violent passion, vehemence, wrath; patience, contentedness, an even mind; agreeable feeling, pleasure; disposition toward any one, kind, friendly feeling, affection, kindness, liberality; my heart, my soul; the power of willing, the will, inclination, purpose, design, intention; to have a mind for, to aim at, to resolve upon doing something; the Divine Mind, the Mind of God; (Lewis and Short)
     anim-ō         DAT.SG
     anim-ō         ABL.SG
   animo, animare, animavi, animatus  verb, 1st conjugation, transitive  [XXXBO]
-    To fill with breath, air; To quicken, animate; To endow with, to give, a particular temperament, disposition of mind, are rendered more spirited; to transform a lifeless object to a living being, to change into by giving life; to enliven, to light, kindle, to refresh, revive, to encourage, help, to move; Animated; Brought, put into a particular frame of mind, disposed, inclined, minded; Endowed with courage, courageous, stouthearted; to be animate, living; animate, living; any living, animate being; an animal, animal, living beings; (Lewis and Short)
+    To fill with breath, air; To quicken, animate; To endow with a particular temperament, disposition of mind; to transform a lifeless object to a living being, to change into by giving life; to enliven, to light, kindle, to refresh, revive, to encourage, help, to move; Animated; Brought, put into a particular frame of mind, disposed, inclined, minded; Endowed with courage, courageous, stouthearted; to be animate, living; animate, living; any living, animate being; an animal, living beings; (Lewis and Short)
     anim-o         1SG.PRS.ACT.IND
   animo, animare, animavi, animatus  verb, 1st conjugation, transitive  [FXXEM]  medieval  uncommon
     support (proposals);
@@ -84,7 +84,7 @@ multusque
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
   multus, multa -um, -, plurimus -a -um  adjective, 1st/2nd declension  [XXXAX]
-    much, great, many; Posit; at such length, many things, much, a good many, many others, many a one, much, great, abundant, the many, the common mass, the multitude, one of the multitude, a man of no distinction, not to be prolix, in short, much, greatly, very; Too much, overmuch, excessive; much-speaking, diffuse, prolix; Frequent, frequently present; much, very much, greatly, very, often, frequently, far; by much, much, a great deal, far, by far; verbs; by far, by much, by far; far, greatly, very; long, much; more; about; more than this, too much by a finger, a finger too much; of more value, of a higher price, for more, higher, dearer; more and more; many; The mass, the multitude; the dead; The greater number, the majority; most, very much, many, thickest, very much indeed, exceedingly, for the most part, commonly, usually; (Lewis and Short)
+    much, great, many; many things, much, a good many, many others, many a one; much, great, abundant; the many, the common mass, the multitude; one of the multitude, a man of no distinction; in short; much, greatly, very; Too much, overmuch, excessive; much-speaking, diffuse, prolix; Frequent, frequently present; much, very much, greatly, very, often, frequently, far; by much, much, a great deal, far, by far; far, greatly, very; long, much; more; about; more than this, too much; of more value, of a higher price, for more, higher, dearer; more and more; many; The mass, the multitude; the dead; The greater number, the majority; most, very much, many, thickest, very much indeed, exceedingly; for the most part, commonly, usually; (Lewis and Short)
     mult-us        NOM.SG.M
 
 recursat
