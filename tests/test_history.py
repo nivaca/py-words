@@ -110,7 +110,9 @@ class CommandLineHistoryTests(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
-    def session(self, keys):
+    def session(self, keys, until=None):
+        """Types KEYS once the prompt is there; with UNTIL, waits for it
+        in the output (a slow machine takes some seconds to start)."""
         import pty
         pid, fd = pty.fork()
         if pid == 0:
@@ -120,9 +122,11 @@ class CommandLineHistoryTests(unittest.TestCase):
                       [sys.executable, os.path.join(ROOT, 'words.py')])
         out = []
 
-        def pump(seconds):
+        def pump(seconds, until=None):
             end = time.time() + seconds
             while time.time() < end:
+                if until and until.encode() in b''.join(out):
+                    return
                 ready, _, _ = select.select([fd], [], [], 0.05)
                 if ready:
                     try:
@@ -132,10 +136,12 @@ class CommandLineHistoryTests(unittest.TestCase):
                     if not data:
                         return
                     out.append(data)
-        pump(3)
+        pump(60, '=> ')
         for key in keys:
             os.write(fd, key.encode())
             pump(1)
+        if until:
+            pump(60, until)
         os.kill(pid, 9)
         os.waitpid(pid, 0)
         os.close(fd)
@@ -147,7 +153,7 @@ class CommandLineHistoryTests(unittest.TestCase):
         # the answers to the # dialogue are not searches
         self.assertEqual(History(self.path).items,
                          ['amicorum', '#', 'laudatus'])
-        out = self.session([up + up + up + '\r'])
+        out = self.session([up + up + up + '\r'], until='amīc-ōrum')
         self.assertIn('amīc-ōrum', out)
 
 
