@@ -1456,6 +1456,7 @@ fata
     fāt-a          NOM.PL
     fāt-a          VOC.PL
     fāt-a          ACC.PL
+  (less likely forms are not shown)
 
 sychaei
   (unknown)
@@ -2356,6 +2357,7 @@ praemia
     praemi-a       NOM.PL
     praemi-a       VOC.PL
     praemi-a       ACC.PL
+  (less likely forms are not shown)
 
 noris
   Norum, Nori  noun, 2nd declension, neuter  [XXXEm]  uncommon
@@ -2738,7 +2740,7 @@ placitone
     placit-ō       PRF.PASS.PTCP.ABL.SG.M
     placit-ō       PRF.PASS.PTCP.ABL.SG.N
   placitum, placiti  noun, 2nd declension, neuter  [FLXFJ]  medieval  very rare
-    plea;
+    plea; decree, order; opinion, view, judgment;
     placit-ō       DAT.SG
     placit-ō       ABL.SG
   placitum, placiti  noun, 2nd declension, neuter  [DXXCM]  late
@@ -2752,7 +2754,7 @@ placitone
     placit-ō       ABL.SG.M
     placit-ō       ABL.SG.N
   placito, placitare, placitavi, placitatus  verb, 1st conjugation  [FLXFJ]  medieval  very rare
-    plead;
+    plead; please often;
     placit-o       1SG.PRS.ACT.IND
 
 etiam
@@ -4407,7 +4409,7 @@ pateram
 
 pulcherrima
   pulcher, pulchra -um, pulchrior -or -us, pulcherrimus -a -um  adjective, 1st/2nd declension  [XXXAA]
-    pretty; beautiful; handsome; noble, illustrious; excellent;
+    pretty, beautiful; noble, illustrious; excellent; glorious; brave; dear; joyful;
     pulcherri-ma   NOM.SG.F.SPRL
     pulcherri-ma   VOC.SG.F.SPRL
     pulcherri-mā   ABL.SG.F.SPRL
@@ -4464,6 +4466,7 @@ inter
   inter  preposition, with the accusative  [XXXAX]
     between, among; during; [inter se => to each other, mutually];
     inter          ACC
+  (less likely forms are not shown)
 
 cornua
   cornu, cornus  noun, 4th declension, neuter  [XXXAO]
@@ -5026,6 +5029,7 @@ inter
   inter  preposition, with the accusative  [XXXAX]
     between, among; during; [inter se => to each other, mutually];
     inter          ACC
+  (less likely forms are not shown)
 
 cresia
   spelling: Medieval cresia -> cressia
@@ -6384,14 +6388,9 @@ tali
     tāl-ī          ABL.SG
 
 persensit
-  per-  prefix
-    - through, thoroughly, completely, very; adds to the force of the verb;
-  sentio, sentire, sensi, sensus  verb, 4th conjugation  [XXXAA]
-    perceive, feel, experience; think, realize, see, understand; judge;
-    sēns-it        3SG.PRF.ACT.IND
-  sentio, sentire, sensi, sensus  verb, 4th conjugation  [EXXEM]  later  uncommon
-    think fit;
-    sēns-it        3SG.PRF.ACT.IND
+  persentio, persentire, persensi, -  verb, 4th conjugation, transitive  [XXXEm]  uncommon
+    perceive clearly, understand perfectly; feel deeply;
+    persens-it     3SG.PRF.ACT.IND
 
 peste
   pestis, pestis  noun, 3rd declension, feminine  [XXXBX]
@@ -9844,7 +9843,7 @@ alios
 
 pulcherrimus
   pulcher, pulchra -um, pulchrior -or -us, pulcherrimus -a -um  adjective, 1st/2nd declension  [XXXAA]
-    pretty; beautiful; handsome; noble, illustrious; excellent;
+    pretty, beautiful; noble, illustrious; excellent; glorious; brave; dear; joyful;
     pulcherri-mus  NOM.SG.M.SPRL
 
 omnis
@@ -11056,6 +11055,7 @@ inter
   inter  preposition, with the accusative  [XXXAX]
     between, among; during; [inter se => to each other, mutually];
     inter          ACC
+  (less likely forms are not shown)
 
 inertia
   iners, inertis (gen.), inertior -or -us, inertissimus -a -um  adjective, 3rd declension  [XXXBX]
@@ -12322,6 +12322,7 @@ inter
   inter  preposition, with the accusative  [XXXAX]
     between, among; during; [inter se => to each other, mutually];
     inter          ACC
+  (less likely forms are not shown)
 
 nubila
   nubilum, nubili  noun, 2nd declension, neuter  [XXXDX]  lesser
@@ -13540,7 +13541,7 @@ se
 
 pulchra
   pulcher, pulchra -um, pulchrior -or -us, pulcherrimus -a -um  adjective, 1st/2nd declension  [XXXAA]
-    pretty; beautiful; handsome; noble, illustrious; excellent;
+    pretty, beautiful; noble, illustrious; excellent; glorious; brave; dear; joyful;
     pulchr-a       NOM.SG.F
     pulchr-a       VOC.SG.F
     pulchr-ā       ABL.SG.F
@@ -13619,6 +13620,7 @@ inter
   inter  preposition, with the accusative  [XXXAX]
     between, among; during; [inter se => to each other, mutually];
     inter          ACC
+  (less likely forms are not shown)
 
 se
   pronoun, reflexive  [XXXAX]
@@ -13860,6 +13862,7 @@ regem
   rex, regis  noun, 3rd declension, masculine  [FXXEM]  medieval  uncommon
     king (at chess) [~ scaccorum];
     rēg-em         ACC.SG
+  (less likely forms are not shown)
 
 cursus
   curro, currere, cucurri, cursus  verb, 3rd conjugation, intransitive  [XXXAO]
@@ -14035,17 +14038,11 @@ rapta
     rapt-ā         2SG.PRS.ACT.IMP
 
 garamantide
-  (unknown)
-  (near spellings: garamantice)
-
-garamantice
-  Garamanticus, Garamantica, Garamanticum  adjective, 1st/2nd declension  [XXXEm]  uncommon
-    Garamantian;
-    garamantic-e   VOC.SG.M
-  -e  suffix: adverb from adjective
-  Garamanticus, Garamantica, Garamanticum  adjective, 1st/2nd declension  [XXXEm]  uncommon
-    Garamantian;
-    garamantic-e   adverb, POS
+  Garamantis, Garamantidos/is  noun, 3rd declension, feminine  [XXXEm]  uncommon
+    Garamantian woman, of the land of the Garamantes;
+    garamāntid-e   LOC.SG
+    garamāntid-e   DAT.SG  (early)
+    garamāntid-e   ABL.SG
 
 nympha
   nympha, nymphae  noun, 1st declension, feminine  [XYHAO]
@@ -14464,6 +14461,7 @@ inter
   inter  preposition, with the accusative  [XXXAX]
     between, among; during; [inter se => to each other, mutually];
     inter          ACC
+  (less likely forms are not shown)
 
 numina
   numen, numinis  noun, 3rd declension, neuter  [XXXAX]
@@ -14896,6 +14894,7 @@ murmura
   murmuro, murmurare, murmuravi, murmuratus  verb, 1st conjugation  [XXXDX]  lesser
     hum, murmur, mutter; roar;
     murmur-ā       2SG.PRS.ACT.IMP
+  (less likely forms are not shown)
 
 miscent
   misceo, miscere, miscui, mixtus  verb, 2nd conjugation  [XXXAA]
@@ -16182,7 +16181,7 @@ genetrix
 
 pulcherrima
   pulcher, pulchra -um, pulchrior -or -us, pulcherrimus -a -um  adjective, 1st/2nd declension  [XXXAA]
-    pretty; beautiful; handsome; noble, illustrious; excellent;
+    pretty, beautiful; noble, illustrious; excellent; glorious; brave; dear; joyful;
     pulcherri-ma   NOM.SG.F.SPRL
     pulcherri-ma   VOC.SG.F.SPRL
     pulcherri-mā   ABL.SG.F.SPRL
@@ -17802,7 +17801,7 @@ atlantis
 
 cinctum
   cinctum, cincti  noun, 2nd declension, neuter  [XXXES]  uncommon
-    girdle, method of girding clothes; crown/garland; belt;
+    girdle, method of girding clothes; crown/garland; belt; kind of tunic;
     cinct-um       NOM.SG
     cinct-um       VOC.SG
     cinct-um       ACC.SG
@@ -18443,7 +18442,7 @@ piscosos
 
 scopulos
   scopulus, scopuli  noun, 2nd declension, masculine  [XXXBA]
-    rock, boulder; reef, crag;
+    rock, boulder; reef, crag; target, mark aimed at;
     scopul-ōs      ACC.PL
   (less likely forms are not shown)
 
@@ -18500,6 +18499,7 @@ inter
   inter  preposition, with the accusative  [XXXAX]
     between, among; during; [inter se => to each other, mutually];
     inter          ACC
+  (less likely forms are not shown)
 
 caelumque
   -que  enclitic
@@ -18700,13 +18700,11 @@ tetigit
     tetig-it       3SG.PRF.ACT.IND
 
 magalia
-  -al  suffix
-    -al; of a ~, pertaining to a ~, in a condition of ~, in a state of ~;
-  magus, magi  noun, 2nd declension, masculine  [XXXDX]  lesser
-    wise/learned man; magician (Persian); astrologer;
-    magal-ia       adjective, NOM.PL.N
-    magal-ia       adjective, VOC.PL.N
-    magal-ia       adjective, ACC.PL.N
+  magal, magalis  noun, 3rd declension, neuter  [XXXEm]  uncommon
+    huts, cabins, rustic shelters (Punic word);
+    magal-ia       NOM.PL
+    magal-ia       VOC.PL
+    magal-ia       ACC.PL
 
 plantis
   plo, plare, plavi, platus  verb, 1st conjugation  [ESXDX]  later  lesser
@@ -19247,7 +19245,7 @@ pulchramque
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
   pulcher, pulchra -um, pulchrior -or -us, pulcherrimus -a -um  adjective, 1st/2nd declension  [XXXAA]
-    pretty; beautiful; handsome; noble, illustrious; excellent;
+    pretty, beautiful; noble, illustrious; excellent; glorious; brave; dear; joyful;
     pulchr-am      ACC.SG.F
 
 uxorius
@@ -24509,6 +24507,7 @@ fata
     fāt-a          NOM.PL
     fāt-a          VOC.PL
     fāt-a          ACC.PL
+  (less likely forms are not shown)
 
 meis
   meus, mea, meum  adjective, 1st/2nd declension  [XXXAX]
@@ -24686,7 +24685,7 @@ meorum
 
 reliquias
   reliquia, reliquiae  noun, 1st declension, feminine  [XXXAO]
-    remains/relics (pl.) (esp. post cremation); remnants/traces/vestiges; survivors;
+    remains, relics (esp. post cremation); remnants, traces, vestiges; survivors;
     reliqui-ās     ACC.PL
   reliquia, reliquiae  noun, 1st declension, feminine  [FXXEM]  medieval  uncommon
     a relic;
@@ -27700,7 +27699,7 @@ hausurum
 
 scopulis
   scopulus, scopuli  noun, 2nd declension, masculine  [XXXBA]
-    rock, boulder; reef, crag;
+    rock, boulder; reef, crag; target, mark aimed at;
     scopul-is      LOC.PL
     scopul-īs      DAT.PL
     scopul-īs      ABL.PL
@@ -28093,6 +28092,7 @@ sermonem
   sermo, sermonis  noun, 3rd declension, masculine  [XXXDA]  lesser
     conversation, discussion; rumor; diction; speech; talk; the word; language;
     sermōn-em      ACC.SG
+  (less likely forms are not shown)
 
 abrumpit
   abrumpo, abrumpere, abrupi, abruptus  verb, 3rd conjugation, transitive  [XXXAO]
@@ -31696,6 +31696,7 @@ fata
     fāt-a          NOM.PL
     fāt-a          VOC.PL
     fāt-a          ACC.PL
+  (less likely forms are not shown)
 
 obstant
   obsto, obstare, obstiti, -  verb, 1st conjugation  [XXXBX]
@@ -31913,6 +31914,7 @@ inter
   inter  preposition, with the accusative  [XXXAX]
     between, among; during; [inter se => to each other, mutually];
     inter          ACC
+  (less likely forms are not shown)
 
 se
   pronoun, reflexive  [XXXAX]
@@ -32033,7 +32035,7 @@ haeret
 
 scopulis
   scopulus, scopuli  noun, 2nd declension, masculine  [XXXBA]
-    rock, boulder; reef, crag;
+    rock, boulder; reef, crag; target, mark aimed at;
     scopul-is      LOC.PL
     scopul-īs      DAT.PL
     scopul-īs      ABL.PL
@@ -32249,14 +32251,9 @@ magno
     magn-ō         ABL.SG.N
 
 persentit
-  per-  prefix
-    - through, thoroughly, completely, very; adds to the force of the verb;
-  sentio, sentire, sensi, sensus  verb, 4th conjugation  [XXXAA]
-    perceive, feel, experience; think, realize, see, understand; judge;
-    sent-it        3SG.PRS.ACT.IND
-  sentio, sentire, sensi, sensus  verb, 4th conjugation  [EXXEM]  later  uncommon
-    think fit;
-    sent-it        3SG.PRS.ACT.IND
+  persentio, persentire, persensi, -  verb, 4th conjugation, transitive  [XXXEm]  uncommon
+    perceive clearly, understand perfectly; feel deeply;
+    persent-it     3SG.PRS.ACT.IND
 
 pectore
   pectus, pectoris  noun, 3rd declension, neuter  [XBXAX]
@@ -32645,7 +32642,7 @@ aris
     ar-īs          DAT.PL
     ar-īs          ABL.PL
   aros, ari  noun, 2nd declension, feminine  [XAXNO]  Pliny
-    plants of genus arum;
+    plants of genus arum; bulb, kind of wild onion;
     ar-is          LOC.PL
     ar-īs          DAT.PL
     ar-īs          ABL.PL
@@ -33590,7 +33587,9 @@ monitu
   (less likely forms are not shown)
 
 horrificant
-  (unknown)
+  horrifico, horrificare, horrificavi, horrificatus  verb, 1st conjugation, transitive  [XXXEm]  uncommon
+    ruffle, roughen; terrify; make dreadful;
+    horrific-ant   3PL.PRS.ACT.IND
 
 agit
   ago, agere, egi, actus  verb, 3rd conjugation  [XXXAO]
@@ -44201,6 +44200,7 @@ fata
     fāt-a          NOM.PL
     fāt-a          VOC.PL
     fāt-a          ACC.PL
+  (less likely forms are not shown)
 
 iovis
   Jovis, Jovis  noun, 3rd declension, masculine  [XEICO]
@@ -45343,6 +45343,7 @@ nepotesque
     nepōt-ēs       NOM.PL
     nepōt-ēs       VOC.PL
     nepōt-ēs       ACC.PL
+  (less likely forms are not shown)
 
 haec
   hic, haec, hoc  pronoun, adjectival  [XXXAX]
@@ -46690,7 +46691,7 @@ conspexit
 
 paulum
   Paulus, Pauli  noun, 2nd declension, masculine  [EEXBX]  later
-    Paul;
+    Paul; Paulus, Roman name; Julius Paulus, jurist; Aemilius Paulus, consul;
     paul-um        ACC.SG
   paulum, pauli  noun, 2nd declension, neuter  [XXXCO]
     little/small; (only a) small amount/quantity/extent; little bit/while; trifle;
@@ -46848,6 +46849,7 @@ fata
     fāt-a          NOM.PL
     fāt-a          VOC.PL
     fāt-a          ACC.PL
+  (less likely forms are not shown)
 
 deusque
   -que  enclitic
@@ -47695,6 +47697,7 @@ inter
   inter  preposition, with the accusative  [XXXAX]
     between, among; during; [inter se => to each other, mutually];
     inter          ACC
+  (less likely forms are not shown)
 
 talia
   talis, talis, tale  adjective, 3rd declension  [XXXAX]
@@ -48714,6 +48717,7 @@ fata
     fāt-a          NOM.PL
     fāt-a          VOC.PL
     fāt-a          ACC.PL
+  (less likely forms are not shown)
 
 vocasses
   syncope: Syncope   s => vis
@@ -49180,6 +49184,7 @@ fata
     fāt-a          NOM.PL
     fāt-a          VOC.PL
     fāt-a          ACC.PL
+  (less likely forms are not shown)
 
 gradus
   gradus, gradus  noun, 4th declension, masculine  [XXXBA]

@@ -519,7 +519,7 @@ amo
 
 amas
   ama, amae  noun, 1st declension, feminine  [XXXDO]  lesser
-    bucket; water bucket; (esp. fireman's bucket);
+    bucket; water bucket; (esp. fireman's bucket); pruning hook; a medicinal herb;
     am-ās          ACC.PL
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     love, like; fall in love with; be fond of; have a tendency to;
@@ -632,7 +632,7 @@ amavissem
 
 ama
   ama, amae  noun, 1st declension, feminine  [XXXDO]  lesser
-    bucket; water bucket; (esp. fireman's bucket);
+    bucket; water bucket; (esp. fireman's bucket); pruning hook; a medicinal herb;
     am-a           NOM.SG
     am-a           VOC.SG
     am-ā           ABL.SG

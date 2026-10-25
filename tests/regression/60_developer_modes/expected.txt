@@ -74,16 +74,16 @@ aspis
 
 xyzzyq
 00 (unknown)
-02 near: xylophyton, xylophyti  noun, 2nd declension, neuter  [XXXEm]  uncommon
-03 comfrey;
-02 near: xyris, xyridis  noun, 3rd declension, feminine  [XXXES]  uncommon
-03 wild iris;
 02 near: xystus, xysti  noun, 2nd declension, masculine  [XXXDX]  lesser
 03 shaded/colonnaded walk; covered way used for winter athletic exercise;
 02 near: xystarches, xystarchae  noun, 1st declension, masculine  [XXXES]  uncommon
 03 the director of a xystus (a covered training-ground);
 02 near: xysticus, xystici  noun, 2nd declension, masculine  [XXXDX]  lesser
 03 athlete;
+02 near: xysticus, xystici  noun, 2nd declension, masculine  [XXXEm]  uncommon
+03 athletes who trained in the covered portico;
+02 near: xysticus, xystica, xysticum  adjective, 1st/2nd declension  [XXXEm]  uncommon
+03 of the portico where athletes trained, or of their games;
 02 near: yara, yarae  noun, 1st declension, feminine  [FXXEM]  medieval  uncommon
 03 yare, fish-lock (Sc. & Durham);
 02 near: yatus, yata, yatum  adjective, 1st/2nd declension  [XXXFX]  very rare

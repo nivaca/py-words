@@ -88,7 +88,7 @@ class AnalyzerTests(unittest.TestCase):
         self.assertIn(('s', Pos.V, Case.X, Number.S), forms)
 
     def test_prefix(self):
-        r = self.analyze('adcubitabimur')
+        r = self.analyze('adcenabimus')
         self.assertEqual(r.readings[0].source.fix, 'ad')
 
     def test_compound_tense(self):
@@ -171,7 +171,7 @@ class AnalyzerTests(unittest.TestCase):
         self.az.settings.use_affixes = False
         self.az.settings.use_tricks = False
         self.az.reset()
-        self.assertTrue(self.analyze('adcubitabimur').unknown)
+        self.assertTrue(self.analyze('adcenabimus').unknown)
 
     def test_line(self):
         results = self.az.analyze_line('Gallia est omnis divisa -- comment')

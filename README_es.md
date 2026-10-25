@@ -861,10 +861,19 @@ raras más de Lewis y Short y 8897 palabras medievales de Latham
 su época y su marca).  Cada una se conservó solo si el analizador la
 lee, y no si añadía una lectura a una palabra frecuente.  Todo esto se
 hizo con ayuda de Claude (el modelo Claude Opus 5.5, `claude-opus-5-5`),
-a petición y bajo la dirección de Nicolas Vaughan.  Ahora el
-diccionario tiene 70 167 entradas; 37 111 significados en español vienen
-de De Miguel y 171 de Echave-Sustaeta, y los otros 32 885 siguen siendo
-traducciones.  En `data/languages/es.xml` un significado tomado de un
+a petición y bajo la dirección de Nicolas Vaughan.  Una segunda
+revisión mostró que esto no bastaba: el analizador de las líneas de De
+Miguel había perdido las definiciones de una sola palabra
+("Ciudadano.", leída como abreviatura de un autor), y unos 16 000 lemas
+se habían dejado fuera porque el programa ya podía leerlos, aunque solo
+como forma de otra palabra o con un sufijo (*portentosus* como
+*portentum* + -osus).  Así que cada entrada se comparó otra vez con la
+línea entera de De Miguel, 11 384 de esos lemas recibieron entradas
+propias, y 413 entradas recibieron el sentido de De Miguel cuando era
+otro sentido de la misma palabra.  Ahora el diccionario tiene 81 551
+entradas; 50 678 significados en español vienen de De Miguel y 168 de
+Echave-Sustaeta, y los otros 30 705 siguen siendo traducciones (sobre
+todo sentidos medievales y palabras que De Miguel no tiene).  En `data/languages/es.xml` un significado tomado de un
 diccionario lleva su código de fuente (`<meaning entry="12"
 source="m">`); uno sin él es una traducción.  Cuando usted cambia un
 significado en los editores, el código desaparece, pues el texto ya no
@@ -1451,7 +1460,7 @@ El diccionario de py-words viene de estas obras:
   español").
 - J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entradas
   corregidas y 254 añadidas, en inglés y en español, y los significados
-  en español de 171 entradas que De Miguel no cubre (código de fuente A;
+  en español de 168 entradas que De Miguel no cubre (código de fuente A;
   véase "Los significados en español").
 - C. T. Lewis y C. Short, *A Latin Dictionary* (Oxford: Clarendon Press,
   1879): 3119 palabras raras que WORDS no tenía (código de fuente S;
@@ -1464,10 +1473,10 @@ El diccionario de py-words viene de estas obras:
   texto, CC BY-SA 4.0, permite usarlo en un programa bajo la GPL versión
   3, como py-words.
 - R. de Miguel y el Marqués de Morante, *Nuevo diccionario
-  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 13 765
-  palabras raras y nombres propios que WORDS no tenía, en español y en
-  inglés (código de fuente m), con las vocales largas de 5966 de sus
-  lemas, y los significados en español de 37 111 entradas en total
+  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 25 149
+  palabras y nombres propios que WORDS no tenía, en español y en
+  inglés (código de fuente m), con las vocales largas de 12 756 de sus
+  lemas, y los significados en español de 50 678 entradas en total
   (véase "Los significados en español").  El libro es de dominio
   público.
 - Collatinus 11, de Yves Ouvrard y Philippe Verkerk

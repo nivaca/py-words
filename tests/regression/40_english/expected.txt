@@ -11,7 +11,7 @@ wild
     wild, frightful, rough, bristly, standing on end, unkempt; grim; horrible;
   impotens, (gen.), impotentis  adjective, 3rd declension  [XXXBX]
     powerless, impotent, wild, headstrong; having no control (over), incapable (of);
-  (36 more not shown)
+  (43 more not shown)
 
 game
   ludus, ludi  noun, 2nd declension, masculine  [XXXBX]
@@ -26,7 +26,7 @@ game
     limestone, lime; chalk, goal, goal-line (chalk mark), end of life; game piece;
   talus, tali  noun, 2nd declension, masculine  [XBXBO]
     ankle; ankle/pastern bone; sheep knucklebone (marked for dice); dice game (pl.);
-  (32 more not shown)
+  (36 more not shown)
 
 ate
   Ate, Ates  noun, 1st declension, feminine  [XXXEm]  uncommon
@@ -47,7 +47,7 @@ grain
     |favorable, fair (wind/current); fortunate, propitious; smooth, w/the grain;
   granum, grani  noun, 2nd declension, neuter  [XXXDX]  lesser
     grain; seed;
-  (93 more not shown)
+  (106 more not shown)
 
 fresh
   novus, nova -um, novior -or -us, novissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
@@ -62,7 +62,7 @@ fresh
     fresh, green; blooming,youthful;
   crudus, cruda -um, crudior -or -us, crudissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     |youthful/hardy/vigorous; fresh/green/immature; undigested; w/undigested food;
-  (14 more not shown)
+  (18 more not shown)
 
 air
   spiritus, spiritus  noun, 4th declension, masculine  [XXXAA]
@@ -77,7 +77,7 @@ air
     sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
   coelum, coeli  noun, 2nd declension, neuter  [XSXAS]
     sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
-  (59 more not shown)
+  (68 more not shown)
 
 came
   convenit, convenire, convenit, conventus est  verb, 4th conjugation, impersonal  [XXXCO]
@@ -98,7 +98,7 @@ in
     before, in front; in view of, because of;
   super  preposition, with the ablative  [XXXAX]
     over (space), above, upon, in addition to; during (time); concerning; beyond;
-  (51 more not shown)
+  (57 more not shown)
 
 a
   (no match)
@@ -116,11 +116,11 @@ breeze
     breath, snorting; breeze, wind, draught, (hot) blast; stench; inspiration, flash
   aer, aeris  noun, 3rd declension, masculine/feminine  [XXXCO]
     air (one of 4 elements); atmosphere, sky; cloud, mist, weather; breeze; odor;
-  (5 more not shown)
+  (6 more not shown)
 
 tests
   (no match)
-  (near words: test, teats, nests)
+  (near words: test, teats, jests)
 
 test
   tempto, temptare, temptavi, temptatus  verb, 1st conjugation  [XXXAA]
@@ -135,17 +135,23 @@ test
     exam/test; apparatus/process of weighing, balance;
   probatio, probationis  noun, 3rd declension, feminine  [XXXBO]
     approval; testing/inspection/passing; criterion, test; proof; evidence;
-  (14 more not shown)
+  (16 more not shown)
 
 teats
   uber, uberis  noun, 3rd declension, neuter  [XBXCO]
     breast/teat (woman); udder (animal), dugs/teats; rich soil; plenty/abundance;
+  subrumo, subrumare, subrumavi, subrumatus  verb, 1st conjugation, transitive  [XXXEm]  uncommon
+    put lambs to suck at their mothers' teats;
 
-nests
-  quirin, undeclined  noun, undeclined, neuter  [FXXEM]  medieval  uncommon
-    a gem found in hoopoes' nests;
-  nidificus, nidifica, nidificum  adjective, 1st/2nd declension  [XAXFO]  very rare
-    nest-, concerned with the building of nests;
+jests
+  facetia, facetiae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    witticisms, jests, pleasantries;
+  affania, affaniae  noun, 1st declension, feminine  [XXXEm]  uncommon
+    idle talk, chatter, tales of vain and frivolous things; jests;
+  adfania, adfaniae  noun, 1st declension, feminine  [XXXES]  uncommon
+    trifling talk (pl.), chatter; idle jests;
+  affania, affaniae  noun, 1st declension, feminine  [XXXES]  uncommon
+    trifling talk (pl.), chatter; idle jests;
 
 are
   pila, pilae  noun, 1st declension, feminine  [XXXBO]
@@ -160,7 +166,7 @@ are
     thither, to you, to where you are; in that direction; to that subject/point;
   isti  adverb  [XXXDX]  lesser
     there, in that place; where you are; herein, in this affair;
-  (26 more not shown)
+  (44 more not shown)
 
 fun
   delicia, deliciae  noun, 1st declension, feminine  [XXXAO]
@@ -190,7 +196,7 @@ free
     free (man); unimpeded; void of; independent, outspoken/frank; free from tribute;
   solvo, solvere, solvi, solutus  verb, 3rd conjugation  [XXXAX]
     loosen, release, unbind, untie, free; open; set sail; scatter; pay off/back;
-  (108 more not shown)
+  (119 more not shown)
 
 money
   aes, aeris  noun, 3rd declension, neuter  [XXXAO]
@@ -205,7 +211,7 @@ money
     money/coinage; die on which coin is struck, stamp; mint, temple striking coins;
   potagium, potagii  noun, 2nd declension, neuter  [FXXCM]  medieval
     drink-money; pottage (broth or porridge);
-  (37 more not shown)
+  (38 more not shown)
 
 do
   facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
@@ -245,7 +251,7 @@ great
     |great (achievement); mighty; distinguished; skilled; bold/confident; proud;
   nimius, nimia, nimium  adjective, 1st/2nd declension  [XXXAX]
     excessive, too great;
-  (45 more not shown)
+  (51 more not shown)
 
 grammer
   (no match)
@@ -273,6 +279,8 @@ rammer
     rammer;
   pavicula, paviculae  noun, 1st declension, feminine  [XXXFS]  very rare
     rammer;
+  liaculum, liaculi  noun, 2nd declension, neuter  [XXXEm]  uncommon
+    smoothing tool, rammer for leveling paved streets;
 
 is
   (no match)
@@ -290,7 +298,7 @@ hard
     difficult, troublesome; hard; hard to please/manage/deal with/carry out;
   callosus, callosa -um, callosior -or -us, callosissimus -a -um  adjective, 1st/2nd declension  [XXXCO]
     tough, hard/thick-skinned; made hard/tough by use; callused, indurated;
-  (24 more not shown)
+  (32 more not shown)
 
 never
   numquam  adverb  [XXXAX]
@@ -305,7 +313,7 @@ never
     that is never extinguished;
   nihilominus  adverb  [XXXDX]  lesser
     never/none the less, notwithstanding, just the same; likewise, as well;
-  (2 more not shown)
+  (3 more not shown)
 
 say
   aio, -, -  verb, irregular  [XXXAO]
@@ -320,7 +328,7 @@ say
     add, insert, bring/attach to, say in addition; increase; impart; associate;
   ait, -, -  verb, irregular, impersonal  [XXXAO]
     he says (ait), it is said; they say (aiunt);
-  (35 more not shown)
+  (37 more not shown)
 
 stop
   consisto, consistere, constiti, constitus  verb, 3rd conjugation  [XXXAO]
@@ -335,5 +343,5 @@ stop
     stop/cease/desist (from); give up, leave/stand off; dissociate oneself;
   mansio, mansionis  noun, 3rd declension, feminine  [XXXBO]
     lodging, stop; day's journey, stage; staying away; abode/quarters/home/dwelling;
-  (37 more not shown)
+  (43 more not shown)
 

@@ -16,8 +16,8 @@ words and spellings; J. Echave-Sustaeta's *Lengua latina. Vocabulario
 básico*, for senses and words in English and in Spanish; Lewis and
 Short's *A Latin Dictionary*, in the text of the Perseus Digital Library
 (CC BY-SA 4.0), for 3,119 rare words; R. de Miguel and the Marqués de
-Morante's *Nuevo diccionario latino-español etimológico*, for 13,765
-rare words and proper names and for most of the Spanish meanings; and
+Morante's *Nuevo diccionario latino-español etimológico*, for 25,149
+words and proper names and for most of the Spanish meanings; and
 Collatinus, by Yves Ouvrard
 and Philippe Verkerk, for the long vowels (Collatinus, in its turn, made
 its lexicon with the dictionaries of Gaffiot, Jeanneau, Du
@@ -244,10 +244,10 @@ the same way, 12,918 words and proper names of the Latin-Spanish
 dictionary of R. de Miguel and the Marqués de Morante (1867) were
 added, with their English meanings translated from the Spanish.  Last,
 the Spanish meanings of the entries that De Miguel or Echave-Sustaeta
-also have (37,282 of them) were rewritten in those dictionaries' own
-words, and 9,803 more words that the three new sources still had were
-added, among them 8,897 medieval words of Latham; the dictionary has
-now 70,167 entries.  The README tells how it was done.
+also have (50,846 of them) were rewritten in those dictionaries' own
+words, and some 21,000 more words that the three new sources still had
+were added, among them 8,897 medieval words of Latham and 12,000 words
+and names of De Miguel; the dictionary has now 81,551 entries.  The README tells how it was done.
 
 6. In the browser
 -----------------

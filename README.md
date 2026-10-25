@@ -845,9 +845,18 @@ already taken, each with its own gloss, age and mark).  Each was kept
 only if the analyzer reads it, and not if it added a reading to a
 frequent word.  All this was done with the help of Claude (the model
 Claude Opus 5.5, `claude-opus-5-5`), at the request and under the
-direction of Nicolas Vaughan.  Now the dictionary has 70,167 entries;
-37,111 Spanish meanings come from De Miguel and 171 from
-Echave-Sustaeta, and the other 32,885 are still translations.  In
+direction of Nicolas Vaughan.  A second look showed that this was not
+yet enough: the parser of De Miguel's lines had lost the definitions of
+one word ("Ciudadano.", read as an author's abbreviation), and about
+16,000 headwords had been left out because the program could already
+read them, though only as a form of another word or with a suffix
+(*portentosus* as *portentum* + -osus).  So every entry was compared
+again with De Miguel's whole line, 11,384 of those headwords got entries
+of their own, and 413 entries got De Miguel's sense when it was another
+sense of the same word.  Now the dictionary has 81,551 entries; 50,678
+Spanish meanings come from De Miguel and 168 from Echave-Sustaeta, and
+the other 30,705 are still translations (mostly medieval senses and
+words that De Miguel does not have).  In
 `data/languages/es.xml` a meaning taken from a dictionary carries its
 source code (`<meaning entry="12" source="m">`); a meaning without it
 is a translation.  When you change a meaning in the editors, the code
@@ -1410,7 +1419,7 @@ The dictionary of py-words comes from these works:
   code M; see "The Spanish meanings").
 - J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entries
   corrected and 254 added, in English and in Spanish, and the Spanish
-  meanings of 171 entries that De Miguel does not cover (source code A;
+  meanings of 168 entries that De Miguel does not cover (source code A;
   see "The Spanish meanings").
 - C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon
   Press, 1879): 3,119 rare words that WORDS did not have (source code S;
@@ -1422,10 +1431,10 @@ The dictionary of py-words comes from these works:
   licence of this text, CC BY-SA 4.0, allows to use it in a program under
   the GPL version 3, as py-words is.
 - R. de Miguel and the Marqués de Morante, *Nuevo diccionario
-  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 13,765
-  rare words and proper names that WORDS did not have, in Spanish and in
-  English (source code m), with the long vowels of 5,966 of their
-  headwords, and the Spanish meanings of 37,111 entries in all (see "The
+  latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 25,149
+  words and proper names that WORDS did not have, in Spanish and in
+  English (source code m), with the long vowels of 12,756 of their
+  headwords, and the Spanish meanings of 50,678 entries in all (see "The
   Spanish meanings").  The book is in the public domain.
 - Collatinus 11, by Yves Ouvrard and Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL:
