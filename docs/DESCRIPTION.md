@@ -15,7 +15,8 @@ Latin Word-List from British and Irish Sources*, for medieval senses,
 words and spellings; J. Echave-Sustaeta's *Lengua latina. Vocabulario
 básico*, for senses and words in English and in Spanish; Lewis and
 Short's *A Latin Dictionary*, in the text of the Perseus Digital Library
-(CC BY-SA 4.0), for 4,715 rare words; R. de Miguel and the Marqués de
+(CC BY-SA 4.0), for 8,436 rare words and names and most of the English
+meanings; R. de Miguel and the Marqués de
 Morante's *Nuevo diccionario latino-español etimológico*, for 25,149
 words and proper names and for most of the Spanish meanings; and
 Collatinus, by Yves Ouvrard
@@ -247,8 +248,10 @@ the Spanish meanings of the entries that De Miguel or Echave-Sustaeta
 also have (50,846 of them) were rewritten in those dictionaries' own
 words, and some 31,000 more words that the three new sources still had
 were added, among them 16,995 medieval words of Latham, 12,000 words
-and names of De Miguel and 1,600 words of Lewis and Short; the
-dictionary has now 91,245 entries.  The README tells how it was done.
+and names of De Miguel and 5,400 words and names of Lewis and Short;
+the English meanings of the entries Lewis and Short has (32,097) are now
+his definitions.  The dictionary has now 93,370 entries.  The README
+tells how it was done.
 
 6. In the browser
 -----------------

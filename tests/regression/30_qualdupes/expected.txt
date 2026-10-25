@@ -2,7 +2,7 @@ ludica
   -ic  suffix
     -ic; of, pertaining/belonging to; connected with; derived/coming from (place);
   ludus, ludi  noun, 2nd declension, masculine  [XXXBX]
-    game, play, sport, pastime, entertainment, fun; school, elementary school;
+    a play; a play, game, diversion, pastime; public games, plays, spectacles, shows, exhibitions; during the games; Stage-plays; A place of exercise, practice, a school; Play, sport, mere sport, child's play; Sport, jest, joke, fun, to make sport of, make game of, to banter, jeer at, mock, to send one away with scorn and derision, to send one off with a flea in his ear, to make a jest, a trifle of any thing, to throw away, to lose, to give play to one, to humor, indulge, the pleasures of love; the title of a work of Nævius; (Lewis and Short)
     ludic-a        adjective, NOM.SG.F
     ludic-a        adjective, VOC.SG.F
     ludic-ā        adjective, ABL.SG.F
@@ -12,7 +12,7 @@ ludica
   -c  suffix
     -ic; of, pertaining/belonging to; connected with; derived/coming from (place);
   ludia, ludiae  noun, 1st declension, feminine  [XXXES]  uncommon
-    actress; female gladiator;
+    An actress, a female stage-dancer; A female gladiator, a gladiator's wife, mistress; (Lewis and Short)
     ludic-a        adjective, NOM.SG.F
     ludic-a        adjective, VOC.SG.F
     ludic-ā        adjective, ABL.SG.F
@@ -20,7 +20,7 @@ ludica
     ludic-a        adjective, VOC.PL.N
     ludic-a        adjective, ACC.PL.N
   ludius, ludi(i)  noun, 2nd declension, masculine  [XDXEO]  uncommon
-    dancer; stage performer;
+    A stageplayer, pantomimist; A gladiator; (Lewis and Short)
     ludic-a        adjective, NOM.SG.F
     ludic-a        adjective, VOC.SG.F
     ludic-ā        adjective, ABL.SG.F

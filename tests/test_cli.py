@@ -184,7 +184,7 @@ class CommandLineTests(InTempDir):
 
     def test_meanings_only(self):
         out = run('-m', 'amicus').stdout.decode()
-        self.assertIn('friend, ally', out)
+        self.assertIn('A friend, patron', out)
         self.assertNotIn('amīc-us', out)
 
     def test_config_is_made_at_the_first_start(self):
@@ -353,7 +353,7 @@ class InteractiveTests(InTempDir):
     def test_ctrl_c_stops_a_dialogue(self):
         session, out = self.repl('#', 'n', KeyboardInterrupt, 'amicus')
         self.assertIn('(interrupted)', out)
-        self.assertIn('friend, ally', out)      # (without dictionary forms)
+        self.assertIn('A friend, patron', out)      # (without dictionary forms)
         self.assertFalse(session.settings.show_dictionary_forms)  # (done)
         self.assertNotEqual(config.section('parameters').get(
             'show_dictionary_forms'), False)        # (not saved)

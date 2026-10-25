@@ -73,11 +73,16 @@ def words_of(meaning: str, pos: Pos, words: Words):
     meaning = _IDIOM.sub(r'\1', meaning.lstrip('|'))
     for sense, text in enumerate(meaning.split(';'), first):
         text = _PARENS.sub(' ', text).replace('"', ' ')
-        for phrase in text.split(','):
+        for place, phrase in enumerate(text.split(',')):
             matches = list(_WORD.finditer(phrase))
-            single = bool(matches) and len(phrase.split()) == 1
+            #  ("a friend", "to love": the article or "to" of a definition
+            #  does not make it a phrase)
+            plain = [w for w in phrase.split()
+                     if w.lower() not in ('a', 'an', 'the', 'to')]
+            single = bool(matches) and len(plain) == 1
             if single:
                 kind = SINGLE_WORD_FIRST_SENSE if sense == 1 else SINGLE_WORD
+                kind += place == 0          # (the first word of its sense)
             else:
                 kind = 0
             for m in matches:
@@ -130,6 +135,10 @@ class ReverseIndex:
             meaning = language.translated(entry)
             if meaning is None:
                 continue
+            if language.is_reference and meaning != entry.meaning:
+                #  (English from Lewis and Short: the meaning of the data
+                #  files is searched too)
+                meaning = f'{meaning}{entry.meaning.lstrip("|")}'
             for word, sense, kind in words_of(meaning, p.pos, words):
                 key = (fold(word), id(entry))
                 old = best.get(key)

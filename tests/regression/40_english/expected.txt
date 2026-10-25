@@ -1,316 +1,339 @@
 wild
   ferus, fera, ferum  adjective, 1st/2nd declension  [XXXAX]
-    wild, savage; uncivilized; untamed; fierce;
+    wild; a wild animal, wild beast, a lion, a boar, a horse, a stag, a serpent; a wild animal, wild beast, a sea-monster, a serpent, the ant, Great, Little Bear; wild, rude, barbarous, fierce, cruel, supine; (Lewis and Short)
   ferox, (gen.), ferocis  adjective, 3rd declension  [XXXAX]
-    wild, bold; warlike; cruel; defiant, arrogant;
-  turbidus, turbida, turbidum  adjective, 1st/2nd declension  [XXXAO]
-    wild/stormy; muddy/turbid; murky/foggy/clouded/opaque; gloomy, frowning;
+    wild, bold, courageous, warlike, spirited, brave, gallant, savage, headstrong, fierce, insolent; warlike, Minerva; Courageously, valorously, bravely; Fiercely, savagely, insolently; (Lewis and Short)
   agrestis, agrestis, agreste  adjective, 3rd declension  [XAXAO]
-    rustic, inhabiting countryside; rude, wild, savage; of/passing through fields;
-  horridus, horrida, horridum  adjective, 1st/2nd declension  [XXXBX]
-    wild, frightful, rough, bristly, standing on end, unkempt; grim; horrible;
-  impotens, (gen.), impotentis  adjective, 3rd declension  [XXXBX]
-    powerless, impotent, wild, headstrong; having no control (over), incapable (of);
-  (44 more not shown)
+    pertaining to land, fields, the country, country, rural, rustic, wild, a countryman, farmer, peasant; Rustic, boorish, clownish, rude, coarse, wild, savage, barbarous; Wild, brutish; (Lewis and Short)
+  turbidus, turbida, turbidum  adjective, 1st/2nd declension  [XXXAO]
+    full of confusion, wild, confused; troubled, thick, muddy, turbid; troubled, disturbed, perplexed, violent, boisterous, turbulent, vehement; the most perilous, troubled circumstances, in confused, troubled times, confusedly; (Lewis and Short)
+  turbidus, turbida, turbidum  adjective, 1st/2nd declension  [XXXAO]
+    full of confusion, wild, confused; troubled, thick, muddy, turbid; troubled, disturbed, perplexed, violent, boisterous, turbulent, vehement; the most perilous, troubled circumstances, in confused, troubled times, confusedly; (Lewis and Short)
+  avena, avenae  noun, 1st declension, feminine  [XAXAO]
+    Oats, common oats; Wild, barren oats; Any stem, stalk of grass, grain, a straw; a shepherd, s pipe, reed-pipe; (Lewis and Short)
+  (79 more not shown)
 
 game
-  ludus, ludi  noun, 2nd declension, masculine  [XXXBX]
-    game, play, sport, pastime, entertainment, fun; school, elementary school;
+  praeda, praedae  noun, 1st declension, feminine  [XXXAX]
+    property taken in war, booty, spoil, plunder, pillage; An animal, bird, caught, killed in the chase; prey, game, prey; booty, spoil, gain, profit; (Lewis and Short)
+  praemium, praemi(i)  noun, 2nd declension, neuter  [XXXAX]
+    Profit derived from booty, booty, Pen, game killed, prey; profit, advantage, prerogative, distinction, children; reward, recompense, to obtain, punishment; A bribe; an act deserving a reward, an exploit; (Lewis and Short)
+  ludo, ludere, lusi, lusus  verb, 3rd conjugation  [XXXAX]
+    to play; to play, play at a game; To play, sport, frisk, frolic; To sport, play, to practise as a pastime, amuse one's self with, to play, to make, compose music, song; To sport, dally, wanton; to play, mock, imitate, mimic; To trifle with; To spend in play, amusement, to sport away, to throw away one's labor, to labor in vain; To make sport, game of, to ridicule, rally, banter; To delude, deceive; (Lewis and Short)
+  homo, hominis  noun, 3rd declension, masculine  [XXXAX]
+    a human being, man; the human race, mankind; many men, many minds, every one has his own opinion; the lookers-on see farther in the game than the players; neither fish nor flesh; a man, that he was nothing of a man, in no respect such as a man should be; a man, his slave, servant; a man; foot-soldiers, infantry; Bodies, corpses; to have but few intimates, be choice in one's company; To be among the living, to be alive, to live; To see the world, be among men; the man, the fellow, his, him; this man, myself; (Lewis and Short)
   alea, aleae  noun, 1st declension, feminine  [XXXBO]
-    game of dice; die; dice-play; gambling, risking; chance, venture, risk, stake;
-  ferina, ferinae  noun, 1st declension, feminine  [XXXDX]  lesser
-    game, flesh of wild animals;
-  calculus, calculi  noun, 2nd declension, masculine  [XXXBO]
-    pebble; (bladder) stone; piece for reckoning/voting/game; calculation;
-  calx, calcis  noun, 3rd declension, masculine/feminine  [XXXBO]
-    limestone, lime; chalk, goal, goal-line (chalk mark), end of life; game piece;
-  talus, tali  noun, 2nd declension, masculine  [XBXBO]
-    ankle; ankle/pastern bone; sheep knucklebone (marked for dice); dice game (pl.);
-  (43 more not shown)
+    A game with dice, a game of hazard, chance, Let the die be cast! Let the game be ventured!; any thing uncertain, contingent, an accident, chance, hazard, venture, risk, raised above all doubt of his talents, to purchase any thing uncertain; (Lewis and Short)
+  candidus, candida -um, candidior -or -us, candidissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    of a shining, dazzling white, white, clear, bright; bright; white; splendid, fair, beautiful; hoary, white; the white, silver poplar; making clear, cloud-dis-pelling, purifying; clothed in white; a game, play exhibited by a candidate for office; pure, clear, serene, clean, spotless; distinct, clear, pure, silver-toned; clear, perspicuous, flowing, artless; pure, guileless, honest, upright, sincere, fair, candid, frank, open; cheerful, joyous, happy, fortunate, prosperous, lucky; in dazzling white'; clearly, candidly, sincerely; (Lewis and Short)
+  (69 more not shown)
 
 ate
   Ate, Ates  noun, 1st declension, feminine  [XXXEm]  uncommon
     Ate (goddess of mischief);
   tripudium, tripudi(i)  noun, 2nd declension, neuter  [XXXDX]  lesser
-    solemn ritual dance (to Mars); favorable omen when sacred chickens ate greedily;
+    a measured stamping, a leaping, jumping, dancing, a solemn religious dance; a dance; A favorable omen; (Lewis and Short)
+  sollistimus, sollistima, sollistimum  adjective, 1st/2nd declension  [XXXFS]  very rare
+    most perfect, the most favorable omen, when the chickens ate so greedily that the corn fell from their bills to the ground; (Lewis and Short)
 
 grain
   frumentum, frumenti  noun, 2nd declension, neuter  [XXXBX]
-    grain; crops;
-  curculio, curculionis  noun, 3rd declension, feminine  [XAXCO]
-    grain-worm/weevil; weevil;
+    corn, grain, a ticket giving the holder a share in the public distribution of corn; the small seeds, grains of figs; (Lewis and Short)
+  avena, avenae  noun, 1st declension, feminine  [XAXAO]
+    Oats, common oats; Wild, barren oats; Any stem, stalk of grass, grain, a straw; a shepherd, s pipe, reed-pipe; (Lewis and Short)
+  cella, cellae  noun, 1st declension, feminine  [XXXAO]
+    a storeroom, chamber; a place for depositing grain, fruits, for the abode of animals, a granary, stall, cells of bees, to furnish, purchase, procure the things necessary for a house, for the kitchen; a chamber, closet, cabinet, hut, cot, the porter, s lodge, a chamber for self-denial; The part of a temple in which the image of a god stood, the chapel; An apartment in a bathing-house; A room in a brothel; (Lewis and Short)
+  annona, annonae  noun, 1st declension, feminine  [XXXBO]
+    the yearly produce, the annual income of natural products; Means of subsistence, corn, grain, a supply; the price of grain, other food; the prices, the market; at the present, market-price, at the present dear rate; supplies, the loaves of bread them selves, rations; the goddess of the yearly produce; (Lewis and Short)
+  Ceres, Cereris  noun, 3rd declension, feminine  [XEXBO]
+    the daughter of Saturn and Ops, sister of Jupiter and Pluto, mother of Proserpine, goddess of agriculture, of the cultivation of corn, and of the growth of fruits in gen, deserted; food, bread, fruit, corn, grain; (Lewis and Short)
   gurculio, gurculionis  noun, 3rd declension, feminine  [BAXCS]  early
     grain-worm/weevil; weevil;
-  seges, segetis  noun, 3rd declension, feminine  [XXXBX]
-    grain field; crop;
-  secundus, secunda -um, secundior -or -us, secundissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
-    |favorable, fair (wind/current); fortunate, propitious; smooth, w/the grain;
-  granum, grani  noun, 2nd declension, neuter  [XXXDX]  lesser
-    grain; seed;
-  (120 more not shown)
+  (156 more not shown)
 
 fresh
+  aqua, aquae  noun, 1st declension, feminine  [XXXAO]
+    Water, snow-water, fresh-water, sea-water, boiling-water, water boiled; to invite to a feast, to entertain; to give new life, courage, to animate, refresh, revive; to deny intercourse, familiarity with one, to exclude from civil society, to banish, to demand submission; to write in water; Water; The sea, in other waters let my bark now sail; a lake; A stream, a river; Rain; medicinal springs, waters, baths; Waters; in Etruria; in the Black Forest in Germany, Baden-Baden; In Britain, Bath; In Zeugitana on the Gulf of Carthage; Vichy; at Cicero's villa at Puteoli; among the Mattiaci in Germany; The water in the water-clock; to give the advocate time for speaking; to spend time unprofitably, to waste it; the water stops, I am at a loss; the water under the skin; the name of a constellation; (Lewis and Short)
   novus, nova -um, novior -or -us, novissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
-    new, fresh, young; unusual, extraordinary;  (novae res, f. pl. = revolution);
-  vivus, viva, vivum  adjective, 1st/2nd declension  [XXXAA]
-    alive, fresh; living; animate, lively;
-  integer, integra -um, integrior -or -us, integerrimus -a -um  adjective, 1st/2nd declension  [XXXAX]
-    untouched, entire, whole, complete; uninjured, sound, fresh (troops), vigorous;
+    new, not old, young, fresh, recent; the new shops; many of the shops of the money-changers in the Forum were burned down, and those built on their sites were called, those which remained standing; new account-books; the first of his family who obtained a curule office, a man newly ennobled, an upstart, recent writers; new things, novelties, a new thing, a novelty; news, political innovations, a revolution, innovations; New, novel, strange, singular, unusual, unheard of; New; Recent; renewed by grace; the latest, last, hindermost, extreme, the rear of an army, the soldiers in the last line; last, extreme, highest; Youngest; Lowest; the end; the bottom, depths; newly, in a new; newly; recently, lately, a short time ago; lastly, last of all, finally; (Lewis and Short)
+  novus, nova -um, novior -or -us, novissimus -a -um  adjective, 1st/2nd declension  [XXXAA]
+    new, not old, young, fresh, recent; the new shops; many of the shops of the money-changers in the Forum were burned down, and those built on their sites were called, those which remained standing; new account-books; the first of his family who obtained a curule office, a man newly ennobled, an upstart, recent writers; new things, novelties, a new thing, a novelty; news, political innovations, a revolution, innovations; New, novel, strange, singular, unusual, unheard of; New; Recent; renewed by grace; the latest, last, hindermost, extreme, the rear of an army, the soldiers in the last line; last, extreme, highest; Youngest; Lowest; the end; the bottom, depths; newly, in a new; newly; recently, lately, a short time ago; lastly, last of all, finally; (Lewis and Short)
   recens, (gen.), recentis  adjective, 3rd declension  [XXXBX]
-    fresh, recent; rested;
-  viridis, viridis, viride  adjective, 3rd declension  [XXXBX]
-    fresh, green; blooming,youthful;
+    that has not long existed, fresh, young, recent, the rising sun, the east, newly devised, false; immediately after, fresh from, shortly after; while the matter is fresh, forthwith, immediately; the moderns; fresh, not exhausted by fatigue, vigorous, lately, freshly, newly, just, recently; (Lewis and Short)
   crudus, cruda -um, crudior -or -us, crudissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    |youthful/hardy/vigorous; fresh/green/immature; undigested; w/undigested food;
-  (19 more not shown)
+    bloody, bleeding, trickling with blood; raw, not cooked, suffering from indigestion; Unripe, immature, crude; fresh, vigorous; Unprepared, immature, raw, crude, rough, hoarse; Raw, not prepared, matured; Rough, unfeeling, cruel, merciless; most rude, uncultivated; (Lewis and Short)
+  crudus, cruda -um, crudior -or -us, crudissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    bloody, bleeding, trickling with blood; raw, not cooked, suffering from indigestion; Unripe, immature, crude; fresh, vigorous; Unprepared, immature, raw, crude, rough, hoarse; Raw, not prepared, matured; Rough, unfeeling, cruel, merciless; most rude, uncultivated; (Lewis and Short)
+  (33 more not shown)
 
 air
+  anima, animae  noun, 1st declension, feminine  [XXXAO]
+    air, a current of air, a breeze, wind; the air; The air inhaled and exhaled, breath, with this the Medes correct their breath, a breath of air; The vital principle, the breath of life, the animal principle of life; life, soul, draw up all the life of that well, to owe life itself; a creature endowed with, a living being, souls, persons, souls separated from the body, the shades of the Lower World, manes, departed spirits; the rational soul of man; The mind as the seat of thought; As the seat of feeling; consciousness; (Lewis and Short)
+  vultus, vultus  noun, 4th declension, masculine  [XXXAA]
+    an expression of countenance, the countenance, visage, features, looks, air, expression, aspect; an angry countenance, stern look, grim visage; the face; a painted face, portrait, likeness; The face, look, appearance; (Lewis and Short)
   spiritus, spiritus  noun, 4th declension, masculine  [XXXAA]
-    breath, breathing, air, soul, life; breeze; spirit; inspiration; courage, pride;
-  nubes, nubis  noun, 3rd declension, feminine  [XXXAO]
-    cloud/mist/haze/dust/smoke; sky/air; billowy formation (hair); swarm/multitude;
+    a breathing, gentle blowing, a breath, breeze; The air; An exhalation, smell, odor; Breathed air, a breath; a breathing, to stop the breath, suffocate, choke; The breath of a god, inspiration; The breath of life, life; a sigh; a breathing; The hiss of a snake; A haughty spirit, pride, arrogance, spirit, high spirit, energy, courage; Spirit, soul, mind; poetic spirit, inspiration, coveting soul; soul, a beloved object; a spirit; (Lewis and Short)
+  Juppiter, Jovis  noun, 3rd declension, masculine  [XEIAO]
+    Jupiter, Jove, a son of Saturn, brother and husband of Juno, the chief god among the Romans, ext; Heaven, sky, air; Pluto, the planet Jupiter; My heavens! good heavens!; (Lewis and Short)
+  aura, aurae  noun, 1st declension, feminine  [XXXBO]
+    The air, a gentle breeze, a breath of air; a breeze, a wind, breath; while a favorable breeze breathed on my sails, so long as I was in prosperity, the popular breeze, popular favor; The air; the vital air, to catch at the air of freedom, to seize upon any hope of liberty; The upper air, Heaven, on high, rises high; the upper world, publicity, daylight, to seclude, hide one, s self; light, heat, sound, vapor; A bright light, a gleam, glittering; The warmth of sunlight; Sound, tone, voice, echo; Vapor, mist, odor, exhalation; (Lewis and Short)
   caelus, caeli  noun, 2nd declension, masculine  [BSXAO]  early
     heaven, sky, heavens; space; air, climate, weather; universe, world; Jehovah;
-  caelum, caeli  noun, 2nd declension, neuter  [XSXAO]
-    heaven, sky, heavens; space; air, climate, weather; universe, world; Jehovah;
-  coelus, coeli  noun, 2nd declension, masculine  [BSXAS]  early
-    sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
-  coelum, coeli  noun, 2nd declension, neuter  [XSXAS]
-    sky, heaven, heavens; space; air, climate, weather; universe, world; Jehovah;
-  (70 more not shown)
+  (110 more not shown)
 
 came
+  venio, venire, veni, ventus  verb, 4th conjugation  [XXXAX]
+    fut, imperf, to come; comes, descends to each of us, grow; they, came, have come, it has fallen to me; be descended; res, to come, to happen; to come into, to have obtained one's friendship, alliance, res, the affair came to, reached the point; to come; (Lewis and Short)
+  accido, accidere, accidi, -  verb, 3rd conjugation  [XXXAO]
+    to fall upon, down upon, to reach, by falling; local adverbs; to fall at one's knees; to strike the senses, to reach a thing by means of the senses, the voice, the speech falls upon, reaches the ear; to fall out, come to pass, happen, occur, to happen to, to befall, it happened, came to pass, that, it happened that; to die; if any thing should happen to one; To turn out; to belong to; (Lewis and Short)
+  atrium, atri(i)  noun, 2nd declension, neuter  [XXXBO]
+    The fore-court, hall, entrance-room, entry; that part of the Roman house into which one first came after passing the entrance, the house itself, the entrance-room in the dwelling of the gods; a hall, court, the shoemakers' hall; (Lewis and Short)
   convenit, convenire, convenit, conventus est  verb, 4th conjugation, impersonal  [XXXCO]
     it agrees/came together/is agreed/asserted; [bene ~ nobis=>we're on good terms];
+  subvenio, subvenire, subveni, subventus  verb, 4th conjugation  [XXXBA]
+    fut, to come up, advance to one, s assistance, to come to one, to aid, assist, relieve, succor; to obviate, remedy, heal, cure; to render official, judicial aid; to come up, come; came to mind, occurred to us; To come to one, s mind, occur; (Lewis and Short)
   contingit, contingere, contigit, contactus est  verb, 3rd conjugation, impersonal  [XXXCO]
     it happens, it turns out; (PERF) it came to pass;
+  (9 more not shown)
 
 in
+  imperator, imperatoris  noun, 3rd declension, masculine  [XXXAX]
+    a commander-in-chief, general; a commander, leader, chief, director, ruler, master; An epithet of Jupiter; The conqueror; The title of the Roman emperors; (Lewis and Short)
   in  preposition, with the ablative  [XXXAX]
     in, on, at (space); in accordance with/regard to/the case of; within (time);
-  intro  adverb  [XXXAX]
-    within, in; to the inside, indoors;
+  dux, ducis  noun, 3rd declension, masculine  [XXXAX]
+    a leader, conductor, guide; a leader, commander, general-in-chief; a lieutenant-general, general of division; a leader, chief, head; (Lewis and Short)
+  obsideo, obsidere, obsedi, obsessus  verb, 2nd conjugation  [XWXBX]
+    in, to remain on, in, to haunt, inhabit, frequent; to sit down before, to hem in, beset, besiege, invest, blockade; To occupy, fill, possess; to occupy, possess, take possession of; To have one's eye upon, to watch closely, be on the look-out for; (Lewis and Short)
+  socer, soceri  noun, 2nd declension, masculine  [XXXBX]
+    A father-in-law, parents-in-law; a son's father-in-law, grandfather-in-law, one's husband's, wife's grandfather; (Lewis and Short)
   gener, generi  noun, 2nd declension, masculine  [XXXBX]
-    son-in-law;
-  ante  preposition, with the accusative  [XXXAO]
-    in front/presence of, in view; before (space/time/degree); over against, facing;
-  prae  preposition, with the ablative  [XXXAX]
-    before, in front; in view of, because of;
-  super  preposition, with the ablative  [XXXAX]
-    over (space), above, upon, in addition to; during (time); concerning; beyond;
-  (59 more not shown)
+    a daughter's husband, a son-in-law; a daughter's bridegroom; the husband of a granddaughter; a sister's husband, brother-in-law; a daughter's paramour; (Lewis and Short)
+  (176 more not shown)
 
 a
   (no match)
 
 breeze
-  spiritus, spiritus  noun, 4th declension, masculine  [XXXAA]
-    breath, breathing, air, soul, life; breeze; spirit; inspiration; courage, pride;
-  aura, aurae  noun, 1st declension, feminine  [XXXBO]
-    breeze, breath (of air), wind; gleam; odor, stench; vapor; air (pl.), heaven;
   anima, animae  noun, 1st declension, feminine  [XXXAO]
-    soul, spirit, vital principle; life; breathing; wind, breeze; air (element);
+    air, a current of air, a breeze, wind; the air; The air inhaled and exhaled, breath, with this the Medes correct their breath, a breath of air; The vital principle, the breath of life, the animal principle of life; life, soul, draw up all the life of that well, to owe life itself; a creature endowed with, a living being, souls, persons, souls separated from the body, the shades of the Lower World, manes, departed spirits; the rational soul of man; The mind as the seat of thought; As the seat of feeling; consciousness; (Lewis and Short)
+  spiritus, spiritus  noun, 4th declension, masculine  [XXXAA]
+    a breathing, gentle blowing, a breath, breeze; The air; An exhalation, smell, odor; Breathed air, a breath; a breathing, to stop the breath, suffocate, choke; The breath of a god, inspiration; The breath of life, life; a sigh; a breathing; The hiss of a snake; A haughty spirit, pride, arrogance, spirit, high spirit, energy, courage; Spirit, soul, mind; poetic spirit, inspiration, coveting soul; soul, a beloved object; a spirit; (Lewis and Short)
+  afflatus, afflatus  noun, 4th declension, masculine  [XXXBO]
+    A blowing, breathing on, a breeze, blast, breath, as of the wind, men, animals; a flash, glow of light; afflation of the divine spirit, inspiration; (Lewis and Short)
   adflatus, adflatus  noun, 4th declension, masculine  [XXXBO]
     breath, snorting; breeze, wind, draught, (hot) blast; stench; inspiration;
-  afflatus, afflatus  noun, 4th declension, masculine  [XXXBO]
-    breath, snorting; breeze, wind, draught, (hot) blast; stench; inspiration, flash
-  aer, aeris  noun, 3rd declension, masculine/feminine  [XXXCO]
-    air (one of 4 elements); atmosphere, sky; cloud, mist, weather; breeze; odor;
-  (6 more not shown)
+  aura, aurae  noun, 1st declension, feminine  [XXXBO]
+    The air, a gentle breeze, a breath of air; a breeze, a wind, breath; while a favorable breeze breathed on my sails, so long as I was in prosperity, the popular breeze, popular favor; The air; the vital air, to catch at the air of freedom, to seize upon any hope of liberty; The upper air, Heaven, on high, rises high; the upper world, publicity, daylight, to seclude, hide one, s self; light, heat, sound, vapor; A bright light, a gleam, glittering; The warmth of sunlight; Sound, tone, voice, echo; Vapor, mist, odor, exhalation; (Lewis and Short)
+  sollicito, sollicitare, sollicitavi, sollicitatus  verb, 1st conjugation  [XXXBA]
+    to disturb, stir, agitate, move; to distress, harass, make uneasy, vex, solicit, tempt, seduce, attract, induce; to stir, put in lively motion, move violently, disturb, shake, exercise; stirred, as if a breeze were moving; To produce by stirring, excite, cause to come forth, to arouse, draw out, by starting roots from the tree; to cause distress, anxiety, to distress, disturb; To fill with apprehension, cause fear, suspense of the mind, and anxiety for the future, to be distressed, to torment one's self, that, lest; to grieve, afflict, make wretched, why do I make my old age miserable by, subject-clause; To disturb the rest, to trouble, harass, to disturb the dead by mentioning their names; To stir, rouse, excite; To attract, to tempt, to invite, ext, to attract the attention, occupy the mind; to incite one; To urge to wrong-doing, to inveigle, seduce, stimulate, provoke, tempt, abet; to murder Philip, to strive to win over, tempt, instigate; gerund; to induce, stimulate, solicit, urge, invite, exhort, move; (Lewis and Short)
+  (10 more not shown)
 
 tests
   examinatrix, examinatricis  noun, 3rd declension, feminine  [XXXES]  uncommon
-    she who tests or tries;
+    she that tests, tries; (Lewis and Short)
 
 are
-  pila, pilae  noun, 1st declension, feminine  [XXXBO]
-    ball (play/decorative); sphere; mortar, vessel in which things are pounded;
-  mortarium, mortarii  noun, 2nd declension, neuter  [XXXCO]
-    mortar; bowl/trough in which materials are pounded/ground
-  prontuarium, prontuari(i)  noun, 2nd declension, neuter  [EXXCM]  later
-    cupboard; store room; place where things are stored ready for use;
-  isto  adverb  [XXXDX]  lesser
-    thither, to you, to where you are; in that matter; to the point you reached;
-  istuc  adverb  [XXXDX]  lesser
-    thither, to you, to where you are; in that direction; to that subject/point;
-  isti  adverb  [XXXDX]  lesser
-    there, in that place; where you are; herein, in this affair;
-  (44 more not shown)
+  sono, sonare, sonavi, sonatus  verb, 1st conjugation  [DXXAO]  late
+    to make a noise, to sound, resound, the trumpet sounds, do not chink, are not money; to sound, utter, give utterance to, speak, call, cry out, boasting of, vaunting, to signify, shall sing of, shall celebrate, praise, extol, noisy, sounding, sonorous; (Lewis and Short)
+  sono, sonare, sonavi, sonatus  verb, 1st conjugation  [DXXAO]  late
+    to make a noise, to sound, resound, the trumpet sounds, do not chink, are not money; to sound, utter, give utterance to, speak, call, cry out, boasting of, vaunting, to signify, shall sing of, shall celebrate, praise, extol, noisy, sounding, sonorous; (Lewis and Short)
+  sono, sonare, sonavi, sonatus  verb, 1st conjugation  [DXXAA]  late
+    to make a noise, to sound, resound, the trumpet sounds, do not chink, are not money; to sound, utter, give utterance to, speak, call, cry out, boasting of, vaunting, to signify, shall sing of, shall celebrate, praise, extol, noisy, sounding, sonorous; (Lewis and Short)
+  sono, sonere, sonui, sonitus  verb, 3rd conjugation  [BXXAO]  early
+    to make a noise, to sound, resound, the trumpet sounds, do not chink, are not money; to sound, utter, give utterance to, speak, call, cry out, boasting of, vaunting, to signify, shall sing of, shall celebrate, praise, extol, noisy, sounding, sonorous; (Lewis and Short)
+  sono, sonere, sonui, sonitus  verb, 3rd conjugation  [BXXAO]  early
+    to make a noise, to sound, resound, the trumpet sounds, do not chink, are not money; to sound, utter, give utterance to, speak, call, cry out, boasting of, vaunting, to signify, shall sing of, shall celebrate, praise, extol, noisy, sounding, sonorous; (Lewis and Short)
+  sono, sonere, sonui, sonitus  verb, 3rd conjugation  [BXXAA]  early
+    to make a noise, to sound, resound, the trumpet sounds, do not chink, are not money; to sound, utter, give utterance to, speak, call, cry out, boasting of, vaunting, to signify, shall sing of, shall celebrate, praise, extol, noisy, sounding, sonorous; (Lewis and Short)
+  (205 more not shown)
 
 fun
   delicia, deliciae  noun, 1st declension, feminine  [XXXAO]
     pleasure/delight/fun (usu. pl.), activity affording enjoyment, luxuries; toys;
   ludus, ludi  noun, 2nd declension, masculine  [XXXBX]
-    game, play, sport, pastime, entertainment, fun; school, elementary school;
+    a play; a play, game, diversion, pastime; public games, plays, spectacles, shows, exhibitions; during the games; Stage-plays; A place of exercise, practice, a school; Play, sport, mere sport, child's play; Sport, jest, joke, fun, to make sport of, make game of, to banter, jeer at, mock, to send one away with scorn and derision, to send one off with a flea in his ear, to make a jest, a trifle of any thing, to throw away, to lose, to give play to one, to humor, indulge, the pleasures of love; the title of a work of Nævius; (Lewis and Short)
   derideo, deridere, derisi, derisus  verb, 2nd conjugation, transitive  [XXXCO]
-    mock/deride/laugh at/make fun of; be able to laugh, escape, get off scot free;
+    to laugh at, laugh to scorn; to scoff at, deride; absurd, scorned; (Lewis and Short)
+  ridiculum, ridiculi  noun, 2nd declension, neuter  [XXXDO]  lesser
+    joke, piece of humor; [per ridiculum => jockingly, for fun];
   cavillor, cavillari, cavillatus sum  verb, 1st conjugation, deponent  [XXXCO]
-    jest, banter; make fun of, satirize, mock; use sophistry, quibble, cavil (at);
+    to practise jeering, mocking, to censure, criticise; to satirize, to jest; objective clause; to reason captiously, to use sophisms, to quibble; (Lewis and Short)
   irrideo, irridere, irrisi, irrisus  verb, 2nd conjugation  [XXXDX]  lesser
-    ridicule, mock, make fun of; laugh at;
-  ludibundus, ludibunda, ludibundum  adjective, 1st/2nd declension  [XXXDX]  lesser
-    having fun; cares free;
+    to laugh at, to joke, jeer; to mock, ridicule, laugh to scorn, to make a laughing-stock, jeeringly; (Lewis and Short)
   (7 more not shown)
 
 free
-  absolvo, absolvere, absolvi, absolutus  verb, 3rd conjugation, transitive  [XLXAO]
-    free (bonds), release; acquit; vote for/secure acquittal; pay off; sum up;
   apertus, aperta -um, apertior -or -us, apertissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     open/public/free; uncovered/exposed/opened; frank/clear/manifest; cloudless;
   apsolvo, apsolvere, apsolvi, apsolutus  verb, 3rd conjugation, transitive  [XLXAO]
     free (bonds), release; acquit; vote for/secure acquittal; pay off; sum up;
   libero, liberare, liberavi, liberatus  verb, 1st conjugation  [XXXAX]
-    free; acquit, absolve; manumit; liberate, release;
+    to make, set free, to free, liberate; to release from slavery, to free, manumil; to free, release, extricate, deliver; to free, exempt from taxes, to clear; To absolve, acquit, is acquitted of the charge of having undertaken a journey with the design; To clear, to pass, traverse, cross over; freed from buildings that obstructed the view, having a free prospect; (Lewis and Short)
   liber, libera -um, liberior -or -us, liberrimus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    free (man); unimpeded; void of; independent, outspoken/frank; free from tribute;
-  solvo, solvere, solvi, solutus  verb, 3rd conjugation  [XXXAX]
-    loosen, release, unbind, untie, free; open; set sail; scatter; pay off/back;
-  (126 more not shown)
+    that acts according to his own will and pleasure, is his own master; free, unrestricted, unrestrained, unimpeded, unshackled; independent, frank, open, bold; free custody, a free house, free dwelling, a man's; Free, exempt from, void of; subject-clause; Free, not a slave, free-born; Free; freely, unrestrictedly, without let, hinderance; frankly, openly, boldly; (Lewis and Short)
+  liber, libera -um, liberior -or -us, liberrimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    that acts according to his own will and pleasure, is his own master; free, unrestricted, unrestrained, unimpeded, unshackled; independent, frank, open, bold; free custody, a free house, free dwelling, a man's; Free, exempt from, void of; subject-clause; Free, not a slave, free-born; Free; freely, unrestrictedly, without let, hinderance; frankly, openly, boldly; (Lewis and Short)
+  purus, pura -um, purior -or -us, purissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    clean, pure; Clean, free from dirt, filth, pure; free, clear, cleared, a clear, bright; plain, natural, naked, without figures chased upon it; Cleansing, purifying; Pure, spotless, chaste, faultless, stainless; without exception, absolute; entire, complete; Clear, complete, over and above; free from religious claims, consecration; Not desecrated; fresh; Not defiled by a funeral, burial; Free from mourning, purely, clearly, without spot, mixture; brightly, clearly; purely, chastely; plainly, clearly, simply; simply, absolutely; (Lewis and Short)
+  (239 more not shown)
 
 money
-  aes, aeris  noun, 3rd declension, neuter  [XXXAO]
-    money, pay, fee, fare; copper/bronze/brass, base metal; (w/alienum) debt; gong;
+  aestimo, aestimare, aestimavi, aestimatus  verb, 1st conjugation, transitive  [XXXAO]
+    To determine, estimate the extrinsic, money, value of a thing, to value, rate, appraise, to estimate the value of an object in question, and thus determine how much the convicted person shall pay, to estimate, assess the damages; to estimate the intrinsic, moral, worth of a thing, to weigh, value, hold; to measure a thing by life, to hold it as dear as life; (Lewis and Short)
   pecunia, pecuniae  noun, 1st declension, feminine  [XLXAX]
-    money; property;
-  argentum, argenti  noun, 2nd declension, neuter  [XXXBO]
-    silver; money, cash; silver-plate; [argentum vivum => quicksilver/mercury];
-  beveragium, beveragi(i)  noun, 2nd declension, neuter  [FXXCM]  medieval
-    drink-money;
-  calceatura, calceaturae  noun, 1st declension, feminine  [FXXCM]  medieval
-    footwear, shoe-money;
-  moneta, monetae  noun, 1st declension, feminine  [XXXCO]
-    money/coinage; die on which coin is struck, stamp; mint, temple striking coins;
-  (45 more not shown)
+    property, riches; money; Copper coins; an epithet of Jupiter; (Lewis and Short)
+  mobilis, mobile, mobilior -or -us, mobilissimus -a -um  adjective, 3rd declension  [XXXAX]
+    easy to be moved, movable; loose, not firm; movable things, movables, chattels, cattle, money, clothes; Pliable, pliant, flexible; excitable; nimble, quick, active, agile, rapid, swift, fleet; changeable, inconstant, fickle; movable goods, chattels; with rapid motion, rapidly, quickly; (Lewis and Short)
+  aes, aeris  noun, 3rd declension, neuter  [XXXAO]
+    Any crude metal dug out of the earth; copper, copper dross; An alloy, for the most part of copper and tin, bronze, an alloy of copper and zinc; everything made, prepared from copper, bronze, statues, tables of laws, money, weapons, armor, utensils of husbandry, the trumpet sounds, with the trumpet, horn, tuba, a brazen prow, the brazen age; Money, rude masses, coined, borrowed from the brokers in the forum, earns them money; the money of another, the sum owed, a debt; as it were, among my effects, he is my friend; to be of some value; to be esteemed according to its own worth; the unit of the standard of money, the old heary money; Wages, pay; A soldier's pay; Reward, payment, that has in view, aims at pay, reward; counters, the items of a computed sum; (Lewis and Short)
+  zona, zonae  noun, 1st declension, feminine  [XXXBO]
+    a belt, girdle, zone; A girdle, a money-belt; The girdle, belt of Orion; A line running around the edge of a gem, a girdle; One of the imaginary circles which divided the earth into five climates, a zone; A kind of herpes, erysipelas, the shingles; (Lewis and Short)
+  zona, zonae  noun, 1st declension, feminine  [XXXBO]
+    a belt, girdle, zone; A girdle, a money-belt; The girdle, belt of Orion; A line running around the edge of a gem, a girdle; One of the imaginary circles which divided the earth into five climates, a zone; A kind of herpes, erysipelas, the shingles; (Lewis and Short)
+  (82 more not shown)
 
 do
-  facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
-    make/build/construct/create/cause/do; have built/made; fashion; work (metal);
-  ago, agere, egi, actus  verb, 3rd conjugation  [XXXAA]
-    |do, make, perform; treat, deal with; carry out
+  quando  adverb  [XXXAX]
+    at what time? when? Do; Rel, at what time, when; at what time soever, at any time, ever, some time, some day; when; since then, because then; since, because, seeing that, inasmuch as; (Lewis and Short)
+  frequento, frequentare, frequentavi, frequentatus  verb, 1st conjugation  [XXXBX]
+    To visit, resort to frequently, to frequent; to do, make use of frequently, to repeat; To fill with a great number, multitude, to fill, crowd, people, stock, to assemble, bring together in numbers; to stock; to celebrate, keep in great numbers; to celebrate, observe, keep; Frequent, common, much used; Full of, rich, abounding in, frequently; (Lewis and Short)
+  socio, sociare, sociavi, sociatus  verb, 1st conjugation  [XXXBX]
+    to join, unite together, to associate; to do, hold in common, to share, risk your life for me; (Lewis and Short)
+  delinquo, delinquere, deliqui, delictus  verb, 3rd conjugation  [XXXBO]
+    to fail, be wanting; to fail, be lacking; to fail, be wanting, to commit a fault, to do wrong, transgress, offend, to commit, do; (Lewis and Short)
+  navo, navare, navavi, navatus  verb, 1st conjugation  [XXXDX]  lesser
+    to do, perform, accomplish, with zeal and diligence, to come to one's assistance, to serve, assist one, with zeal; (Lewis and Short)
   gero, gerere, gessi, gestus  verb, 3rd conjugation  [XXXAA]
-    |do, carry out; hold (office); [morem gerere (alicui) => humor (someone)];
-  facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
-    |||compose/write; classify; provide; do/perform; commit crime; suppose/imagine;
-  como, comere, compsi, comptus  verb, 3rd conjugation, transitive  [XXXCO]
-    arrange/do (hair); adorn, make beautiful; embellish; arrange in order, set out;
-  como, comere, comsi, comtus  verb, 3rd conjugation, transitive  [XXXCS]
-    arrange/do (hair); adorn, make beautiful; embellish; arrange in order, set out;
-  (1 more not shown)
+    to bear about with one, to bear, carry, to wear, have; to be pregnant, be with young; to bear, carry, bring; to bear, produce; to bear, have, entertain, cherish; to bear, deport, behave, conduct one's self; to behave, conduct one's self as; to treat; to assume to be; to show, exhibit, manifest; to sustain the charge of, to administer, manage, regulate, rule, govern, conduct, carry on, wage, transact, accomplish, perform, to happen, take place, be done, a deed, events, occurrences, acts, exploits, public business, public events, performed my will, complied with my wishes, gratified, humored me; spend, managing, conducting; (Lewis and Short)
+  (7 more not shown)
 
 be
   sum, esse, fui, futurus  verb, irregular, the verb "to be"  [XXXAX]
     be; exist; (also used to form verb perfect passive tenses) with NOM PERF PPL
-  versor, versari, versatus sum  verb, 1st conjugation, deponent  [XXXDA]  lesser
-    move about; live, dwell; be; keep moving; be engaged/busy with; spend time;
-  existo, existere, existiti, existitus  verb, 3rd conjugation  [XXXDX]  lesser
-    step forth, appear; arise; become; prove to be; be (Bee);
-  consum, conesse, confui, confuturus  verb, irregular, compound of "to be"  [XXXES]  uncommon
-    be together/with, coexist; be, happen; [confore => to be about to happen];
+  lateo, latere, latui, -  verb, 2nd conjugation  [XXXAX]
+    to lurk, be, lie hid, concealed, to skulk; To be hidden, to be in safety; to lie hid, keep out of sight; to live in concealment, to live retired, to lead a retired, quiet life; to be concealed from, be unknown to; obscure, to be unknown, lying hid, hidden, concealed, secret, unknown, in secret, secretly, privately; (Lewis and Short)
+  discedo, discedere, discessi, discessus  verb, 3rd conjugation  [XXXAX]
+    To part asunder, divide, separate; clears off; to leave, forsake, desert; to go away from, to leave; to go away to; to march off, march away, decamp; to get away, come away, come off, to become, to be; to depart, deviate, swerve from; to leave, forsake, give up; to pass away, to vanish, to cease; go over to another's opinion; to leave out of consideration, to except; (Lewis and Short)
+  verso, versare, versavi, versatus  verb, 1st conjugation  [XXXAX]
+    to turn, wind, twist, whirl about often, violently; turn them over, read, study them, to turn one's self often, to turn, revolve; to turn, twist, bend; to turn upside down, disturb, vex, agitate; To turn over, to think over, meditate, reflect upon, revolve, consider; to transact, carry on; to dwell, live, remain, stay, abide, inter; to be; to be circumstanced, situated; to occupy, busy one's self, to be engaged; circa; inter; (Lewis and Short)
+  verso, versare, versavi, versatus  verb, 1st conjugation  [XXXAA]
+    to turn, wind, twist, whirl about often, violently; turn them over, read, study them, to turn one's self often, to turn, revolve; to turn, twist, bend; to turn upside down, disturb, vex, agitate; To turn over, to think over, meditate, reflect upon, revolve, consider; to transact, carry on; to dwell, live, remain, stay, abide, inter; to be; to be circumstanced, situated; to occupy, busy one's self, to be engaged; circa; inter; (Lewis and Short)
+  numerus, numeri  noun, 2nd declension, masculine  [XXXAO]
+    a number; the counting, reckoning; A certain collective quantity, a body, number, number, a great number; the mathematics, astronomy; a division, a troop, band; a mere number; dice; number, rank, place, position, estimation, relation, class, category, to be of the number of, to be reckoned among, to be; member, category, to be complete, perfect; Order; An office, duty, part; Musical measure, time, rhythm, harmony, numbers, nothing out of measure, improper; A measure, number; A verse, precisely, exactly, just; Just, precisely, at the right time, on the instant; Quickly, rapidly, soon, too quickly, too soon; too quickly, too hastily, too soon; (Lewis and Short)
+  (11 more not shown)
 
 great
+  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    great, large; great, large, vast, extensive, spacious, a great, tall fellow, great oaks, lofty oaks; great, much, abundant, considerable; loud, powerful, strong, mighty, the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous, great things, important matters, the great year, the Piatonic year, cycle, Posit, great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest, the elder, one who has attained his twenty-fifth year, who is of age, adults, ancestors, forefathers, the old master, the master of the house, the old man, the young master, the Senate, a great-uncle; high, dear, of great value, at a high price, higher, highest, very high, most highly prized, too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; verbs, there is greater reason, there is more cause that; as little as; verbs; more and more; no more ... than; just as much ... as, no more ... than; just as little ... as, is just as far from being sound as a body; not more, less, not so much ... as; less ... than; more or less; one more than another, in different degrees, in the highest degree, most of all, most particularly, especially, exceedingly, very; verb; supp; at most; the more ... the more, less; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly: Me, just now; certainly, by all means, very well, yes, certainly not, by no means: Ar; (Lewis and Short)
+  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    great, large; great, large, vast, extensive, spacious, a great, tall fellow, great oaks, lofty oaks; great, much, abundant, considerable; loud, powerful, strong, mighty, the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous, great things, important matters, the great year, the Piatonic year, cycle, Posit, great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest, the elder, one who has attained his twenty-fifth year, who is of age, adults, ancestors, forefathers, the old master, the master of the house, the old man, the young master, the Senate, a great-uncle; high, dear, of great value, at a high price, higher, highest, very high, most highly prized, too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; verbs, there is greater reason, there is more cause that; as little as; verbs; more and more; no more ... than; just as much ... as, no more ... than; just as little ... as, is just as far from being sound as a body; not more, less, not so much ... as; less ... than; more or less; one more than another, in different degrees, in the highest degree, most of all, most particularly, especially, exceedingly, very; verb; supp; at most; the more ... the more, less; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly: Me, just now; certainly, by all means, very well, yes, certainly not, by no means: Ar; (Lewis and Short)
+  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    great, large; great, large, vast, extensive, spacious, a great, tall fellow, great oaks, lofty oaks; great, much, abundant, considerable; loud, powerful, strong, mighty, the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous, great things, important matters, the great year, the Piatonic year, cycle, Posit, great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest, the elder, one who has attained his twenty-fifth year, who is of age, adults, ancestors, forefathers, the old master, the master of the house, the old man, the young master, the Senate, a great-uncle; high, dear, of great value, at a high price, higher, highest, very high, most highly prized, too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; verbs, there is greater reason, there is more cause that; as little as; verbs; more and more; no more ... than; just as much ... as, no more ... than; just as little ... as, is just as far from being sound as a body; not more, less, not so much ... as; less ... than; more or less; one more than another, in different degrees, in the highest degree, most of all, most particularly, especially, exceedingly, very; verb; supp; at most; the more ... the more, less; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly: Me, just now; certainly, by all means, very well, yes, certainly not, by no means: Ar; (Lewis and Short)
+  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAA]
+    great, large; great, large, vast, extensive, spacious, a great, tall fellow, great oaks, lofty oaks; great, much, abundant, considerable; loud, powerful, strong, mighty, the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous, great things, important matters, the great year, the Piatonic year, cycle, Posit, great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest, the elder, one who has attained his twenty-fifth year, who is of age, adults, ancestors, forefathers, the old master, the master of the house, the old man, the young master, the Senate, a great-uncle; high, dear, of great value, at a high price, higher, highest, very high, most highly prized, too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; verbs, there is greater reason, there is more cause that; as little as; verbs; more and more; no more ... than; just as much ... as, no more ... than; just as little ... as, is just as far from being sound as a body; not more, less, not so much ... as; less ... than; more or less; one more than another, in different degrees, in the highest degree, most of all, most particularly, especially, exceedingly, very; verb; supp; at most; the more ... the more, less; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly: Me, just now; certainly, by all means, very well, yes, certainly not, by no means: Ar; (Lewis and Short)
+  altus, alta -um, altior -or -us, altissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    grown, become great, great, gross, grow, high, deep; high; high, lofty, elevated, great, magnanimous, high-minded, noble, august, shrill, loud, clear, a height; The height of heaven, high heaven, the heavens; The high sea, the deep, the sea; deep, profound; deep, profound, the depth, what is deep, to bring from far; ancient, old, high, deep; High, on high, high up, from on high, from above; from on high; Deep, deeply; deeply, profoundly, far, from afar; (Lewis and Short)
   amplus, ampla -um, amplior -or -us, amplissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    great, large, spacious, wide, ample; distinguished, important, honorable;
-  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    large/great/big/vast/huge; much; powerful; tall/long/broad; extensive/spacious;
-  multus, multa -um, -, plurimus -a -um  adjective, 1st/2nd declension  [XXXAX]
-    much, many, great, many a; large, intense, assiduous; tedious;
-  grandis, grandis, grande  adjective, 3rd declension  [XXXAX]
-    full-grown, grown up; large, great, grand, tall, lofty; powerful; aged, old;
-  magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    |great (achievement); mighty; distinguished; skilled; bold/confident; proud;
-  nimius, nimia, nimium  adjective, 1st/2nd declension  [XXXAX]
-    excessive, too great;
-  (56 more not shown)
+    full all round, great, large, wide, ample, spacious; great, abundant, ample, much, long, more, more of, a greater quantity, number of; great, strong, violent, impetuous; great, handsome, magnificent, splendid, glorious; esteemed, renowned, priores, I esteem it to be the greatest honor; distinguished, very distinguished, honorable, right honorable, most honorable; largely, abundantly, copiously; in great numbers, med; fully, handsomely; with great fulness, richly, more, longer, further, besides, magis; quid, and this further, that; I say no more, have nothing further to say, add; to bring no further action, to make no further claim; if nothing more, at least, more, not to speak further, not to say more; very largely, most abundantly; most generously, most handsomely; (Lewis and Short)
+  (192 more not shown)
 
 grammer
   (no match)
   (near words: grammar, rammer)
 
 grammar
+  litteratura, litteraturae  noun, 1st declension, feminine  [XGXBO]
+    A writing; The science of language, grammar, philology; (Lewis and Short)
+  litteratura, litteraturae  noun, 1st declension, feminine  [XGXBO]
+    A writing; The science of language, grammar, philology; (Lewis and Short)
   grammatica, grammaticae  noun, 1st declension, feminine  [XXXDX]  lesser
     grammar; philology;
-  litteratura, litteraturae  noun, 1st declension, feminine  [XGXBO]
-    alphabet, system of letters; writing, use of letters; grammar/instruction in;
-  soloecismus, soloecismi  noun, 2nd declension, masculine  [XGXCO]
-    mistake in grammar, solecism;
+  ars, artis  noun, 3rd declension, feminine  [XXXAO]
+    skill in joining something, combining, working it; Skill in producing any material form, handicraft, trade, occupation, employment; any physical, mental activity, so far as it is practically exhibited; a profession, art, music, poetry, medicine; Science, knowledge; The theory of any art, science, in practice, in theory; grammatical analysis, grammar; rhetorical, grammatical treatises; Rhetorical, from the ancient works on rhetoric; Grammar; The knowledge, art, skill, workmanship, employed in effecting, working upon an object; The object artistically formed, a work of art; the Muses; the moral character of a man, so far as it is made known by actions, conduct, manner of acting, habit, practice, cunning, artifice, fraud, stratagem; (Lewis and Short)
   glomeria, glomeriae  noun, 1st declension, feminine  [FXXEM]  medieval  uncommon
     grammar;
   grammatice, grammatices  noun, 1st declension, feminine  [XGXES]  uncommon
     grammar; philology;
-  grammaticus, grammatica, grammaticum  adjective, 1st/2nd declension  [XXXDX]  lesser
-    grammatical, of grammar;
-  (5 more not shown)
+  (10 more not shown)
 
 rammer
-  fistuca, fistucae  noun, 1st declension, feminine  [XXXEC]  uncommon
-    rammer, mallet;
   tuppus, tuppi  noun, 2nd declension, masculine  [FXXEM]  medieval  uncommon
     rammer;
+  pavimentum, pavimenti  noun, 2nd declension, neuter  [XXXDX]  lesser
+    a floor, beaten down with a rammer, a hard floor, a pavement, tiling; (Lewis and Short)
+  fistuca, fistucae  noun, 1st declension, feminine  [XXXEC]  uncommon
+    an instrument for ramming down, beetle; (Lewis and Short)
   pavicula, paviculae  noun, 1st declension, feminine  [XXXFS]  very rare
     rammer;
   liaculum, liaculi  noun, 2nd declension, neuter  [XXXEm]  uncommon
     smoothing tool, rammer for leveling paved streets;
 
 is
-  (no match)
+  consto, constare, constiti, constatus  verb, 1st conjugation, intransitive  [XXXAO]
+    To stand together, stand with; to stand with, to agree with, be in accord, agreement, to correspond, fit; to agree, accord with itself, to remain like one's self, be consistent; the account agrees, is correct, is, proves right; to stand firm, to remain immovable, unchanging, steadfast, to abide, last, endure, persevere; to stop, halt; to be established, settled, certain, manifest, evident, well known; it is settled, established, undisputed, certain, well known; his, fixed determination, I am determined, I am fully resolved; to exist, be, abide; to consist in, of, to be composed of, to rest upon something; to stand at, to cost; standing firm, firm, unchangeable, constant, immovable, uniform, fixed, stable, invariable; the mature age; Agreeing, accordant with itself, consistent, harmonious; intellectually, morally certain, sure, steadfast, constant, faithful, steady, unchanging; Firmly, immovably, steadily, constantly; Harmoniously, evenly, uniformly, consistently; Steadily, calmly, tranquilly, sedately; (Lewis and Short)
+  consto, constare, constiti, constatus  verb, 1st conjugation, intransitive  [XXXAO]
+    To stand together, stand with; to stand with, to agree with, be in accord, agreement, to correspond, fit; to agree, accord with itself, to remain like one's self, be consistent; the account agrees, is correct, is, proves right; to stand firm, to remain immovable, unchanging, steadfast, to abide, last, endure, persevere; to stop, halt; to be established, settled, certain, manifest, evident, well known; it is settled, established, undisputed, certain, well known; his, fixed determination, I am determined, I am fully resolved; to exist, be, abide; to consist in, of, to be composed of, to rest upon something; to stand at, to cost; standing firm, firm, unchangeable, constant, immovable, uniform, fixed, stable, invariable; the mature age; Agreeing, accordant with itself, consistent, harmonious; intellectually, morally certain, sure, steadfast, constant, faithful, steady, unchanging; Firmly, immovably, steadily, constantly; Harmoniously, evenly, uniformly, consistently; Steadily, calmly, tranquilly, sedately; (Lewis and Short)
+  consto, constare, constiti, constatus  verb, 1st conjugation, intransitive  [XXXAO]
+    To stand together, stand with; to stand with, to agree with, be in accord, agreement, to correspond, fit; to agree, accord with itself, to remain like one's self, be consistent; the account agrees, is correct, is, proves right; to stand firm, to remain immovable, unchanging, steadfast, to abide, last, endure, persevere; to stop, halt; to be established, settled, certain, manifest, evident, well known; it is settled, established, undisputed, certain, well known; his, fixed determination, I am determined, I am fully resolved; to exist, be, abide; to consist in, of, to be composed of, to rest upon something; to stand at, to cost; standing firm, firm, unchangeable, constant, immovable, uniform, fixed, stable, invariable; the mature age; Agreeing, accordant with itself, consistent, harmonious; intellectually, morally certain, sure, steadfast, constant, faithful, steady, unchanging; Firmly, immovably, steadily, constantly; Harmoniously, evenly, uniformly, consistently; Steadily, calmly, tranquilly, sedately; (Lewis and Short)
 
 hard
   durus, dura -um, durior -or -us, durissimus -a -um  adjective, 1st/2nd declension  [XXXAX]
-    hard, stern; harsh, rough, vigorous; cruel, unfeeling, inflexible; durable;
+    hard; hard, containing much earthy matter; of the hardened wood of the vine; hard, rough; rough; hardy, vigorous; harsh, rough, stern, insensible, obstinate; hard, severe, toilsome; troublesome, burdensome, unfortunate, hardships, difficulties; Hardly; Hardly, stiffly, awkwardly; Hardily, rigorously, austerely; Harshly, roughly, sternly; Hardly, unfortunately; (Lewis and Short)
+  durus, dura -um, durior -or -us, durissimus -a -um  adjective, 1st/2nd declension  [XXXAA]
+    hard; hard, containing much earthy matter; of the hardened wood of the vine; hard, rough; rough; hardy, vigorous; harsh, rough, stern, insensible, obstinate; hard, severe, toilsome; troublesome, burdensome, unfortunate, hardships, difficulties; Hardly; Hardly, stiffly, awkwardly; Hardily, rigorously, austerely; Harshly, roughly, sternly; Hardly, unfortunately; (Lewis and Short)
   robustus, robusta -um, robustior -or -us, robustissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    of oak; hard/firm/solid; hardy/robust/durable, able to resist change; valiant;
-  rigidus, rigida, rigidum  adjective, 1st/2nd declension  [XXXBX]
-    stiff, hard; stern; rough;
-  asper, aspera -um, asperior -or -us, asperrimus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    rude/unrefined; cruel/violent/savage/raging/drastic; stern/severe/bitter; hard;
+    oak; hard, firm, solid, strong, hardy, lusty, robust; firm, solid, strong, stoutly, strongly, firmly; (Lewis and Short)
+  robustus, robusta -um, robustior -or -us, robustissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    oak; hard, firm, solid, strong, hardy, lusty, robust; firm, solid, strong, stoutly, strongly, firmly; (Lewis and Short)
   difficilis, difficile, difficilior -or -us, difficillimus -a -um  adjective, 3rd declension  [XXXBO]
-    difficult, troublesome; hard; hard to please/manage/deal with/carry out;
-  callosus, callosa -um, callosior -or -us, callosissimus -a -um  adjective, 1st/2nd declension  [XXXCO]
-    tough, hard/thick-skinned; made hard/tough by use; callused, indurated;
-  (34 more not shown)
+    hard, difficult, troublesome; gerund; hard to manage, to please, obstinate, captious, morose, surly; with difficulty; (Lewis and Short)
+  difficilis, difficile, difficilior -or -us, difficillimus -a -um  adjective, 3rd declension  [XXXBO]
+    hard, difficult, troublesome; gerund; hard to manage, to please, obstinate, captious, morose, surly; with difficulty; (Lewis and Short)
+  (77 more not shown)
 
 never
   numquam  adverb  [XXXAX]
-    never;
-  nequando  adverb  [XXXCW]
-    lest, lest ever; never, not ever;
-  nunquam  adverb  [XXXDX]  lesser
-    at no time, never; not in any circumstances;
-  nullotiens  adverb  [FXXEM]  medieval  uncommon
-    never;
-  inexstinctus, inexstincta, inexstinctum  adjective, 1st/2nd declension  [XXXDX]  lesser
-    that is never extinguished;
-  nihilominus  adverb  [XXXDX]  lesser
-    never/none the less, notwithstanding, just the same; likewise, as well;
-  (5 more not shown)
+    at no time, never; always; not, by no means; (Lewis and Short)
+  aliquando  adverb  [XXXAO]
+    at some time, other, once; at any time, ever, but yet once, not at all, never; if at any time, if ever, if once, at one time, one day, once, at a former time; once, formerly; in future time, hereafter; sometimes, now and then; at one time ... at another, now.. now; once, for once, on this occasion, now; at length, now at last; tandem, finally, at length, now at last, jam; (Lewis and Short)
+  ripa, ripae  noun, 1st declension, feminine  [XXXAX]
+    the bank; the shore of the sea, never, immediately, from the bank, but, rather, a good way back from the shore; (Lewis and Short)
+  aevum, aevi  noun, 2nd declension, neuter  [XXXAO]
+    uninterrupted, never-ending time, eternity; lifetime, life, age, my age, time of life, the bloom of life, old age; Age, generation; The men living in the same age; time; (Lewis and Short)
+  haud  adverb  [XXXAL]
+    not at all, by no means; verbs: Ni, I never saw any one welcomer; not at all as yet, not yet; by no means whatever, not at all; (Lewis and Short)
+  adhuc  adverb  [XXXAO]
+    to this place, hitherto, thus far, so far, to such a degree; until now, hitherto, as yet; not as yet, not to this time, nothing as yet, not at all as yet, never as yet, never yet; yet, still, why play still, still more, further?; now first, just now, now for the first time; still, yet, while yet; besides, further, moreover; yet, still, he has done a still greater thing, he has still done a greater thing; even; (Lewis and Short)
+  (26 more not shown)
 
 say
-  aio, -, -  verb, irregular  [XXXAO]
-    say (defective), assert; say yes/so, affirm, assent; prescribe/lay down (law);
-  dico, dicere, dixi, dictus  verb, 3rd conjugation  [XXXAO]
-    say, declare, state; allege, declare positively; assert; plead (case);
   inquiam, -, -  verb, irregular  [XXXAX]
     say (defective); (postpositive - for direct quote); [inquiens => saying];
+  dico, dicere, dixi, dictus  verb, 3rd conjugation  [XXXAO]
+    imp, fut, to say, tell, mention, relate, affirm, declare, state; to mean, intend; or rather; they say, affirm, it is reported to Verres that; they say that I, thou; no sooner said than done, without delay; To assert, affirm; to pronounce, deliver, rehearse, speak; To describe, relate, sing, celebrate; to predict, foretell; To pronounce, articulate, Rho; To call, to name; To name, appoint; To utter, express; to tell, to admonish, warn, threaten, I have said it, you may depend upon it, it shall be done; to take an oath, to swear; to mean, namely, to wit, something said, a saying, a word; A saying, maxim, proverb; a witty saying, bon-mot; Poetry, verse; A prediction, prophecy; An order, command; A promise, assurance; (Lewis and Short)
+  dico, dicere, dixi, dictus  verb, 3rd conjugation  [XXXAO]
+    imp, fut, to say, tell, mention, relate, affirm, declare, state; to mean, intend; or rather; they say, affirm, it is reported to Verres that; they say that I, thou; no sooner said than done, without delay; To assert, affirm; to pronounce, deliver, rehearse, speak; To describe, relate, sing, celebrate; to predict, foretell; To pronounce, articulate, Rho; To call, to name; To name, appoint; To utter, express; to tell, to admonish, warn, threaten, I have said it, you may depend upon it, it shall be done; to take an oath, to swear; to mean, namely, to wit, something said, a saying, a word; A saying, maxim, proverb; a witty saying, bon-mot; Poetry, verse; A prediction, prophecy; An order, command; A promise, assurance; (Lewis and Short)
+  dico, dicere, dixi, dictus  verb, 3rd conjugation  [XXXAO]
+    imp, fut, to say, tell, mention, relate, affirm, declare, state; to mean, intend; or rather; they say, affirm, it is reported to Verres that; they say that I, thou; no sooner said than done, without delay; To assert, affirm; to pronounce, deliver, rehearse, speak; To describe, relate, sing, celebrate; to predict, foretell; To pronounce, articulate, Rho; To call, to name; To name, appoint; To utter, express; to tell, to admonish, warn, threaten, I have said it, you may depend upon it, it shall be done; to take an oath, to swear; to mean, namely, to wit, something said, a saying, a word; A saying, maxim, proverb; a witty saying, bon-mot; Poetry, verse; A prediction, prophecy; An order, command; A promise, assurance; (Lewis and Short)
   loquor, loqui, locutus sum  verb, 3rd conjugation, deponent  [XXXAX]
-    speak, tell; talk; mention; say, utter; phrase;
-  addo, addere, addidi, additus  verb, 3rd conjugation, transitive  [XXXAO]
-    add, insert, bring/attach to, say in addition; increase; impart; associate;
-  ait, -, -  verb, irregular, impersonal  [XXXAO]
-    he says (ait), it is said; they say (aiunt);
-  (37 more not shown)
+    to speak, talk, say; to speak evil of any one; To speak out, to say, tell, talk about, mention, utter, name; To talk of, speak about, to have ever on one's lips; they say, it is said, they talk of, the talk is of; To speak, declare, show, indicate, express clearly; to rustle, murmur; (Lewis and Short)
+  memoro, memorare, memoravi, memoratus  verb, 1st conjugation  [XXXAX]
+    to bring to remembrance, remind of, to mention, recount, relate, speak about, of, say, tell; sic; to speak, utter, make use of; memorable, renowned, celebrated; before mentioned; worthy of remembrance, memorable, celebrated; (Lewis and Short)
+  (122 more not shown)
 
 stop
+  cesso, cessare, cessavi, cessatus  verb, 1st conjugation, intransitive  [XXXAO]
+    to stand back very much, to be remiss in any thing, to delay, loiter, to cease from, stop, give over; idle, at leisure, to do nothing; to be at rest, to rest, be still, unemployed; to lie uncultivated, fallow; to have leisure for something, to attend to, apply one, s self to; not to be at hand, present, to be wanting; not to appear before a tribunal, to make default; to be invalid, null, void; to depart from a right way, to mistake, err; (Lewis and Short)
   consisto, consistere, constiti, constitus  verb, 3rd conjugation  [XXXAO]
-    stop/stand/halt/cease; pause, linger; stop spreading/flowing; take a position;
-  commoror, commorari, commoratus sum  verb, 1st conjugation, deponent  [XXXBO]
-    stop/stay/remain, abide; linger, delay; detain, be delayed (menses); dwell on;
-  conmoror, conmorari, conmoratus sum  verb, 1st conjugation, deponent  [XXXBS]
-    stop/stay/remain, abide; linger, delay; detain, be delayed (menses); dwell on;
-  desino, desinere, desivi, desitus  verb, 3rd conjugation  [XXXBO]
-    stop/end/finish, abandon/leave/break off, desist/cease; come to/at end/close;
-  desisto, desistere, destiti, destitus  verb, 3rd conjugation  [XXXBO]
-    stop/cease/desist (from); give up, leave/stand off; dissociate oneself;
-  mansio, mansionis  noun, 3rd declension, feminine  [XXXBO]
-    lodging, stop; day's journey, stage; staying away; abode/quarters/home/dwelling;
-  (47 more not shown)
+    to place one's self anywhere, to stand still, stand, halt, stop, make a stop; To set, become hard, solid; place one's self with some one for conversation, to stand with; To take one's place, take position, assume a place, attitude; to halt, make a halt, take a position, to make a stand; to appear as accuser before a court of justice; To have a stand, occupy a place of business; to rest, remain, stand; To pause, to dwell upon, delay, stop; remain firm, unshaken, immovable, steadfast, to be at rest, to stand one's ground, to continue, endure, subsist, be, exist, to take a firm stand; to be, exist, take, have place; circa, inter, to consist in, of, to depend upon; to come to a stand, stand still, stop, rest, take rest, cease; (Lewis and Short)
+  consisto, consistere, constiti, constitus  verb, 3rd conjugation  [XXXAO]
+    to place one's self anywhere, to stand still, stand, halt, stop, make a stop; To set, become hard, solid; place one's self with some one for conversation, to stand with; To take one's place, take position, assume a place, attitude; to halt, make a halt, take a position, to make a stand; to appear as accuser before a court of justice; To have a stand, occupy a place of business; to rest, remain, stand; To pause, to dwell upon, delay, stop; remain firm, unshaken, immovable, steadfast, to be at rest, to stand one's ground, to continue, endure, subsist, be, exist, to take a firm stand; to be, exist, take, have place; circa, inter, to consist in, of, to depend upon; to come to a stand, stand still, stop, rest, take rest, cease; (Lewis and Short)
+  consisto, consistere, constiti, constitus  verb, 3rd conjugation  [XXXAO]
+    to place one's self anywhere, to stand still, stand, halt, stop, make a stop; To set, become hard, solid; place one's self with some one for conversation, to stand with; To take one's place, take position, assume a place, attitude; to halt, make a halt, take a position, to make a stand; to appear as accuser before a court of justice; To have a stand, occupy a place of business; to rest, remain, stand; To pause, to dwell upon, delay, stop; remain firm, unshaken, immovable, steadfast, to be at rest, to stand one's ground, to continue, endure, subsist, be, exist, to take a firm stand; to be, exist, take, have place; circa, inter, to consist in, of, to depend upon; to come to a stand, stand still, stop, rest, take rest, cease; (Lewis and Short)
+  consisto, consistere, constiti, constitus  verb, 3rd conjugation  [XXXAO]
+    to place one's self anywhere, to stand still, stand, halt, stop, make a stop; To set, become hard, solid; place one's self with some one for conversation, to stand with; To take one's place, take position, assume a place, attitude; to halt, make a halt, take a position, to make a stand; to appear as accuser before a court of justice; To have a stand, occupy a place of business; to rest, remain, stand; To pause, to dwell upon, delay, stop; remain firm, unshaken, immovable, steadfast, to be at rest, to stand one's ground, to continue, endure, subsist, be, exist, to take a firm stand; to be, exist, take, have place; circa, inter, to consist in, of, to depend upon; to come to a stand, stand still, stop, rest, take rest, cease; (Lewis and Short)
+  maneo, manere, mansi, mansus  verb, 2nd conjugation  [XXXAX]
+    To stay, tarry, stop, continue, abide, pass the night; to remain, last, endure, continue, that which will abide, endure; lasting, permanent; to await, to be about to befall; (Lewis and Short)
+  (114 more not shown)
 

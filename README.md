@@ -874,6 +874,18 @@ source code (`<meaning entry="12" source="m">`); a meaning without it
 is a translation.  When you change a meaning in the editors, the code
 goes away, since the text is no longer the dictionary's.
 
+The same was done for English with Lewis and Short.  Every entry he has
+(32,097 of them) shows his definition: the glosses in italics of his
+senses, without the citations, the Latin examples and the notes on
+grammar, after which the results say "(Lewis and Short)".  An entry
+takes his definition only if it shares words with ours, so a medieval
+or another sense keeps its own meaning.  These definitions are in
+`data/languages/en.xml` (`source="S"`), and the meanings of WORDS stay
+in `data/dictionary.xml`: the search from English looks in both.  His
+proper names were added too, and the words whose grammar differs from
+ours; in all, 8,436 entries come from him (6,653 words and 1,783
+names), and the dictionary has 93,370 entries.
+
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations
 (L+S, OLD, Ecc, PASS, GEN ...), and the Latin in brackets
@@ -1100,16 +1112,21 @@ Version
 -------
 
 - 3.2:
-  - The dictionary has now 91,245 entries.  Lewis and Short gave 4,715
-    rare words, R. de Miguel's *Nuevo diccionario latino-español
+  - The dictionary has now 93,370 entries.  Lewis and Short gave 6,653
+    rare words and 1,783 names, R. de Miguel's *Nuevo diccionario latino-español
     etimológico* (1867) 25,149 words and names, and Latham 16,995 more
     medieval words (see "The Spanish meanings").
   - The Spanish meanings come from De Miguel (50,678, his whole
     definitions, in his spelling) and from Echave-Sustaeta (168) where
-    they have the word; the other 40,399 are translations.  In
+    they have the word; the other 42,515 are translations.  In
     `data/languages/es.xml` such a meaning carries its source
     (`source="m"`), and the results say it after the meaning: "(De
     Miguel)".
+  - The English meanings come from Lewis and Short (32,097, his
+    definitions made from his glosses) where he has the word and the
+    sense; the others are those of WORDS.  They are in
+    `data/languages/en.xml` (`source="S"`), and the results say "(Lewis
+    and Short)" after them.
   - Only English and Spanish remain as languages of the meanings; the
     meanings in French, German, Catalan and Galician of Collatinus were
     taken out.
@@ -1458,8 +1475,9 @@ The dictionary of py-words comes from these works:
   meanings of 168 entries that De Miguel does not cover (source code A;
   see "The Spanish meanings").
 - C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon
-  Press, 1879): 4,715 rare words that WORDS did not have (source code S;
-  see "The Spanish meanings"), with the long vowels of their headwords.
+  Press, 1879): 6,653 rare words and 1,783 names that WORDS did not have
+  (source code S), with the long vowels of their headwords, and the
+  English definitions of 32,097 entries (see "The Spanish meanings").
   Text provided under a CC BY-SA license by Perseus Digital Library,
   <http://www.perseus.tufts.edu>, with funding from The National
   Endowment for the Humanities.  Data accessed from

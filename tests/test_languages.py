@@ -90,7 +90,15 @@ class LanguageTests(unittest.TestCase):
         en = self.lexicon.language()
         self.assertTrue(en.is_reference)
         self.assertEqual(en.name, 'English')
-        self.assertEqual(en.meaning(self.friend), self.friend.meaning)
+        # amicus has the definition of Lewis and Short (en.xml), marked
+        from_ls = en.translated(self.friend)
+        self.assertNotEqual(from_ls, self.friend.meaning)
+        self.assertEqual(en.meaning(self.friend),
+                         f'{from_ls} (Lewis and Short)')
+        # an entry he does not have keeps the meaning of the data files
+        other = next(e for e in self.lexicon.entries
+                     if ('entry', e.uid) not in en.data.meanings)
+        self.assertEqual(en.meaning(other), other.meaning)
         self.assertIn('the', en.data.noise)
         self.assertEqual(en.numeral(NumeralSort.CARD, 3),
                          "3 - (CARD answers 'how many');")

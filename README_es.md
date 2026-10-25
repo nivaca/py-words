@@ -892,6 +892,19 @@ source="m">`); uno sin él es una traducción.  Cuando usted cambia un
 significado en los editores, el código desaparece, pues el texto ya no
 es el del diccionario.
 
+Lo mismo se hizo con el inglés y Lewis y Short.  Cada entrada que él
+tiene (32 097) muestra su definición: las glosas en cursiva de sus
+sentidos, sin las citas, los ejemplos latinos ni las notas de
+gramática, y tras ella los resultados dicen "(Lewis and Short)".  Una
+entrada toma su definición solo si comparte palabras con la nuestra,
+así que un sentido medieval u otro conserva su propio significado.
+Estas definiciones están en `data/languages/en.xml` (`source="S"`), y
+los significados de WORDS siguen en `data/dictionary.xml`: la búsqueda
+desde el inglés mira en los dos.  También se añadieron sus nombres
+propios y las palabras cuya gramática difiere de la nuestra; en total,
+8436 entradas vienen de él (6653 palabras y 1783 nombres), y el
+diccionario tiene 93 370 entradas.
+
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,
 Ecc, PASS, GEN ...) y el latín entre corchetes (`[domi => en casa]`);
@@ -1124,17 +1137,22 @@ Versiones
 ---------
 
 - 3.2:
-  - El diccionario tiene ahora 91 245 entradas.  Lewis y Short aportó
-    4715 palabras raras, el *Nuevo diccionario latino-español
+  - El diccionario tiene ahora 93 370 entradas.  Lewis y Short aportó
+    6653 palabras raras y 1783 nombres, el *Nuevo diccionario latino-español
     etimológico* (1867) de R. de Miguel 25 149 palabras y nombres, y
     Latham 16 995 palabras medievales más (véase "Los significados en
     español").
   - Los significados en español vienen de De Miguel (50 678, sus
     definiciones enteras, con su ortografía) y de Echave-Sustaeta (168)
-    donde tienen la palabra; los otros 40 399 son traducciones.  En
+    donde tienen la palabra; los otros 42 515 son traducciones.  En
     `data/languages/es.xml` un significado así lleva su fuente
     (`source="m"`), y los resultados la dicen tras el significado: "(De
     Miguel)".
+  - Los significados en inglés vienen de Lewis y Short (32 097, sus
+    definiciones hechas con sus glosas) donde él tiene la palabra y el
+    sentido; los demás son los de WORDS.  Están en
+    `data/languages/en.xml` (`source="S"`), y los resultados dicen "(Lewis
+    and Short)" tras ellos.
   - Solo quedan el inglés y el español como idiomas de los significados;
     se quitaron los significados en francés, alemán, catalán y gallego de
     Collatinus.
@@ -1501,10 +1519,10 @@ El diccionario de py-words viene de estas obras:
   en español de 168 entradas que De Miguel no cubre (código de fuente A;
   véase "Los significados en español").
 - C. T. Lewis y C. Short, *A Latin Dictionary* (Oxford: Clarendon Press,
-  1879): 4715 palabras raras que WORDS no tenía (código de fuente S;
-  véase "Los significados en español"), con las vocales largas de sus
-  lemas.  Text provided under a CC BY-SA license by Perseus Digital
-  Library, <http://www.perseus.tufts.edu>, with funding from The National
+  1879): 6653 palabras raras y 1783 nombres que WORDS no tenía (código
+  de fuente S), con las vocales largas de sus lemas, y las definiciones
+  inglesas de 32 097 entradas (véase "Los significados en español").
+  Text provided under a CC BY-SA license by Perseus Digital Library, <http://www.perseus.tufts.edu>, with funding from The National
   Endowment for the Humanities.  Data accessed from
   <https://github.com/PerseusDL/lexica/> on 23 October 2026.  (Es la
   mención que pide Perseus, que se deja en inglés.)  La licencia de este

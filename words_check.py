@@ -171,10 +171,6 @@ class Checker:
             self.report(path, 1, 'warning',
                         tr('the language {code} should be in {code}.xml, '
                            'not {name}.xml', code=data.code, name=name))
-        if data.reference and data.meanings:
-            self.report(path, 1, 'warning',
-                        tr('the meanings of English are those of the data '
-                           'files: these are not used'))
         if self.ids is None:
             return
         lines = _meaning_lines(path)

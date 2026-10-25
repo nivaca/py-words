@@ -14,8 +14,8 @@ languages/CODE.xml in the data folder (see words.xsd):
       <meaning entry="13" source="m">...</meaning>  taken from a dictionary
     </language>
 
-English (en.xml, reference="yes") has no <meaning>s: its meanings are
-those of the data files.  Another language gives the meanings it
+English (en.xml, reference="yes") has the meanings of the data files,
+except those its <meaning>s give, taken from a dictionary (source="S").  Another language gives the meanings it
 translates (source="...": the dictionary a meaning was taken from, by its
 code in sources.xml, when it was not translated from the English); the
 others are shown in English, marked [en], as are the
@@ -122,10 +122,13 @@ class Language:
         return self.data.reference
 
     def translated(self, thing) -> str | None:
-        """THING's meaning in this language, if it has one."""
+        """THING's meaning in this language, if it has one.  English has
+        the meanings of the data files, unless its file gives another,
+        taken from a dictionary (source="S": Lewis and Short)."""
+        text = self.data.meanings.get(key(thing))
         if self.is_reference:
-            return thing.meaning
-        return self.data.meanings.get(key(thing))
+            return thing.meaning if text is None else text
+        return text
 
     def meaning(self, thing) -> str:
         """THING's meaning in this language, or in English (marked); a
