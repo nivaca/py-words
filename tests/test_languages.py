@@ -54,7 +54,7 @@ class LanguageTests(unittest.TestCase):
   <numeral sort="CARD">{{n}} (cardinal)</numeral>
   <meaning entry="{cls.friend.uid}">amigo, aliado; la persona querida;\
 </meaning>
-  <meaning entry="{cls.heart.uid}">corazón; mente, alma;</meaning>
+  <meaning entry="{cls.heart.uid}" source="m">El corazón;</meaning>
   <meaning addon="{cls.tackon.uid}">-que = y (enclítico);</meaning>
   <meaning builtin="esse">ser; existir;</meaning>
   <text en="noun">sustantivo</text>
@@ -63,6 +63,12 @@ class LanguageTests(unittest.TestCase):
   <text en="{{1}} {{2}} participle">participio {{1}} {{2}}</text>
   <text en="Word mod {{1}}/{{2}}">Modificador de palabra {{1}}/{{2}}</text>
 </language>
+''')
+
+        write(os.path.join(cls.tmp.name, 'sources.xml'), '''\
+<sources>
+  <source code="m" name="De Miguel, Nuevo diccionario latino-español"/>
+</sources>
 ''')
 
     @classmethod
@@ -98,6 +104,8 @@ class LanguageTests(unittest.TestCase):
         es = self.lex().language('es')
         self.assertEqual(es.meaning(self.friend),
                          'amigo, aliado; la persona querida;')
+        self.assertEqual(es.translated(self.heart), 'El corazón;')
+        self.assertEqual(es.meaning(self.heart), 'El corazón; (De Miguel)')
         self.assertIsNone(es.translated(self.lexicon.entries[0]))
         self.assertTrue(es.meaning(self.lexicon.entries[0]).startswith(
             languages.ENGLISH_MARK))

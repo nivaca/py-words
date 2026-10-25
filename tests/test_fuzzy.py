@@ -138,7 +138,8 @@ class ReverseTests(unittest.TestCase):
 
     def test_spanish(self):
         out = self.lookup('corazn', language='es')
-        self.assertIn('(palabras cercanas: corazón', out)
+        #  (spelled as the meanings spell it: De Miguel's "corazon")
+        self.assertIn('(palabras cercanas: corazon', out)
 
 
 class CommandLineTests(unittest.TestCase):

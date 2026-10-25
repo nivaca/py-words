@@ -97,11 +97,14 @@ def names(datadir: str) -> dict[str, str]:
 class Language:
     """A language of the meanings."""
 
-    def __init__(self, data: LanguageData, reference: Language | None = None):
+    def __init__(self, data: LanguageData, reference: Language | None = None,
+                 sources: dict[str, str] | None = None):
         """REFERENCE: English, for what this language does not say (None
-        for English itself)."""
+        for English itself).  SOURCES: {source code: name}, to say which
+        dictionary a meaning was taken from."""
         self.data = data
         self.reference = reference
+        self.sources = sources or {}
 
     def __repr__(self):
         return f'<Language {self.code}>'
@@ -125,11 +128,16 @@ class Language:
         return self.data.meanings.get(key(thing))
 
     def meaning(self, thing) -> str:
-        """THING's meaning in this language, or in English (marked)."""
+        """THING's meaning in this language, or in English (marked); a
+        meaning taken from a dictionary says which, "(De Miguel)"."""
         text = self.translated(thing)
-        if text is not None:
+        if text is None:
+            return ENGLISH_MARK + thing.meaning.lstrip('|').strip()
+        source = self.data.sources.get(key(thing))
+        if source is None or source.name not in self.sources:
             return text
-        return ENGLISH_MARK + thing.meaning.lstrip('|').strip()
+        name = self.sources[source.name].split(',')[0].strip()
+        return f'{text} ({name})'
 
     def text(self, english: str) -> str:
         """ENGLISH, a text of the results, in this language (as it is if

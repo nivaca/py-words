@@ -223,6 +223,10 @@ class Lexicon:
                 lang = languages.read(path, reference)
                 if store:
                     store.write('language-' + code, lang.data)
+            try:
+                lang.sources = source_names(self.datadir)
+            except xmldata.DataError:
+                pass
             self._languages[code] = lang
         return self._languages[code]
 
