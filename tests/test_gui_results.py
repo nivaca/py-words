@@ -41,8 +41,8 @@ class WindowTests(unittest.TestCase):
         import tkinter as tk
         import words_gui
         self.tmp = tempfile.TemporaryDirectory()
-        self.old = os.environ['WHITAKERS_WORDS_CONFIG']
-        os.environ['WHITAKERS_WORDS_CONFIG'] = self.tmp.name
+        self.old = os.environ['PY_WORDS_CONFIG']
+        os.environ['PY_WORDS_CONFIG'] = self.tmp.name
         self.root = tk.Tk()
         self.app = words_gui.App(self.root, DATA)
         self.wait(lambda: self.app.session is not None)
@@ -51,7 +51,7 @@ class WindowTests(unittest.TestCase):
         self.root.destroy()
         del self.root, self.app
         gc.collect()        # (Tk must be freed here, not by another thread)
-        os.environ['WHITAKERS_WORDS_CONFIG'] = self.old
+        os.environ['PY_WORDS_CONFIG'] = self.old
         self.tmp.cleanup()
 
     def wait(self, ready, times=800):

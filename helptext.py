@@ -27,9 +27,6 @@ HELP = {
         N_('Always say in words when a word or form was used (archaic, '
            'classical, medieval ...) and how frequent it is, not only when '
            'it is unusual.'),
-    'show_examples':
-        N_('Show an English pattern for each form ("~\'s; of ~" for a '
-           'genitive), with ~ standing for the meaning.'),
     'trim_output':
         N_('Leave out the least likely results: forms that are only '
            'possible in theory, and archaic or uncommon ones when more '
@@ -65,9 +62,6 @@ HELP = {
     'ignore_unknown_names':
         N_('Do not try spelling tricks on an unknown word that is '
            'capitalized: it is probably a name.'),
-    'unknowns_only':
-        N_('Show only the words that are not found, to check a text for '
-           'words missing from the dictionary.'),
     'near_entries':
         N_('For an unknown word, list the dictionary entries near where it '
            'would be.  This can catch a word whose stem is in the '
@@ -91,10 +85,6 @@ HELP = {
         N_('Start each line of the results with a code saying what it is '
            '(01 a form, 02 an entry, 03 a meaning, 05 an affix, 06 a '
            'trick, 00 an unknown word), for programs that read the output.'),
-    'word_list_check':
-        N_('Analyse only the first word of each line, and accept only '
-           'dictionary forms (nominative singular, first person present '
-           '...), for checking word lists.'),
     'pause_in_screen_output':
         N_('In interactive use, pause after each screenful of results.'),
     'characters':

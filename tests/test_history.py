@@ -61,17 +61,17 @@ class HistoryTests(unittest.TestCase):
         h = History(None)
         h.add('amicorum')
         self.assertEqual(h.items, ['amicorum'])
-        os.environ['WHITAKERS_WORDS_HISTORY'], old = '', \
-            os.environ['WHITAKERS_WORDS_HISTORY']
+        os.environ['PY_WORDS_HISTORY'], old = '', \
+            os.environ['PY_WORDS_HISTORY']
         try:
             self.assertIsNone(history.history_path())
         finally:
-            os.environ['WHITAKERS_WORDS_HISTORY'] = old
+            os.environ['PY_WORDS_HISTORY'] = old
 
     def test_where(self):
         if sys.platform in ('win32', 'darwin'):
             self.skipTest('Linux folders')
-        old = os.environ.pop('WHITAKERS_WORDS_HISTORY')
+        old = os.environ.pop('PY_WORDS_HISTORY')
         try:
             os.environ['XDG_STATE_HOME'] = '/somewhere'
             self.assertEqual(history.history_path(),
@@ -80,7 +80,7 @@ class HistoryTests(unittest.TestCase):
             self.assertEqual(history.history_path(), os.path.expanduser(
                 '~/.local/state/py-words/history'))
         finally:
-            os.environ['WHITAKERS_WORDS_HISTORY'] = old
+            os.environ['PY_WORDS_HISTORY'] = old
 
     def test_unwritable(self):
         with open(os.path.join(self.tmp.name, 'state'), 'w'):
@@ -115,7 +115,7 @@ class CommandLineHistoryTests(unittest.TestCase):
         pid, fd = pty.fork()
         if pid == 0:
             os.environ.update(TERM='xterm',
-                              WHITAKERS_WORDS_HISTORY=self.path)
+                              PY_WORDS_HISTORY=self.path)
             os.execvp(sys.executable,
                       [sys.executable, os.path.join(ROOT, 'words.py')])
         out = []
@@ -160,12 +160,12 @@ class WindowHistoryTests(unittest.TestCase):
         except Exception:
             self.skipTest('needs a display')
         self.tmp = tempfile.TemporaryDirectory()
-        self.old = os.environ['WHITAKERS_WORDS_HISTORY']
-        os.environ['WHITAKERS_WORDS_HISTORY'] = os.path.join(self.tmp.name,
+        self.old = os.environ['PY_WORDS_HISTORY']
+        os.environ['PY_WORDS_HISTORY'] = os.path.join(self.tmp.name,
                                                              'history')
 
     def tearDown(self):
-        os.environ['WHITAKERS_WORDS_HISTORY'] = self.old
+        os.environ['PY_WORDS_HISTORY'] = self.old
         self.tmp.cleanup()
 
     def test_searches_are_listed(self):

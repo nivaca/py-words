@@ -608,7 +608,8 @@ header { display: flex; align-items: baseline; gap: .6rem;
 header h1 { font-size: 1.4rem; margin: 0; }
 header h1 a { color: inherit; text-decoration: none; }
 header span { color: var(--muted); }
-header a.home { margin-left: auto; font-size: .85rem; color: var(--muted);
+header .name { display: flex; flex-direction: column; }
+header a.home { font-size: .85rem; color: var(--muted);
   text-decoration: none; }
 header a.home:hover { color: var(--accent); text-decoration: underline; }
 a { color: var(--accent); }
@@ -692,9 +693,10 @@ pre.about { color: var(--muted); font-size: .85rem;
 </head>
 <body>
 <div class="wrap">
-<header><h1><a href="/">$name</a></h1>
-<span>$version · $t_tagline</span>
+<header><div class="name"><h1><a href="/">$name</a></h1>
 <a class="home" href="$home" target="_blank" rel="noopener">$home_name</a>
+</div>
+<span>$version · $t_tagline</span>
 </header>
 <form class="search" method="get" action="/">
 <input type="search" name="q" value="$query" placeholder="$placeholder"

@@ -164,9 +164,9 @@ os.remove('/py-words.zip')
 
 const BOOT = `
 import io, os, sys
-os.environ['WHITAKERS_WORDS_CONFIG'] = '${STATE}/config'
-os.environ['WHITAKERS_WORDS_HISTORY'] = '${STATE}/history'
-os.environ['WHITAKERS_WORDS_CACHE'] = CACHE_FOLDER
+os.environ['PY_WORDS_CONFIG'] = '${STATE}/config'
+os.environ['PY_WORDS_HISTORY'] = '${STATE}/history'
+os.environ['PY_WORDS_CACHE'] = CACHE_FOLDER
 os.chdir('${HOME}')
 sys.path.insert(0, '${HOME}')
 import interface, words_web

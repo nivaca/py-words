@@ -4,7 +4,7 @@
     macOS     ~/Library/Application Support/py-words/config.toml
     Windows   %APPDATA%\\py-words\\config.toml
 
-($WHITAKERS_WORDS_CONFIG names another folder.)  It has four sections:
+($PY_WORDS_CONFIG names another folder.)  It has four sections:
 
     [data]         folder: where the data files are
     [parameters]   the parameters (changed with # in interactive mode)
@@ -35,12 +35,22 @@ class ConfigError(Exception):
     """config.toml cannot be read."""
 
 
+def env(name: str) -> str | None:
+    """The environment variable $PY_WORDS_NAME, or the one of earlier
+    versions, $WHITAKERS_WORDS_NAME (None if neither is set)."""
+    for prefix in ('PY_WORDS_', 'WHITAKERS_WORDS_'):
+        value = os.environ.get(prefix + name)
+        if value is not None:
+            return value
+    return None
+
+
 def config_dir() -> str:
-    """Where the user's settings are kept: $WHITAKERS_WORDS_CONFIG, else
+    """Where the user's settings are kept: $PY_WORDS_CONFIG, else
     the usual settings folder of the system."""
-    env = os.environ.get('WHITAKERS_WORDS_CONFIG')
-    if env:
-        return env
+    env_ = env('CONFIG')
+    if env_:
+        return env_
     if sys.platform == 'win32':
         base = os.environ.get('APPDATA') or \
             os.path.join(os.path.expanduser('~'), 'AppData', 'Roaming')
@@ -136,7 +146,7 @@ HEADER = N_('The settings of py-words.  Each setting can be left out (or '
 INTRO = {
     'data': N_('Where dictionary.xml and the other data files are; empty: '
                'the data folder next to the program.  (--datadir and '
-               '$WHITAKERS_WORDS_DATADIR come first.)'),
+               '$PY_WORDS_DATADIR come first.)'),
     'parameters': N_('The parameters (changed with # in interactive mode).'),
     'developer': N_('The developer modes and command characters (changed '
                     'with ! in interactive mode).'),

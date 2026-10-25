@@ -33,8 +33,8 @@ class SettingsDialogTests(unittest.TestCase):
         import tkinter as tk
         import words_gui
         self.tmp = tempfile.TemporaryDirectory()
-        self.old = os.environ['WHITAKERS_WORDS_CONFIG']
-        os.environ['WHITAKERS_WORDS_CONFIG'] = self.tmp.name
+        self.old = os.environ['PY_WORDS_CONFIG']
+        os.environ['PY_WORDS_CONFIG'] = self.tmp.name
         self.root = tk.Tk()
         self.app = words_gui.App(self.root, DATA)
         for _ in range(800):            # (the dictionary loads in a thread)
@@ -50,7 +50,7 @@ class SettingsDialogTests(unittest.TestCase):
         self.root.destroy()
         del self.root, self.app, self.dialog
         gc.collect()        # (Tk must be freed here, not by another thread)
-        os.environ['WHITAKERS_WORDS_CONFIG'] = self.old
+        os.environ['PY_WORDS_CONFIG'] = self.old
         self.tmp.cleanup()
 
     def test_language_of_the_meanings(self):
@@ -82,12 +82,12 @@ class SettingsDialogTests(unittest.TestCase):
 
     def test_a_change_applies_and_is_saved(self):
         import config
-        self.toggle('show_examples')
-        self.assertTrue(self.app.session.settings.show_examples)
-        self.assertIs(config.section('parameters')['show_examples'], True)
+        self.toggle('explain_codes')
+        self.assertTrue(self.app.session.settings.explain_codes)
+        self.assertIs(config.section('parameters')['explain_codes'], True)
         # a change made otherwise shows in the dialogue
-        self.app.change_setting('show_examples', False)
-        self.assertFalse(self.dialog.vars['show_examples'].get())
+        self.app.change_setting('explain_codes', False)
+        self.assertFalse(self.dialog.vars['explain_codes'].get())
         self.toggle('show_entry_source')
         self.assertIs(config.section('developer')['show_entry_source'],
                       True)
@@ -148,7 +148,7 @@ class SettingsDialogTests(unittest.TestCase):
         import config
         self.assertFalse(self.app.session.settings.pause_in_screen_output)
         self.assertTrue(self.app.setting('pause_in_screen_output'))
-        self.toggle('show_examples')              # saves the parameters
+        self.toggle('explain_codes')              # saves the parameters
         self.toggle('show_entry_source')          # and the developer modes
         self.assertIs(config.section('developer')['pause_in_screen_output'],
                       True)                     # (not the window's False)
@@ -178,7 +178,7 @@ class SettingsDialogTests(unittest.TestCase):
 
     def test_usual_settings(self):
         import gui_settings
-        self.toggle('show_examples')
+        self.toggle('explain_codes')
         self.toggle('trim_output')
         old = gui_settings.messagebox.askyesno
         gui_settings.messagebox.askyesno = lambda *a, **kw: True
@@ -186,7 +186,7 @@ class SettingsDialogTests(unittest.TestCase):
             self.dialog.usual()
         finally:
             gui_settings.messagebox.askyesno = old
-        self.assertFalse(self.app.setting('show_examples'))
+        self.assertFalse(self.app.setting('explain_codes'))
         self.assertTrue(self.app.setting('trim_output'))
         self.assertTrue(self.dialog.vars['trim_output'].get())
 

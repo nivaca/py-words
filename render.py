@@ -10,14 +10,13 @@ parts and grammar, its meaning, then the forms the word can be), an
 irregular form, an affix or enclitic found on the word, or a note on a
 trick that was needed to find it.  The meanings are in the language given
 (see languages.py), and so is the rest, if the language translates it
-(Language.text); the example glosses (show_examples) are English, and only
-shown with English meanings.
+(Language.text).
 """
 
 from __future__ import annotations
 
 from forms import (principal_parts, describe_part, describe_form,
-                   gloss_form, example,
+                   gloss_form,
                     deponent, stem_and_ending, POS_NAME)
 from languages import Language
 from model import Pos, Age, Freq, NumeralSort, Entry, Form, Unique, \
@@ -61,8 +60,6 @@ class Renderer:
         self.meanings_only = meanings_only or settings.show_only_meanings
         self.glosses = glosses or {}
         self.language = language
-        self.examples = settings.show_examples and (
-            language is None or language.is_reference)
         self.lines: list[str] = []
 
     def t(self, english: str) -> str:
@@ -126,9 +123,6 @@ class Renderer:
             if near:
                 self.line(self.t(f'(near spellings: {", ".join(near)})'), 2)
             return self.text()
-        if self.s.unknowns_only:
-            self.lines = []
-            return ''
         shown = set()
         for reading in result.readings:
             self.reading(reading, result, shown)
@@ -244,10 +238,6 @@ class Renderer:
             note = result.notes.get(Origin.COMPOUND)
             if note:
                 self.line(self.t(note), 6, MEANING_CODE)
-        if self.examples:
-            gloss = example(p.form, entry)
-            if gloss:
-                self.line(gloss, 6)
 
     def marked(self, stem: str, entry: Entry | None) -> str:
         """STEM with its long vowels marked, if it is one of ENTRY's stems

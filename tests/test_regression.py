@@ -39,9 +39,9 @@ def run_words(args, workdir, config=None):
     if config:
         shutil.copy(config, os.path.join(folder, 'config.toml'))
     env = dict(os.environ,
-               WHITAKERS_WORDS_CACHE=os.path.join(workdir, 'cache'),
-               WHITAKERS_WORDS_CONFIG=folder)
-    env.pop('WHITAKERS_WORDS_DATADIR', None)
+               PY_WORDS_CACHE=os.path.join(workdir, 'cache'),
+               PY_WORDS_CONFIG=folder)
+    env.pop('PY_WORDS_DATADIR', None)
     return subprocess.run(
         [sys.executable, os.path.join(ROOT, 'words.py'), '--datadir', DATA]
         + args,
@@ -104,9 +104,6 @@ class RegressionTests(unittest.TestCase):
 
     def test_no_dictionary_forms(self):
         self.check('70_no_dictionary_forms')
-
-    def test_unknowns_only(self):
-        self.check('75_unknowns_only')
 
     def test_command_line(self):
         self.compare(['rem', 'acu', 'tetigisti'],

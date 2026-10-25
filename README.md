@@ -154,7 +154,7 @@ for distributing it:
 
     $ python3 bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `py-words-v.3.1.zip` (with the version of the program), with
+This writes `py-words-v.3.2.zip` (with the version of the program), with
 the program inside a folder of the same name.  It contains the programs,
 the data, the icons and the documents.  It does not contain hidden files
 (`.git` ...), nor the things that are made when the program runs or is
@@ -332,7 +332,7 @@ without colours, because their layout is different.
     words.py --help
 
 The program looks for the data files first with `--datadir`, then in
-`$WHITAKERS_WORDS_DATADIR`, then in the folder of the configuration file,
+`$PY_WORDS_DATADIR`, then in the folder of the configuration file,
 and at the end in the folder `data` next to the program.
 
 In interactive mode, each line is looked up, except if it starts with one
@@ -358,7 +358,7 @@ recent first).  The command line and the window share them.  The last
 1,000 are kept in `$XDG_STATE_HOME/py-words/history` in Linux (normally
 `~/.local/state/py-words`), in `~/Library/Application Support/py-words`
 in macOS and in `%LOCALAPPDATA%\py-words` in Windows
-(`$WHITAKERS_WORDS_HISTORY` gives another file; if it is empty, nothing
+(`$PY_WORDS_HISTORY` gives another file; if it is empty, nothing
 is kept).  `words.py --clear-history`, or "Clear history" in the Settings
 of the window, forgets them.
 
@@ -510,11 +510,12 @@ program; in their dialogues, `?` explains each one.  In the window,
 applied immediately.  The parameters are of two kinds.  What the results
 show: show_dictionary_forms, show_only_meanings, use_glosses,
 show_long_vowels, show_codes, explain_codes (the age and frequency in
-words), show_examples, trim_output and trim_medieval.  How words are
-looked up: fuzzy_search, use_affixes, use_tricks, medieval_spellings,
-read_compounds, ignore_unknown_names, unknowns_only and near_entries.
-The developer modes are show_entry_source, pearse_codes, word_list_check
-and pause_in_screen_output.
+words), trim_output and trim_medieval.  How words are looked up:
+fuzzy_search, use_affixes, use_tricks, medieval_spellings,
+read_compounds, ignore_unknown_names and near_entries.  The developer
+modes are show_entry_source, pearse_codes and pause_in_screen_output.
+In 3.2 three more went away: show_examples (the English example
+glosses), unknowns_only and word_list_check.
 
 Until 3.1 there were 33 of them, many only for testing WORDS itself.
 Now some became one (show_age and show_frequency are explain_codes;
@@ -535,7 +536,7 @@ file, `config.toml`:
 | macOS   | `~/Library/Application Support/py-words/config.toml`       |
 | Windows | `%APPDATA%\py-words\config.toml`                           |
 
-(`$WHITAKERS_WORDS_CONFIG` gives another folder.)  The program writes it
+(`$PY_WORDS_CONFIG` gives another folder.)  The program writes it
 when you save the settings in the `#` or `!` dialogue, or when the fonts
 change;
 
@@ -549,7 +550,7 @@ text, with a comment for each setting, and you can edit it by hand:
 
     [parameters]
     trim_output = true
-    show_examples = false
+    show_codes = true
     language = "en"          # the language of the meanings
     interface = "en"         # the language of the interface
     ...
@@ -577,8 +578,7 @@ file has priority.
 The original program could also write the results, the unknown words and
 some statistics to the files WORD.OUT, WORD.UNK and WORD.STA.  I took
 these settings out: to keep the results in a file, use `-o FILE` or
-redirect the output (`words.py -f text.txt > results.txt`), and for the
-unknown words of a text, the parameter unknowns_only.  A
+redirect the output (`words.py -f text.txt > results.txt`).  A
 configuration file that still has those settings is read without
 complaint, and they are dropped from it when it is saved again.
 
@@ -686,8 +686,7 @@ next time (the setting `language` in the configuration file, `en` if it
 does not say other thing).  `--language es` uses another one for one run
 of `words.py`, and `--languages` lists the ones that exist.  The search to
 Latin (`~E`, the second direction in the window, F2) goes from the
-language chosen.  The example glosses (`show_examples`) are in English, and
-they are shown only with English meanings.  `words_check.py` checks also
+language chosen.  `words_check.py` checks also
 the language files, and warns about meanings of ids that don't exist.
 
 ### The long vowels
@@ -889,7 +888,7 @@ it read in a cache (in `~/.cache/py-words` in Linux,
 `~/Library/Caches/py-words` in macOS, `%LOCALAPPDATA%\py-words` in
 Windows) and uses it while the files don't change; then the next start
 takes around a quarter of a second.  The cache keeps four data folders
-at most.  `$WHITAKERS_WORDS_CACHE` gives another folder for it; if it is
+at most.  `$PY_WORDS_CACHE` gives another folder for it; if it is
 empty, there is no cache.  It is always safe to delete the cache.
 
 Editing the dictionary
@@ -1100,6 +1099,30 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.2:
+  - The dictionary has now 91,245 entries.  Lewis and Short gave 4,715
+    rare words, R. de Miguel's *Nuevo diccionario latino-español
+    etimológico* (1867) 25,149 words and names, and Latham 16,995 more
+    medieval words (see "The Spanish meanings").
+  - The Spanish meanings come from De Miguel (50,678, his whole
+    definitions, in his spelling) and from Echave-Sustaeta (168) where
+    they have the word; the other 40,399 are translations.  In
+    `data/languages/es.xml` such a meaning carries its source
+    (`source="m"`), and the results say it after the meaning: "(De
+    Miguel)".
+  - Only English and Spanish remain as languages of the meanings; the
+    meanings in French, German, Catalan and Galician of Collatinus were
+    taken out.
+  - The settings are 18 instead of 33, in three groups (see "Settings and files"):
+    some became one, some are now always on, others got clearer names.
+    The English example glosses (show_examples), unknowns_only and
+    word_list_check are gone.  Configuration files with the old names
+    are still read.
+  - The environment variables are now `$PY_WORDS_DATADIR`,
+    `$PY_WORDS_CONFIG`, `$PY_WORDS_HISTORY` and `$PY_WORDS_CACHE`; the
+    old `$WHITAKERS_WORDS_...` still work.
+  - In the web page, the link to nicolasvaughan.org is under the name of
+    the program, on the left.
 - 3.1:
   - The online version starts with a loading bar.  The download of
     `py-words.zip` moves it by its bytes, and the other stages (loading

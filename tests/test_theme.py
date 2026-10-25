@@ -32,8 +32,8 @@ class ThemeTests(unittest.TestCase):
         import gui_theme
         self.tk, self.config, self.gui_theme = tk, config, gui_theme
         self.tmp = tempfile.TemporaryDirectory()
-        self.old = os.environ.get('WHITAKERS_WORDS_CONFIG')
-        os.environ['WHITAKERS_WORDS_CONFIG'] = self.tmp.name
+        self.old = os.environ.get('PY_WORDS_CONFIG')
+        os.environ['PY_WORDS_CONFIG'] = self.tmp.name
         self.root = tk.Tk()
 
     def tearDown(self):
@@ -41,9 +41,9 @@ class ThemeTests(unittest.TestCase):
         del self.root
         gc.collect()        # (Tk must be freed here, not by another thread)
         if self.old is None:
-            os.environ.pop('WHITAKERS_WORDS_CONFIG', None)
+            os.environ.pop('PY_WORDS_CONFIG', None)
         else:
-            os.environ['WHITAKERS_WORDS_CONFIG'] = self.old
+            os.environ['PY_WORDS_CONFIG'] = self.old
         self.tmp.cleanup()
 
     def test_dark_and_back(self):

@@ -32,8 +32,8 @@ class FontTests(unittest.TestCase):
         import gui_fonts
         self.tk, self.font, self.gui_fonts = tk, font, gui_fonts
         self.tmp = tempfile.TemporaryDirectory()
-        self.old = os.environ.get('WHITAKERS_WORDS_CONFIG')
-        os.environ['WHITAKERS_WORDS_CONFIG'] = self.tmp.name
+        self.old = os.environ.get('PY_WORDS_CONFIG')
+        os.environ['PY_WORDS_CONFIG'] = self.tmp.name
         self.root = tk.Tk()
         self.path = os.path.join(self.tmp.name, 'config.toml')
 
@@ -42,9 +42,9 @@ class FontTests(unittest.TestCase):
         del self.root
         gc.collect()        # (Tk must be freed here, not by another thread)
         if self.old is None:
-            os.environ.pop('WHITAKERS_WORDS_CONFIG', None)
+            os.environ.pop('PY_WORDS_CONFIG', None)
         else:
-            os.environ['WHITAKERS_WORDS_CONFIG'] = self.old
+            os.environ['PY_WORDS_CONFIG'] = self.old
         self.tmp.cleanup()
 
     def wait_for(self, app, root):
@@ -150,18 +150,18 @@ class FontTests(unittest.TestCase):
             os.path.abspath(__file__))), 'data')
         app = words_gui.App(self.root, data)
         self.wait_for(app, self.root)
-        self.assertFalse(app.setting('show_examples'))
-        app.change_setting('show_examples', True)
-        self.assertIs(config.section('parameters')['show_examples'], True)
+        self.assertFalse(app.setting('explain_codes'))
+        app.change_setting('explain_codes', True)
+        self.assertIs(config.section('parameters')['explain_codes'], True)
         # the next window starts with it
-        self.assertTrue(app.session.settings.show_examples)
+        self.assertTrue(app.session.settings.explain_codes)
         root = self.tk.Tk()
         again = None
         try:
             again = words_gui.App(root, data)
             self.wait_for(again, root)
-            self.assertTrue(again.setting('show_examples'))
-            self.assertTrue(again.session.settings.show_examples)
+            self.assertTrue(again.setting('explain_codes'))
+            self.assertTrue(again.session.settings.explain_codes)
         finally:
             root.destroy()
             del again, root

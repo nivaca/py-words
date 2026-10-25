@@ -150,14 +150,6 @@ class LanguageTests(unittest.TestCase):
         self.assertIn('(no match)', session.lookup('friend'))
         self.assertIn('(no match)', session.lookup('la'))      # noise
 
-    def test_examples_only_in_english(self):
-        session = self.session()
-        session.settings.show_examples = True
-        self.assertNotIn("~'s", session.lookup('amici'))
-        session = self.session('en')
-        session.settings.show_examples = True
-        self.assertIn("~'s", session.lookup('amici'))
-
     def test_unknown_language(self):
         session = self.session('xx')
         self.assertEqual(session.language.code, 'en')

@@ -14,8 +14,8 @@
     <tr>text_family y text_size: los resultados (una fuente de ancho fijo); ui_family y ui_size: el resto de las ventanas.</tr>
   </text>
   <text>
-    <en>Where dictionary.xml and the other data files are; empty: the data folder next to the program.  (--datadir and $WHITAKERS_WORDS_DATADIR come first.)</en>
-    <tr>Dónde están dictionary.xml y los demás archivos de datos; vacío: la carpeta data junto al programa.  (--datadir y $WHITAKERS_WORDS_DATADIR tienen prioridad.)</tr>
+    <en>Where dictionary.xml and the other data files are; empty: the data folder next to the program.  (--datadir and $PY_WORDS_DATADIR come first.)</en>
+    <tr>Dónde están dictionary.xml y los demás archivos de datos; vacío: la carpeta data junto al programa.  (--datadir y $PY_WORDS_DATADIR tienen prioridad.)</tr>
   </text>
   <text>
     <en>The parameters (changed with # in interactive mode).</en>
@@ -142,10 +142,6 @@
     <tr>Borrar historial</tr>
   </text>
   <text>
-    <en>Show only the words that are not found, to check a text for words missing from the dictionary.</en>
-    <tr>Mostrar solo las palabras que no se encuentran, para revisar en un texto las palabras que faltan en el diccionario.</tr>
-  </text>
-  <text>
     <en>Do not try spelling tricks on an unknown word that is capitalized: it is probably a name.</en>
     <tr>No probar trucos ortográficos con una palabra desconocida que empieza por mayúscula: probablemente es un nombre.</tr>
   </text>
@@ -160,10 +156,6 @@
   <text>
     <en>Show each entry with its principal parts and grammar (amicus, amici  noun, 2nd declension, masculine).</en>
     <tr>Mostrar cada entrada con sus partes principales y su gramática (amicus, amici  sustantivo, 2.ª declinación, masculino).</tr>
-  </text>
-  <text>
-    <en>Show an English pattern for each form ("~'s; of ~" for a genitive), with ~ standing for the meaning.</en>
-    <tr>Mostrar un modelo en inglés para cada forma ("~'s; of ~" para un genitivo), donde ~ representa el significado.</tr>
   </text>
   <text>
     <en>Write the analyses of the forms in glossing abbreviations, as in the Leipzig Glossing Rules (GEN.PL, 2SG.PRF.ACT.IND); if not, in words (genitive plural, 2nd person singular perfect active indicative).  The abbreviations are those of data/gloss.xml.</en>
@@ -418,8 +410,8 @@
     <tr>CARPETA</tr>
   </text>
   <text>
-    <en>the folder with the data files (default: $WHITAKERS_WORDS_DATADIR, the folder in the configuration file, or the data folder next to the program)</en>
-    <tr>la carpeta con los archivos de datos (por omisión: $WHITAKERS_WORDS_DATADIR, la carpeta del archivo de configuración, o la carpeta data junto al programa)</tr>
+    <en>the folder with the data files (default: $PY_WORDS_DATADIR, the folder in the configuration file, or the data folder next to the program)</en>
+    <tr>la carpeta con los archivos de datos (por omisión: $PY_WORDS_DATADIR, la carpeta del archivo de configuración, o la carpeta data junto al programa)</tr>
   </text>
   <text>
     <en>show where the configuration file is</en>
@@ -518,8 +510,8 @@
     <tr>terminar con estado 1 también si hay advertencias</tr>
   </text>
   <text>
-    <en>no data files in {folder} (set WHITAKERS_WORDS_DATADIR)</en>
-    <tr>no hay archivos de datos en {folder} (define WHITAKERS_WORDS_DATADIR)</tr>
+    <en>no data files in {folder} (set PY_WORDS_DATADIR)</en>
+    <tr>no hay archivos de datos en {folder} (define PY_WORDS_DATADIR)</tr>
   </text>
   <text>
     <en>cannot find {path} (use --inflections)</en>
@@ -2587,10 +2579,6 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>Explicar los códigos</tr>
   </text>
   <text>
-    <en>Show examples</en>
-    <tr>Mostrar ejemplos</tr>
-  </text>
-  <text>
     <en>Trim medieval</en>
     <tr>Recortar las medievales</tr>
   </text>
@@ -2611,10 +2599,6 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>Leer tiempos compuestos</tr>
   </text>
   <text>
-    <en>Unknowns only</en>
-    <tr>Solo las desconocidas</tr>
-  </text>
-  <text>
     <en>Near entries</en>
     <tr>Entradas cercanas</tr>
   </text>
@@ -2627,20 +2611,12 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>Códigos de Pearse</tr>
   </text>
   <text>
-    <en>Word list check</en>
-    <tr>Revisar listas de palabras</tr>
-  </text>
-  <text>
     <en>Always say in words when a word or form was used (archaic, classical, medieval ...) and how frequent it is, not only when it is unusual.</en>
     <tr>Decir siempre con palabras cuándo se usó una palabra o forma (arcaica, clásica, medieval ...) y qué tan frecuente es, no solo cuando es inusual.</tr>
   </text>
   <text>
     <en>An entry can have more than one source: then the others follow the five letters, each after a + ([XXXCO+M] is also from source M).  The age, when it is known, and the frequency, when it is lesser or rarer, are also given in words after the codes (archaic, lesser ...).  The parameter show_codes hides the codes, and the dictionary editors explain each code of an entry as it is edited.</en>
     <tr>Una entrada puede tener más de una fuente: entonces las demás van tras las cinco letras, cada una después de un + ([XXXCO+M] procede también de la fuente M).  La época, cuando se conoce, y la frecuencia, cuando es menor o más rara, también se dan en palabras tras los códigos (arcaico, menos frecuente...).  El parámetro show_codes oculta los códigos, y los editores del diccionario explican cada código de una entrada mientras se edita.</tr>
-  </text>
-  <text>
-    <en>Analyse only the first word of each line, and accept only dictionary forms (nominative singular, first person present ...), for checking word lists.</en>
-    <tr>Analizar solo la primera palabra de cada línea, y aceptar solo formas de diccionario (nominativo singular, primera persona del presente ...), para revisar listas de palabras.</tr>
   </text>
   <text>
     <en>Leave out the least likely results: forms that are only possible in theory, and archaic or uncommon ones when more common results were found.  A note says when something was left out.  In the search to Latin, show only the best six results.  Poets use unusual words and forms, so these can be trimmed wrongly.</en>

@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field, replace
 from enum import IntEnum, auto
 
-from model import (Pos, Case, Number, Gender, Tense, Voice, Mood, Age,
+from model import (Pos, Number, Gender, Tense, Voice, Mood, Age,
                     Freq, Decl, VerbKind, Form, Inflection, Entry, Unique,
                     Prefix, Suffix, Tackon, NO_INFLECTION)
 from settings import Settings
@@ -165,26 +165,12 @@ _DIC_STEMS = ('dic', 'duc', 'fac', 'fer')
 
 
 def allowed(p: Parse, settings: Settings) -> bool:
-    """Whether a parse from the dictionary is a possible word, or (with
-    word_list_check) a dictionary form."""
+    """Whether a parse from the dictionary is a possible word."""
     if not from_dictionary(p.origin):
         return True
     f = p.form
-    check = settings.word_list_check
     ok = True
-    if f.pos == Pos.N and check:
-        nominative = f.case in (Case.NOM, Case.X)
-        if nominative and f.number in (Number.S, Number.X):
-            ok = True
-        elif nominative and f.number == Number.P:
-            ok = 'pl.' in p.source.meaning
-        else:
-            ok = False
-    elif f.pos == Pos.ADJ and check:
-        ok = f.case in (Case.NOM, Case.X) and \
-            f.number in (Number.S, Number.X) and \
-            f.gender in (Gender.M, Gender.C, Gender.X)
-    elif f.pos == Pos.V:
+    if f.pos == Pos.V:
         kind = p.source.part.kind if p.source.part.pos == Pos.V else None
         if f.decl == Decl(3, 1) and f.tvm == (Tense.PRES, Voice.ACTIVE,
                                                Mood.IMP) \
@@ -211,19 +197,6 @@ def allowed(p: Parse, settings: Settings) -> bool:
                 (f.voice == Voice.ACTIVE and
                  Tense.PERF <= f.tense <= Tense.FUTP)):
             ok = False
-        if check:
-            if f.person == 1 and f.number == Number.S:
-                ok = f.tvm == (Tense.PRES, Voice.ACTIVE, Mood.IND) and (
-                    kind is None or kind <= VerbKind.INTRANS or
-                    kind in (VerbKind.DEP, VerbKind.SEMIDEP,
-                             VerbKind.PERFDEF))
-            elif kind == VerbKind.IMPERS:
-                ok = f.person == 3 and f.number == Number.S and \
-                    f.tvm == (Tense.PRES, Voice.ACTIVE, Mood.IND)
-            else:
-                ok = False
-    if check and f.pos in (Pos.VPAR, Pos.SUPINE):
-        ok = False
     return ok
 
 

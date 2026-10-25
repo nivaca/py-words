@@ -19,8 +19,8 @@ class ConfigTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.old = dict(os.environ)
-        os.environ['WHITAKERS_WORDS_CONFIG'] = self.tmp.name
-        os.environ.pop('WHITAKERS_WORDS_DATADIR', None)
+        os.environ['PY_WORDS_CONFIG'] = self.tmp.name
+        os.environ.pop('PY_WORDS_DATADIR', None)
 
     def tearDown(self):
         os.environ.clear()
@@ -30,7 +30,7 @@ class ConfigTests(unittest.TestCase):
     def test_where(self):
         self.assertEqual(config.config_path(),
                          os.path.join(self.tmp.name, 'config.toml'))
-        del os.environ['WHITAKERS_WORDS_CONFIG']
+        del os.environ['PY_WORDS_CONFIG']
         if sys.platform not in ('win32', 'darwin'):
             os.environ['XDG_CONFIG_HOME'] = '/somewhere'
             self.assertEqual(config.config_path(),
@@ -70,8 +70,20 @@ class ConfigTests(unittest.TestCase):
         config.update('data', {'folder': '~/latin'})
         self.assertEqual(lexicon.default_datadir(),
                          os.path.expanduser('~/latin'))
-        os.environ['WHITAKERS_WORDS_DATADIR'] = '/env'
+        os.environ['PY_WORDS_DATADIR'] = '/env'
         self.assertEqual(lexicon.default_datadir(), '/env')
+
+    def test_old_variable_names(self):
+        """$WHITAKERS_WORDS_... of earlier versions still count; the new
+        $PY_WORDS_... comes first."""
+        del os.environ['PY_WORDS_CONFIG']
+        os.environ['WHITAKERS_WORDS_CONFIG'] = '/old'
+        self.assertEqual(config.config_dir(), '/old')
+        os.environ['PY_WORDS_CONFIG'] = '/new'
+        self.assertEqual(config.config_dir(), '/new')
+        os.environ.pop('PY_WORDS_HISTORY', None)
+        os.environ['WHITAKERS_WORDS_HISTORY'] = ''
+        self.assertEqual(config.env('HISTORY'), '')
 
     def test_unreadable(self):
         with open(config.config_path(), 'w') as f:

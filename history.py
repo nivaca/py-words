@@ -5,7 +5,7 @@ and kept between sessions in a file:
     macOS     ~/Library/Application Support/py-words/history
     Windows   %LOCALAPPDATA%\\py-words\\history
 
-($WHITAKERS_WORDS_HISTORY names another file; set to nothing, no history
+($PY_WORDS_HISTORY names another file; set to nothing, no history
 is kept.)  The file has one search per line, the oldest first; the last
 MAX are kept, and a search the same as the one before is not added again.
 """
@@ -15,12 +15,14 @@ from __future__ import annotations
 import os
 import sys
 
+import config
+
 MAX = 1000
 
 
 def history_path() -> str | None:
     """The history file (None: no history)."""
-    env = os.environ.get('WHITAKERS_WORDS_HISTORY')
+    env = config.env('HISTORY')
     if env is not None:
         return env or None
     home = os.path.expanduser('~')

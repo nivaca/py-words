@@ -42,17 +42,15 @@ DEV_MODE_FILE = 'WORD.MDV'
 #  show, and how words are looked up
 SHOWN = (
     'show_dictionary_forms', 'show_only_meanings', 'use_glosses',
-    'show_long_vowels', 'show_codes', 'explain_codes', 'show_examples',
-    'trim_output', 'trim_medieval')
+    'show_long_vowels', 'show_codes', 'explain_codes', 'trim_output',
+    'trim_medieval')
 LOOKUP = (
     'fuzzy_search', 'use_affixes', 'use_tricks', 'medieval_spellings',
-    'read_compounds', 'ignore_unknown_names', 'unknowns_only',
-    'near_entries')
+    'read_compounds', 'ignore_unknown_names', 'near_entries')
 MODES = SHOWN + LOOKUP
 
 DEV_MODES = (
-    'show_entry_source', 'pearse_codes', 'word_list_check',
-    'pause_in_screen_output')
+    'show_entry_source', 'pearse_codes', 'pause_in_screen_output')
 
 #  The settings in groups, with their headings, for the dialogues
 GROUPS = ((N_('What the results show'), SHOWN),
@@ -88,31 +86,31 @@ RENAMED = {
     'show_dictionary_codes': 'show_codes',
     'show_age': 'explain_codes',
     'show_frequency': 'explain_codes',
-    'do_examples': 'show_examples',
     'omit_medieval': 'trim_medieval',
     'do_fixes': 'use_affixes',
     'do_tricks': 'use_tricks',
     'do_medieval_tricks': 'medieval_spellings',
     'do_compounds': 'read_compounds',
-    'do_unknowns_only': 'unknowns_only',
     'do_stems_for_unknown': 'near_entries',
     'show_dictionary': 'show_entry_source',
     'show_dictionary_line': 'show_entry_source',
     'do_pearse_codes': 'pearse_codes',
-    'do_only_initial_word': 'word_list_check',
 }
 MERGED = {'explain_codes', 'show_entry_source'}
 
 #  Settings of earlier versions that are gone: the files WORD.OUT, WORD.UNK
-#  and WORD.STA (until 2.15), and switches that were only for testing
-#  WORDS, now always as they usually were (until 3.1).  A configuration
-#  file that still has them is not wrong.
+#  and WORD.STA (until 2.15), switches that were only for testing WORDS,
+#  now always as they usually were (until 3.1), and the English example
+#  glosses, the unknown words only and the word list check (until 3.1).
+#  A configuration file that still has them is not wrong.
 REMOVED = ('have_output_file', 'write_output_to_file',
            'write_unknowns_to_file', 'have_statistics_file',
            'write_statistics_file', 'include_unknown_context',
            'for_word_list_check', 'do_only_fixes', 'do_fixes_anyway',
            'use_prefixes', 'use_suffixes', 'use_tackons', 'do_syncope',
-           'do_two_words', 'omit_archaic', 'omit_uncommon')
+           'do_two_words', 'omit_archaic', 'omit_uncommon',
+           'show_examples', 'do_examples', 'unknowns_only',
+           'do_unknowns_only', 'word_list_check', 'do_only_initial_word')
 
 #  Settings that only the interactive command line uses
 COMMAND_LINE = ('pause_in_screen_output',)
@@ -150,7 +148,6 @@ class Settings:
     show_long_vowels: bool = True
     show_codes: bool = True
     explain_codes: bool = False
-    show_examples: bool = False
     trim_output: bool = True
     trim_medieval: bool = False
     # ... and how words are looked up
@@ -160,14 +157,12 @@ class Settings:
     medieval_spellings: bool = True
     read_compounds: bool = True
     ignore_unknown_names: bool = True
-    unknowns_only: bool = False
     near_entries: bool = False
     language: str = 'en'
     interface: str = 'en'
     # Developer modes (WORD.MDV)
     show_entry_source: bool = False
     pearse_codes: bool = False
-    word_list_check: bool = False
     pause_in_screen_output: bool = True
     # Command characters (WORD.MDV)
     start_file_character: str = '@'

@@ -47,8 +47,8 @@ class TerminalDictionaryTests(unittest.TestCase):
         pid, fd = pty.fork()
         if pid == 0:
             os.environ.update(TERM='xterm', ESCDELAY='25',
-                              WHITAKERS_WORDS_HISTORY=self.history,
-                              WHITAKERS_WORDS_CONFIG=self.config)
+                              PY_WORDS_HISTORY=self.history,
+                              PY_WORDS_CONFIG=self.config)
             os.execvp(sys.executable, [sys.executable,
                                        os.path.join(ROOT, 'words_tui.py'),
                                        *args])

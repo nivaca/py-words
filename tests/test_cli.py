@@ -48,16 +48,16 @@ class SettingsTests(InTempDir):
 
     def setUp(self):
         super().setUp()
-        self.old_config = os.environ['WHITAKERS_WORDS_CONFIG']
-        os.environ['WHITAKERS_WORDS_CONFIG'] = os.path.join(self.tmp.name,
+        self.old_config = os.environ['PY_WORDS_CONFIG']
+        os.environ['PY_WORDS_CONFIG'] = os.path.join(self.tmp.name,
                                                             'config')
 
     def tearDown(self):
-        os.environ['WHITAKERS_WORDS_CONFIG'] = self.old_config
+        os.environ['PY_WORDS_CONFIG'] = self.old_config
         super().tearDown()
 
     def test_round_trip(self):
-        s = Settings(trim_output=False, show_examples=True, trim_medieval=True,
+        s = Settings(trim_output=False, explain_codes=True, trim_medieval=True,
                      start_file_character='%')
         path = s.save('parameters')
         self.assertEqual(s.save('developer'), path)
@@ -71,18 +71,18 @@ class SettingsTests(InTempDir):
         with open('WORD.MOD', 'w') as f:
             f.write('TRIM_OUTPUT   N\nDO_FIXES   N\n')
         Settings(trim_output=True, use_affixes=True,
-                 show_examples=True).save('parameters')
+                 explain_codes=True).save('parameters')
         s = Settings()
         messages = s.load('/nonexistent')
         # both were read, and [developer] was added to the file
         self.assertEqual(len(messages), 3)
         self.assertTrue(any(m.startswith('Completed the configuration')
                             for m in messages))
-        self.assertTrue(s.trim_output and s.use_affixes and s.show_examples)
+        self.assertTrue(s.trim_output and s.use_affixes and s.explain_codes)
 
     def test_bad_config(self):
-        os.makedirs(os.environ['WHITAKERS_WORDS_CONFIG'])
-        path = os.path.join(os.environ['WHITAKERS_WORDS_CONFIG'],
+        os.makedirs(os.environ['PY_WORDS_CONFIG'])
+        path = os.path.join(os.environ['PY_WORDS_CONFIG'],
                             'config.toml')
         with open(path, 'w') as f:
             f.write('[parameters]\ntrim_output = "no"\ndo_fixes = false\n'
@@ -119,7 +119,7 @@ class SettingsTests(InTempDir):
         which no longer exist, are passed over in silence, and dropped
         when the section is saved again."""
         import config
-        os.makedirs(os.environ['WHITAKERS_WORDS_CONFIG'])
+        os.makedirs(os.environ['PY_WORDS_CONFIG'])
         with open(config.config_path(), 'w') as f:
             f.write('[parameters]\nhave_output_file = true\n'
                     'trim_output = false\n[developer]\n'
@@ -136,7 +136,7 @@ class SettingsTests(InTempDir):
         made one: on if either is; the new name wins), and the file is
         written again with the new names."""
         import config
-        os.makedirs(os.environ['WHITAKERS_WORDS_CONFIG'])
+        os.makedirs(os.environ['PY_WORDS_CONFIG'])
         with open(config.config_path(), 'w') as f:
             f.write('[parameters]\ndo_fixes = false\nshow_age = false\n'
                     'show_frequency = true\ndo_tricks = false\n'
@@ -190,7 +190,7 @@ class CommandLineTests(InTempDir):
     def test_config_is_made_at_the_first_start(self):
         folder = tempfile.mkdtemp()
         path = os.path.join(folder, 'py-words', 'config.toml')
-        env = dict(os.environ, WHITAKERS_WORDS_CONFIG=os.path.dirname(path))
+        env = dict(os.environ, PY_WORDS_CONFIG=os.path.dirname(path))
         command = [sys.executable, os.path.join(ROOT, 'words.py')]
         result = subprocess.run(command + ['amo'], env=env,
                                 capture_output=True)
@@ -209,22 +209,22 @@ class CommandLineTests(InTempDir):
         subprocess.run(command + ['amo'], env=env, capture_output=True)
         self.assertEqual(os.path.getmtime(path), 0)
         # the data folder can be given there
-        os.environ['WHITAKERS_WORDS_CONFIG'], old = os.path.dirname(path), \
-            os.environ['WHITAKERS_WORDS_CONFIG']
+        os.environ['PY_WORDS_CONFIG'], old = os.path.dirname(path), \
+            os.environ['PY_WORDS_CONFIG']
         try:
             data = config.read()
             data['data']['folder'] = '/nonexistent/py-words-data'
             config.write(data)
         finally:
-            os.environ['WHITAKERS_WORDS_CONFIG'] = old
+            os.environ['PY_WORDS_CONFIG'] = old
         result = subprocess.run(command + ['amo'], env=env,
                                 capture_output=True)
         self.assertIn(b'/nonexistent/py-words-data', result.stderr)
 
     def test_interactive_start_says_so(self):
         folder = tempfile.mkdtemp()
-        os.environ['WHITAKERS_WORDS_CONFIG'], old = folder, \
-            os.environ['WHITAKERS_WORDS_CONFIG']
+        os.environ['PY_WORDS_CONFIG'], old = folder, \
+            os.environ['PY_WORDS_CONFIG']
         try:
             messages = Settings().load('/nonexistent')
             path = os.path.join(folder, 'config.toml')
@@ -246,7 +246,7 @@ class CommandLineTests(InTempDir):
                           False)
             self.assertIn('pearse_codes', config.section('developer'))
         finally:
-            os.environ['WHITAKERS_WORDS_CONFIG'] = old
+            os.environ['PY_WORDS_CONFIG'] = old
 
     def test_glosses_or_words(self):
         """use_glosses (on by usual) and --glosses / --no-glosses."""
@@ -259,14 +259,14 @@ class CommandLineTests(InTempDir):
         os.makedirs(config_dir)
         with open(os.path.join(config_dir, 'config.toml'), 'w') as f:
             f.write('[parameters]\nuse_glosses = false\n')
-        old = os.environ['WHITAKERS_WORDS_CONFIG']
-        os.environ['WHITAKERS_WORDS_CONFIG'] = config_dir
+        old = os.environ['PY_WORDS_CONFIG']
+        os.environ['PY_WORDS_CONFIG'] = config_dir
         try:
             self.assertIn('genitive plural', run('amicorum').stdout.decode())
             self.assertIn('GEN.PL', run('--glosses', 'amicorum')
                           .stdout.decode())
         finally:
-            os.environ['WHITAKERS_WORDS_CONFIG'] = old
+            os.environ['PY_WORDS_CONFIG'] = old
 
     def test_english(self):
         out = run('-e', 'friend', '--pos', 'ADJ').stdout.decode()

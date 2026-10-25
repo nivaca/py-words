@@ -68,9 +68,9 @@ def source_names(datadir: str) -> dict[str, str]:
 
 
 def default_datadir() -> str:
-    """$WHITAKERS_WORDS_DATADIR, else the folder in the configuration file,
+    """$PY_WORDS_DATADIR, else the folder in the configuration file,
     else the data folder next to the program."""
-    return os.environ.get('WHITAKERS_WORDS_DATADIR') or \
+    return config.env('DATADIR') or \
         config.data_folder() or DATA_DIR
 
 #  The forms of esse are built in: its second stem is blank (es, est, esse
@@ -349,9 +349,9 @@ def _grouped(keys, key) -> dict[str, list[str]]:
 #  The cache
 
 def cache_dir() -> str | None:
-    """Where the cache is kept: $WHITAKERS_WORDS_CACHE (if empty, there is
+    """Where the cache is kept: $PY_WORDS_CACHE (if empty, there is
     no cache), else the user's cache folder."""
-    env = os.environ.get('WHITAKERS_WORDS_CACHE')
+    env = config.env('CACHE')
     if env is not None:
         return env or None
     if sys.platform == 'win32':

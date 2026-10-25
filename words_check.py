@@ -304,7 +304,7 @@ def main(argv=None):
     files = args.files or data_files(datadir)
     if not files:
         sys.exit(tr('no data files in {folder} (set '
-                    'WHITAKERS_WORDS_DATADIR)', folder=datadir))
+                    'PY_WORDS_DATADIR)', folder=datadir))
     inflections = args.inflections or \
         os.path.join(datadir, lexicon.INFLECTIONS)
     if not os.path.isfile(inflections):

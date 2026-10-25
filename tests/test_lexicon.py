@@ -45,14 +45,14 @@ class CacheTests(unittest.TestCase):
             with open(os.path.join(DATA, name), 'rb') as f, \
                     open(os.path.join(self.data, name), 'wb') as g:
                 g.write(f.read())
-        self.old = os.environ.get('WHITAKERS_WORDS_CACHE')
-        os.environ['WHITAKERS_WORDS_CACHE'] = self.cache
+        self.old = os.environ.get('PY_WORDS_CACHE')
+        os.environ['PY_WORDS_CACHE'] = self.cache
 
     def tearDown(self):
         if self.old is None:
-            del os.environ['WHITAKERS_WORDS_CACHE']
+            del os.environ['PY_WORDS_CACHE']
         else:
-            os.environ['WHITAKERS_WORDS_CACHE'] = self.old
+            os.environ['PY_WORDS_CACHE'] = self.old
         self.tmp.cleanup()
 
     @property
@@ -117,7 +117,7 @@ class CacheTests(unittest.TestCase):
                          self.entries)
 
     def test_no_cache_if_switched_off(self):
-        os.environ['WHITAKERS_WORDS_CACHE'] = ''
+        os.environ['PY_WORDS_CACHE'] = ''
         Lexicon.load(self.data)
         self.assertFalse(os.path.exists(self.cache))
 

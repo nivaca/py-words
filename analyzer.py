@@ -601,8 +601,6 @@ class Analyzer:
                 word, next_word, is_capitalized(word), is_all_caps(word),
                 followed_by_period, meanings_only)
             results.append(result)
-            if self.settings.word_list_check:
-                break
         return results
 
 

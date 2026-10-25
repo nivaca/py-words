@@ -1,4 +1,4 @@
-# py-words 3.1: descripción
+# py-words 3.2: descripción
 
 ## Análisis
 
@@ -38,7 +38,7 @@ Para que el programa arranque rápido, lo que se lee de los datos se guarda en u
 
 ## Implementación
 
-Está escrito en Python 3.11 o superior y usa solo la biblioteca estándar, sin paquetes externos. Son 38 archivos, unas 13 200 líneas. Aprovecha lo que ofrece el Python actual: clases de datos inmutables con `slots`, anotaciones de tipos, `match`/`case`, f-strings y `tomllib` para leer la configuración.
+Está escrito en Python 3.11 o superior y usa solo la biblioteca estándar, sin paquetes externos. Son 39 archivos, unas 13 900 líneas. Aprovecha lo que ofrece el Python actual: clases de datos inmutables con `slots`, anotaciones de tipos, `match`/`case`, f-strings y `tomllib` para leer la configuración.
 
 La ventana y el editor gráfico usan Tkinter, con fuentes ajustables, zoom con Ctrl y +/− y un diálogo de ajustes con todas las opciones de la línea de órdenes. La pantalla completa para la terminal (`words_tui.py`) y el editor de terminal usan `curses`. La versión web (`words_web.py`) es una aplicación WSGI servida por `wsgiref`, de la biblioteca estándar: una página con el cuadro de búsqueda, el historial, un enlace de cada entrada a su propia búsqueda y todas las opciones, en claro u oscuro. La línea de órdenes usa `argparse` y tiene un modo interactivo. Desde la versión 2.12, la ventana y la página web muestran los resultados con más orden: cada línea según lo que es (la palabra buscada, una entrada, un significado, una forma, una nota), algo que `layout.py` reconoce a partir de la disposición del texto, sin Tk, para que también lo use la versión en línea. La primera palabra de una entrada es un enlace, un doble clic busca cualquier palabra, y los códigos entre corchetes y los análisis se explican solos al pasar el puntero por encima (o al tocarlos en el teléfono). La ventana tiene además menús, una barra de búsqueda y un menú con el botón derecho. Todas comparten el historial de búsquedas.
 
@@ -88,7 +88,7 @@ Por último, algunas ideas se escribieron de nuevo en py-words: una lectura más
 
 El rediseño se comparó con la traducción fiel sobre un corpus de 133 671 palabras: todas las raíces del diccionario, formas generadas y las entradas de prueba. El 99,2 % dio exactamente los mismos resultados. Las diferencias restantes se revisaron una por una, y todas resultaron ser cambios deliberados o errores del original ya corregidos; están documentadas en el README.
 
-Hay 269 pruebas automáticas, que se corren con `python3 -m unittest discover -s tests`. Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador y el servidor web, incluidas sus protecciones. Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
+Hay 267 pruebas automáticas, que se corren con `python3 -m unittest discover -s tests`. Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador y el servidor web, incluidas sus protecciones. Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
 
 La versión en línea se probó en un navegador manejado por un script (búsquedas en los dos sentidos, los enlaces de los resultados, el botón Atrás, el modo oscuro, la interfaz en español y los ajustes que se conservan al recargar), tanto desde un servidor local como desde el sitio publicado. Las pruebas corren en Python 3.11, la versión mínima, y en 3.14. Las ventanas se revisaron además a ojo, con capturas de pantalla, y con un Python demasiado viejo el programa da un mensaje claro en lugar de un error.
 

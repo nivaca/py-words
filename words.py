@@ -451,7 +451,7 @@ def _main(argv: list[str] | None, meanings_only: bool):
                                 'this time only (the setting is interface)'))
     parser.add_argument('--datadir', default=None, metavar=tr('DATADIR'),
                         help=tr('the folder with the data files (default: '
-                                '$WHITAKERS_WORDS_DATADIR, the folder in the '
+                                '$PY_WORDS_DATADIR, the folder in the '
                                 'configuration file, or the data folder '
                                 'next to the program)'))
     parser.add_argument('--config', action='store_true',

@@ -88,8 +88,8 @@ def settings_folder(lang: str, dark: bool) -> str:
 
 def environment(folder: str) -> dict:
     env = dict(os.environ)
-    env['WHITAKERS_WORDS_CONFIG'] = folder
-    env['WHITAKERS_WORDS_HISTORY'] = os.path.join(folder, 'history')
+    env['PY_WORDS_CONFIG'] = folder
+    env['PY_WORDS_HISTORY'] = os.path.join(folder, 'history')
     env['PYTHONDONTWRITEBYTECODE'] = '1'
     return env
 
@@ -294,8 +294,8 @@ class Tmux:
     def __init__(self, columns: int, lines: int, command: list[str],
                  env: dict):
         self.socket = f'py-words-shots-{os.getpid()}'
-        settings = {k: env[k] for k in ('WHITAKERS_WORDS_CONFIG',
-                                         'WHITAKERS_WORDS_HISTORY',
+        settings = {k: env[k] for k in ('PY_WORDS_CONFIG',
+                                         'PY_WORDS_HISTORY',
                                          'PYTHONDONTWRITEBYTECODE')}
         self.run('-f', '/dev/null', 'new-session', '-d', '-s', 'shot',
                  '-x', str(columns), '-y', str(lines),
