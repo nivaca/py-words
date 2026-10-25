@@ -146,7 +146,7 @@ class App:
     def menus(self):
         """The menu bar: Dictionary, View and Help."""
         root = self.root
-        bar = tk.Menu(root)
+        bar = tk.Menu(root, tearoff=False)
         key = 'Command' if sys.platform == 'darwin' else 'Ctrl'
         dictionary = tk.Menu(bar, tearoff=False)
         dictionary.add_command(label=tr('Edit dictionary…'),
