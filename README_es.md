@@ -870,10 +870,13 @@ como forma de otra palabra o con un sufijo (*portentosus* como
 *portentum* + -osus).  Así que cada entrada se comparó otra vez con la
 línea entera de De Miguel, 11 384 de esos lemas recibieron entradas
 propias, y 413 entradas recibieron el sentido de De Miguel cuando era
-otro sentido de la misma palabra.  Ahora el diccionario tiene 81 551
-entradas; 50 678 significados en español vienen de De Miguel y 168 de
-Echave-Sustaeta, y los otros 30 705 siguen siendo traducciones (sobre
-todo sentidos medievales y palabras que De Miguel no tiene).  En `data/languages/es.xml` un significado tomado de un
+otro sentido de la misma palabra.  La misma revisión mostró el mismo
+hueco en Lewis y Short y en Latham, así que 1596 palabras más de Lewis
+y Short y 8098 palabras medievales más de Latham recibieron entradas
+propias.  Ahora el diccionario tiene 91 245 entradas; 50 678
+significados en español vienen de De Miguel y 168 de Echave-Sustaeta,
+y los otros 40 399 siguen siendo traducciones (sobre todo palabras y
+sentidos medievales que De Miguel no tiene).  En `data/languages/es.xml` un significado tomado de un
 diccionario lleva su código de fuente (`<meaning entry="12"
 source="m">`); uno sin él es una traducción.  Cuando usted cambia un
 significado en los editores, el código desaparece, pues el texto ya no
@@ -1455,7 +1458,7 @@ El diccionario de py-words viene de estas obras:
   Sources* (Londres: Oxford University Press para la British Academy,
   1965): 2444 sentidos medievales de palabras que el diccionario ya
   tenía, 21 significados corregidos, 1140 palabras nuevas y 1204
-  variantes ortográficas, y después 8897 palabras medievales más,
+  variantes ortográficas, y después 16 995 palabras medievales más,
   derivados y grafías (código de fuente M; véase "Los significados en
   español").
 - J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entradas
@@ -1463,7 +1466,7 @@ El diccionario de py-words viene de estas obras:
   en español de 168 entradas que De Miguel no cubre (código de fuente A;
   véase "Los significados en español").
 - C. T. Lewis y C. Short, *A Latin Dictionary* (Oxford: Clarendon Press,
-  1879): 3119 palabras raras que WORDS no tenía (código de fuente S;
+  1879): 4715 palabras raras que WORDS no tenía (código de fuente S;
   véase "Los significados en español"), con las vocales largas de sus
   lemas.  Text provided under a CC BY-SA license by Perseus Digital
   Library, <http://www.perseus.tufts.edu>, with funding from The National

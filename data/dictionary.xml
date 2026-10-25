@@ -203220,7 +203220,7 @@
     geo="X" freq="E" source="M">
     <stem>elongatio</stem>
     <stem>elongation</stem>
-    <meaning>prolongation; protraction, delay; elongation (astr.); eloignment, carrying off (leg.); removal, departure; remoteness;</meaning>
+    <meaning>prolongation, delay; elongation (astr.); carrying off (leg.); removal;</meaning>
   </entry>
   <entry id="86148" pos="N" decl="3 1" gender="M" kind="P" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -224374,7 +224374,7 @@
     geo="X" freq="E" source="M">
     <stem>extravagans</stem>
     <stem>extravagant</stem>
-    <meaning>stray; supplementary; absurd; (subst.) Extravagant (papal constitution), wandering friar;</meaning>
+    <meaning>stray; supplementary; absurd; Extravagant (papal decree); wandering friar;</meaning>
   </entry>
   <entry id="86432" pos="N" decl="2 2" gender="N" kind="T" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -256453,7 +256453,7 @@
     geo="X" freq="C" source="M">
     <stem>hai</stem>
     <stem>hai</stem>
-    <meaning>hedge, hay (enclosure in a forest); netted enclosure for game; stake-net, fish-garth;</meaning>
+    <meaning>hedge, hay (forest enclosure); netted enclosure for game; stake-net;</meaning>
   </entry>
   <entry id="86892" pos="N" decl="2 4" gender="N" kind="T" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -282277,7 +282277,7 @@
     <stem>inclav</stem>
     <stem>inclavav</stem>
     <stem>inclavat</stem>
-    <meaning>nail on; mark (a measure) by nails; accloy, lame (a horse) by pricking with a shoe-nail;</meaning>
+    <meaning>nail on; mark (a measure) by nails; lame (a horse) with a shoe-nail;</meaning>
   </entry>
   <entry id="74186" pos="ADJ" decl="3 2" comparison="POS" age="X" area="X"
     geo="X" freq="E" source="m">
@@ -389638,7 +389638,7 @@
     geo="X" freq="E" source="M">
     <stem>panell</stem>
     <stem>panell</stem>
-    <meaning>strip (of cloth); pane (of glass); saddle-pad; panel; side (arch.); weir; panel, list (of jurors);</meaning>
+    <meaning>strip (of cloth); pane (of glass); saddle-pad; panel; weir; list (of jurors);</meaning>
   </entry>
   <entry id="88681" pos="N" decl="1 1" gender="F" kind="T" age="F" area="X"
     geo="X" freq="C" source="M">
@@ -396528,7 +396528,7 @@
     geo="X" freq="C" source="M">
     <stem>peci</stem>
     <stem>peci</stem>
-    <meaning>piece; measure of cloth; piece of ordnance; gathering of parchment; head (of cattle); piece of plate, vessel;</meaning>
+    <meaning>piece; measure of cloth; piece of ordnance; quire of parchment; head (cattle);</meaning>
   </entry>
   <entry id="88768" pos="N" decl="2 2" gender="N" kind="T" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -418038,7 +418038,7 @@
     geo="X" freq="C" source="M">
     <stem>place</stem>
     <stem>place</stem>
-    <meaning>open space, site, plot, square; residence, building; fortified place; place of judicial combat; tennis court (?); court (leg.);</meaning>
+    <meaning>open space, site, square; residence; stronghold; lists; tennis court; court;</meaning>
   </entry>
   <entry id="77997" pos="ADJ" decl="3 1" comparison="POS" age="X" area="X"
     geo="X" freq="E" source="m">
@@ -419045,7 +419045,7 @@
     geo="X" freq="C" source="M">
     <stem>plat</stem>
     <stem>plat</stem>
-    <meaning>plate, bullion; piece of iron; plate (of armour); plate of plough; flat of sword; board; plate, platter;</meaning>
+    <meaning>plate, bullion; piece of iron; plate (armour, plough); flat of sword; platter;</meaning>
   </entry>
   <entry id="58798" pos="N" decl="1 1" gender="F" kind="M" age="X" area="X"
     geo="X" freq="E" source="m">
@@ -459413,7 +459413,7 @@
     geo="X" freq="E" source="M">
     <stem>recollectio</stem>
     <stem>recollection</stem>
-    <meaning>gathering in, harvesting; additional collection; regress from particular to general (log.); mystical concentration;</meaning>
+    <meaning>gathering in, harvesting; additional collection; induction (log.); recollection;</meaning>
   </entry>
   <entry id="33118" pos="V" conj="3 1" kind="X" age="X" area="X" geo="X"
     freq="D" source="X">
@@ -459491,7 +459491,7 @@
     geo="X" freq="C" source="M">
     <stem>recommendatio</stem>
     <stem>recommendation</stem>
-    <meaning>recommendation, greeting; commendation, praise; entrusting; commending (in prayer);</meaning>
+    <meaning>recommendation, greeting; commendation, praise; entrusting; commending (prayer);</meaning>
   </entry>
   <entry id="89784" pos="ADJ" decl="1 1" comparison="POS" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -467898,7 +467898,7 @@
     geo="X" freq="C" source="M">
     <stem>reservatio</stem>
     <stem>reservation</stem>
-    <meaning>reservation, keeping back; (papal) reservation of a benefice; mental reservation (r. mentalis);</meaning>
+    <meaning>reservation, keeping back; papal reservation of a benefice; mental reservation;</meaning>
   </entry>
   <entry id="90036" pos="N" decl="3 1" gender="M" kind="P" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -473471,7 +473471,7 @@
     geo="X" freq="C" source="M">
     <stem>rod</stem>
     <stem>rod</stem>
-    <meaning>roadstead; rood (measure of wine); rood, cross; rood (square measure); rod (linear measure);</meaning>
+    <meaning>roadstead; rood, cross; rood (measure of wine or land); rod (linear measure);</meaning>
   </entry>
   <entry id="90168" pos="N" decl="1 1" gender="F" kind="T" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -509895,7 +509895,7 @@
     geo="X" freq="E" source="M">
     <stem>subalternatio</stem>
     <stem>subalternation</stem>
-    <meaning>hypallage (gram.); subordination (log.); substitution of a lower authority (eccl.);</meaning>
+    <meaning>hypallage (gram.); subordination (log.); substitution of a lower authority;</meaning>
   </entry>
   <entry id="47073" pos="N" decl="2 2" gender="N" kind="T" age="X" area="X"
     geo="X" freq="E" source="S">
@@ -510061,7 +510061,7 @@
     <stem>subarrh</stem>
     <stem>subarrhav</stem>
     <stem>subarrhat</stem>
-    <meaning>to pay earnest money (to or for); to undertake, pledge oneself to; to espouse, betroth;</meaning>
+    <meaning>pay earnest money (to/for); undertake, pledge oneself to; espouse, betroth;</meaning>
   </entry>
   <entry id="90685" pos="N" decl="3 1" gender="F" kind="T" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -516718,7 +516718,7 @@
     geo="X" freq="E" source="M">
     <stem>suet</stem>
     <stem>suet</stem>
-    <meaning>(payment for) relaxation of prison conditions or freedom from detention before trial;</meaning>
+    <meaning>(payment for) easing of prison conditions, or release before trial;</meaning>
   </entry>
   <entry id="90949" pos="N" decl="3 1" gender="F" kind="T" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -521363,7 +521363,7 @@
     geo="X" freq="E" source="M">
     <stem>superoneratio</stem>
     <stem>superoneration</stem>
-    <meaning>overloading (naut.); overburdening, overcharging (fig.); overstocking (of pasture); surcharge (on account);</meaning>
+    <meaning>overloading (naut.); overburdening (fig.); overstocking (pasture); surcharge;</meaning>
   </entry>
   <entry id="91196" pos="ADJ" decl="1 1" comparison="POS" age="F" area="X"
     geo="X" freq="E" source="M">
@@ -530705,7 +530705,7 @@
     geo="X" freq="E" source="M">
     <stem>tem</stem>
     <stem>tem</stem>
-    <meaning>team, vouching to warranty (in action for recovery), jurisdiction involving such action;</meaning>
+    <meaning>team, vouching to warranty (in recovery); jurisdiction over such actions;</meaning>
   </entry>
   <entry id="59824" pos="N" decl="1 7" gender="M" kind="N" age="X" area="X"
     geo="X" freq="E" source="m">
@@ -540839,7 +540839,7 @@
     geo="X" freq="E" source="M">
     <stem>traci</stem>
     <stem>traci</stem>
-    <meaning>trace, (following) trail (of stolen cattle); measure of garlic, (?) string (Salop.);</meaning>
+    <meaning>trace, trail (of stolen cattle); measure of garlic, string (Salop.);</meaning>
   </entry>
   <entry id="91530" pos="V" conj="1 1" kind="TRANS" age="F" area="X" geo="X"
     freq="E" source="M">

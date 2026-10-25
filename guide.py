@@ -177,7 +177,7 @@ SOURCES = (
        'J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses '
        'and words, in English and in Spanish (source code A).  Lewis and '
        'Short, A Latin Dictionary, in the text of the Perseus Digital '
-       'Library (CC BY-SA 4.0), gave some 3,000 rare words that WORDS did '
+       'Library (CC BY-SA 4.0), gave some 4,700 rare words that WORDS did '
        'not have (source code S, as other entries of WORDS taken from it).  '
        'R. de Miguel and the Marqués de Morante, Nuevo diccionario '
        'latino-español etimológico (1867), gave some 25,000 words and '

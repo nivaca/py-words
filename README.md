@@ -853,10 +853,13 @@ read them, though only as a form of another word or with a suffix
 (*portentosus* as *portentum* + -osus).  So every entry was compared
 again with De Miguel's whole line, 11,384 of those headwords got entries
 of their own, and 413 entries got De Miguel's sense when it was another
-sense of the same word.  Now the dictionary has 81,551 entries; 50,678
-Spanish meanings come from De Miguel and 168 from Echave-Sustaeta, and
-the other 30,705 are still translations (mostly medieval senses and
-words that De Miguel does not have).  In
+sense of the same word.  The same check showed the same gap in Lewis
+and Short and in Latham, so 1,596 more words of Lewis and Short and
+8,098 more medieval words of Latham got entries of their own.  Now the
+dictionary has 91,245 entries; 50,678 Spanish meanings come from De
+Miguel and 168 from Echave-Sustaeta, and the other 40,399 are still
+translations (mostly medieval words and senses that De Miguel does not
+have).  In
 `data/languages/es.xml` a meaning taken from a dictionary carries its
 source code (`<meaning entry="12" source="m">`); a meaning without it
 is a translation.  When you change a meaning in the editors, the code
@@ -1415,14 +1418,14 @@ The dictionary of py-words comes from these works:
   Sources* (London: Oxford University Press for the British Academy,
   1965): 2,444 medieval senses of words that the dictionary had, 21
   corrected meanings, 1,140 new words and 1,204 spelling variants, and
-  later 8,897 more medieval words, derivatives and spellings (source
+  later 16,995 more medieval words, derivatives and spellings (source
   code M; see "The Spanish meanings").
 - J. Echave-Sustaeta, *Lengua latina. Vocabulario básico*: 321 entries
   corrected and 254 added, in English and in Spanish, and the Spanish
   meanings of 168 entries that De Miguel does not cover (source code A;
   see "The Spanish meanings").
 - C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon
-  Press, 1879): 3,119 rare words that WORDS did not have (source code S;
+  Press, 1879): 4,715 rare words that WORDS did not have (source code S;
   see "The Spanish meanings"), with the long vowels of their headwords.
   Text provided under a CC BY-SA license by Perseus Digital Library,
   <http://www.perseus.tufts.edu>, with funding from The National

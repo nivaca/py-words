@@ -2233,22 +2233,9 @@ sorori
     sorori         GEN.SG  (early)
 
 solane
-  -ne  enclitic
-    -ne = is it not that (enclitic); or ...(introduces a question or alternative);
-  solum, soli  noun, 2nd declension, neuter  [XXXBA]
-    bottom, ground, floor; soil, land; base, foundation, sole; country, region;
-    sol-a          NOM.PL
-    sol-a          VOC.PL
-    sol-a          ACC.PL
-  solus, sola, solum (gen -ius)  adjective, 1st/2nd declension  [XXXAX]
-    only, single; lonely; alone, having no companion/friend/protector; unique;
-    sol-a          NOM.SG.F
-    sol-a          VOC.SG.F
-    sol-ā          ABL.SG.F
-    sol-a          NOM.PL.N
-    sol-a          VOC.PL.N
-    sol-a          ACC.PL.N
-  (less likely forms are not shown)
+  solanus, solani  noun, 2nd declension, masculine  [FXXEM]  medieval  uncommon
+    young salmon;
+    solan-e        VOC.SG
 
 perpetua
   perpetuus, perpetua, perpetuum  adjective, 1st/2nd declension  [XXXAX]
@@ -7585,6 +7572,7 @@ contra
   contra  preposition, with the accusative  [XXXAO]
     towards/up to, in direction of;  directly over/level with; to detriment of;
     contrā         ACC
+  (less likely forms are not shown)
 
 est
   edo, esse, -, -  verb, irregular, transitive  [XXXCO]
@@ -7687,12 +7675,9 @@ aut
     or, or rather/else; either...or (aut...aut) (emphasizing one);
 
 tecum
-  -cum  enclitic
-    TACKON with (enclitic with PRON 5 0); [w/ABL  mecum => at my house/with me];
-  pronoun, personal  [XXXAX]
-    you (sing.); thou/thine/thee/thy (PERS); yourself/thyself (REFLEX);
-    t-e            ABL.SG.C
-    t-e            ACC.SG.C
+  teca, tecae  noun, 1st declension, feminine  [FXXEM]  medieval  uncommon
+    (?) theta, symbol of zero (math.);
+    tec-um         GEN.PL  (uncommon)
 
 malit
   malo, malle, malui, -  verb, irregular  [XXXAX]
@@ -20811,6 +20796,7 @@ serestum
     him/her/it/ones-self; him/her/it; them (selves) (pl.); each other, one another;
     s-e            ABL.C
     s-e            ACC.C
+  (less likely forms are not shown)
 
 classem
   classis, classis  noun, 3rd declension, feminine  [XXXBO]
