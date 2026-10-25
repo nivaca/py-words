@@ -3,9 +3,11 @@
      English), and the rest of the results.  A meaning with source="m" is
      taken from R. de Miguel and the Marqués de Morante, Nuevo diccionario
      latino-español etimológico (Leipzig, 1867), and one with source="A"
-     from J. Echave-Sustaeta, Lengua latina. Vocabulario básico, both in
-     their own words, shortened and in modern spelling; the others were
-     translated from the English.  Done with the help of Claude, the large
+     from J. Echave-Sustaeta, Lengua latina. Vocabulario básico: De
+     Miguel's whole definitions as he wrote them (without his examples and
+     the authors he cites), Echave-Sustaeta's in a few words; the others
+     were translated from the English.  The results name the dictionary
+     after such a meaning.  Done with the help of Claude, the large
      language model of Anthropic (the model Claude Opus 5.5,
      claude-opus-5-5), in October 2026; see "The Spanish meanings" in
      README.md.  See words.xsd and languages.py. -->

@@ -859,7 +859,17 @@ and Short and in Latham, so 1,596 more words of Lewis and Short and
 dictionary has 91,245 entries; 50,678 Spanish meanings come from De
 Miguel and 168 from Echave-Sustaeta, and the other 40,399 are still
 translations (mostly medieval words and senses that De Miguel does not
-have).  In
+have).
+
+At first the meanings taken from De Miguel were shortened to our style,
+but Nicolas Vaughan preferred his whole definitions.  So now a Spanish
+meaning taken from De Miguel is his definition as he wrote it, with his
+spelling of 1867 (*ú*, *razon*): everything after the headword, the
+grammar and the etymology, without the examples (after "—") and the
+names of the authors he cites; his senses, which he ends with a period,
+are separated by ";" as ours.  And the results say where a Spanish
+meaning comes from, after it: "(De Miguel)" or "(Echave-Sustaeta)".  The
+search from Spanish ignores accents, so *corazón* finds his *corazon*.  In
 `data/languages/es.xml` a meaning taken from a dictionary carries its
 source code (`<meaning entry="12" source="m">`); a meaning without it
 is a translation.  When you change a meaning in the editors, the code

@@ -876,7 +876,19 @@ y Short y 8098 palabras medievales más de Latham recibieron entradas
 propias.  Ahora el diccionario tiene 91 245 entradas; 50 678
 significados en español vienen de De Miguel y 168 de Echave-Sustaeta,
 y los otros 40 399 siguen siendo traducciones (sobre todo palabras y
-sentidos medievales que De Miguel no tiene).  En `data/languages/es.xml` un significado tomado de un
+sentidos medievales que De Miguel no tiene).
+
+Al principio los significados tomados de De Miguel se abreviaron a
+nuestro estilo, pero Nicolas Vaughan prefirió sus definiciones enteras.
+Así que ahora un significado en español tomado de De Miguel es su
+definición tal como la escribió, con su ortografía de 1867 (*ú*,
+*razon*): todo lo que sigue al lema, la gramática y la etimología, sin
+los ejemplos (tras "—") ni los nombres de los autores que cita; sus
+sentidos, que él termina con punto, se separan con ";" como los
+nuestros.  Y los resultados dicen de dónde viene un significado en
+español, tras él: "(De Miguel)" o "(Echave-Sustaeta)".  La búsqueda
+desde el español no distingue tildes, así que *corazón* encuentra su
+*corazon*.  En `data/languages/es.xml` un significado tomado de un
 diccionario lleva su código de fuente (`<meaning entry="12"
 source="m">`); uno sin él es una traducción.  Cuando usted cambia un
 significado en los editores, el código desaparece, pues el texto ya no
