@@ -170,8 +170,11 @@ SETTINGS = N_('Each setting has its own help: in the Settings of the window '
               'programs share them.')
 
 SOURCES = (
-    N_('The dictionary is that of WORDS, by William Whitaker (1936-2010), '
-       'with additions from five other works.  R. E. Latham, Revised '
+    N_('The program started from WORDS, by William Whitaker (1936-2010), '
+       'but both its code and its data have been redesigned, and it now '
+       'includes a new English dictionary (Lewis and Short) and two new '
+       'Spanish ones (Echave-Sustaeta and De Miguel), besides other '
+       'works.  R. E. Latham, Revised '
        'Medieval Latin Word-List from British and Irish Sources, gave '
        'medieval senses, words and spellings (source code M).  '
        'J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses '

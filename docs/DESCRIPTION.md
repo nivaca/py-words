@@ -1,16 +1,18 @@
 How py-words was made
 =====================
 
-py-words is a Latin-English-Latin and Latin-Spanish-Latin dictionary: a
-Python version of WORDS, the Latin-English dictionary program that
-Colonel William Whitaker (1936-2010) wrote, with its meanings translated
-to Spanish.  Nicolas Vaughan made it in 2026, starting from the Ada
-version of WORDS maintained in
-[mk270/whitakers-words](https://github.com/mk270/whitakers-words).  Here
-I explain how it was made, in eight stages.
+py-words is a Latin-English-Latin and Latin-Spanish-Latin dictionary.
+Nicolas Vaughan made it in 2026.  Its starting point was WORDS, the
+Latin-English dictionary program that Colonel William Whitaker
+(1936-2010) wrote, in the Ada version maintained in
+[mk270/whitakers-words](https://github.com/mk270/whitakers-words); but
+both the code and the data have been redesigned, and it now includes a
+new English dictionary (Lewis and Short) and two new Spanish ones
+(Echave-Sustaeta and De Miguel).  Here I explain how it was made, in
+eight stages.
 
-The dictionary has six sources: WORDS, by William Whitaker, for the
-program and almost all of the entries; R. E. Latham's *Revised Medieval
+The dictionary has six sources: WORDS, by William Whitaker, the
+starting point of the program and of the entries; R. E. Latham's *Revised Medieval
 Latin Word-List from British and Irish Sources*, for medieval senses,
 words and spellings; J. Echave-Sustaeta's *Lengua latina. Vocabulario
 básico*, for senses and words in English and in Spanish; Lewis and

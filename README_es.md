@@ -4,18 +4,23 @@ py-words
 *(English: [README.md](README.md))*
 
 py-words es un diccionario latín-inglés-latín y latín-español-latín con
-morfología flexiva: WORDS, de William Whitaker, en Python.  Analiza
+morfología flexiva.  WORDS, de William Whitaker, fue su punto de
+partida, pero tanto el código como los datos se han rediseñado, y ahora
+incluye un nuevo diccionario inglés (*A Latin Dictionary*, de Lewis y
+Short) y dos nuevos diccionarios españoles (*Lengua latina. Vocabulario
+básico*, de J. Echave-Sustaeta, y el *Nuevo diccionario latino-español
+etimológico*, de R. de Miguel).  Analiza
 palabras latinas flexionadas (y líneas enteras de latín) en sus formas y
 entradas de diccionario, con sus significados en inglés o en español, y
 busca el latín de palabras inglesas o españolas.  Los significados en
 español vienen de los diccionarios latín-español de De Miguel y de
 Echave-Sustaeta dondequiera que tienen la palabra; los demás, y el resto
 de los resultados en español, se tradujeron del inglés (véase "Los
-significados en español").  Pueden añadirse otros idiomas.  El diccionario es el de WORDS, ampliado con la lista de
-latín medieval de R. E. Latham, el vocabulario básico latín-español de
-J. Echave-Sustaeta, las palabras raras de Lewis y Short y las palabras
-raras y los nombres propios del diccionario latino-español de R. de
-Miguel, y las vocales largas vienen de Collatinus, de Lewis y Short y de
+significados en español").  Pueden añadirse otros idiomas.  Además de las entradas de WORDS y las
+de esos tres diccionarios (las palabras raras y las definiciones en
+inglés de Lewis y Short, las palabras raras y los nombres propios de De
+Miguel), el diccionario tiene la lista de latín medieval de R. E.
+Latham, y las vocales largas vienen de Collatinus, de Lewis y Short y de
 De Miguel (véase "Fuentes").  Es software libre, bajo la Licencia Pública General de GNU
 (véase "Licencia").
 
@@ -24,7 +29,8 @@ Lo escribí yo, Nicolas Vaughan (<nivaca@fastmail.com> y
 de la versión en Ada que se mantiene en
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words), y
 luego lo rehíce en Python idiomático, con los mismos análisis, una salida
-más fácil de leer y una línea de órdenes moderna.  Basta con tener
+más fácil de leer y una línea de órdenes moderna, y rehíce sus datos,
+de los archivos de texto de columnas fijas del original a XML.  Basta con tener
 Python 3.11 o posterior.  Y si no se quiere instalar nada, se puede usar
 en línea, desde el navegador: <https://nicolasvaughan.org/py-words/>
 (véase "En línea").
@@ -1500,8 +1506,9 @@ Fuentes
 
 El diccionario de py-words viene de estas obras:
 
-- WORDS, de William Whitaker (1936-2010): el programa, sus análisis, sus
-  desinencias y formas irregulares, y casi todo el diccionario, en la
+- WORDS, de William Whitaker (1936-2010): el punto de partida del
+  programa, sus análisis, sus desinencias y formas irregulares, y las
+  entradas originales del diccionario, en la
   versión en Ada que se mantiene en
   [mk270/whitakers-words](https://github.com/mk270/whitakers-words).
   Whitaker hizo su diccionario a partir de muchos otros (el Oxford Latin

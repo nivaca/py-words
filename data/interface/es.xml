@@ -338,8 +338,8 @@
     <tr>Dos líneas vacías seguidas, o Ctrl-D, terminan; Ctrl-C detiene lo que se está haciendo.</tr>
   </text>
   <text>
-    <en>py-words, based on William Whitaker's WORDS: a Latin-English-Latin and Latin-Spanish-Latin dictionary that analyses inflected Latin words.  With no arguments it is interactive.</en>
-    <tr>py-words, basado en WORDS de William Whitaker: un diccionario latín-inglés-latín y latín-español-latín que analiza palabras latinas flexionadas.  Sin argumentos, es interactivo.</tr>
+    <en>py-words: a Latin-English-Latin and Latin-Spanish-Latin dictionary that analyses inflected Latin words (its starting point was William Whitaker's WORDS).  With no arguments it is interactive.</en>
+    <tr>py-words: un diccionario latín-inglés-latín y latín-español-latín que analiza palabras latinas flexionadas (su punto de partida fue WORDS, de William Whitaker).  Sin argumentos, es interactivo.</tr>
   </text>
   <text>
     <en>In interactive mode, type ? for help.</en>
@@ -944,6 +944,10 @@
   <text>
     <en>About</en>
     <tr>Acerca de</tr>
+  </text>
+  <text>
+    <en>Web page</en>
+    <tr>Sitio web</tr>
   </text>
   <text>
     <en>Settings…</en>
@@ -2173,8 +2177,10 @@ confianza; el diccionario no puede editarse desde el navegador.</tr>
   <text>
     <en>{name} {version}, a Latin dictionary by Nicolas Vaughan
 {url}
-Based on WORDS by William Whitaker (1936-2010), via the Ada version at
-https://github.com/mk270/whitakers-words
+Started from WORDS by William Whitaker (1936-2010), in the Ada version
+at https://github.com/mk270/whitakers-words; code and data redesigned,
+with a new English dictionary (Lewis and Short) and two new Spanish
+ones (Echave-Sustaeta and De Miguel).
 Sources of the dictionary: WORDS, by William Whitaker; R. E. Latham,
 Revised Medieval Latin Word-List (medieval words, senses and spellings);
 J. Echave-Sustaeta, Lengua latina. Vocabulario básico (Latin-Spanish);
@@ -2192,8 +2198,10 @@ Miguel's English from the Spanish) with the help of Claude (the model
 Claude Opus 5.5, by Anthropic).</en>
     <tr>{name} {version}, un diccionario de latín de Nicolas Vaughan
 {url}
-Basado en WORDS de William Whitaker (1936-2010), a través de la versión en Ada de
-https://github.com/mk270/whitakers-words
+Partió de WORDS de William Whitaker (1936-2010), en la versión en Ada de
+https://github.com/mk270/whitakers-words; código y datos rediseñados, con
+un nuevo diccionario inglés (Lewis y Short) y dos nuevos diccionarios
+españoles (Echave-Sustaeta y De Miguel).
 Fuentes del diccionario: WORDS, de William Whitaker; R. E. Latham,
 Revised Medieval Latin Word-List (palabras, sentidos y grafías medievales);
 J. Echave-Sustaeta, Lengua latina. Vocabulario básico (latín-español);
@@ -2215,8 +2223,8 @@ Anthropic).</tr>
     <tr>Fuentes y licencia</tr>
   </text>
   <text>
-    <en>The dictionary is that of WORDS, by William Whitaker (1936-2010), with additions from five other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Lewis and Short, A Latin Dictionary, in the text of the Perseus Digital Library (CC BY-SA 4.0), gave some 8,400 rare words and names that WORDS did not have (source code S, as other entries of WORDS taken from it), and the English definitions of some 32,000 entries.  R. de Miguel and the Marqués de Morante, Nuevo diccionario latino-español etimológico (1867), gave some 25,000 words and proper names that WORDS did not have, and the Spanish meanings of some 50,000 entries (source code m); Echave-Sustaeta gave those of the entries De Miguel does not have, and the other Spanish meanings are translations.  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, and some abbreviations (source code H).  Collatinus, in its turn, made its lexicon with the help of the dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; the README names all the sources and people it thanks.</en>
-    <tr>El diccionario es el de WORDS, de William Whitaker (1936-2010), con añadidos de otras cinco obras.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, aportó sentidos, palabras y grafías medievales (código de fuente M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, aportó sentidos y palabras, en inglés y en español (código de fuente A).  Lewis y Short, A Latin Dictionary, en el texto de la Perseus Digital Library (CC BY-SA 4.0), aportó unas 8400 palabras raras y nombres que WORDS no tenía (código de fuente S, como otras entradas de WORDS tomadas de él), y las definiciones en inglés de unas 32 000 entradas.  R. de Miguel y el Marqués de Morante, Nuevo diccionario latino-español etimológico (1867), aportó unas 25 000 palabras y nombres propios que WORDS no tenía, y los significados en español de unas 50 000 entradas (código de fuente m); Echave-Sustaeta aportó los de las entradas que De Miguel no tiene, y los demás significados en español son traducciones.  Collatinus, de Yves Ouvrard y Philippe Verkerk, aportó las vocales largas de las raíces y las desinencias, y algunas abreviaturas (código de fuente H).  Collatinus, a su vez, hizo su léxico con ayuda de los diccionarios de Gaffiot, Jeanneau, Du Cange y Lewis y Short, entre otros; el README nombra todas las fuentes y personas a las que agradece.</tr>
+    <en>The program started from WORDS, by William Whitaker (1936-2010), but both its code and its data have been redesigned, and it now includes a new English dictionary (Lewis and Short) and two new Spanish ones (Echave-Sustaeta and De Miguel), besides other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Lewis and Short, A Latin Dictionary, in the text of the Perseus Digital Library (CC BY-SA 4.0), gave some 8,400 rare words and names that WORDS did not have (source code S, as other entries of WORDS taken from it), and the English definitions of some 32,000 entries.  R. de Miguel and the Marqués de Morante, Nuevo diccionario latino-español etimológico (1867), gave some 25,000 words and proper names that WORDS did not have, and the Spanish meanings of some 50,000 entries (source code m); Echave-Sustaeta gave those of the entries De Miguel does not have, and the other Spanish meanings are translations.  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, and some abbreviations (source code H).  Collatinus, in its turn, made its lexicon with the help of the dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; the README names all the sources and people it thanks.</en>
+    <tr>El programa partió de WORDS, de William Whitaker (1936-2010), pero tanto su código como sus datos se han rediseñado, y ahora incluye un nuevo diccionario inglés (Lewis y Short) y dos nuevos diccionarios españoles (Echave-Sustaeta y De Miguel), además de otras obras.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, aportó sentidos, palabras y grafías medievales (código de fuente M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, aportó sentidos y palabras, en inglés y en español (código de fuente A).  Lewis y Short, A Latin Dictionary, en el texto de la Perseus Digital Library (CC BY-SA 4.0), aportó unas 8400 palabras raras y nombres que WORDS no tenía (código de fuente S, como otras entradas de WORDS tomadas de él), y las definiciones en inglés de unas 32 000 entradas.  R. de Miguel y el Marqués de Morante, Nuevo diccionario latino-español etimológico (1867), aportó unas 25 000 palabras y nombres propios que WORDS no tenía, y los significados en español de unas 50 000 entradas (código de fuente m); Echave-Sustaeta aportó los de las entradas que De Miguel no tiene, y los demás significados en español son traducciones.  Collatinus, de Yves Ouvrard y Philippe Verkerk, aportó las vocales largas de las raíces y las desinencias, y algunas abreviaturas (código de fuente H).  Collatinus, a su vez, hizo su léxico con ayuda de los diccionarios de Gaffiot, Jeanneau, Du Cange y Lewis y Short, entre otros; el README nombra todas las fuentes y personas a las que agradece.</tr>
   </text>
   <text>
     <en>{name} is free software, distributed under the GNU General Public License, version 3 or later (see LICENCE.txt): it can be used, copied, changed and shared, but a program that includes it must be shared under the same licence, with its source code.  The data of WORDS are free for any use, by permission of William Whitaker.  "About" gives the version and the credits.</en>

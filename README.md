@@ -4,17 +4,21 @@ py-words
 *(Español: [README_es.md](README_es.md))*
 
 py-words is a Latin-English-Latin and Latin-Spanish-Latin dictionary with
-inflectional morphology: it is William Whitaker's WORDS, in Python.  It
-analyses inflected Latin words (and also complete lines of Latin) into
+inflectional morphology.  William Whitaker's WORDS was its starting
+point, but both the code and the data have been redesigned, and it now
+includes a new English dictionary (Lewis and Short's *A Latin
+Dictionary*) and two new Spanish ones (J. Echave-Sustaeta's *Lengua
+latina. Vocabulario básico* and R. de Miguel's *Nuevo diccionario
+latino-español etimológico*).  It analyses inflected Latin words (and also complete lines of Latin) into
 their forms and dictionary entries, with the meanings in English or in
 Spanish, and it finds the Latin for English or Spanish words.  The
 Spanish meanings come from De Miguel's and Echave-Sustaeta's
 Latin-Spanish dictionaries wherever they have the word; the others, and
 the rest of the results in Spanish, were translated from the English
-(see "The Spanish meanings").  It is possible to add other languages.  The dictionary is the one of WORDS, enlarged with
-R. E. Latham's medieval word-list, J. Echave-Sustaeta's Latin-Spanish
-basic vocabulary, the rare words of Lewis and Short and the rare words
-and proper names of R. de Miguel's Latin-Spanish dictionary, and the
+(see "The Spanish meanings").  It is possible to add other languages.  Besides the entries of WORDS
+and those of these three dictionaries (the rare words and English
+definitions of Lewis and Short, the rare words and proper names of De
+Miguel), the dictionary has R. E. Latham's medieval word-list, and the
 long vowels come from Collatinus, Lewis and Short and De Miguel (see
 "Sources").  It is free software, under the GNU General Public License
 (see "Licensing").
@@ -24,7 +28,8 @@ and I wrote it in 2026.  First it was a faithful translation of the Ada
 version maintained at
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words); after,
 I redesigned it as idiomatic Python, with the same analyses, an output
-more easy to read and a modern command line.  The only thing you need is
+more easy to read and a modern command line, and its data, from the
+fixed-column text files of the original to XML.  The only thing you need is
 Python 3.11 or later.  You can use it also online, in the browser:
 <https://nicolasvaughan.org/py-words/> (see "Online").
 
@@ -1457,8 +1462,9 @@ Sources
 
 The dictionary of py-words comes from these works:
 
-- WORDS, by William Whitaker (1936-2010): the program, its analyses, its
-  inflections and irregular forms, and almost all of the dictionary, in
+- WORDS, by William Whitaker (1936-2010): the starting point of the
+  program, its analyses, its inflections and irregular forms, and the
+  original entries of the dictionary, in
   the Ada version maintained at
   [mk270/whitakers-words](https://github.com/mk270/whitakers-words).
   Whitaker made his dictionary from many others (the Oxford Latin

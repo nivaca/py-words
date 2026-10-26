@@ -405,9 +405,9 @@ def _main(argv: list[str] | None, meanings_only: bool):
     interface.translate_argparse()
     parser = argparse.ArgumentParser(
         prog='meanings' if meanings_only else 'words',
-        description=tr("py-words, based on William Whitaker's WORDS: a "
-                       "Latin-English-Latin and Latin-Spanish-Latin "
-                       "dictionary that analyses inflected Latin words.  "
+        description=tr("py-words: a Latin-English-Latin and Latin-Spanish-Latin "
+                       "dictionary that analyses inflected Latin words "
+                       "(its starting point was William Whitaker's WORDS).  "
                        "With no arguments it is interactive."),
         epilog=tr("In interactive mode, type ? for help."))
     parser.add_argument('words', nargs='*', metavar=tr('WORD'),

@@ -176,6 +176,8 @@ class App:
         helping = tk.Menu(bar, tearoff=False)
         helping.add_command(label=tr('Help'), accelerator='F1',
                             command=self.help)
+        helping.add_command(label=tr('Web page'),
+                            command=lambda: webbrowser.open(URL))
         helping.add_command(label=tr('About'), command=self.about)
         bar.add_cascade(label=tr('Help'), menu=helping)
         root.config(menu=bar)
