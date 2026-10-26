@@ -45,12 +45,10 @@ CREDITS_TEXT = (
     'Public License, version 3 or later (see LICENCE.txt).  The data of '
     'WORDS,\n'
     'by William Whitaker, are free for any use.\n'
-    'The Spanish meanings come from De Miguel and Echave-Sustaeta where '
-    'they\n'
-    'have the word; the others were translated from the English (and De\n'
-    "Miguel's English from the Spanish) with the help of Claude (the "
-    'model\n'
-    'Claude Opus 5.5, by Anthropic).')
+    'The Spanish meanings come from De Miguel and Echave-Sustaeta; for the\n'
+    'words that neither has, they were translated from the English.  The\n'
+    'English meanings of the words taken from De Miguel were translated\n'
+    'from his Spanish.')
 CREDITS = CREDITS_TEXT.format(name=NAME, version=VERSION, url=URL)
 
 #  A word about the author

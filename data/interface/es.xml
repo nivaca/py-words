@@ -2192,10 +2192,10 @@ Collatinus, by Yves Ouvrard and Philippe Verkerk (long vowels).
 Code © 2026 Nicolas Vaughan (nivaca@fastmail.com), under the GNU General
 Public License, version 3 or later (see LICENCE.txt).  The data of WORDS,
 by William Whitaker, are free for any use.
-The Spanish meanings come from De Miguel and Echave-Sustaeta where they
-have the word; the others were translated from the English (and De
-Miguel's English from the Spanish) with the help of Claude (the model
-Claude Opus 5.5, by Anthropic).</en>
+The Spanish meanings come from De Miguel and Echave-Sustaeta; for the
+words that neither has, they were translated from the English.  The
+English meanings of the words taken from De Miguel were translated
+from his Spanish.</en>
     <tr>{name} {version}, un diccionario de latín de Nicolas Vaughan
 {url}
 Partió de WORDS de William Whitaker (1936-2010), en la versión en Ada de
@@ -2213,10 +2213,10 @@ Collatinus, de Yves Ouvrard y Philippe Verkerk (vocales largas).
 Código © 2026 Nicolas Vaughan (nivaca@fastmail.com), bajo la Licencia Pública
 General de GNU, versión 3 o posterior (véase LICENCE.txt).  Los datos de
 WORDS, de William Whitaker, son de uso libre.
-Los significados en español vienen de De Miguel y de Echave-Sustaeta donde
-tienen la palabra; los demás se tradujeron del inglés (y el inglés de De
-Miguel, del español) con ayuda de Claude (el modelo Claude Opus 5.5, de
-Anthropic).</tr>
+Los significados en español vienen de De Miguel y de Echave-Sustaeta;
+para las palabras que ninguno de los dos tiene, se tradujeron del
+inglés.  Los significados en inglés de las palabras tomadas de De Miguel
+se tradujeron de su español.</tr>
   </text>
   <text>
     <en>Sources and licence</en>
