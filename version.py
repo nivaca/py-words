@@ -4,13 +4,21 @@ This file is read before the rest of the program, so it must stay readable
 by old versions of Python.
 """
 
+import os
+import re
+import subprocess
 import sys
 
 NAME = 'py-words'
 #  Al subir la versión: también el nombre del zip en los dos README, el
 #  título de docs/DESCRIPCIÓN_es.md y las notas de "Version"/"Versiones".
-VERSION = '3.2'
+VERSION = '3.3'
 URL = 'https://github.com/nivaca/py-words'
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+#  The commit the program was made from, written into the zip and the site
+#  by bundle-zip.py and pages/build.py (a clone asks git instead)
+COMMIT_FILE = 'COMMIT'
 
 #  The credits, with {name}, {version} and {url} for those above
 CREDITS_TEXT = (
@@ -54,12 +62,46 @@ AUTHOR = ('Nicolas Vaughan is Associate Professor of Literature at the '
 ABOUT = CREDITS + '\n\n' + AUTHOR
 
 
+def commit(folder=HERE):
+    """The commit (its full hash) of the program in FOLDER: that of its
+    COMMIT_FILE or, in a clone, git's; None if neither says."""
+    try:
+        with open(os.path.join(folder, COMMIT_FILE), encoding='ascii') as f:
+            text = f.read().strip()
+    except (OSError, ValueError):
+        text = _git_commit(folder)
+    return text if text and re.fullmatch('[0-9a-f]{40}', text) else None
+
+
+def _git_commit(folder):
+    """HEAD of the git repository whose top is FOLDER (not of one that
+    only contains it), or None."""
+    try:
+        out = subprocess.run(
+            ['git', '-C', folder, 'rev-parse', '--show-toplevel', 'HEAD'],
+            capture_output=True, text=True, timeout=5,
+            creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+    except Exception:           # (no git; no processes, as in Pyodide)
+        return None
+    lines = out.stdout.split('\n')
+    if out.returncode != 0 or len(lines) < 2:
+        return None
+    if os.path.normcase(os.path.realpath(lines[0])) != \
+            os.path.normcase(os.path.realpath(folder)):
+        return None
+    return lines[1].strip()
+
+
 def about():
     """The credits with a word about the author (the About box,
-    --version), in the language of the interface."""
+    --version), in the language of the interface, with the commit after
+    the address of the project when it is known."""
     from interface import tr
-    return tr(CREDITS_TEXT, name=NAME, version=VERSION, url=URL) + \
-        '\n\n' + tr(AUTHOR)
+    lines = tr(CREDITS_TEXT, name=NAME, version=VERSION, url=URL).split('\n')
+    hash = commit()
+    if hash:
+        lines.insert(2, f'Commit: {URL}/commit/{hash}')
+    return '\n'.join(lines) + '\n\n' + tr(AUTHOR)
 
 
 #  The oldest Python the program runs on

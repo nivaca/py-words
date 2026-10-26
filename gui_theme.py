@@ -26,10 +26,11 @@ DARK = {
     'background': '#242428', 'foreground': '#e8e6e1',
     'field': '#1b1b1d', 'select': '#8a2c1f', 'select_fg': '#ffffff',
     'muted': '#9a9890', 'error': '#ff8a80', 'border': '#3a3a3e',
-    'active': '#34343a', 'disabled': '#6b6a66',
+    'active': '#34343a', 'disabled': '#6b6a66', 'link': '#e8957f',
 }
-#  Those of the usual look that are not the system's
-LIGHT_MUTED, LIGHT_ERROR = 'gray', '#b00020'
+#  Those of the usual look that are not the system's (the links, in the
+#  accent of the web page)
+LIGHT_MUTED, LIGHT_ERROR, LIGHT_LINK = 'gray', '#b00020', '#8a2c1f'
 
 #  The Tk (not ttk) widgets the option database colours
 TK_CLASSES = ('Text', 'Listbox', 'Canvas', 'Toplevel', 'Tk', 'Frame',
@@ -100,10 +101,11 @@ class Theme:
                 'foreground': u['foreground'], 'insert': u['insert'],
                 'select': u['select'], 'select_fg': u['select_fg'],
                 'list': u['list'], 'list_fg': u['list_fg']}
-        muted, error = (DARK['muted'], DARK['error']) if self.dark else \
-            (LIGHT_MUTED, LIGHT_ERROR)
+        muted, error, link = (DARK['muted'], DARK['error'], DARK['link']) \
+            if self.dark else (LIGHT_MUTED, LIGHT_ERROR, LIGHT_LINK)
         self.style.configure('Muted.TLabel', foreground=muted)
         self.style.configure('Error.TLabel', foreground=error)
+        self.style.configure('Link.TLabel', foreground=link)
         self.colours = colours
         self._options(colours)
         self._recolour(self.root, colours)

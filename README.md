@@ -159,9 +159,10 @@ for distributing it:
 
     $ python3 bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `py-words-v.3.2.zip` (with the version of the program), with
+This writes `py-words-v.3.3.zip` (with the version of the program), with
 the program inside a folder of the same name.  It contains the programs,
-the data, the icons and the documents.  It does not contain hidden files
+the data, the icons and the documents, and a file `COMMIT` with the
+commit it was made from, which "About" shows.  It does not contain hidden files
 (`.git` ...), nor the things that are made when the program runs or is
 edited (`__pycache__`, `.bak` files, WORD.OUT ...), nor the things that
 are in its folder but are not part of it (the built `site/`,
@@ -1116,6 +1117,19 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.3:
+  - "About" (in the window, the terminal, the web page, `~A` and
+    `--version`) gives the commit the program comes from, as the
+    address of that commit on GitHub; in the window it is a link with
+    the short hash.  The zip and the web site carry it in a file
+    `COMMIT` (made by `bundle-zip.py` and `pages/build.py`); a clone of
+    the repository asks git.
+  - The Help menu of the window has "Web page", which opens the project
+    page on GitHub.
+  - The documents, "About", the help and `--help` say that WORDS was
+    the starting point, that its code and data were redesigned, and
+    that py-words now includes a new English dictionary (Lewis and
+    Short) and two new Spanish ones (Echave-Sustaeta and De Miguel).
 - 3.2:
   - The dictionary has now 93,370 entries.  Lewis and Short gave 6,653
     rare words and 1,783 names, R. de Miguel's *Nuevo diccionario latino-español

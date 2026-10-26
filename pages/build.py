@@ -4,7 +4,8 @@ Pyodide: python3 pages/build.py [-o FOLDER]
 
 The site (site/ by default) is the page and its script (pages/index.html
 and pages/app.js), the icon, and py-words.zip: the program's .py files and
-its data, which the page unpacks into Pyodide's files.  It can be served by
+its data (and COMMIT, the commit it was built from), which the page
+unpacks into Pyodide's files.  It can be served by
 any static web server (GitHub Pages ...); to try it here:
 
     python3 pages/build.py && python3 -m http.server -d site 8001
@@ -23,15 +24,20 @@ ICON = os.path.join(ROOT, 'icons', 'linux', 'icons', 'hicolor', '48x48',
                     'apps', 'py-words.png')
 
 
-def program_files() -> list[str]:
-    """The program's .py files and data (those of the distribution, but not
-    its icons, documents or tests), relative to ROOT."""
+def bundle_zip():
+    """The module bundle-zip.py."""
     sys.path.insert(0, ROOT)
     spec = importlib.util.spec_from_file_location(
         'bundle_zip', os.path.join(ROOT, 'bundle-zip.py'))
     bundle = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(bundle)
-    return [f for f in bundle.files()
+    return bundle
+
+
+def program_files() -> list[str]:
+    """The program's .py files and data (those of the distribution, but not
+    its icons, documents or tests), relative to ROOT."""
+    return [f for f in bundle_zip().files()
             if (f.endswith('.py') and os.sep not in f) or
             f.startswith('data' + os.sep)]
 
@@ -48,6 +54,10 @@ def build(out: str) -> list[str]:
                          zipfile.ZIP_DEFLATED) as z:
         for f in program_files():
             z.write(os.path.join(ROOT, f), f.replace(os.sep, '/'))
+        bundle = bundle_zip()
+        hash = bundle.built_from()
+        if hash:                        # (for "About")
+            z.writestr(bundle.COMMIT_FILE, hash + '\n')
     open(os.path.join(out, '.nojekyll'), 'w').close()   # (GitHub Pages)
     return sorted(os.listdir(out))
 

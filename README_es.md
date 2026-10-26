@@ -163,9 +163,10 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `py-words-v.3.2.zip` (con la versión del programa), con el
+Eso escribe `py-words-v.3.3.zip` (con la versión del programa), con el
 programa dentro de una carpeta del mismo nombre.  Lleva los programas,
-los datos, los iconos y los documentos.  Deja fuera los archivos ocultos
+los datos, los iconos y los documentos, y un archivo `COMMIT` con el
+commit del que se hizo, que muestra "Acerca de".  Deja fuera los archivos ocultos
 (`.git`...), lo que se genera al usar o editar el programa
 (`__pycache__`, archivos `.bak`, WORD.OUT...), lo que está en la carpeta
 sin ser parte del programa (el `site/` construido, `local-only/`, el
@@ -1142,6 +1143,20 @@ con `git diff`.
 Versiones
 ---------
 
+- 3.3:
+  - "Acerca de" (en la ventana, la terminal, la página web, `~A` y
+    `--version`) da el commit del que viene el programa, como la
+    dirección de ese commit en GitHub; en la ventana es un enlace con el
+    hash corto.  El zip y el sitio web lo llevan en un archivo `COMMIT`
+    (que hacen `bundle-zip.py` y `pages/build.py`); un clon del
+    repositorio se lo pregunta a git.
+  - El menú Ayuda de la ventana tiene "Sitio web", que abre la página
+    del proyecto en GitHub.
+  - Los documentos, "Acerca de", la ayuda y `--help` dicen que WORDS
+    fue el punto de partida, que su código y sus datos se rediseñaron, y
+    que py-words incluye ahora un nuevo diccionario inglés (Lewis y
+    Short) y dos nuevos diccionarios españoles (Echave-Sustaeta y De
+    Miguel).
 - 3.2:
   - El diccionario tiene ahora 93 370 entradas.  Lewis y Short aportó
     6653 palabras raras y 1783 nombres, el *Nuevo diccionario latino-español

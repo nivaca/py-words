@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 import importlib.util  # noqa: E402
 
+import version  # noqa: E402
 from version import VERSION  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,6 +67,43 @@ class BundleTests(unittest.TestCase):
     def test_with_the_tests(self):
         names = self.bundle('--tests')
         self.assertIn(f'py-words-v.{VERSION}/tests/test_bundle.py', names)
+
+    def test_the_commit(self):
+        """The zip says the commit it was made from, for "About"."""
+        with tempfile.TemporaryDirectory() as tmp:
+            env = dict(os.environ, GITHUB_SHA='a' * 40)
+            subprocess.run([sys.executable,
+                            os.path.join(ROOT, 'bundle-zip.py'), '-o', tmp],
+                           check=True, capture_output=True, env=env)
+            with zipfile.ZipFile(os.path.join(tmp, os.listdir(tmp)[0])) as z:
+                self.assertEqual(
+                    z.read(f'py-words-v.{VERSION}/COMMIT').decode(),
+                    'a' * 40 + '\n')
+
+
+class CommitTests(unittest.TestCase):
+    """The commit in "About": that of the file COMMIT, or of git."""
+
+    def test_the_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertIsNone(version.commit(tmp))      # (not a clone)
+            with open(os.path.join(tmp, 'COMMIT'), 'w') as f:
+                f.write('b' * 40 + '\n')
+            self.assertEqual(version.commit(tmp), 'b' * 40)
+            with open(os.path.join(tmp, 'COMMIT'), 'w') as f:
+                f.write('not a commit\n')
+            self.assertIsNone(version.commit(tmp))
+
+    def test_about(self):
+        old = version.commit
+        version.commit = lambda: 'c' * 40
+        try:
+            lines = version.about().split('\n')
+        finally:
+            version.commit = old
+        self.assertEqual(lines[1], version.URL)
+        self.assertEqual(lines[2],
+                         f'Commit: {version.URL}/commit/' + 'c' * 40)
 
 
 if __name__ == '__main__':

@@ -503,7 +503,7 @@ class App:
         win.transient(self.root)
         frame = ttk.Frame(win, padding=16)
         frame.pack(fill='both', expand=True)
-        ttk.Label(frame, text=about(), justify='left').pack(anchor='w')
+        self.credits(frame, about())
         buttons = ttk.Frame(frame, padding=(0, 12, 0, 0))
         buttons.pack(fill='x')
         close = ttk.Button(buttons, text=tr('Close'), command=win.destroy)
@@ -517,6 +517,31 @@ class App:
         close.focus_set()
         win.resizable(False, False)     # (once its contents are in)
         win.grab_set()
+
+    def credits(self, frame, text):
+        """The credits TEXT in FRAME, with the commit (a line 'Commit:
+        URL') as a link that shows its short hash."""
+        lines = text.split('\n')
+        at = next((i for i, line in enumerate(lines)
+                   if line.startswith('Commit: ')), None)
+        if at is None:
+            ttk.Label(frame, text=text, justify='left').pack(anchor='w')
+            return
+        ttk.Label(frame, text='\n'.join(lines[:at]),
+                  justify='left').pack(anchor='w')
+        row = ttk.Frame(frame)
+        row.pack(anchor='w')
+        label, url = lines[at].split(' ', 1)
+        ttk.Label(row, text=label).pack(side='left')
+        underlined = tkfont.nametofont('TkDefaultFont').copy()
+        underlined.config(underline=True)
+        link = ttk.Label(row, text=url.rsplit('/', 1)[1][:7],
+                         style='Link.TLabel', cursor='hand2', font=underlined)
+        link.pack(side='left')
+        link.font = underlined          # (kept while the label lives)
+        link.bind('<Button-1>', lambda e: webbrowser.open(url))
+        ttk.Label(frame, text='\n'.join(lines[at + 1:]),
+                  justify='left').pack(anchor='w')
 
     def set_busy(self, busy):
         self.button.config(state='disabled' if busy else 'normal')

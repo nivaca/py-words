@@ -176,11 +176,31 @@ class FontTests(unittest.TestCase):
         before = set(self.root.winfo_children())
         app.about()
         [win] = set(self.root.winfo_children()) - before
-        texts = [w.cget('text') for w in win.winfo_children()[0]
-                 .winfo_children() if w.winfo_class() == 'TLabel']
-        self.assertIn('Universidad de los Andes', texts[0])
-        self.assertIn('William Whitaker', texts[0])
+        texts = '\n'.join(w.cget('text') for w in win.winfo_children()[0]
+                           .winfo_children() if w.winfo_class() == 'TLabel')
+        self.assertIn('Universidad de los Andes', texts)
+        self.assertIn('William Whitaker', texts)
         win.destroy()
+
+    def test_about_commit(self):
+        """The commit is a link that shows its short hash."""
+        from tkinter import ttk
+        import version
+        import words_gui
+        old = version.commit
+        version.commit = lambda: 'c' * 40
+        try:
+            frame = ttk.Frame(self.root)
+            words_gui.App.credits(None, frame, version.about())
+        finally:
+            version.commit = old
+        [row] = [w for w in frame.winfo_children()
+                 if w.winfo_class() == 'TFrame']
+        label, link = row.winfo_children()
+        self.assertEqual(label.cget('text').strip(), 'Commit:')
+        self.assertEqual(link.cget('text'), 'c' * 7)
+        self.assertEqual(str(link.cget('cursor')), 'hand2')
+        frame.destroy()
 
     def test_windows_use_the_fonts(self):
         import words_gui

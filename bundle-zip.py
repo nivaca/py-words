@@ -7,7 +7,8 @@ icons and the documents, but no hidden files or folders (.git ...), and
 none of what is made while the program runs or is edited (__pycache__,
 .bak and .tmp files, WORD.OUT ...), nor what is in its folder but not
 part of it (the built site, local-only/, an editor's TAGS).  The tests
-are left out, unless --tests says otherwise.
+are left out, unless --tests says otherwise.  It has also COMMIT, the
+commit it was made from (for "About").
 """
 
 from version import check_python
@@ -21,7 +22,7 @@ import zipfile
 
 import interface
 from interface import tr
-from version import VERSION
+from version import COMMIT_FILE, VERSION, commit
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -57,6 +58,12 @@ def _left_out(n: str) -> bool:
     return n.startswith('.') or any(fnmatch.fnmatch(n, p) for p in LEFT_OUT)
 
 
+def built_from() -> str | None:
+    """The commit the zip is made from: that of GitHub Actions
+    ($GITHUB_SHA), or else the program's."""
+    return os.environ.get('GITHUB_SHA') or commit(HERE)
+
+
 def bundle(folder: str, tests: bool = False) -> str:
     """Writes the zip into FOLDER; returns its path."""
     path = os.path.join(folder, name() + '.zip')
@@ -65,6 +72,9 @@ def bundle(folder: str, tests: bool = False) -> str:
         for f in files(tests):
             z.write(os.path.join(HERE, f),
                     name() + '/' + f.replace(os.sep, '/'))
+        hash = built_from()
+        if hash:
+            z.writestr(name() + '/' + COMMIT_FILE, hash + '\n')
     os.replace(tmp, path)
     return path
 
