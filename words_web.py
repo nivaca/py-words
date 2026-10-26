@@ -84,6 +84,21 @@ def esc(text: str) -> str:
     return html.escape(text, quote=True)
 
 
+def about_html() -> str:
+    """The credits (for <pre>), with the commit (a line 'Commit: URL') as
+    a link that shows its short hash."""
+    lines = []
+    for line in about().split('\n'):
+        if line.startswith('Commit: '):
+            label, url = line.split(' ', 1)
+            line = (f'{esc(label)} <a href="{esc(url)}" target="_blank" '
+                    f'rel="noopener">{esc(url.rsplit("/", 1)[1][:7])}</a>')
+        else:
+            line = esc(line)
+        lines.append(line)
+    return '\n'.join(lines)
+
+
 def link(query: str, lang: str = '', **more) -> str:
     """The address of the search for QUERY (in LANG, a language of the
     meanings; '': in Latin)."""
@@ -248,7 +263,7 @@ class WebApp:
             html_lang=esc(interface.code()),
             title=esc(f'{query} – {NAME}' if query else
                       tr('{name}: a Latin dictionary', name=NAME)),
-            name=esc(NAME), version=esc(VERSION), about=esc(about()),
+            name=esc(NAME), version=esc(VERSION), about=about_html(),
             home=esc(HOME_PAGE), home_name=esc(HOME_PAGE.split('//')[1]),
             query=esc(query), token=esc(self.token), nonce=nonce,
             la_checked='' if reverse else ' checked',

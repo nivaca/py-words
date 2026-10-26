@@ -1146,8 +1146,8 @@ Versiones
 - 3.3:
   - "Acerca de" (en la ventana, la terminal, la página web, `~A` y
     `--version`) da el commit del que viene el programa, como la
-    dirección de ese commit en GitHub; en la ventana es un enlace con el
-    hash corto.  El zip y el sitio web lo llevan en un archivo `COMMIT`
+    dirección de ese commit en GitHub; en la ventana y en la página web
+    es un enlace con el hash corto.  El zip y el sitio web lo llevan en un archivo `COMMIT`
     (que hacen `bundle-zip.py` y `pages/build.py`); un clon del
     repositorio se lo pregunta a git.
   - El menú Ayuda de la ventana tiene "Sitio web", que abre la página

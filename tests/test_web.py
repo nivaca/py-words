@@ -36,6 +36,20 @@ class WebTests(unittest.TestCase):
         out = b''.join(self.app(env, start)).decode()
         return got['status'], got['headers'], out
 
+    def test_about_commit(self):
+        """In "About", the commit is a link that shows its short hash."""
+        import version
+        old = version.commit
+        version.commit = lambda: 'c' * 40
+        try:
+            page = self.call()[2]
+        finally:
+            version.commit = old
+        self.assertIn(f'Commit: <a href="{version.URL}/commit/' + 'c' * 40 +
+                      '" target="_blank" rel="noopener">' + 'c' * 7 + '</a>',
+                      page)
+        self.assertIn('William Whitaker', page)
+
     def test_dark_mode(self):
         """The box of the page: ticked, dark, if not, light (until it is
         used, as the system); kept in the configuration file, which the
