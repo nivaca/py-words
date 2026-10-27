@@ -270,6 +270,20 @@ trabajo `.github/workflows/pages.yml` corre las pruebas, construye el
 sitio y lo publica en GitHub Pages con cada push a `main`.  (En los
 ajustes del repositorio, Pages tiene que tener Source: GitHub Actions.)
 
+### En KRunner (KDE Plasma)
+
+En KDE Plasma 6, un ayudante aparte,
+[krunner-py-words](https://github.com/nivaca/krunner-py-words), pone el
+diccionario en KRunner (Alt+Espacio): escriba `la amicorum`, o `la ~e
+amigo` para el latín de una palabra, y las entradas aparecen mientras
+escribe, cada una con su significado y sus formas.  Enter copia los
+resultados, y una acción abre la búsqueda en línea.  Usa este programa
+(en la carpeta `py-words` junto a la suya, si no se dice otra) y sus
+ajustes, y tiene una pequeña ventana de ajustes propia (`la ?`): el
+prefijo `la`, los idiomas de los significados y de la interfaz, y
+cuántos resultados mostrar.  Necesita las bibliotecas de D-Bus de Python
+(python3-dbus y python3-gobject); su README explica cómo instalarlo.
+
 ### El idioma de la interfaz
 
 Los programas hablan inglés o español: sus menús, botones,
@@ -1152,6 +1166,8 @@ Versiones
     repositorio se lo pregunta a git.
   - El menú Ayuda de la ventana tiene "Sitio web", que abre la página
     del proyecto en GitHub.
+  - El README presenta krunner-py-words, un ayudante aparte que pone el
+    diccionario en KRunner (véase "En KRunner").
   - Los documentos, "Acerca de", la ayuda y `--help` dicen que WORDS
     fue el punto de partida, que su código y sus datos se rediseñaron, y
     que py-words incluye ahora un nuevo diccionario inglés (Lewis y
