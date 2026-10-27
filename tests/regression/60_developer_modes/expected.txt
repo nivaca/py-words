@@ -20,7 +20,7 @@ virumque
 03 a male person, a man; A man, a husband, the male, mate; a man of courage, principle, honor, one who deserves the name of a man; man, soldier; a foot-soldier; each man, every man; Human beings; Manhood, virility; (Lewis and Short)
 01 vir-um         ACC.SG  (always, most frequent)
 02 vis, viris  noun, 3rd declension, feminine  [XXXAX]  very frequent
-03 strength, force, vigor, power, energy, virtue; Energy, virtue, potency; Hostile strength, force, violence; force, violence; Quantity, number, abundance; military forces, troops; the virile forces, organs; Mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
+03 strength (bodily) (pl.), force, power, might, violence; resources; large body;
 01 vīr-um         GEN.PL  (always, sometimes)
 02 vis, viris  noun, 3rd declension, feminine  [XXXAA]  very frequent
 03 strength, force, vigor, power, energy, virtue; energy, virtue, potency; hostile strength, force, violence; force, violence; quantity, number, abundance; military forces, troops; the virile forces, organs; mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
@@ -117,7 +117,7 @@ quamdiu
 03 how long ago? how long?; as long as, until, during; Until; inasmuch as, in that; (Lewis and Short)
 01 quamdiū        POS  (always, most frequent)
 02 quamdiu  adverb  [XXXBO]  frequent
-03 how long ago? how long?; as long as, until, during; Until; inasmuch as, in that; (Lewis and Short)
+03 for the preceding period until; up to the time that; inasmuch as; (quam diu);
 01 quamdiū        POS  (always, most frequent)
 
 amasti

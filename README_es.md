@@ -914,7 +914,7 @@ significado en los editores, el código desaparece, pues el texto ya no
 es el del diccionario.
 
 Lo mismo se hizo con el inglés y Lewis y Short.  Cada entrada que él
-tiene (31 755) muestra su definición: las glosas en cursiva de sus
+tiene (30 715) muestra su definición: las glosas en cursiva de sus
 sentidos, sin las citas, los ejemplos latinos ni las notas de
 gramática, y tras ella los resultados dicen "(Lewis and Short)".  Una
 entrada toma su definición solo si comparte palabras con la nuestra,
@@ -925,6 +925,20 @@ desde el inglés mira en los dos.  También se añadieron sus nombres
 propios y las palabras cuya gramática difiere de la nuestra; en total,
 8436 entradas vienen de él (6653 palabras y 1783 nombres), y el
 diccionario tiene 93 370 entradas.
+
+En la 3.3 se corrigió un error de estas dos importaciones.  Una
+definición de De Miguel o de Lewis y Short se había dado a todas las
+entradas con las mismas raíces: así, un sentido medieval de Latham
+(*diligo* "desear"), los sentidos adicionales de una palabra en WORDS, e
+incluso otra palabra que se escribe igual (*os, ossis* "hueso" mostraba
+la definición de *os, oris* "boca") tenían la misma definición que la
+entrada principal, y los resultados la mostraban dos veces.  Ahora solo
+la conserva la entrada a la que pertenece (aquella cuyo significado
+propio comparte más palabras con ella, o si no la principal), y las
+demás vuelven a tener sus propios significados: en español la
+traducción que tenían antes (1935 entradas), en inglés el de WORDS o el
+de Latham (1040).  Ahora 48 744 significados en español vienen de De
+Miguel y 169 de Echave-Sustaeta, y los otros 44 872 son traducciones.
 
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,
@@ -1168,6 +1182,15 @@ Versiones
     del proyecto en GitHub.
   - El README presenta krunner-py-words, un ayudante aparte que pone el
     diccionario en KRunner (véase "En KRunner").
+  - Algunas palabras mostraban dos veces el mismo significado
+    (*diligo*, *abnego*, *os*): una definición de De Miguel o de Lewis y
+    Short se había dado a todas las entradas con las mismas raíces.
+    Ahora solo la tiene la entrada a la que pertenece, y 1935
+    significados en español y 1040 en inglés vuelven a ser los de sus
+    propias entradas (véase "Los significados en español").
+  - En la búsqueda hacia el latín, los significados ya no muestran las
+    barras (|) con que WORDS marca los sentidos adicionales de una
+    palabra.
   - Los documentos, "Acerca de", la ayuda y `--help` dicen que WORDS
     fue el punto de partida, que su código y sus datos se rediseñaron, y
     que py-words incluye ahora un nuevo diccionario inglés (Lewis y
@@ -1559,7 +1582,7 @@ El diccionario de py-words viene de estas obras:
 - C. T. Lewis y C. Short, *A Latin Dictionary* (Oxford: Clarendon Press,
   1879): 6653 palabras raras y 1783 nombres que WORDS no tenía (código
   de fuente S), con las vocales largas de sus lemas, y las definiciones
-  inglesas de 31 755 entradas (véase "Los significados en español").
+  inglesas de 30 715 entradas (véase "Los significados en español").
   Text provided under a CC BY-SA license by Perseus Digital Library, <http://www.perseus.tufts.edu>, with funding from The National
   Endowment for the Humanities.  Data accessed from
   <https://github.com/PerseusDL/lexica/> on 23 October 2026.  (Es la
@@ -1570,7 +1593,7 @@ El diccionario de py-words viene de estas obras:
   latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 25 149
   palabras y nombres propios que WORDS no tenía, en español y en
   inglés (código de fuente m), con las vocales largas de 12 756 de sus
-  lemas, y los significados en español de 50 678 entradas en total
+  lemas, y los significados en español de 48 744 entradas en total
   (véase "Los significados en español").  El libro es de dominio
   público.
 - Collatinus 11, de Yves Ouvrard y Philippe Verkerk

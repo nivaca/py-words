@@ -74,10 +74,15 @@ class Renderer:
             return thing.meaning
         return self.language.meaning(thing)
 
+    def shown_meaning(self, entry: Entry) -> str:
+        """The meaning of an entry as the results show it: without the
+        bars of WORDS that mark the further senses of a word (|...)."""
+        return self.meaning(entry).lstrip('|').strip()
+
     def meaning_of(self, entry: Entry, p: Parse) -> str:
         """The meaning of an entry; for a numeral, what this form
         means."""
-        m = self.meaning(entry).lstrip('|').strip()
+        m = self.shown_meaning(entry)
         part = entry.part
         if part.pos != Pos.NUM or part.value <= 0 or self.language is None:
             return m
@@ -262,7 +267,7 @@ class Renderer:
     def neighbour(self, entry: Entry):
         self.line(self.t('near:') + ' ' + self.entry_header(entry), 2,
                   ENTRY_CODE)
-        self.line(self.meaning(entry), 4, MEANING_CODE)
+        self.line(self.shown_meaning(entry), 4, MEANING_CODE)
 
     # From the language of the meanings to Latin ----------------------------
 
@@ -282,7 +287,7 @@ class Renderer:
         for h in shown:
             header = self.entry_header(h.entry)
             self.line(header, 2, ENTRY_CODE)
-            self.line(self.meaning(h.entry), 4, MEANING_CODE)
+            self.line(self.shown_meaning(h.entry), 4, MEANING_CODE)
         if len(shown) < len(hits):
             self.line(self.t(f'({len(hits) - len(shown)} more not shown)'),
                       2)

@@ -895,7 +895,7 @@ is a translation.  When you change a meaning in the editors, the code
 goes away, since the text is no longer the dictionary's.
 
 The same was done for English with Lewis and Short.  Every entry he has
-(31,755 of them) shows his definition: the glosses in italics of his
+(30,715 of them) shows his definition: the glosses in italics of his
 senses, without the citations, the Latin examples and the notes on
 grammar, after which the results say "(Lewis and Short)".  An entry
 takes his definition only if it shares words with ours, so a medieval
@@ -905,6 +905,19 @@ in `data/dictionary.xml`: the search from English looks in both.  His
 proper names were added too, and the words whose grammar differs from
 ours; in all, 8,436 entries come from him (6,653 words and 1,783
 names), and the dictionary has 93,370 entries.
+
+In 3.3 a mistake of these two imports was corrected.  A definition of
+De Miguel or of Lewis and Short had been given to every entry with the
+same stems: so a medieval sense of Latham (*diligo* "desire"), the
+further senses of a word in WORDS, and even another word spelled alike
+(*os, ossis* "bone" showed the definition of *os, oris* "mouth") had
+the same definition as the main entry, and the results showed it twice.
+Now only the entry it belongs to keeps it (the one whose own meaning
+shares most words with it, or else the main one), and the others have
+their own meanings again: in Spanish the translation they had before
+(1,935 entries), in English that of WORDS or of Latham (1,040).  Now
+48,744 Spanish meanings come from De Miguel and 169 from
+Echave-Sustaeta, and the other 44,872 are translations.
 
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations
@@ -1142,6 +1155,13 @@ Version
     page on GitHub.
   - The README presents krunner-py-words, a separate helper that puts
     the dictionary in KRunner (see "In KRunner").
+  - Some words showed the same meaning twice (*diligo*, *abnego*,
+    *os*): a definition of De Miguel or of Lewis and Short had been
+    given to every entry with the same stems.  Now only the entry it
+    belongs to has it, and 1,935 Spanish and 1,040 English meanings are
+    again those of their own entries (see "The Spanish meanings").
+  - In the search to Latin, the meanings no longer show the bars (|) with
+    which WORDS marks the further senses of a word.
   - The documents, "About", the help and `--help` say that WORDS was
     the starting point, that its code and data were redesigned, and
     that py-words now includes a new English dictionary (Lewis and
@@ -1513,7 +1533,7 @@ The dictionary of py-words comes from these works:
 - C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon
   Press, 1879): 6,653 rare words and 1,783 names that WORDS did not have
   (source code S), with the long vowels of their headwords, and the
-  English definitions of 31,755 entries (see "The Spanish meanings").
+  English definitions of 30,715 entries (see "The Spanish meanings").
   Text provided under a CC BY-SA license by Perseus Digital Library,
   <http://www.perseus.tufts.edu>, with funding from The National
   Endowment for the Humanities.  Data accessed from
@@ -1524,7 +1544,7 @@ The dictionary of py-words comes from these works:
   latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 25,149
   words and proper names that WORDS did not have, in Spanish and in
   English (source code m), with the long vowels of 12,756 of their
-  headwords, and the Spanish meanings of 50,678 entries in all (see "The
+  headwords, and the Spanish meanings of 48,744 entries in all (see "The
   Spanish meanings").  The book is in the public domain.
 - Collatinus 11, by Yves Ouvrard and Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL:

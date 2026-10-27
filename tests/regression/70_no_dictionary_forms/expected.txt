@@ -19,7 +19,7 @@ virumque
     a male person, a man; A man, a husband, the male, mate; a man of courage, principle, honor, one who deserves the name of a man; man, soldier; a foot-soldier; each man, every man; Human beings; Manhood, virility; (Lewis and Short)
     vir-um         ACC.SG
   [XXXAX]
-    strength, force, vigor, power, energy, virtue; Energy, virtue, potency; Hostile strength, force, violence; force, violence; Quantity, number, abundance; military forces, troops; the virile forces, organs; Mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
+    strength (bodily) (pl.), force, power, might, violence; resources; large body;
     vīr-um         GEN.PL
   [XXXAA]
     strength, force, vigor, power, energy, virtue; energy, virtue, potency; hostile strength, force, violence; force, violence; quantity, number, abundance; military forces, troops; the virile forces, organs; mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
@@ -97,7 +97,7 @@ quamdiu
     how long ago? how long?; as long as, until, during; Until; inasmuch as, in that; (Lewis and Short)
     quamdiū        POS
   [XXXBO]
-    how long ago? how long?; as long as, until, during; Until; inasmuch as, in that; (Lewis and Short)
+    for the preceding period until; up to the time that; inasmuch as; (quam diu);
     quamdiū        POS
 
 amasti

@@ -40,7 +40,7 @@ viri
     vir-ī          NOM.PL
     vir-ī          VOC.PL
   vis, viris  noun, 3rd declension, feminine  [XXXAX]
-    strength, force, vigor, power, energy, virtue; Energy, virtue, potency; Hostile strength, force, violence; force, violence; Quantity, number, abundance; military forces, troops; the virile forces, organs; Mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
+    strength (bodily) (pl.), force, power, might, violence; resources; large body;
     vīr-i          LOC.SG  (early)
     vīr-ī          DAT.SG
     vīr-ī          ABL.SG

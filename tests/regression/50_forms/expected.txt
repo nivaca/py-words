@@ -119,7 +119,7 @@ corpus
     corpus         VOC.SG
     corpus         ACC.SG
   corpus, corporis  noun, 3rd declension, neuter  [XXXAO]
-    any object composed of materials perceptible by the senses, body, substance; a body; The flesh of animal bodies; the wood under the bark of a tree; A lifeless body, a corpse, the souls of the dead, the shades, departed spirits; the trunk; the body, person; the individual, the person, heads; a whole composed of parts united, a body, frame, system, structure, community, corporation, a book; (Lewis and Short)
+    substantial/material/concrete object/body; particle/atom; corporation, guild;
     corpus         NOM.SG
     corpus         VOC.SG
     corpus         ACC.SG
@@ -176,7 +176,7 @@ manus
 
 cornu
   cornus, cornus  noun, 4th declension, feminine  [XXXCO]
-    a cornel cherry-tree; a javelin made of cornelwood; (Lewis and Short)
+    cornel-cherry-tree (Cornus mas); cornel wood; javelin (of cornel wood);
     corn-ū         ABL.SG
   cornu, cornus  noun, 4th declension, neuter  [XXXAO]
     a horn; a hard and crooked growth upon the head of many mammiferous animals, the antlers of a stag, the horn of the goat Amalthea placed in heaven, the emblem of fruitfulness and abundance; things similar to horn in substance, form, made of horn; A hoof; the bills of birds; The horny skin covering the eye; A horny excrescence on the head, a wart; a projecting extremity, the point, end; The tooth, tusk of an elephant, ivory; The horns of the moon; The branches of a river; The arm of the shore forming a harbor, a tongue of land; The extremity, end of the sailyards; The cone of a helmet in which the crest was placed; The end of the stick around which books were rolled, usually ornamented with ivory; The side of a bow in the form of a horn; The horn-shaped side of the cithara; The top, summit of a mountain; The point, end, extremity, wing of a place; The wing of an army; The feeler, claw; The stiff hair; A bow; A bugle-horn, a horn, trumpet; The sides of the lyre; A lantern; An oil cruet; A funnel; power, courage, strength, might; (Lewis and Short)
@@ -386,10 +386,10 @@ maximus
     great, large; great, large, vast, extensive, spacious; great, much, abundant, considerable; loud, powerful, strong, mighty; the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous; great things, important matters; the great year, the Platonic year, cycle; great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest; one who has attained his twenty-fifth year, who is of age, adults; ancestors, forefathers; high, dear, of great value, at a high price; higher, highest, very high, most highly prized; too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; there is greater reason, there is more cause; more and more; no more ... than; just as much ... as; just as little ... as; not more, less, not so much ... as; less ... than; more or less; in different degrees; in the highest degree, most of all, most particularly, especially, exceedingly, very; at most; the more ... the more; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly; just now; certainly, by all means, very well, yes; certainly not, by no means; (Lewis and Short)
     maxi-mus       NOM.SG.M.SPRL
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    great, large; great, large, vast, extensive, spacious; great, much, abundant, considerable; loud, powerful, strong, mighty; the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous; great things, important matters; the great year, the Platonic year, cycle; great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest; one who has attained his twenty-fifth year, who is of age, adults; ancestors, forefathers; high, dear, of great value, at a high price; higher, highest, very high, most highly prized; too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; there is greater reason, there is more cause; more and more; no more ... than; just as much ... as; just as little ... as; not more, less, not so much ... as; less ... than; more or less; in different degrees; in the highest degree, most of all, most particularly, especially, exceedingly, very; at most; the more ... the more; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly; just now; certainly, by all means, very well, yes; certainly not, by no means; (Lewis and Short)
+    great (achievement); mighty; distinguished; skilled; bold/confident; proud;
     maxi-mus       NOM.SG.M.SPRL
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
-    great, large; great, large, vast, extensive, spacious; great, much, abundant, considerable; loud, powerful, strong, mighty; the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous; great things, important matters; the great year, the Platonic year, cycle; great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest; one who has attained his twenty-fifth year, who is of age, adults; ancestors, forefathers; high, dear, of great value, at a high price; higher, highest, very high, most highly prized; too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; there is greater reason, there is more cause; more and more; no more ... than; just as much ... as; just as little ... as; not more, less, not so much ... as; less ... than; more or less; in different degrees; in the highest degree, most of all, most particularly, especially, exceedingly, very; at most; the more ... the more; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly; just now; certainly, by all means, very well, yes; certainly not, by no means; (Lewis and Short)
+    full/complete/utter/pure; intense; loud; at high price; notable/famous; old;
     maxi-mus       NOM.SG.M.SPRL
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAA]
     great, large; great, large, vast, extensive, spacious; great, much, abundant, considerable; loud, powerful, strong, mighty; the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous; great things, important matters; the great year, the Platonic year, cycle; great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest; one who has attained his twenty-fifth year, who is of age, adults; ancestors, forefathers; the old master, the master of the house, the old man; the young master; the Senate; a great-uncle; high, dear, of great value, at a high price; higher, highest, very high, most highly prized; too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; there is greater reason, there is more cause that; more and more; no more ... than; just as much ... as; just as little ... as; not more, less, not so much ... as; less ... than; more or less; one more than another, in different degrees; in the highest degree, most of all, most particularly, especially, exceedingly, very; at most; the more ... the more, less; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly; just now; certainly, by all means, very well, yes; certainly not, by no means; (Lewis and Short)
@@ -775,7 +775,7 @@ possum
 
 eo
   eo, eare, evi, etus  verb, 1st conjugation  [FXXFZ]  medieval  very rare
-    to walk, ride, sail, fly, move; to proceed against, to march against; to pass away; to proceed, move, advance; to go over, accede to any opinion; to vote against a bill; to be sold at; to proceed, turn out, happen; to set about, to prepare, to wish, to be about; (Lewis and Short)
+    go, walk; march, advance; pass; flow; pass (time); ride; be in the middle;
     e-o            1SG.PRS.ACT.IND
   eo, ire, ivi(ii), itus  verb, irregular  [XXXAX]
     to walk, ride, sail, fly, move; to proceed against, to march against; to pass away; to proceed, move, advance; to go over, accede to any opinion; to vote against a bill; to be sold at; to proceed, turn out, happen; to set about, to prepare, to wish, to be about; (Lewis and Short)
@@ -784,7 +784,7 @@ eo
     there, in that place, in that condition; therefore, on that account, for that reason; so much, by so much, so much the worse, the less; to that place, thither; thereto, in addition to that, besides; to that end, with that purpose, to this result; to that degree, extent, so far, to such a point; up to the time, until, so long; (Lewis and Short)
     eō             POS
   eo  adverb  [XXXBO]
-    there, in that place, in that condition; therefore, on that account, for that reason; so much, by so much, so much the worse, the less; to that place, thither; thereto, in addition to that, besides; to that end, with that purpose, to this result; to that degree, extent, so far, to such a point; up to the time, until, so long; (Lewis and Short)
+    there, to/toward that place; in that direction; to that object/point/stage;
     eō             POS
   is, ea, id  pronoun, personal  [XXXAX]
     he/she/it/they (by GENDER/NUMBER); DEMONST: that, he/she/it, they/them;
@@ -833,7 +833,7 @@ memini
     to remember, recollect, think of, be mindful of, not to have forgotten, bear in mind; be sure to, do not fail to; to make mention of, mention; mindful; (Lewis and Short)
     memin-ī        1SG.PRF.ACT.IND
   memini, meminisse, -  verb, 2nd conjugation, perfect with present meaning  [XXXAA]
-    to remember, recollect, think of, be mindful of, not to have forgotten, bear in mind; be sure to, do not fail to; to make mention of, mention; mindful; (Lewis and Short)
+    mention;
     memin-ī        1SG.PRF.ACT.IND
 
 collibuit
@@ -983,7 +983,7 @@ cum
     when, as, while, after, since; when, if, whenever; even when; when, if, while; while, now that; seeing that; when, after; whenever; when first, the first time that, as soon as; while; precisely when, just when; when, that, during which, while; since, after; at the end of which; When, on an occasion, on which; in consequence of which; at which time however, and yet, while nevertheless; during which; while nevertheless, whereas; now especially, just now, just then, just while, especially when; since, because, as; especially since, the more so because; since of course, since obviously, when of course; seeing that; while, whereas; although; (Lewis and Short)
     cum            POS
   cum  adverb  [XXXAO]
-    when, as, while, after, since; when, if, whenever; even when; when, if, while; while, now that; seeing that; when, after; whenever; when first, the first time that, as soon as; while; precisely when, just when; when, that, during which, while; since, after; at the end of which; When, on an occasion, on which; in consequence of which; at which time however, and yet, while nevertheless; during which; while nevertheless, whereas; now especially, just now, just then, just while, especially when; since, because, as; especially since, the more so because; since of course, since obviously, when of course; seeing that; while, whereas; although; (Lewis and Short)
+    as soon; while, as (well as); whereas, in that, seeing that; on/during which;
     cum            POS
   cum  preposition, with the ablative  [XXXAO]
     with, together/jointly/along/simultaneous with, amid; supporting; attached;
@@ -1110,7 +1110,7 @@ prior
     prior          NOM.SG
     prior          VOC.SG
   prior, prioris  noun, 3rd declension, masculine  [EEXCB]  later
-    former, previous, prior, first; Former, deceased; forefathers, ancestors, the ancients; better, superior, more excellent, important; Before, sooner, first, previously; Before that, before; Sooner, rather; formerly, in former times; (Lewis and Short)
+    superior/elder monk; (later) second in dignity to abbot/head of priory, prior;
     prior          NOM.SG
     prior          VOC.SG
 

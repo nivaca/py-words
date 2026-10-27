@@ -251,7 +251,7 @@ also have (50,846 of them) were rewritten in those dictionaries' own
 words, and some 31,000 more words that the three new sources still had
 were added, among them 16,995 medieval words of Latham, 12,000 words
 and names of De Miguel and 5,400 words and names of Lewis and Short;
-the English meanings of the entries Lewis and Short has (31,755) are now
+the English meanings of the entries Lewis and Short has (30,715) are now
 his definitions.  The dictionary has now 93,370 entries.  The README
 tells how it was done.
 
