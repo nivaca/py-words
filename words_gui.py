@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""A window for WORDS: python3 words_gui.py
+"""A window for WORDS: python3 words_gui.py [-e] [WORD ...]
 
 Type Latin words (or, in the other direction, a word in the language of
 the meanings) and press Enter; the results are those the command line
-shows.
+shows.  WORDs given are looked up at once (with -e, to Latin).
 """
 
 from version import check_python
@@ -43,9 +43,10 @@ WELCOME = N_('Type a Latin word or line, and press Enter.  "Help" explains '
 
 
 class App:
-    def __init__(self, root, datadir):
+    def __init__(self, root, datadir, query: str = '', to_latin=False):
         self.root = root
         self.datadir = datadir
+        self.query = (query, to_latin)  # (looked up when ready)
         self.session = None
         self.saved = None               # (see ready)
         self.settings_window = None
@@ -297,6 +298,9 @@ class App:
         self.status.config(text=session.notice or tr('Ready.'))
         self.set_busy(False)
         self.entry.focus_set()
+        query, self.query = self.query, ('', False)
+        if query[0].strip():
+            self.look_up(*query)
 
     def setting(self, name):
         return getattr(self.saved, name)
@@ -570,7 +574,10 @@ def set_icon(root):
         root._icons = images            # (Tk does not keep them alive)
 
 
-def main():
+def main(argv: list[str] | None = None):
+    argv = sys.argv[1:] if argv is None else argv
+    to_latin = argv[:1] in (['-e'], ['--english'])
+    query = ' '.join(argv[1:] if to_latin else argv)
     if sys.platform == 'win32':
         #  So that the taskbar shows the window's icon, not Python's
         try:
@@ -592,7 +599,7 @@ def main():
         if not datadir:
             return
         root.deiconify()
-    App(root, datadir)
+    App(root, datadir, query, to_latin)
     root.mainloop()
 
 
