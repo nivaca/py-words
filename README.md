@@ -1166,6 +1166,12 @@ Version
     the starting point, that its code and data were redesigned, and
     that py-words now includes a new English dictionary (Lewis and
     Short) and two new Spanish ones (Echave-Sustaeta and De Miguel).
+  - The windows look better: on Linux, light mode has the colours of
+    the web page (it was Tk's plain grey theme; Windows and macOS keep
+    their own), and in both modes "Look up" is in the colour of the
+    accent, the check boxes have a tick, the dark mode button has no
+    border, the results have more room and space between the lines, and
+    the controls are spaced more evenly.
 - 3.2:
   - The dictionary has now 93,370 entries.  Lewis and Short gave 6,653
     rare words and 1,783 names, R. de Miguel's *Nuevo diccionario latino-español

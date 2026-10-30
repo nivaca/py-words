@@ -1196,6 +1196,12 @@ Versiones
     que py-words incluye ahora un nuevo diccionario inglés (Lewis y
     Short) y dos nuevos diccionarios españoles (Echave-Sustaeta y De
     Miguel).
+  - Las ventanas se ven mejor: en Linux, el modo claro tiene los
+    colores de la página web (era el tema gris de Tk; Windows y macOS
+    conservan el suyo), y en los dos modos "Buscar" va en el color de
+    acento, las casillas tienen una marca de verificación, el botón del
+    modo oscuro no tiene borde, los resultados tienen más espacio entre
+    las líneas y alrededor, y los controles están mejor espaciados.
 - 3.2:
   - El diccionario tiene ahora 93 370 entradas.  Lewis y Short aportó
     6653 palabras raras y 1783 nombres, el *Nuevo diccionario latino-español

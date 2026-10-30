@@ -78,7 +78,7 @@ class App:
         """The widgets of the window, in the language of the interface."""
         root = self.root
         root.title(tr('{name}: a Latin dictionary', name=NAME))
-        top = ttk.Frame(root, padding=(8, 8, 8, 4))
+        top = ttk.Frame(root, padding=(12, 12, 12, 8))
         top.pack(fill='x')
         self.entry = ttk.Combobox(top, font=self.fonts.entry,
                                   values=self.history.recent())
@@ -86,10 +86,10 @@ class App:
         self.entry.bind('<Return>', lambda e: self.lookup())
         self.entry.bind('<<ComboboxSelected>>', lambda e: self.lookup())
         self.button = ttk.Button(top, text=tr('Look up'),
-                                 command=self.lookup)
-        self.button.pack(side='left', padx=(6, 0))
+                                 style='Accent.TButton', command=self.lookup)
+        self.button.pack(side='left', padx=(8, 0), fill='y')
 
-        lang = ttk.Frame(root, padding=(8, 0, 8, 6))
+        lang = ttk.Frame(root, padding=(12, 0, 12, 10))
         lang.pack(fill='x')
         #  on the left, the direction, and below it the language of the
         #  meanings; on the right, the buttons
@@ -105,34 +105,34 @@ class App:
         self.to_latin = ttk.Radiobutton(
             direction, text=tr('{language} → Latin', language=english),
             value=True, variable=self.reverse)
-        self.to_latin.pack(side='left', padx=(12, 0))
+        self.to_latin.pack(side='left', padx=(16, 0))
         #  (the choices of the language are known once the dictionary is
         #  loaded)
         meanings = ttk.Frame(choices)
-        meanings.pack(anchor='w', pady=(4, 0))
+        meanings.pack(anchor='w', pady=(6, 0))
         ttk.Label(meanings, text=tr('Meanings in')).pack(side='left',
-                                                         padx=(0, 4))
+                                                         padx=(0, 6))
         self.language = ttk.Combobox(meanings, state='disabled', width=9)
         self.language.pack(side='left')
         self.language.bind('<<ComboboxSelected>>',
                            lambda e: self.choose_language())
         ttk.Checkbutton(meanings, text=tr('Fuzzy search'),
                         variable=self.fuzzy, command=self.choose_fuzzy
-                        ).pack(side='left', padx=(12, 0))
+                        ).pack(side='left', padx=(16, 0))
         self.menus()
         #  the status line and the dark mode box, at the bottom (packed
         #  before the results, so that they stay when the window is small
         #  for its fonts)
-        bottom = ttk.Frame(root, padding=(8, 2, 8, 6))
+        bottom = ttk.Frame(root, padding=(12, 4, 12, 6))
         bottom.pack(side='bottom', fill='x')
         self.results = Results(root, self.fonts, self.theme, self.look_up,
                                self.explain_codes, self.explain_analysis)
-        self.results.pack(fill='both', expand=True, padx=8)
+        self.results.pack(fill='both', expand=True, padx=12)
         self.text = self.results.text
         #  dark mode: a moon to make the window dark, a sun to make it
         #  light again (its name in the status line, under the mouse)
         self.dark_box = ttk.Checkbutton(bottom, variable=self.dark,
-                                        style='Mode.Toolbutton',
+                                        style='Mode.Flat.Toolbutton',
                                         command=self.choose_dark)
         self.dark_box.pack(side='right')
         self.dark.trace_add('write', lambda *a: self.show_dark())
@@ -196,7 +196,7 @@ class App:
         """The moon or the sun, larger than the text (each theme has its
         own styles, so this is done again when it changes)."""
         size = tkfont.nametofont('TkDefaultFont').actual('size')
-        ttk.Style().configure('Mode.Toolbutton', padding=(4, 0),
+        ttk.Style().configure('Mode.Flat.Toolbutton', padding=(6, 0),
                               font=('TkDefaultFont', round(abs(size) * 1.5)))
         self.dark_box.config(text=SUN if self.dark.get() else MOON)
 

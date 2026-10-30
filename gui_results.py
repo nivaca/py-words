@@ -61,12 +61,13 @@ class Results(ttk.Frame):
 
         box = ttk.Frame(self)
         box.pack(fill='both', expand=True)
-        self.text = tk.Text(box, wrap='word', font=fonts.text, padx=8,
-                            pady=6, state='disabled', borderwidth=1,
-                            highlightthickness=0)
+        self.text = tk.Text(box, wrap='word', font=fonts.text, padx=14,
+                            pady=10, state='disabled', borderwidth=0,
+                            highlightthickness=1, spacing1=1, spacing2=2,
+                            spacing3=1)
         bar = ttk.Scrollbar(box, command=self.text.yview)
         self.text.config(yscrollcommand=bar.set)
-        bar.pack(side='right', fill='y')
+        bar.pack(side='right', fill='y', padx=(2, 0))
         self.text.pack(side='left', fill='both', expand=True)
         self.find_bar = self._find_bar()
 
@@ -104,7 +105,7 @@ class Results(ttk.Frame):
         self.note_font.config(family=family, size=size, slant='italic')
         c = COLOURS[self.theme.dark]
         t = self.text
-        t.tag_config('word', font=self.word_font, spacing1=4, spacing3=2)
+        t.tag_config('word', font=self.word_font, spacing1=8, spacing3=3)
         t.tag_config('entry', font=self.bold_font)
         t.tag_config('headword', foreground=c['headword'])
         t.tag_config('codes', foreground=c['muted'], font=self.fonts.text)
