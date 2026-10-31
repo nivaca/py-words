@@ -12,3 +12,4 @@ py-words-v*.zip
 site/
 local-only/
 dicts/
+dist/
