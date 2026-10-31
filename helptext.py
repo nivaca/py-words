@@ -55,7 +55,9 @@ HELP = {
            'one.  Such results are marked as such.'),
     'medieval_spellings':
         N_('With use_tricks, also try medieval spellings (e for ae, y for '
-           'i, michi for mihi, single for doubled consonants ...).'),
+           'i, michi for mihi, single for doubled consonants ...), also '
+           'for a word that is found: its e may be ae or oe (queruntur, '
+           'of queror, is also quaeruntur, of quaero).'),
     'read_compounds':
         N_('Read a participle followed by a form of esse as a compound '
            'tense (laudatus est: perfect passive).'),

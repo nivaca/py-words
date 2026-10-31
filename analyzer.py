@@ -511,6 +511,10 @@ class Analyzer:
         notes: dict[Origin, str] = {}
         out = self._passes(word, notes)
         est = False         # est written in the word (amatust)
+        if out and s.use_tricks and s.medieval_spellings:
+            #  (e for ae or oe: queruntur is also quaeruntur)
+            out = chain(out, tricks.diphthongs(self, word, notes, out,
+                                                  capitalized))
         if not out:
             out = self.prodelision(word, notes)
             est = bool(out)

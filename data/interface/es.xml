@@ -2643,7 +2643,7 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>Con trim_output, omitir también las formas medievales cuando se hallaron otras.</tr>
   </text>
   <text>
-    <en>With use_tricks, also try medieval spellings (e for ae, y for i, michi for mihi, single for doubled consonants ...).</en>
-    <tr>Con use_tricks, probar también grafías medievales (e por ae, y por i, michi por mihi, consonantes simples por dobles ...).</tr>
+    <en>With use_tricks, also try medieval spellings (e for ae, y for i, michi for mihi, single for doubled consonants ...), also for a word that is found: its e may be ae or oe (queruntur, of queror, is also quaeruntur, of quaero).</en>
+    <tr>Con use_tricks, probar también grafías medievales (e por ae, y por i, michi por mihi, consonantes simples por dobles ...), también para una palabra que se encuentra: su e puede ser ae u oe (queruntur, de queror, es también quaeruntur, de quaero).</tr>
   </text>
 </interface>

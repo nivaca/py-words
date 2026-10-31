@@ -131,6 +131,30 @@ class AnalyzerTests(unittest.TestCase):
         self.az.reset()
         self.assertTrue(self.analyze('hystorie').unknown)
 
+    def stems(self, word):
+        return {p.entry.stems[0] for rd in self.analyze(word).readings
+                for p in rd.forms if p.entry}
+
+    def test_e_for_ae_or_oe_in_a_known_word(self):
+        # queruntur is queror, and also quaero; celum caelum and coelum
+        for word, stems in (('queruntur', {'quer', 'quaer'}),
+                            ('celum', {'cael', 'coel'}),
+                            ('querunturque', {'quer', 'quaer'})):
+            self.assertLessEqual(stems, self.stems(word), word)
+        r = self.analyze('queruntur')
+        self.assertIn('quaeruntur', r.notes[Origin.TRICK])
+
+    def test_e_for_ae_or_oe_leaves_common_words_alone(self):
+        # a final e (essae, benae), rare entries and names (eum: Aea)
+        for word in ('esse', 'bene', 'ille', 'eum', 'tres', 'ea'):
+            r = self.analyze(word)
+            self.assertNotIn(Origin.TRICK, r.notes, word)
+
+    def test_e_for_ae_or_oe_needs_the_setting(self):
+        self.az.settings.medieval_spellings = False
+        self.az.reset()
+        self.assertNotIn('quaer', self.stems('queruntur'))
+
     def test_doubled_letters_in_an_ending_are_not_medieval(self):
         r = self.analyze('amicuss')
         self.assertNotIn('medieval', r.notes.get(Origin.TRICK, ''))

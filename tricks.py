@@ -13,14 +13,15 @@ the trick's explanation goes in NOTES.
 
 from __future__ import annotations
 
+import itertools
 import re
 from typing import TYPE_CHECKING
 from collections.abc import Callable
 
 from model import (Pos, Case, Number, Gender, NumeralSort, Decl, Form,
                     Inflection, Freq, medieval_fold)
-from results import (Origin, Parse, Found, trick_mark, marked, found, chain,
-                     parses_of, shown, from_dictionary)
+from results import (Origin, Parse, Found, mark, trick_mark, marked, found,
+                     chain, parses_of, shown, from_dictionary)
 
 if TYPE_CHECKING:
     from analyzer import Analyzer, Opts
@@ -446,6 +447,81 @@ def _medieval_spellings(t: _Tricks) -> bool:
                                      f"of {', '.join(found_as)}")
             return True
     return False
+
+
+#  The entries that `diphthongs` keeps: those at least this frequent
+DIPHTHONG_FREQ = Freq.C
+
+
+def diphthongs(az: Analyzer, word: str, notes: dict, known: list[Found],
+               capitalized: bool = False) -> list[Found]:
+    """A word found as it is may also be a medieval spelling with e for ae
+    or oe (queruntur for quaeruntur, celum for caelum or coelum): the
+    entries that its e's read as ae or oe find, besides those of KNOWN.  A
+    final e is left alone (esse, bene, ille would find essae, benae,
+    illae); an unknown word gets it from `_medieval_spellings`.  A word
+    found with an enclitic is respelt without it (querunturque).  Only
+    frequent entries are kept, and names only for a CAPITALIZED word (or
+    eum would also be Aea, and tres Tros)."""
+    w = word.lower()
+    seen = {p.id for p in parses_of(known)}
+    out, found_as = [], []
+    tries = [(w, None)] + [
+        (az.strip_tackon(w, p.source), p.source) for p in shown(known)
+        if p.form.pos == Pos.TACKON and
+        az.strip_tackon(w, p.source) != w]
+    for less, tackon in tries:
+        for new in _e_respellings(less):
+            findings = az.word(new, az.default_opts(), True)
+            if not findings or _ends_with_tackon(findings):
+                continue
+            fresh = found(p for p in parses_of(findings)
+                          if p.id not in seen and _common(p, capitalized))
+            if not fresh:
+                continue
+            seen.update(p.id for p in parses_of(fresh))
+            if tackon is not None:
+                fresh = marked(mark(tackon), fresh)
+                new += tackon.fix
+            out = chain(out, marked(trick_mark(f'Medieval {w} -> {new}'),
+                                    fresh))
+            found_as.append(new)
+    if found_as:
+        notes.setdefault(Origin.TRICK, f"'{w}' may be a medieval spelling "
+                                       f"of {', '.join(found_as)}")
+    return out
+
+
+def _common(p: Parse, capitalized: bool) -> bool:
+    """Whether P is of a frequent entry (or an irregular form), and not
+    of a name unless CAPITALIZED."""
+    entry = p.entry
+    if entry is None:
+        return True
+    if entry.stems[0][:1].isupper() and not capitalized:
+        return False
+    return Freq.X < entry.codes.freq <= DIPHTHONG_FREQ
+
+
+def _e_respellings(w: str) -> list[str]:
+    """W with its e's (but a final one, or one already in ae or oe) as ae
+    or oe: all the ways, or if they are too many, one e at a time."""
+    places = [i for i in _places(w[:-1], 'e')
+              if i == 0 or w[i - 1] not in 'ao']
+    if 3 ** len(places) - 1 <= MOST_RESPELLINGS:
+        choices = [c for c in itertools.product(('e', 'ae', 'oe'),
+                                                repeat=len(places))
+                   if any(d != 'e' for d in c)]
+    else:
+        choices = [tuple(d if j == i else 'e' for j in range(len(places)))
+                   for i in range(len(places)) for d in ('ae', 'oe')]
+    out = []
+    for choice in choices:
+        new = list(w)
+        for i, d in zip(places, choice):
+            new[i] = d
+        out.append(''.join(new))
+    return out
 
 
 def _respellings(lex, word: str) -> list[list[str]]:

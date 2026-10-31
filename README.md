@@ -159,7 +159,7 @@ for distributing it:
 
     $ python3 bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `py-words-v.3.3.zip` (with the version of the program), with
+This writes `py-words-v.3.4.zip` (with the version of the program), with
 the program inside a folder of the same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
 commit it was made from, which "About" shows.  It does not contain hidden files
@@ -175,6 +175,8 @@ Usage
     $ python3 words.py rem acu tetigisti
     $ python3 words.py                         # interactive
     $ python3 words_gui.py                     # a window
+    $ python3 words_gui.py perspicio           # a window, looking it up
+    $ python3 words_gui.py -e look             # a window, to Latin
     $ python3 words_tui.py                     # full screen, in a terminal
     $ python3 words_web.py                     # in a web browser
 
@@ -1046,7 +1048,13 @@ endings of the word with those of the dictionary under
 no h, ci for ti before a vowel, mn for mpn and single consonants for
 doubled ones (in the stems only).  So hystorie, phylosophia, dyabolus,
 ecclesie and ympnus are found, and michi and nichil too (ch read as h).
-It keeps the respellings of the most frequent entries.  Also, a final
+It keeps the respellings of the most frequent entries.  A word that is
+found as it is may still be a medieval spelling with e for ae or oe:
+queruntur is a form of queror, but it can also be quaeruntur, of quaero.
+So `tricks.diphthongs` reads each e of a word that is found (but a
+final one) as ae or oe too, and adds what it finds; it keeps only
+frequent entries, and no names, so that esse is not also essae, nor eum
+Aea.  Also, a final
 -st can stand for est after a vowel, m or s (amatust, factumst, bonast,
 opust: amatus est, factum est, bona est, opus est); this is
 `Analyzer.prodelision`, and a participle found this way makes the
@@ -1144,6 +1152,19 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.4:
+  - With the medieval spellings, the e of a word that is found may also
+    be ae or oe: queruntur gives queror, and also quaeruntur, of quaero
+    (and celum caelum and coelum).  Only frequent entries are added, and
+    not for a final e, so esse, bene or ille give nothing more.
+  - The windows look better: on Linux, light mode has the colours of
+    the web page (it was Tk's plain grey theme; Windows and macOS keep
+    their own), and in both modes "Look up" is in the colour of the
+    accent, the check boxes have a tick, the dark mode button has no
+    border, the results have more room and space between the lines, and
+    the controls are spaced more evenly.
+  - The window looks up the words given on its command line
+    (`python3 words_gui.py perspicio`; with `-e`, to Latin).
 - 3.3:
   - "About" (in the window, the terminal, the web page, `~A` and
     `--version`) gives the commit the program comes from, as the
@@ -1166,12 +1187,6 @@ Version
     the starting point, that its code and data were redesigned, and
     that py-words now includes a new English dictionary (Lewis and
     Short) and two new Spanish ones (Echave-Sustaeta and De Miguel).
-  - The windows look better: on Linux, light mode has the colours of
-    the web page (it was Tk's plain grey theme; Windows and macOS keep
-    their own), and in both modes "Look up" is in the colour of the
-    accent, the check boxes have a tick, the dark mode button has no
-    border, the results have more room and space between the lines, and
-    the controls are spaced more evenly.
 - 3.2:
   - The dictionary has now 93,370 entries.  Lewis and Short gave 6,653
     rare words and 1,783 names, R. de Miguel's *Nuevo diccionario latino-español

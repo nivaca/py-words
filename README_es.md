@@ -163,7 +163,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `py-words-v.3.3.zip` (con la versión del programa), con el
+Eso escribe `py-words-v.3.4.zip` (con la versión del programa), con el
 programa dentro de una carpeta del mismo nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
 commit del que se hizo, que muestra "Acerca de".  Deja fuera los archivos ocultos
@@ -178,6 +178,8 @@ Uso
     $ python3 words.py rem acu tetigisti
     $ python3 words.py                         # interactivo
     $ python3 words_gui.py                     # una ventana
+    $ python3 words_gui.py perspicio           # una ventana que la busca
+    $ python3 words_gui.py -e mirar            # una ventana, al latín
     $ python3 words_tui.py                     # pantalla completa, en una terminal
     $ python3 words_web.py                     # en un navegador web
 
@@ -1069,7 +1071,13 @@ nada por h, ci por ti ante vocal, mn por mpn y consonantes simples por
 las dobles (solo en las raíces).  Así se encuentran hystorie,
 phylosophia, dyabolus, ecclesie e ympnus, y también michi y nichil (ch
 leída como h).  Se queda con las grafías de las entradas más
-frecuentes.  Además, una -st final puede representar est tras vocal, m o
+frecuentes.  Una palabra que se encuentra tal cual puede ser aún una
+grafía medieval con e por ae u oe: queruntur es una forma de queror,
+pero también puede ser quaeruntur, de quaero.  Por eso
+`tricks.diphthongs` lee cada e de una palabra encontrada (salvo una
+final) también como ae y como oe, y añade lo que encuentra; solo se
+queda con las entradas frecuentes, y sin nombres, para que esse no sea
+también essae, ni eum Aea.  Además, una -st final puede representar est tras vocal, m o
 s (amatust, factumst, bonast, opust: amatus est, factum est, bona est,
 opus est); esto lo hace `Analyzer.prodelision`, y un participio hallado
 así forma el tiempo compuesto con ese est.  Tomé las dos ideas de
@@ -1171,6 +1179,20 @@ con `git diff`.
 Versiones
 ---------
 
+- 3.4:
+  - Con las grafías medievales, la e de una palabra que se encuentra
+    puede ser también ae u oe: queruntur da queror, y también
+    quaeruntur, de quaero (y celum, caelum y coelum).  Solo se añaden
+    entradas frecuentes, y no para una e final, así que esse, bene o
+    ille no dan nada más.
+  - Las ventanas se ven mejor: en Linux, el modo claro tiene los
+    colores de la página web (era el tema gris de Tk; Windows y macOS
+    conservan el suyo), y en los dos modos "Buscar" va en el color de
+    acento, las casillas tienen una marca de verificación, el botón del
+    modo oscuro no tiene borde, los resultados tienen más espacio entre
+    las líneas y alrededor, y los controles están mejor espaciados.
+  - La ventana busca las palabras que se le dan en la línea de órdenes
+    (`python3 words_gui.py perspicio`; con `-e`, al latín).
 - 3.3:
   - "Acerca de" (en la ventana, la terminal, la página web, `~A` y
     `--version`) da el commit del que viene el programa, como la
@@ -1196,12 +1218,6 @@ Versiones
     que py-words incluye ahora un nuevo diccionario inglés (Lewis y
     Short) y dos nuevos diccionarios españoles (Echave-Sustaeta y De
     Miguel).
-  - Las ventanas se ven mejor: en Linux, el modo claro tiene los
-    colores de la página web (era el tema gris de Tk; Windows y macOS
-    conservan el suyo), y en los dos modos "Buscar" va en el color de
-    acento, las casillas tienen una marca de verificación, el botón del
-    modo oscuro no tiene borde, los resultados tienen más espacio entre
-    las líneas y alrededor, y los controles están mejor espaciados.
 - 3.2:
   - El diccionario tiene ahora 93 370 entradas.  Lewis y Short aportó
     6653 palabras raras y 1783 nombres, el *Nuevo diccionario latino-español

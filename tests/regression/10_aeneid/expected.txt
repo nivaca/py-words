@@ -10963,6 +10963,27 @@ equo
     a horse, steed, charger; a chariot; a sea-horse; a ship; the Trojan horse; a secret conspiracy; a battering-ram; the constellation Pegasus; (Lewis and Short)
     equ-ō          DAT.SG
     equ-ō          ABL.SG
+  spelling: Medieval equo -> aequo
+    'equo' may be a medieval spelling of aequo
+  aequum, aequi  noun, 2nd declension, neuter  [XXXBO]
+    level ground; equal footing/terms; what is right/fair/equitable, equity;
+    aequ-ō         DAT.SG
+    aequ-ō         ABL.SG
+  aequo, aequare, aequavi, aequatus  verb, 1st conjugation, transitive  [XXXAO]
+    to make one thing equal to another; to place a thing on an equality with, to compare; to make level, even, smooth, divided into equal parts; to make an equal front; to become equal to one, to equal, come up to, attain to; (Lewis and Short)
+    aequ-o         1SG.PRS.ACT.IND
+  aequus, aequa -um, aequior -or -us, aequissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    that extends, lies in a horizontal direction, plain, even, level, flat, level ground, a plain; Favorable, convenient, advantageous; more propitious; favorable, kind, friendly, benevolent; a friend; That is equal to another in any quality, equal, like, a half; in like manner, in an equal degree, equally; to be equal, to make equal, to put on an equality, to compare; fair, equitable, impartial in conduct toward others; fair, right, equitable, reasonable; what is fair, equitable, equity, justice, more than is right, proper, reasonable, it is reasonable, right; equitable conduct toward others, equity; even, calm, composed, tranquil, patient, enduring, with even mind, with equanimity, patiently, calmly, quietly, with forbearance, to regard as fair and reasonable, to put up with, be content with, submit to, acquiesce in; in like manner, equally, just as; as ... as; as much as, like, as well as; equally; alike, equally; Justly, with equity, more willingly; (Lewis and Short)
+    aequ-ō         DAT.SG.M
+    aequ-ō         DAT.SG.N
+    aequ-ō         ABL.SG.M
+    aequ-ō         ABL.SG.N
+  aequus, aequa -um, aequior -or -us, aequissimus -a -um  adjective, 1st/2nd declension  [XXXAA]
+    that extends, lies in a horizontal direction, plain, even, level, flat; level ground, a plain; favorable, convenient, advantageous; favorable, kind, friendly, benevolent; a friend; that is equal to another in any quality, equal, like; a half; in like manner, in an equal degree, equally; to be equal, to make equal, to put on an equality, to compare; fair, equitable, impartial in conduct toward others; fair, right, equitable, reasonable; what is fair, equitable, equity, justice; equitable conduct toward others, equity; even, calm, composed, tranquil, patient, enduring; with even mind, with equanimity, patiently, calmly, quietly, with forbearance; to regard as fair and reasonable, to put up with, be content with, submit to, acquiesce in; in like manner, equally, just as; as much as, like, as well as; alike, equally; justly, with equity; (Lewis and Short)
+    aequ-ō         DAT.SG.M
+    aequ-ō         DAT.SG.N
+    aequ-ō         ABL.SG.M
+    aequ-ō         ABL.SG.N
 
 iamque
   -que  enclitic
@@ -11740,6 +11761,20 @@ leti
     death; ruin, destruction; (Lewis and Short)
     lēt-ī          GEN.SG
     lēt-ī          LOC.SG
+  spelling: Medieval leti -> laeti
+    'leti' may be a medieval spelling of laeti
+  laetus, laeta -um, laetior -or -us, laetissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    joyful, cheerful, glad, gay, joyous, rejoicing, pleased, delighted, full of joy; Doing a thing with joy, cheerful, ready, willing; taking pleasure in; Pleased, satisfied with; Pleasing, pleasant, grateful; Favorable, propitious, prosperous; Fortunate, auspicious, lucky; Joyous in appearance, delightful, pleasing, beautiful; fertile, rich, fat; Abundant, copious, rich, agreeable; joyfully, gladly, cheerfully; fruitfully, abundantly, luxuriantly; Lightly, not severely, without seriousness; (Lewis and Short)
+    laet-ī         GEN.SG.M
+    laet-ī         GEN.SG.N
+    laet-ī         NOM.PL.M
+    laet-ī         VOC.PL.M
+  laetus, laeta -um, laetior -or -us, laetissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    luxuriant/lush/rich/sleek; fertile (land); teeming/abounding; pleasing/welcome;
+    laet-ī         GEN.SG.M
+    laet-ī         GEN.SG.N
+    laet-ī         NOM.PL.M
+    laet-ī         VOC.PL.M
 
 primusque
   -que  enclitic
@@ -16038,6 +16073,11 @@ celeris
     celer-is       VOC.SG.F
     celer-is       GEN.SG
     celer-īs       ACC.PL.C
+  spelling: Medieval celeris -> caeleris
+    'celeris' may be a medieval spelling of caeleris
+  caelo, caelare, caelavi, caelatus  verb, 1st conjugation, transitive  [XTXBO]
+    to engrave in relief upon metals, to make raised work, to carve, engrave, to cast; To carve, engrave on other materials; (Lewis and Short)
+    cael-ēris      2SG.PRS.PASS.SBJV
   (less likely forms are not shown)
 
 defer
@@ -19492,6 +19532,11 @@ celeris
     celer-is       VOC.SG.F
     celer-is       GEN.SG
     celer-īs       ACC.PL.C
+  spelling: Medieval celeris -> caeleris
+    'celeris' may be a medieval spelling of caeleris
+  caelo, caelare, caelavi, caelatus  verb, 1st conjugation, transitive  [XTXBO]
+    to engrave in relief upon metals, to make raised work, to carve, engrave, to cast; To carve, engrave on other materials; (Lewis and Short)
+    cael-ēris      2SG.PRS.PASS.SBJV
   (less likely forms are not shown)
 
 mandata
@@ -22594,6 +22639,15 @@ mene
   Menos, Meni  noun, 2nd declension, masculine  [XXXEm]  uncommon
     Menos (Egyptian inventor of letters);
     men-e          VOC.SG
+  spelling: Medieval mene -> moene
+    'mene' may be a medieval spelling of moene
+  moene, moenis  noun, 3rd declension, neuter  [XXXAX]
+    defensive/town walls (pl.), bulwarks; fortifications; fortified town; castle;
+    moene          NOM.SG
+    moene          VOC.SG
+    moen-e         LOC.SG
+    moen-e         DAT.SG  (early)
+    moene          ACC.SG
 
 fugis
   fuga, fugae  noun, 1st declension, feminine  [XXXAX]
@@ -32748,6 +32802,33 @@ obscenum
     obscēn-um      VOC.SG.N
     obscēn-um      ACC.SG.M
     obscēn-um      ACC.SG.N
+  spelling: Medieval obscenum -> obscaenum
+    'obscenum' may be a medieval spelling of obscaenum
+  obscaenus, obscaeni  noun, 2nd declension, masculine  [XXXCO]
+    sexual pervert; foul-mouthed person;
+    obscaen-um     ACC.SG
+  obscaenum, obscaeni  noun, 2nd declension, neuter  [XXXCO]
+    private parts (pl.), external sexual/excretory organs; excrement (L+S); urine;
+    obscaen-um     NOM.SG
+    obscaen-um     VOC.SG
+    obscaen-um     ACC.SG
+  obscaenum, obscaeni  noun, 2nd declension, neuter  [XXXCO]
+    foul/indecent/obscene/lewd language/utterances/behavior (pl.);
+    obscaen-um     NOM.SG
+    obscaen-um     VOC.SG
+    obscaen-um     ACC.SG
+  obscaenus, obscaena -um, obscaenior -or -us, obscaenissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
+    repulsive, detestable; foul; indecent, obscene, lewd; (sexual/excretory things);
+    obscaen-um     NOM.SG.N
+    obscaen-um     VOC.SG.N
+    obscaen-um     ACC.SG.M
+    obscaen-um     ACC.SG.N
+  obscaenus, obscaena -um, obscaenior -or -us, obscaenissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
+    inauspicious/unpropitious; ill-omened/boding ill; filthy, polluted, disgusting;
+    obscaen-um     NOM.SG.N
+    obscaen-um     VOC.SG.N
+    obscaen-um     ACC.SG.M
+    obscaen-um     ACC.SG.N
   (less likely forms are not shown)
 
 se
@@ -33400,6 +33481,11 @@ queri
   queror, queri, questus sum  verb, 3rd conjugation, deponent  [XXXAX]
     to complain, lament, bewail; to bewail one's fate; to make a complaint before a court; (Lewis and Short)
     quer-ī         PRS.INF
+  spelling: Medieval queri -> quaeri
+    'queri' may be a medieval spelling of quaeri
+  quaero, quaerere, quaesivi, quaesitus  verb, 3rd conjugation  [XXXAX]
+    to seek; To seek to get, procure, seek, search for; to get, procure, obtain, acquire; To seek for, miss; To ask; to seek, think over, meditate, aim at, plan; To look for, seek to gain, get, acquire, obtain, procure; to demand, need, require; To seek to learn, ask, inquire, interrogate; to prefer, seek; To examine, inquire into judicially, investigate, institute an investigation; to say the truth, in fact, to speak honestly, in short, in one word; sought out; select, special, extraordinary; far-fetched, studied, affected, assumed; A question; (Lewis and Short)
+    quaer-ī        PRS.PASS.INF
 
 et
   et  conjunction  [XXXAX]
@@ -36866,6 +36952,24 @@ equi
     equ-ī          LOC.SG
     equ-ī          NOM.PL
     equ-ī          VOC.PL
+  spelling: Medieval equi -> aequi
+    'equi' may be a medieval spelling of aequi
+  aequum, aequi  noun, 2nd declension, neuter  [XXXBO]
+    level ground; equal footing/terms; what is right/fair/equitable, equity;
+    aequ-ī         GEN.SG
+    aequ-ī         LOC.SG
+  aequus, aequa -um, aequior -or -us, aequissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
+    that extends, lies in a horizontal direction, plain, even, level, flat, level ground, a plain; Favorable, convenient, advantageous; more propitious; favorable, kind, friendly, benevolent; a friend; That is equal to another in any quality, equal, like, a half; in like manner, in an equal degree, equally; to be equal, to make equal, to put on an equality, to compare; fair, equitable, impartial in conduct toward others; fair, right, equitable, reasonable; what is fair, equitable, equity, justice, more than is right, proper, reasonable, it is reasonable, right; equitable conduct toward others, equity; even, calm, composed, tranquil, patient, enduring, with even mind, with equanimity, patiently, calmly, quietly, with forbearance, to regard as fair and reasonable, to put up with, be content with, submit to, acquiesce in; in like manner, equally, just as; as ... as; as much as, like, as well as; equally; alike, equally; Justly, with equity, more willingly; (Lewis and Short)
+    aequ-ī         GEN.SG.M
+    aequ-ī         GEN.SG.N
+    aequ-ī         NOM.PL.M
+    aequ-ī         VOC.PL.M
+  aequus, aequa -um, aequior -or -us, aequissimus -a -um  adjective, 1st/2nd declension  [XXXAA]
+    that extends, lies in a horizontal direction, plain, even, level, flat; level ground, a plain; favorable, convenient, advantageous; favorable, kind, friendly, benevolent; a friend; that is equal to another in any quality, equal, like; a half; in like manner, in an equal degree, equally; to be equal, to make equal, to put on an equality, to compare; fair, equitable, impartial in conduct toward others; fair, right, equitable, reasonable; what is fair, equitable, equity, justice; equitable conduct toward others, equity; even, calm, composed, tranquil, patient, enduring; with even mind, with equanimity, patiently, calmly, quietly, with forbearance; to regard as fair and reasonable, to put up with, be content with, submit to, acquiesce in; in like manner, equally, just as; as much as, like, as well as; alike, equally; justly, with equity; (Lewis and Short)
+    aequ-ī         GEN.SG.M
+    aequ-ī         GEN.SG.N
+    aequ-ī         NOM.PL.M
+    aequ-ī         VOC.PL.M
 
 de
   de  preposition, with the ablative  [XXXAO]
@@ -38340,6 +38444,11 @@ petam
   Peta, Petae  noun, 1st declension, feminine  [XXXEm]  uncommon
     the goddess of praying, entreaty; a metal plate; (Lewis and Short)
     pet-am         ACC.SG
+  spelling: Medieval petam -> poetam
+    'petam' may be a medieval spelling of poetam
+  poeta, poetae  noun, 1st declension, masculine  [XPXAX]
+    a maker; a poet; (Lewis and Short)
+    poēt-am        ACC.SG
 
 conubia
   conubium, conubi(i)  noun, 2nd declension, neuter  [XXXBO]
@@ -41496,6 +41605,13 @@ es
     be; exist; (also used to form verb perfect passive tenses) with NOM PERF PPL
     -es            2SG.PRS.ACT.IND
     -es            2SG.PRS.ACT.IMP
+  spelling: Medieval es -> aes
+    'es' may be a medieval spelling of aes
+  aes, aeris  noun, 3rd declension, neuter  [XXXAO]
+    Any crude metal dug out of the earth; copper, copper dross; An alloy, for the most part of copper and tin, bronze, an alloy of copper and zinc; everything made, prepared from copper, bronze, statues, tables of laws, money, weapons, armor, utensils of husbandry, the trumpet, horn, tuba, a brazen prow; Money, rude masses, coined; the money of another, the sum owed, a debt; to be of some value; the unit of the standard of money, the old heavy money; Wages, pay; A soldier's pay; Reward, payment; counters, the items of a computed sum; (Lewis and Short)
+    aēs            NOM.SG
+    aēs            VOC.SG
+    aēs            ACC.SG
 
 imperioque
   -que  enclitic
@@ -48604,6 +48720,12 @@ querar
     to complain, lament, bewail; to bewail one's fate; to make a complaint before a court; (Lewis and Short)
     quer-ar        1SG.PRS.SBJV
     quer-ar        1SG.FUT.IND
+  spelling: Medieval querar -> quaerar
+    'querar' may be a medieval spelling of quaerar
+  quaero, quaerere, quaesivi, quaesitus  verb, 3rd conjugation  [XXXAX]
+    to seek; To seek to get, procure, seek, search for; to get, procure, obtain, acquire; To seek for, miss; To ask; to seek, think over, meditate, aim at, plan; To look for, seek to gain, get, acquire, obtain, procure; to demand, need, require; To seek to learn, ask, inquire, interrogate; to prefer, seek; To examine, inquire into judicially, investigate, institute an investigation; to say the truth, in fact, to speak honestly, in short, in one word; sought out; select, special, extraordinary; far-fetched, studied, affected, assumed; A question; (Lewis and Short)
+    quaer-ar       1SG.PRS.PASS.SBJV
+    quaer-ar       1SG.FUT.PASS.IND
 
 comitemne
   -ne  enclitic
