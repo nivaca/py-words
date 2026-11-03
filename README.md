@@ -210,6 +210,20 @@ the first time and kept in `~/.cache/py-words-build`; `--python` and
 `.github/workflows/appimage.yml` makes it in GitHub, and adds it to the
 release of each tag that is pushed.
 
+A release on GitHub and Codeberg, with both files, is made with
+
+    $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
+          [--no-build] [--no-appimage] [--only github|codeberg]
+          [--dry-run] [--yes]
+
+It needs `gh` (GitHub) and `tea` (Codeberg), and a clean `main`.  It
+makes the zip and the AppImage, tags the commit `vVERSION`, pushes
+`main` and the tag, and makes the release on each forge (or keeps the
+one there is), attaching the files and replacing those of the same
+name.  It shows the commands and asks before running them; `--dry-run`
+only shows them.  If the tag is on another commit it stops, unless
+`--redo` moves it, which remakes a release.
+
 Usage
 -----
 
@@ -1210,6 +1224,7 @@ Version
   - The version of the program is shown in the title of the window and
     of the editors, and at the start of the interactive mode (the
     terminal version and the web page showed it already).
+  - `tools/release.py` makes a release on GitHub and Codeberg.
 - 3.4:
   - With the medieval spellings, the e of a word that is found may also
     be ae or oe: queruntur gives queror, and also quaeruntur, of quaero

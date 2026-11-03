@@ -216,6 +216,20 @@ la primera vez y se guardan en `~/.cache/py-words-build`; `--python` y
 `.github/workflows/appimage.yml` la hace en GitHub, y la añade a la
 release de cada tag que se sube.
 
+Una release en GitHub y en Codeberg, con los dos archivos, se hace con
+
+    $ python3 tools/release.py [--redo] [--notes TEXTO | --notes-file ARCHIVO]
+          [--no-build] [--no-appimage] [--only github|codeberg]
+          [--dry-run] [--yes]
+
+Necesita `gh` (GitHub) y `tea` (Codeberg), y `main` sin cambios por
+confirmar.  Hace el zip y la AppImage, pone el tag `vVERSIÓN` al commit,
+sube `main` y el tag, y hace la release en cada forja (o conserva la que
+haya), adjuntando los archivos y reemplazando los del mismo nombre.
+Muestra las órdenes y pregunta antes de ejecutarlas; `--dry-run` solo
+las muestra.  Si el tag está en otro commit se detiene, a menos que
+`--redo` lo mueva, lo que rehace una release.
+
 Uso
 ---
 
@@ -1240,6 +1254,7 @@ Versiones
   - La versión del programa se muestra en el título de la ventana y de
     los editores, y al empezar el modo interactivo (la versión de
     terminal y la página web ya la mostraban).
+  - `tools/release.py` hace una release en GitHub y en Codeberg.
 - 3.4:
   - Con las grafías medievales, la e de una palabra que se encuentra
     puede ser también ae u oe: queruntur da queror, y también
