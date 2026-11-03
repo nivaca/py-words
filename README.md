@@ -97,6 +97,30 @@ nothing to build or to install, and you can run it from where it is:
     $ python3 words.py amicus                  # a first test
     $ python3 words_gui.py                     # the window
 
+### An AppImage (Linux)
+
+In Linux there is also an AppImage, a single file that brings its own
+Python (with Tk), so that nothing else is needed.  Download
+`py-words-v.VERSION-x86_64.AppImage` from the
+[Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
+it executable and run it:
+
+    $ chmod +x py-words-v.3.5-x86_64.AppImage
+    $ ./py-words-v.3.5-x86_64.AppImage                # the window
+    $ ./py-words-v.3.5-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.5-x86_64.AppImage help           # the other programs
+
+The first argument chooses the program: `gui` (the default), `cli`,
+`tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
+after it go to the program.  A link to the AppImage named like one of
+the programs (`words`, `words_tui` ...) runs that one.  The AppImage
+cannot be written to, so editing the dictionary is off: "Edit
+dictionary…" is greyed out in the window, F4 in the terminal version
+says why, and `edit` and `edit-gui` stop with a message.  To edit it,
+copy the `data` folder somewhere and give the copy as the data folder
+(in the settings, with `--datadir` or with `$PY_WORDS_DATADIR`).  `words_install.py` is not in
+it; tools such as AppImageLauncher or Gear Lever add it to the menu.
+
 ### A menu entry
 
 If you want to start the program from the applications menu, run one
@@ -148,6 +172,7 @@ What is where
     words_convert.py    convert data in the original text format to XML
     words_install.py    add the program to the applications menu
     bundle-zip.py       make a zip of the program, to distribute it
+    bundle-appimage.py  make an AppImage of the program, for Linux
     *.py                the rest of the program, used by the above
     data/               the dictionary and the other data files
     icons/              the program's icons
@@ -159,15 +184,31 @@ for distributing it:
 
     $ python3 bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `py-words-v.3.4.zip` (with the version of the program), with
-the program inside a folder of the same name.  It contains the programs,
+This writes `dist/py-words-v.3.5.zip` (with the version of the program;
+`-o` gives another folder), with the program inside a folder of the
+same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
 commit it was made from, which "About" shows.  It does not contain hidden files
 (`.git` ...), nor the things that are made when the program runs or is
 edited (`__pycache__`, `.bak` files, WORD.OUT ...), nor the things that
-are in its folder but are not part of it (the built `site/`,
-`local-only/`, the `TAGS` of an editor), and neither the tests, except if
-you give `--tests`.
+are in its folder but are not part of it (the built `site/`, `dist/`,
+`local-only/`, the `TAGS` of an editor), and neither the tests, except
+if you give `--tests`.
+
+In Linux, the AppImage (see "An AppImage") is made with
+
+    $ python3 bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
+          [--python-version VERSION] [--appimagetool APPIMAGE]
+
+It writes `dist/py-words-v.3.5-x86_64.AppImage` (`-o` gives another
+folder), with the same files as the zip (but not the bundle scripts and
+`words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
+[python-appimage](https://github.com/niess/python-appimage)) and
+[appimagetool](https://github.com/AppImage/appimagetool) are downloaded
+the first time and kept in `~/.cache/py-words-build`; `--python` and
+`--appimagetool` give others instead.  The workflow
+`.github/workflows/appimage.yml` makes it in GitHub, and adds it to the
+release of each tag that is pushed.
 
 Usage
 -----
@@ -1152,6 +1193,23 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.5:
+  - An AppImage for Linux: one file, with a Python of its own (with Tk),
+    that runs without installing anything.  It starts the window, and a
+    first argument chooses another program (`cli`, `tui`, `web`, `edit`
+    ...).  See "An AppImage (Linux)".
+  - `bundle-appimage.py` makes it, and a workflow
+    (`.github/workflows/appimage.yml`) makes it in GitHub and adds it to
+    the release of each tag that is pushed.
+  - `bundle-zip.py` writes the zip in `dist/` (made if need be), unless
+    `-o` gives another folder, and leaves `dist/` out of it;
+    `bundle-appimage.py` writes the AppImage there too.
+  - The dictionary cannot be edited where its data folder cannot be
+    written to, as in the AppImage: "Edit dictionary…" is greyed out,
+    and the editors say why instead of failing when they save.
+  - The version of the program is shown in the title of the window and
+    of the editors, and at the start of the interactive mode (the
+    terminal version and the web page showed it already).
 - 3.4:
   - With the medieval spellings, the e of a word that is found may also
     be ae or oe: queruntur gives queror, and also quaeruntur, of quaero

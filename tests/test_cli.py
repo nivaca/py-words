@@ -369,7 +369,10 @@ class InteractiveTests(InTempDir):
 
     def test_lookup_and_quit(self):
         _, out = self.repl('amicus', '', '', 'never read')
-        self.assertTrue(out.startswith('Type a Latin word'))  # (no credits)
+        #  (the name and version, but not the credits)
+        from version import VERSION
+        self.assertTrue(out.startswith(
+            f'py-words {VERSION}: a Latin dictionary\nType a Latin word'))
         self.assertIn('amicus, amici', out)
         self.assertIn('another empty line quits', out)
 

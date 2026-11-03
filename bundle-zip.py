@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Makes a zip of the program, to distribute it: python3 bundle-zip.py
 
-The zip is py-words-v.VERSION.zip (the version of version.py), with the
-program in a folder of the same name.  It has the programs, the data, the
+The zip is dist/py-words-v.VERSION.zip (the version of version.py; dist is
+made in the program's folder if need be, and --output gives another
+folder), with the program in a folder of the same name.  It has the programs, the data, the
 icons and the documents, but no hidden files or folders (.git ...), and
 none of what is made while the program runs or is edited (__pycache__,
 .bak and .tmp files, WORD.OUT ...), nor what is in its folder but not
@@ -25,15 +26,18 @@ from interface import tr
 from version import COMMIT_FILE, VERSION, commit
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+#  Where the zip goes, unless --output says otherwise
+DIST = os.path.join(HERE, 'dist')
 
 #  What is made while the program runs or is edited (as in .gitignore)
 LEFT_OUT = ('__pycache__', '*.pyc', '*.bak', '*.tmp', '*~', 'WORD.MOD',
             'WORD.MDV', 'WORD.OUT', 'WORD.UNK', 'WORD.STA', 'py-words-v*.zip')
 #  What is in the program's folder but not part of it: the site built by
-#  pages/build.py, a folder kept out of git, and an editor's tags
+#  pages/build.py, the folder of the bundles, a folder kept out of git,
+#  and an editor's tags
 #  TODO: no lee .gitignore.  Una carpeta nueva que no deba ir en el zip
 #  hay que añadirla aquí a mano.
-NOT_PART = ('site', 'local-only', 'TAGS', 'tools')
+NOT_PART = ('site', 'dist', 'local-only', 'TAGS', 'tools')
 
 
 def name() -> str:
@@ -87,13 +91,16 @@ def main(argv=None):
         description=tr('Make a zip of the program, to distribute it: '
                        '{name}.zip, without hidden files.', name=name()))
     parser.add_argument('-o', '--output', metavar=tr('FOLDER'),
-                        default='.',
-                        help=tr('the folder to write it in (default: the '
-                                'current one)'))
+                        default=None,
+                        help=tr('the folder to write it in (default: dist, '
+                                "in the program's folder)"))
     parser.add_argument('--tests', action='store_true',
                         help=tr('include the tests'))
     args = parser.parse_args(argv)
-    if not os.path.isdir(args.output):
+    if args.output is None:
+        args.output = DIST
+        os.makedirs(DIST, exist_ok=True)
+    elif not os.path.isdir(args.output):
         sys.exit('bundle-zip.py: ' + tr('there is no folder {folder}',
                                         folder=args.output))
     try:

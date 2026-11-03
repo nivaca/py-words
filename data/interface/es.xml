@@ -734,8 +734,8 @@
     <tr>significados en {language}</tr>
   </text>
   <text>
-    <en>{name}: dictionary editor</en>
-    <tr>{name}: editor del diccionario</tr>
+    <en>{name} {version}: dictionary editor</en>
+    <tr>{name} {version}: editor del diccionario</tr>
   </text>
   <text>
     <en>{n} found</en>
@@ -964,6 +964,10 @@
   <text>
     <en>Cannot open the editor:</en>
     <tr>No se puede abrir el editor:</tr>
+  </text>
+  <text>
+    <en>The dictionary cannot be edited: its folder {folder} cannot be written to (as in the AppImage).  Copy the folder somewhere and give the copy as the data folder (in the settings, with --datadir or with $PY_WORDS_DATADIR).</en>
+    <tr>El diccionario no se puede editar: en su carpeta {folder} no se puede escribir (como en la AppImage).  Copie la carpeta en otro sitio y dé la copia como carpeta de datos (en la configuración, con --datadir o con $PY_WORDS_DATADIR).</tr>
   </text>
   <text>
     <en>Open the {name} project page</en>
@@ -2261,8 +2265,8 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>CARPETA</tr>
   </text>
   <text>
-    <en>the folder to write it in (default: the current one)</en>
-    <tr>la carpeta donde escribirlo (por omisión: la actual)</tr>
+    <en>the folder to write it in (default: dist, in the program's folder)</en>
+    <tr>la carpeta donde escribirlo (por omisión: dist, en la carpeta del programa)</tr>
   </text>
   <text>
     <en>include the tests</en>
@@ -2275,6 +2279,51 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
   <text>
     <en>Wrote {path} ({n} files, {size:.1f} MB).</en>
     <tr>Escrito {path} ({n} archivos, {size:.1f} MB).</tr>
+  </text>
+  <!-- bundle-appimage.py -->
+  <text>
+    <en>Make an AppImage of the program, for Linux: {name}, with a Python of its own.</en>
+    <tr>Hace una AppImage del programa, para Linux: {name}, con un Python propio.</tr>
+  </text>
+  <text>
+    <en>APPIMAGE</en>
+    <tr>APPIMAGE</tr>
+  </text>
+  <text>
+    <en>VERSION</en>
+    <tr>VERSIÓN</tr>
+  </text>
+  <text>
+    <en>the Python AppImage to use (default: one of python-appimage, downloaded)</en>
+    <tr>la AppImage de Python que usar (por omisión: una de python-appimage, descargada)</tr>
+  </text>
+  <text>
+    <en>the version of Python to download (default: {version})</en>
+    <tr>la versión de Python que descargar (por omisión: {version})</tr>
+  </text>
+  <text>
+    <en>the appimagetool to use (default: downloaded)</en>
+    <tr>el appimagetool que usar (por omisión: descargado)</tr>
+  </text>
+  <text>
+    <en>AppImages are made on Linux</en>
+    <tr>las AppImages se hacen en Linux</tr>
+  </text>
+  <text>
+    <en>Downloading {url} ...</en>
+    <tr>Descargando {url} ...</tr>
+  </text>
+  <text>
+    <en>there is no Python {version} AppImage at {url}</en>
+    <tr>no hay una AppImage de Python {version} en {url}</tr>
+  </text>
+  <text>
+    <en>there is no Python in {path}</en>
+    <tr>no hay Python en {path}</tr>
+  </text>
+  <text>
+    <en>Wrote {path} ({size:.1f} MB).</en>
+    <tr>Escrito {path} ({size:.1f} MB).</tr>
   </text>
   <text>
     <en>Dark mode</en>

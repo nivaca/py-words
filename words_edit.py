@@ -34,10 +34,11 @@ import interface
 from interface import N_, tr, yes
 from settings import Settings, ensure_config
 from lexicon import default_datadir
+from editor import READ_ONLY, read_only
 from editor import (Editor, Editing, Fields, FIELD_LABELS, POS_CHOICES,
                     CODE_FIELDS)
 from lexicon import DICTIONARY
-from version import NAME
+from version import NAME, VERSION
 from tui import ENTER, SEP, Field, Screen, ctrl
 from xmldata import DataError
 
@@ -160,7 +161,8 @@ class TUI(Screen):
         language = '   ' + tr('meanings in {language}',
                               language=tr(ed.language_name)) \
             if ed.translating else ''
-        title = ' ' + tr('{name}: dictionary editor', name=NAME) + \
+        title = ' ' + tr('{name} {version}: dictionary editor', name=NAME,
+                         version=VERSION) + \
             f'   {ed.path}{language}{unsaved} '
         self.put(0, 0, title.ljust(w), curses.A_REVERSE)
         find = tr('Find:') + ' '
@@ -507,6 +509,8 @@ def main(argv=None):
     if not os.path.isfile(os.path.join(datadir, DICTIONARY)):
         sys.exit('words_edit.py: ' + tr('there is no {file} in {folder}',
                                         file=DICTIONARY, folder=datadir))
+    if read_only(datadir):
+        sys.exit('words_edit.py: ' + tr(READ_ONLY, folder=datadir))
     if not sys.stdin.isatty() or not sys.stdout.isatty():
         sys.exit('words_edit.py: ' + tr('this is a full-screen program; '
                                         'run it in a terminal (or use '

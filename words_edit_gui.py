@@ -27,10 +27,11 @@ from interface import tr
 from settings import Settings, ensure_config
 from lexicon import default_datadir
 from editor import Editor, Editing, Fields, FIELD_LABELS, POS_CHOICES
+from editor import READ_ONLY, read_only
 from gui_fonts import Fonts
 from gui_theme import Theme
 from lexicon import DICTIONARY
-from version import NAME
+from version import NAME, VERSION
 from xmldata import DataError
 
 SEP = ' — '            # between a code and its description
@@ -53,7 +54,8 @@ class EditorWindow:
         self.on_save = on_save
         self.fields = Fields()
         self.win = win = tk.Toplevel(master) if master else tk.Tk()
-        win.title(tr('{name}: dictionary editor', name=NAME))
+        win.title(tr('{name} {version}: dictionary editor', name=NAME,
+                     version=VERSION))
         win.geometry('1080x720')
         self.fonts = Fonts.of(win)
         Theme.of(win)                   # (light or dark, as saved)
@@ -467,6 +469,8 @@ def main():
     if not os.path.isfile(os.path.join(datadir, DICTIONARY)):
         raise SystemExit(tr('There is no {file} in {folder}',
                             file=DICTIONARY, folder=datadir))
+    if read_only(datadir):
+        raise SystemExit(tr(READ_ONLY, folder=datadir))
     settings = Settings()
     settings.load(datadir)
     window = EditorWindow(None, datadir, language=settings.language)

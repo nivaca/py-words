@@ -20,6 +20,7 @@ from tkinter import filedialog, font as tkfont, messagebox, ttk
 import guide
 import interface
 from config import ConfigError
+from editor import read_only
 from gui_fonts import Fonts
 from gui_results import Results
 from gui_settings import SettingsDialog
@@ -30,7 +31,7 @@ from lexicon import default_datadir
 from lexicon import Lexicon, DICTIONARY
 from session import Session
 from settings import COMMAND_LINE, Settings, section_of
-from version import NAME, URL, about
+from version import NAME, URL, VERSION, about
 
 #  The dark mode button: what a click does (no images, only letters that
 #  the usual fonts have)
@@ -77,7 +78,8 @@ class App:
     def build(self):
         """The widgets of the window, in the language of the interface."""
         root = self.root
-        root.title(tr('{name}: a Latin dictionary', name=NAME))
+        root.title(tr('{name} {version}: a Latin dictionary', name=NAME,
+                      version=VERSION))
         top = ttk.Frame(root, padding=(12, 12, 12, 8))
         top.pack(fill='x')
         self.entry = ttk.Combobox(top, font=self.fonts.entry,
@@ -150,8 +152,11 @@ class App:
         bar = tk.Menu(root, tearoff=False)
         key = 'Command' if sys.platform == 'darwin' else 'Ctrl'
         dictionary = tk.Menu(bar, tearoff=False)
-        dictionary.add_command(label=tr('Edit dictionary…'),
-                               command=self.edit_dictionary)
+        #  (greyed out where the data cannot be written, as in the
+        #  AppImage)
+        dictionary.add_command(
+            label=tr('Edit dictionary…'), command=self.edit_dictionary,
+            state='disabled' if read_only(self.datadir) else 'normal')
         dictionary.add_command(label=tr('Settings…'),
                                command=self.settings_dialog)
         dictionary.add_separator()

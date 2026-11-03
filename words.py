@@ -38,7 +38,7 @@ import os
 import sys
 from collections.abc import Callable
 
-from version import about
+from version import NAME, VERSION, about
 import config
 import guide
 import interface
@@ -199,6 +199,8 @@ def change_developer_modes(session: Session, ask: Ask, say) -> None:
 def banner(session: Session) -> str:
     s = session.settings
     return '\n'.join([
+        tr('{name} {version}: a Latin dictionary', name=NAME,
+           version=VERSION),
         tr('Type a Latin word or line and Enter.  ~E: {language} to Latin, '
            '~L: back to Latin.', language=tr(session.language.name)),
         tr('{file}FILE: look up a file   {parameters}: parameters   '

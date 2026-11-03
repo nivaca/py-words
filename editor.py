@@ -32,12 +32,27 @@ import xmldata
 from languages import Language, REFERENCE
 from words_check import Checker, inflection_decls
 from forms import principal_parts, describe_part
-from interface import tr
+from interface import N_, tr
 from lexicon import Lexicon, DICTIONARY, INFLECTIONS, source_names
 from model import (Pos, Gender, Case, Comparison, NumeralSort, NounKind,
                     PronounKind, VerbKind, Age, Area, Geo, Freq, Source,
                     Entry, fold, stems_used)
 from session import Session
+
+#  Why the dictionary cannot be edited (see read_only)
+READ_ONLY = N_('The dictionary cannot be edited: its folder {folder} '
+               'cannot be written to (as in the AppImage).  Copy the folder '
+               'somewhere and give the copy as the data folder (in the '
+               'settings, with --datadir or with $PY_WORDS_DATADIR).')
+
+
+def read_only(datadir: str) -> bool:
+    """Whether the dictionary in DATADIR cannot be saved: the editors
+    rewrite the files of the folder, so it and dictionary.xml must be
+    writable.  (The data in an AppImage never are.)"""
+    path = os.path.join(datadir, DICTIONARY)
+    return not (os.access(datadir, os.W_OK) and
+                (not os.path.exists(path) or os.access(path, os.W_OK)))
 from settings import Settings
 
 #  The parts of speech of dictionary entries, with their names

@@ -241,6 +241,12 @@ class DictionaryTUI(Screen):
         """The dictionary editor, in this terminal; the dictionary is
         read again after it."""
         import words_edit
+        from editor import READ_ONLY, read_only
+        if read_only(self.datadir):
+            h, w = self.scr.getmaxyx()
+            self.popup(tr('Edit dictionary…').rstrip('…'), textwrap.wrap(
+                tr(READ_ONLY, folder=self.datadir), max(30, min(70, w - 8))))
+            return
         path = os.path.join(self.datadir, DICTIONARY)
         before = os.path.getmtime(path)
         curses.curs_set(1)

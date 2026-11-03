@@ -6,6 +6,7 @@ They work on a copy of the data files in a temporary directory.
 import os
 import select
 import shutil
+import subprocess
 import sys
 import tempfile
 import time
@@ -16,7 +17,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import xmldata
-from editor import Editor, Editing, Fields, plain_message
+from editor import Editor, Editing, Fields, plain_message, read_only
 from model import Source
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -142,6 +143,42 @@ class EditorTests(WithData):
         self.ed.delete(added)
         self.ed.save()
         self.assertEqual(self.read(), original)
+
+
+class ReadOnlyTests(unittest.TestCase):
+    """Editing is off where the data cannot be written (the AppImage)."""
+
+    @unittest.skipIf(hasattr(os, 'geteuid') and os.geteuid() == 0,
+                     'root can write anywhere')
+    def test_read_only(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, 'dictionary.xml')
+            open(path, 'w').close()
+            self.assertFalse(read_only(tmp))
+            os.chmod(path, 0o444)
+            self.assertTrue(read_only(tmp))
+            os.chmod(path, 0o644)
+            os.chmod(tmp, 0o555)
+            try:
+                self.assertTrue(read_only(tmp))
+            finally:
+                os.chmod(tmp, 0o755)
+
+    @unittest.skipIf(hasattr(os, 'geteuid') and os.geteuid() == 0,
+                     'root can write anywhere')
+    def test_the_editors_say_so(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            for f in DATA_FILES:
+                shutil.copy(os.path.join(DATA, f), tmp)
+            os.chmod(tmp, 0o555)
+            try:
+                out = subprocess.run(
+                    [sys.executable, os.path.join(ROOT, 'words_edit.py'),
+                     '--datadir', tmp], capture_output=True, text=True)
+            finally:
+                os.chmod(tmp, 0o755)
+            self.assertNotEqual(out.returncode, 0)
+            self.assertIn('cannot be edited', out.stderr)
 
 
 class EditingTests(WithData):
