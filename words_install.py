@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Add py-words to the applications menu: python3 words_install.py
-[--uninstall]
+[--only-gui | --uninstall]
 
 Adds four entries that start the program from this folder, with the
 program's icon: the window (words_gui.py), the command line (words.py, in a
 terminal), the full-screen terminal version (words_tui.py) and the web
 version (words_web.py, whose server runs in a terminal and opens the
-browser):
+browser).  With --only-gui, only the window's (and the others, if they
+were there from before, are removed):
 
 * Linux and other freedesktop systems: .desktop files and the icons in the
   user's data folder ($XDG_DATA_HOME, usually ~/.local/share);
@@ -56,6 +57,18 @@ PROGRAMS = (('GUI', 'words_gui.py', False),
             ('CLI', 'words.py', True),
             ('TUI', 'words_tui.py', True),
             ('Web', 'words_web.py', True))
+
+
+def programs(only_gui: bool = False):
+    """The PROGRAMS to install: all, or only the window."""
+    return tuple(p for p in PROGRAMS if not only_gui or p[0] == 'GUI')
+
+
+def left_out(only_gui: bool = False):
+    """The PROGRAMS not to install, whose entries are removed if they are
+    there."""
+    chosen = programs(only_gui)
+    return tuple(p for p in PROGRAMS if p not in chosen)
 
 
 # ---------------------------------------------------------------------------
@@ -156,8 +169,10 @@ def remove(paths: list[str]) -> list[str]:
     return paths
 
 
-def install_linux() -> list[str]:
+def install_linux(only_gui: bool = False) -> list[str]:
     remove(old_linux_files())
+    remove([entry_path(kind) for kind, _, _ in left_out(only_gui)
+            if os.path.isfile(entry_path(kind))])
     theme = os.path.join(data_home(), 'icons', 'hicolor')
     for source, rel in icon_files():
         dest = os.path.join(theme, rel)
@@ -166,7 +181,7 @@ def install_linux() -> list[str]:
             os.remove(dest)             # (it may be read-only)
         shutil.copyfile(source, dest)
     paths = []
-    for kind, program, _ in PROGRAMS:
+    for kind, program, _ in programs(only_gui):
         command = [sys.executable, os.path.join(HERE, program)]
         path = entry_path(kind)
         os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -227,14 +242,15 @@ def start_menu():
                         'Programs')
 
 
-def windows_shortcuts() -> list[Shortcut]:
-    """The shortcuts: the window runs with pythonw.exe, which opens no
-    console; the command line with python.exe, which opens one."""
+def windows_shortcuts(chosen=PROGRAMS) -> list[Shortcut]:
+    """The shortcuts of CHOSEN (some of PROGRAMS): the window runs with
+    pythonw.exe, which opens no console; the command line with python.exe,
+    which opens one."""
     folder = os.path.dirname(sys.executable)
     pythonw = os.path.join(folder, 'pythonw.exe')
     icon = ICO + ',0' if os.path.isfile(ICO) else ''
     shortcuts = []
-    for kind, program, terminal in PROGRAMS:
+    for kind, program, terminal in chosen:
         target = sys.executable if terminal or not os.path.isfile(pythonw) \
             else pythonw
         shortcuts.append(Shortcut(
@@ -250,10 +266,12 @@ def old_shortcuts() -> list[str]:
     return [path for path in paths if os.path.isfile(path)]
 
 
-def install_windows() -> list[str]:
+def install_windows(only_gui: bool = False) -> list[str]:
     remove(old_shortcuts())
+    remove([s.path for s in windows_shortcuts(left_out(only_gui))
+            if os.path.isfile(s.path)])
     paths = []
-    for s in windows_shortcuts():
+    for s in windows_shortcuts(programs(only_gui)):
         os.makedirs(os.path.dirname(s.path), exist_ok=True)
         env = dict(os.environ, PYW_LNK=s.path, PYW_TARGET=s.target,
                    PYW_ARGS=s.arguments, PYW_DIR=s.folder, PYW_ICON=s.icon,
@@ -387,13 +405,16 @@ def make_app(kind: str, program: str, terminal: bool, icns: bytes) -> str:
     return app
 
 
-def install_macos() -> list[str]:
+def install_macos(only_gui: bool = False) -> list[str]:
     for app in old_apps():
         shutil.rmtree(app)
+    for kind, _, _ in left_out(only_gui):
+        if os.path.isdir(app_path(kind)) and is_ours(app_path(kind)):
+            shutil.rmtree(app_path(kind))
     icns = make_icns(ICONSET)
     os.makedirs(applications_dir(), exist_ok=True)
     apps = [make_app(kind, program, terminal, icns)
-            for kind, program, terminal in PROGRAMS]
+            for kind, program, terminal in programs(only_gui)]
     for app in apps:
         os.utime(app)                   # (so that Finder shows the icon)
     return apps
@@ -423,9 +444,9 @@ def system(platform=None) -> str:
     return 'linux'
 
 
-def install() -> list[str]:
+def install(only_gui: bool = False) -> list[str]:
     return {'linux': install_linux, 'windows': install_windows,
-            'macos': install_macos}[system()]()
+            'macos': install_macos}[system()](only_gui)
 
 
 def uninstall() -> list[str]:
@@ -445,8 +466,12 @@ def main(argv=None):
         prog='words_install.py',
         description=tr('Add py-words to the applications menu, or remove '
                        'it.'))
-    parser.add_argument('--uninstall', action='store_true',
-                        help=tr('remove what was added'))
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('--only-gui', action='store_true',
+                       help=tr('add only the entry of the window (and '
+                               'remove the others, if they are there)'))
+    group.add_argument('--uninstall', action='store_true',
+                       help=tr('remove what was added'))
     args = parser.parse_args(argv)
     where = tr(WHERE[system()])
     try:
@@ -455,7 +480,7 @@ def main(argv=None):
             print(tr('Removed py-words from {where}.', where=where)
                   if removed else tr('There was nothing to remove.'))
             return
-        paths = install()
+        paths = install(args.only_gui)
     except OSError as e:
         sys.exit(f'words_install.py: {e}')
     print(tr('Added py-words to {where}:', where=where))

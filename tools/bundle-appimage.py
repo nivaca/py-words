@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Makes an AppImage of the program, for Linux: python3 bundle-appimage.py
+"""Makes an AppImage of the program, for Linux:
+python3 tools/bundle-appimage.py
 
 The AppImage is dist/py-words-v.VERSION-x86_64.AppImage (the version of
 version.py; dist is made in the program's folder if need be, and --output
@@ -25,18 +26,23 @@ folder (~/.cache/py-words-build): the Python and appimagetool
 give them instead.
 """
 
-from version import check_python
+import os
+import sys
+
+#  The program's folder (this script is in its tools/)
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, ROOT)
+
+from version import check_python  # noqa: E402
 check_python()          # (before the modules that need it)
 
 import argparse
 import glob
 import importlib.util
 import json
-import os
 import shutil
 import stat
 import subprocess
-import sys
 import tempfile
 import urllib.request
 
@@ -44,9 +50,8 @@ import interface
 from interface import tr
 from version import COMMIT_FILE, NAME, VERSION
 
-HERE = os.path.dirname(os.path.abspath(__file__))
 #  Where the AppImage goes, unless --output says otherwise
-DIST = os.path.join(HERE, 'dist')
+DIST = os.path.join(ROOT, 'dist')
 APP_ID = 'py-words'
 ARCH = 'x86_64'
 
@@ -60,10 +65,10 @@ MANYLINUX = ('manylinux2014', 'manylinux_2_28')
 APPIMAGETOOL = 'https://github.com/AppImage/appimagetool/releases/' \
     f'download/continuous/appimagetool-{ARCH}.AppImage'
 
-#  What is not for the AppImage: what makes the bundles, and the installer
-#  of menu entries (they would point inside the AppImage, which is mounted
-#  somewhere else each time)
-NOT_IN_IMAGE = ('bundle-zip.py', 'bundle-appimage.py', 'words_install.py')
+#  What is not for the AppImage: the installer of menu entries (they would
+#  point inside the AppImage, which is mounted somewhere else each time).
+#  (What makes the bundles, in tools/, is not in the zip either.)
+NOT_IN_IMAGE = ('words_install.py',)
 
 #  The programs: (command, program)
 COMMANDS = (('gui', 'words_gui.py'),
@@ -91,9 +96,9 @@ StartupWMClass={APP_ID}
 
 #  {python}: the interpreter, relative to the AppDir
 APPRUN = r"""#!/bin/bash
-#  Starts py-words in the AppImage (made by bundle-appimage.py).
-HERE="$(dirname "$(readlink -f -- "$0")")"
-export APPDIR="${APPDIR:-$HERE}"
+#  Starts py-words in the AppImage (made by tools/bundle-appimage.py).
+ROOT="$(dirname "$(readlink -f -- "$0")")"
+export APPDIR="${APPDIR:-$ROOT}"
 PROGRAM="$APPDIR/opt/py-words"
 SELF="${ARGV0:-$0}"
 
@@ -145,14 +150,14 @@ exec "$APPDIR/%(python)s" "$PROGRAM/$script" "$@"
 
 
 def name() -> str:
-    """The name of the AppImage: py-words-v.3.5-x86_64.AppImage."""
+    """The name of the AppImage: py-words-v.3.6-x86_64.AppImage."""
     return f'py-words-v.{VERSION}-{ARCH}.AppImage'
 
 
 def bundle_zip():
     """The module bundle-zip.py, whose list of files is used."""
     spec = importlib.util.spec_from_file_location(
-        'bundle_zip', os.path.join(HERE, 'bundle-zip.py'))
+        'bundle_zip', os.path.join(ROOT, 'tools', 'bundle-zip.py'))
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -240,7 +245,7 @@ def make_appdir(appdir: str, commit: str | None):
     for f in files():
         target = os.path.join(program, f)
         os.makedirs(os.path.dirname(target), exist_ok=True)
-        shutil.copy2(os.path.join(HERE, f), target)
+        shutil.copy2(os.path.join(ROOT, f), target)
     if commit:
         with open(os.path.join(program, COMMIT_FILE), 'w',
                   encoding='ascii') as f:
@@ -259,11 +264,11 @@ def make_appdir(appdir: str, commit: str | None):
               encoding='utf-8', newline='\n') as f:
         f.write(DESKTOP)
     #  (a PNG: appimagetool wants one for .DirIcon, as file managers do)
-    shutil.copy2(os.path.join(HERE, 'icons', 'linux', 'icons', 'hicolor',
+    shutil.copy2(os.path.join(ROOT, 'icons', 'linux', 'icons', 'hicolor',
                               '256x256', 'apps', APP_ID + '.png'),
                  os.path.join(appdir, APP_ID + '.png'))
     os.symlink(APP_ID + '.png', os.path.join(appdir, '.DirIcon'))
-    hicolor = os.path.join(HERE, 'icons', 'linux', 'icons', 'hicolor')
+    hicolor = os.path.join(ROOT, 'icons', 'linux', 'icons', 'hicolor')
     if os.path.isdir(hicolor):
         shutil.copytree(hicolor,
                         os.path.join(appdir, 'usr', 'share', 'icons',
@@ -313,7 +318,7 @@ def main(argv=None):
     interface.use_configured()
     interface.translate_argparse()
     parser = argparse.ArgumentParser(
-        prog='bundle-appimage.py',
+        prog='tools/bundle-appimage.py',
         description=tr('Make an AppImage of the program, for Linux: '
                        '{name}, with a Python of its own.', name=name()))
     parser.add_argument('-o', '--output', metavar=tr('FOLDER'),

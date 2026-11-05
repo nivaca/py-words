@@ -109,10 +109,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.5-x86_64.AppImage
-    $ ./py-words-v.3.5-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.5-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.5-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.6-x86_64.AppImage
+    $ ./py-words-v.3.6-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.6-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.6-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -143,6 +143,11 @@ se abre el navegador).  Dónde quedan depende del sistema:
   aplicaciones, como archivos `.desktop` e iconos en `~/.local/share`;
 * Windows: el menú Inicio, como accesos directos;
 * macOS: `~/Applications`, como cuatro pequeñas aplicaciones.
+
+Para añadir solo el acceso de la ventana, ponga `--only-gui` (los otros
+tres se quitan, si estaban de antes):
+
+    $ python3 words_install.py --only-gui
 
 No hacen falta permisos de administrador.  Los accesos abren el programa
 desde su carpeta, así que si la mueve tendrá que volver a ejecutar el
@@ -178,19 +183,19 @@ Qué hay en cada sitio
     words_check.py      revisar los archivos de datos tras editarlos a mano
     words_convert.py    convertir datos del formato de texto original a XML
     words_install.py    añadir el programa al menú de aplicaciones
-    bundle-zip.py       hacer un zip del programa, para distribuirlo
-    bundle-appimage.py  hacer una AppImage del programa, para Linux
     *.py                el resto del programa, que usan los anteriores
     data/               el diccionario y los demás archivos de datos
     icons/              los iconos del programa
     pages/              el diccionario en línea, en un navegador sin servidor
     tests/              las pruebas (no hacen falta para usar el programa)
+    tools/              scripts para hacer el zip, la AppImage, los iconos,
+                        las capturas y las releases (no van en el zip)
 
 Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
-    $ python3 bundle-zip.py [-o CARPETA] [--tests]
+    $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.5.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.6.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -198,16 +203,15 @@ commit del que se hizo, que muestra "Acerca de".  Deja fuera los archivos oculto
 (`.git`...), lo que se genera al usar o editar el programa
 (`__pycache__`, archivos `.bak`, WORD.OUT...), lo que está en la carpeta
 sin ser parte del programa (el `site/` construido, `dist/`,
-`local-only/`, el `TAGS` de un editor) y las pruebas, a menos que ponga `--tests`.
+`local-only/`, `tools/`, el `TAGS` de un editor) y las pruebas, a menos que ponga `--tests`.
 
 En Linux, la AppImage (vea "Una AppImage") se hace con
 
-    $ python3 bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
+    $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.5-x86_64.AppImage` (`-o` da otra
-carpeta), con los mismos archivos que el zip (menos los scripts de
-empaquetado y `words_install.py`), un Python propio y la entrada del
+Eso escribe `dist/py-words-v.3.6-x86_64.AppImage` (`-o` da otra
+carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
 y [appimagetool](https://github.com/AppImage/appimagetool) se descargan
@@ -215,6 +219,13 @@ la primera vez y se guardan en `~/.cache/py-words-build`; `--python` y
 `--appimagetool` dan otros en su lugar.  El workflow
 `.github/workflows/appimage.yml` la hace en GitHub, y la añade a la
 release de cada tag que se sube.
+
+Los iconos de `icons/` se hacen todos a partir de `icons/py-words.svg` con
+
+    $ python3 tools/icons.py [--svg ARCHIVO] [-o CARPETA] [--dry-run]
+
+que dibuja cada tamaño con Inkscape (el Flatpak, si lo hay) y arma el
+`.ico` con Pillow y el `.icns` como lo hace `words_install.py`.
 
 Una release en GitHub y en Codeberg, con los dos archivos, se hace con
 
@@ -1237,6 +1248,14 @@ con `git diff`.
 Versiones
 ---------
 
+- 3.6:
+  - `words_install.py --only-gui` añade solo el acceso de la ventana (y
+    quita los otros tres, si estaban de antes); `--uninstall` quita los
+    accesos, como antes.
+  - Los scripts que hacen el zip y la AppImage están ahora en `tools/`:
+    `tools/bundle-zip.py` y `tools/bundle-appimage.py`.
+  - `tools/icons.py` hace todos los iconos de `icons/` a partir de
+    `icons/py-words.svg`, con Inkscape y Pillow.
 - 3.5:
   - Una AppImage para Linux: un solo archivo, con un Python propio (con
     Tk), que funciona sin instalar nada.  Abre la ventana, y un primer

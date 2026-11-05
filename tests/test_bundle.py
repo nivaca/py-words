@@ -1,4 +1,4 @@
-"""Tests of bundle-zip.py, which makes the zip of the distribution."""
+"""Tests of tools/bundle-zip.py, which makes the zip of the distribution."""
 
 import os
 import subprocess
@@ -21,10 +21,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 class BundleTests(unittest.TestCase):
 
     def bundle(self, *args) -> list[str]:
-        """Runs bundle-zip.py; returns the names in the zip it made."""
+        """Runs tools/bundle-zip.py; returns the names in the zip it made."""
         with tempfile.TemporaryDirectory() as tmp:
             subprocess.run([sys.executable,
-                            os.path.join(ROOT, 'bundle-zip.py'), '-o', tmp,
+                            os.path.join(ROOT, 'tools', 'bundle-zip.py'), '-o', tmp,
                             *args], check=True, capture_output=True)
             self.assertEqual(os.listdir(tmp), [f'py-words-v.{VERSION}.zip'])
             with zipfile.ZipFile(os.path.join(tmp, os.listdir(tmp)[0])) as z:
@@ -48,17 +48,18 @@ class BundleTests(unittest.TestCase):
     def test_what_is_not_part_of_it(self):
         #  (in a folder of its own, made for the test)
         spec = importlib.util.spec_from_file_location(
-            'bundle_zip', os.path.join(ROOT, 'bundle-zip.py'))
+            'bundle_zip', os.path.join(ROOT, 'tools', 'bundle-zip.py'))
         bundle = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(bundle)
         with tempfile.TemporaryDirectory() as tmp:
             for f in ('words.py', 'TAGS', 'site/index.html',
-                      'local-only/notes.org', 'data/dictionary.xml',
+                      'local-only/notes.org', 'tools/bundle-zip.py',
+                      'data/dictionary.xml',
                       'data/site/x.xml', 'data/TAGS'):
                 os.makedirs(os.path.dirname(os.path.join(tmp, f)),
                             exist_ok=True)
                 open(os.path.join(tmp, f), 'w').close()
-            bundle.HERE = tmp
+            bundle.ROOT = tmp
             self.assertEqual(
                 [f.replace(os.sep, '/') for f in bundle.files()],
                 ['words.py', 'data/TAGS', 'data/dictionary.xml',
@@ -73,7 +74,7 @@ class BundleTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             env = dict(os.environ, GITHUB_SHA='a' * 40)
             subprocess.run([sys.executable,
-                            os.path.join(ROOT, 'bundle-zip.py'), '-o', tmp],
+                            os.path.join(ROOT, 'tools', 'bundle-zip.py'), '-o', tmp],
                            check=True, capture_output=True, env=env)
             with zipfile.ZipFile(os.path.join(tmp, os.listdir(tmp)[0])) as z:
                 self.assertEqual(

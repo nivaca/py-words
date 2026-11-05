@@ -49,7 +49,8 @@ def program_texts() -> set[str]:
     import words_web
     from xmldata import read_language
     texts = []
-    for path in sorted(glob.glob(os.path.join(ROOT, '*.py'))):
+    for path in sorted(glob.glob(os.path.join(ROOT, '*.py')) +
+                       glob.glob(os.path.join(ROOT, 'tools', 'bundle-*.py'))):
         if os.path.basename(path) == 'forms.py':
             continue
         with open(path, encoding='utf-8') as f:

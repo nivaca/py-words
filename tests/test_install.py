@@ -73,6 +73,54 @@ class InstallTests(unittest.TestCase):
         for path in paths:
             self.assertFalse(os.path.exists(path))
 
+    def test_only_gui(self):
+        """--only-gui adds only the window's entry, and removes the others
+        of a former install; --uninstall then removes it."""
+        words_install.install()
+        paths = words_install.install(only_gui=True)
+        self.assertEqual([os.path.basename(p) for p in paths],
+                         ['py-words.desktop'])
+        apps = os.path.join(self.tmp.name, 'applications')
+        self.assertEqual(sorted(f for f in os.listdir(apps)
+                                if f.endswith('.desktop')),
+                         ['py-words.desktop'])
+        removed = words_install.uninstall()
+        self.assertIn(paths[0], removed)
+        self.assertFalse(os.path.exists(paths[0]))
+        # the same on macOS and Windows
+        words_install.install_macos()
+        apps = words_install.install_macos(only_gui=True)
+        self.assertEqual([os.path.basename(a) for a in apps],
+                         ['py-words (GUI).app'])
+        self.assertEqual(sorted(os.listdir(os.path.join(
+            self.tmp.name, 'Applications'))), ['py-words (GUI).app'])
+        self.assertEqual(words_install.uninstall_macos(), apps)
+        menu = words_install.start_menu()
+        os.makedirs(menu)
+        for kind in ('CLI', 'TUI', 'Web'):
+            open(os.path.join(menu, f'py-words ({kind}).lnk'), 'w').close()
+        bin_dir = os.path.join(self.tmp.name, 'bin')
+        os.mkdir(bin_dir)
+        fake = os.path.join(bin_dir, 'powershell')
+        with open(fake, 'w') as f:
+            f.write('#!/bin/sh\n: > "$PYW_LNK"\n')
+        os.chmod(fake, 0o755)
+        os.environ['PATH'] = bin_dir + os.pathsep + os.environ['PATH']
+        self.assertEqual(
+            [os.path.basename(p) for p in
+             words_install.install_windows(only_gui=True)],
+            ['py-words (GUI).lnk'])
+        self.assertEqual(os.listdir(menu), ['py-words (GUI).lnk'])
+
+    def test_arguments(self):
+        with self.assertRaises(SystemExit), \
+                open(os.devnull, 'w') as null:
+            stderr, sys.stderr = sys.stderr, null
+            try:
+                words_install.main(['--only-gui', '--uninstall'])
+            finally:
+                sys.stderr = stderr
+
     def test_old_name_is_cleaned_up(self):
         """Entries and icons installed as py-whitaker-words are removed."""
         apps = os.path.join(self.tmp.name, 'applications')

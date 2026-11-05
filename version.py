@@ -12,12 +12,12 @@ import sys
 NAME = 'py-words'
 #  Al subir la versión: también el nombre del zip en los dos README, el
 #  título de docs/DESCRIPCIÓN_es.md y las notas de "Version"/"Versiones".
-VERSION = '3.5'
+VERSION = '3.6'
 URL = 'https://github.com/nivaca/py-words'
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 #  The commit the program was made from, written into the zip and the site
-#  by bundle-zip.py and pages/build.py (a clone asks git instead)
+#  by tools/bundle-zip.py and pages/build.py (a clone asks git instead)
 COMMIT_FILE = 'COMMIT'
 
 #  The credits, with {name}, {version} and {url} for those above

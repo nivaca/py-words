@@ -1,4 +1,4 @@
-# Makes the AppImage of py-words (bundle-appimage.py), for Linux.
+# Makes the AppImage of py-words (tools/bundle-appimage.py), for Linux.
 # With each tag that is pushed, it is added to the release of the tag
 # (made if there is none); run by hand ("Run workflow"), it is only kept
 # as an artifact of the run.
@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Build the AppImage
-        run: python3 bundle-appimage.py
+        run: python3 tools/bundle-appimage.py
       # Without a display: does the AppImage start, and find a word?
       - name: Try it
         run: |

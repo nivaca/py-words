@@ -11,8 +11,8 @@ In order, each step only if it is needed:
 
 1. checks that the repository is on main, with nothing left to commit,
    and that gh and tea are installed;
-2. makes the zip and the AppImage in dist/ (bundle-zip.py and
-   bundle-appimage.py), unless --no-build (then those in dist/ are used);
+2. makes the zip and the AppImage in dist/ (tools/bundle-zip.py and
+   tools/bundle-appimage.py), unless --no-build (then those in dist/ are used);
 3. tags HEAD as vVERSION.  If the tag is there already on another commit,
    it stops, unless --redo moves it;
 4. pushes main and the tag to the remote (origin, which pushes to both
@@ -140,10 +140,11 @@ class Release:
                     sys.exit(f'release.py: there is no {f} (leave out '
                              '--no-build to make it)')
             return
-        self.plan('Make the zip', sys.executable, 'bundle-zip.py')
+        self.plan('Make the zip', sys.executable,
+                  os.path.join('tools', 'bundle-zip.py'))
         if APPIMAGE in self.files:
             self.plan('Make the AppImage', sys.executable,
-                      'bundle-appimage.py')
+                      os.path.join('tools', 'bundle-appimage.py'))
 
     def tag(self):
         head = self.read('git', 'rev-parse', 'HEAD')

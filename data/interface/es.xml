@@ -1006,6 +1006,10 @@
     <tr>Añade py-words al menú de aplicaciones, o lo quita.</tr>
   </text>
   <text>
+    <en>add only the entry of the window (and remove the others, if they are there)</en>
+    <tr>añadir solo el acceso de la ventana (y quitar los demás, si están)</tr>
+  </text>
+  <text>
     <en>remove what was added</en>
     <tr>quitar lo que se añadió</tr>
   </text>
@@ -2280,7 +2284,7 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <en>Wrote {path} ({n} files, {size:.1f} MB).</en>
     <tr>Escrito {path} ({n} archivos, {size:.1f} MB).</tr>
   </text>
-  <!-- bundle-appimage.py -->
+  <!-- tools/bundle-appimage.py -->
   <text>
     <en>Make an AppImage of the program, for Linux: {name}, with a Python of its own.</en>
     <tr>Hace una AppImage del programa, para Linux: {name}, con un Python propio.</tr>

@@ -25,10 +25,10 @@ ICON = os.path.join(ROOT, 'icons', 'linux', 'icons', 'hicolor', '48x48',
 
 
 def bundle_zip():
-    """The module bundle-zip.py."""
+    """The module tools/bundle-zip.py."""
     sys.path.insert(0, ROOT)
     spec = importlib.util.spec_from_file_location(
-        'bundle_zip', os.path.join(ROOT, 'bundle-zip.py'))
+        'bundle_zip', os.path.join(ROOT, 'tools', 'bundle-zip.py'))
     bundle = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(bundle)
     return bundle
