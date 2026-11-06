@@ -1254,6 +1254,8 @@ Versiones
     instalados, incluso uno que el programa ya no tiene), y nada más.
   - `icons/linux/uninstall.sh` quita lo mismo: los cuatro accesos y los
     iconos, por sus nombres exactos.
+  - Los títulos, la página web y los accesos del menú dicen "Un
+    diccionario de latín" (en inglés, "A Latin Dictionary").
 - 3.6:
   - `words_install.py --only-gui` añade solo el acceso de la ventana (y
     quita los otros tres, si estaban de antes); `--uninstall` quita los

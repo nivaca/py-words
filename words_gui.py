@@ -78,7 +78,7 @@ class App:
     def build(self):
         """The widgets of the window, in the language of the interface."""
         root = self.root
-        root.title(tr('{name} {version}: a Latin dictionary', name=NAME,
+        root.title(tr('{name} {version}: A Latin Dictionary', name=NAME,
                       version=VERSION))
         top = ttk.Frame(root, padding=(12, 12, 12, 8))
         top.pack(fill='x')

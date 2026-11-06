@@ -99,7 +99,7 @@ class DictionaryTUI(Screen):
         language = tr('{language} → Latin', language=name) \
             if session and session.reverse else \
             tr('Latin → {language}', language=name)
-        title = ' ' + tr('{name} {version}: a Latin dictionary', name=NAME,
+        title = ' ' + tr('{name} {version}: A Latin Dictionary', name=NAME,
                          version=VERSION)
         self.put(0, 0, (title + language.rjust(w - len(title) - 1) + ' ')
                  [:w].ljust(w), curses.A_REVERSE)

@@ -372,7 +372,7 @@ class InteractiveTests(InTempDir):
         #  (the name and version, but not the credits)
         from version import VERSION
         self.assertTrue(out.startswith(
-            f'py-words {VERSION}: a Latin dictionary\nType a Latin word'))
+            f'py-words {VERSION}: A Latin Dictionary\nType a Latin word'))
         self.assertIn('amicus, amici', out)
         self.assertIn('another empty line quits', out)
 
