@@ -73,6 +73,46 @@ class InstallTests(unittest.TestCase):
         for path in paths:
             self.assertFalse(os.path.exists(path))
 
+    def test_uninstall_removes_only_entries_and_icons(self):
+        """Uninstalling (here and with icons/linux/uninstall.sh) removes
+        the .desktop entries and the icons, and leaves everything else:
+        other files, similar names, and the folders."""
+        share = self.tmp.name
+        apps = os.path.join(share, 'applications')
+        theme = os.path.join(share, 'icons', 'hicolor')
+        script = os.path.join(words_install.HERE, 'icons', 'linux',
+                              'uninstall.sh')
+        for uninstall in (words_install.uninstall_linux,
+                          lambda: subprocess.run(
+                              ['sh', script], check=True,
+                              stdout=subprocess.DEVNULL,
+                              stderr=subprocess.DEVNULL)):
+            words_install.install_linux()
+            # an icon of a size the program does not have (any more)
+            extra = os.path.join(theme, '20x20', 'apps', 'py-words.png')
+            os.makedirs(os.path.dirname(extra), exist_ok=True)
+            open(extra, 'w').close()
+            others = [os.path.join(apps, 'other.desktop'),
+                      os.path.join(apps, 'py-words-other.desktop'),
+                      os.path.join(theme, '48x48', 'apps', 'other.png'),
+                      os.path.join(theme, '48x48', 'apps',
+                                   'py-words.extra.png'),
+                      os.path.join(theme, '48x48', 'py-words.png'),
+                      os.path.join(share, 'py-words.png')]
+            for path in others:
+                open(path, 'w').close()
+            folders = sorted(root for root, _, _ in os.walk(share))
+            uninstall()
+            left = sorted(os.path.join(root, f)
+                          for root, _, files in os.walk(share)
+                          for f in files
+                          if not f.endswith('.cache'))  # (the tools')
+            self.assertEqual(left, sorted(others))
+            self.assertEqual(sorted(root for root, _, _ in os.walk(share)),
+                             folders)
+            for path in others:
+                os.remove(path)
+
     def test_only_gui(self):
         """--only-gui adds only the window's entry, and removes the others
         of a former install; --uninstall then removes it."""

@@ -148,19 +148,28 @@ def refresh_linux():
                 break
 
 
+def installed_icons(app_id: str) -> list[str]:
+    """The icons of APP_ID in the user's hicolor theme: only the files
+    <size>/apps/<app_id>.png and .svg, in any size."""
+    theme = os.path.join(data_home(), 'icons', 'hicolor')
+    if not os.path.isdir(theme):
+        return []
+    found = []
+    for size in sorted(os.listdir(theme)):
+        for ext in ('.png', '.svg'):
+            found.append(os.path.join(theme, size, 'apps', app_id + ext))
+    return [path for path in found if os.path.isfile(path)]
+
+
 def old_linux_files() -> list[str]:
     """What was installed under an old name (entries and icons)."""
-    theme = os.path.join(data_home(), 'icons', 'hicolor')
     found = []
     for old in OLD_APP_IDS:
-        for name in (old + '.desktop', old + '.cli.desktop'):
-            found.append(os.path.join(data_home(), 'applications', name))
-        if os.path.isdir(theme):
-            for size in os.listdir(theme):
-                for ext in ('.png', '.svg'):
-                    found.append(os.path.join(theme, size, 'apps',
-                                              old + ext))
-    return [path for path in found if os.path.isfile(path)]
+        entries = [os.path.join(data_home(), 'applications', name)
+                   for name in (old + '.desktop', old + '.cli.desktop')]
+        found += [path for path in entries if os.path.isfile(path)]
+        found += installed_icons(old)
+    return found
 
 
 def remove(paths: list[str]) -> list[str]:
@@ -197,15 +206,11 @@ def install_linux(only_gui: bool = False) -> list[str]:
 
 
 def uninstall_linux() -> list[str]:
-    removed = []
-    theme = os.path.join(data_home(), 'icons', 'hicolor')
-    paths = [os.path.join(theme, rel) for _, rel in icon_files()] + \
-        [entry_path(kind) for kind, _, _ in PROGRAMS]
-    for path in paths:
-        if os.path.isfile(path):
-            os.remove(path)
-            removed.append(path)
-    removed += remove(old_linux_files())
+    """Removes the .desktop entries and the icons, and nothing else (no
+    folders, not even empty ones)."""
+    entries = [entry_path(kind) for kind, _, _ in PROGRAMS]
+    removed = remove([path for path in entries if os.path.isfile(path)]
+                     + installed_icons(APP_ID) + old_linux_files())
     refresh_linux()
     return removed
 
