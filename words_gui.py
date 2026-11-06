@@ -322,6 +322,16 @@ class App:
         character or language), applies it, and keeps it in the
         configuration file.  The meanings follow the language of the
         interface, if the dictionary has it."""
+        if name == 'interface' and not interface.use(value):
+            #  (its file is wrong: as it was, and saying why)
+            error = interface.error() or value
+            interface.use(self.saved.interface)
+            self.status.config(text=tr(
+                'The language of the interface could not be changed: '
+                '{error}', error=error))
+            if self.settings_window is not None:
+                self.settings_window.refresh()
+            return
         if name == 'interface' and value != self.session.language.code and \
                 value in self.session.lexicon.language_names():
             self.change_setting('language', value)

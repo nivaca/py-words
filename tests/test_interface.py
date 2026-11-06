@@ -276,6 +276,56 @@ class KeptTests(unittest.TestCase):
             root.destroy()
         self.assertEqual(self.kept(), 'es')
 
+    @unittest.skipUnless(_display(), 'needs a display')
+    def test_window_back_and_forth(self):
+        """The language changes every time it is chosen in the settings,
+        without errors from the parts of the window built before; and a
+        language whose file is wrong is not used, and the window says
+        so."""
+        import tkinter as tk
+        from unittest import mock
+        import words_gui
+        root = tk.Tk()
+        errors = []
+        root.report_callback_exception = \
+            lambda kind, value, tb: errors.append(repr(value))
+        try:
+            app = words_gui.App(root, os.path.join(ROOT, 'data'))
+            for _ in range(600):
+                if app.session is not None:
+                    break
+                root.update()
+                time.sleep(0.05)
+            for code, button in (('es', 'Buscar'), ('en', 'Look up'),
+                                 ('es', 'Buscar')):
+                app.settings_dialog()
+                root.update()
+                box = app.settings_window.interface_box
+                box.set(interface.names()[code])
+                box.event_generate('<<ComboboxSelected>>')
+                root.update()
+                self.assertEqual(app.button.cget('text'), button)
+                self.assertEqual(app.saved.interface, code)
+                root.event_generate('<<ThemeChanged>>')
+                root.update()
+            self.assertEqual(errors, [])
+            app.change_setting('interface', 'en')
+            root.update()
+            with mock.patch.object(interface, 'read', side_effect=
+                                   interface.InterfaceError('es.xml: bad')):
+                app.settings_window.interface_box.set('Español')
+                app.settings_window.interface_box.event_generate(
+                    '<<ComboboxSelected>>')
+                root.update()
+            self.assertEqual(app.button.cget('text'), 'Look up')
+            self.assertEqual(app.saved.interface, 'en')
+            self.assertIn('es.xml: bad', app.status.cget('text'))
+            self.assertEqual(app.settings_window.interface_box.get(),
+                             'English')
+            self.assertEqual(errors, [])
+        finally:
+            root.destroy()
+
 
 if __name__ == '__main__':
     unittest.main()
