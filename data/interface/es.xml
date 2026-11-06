@@ -890,8 +890,8 @@
     <tr>Escriba una palabra o una línea en latín y pulse Intro.  "Ayuda" explica los resultados y "Acerca de" muestra los créditos.</tr>
   </text>
   <text>
-    <en>{name}: a Latin dictionary</en>
-    <tr>{name}: un diccionario de latín</tr>
+    <en>{name}: A Latin Dictionary</en>
+    <tr>{name}: Un diccionario de latín</tr>
   </text>
   <text>
     <en>About {name}</en>
@@ -978,10 +978,6 @@
     <tr>No se guardaron los ajustes: {error}</tr>
   </text>
   <text>
-    <en>Latin Dictionary</en>
-    <tr>Diccionario de latín</tr>
-  </text>
-  <text>
     <en>the applications menu</en>
     <tr>el menú de aplicaciones</tr>
   </text>
@@ -1034,8 +1030,8 @@
     <tr>Escriba una palabra o una línea en latín y pulse Intro.  F1: ayuda y créditos.</tr>
   </text>
   <text>
-    <en>{name} {version}: a Latin dictionary</en>
-    <tr>{name} {version}: un diccionario de latín</tr>
+    <en>{name} {version}: A Latin Dictionary</en>
+    <tr>{name} {version}: Un diccionario de latín</tr>
   </text>
   <text>
     <en>{language} to Latin: type a word in {language}.</en>
@@ -1094,8 +1090,8 @@
     <tr>{n} más</tr>
   </text>
   <text>
-    <en>a Latin dictionary</en>
-    <tr>un diccionario de latín</tr>
+    <en>A Latin Dictionary</en>
+    <tr>Un diccionario de latín</tr>
   </text>
   <text>
     <en>Search</en>

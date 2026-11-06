@@ -199,7 +199,7 @@ def change_developer_modes(session: Session, ask: Ask, say) -> None:
 def banner(session: Session) -> str:
     s = session.settings
     return '\n'.join([
-        tr('{name} {version}: a Latin dictionary', name=NAME,
+        tr('{name} {version}: A Latin Dictionary', name=NAME,
            version=VERSION),
         tr('Type a Latin word or line and Enter.  ~E: {language} to Latin, '
            '~L: back to Latin.', language=tr(session.language.name)),

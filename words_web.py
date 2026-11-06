@@ -262,7 +262,7 @@ class WebApp:
                SCRIPT_TEXTS.items()},
             html_lang=esc(interface.code()),
             title=esc(f'{query} – {NAME}' if query else
-                      tr('{name}: a Latin dictionary', name=NAME)),
+                      tr('{name}: A Latin Dictionary', name=NAME)),
             name=esc(NAME), version=esc(VERSION), about=about_html(),
             home=esc(HOME_PAGE), home_name=esc(HOME_PAGE.split('//')[1]),
             query=esc(query), token=esc(self.token), nonce=nonce,
@@ -565,7 +565,7 @@ class WebApp:
 #  The texts of the page, by their places in it ($t_look_up ...), and those
 #  of its script (as JavaScript strings)
 PAGE_TEXTS = {
-    't_tagline': N_('a Latin dictionary'), 't_search': N_('Search'),
+    't_tagline': N_('A Latin Dictionary'), 't_search': N_('Search'),
     't_look_up': N_('Look up'), 't_meanings_in': N_('Meanings in'),
     't_change': N_('Change'), 't_earlier': N_('Earlier searches'),
     't_clear': N_('Clear history'), 't_settings': N_('Settings'),

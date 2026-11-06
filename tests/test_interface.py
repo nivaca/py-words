@@ -267,7 +267,7 @@ class KeptTests(unittest.TestCase):
             app.change_setting('interface', 'es')
             from version import VERSION
             self.assertEqual(root.title(),
-                             f'py-words {VERSION}: un diccionario de latín')
+                             f'py-words {VERSION}: Un diccionario de latín')
             self.assertTrue(app.text.get('1.0', 'end').startswith(
                 'Escriba una palabra'))     # (the welcome, in Spanish)
             self.assertEqual(app.session.language.code, 'es')

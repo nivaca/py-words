@@ -43,7 +43,7 @@ BUNDLE_ID = 'io.github.nivaca.py-words'
 OLD_APP_IDS = ('py-whitaker-words',)
 OLD_BUNDLE_IDS = ('io.github.nivaca.py-whitaker-words',)
 OLD_NAME = 'Py-Whitaker-Words'
-COMMENT = N_('Latin Dictionary')
+COMMENT = N_('A Latin Dictionary')
 HERE = os.path.dirname(os.path.abspath(__file__))
 ICON_DIR = os.path.join(HERE, 'icons')
 

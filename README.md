@@ -1225,6 +1225,8 @@ Version
     is installed, even one the program no longer has), and nothing else.
   - `icons/linux/uninstall.sh` removes the same: the four entries and the
     icons, by their exact names.
+  - The titles, the web page and the menu entries say "A Latin
+    Dictionary" (in Spanish, "Un diccionario de latín").
 - 3.6:
   - `words_install.py --only-gui` adds only the entry of the window (and
     removes the other three, if they were there from before);
