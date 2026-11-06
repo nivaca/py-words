@@ -39,6 +39,22 @@ COLOURS = {
 }
 
 
+def unbind(widget, bound):
+    """Takes off WIDGET the BOUND commands, [(event, funcid)] of bind(...,
+    add='+'), and only those (tkinter's unbind takes off all of the event
+    in Pythons before 3.13)."""
+    if not widget.winfo_exists():
+        return
+    for event, funcid in bound:
+        script = widget.bind(event)
+        widget.bind(event, '\n'.join(line for line in script.split('\n')
+                                     if funcid not in line))
+        try:
+            widget.deletecommand(funcid)
+        except tk.TclError:     # (gone already: from 3.15, a bind without
+            pass                # add deletes the commands it replaces)
+
+
 class Results(ttk.Frame):
     """The results, with their scroll bar and the find bar.  ON_LOOKUP
     (query, to_latin) looks a word up; EXPLAIN_CODES and EXPLAIN_ANALYSIS
@@ -75,9 +91,13 @@ class Results(ttk.Frame):
         self.bold_font = tkfont.Font(self)
         self.note_font = tkfont.Font(self)
         self.restyle()
+        #  On the window, so they are taken off when this is destroyed (the
+        #  window builds a new one when the interface changes)
         top = self.winfo_toplevel()
-        for event in ('<<ThemeChanged>>', '<<FontsChanged>>'):
-            top.bind(event, lambda e: self.restyle(), add='+')
+        bound = [(event, top.bind(event, lambda e: self.restyle(), add='+'))
+                 for event in ('<<ThemeChanged>>', '<<FontsChanged>>')]
+        self.bind('<Destroy>', lambda e: e.widget is self and unbind(
+            top, bound), add='+')
 
         t = self.text
         t.tag_bind('link', '<Enter>', lambda e: t.config(cursor='hand2'))

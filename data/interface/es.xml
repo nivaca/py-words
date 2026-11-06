@@ -974,6 +974,10 @@
     <tr>Abrir la página del proyecto {name}</tr>
   </text>
   <text>
+    <en>The language of the interface could not be changed: {error}</en>
+    <tr>No se pudo cambiar el idioma de la interfaz: {error}</tr>
+  </text>
+  <text>
     <en>The settings were not saved: {error}</en>
     <tr>No se guardaron los ajustes: {error}</tr>
   </text>

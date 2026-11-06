@@ -105,10 +105,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
 it executable and run it:
 
-    $ chmod +x py-words-v.3.7-x86_64.AppImage
-    $ ./py-words-v.3.7-x86_64.AppImage                # the window
-    $ ./py-words-v.3.7-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.7-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.8-x86_64.AppImage
+    $ ./py-words-v.3.8-x86_64.AppImage                # the window
+    $ ./py-words-v.3.8-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.8-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
@@ -189,7 +189,7 @@ for distributing it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.7.zip` (with the version of the program;
+This writes `dist/py-words-v.3.8.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the
 same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
@@ -205,7 +205,7 @@ In Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.7-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.8-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
 [python-appimage](https://github.com/niess/python-appimage)) and
 [appimagetool](https://github.com/AppImage/appimagetool) are downloaded
@@ -1219,6 +1219,13 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.8:
+  - In the window, changing the language of the interface no longer
+    leaves the parts of the window built before tied to the changes of
+    the look and of the fonts, which gave errors after each change.
+  - If the file of a language of the interface is wrong, the window
+    stays in the language it was in and says why in the status bar
+    (before, it went on in English without a word).
 - 3.7:
   - `words_install.py --uninstall` removes in Linux only the `.desktop`
     entries and the icons (`py-words.png` and `.svg`, in every size that

@@ -224,6 +224,10 @@ class SettingsDialog:
         for name, var in self.vars.items():
             if var.get() != self.get(name):
                 var.set(self.get(name))
+        box = getattr(self, 'interface_box', None)
+        if box is not None:
+            names = interface.names()
+            box.set(names.get(self.get('interface'), names['en']))
         for child, parent in DEPENDS.items():
             if child in self.boxes:
                 self.boxes[child].state(

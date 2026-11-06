@@ -37,6 +37,7 @@ PART = re.compile(r'\{(\w+)\}')
 
 _code = REFERENCE
 _texts: dict[str, str] = {}
+_error = ''                     # why the last language asked for was not used
 
 
 class InterfaceError(Exception):
@@ -101,17 +102,26 @@ def use(code: str | None) -> bool:
     """Shows the interface in language CODE (English if None, or if there
     is no such language or its file is wrong).  Returns whether CODE is
     the one in use."""
-    global _code, _texts
+    global _code, _texts, _error
     path = files().get(code or '')
     texts = {}
+    _error = '' if path is not None or not code or code == REFERENCE \
+        else f'there is no interface file for "{code}"'
     if path is not None:
         try:
             texts = read(path)
-        except InterfaceError:
+        except InterfaceError as e:
             path = None
+            _error = str(e)
     _code = code if path is not None else REFERENCE
     _texts = texts
     return _code == (code or REFERENCE)
+
+
+def error() -> str:
+    """Why the language last given to use() is not the one in use ('' if
+    it is)."""
+    return _error
 
 
 def use_configured() -> str:
