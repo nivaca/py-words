@@ -30,8 +30,8 @@ version maintained at
 I redesigned it as idiomatic Python, with the same analyses, an output
 more easy to read and a modern command line, and its data, from the
 fixed-column text files of the original to XML.  The only thing you need is
-Python 3.11 or later.  You can use it also online, in the browser:
-<https://nicolasvaughan.org/py-words/> (see "Online").
+Python 3.11 or later.  You can use it also online:
+<https://nivaca.pythonanywhere.com/> (see "Online").
 
 [Nicolas Vaughan](https://artehum.uniandes.edu.co/profesores/nicolas-vaughan/) is Associate Professor of Literature at the School of Arts
 and Humanities of the Universidad de los Andes, Bogotá, Colombia.
@@ -302,8 +302,15 @@ interface.
 
 ### Online
 
-The dictionary is also at <https://nicolasvaughan.org/py-words/>, and
-there you don't need to install anything.  It is the page of
+The dictionary is also online, with nothing to install, at
+<https://nivaca.pythonanywhere.com/>: the page of `words_web.py`, on a
+server for everyone (see below), where each visitor has their own
+settings and earlier searches.  The former address,
+<https://nicolasvaughan.org/py-words/>, sends there, together with the
+search (`?q=amicus+est`), so the old links and bookmarks still work.
+
+There is also a version that runs in the browser, at
+<https://nicolasvaughan.org/py-words/browser/>.  It is the page of
 `words_web.py`, but without a server: the browser downloads Python itself
 (Pyodide, that is Python compiled for WebAssembly), together with the
 program and its data (a zip of less than 3 MB), and it makes the searches
@@ -318,8 +325,9 @@ it in your next visit.
 You find there everything that `words_web.py` does: the searches in both
 directions, the languages of the meanings and of the interface, the
 settings, the earlier searches, the dark mode.  Each search has its own
-address (`https://nicolasvaughan.org/py-words/?q=amicus+est`), useful for
-the bookmarks.  The settings and the history are kept in the browser (in
+address
+(`https://nicolasvaughan.org/py-words/browser/?q=amicus+est`),
+useful for the bookmarks.  The settings and the history are kept in the browser (in
 its local storage), so they are not shared with the programs in your
 computer, nor with other browsers.  It is not possible to edit the
 dictionary online.  You need a more or less recent browser, and a
@@ -328,11 +336,15 @@ connection for starting it.
 The site is built from `pages/`:
 
     $ python3 pages/build.py [-o FOLDER]       # writes site/
-    $ python3 -m http.server -d site 8001      # try it at localhost:8001
+    $ python3 -m http.server -d site 8001      # try localhost:8001/browser/
 
-The result is a static site (the page, its script, the icon, and
-`py-words.zip`, with the `.py` files of the program and its data), that
-any web server can host, in its root or inside a folder.  In GitHub, the
+The result is a static site, that any web server can host, in its root
+or inside a folder.  In `browser/` is the version in the browser (the
+page, its script, the icon, and `py-words.zip`, with the `.py` files of
+the program and its data); the page of the site (`pages/redirect.html`)
+sends the visitors, with their search, to the program on the server
+(`--server URL` chooses it; by default nivaca.pythonanywhere.com), and
+links to `browser/`.  In GitHub, the
 workflow `.github/workflows/pages.yml` runs the tests, builds the site
 and publishes it in GitHub Pages in each push to `main`.  (In the
 settings of the repository, Pages needs Source: GitHub Actions.)

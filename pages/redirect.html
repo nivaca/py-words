@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- The page of the site (see build.py): it sends the visitor to the
+     program on a server ($server), with the search of the address
+     (?q=amicus+est&lang=...), so that old links and bookmarks still work.
+     The version in the browser stays in $browser. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>py-words: A Latin Dictionary</title>
+<link rel="icon" href="icon.png">
+<link rel="canonical" href="$server">
+<script>
+  location.replace($json_server + location.search + location.hash);
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=$server"></noscript>
+<style>
+:root {
+  --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --accent: #8a2c1f;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1b1d; --fg: #e8e6e1; --muted: #9a9890; --accent: #e8957f;
+    color-scheme: dark;
+  }
+}
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { max-width: 36rem; margin: 0 auto; padding: 2rem 1rem; }
+h1 { font-size: 1.6rem; margin: 0 0 1rem; }
+p { margin: 0 0 .8rem; }
+.es { color: var(--muted); }
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+<h1>py-words</h1>
+<p>The dictionary is now at <a href="$server">$server</a>.
+The version that runs in your browser is still
+<a href="$browser">here</a>.</p>
+<p class="es" lang="es">El diccionario está ahora en
+<a href="$server">$server</a>.  La versión que funciona en el navegador
+sigue <a href="$browser">aquí</a>.</p>
+</main>
+</body>
+</html>

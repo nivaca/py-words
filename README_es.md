@@ -32,8 +32,7 @@ luego lo rehíce en Python idiomático, con los mismos análisis, una salida
 más fácil de leer y una línea de órdenes moderna, y rehíce sus datos,
 de los archivos de texto de columnas fijas del original a XML.  Basta con tener
 Python 3.11 o posterior.  Y si no se quiere instalar nada, se puede usar
-en línea, desde el navegador: <https://nicolasvaughan.org/py-words/>
-(véase "En línea").
+en línea: <https://nivaca.pythonanywhere.com/> (véase "En línea").
 
 [Nicolas Vaughan](https://artehum.uniandes.edu.co/profesores/nicolas-vaughan/)
 es profesor asociado de Literatura de la Facultad de Artes y Humanidades
@@ -307,9 +306,17 @@ interfaz.
 
 ### En línea
 
-El diccionario también está en <https://nicolasvaughan.org/py-words/>,
-sin nada que instalar.  Es la página de `words_web.py`, pero sin
-servidor: el navegador descarga el propio Python (Pyodide, Python
+El diccionario también está en línea, sin nada que instalar, en
+<https://nivaca.pythonanywhere.com/>: la página de `words_web.py`, en un
+servidor para todos (véase más abajo), donde cada visitante tiene sus
+propios ajustes y búsquedas anteriores.  La dirección anterior,
+<https://nicolasvaughan.org/py-words/>, lleva allí, junto con la
+búsqueda (`?q=amicus+est`), así que los enlaces y marcadores viejos
+siguen sirviendo.
+
+Hay también una versión que funciona en el navegador, en
+<https://nicolasvaughan.org/py-words/browser/>.  Es la página de
+`words_web.py`, pero sin servidor: el navegador descarga el propio Python (Pyodide, Python
 compilado para WebAssembly) y el programa con sus datos (un zip de menos
 de 3 MB), y hace las búsquedas por su cuenta.  Nada de lo que se escribe
 sale del navegador.
@@ -323,8 +330,8 @@ nueva, se ve en la visita siguiente.
 Hace todo lo que hace `words_web.py`: búsquedas en los dos sentidos, los
 idiomas de los significados y de la interfaz, los ajustes, las búsquedas
 anteriores, el modo oscuro.  Cada búsqueda tiene su propia dirección
-(`https://nicolasvaughan.org/py-words/?q=amicus+est`), que se puede
-guardar en marcadores.  Los ajustes y el historial se guardan en el
+(`https://nicolasvaughan.org/py-words/browser/?q=amicus+est`),
+que se puede guardar en marcadores.  Los ajustes y el historial se guardan en el
 navegador (en su almacenamiento local), así que no se comparten con los
 programas del equipo ni con otros navegadores.  En línea no se puede
 editar el diccionario.  Hace falta un navegador más o menos reciente, y conexión para arrancar.
@@ -332,11 +339,15 @@ editar el diccionario.  Hace falta un navegador más o menos reciente, y conexi�
 El sitio se construye a partir de `pages/`:
 
     $ python3 pages/build.py [-o CARPETA]      # escribe site/
-    $ python3 -m http.server -d site 8001      # pruébelo en localhost:8001
+    $ python3 -m http.server -d site 8001      # pruebe localhost:8001/browser/
 
-Sale un sitio estático (la página, su script, el icono y `py-words.zip`,
-con los archivos `.py` del programa y sus datos) que cualquier servidor
-web puede alojar, en su raíz o en una carpeta.  En GitHub, el flujo de
+Sale un sitio estático que cualquier servidor web puede alojar, en su
+raíz o en una carpeta.  En `browser/` está la versión en el navegador
+(la página, su script, el icono y `py-words.zip`, con los archivos `.py`
+del programa y sus datos); la página del sitio (`pages/redirect.html`)
+lleva a los visitantes, con su búsqueda, al programa en el servidor
+(`--server URL` lo elige; por omisión, nivaca.pythonanywhere.com), y
+enlaza con `browser/`.  En GitHub, el flujo de
 trabajo `.github/workflows/pages.yml` corre las pruebas, construye el
 sitio y lo publica en GitHub Pages con cada push a `main`.  (En los
 ajustes del repositorio, Pages tiene que tener Source: GitHub Actions.)

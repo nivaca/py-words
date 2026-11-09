@@ -2,17 +2,24 @@
 """Builds the static site of py-words, which runs in the browser with
 Pyodide: python3 pages/build.py [-o FOLDER]
 
-The site (site/ by default) is the page and its script (pages/index.html
-and pages/app.js), the icon, and py-words.zip: the program's .py files and
-its data (and COMMIT, the commit it was built from), which the page
-unpacks into Pyodide's files.  It can be served by
-any static web server (GitHub Pages ...); to try it here:
+The site (site/ by default) has, in browser/, the page and its script
+(pages/index.html and pages/app.js), the icon, and py-words.zip: the
+program's .py files and its data (and COMMIT, the commit it was built
+from), which the page unpacks into Pyodide's files.  Its own page
+(pages/redirect.html) sends the visitor to the program on a server
+(SERVER, or --server), with the search of the address (?q=...), and links
+to browser/.  It can be served by any static web server (GitHub Pages
+...); to try it here:
 
     python3 pages/build.py && python3 -m http.server -d site 8001
+
+and open localhost:8001/browser/.
 """
 
 import argparse
+import html
 import importlib.util
+import json
 import os
 import shutil
 import sys
@@ -20,6 +27,10 @@ import zipfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
+#  The program on a web server for everyone (words_web.public_app), where
+#  the page of the site sends its visitors
+SERVER = 'https://nivaca.pythonanywhere.com/'
+BROWSER = 'browser'                     # (the folder of the Pyodide version)
 ICON = os.path.join(ROOT, 'icons', 'linux', 'icons', 'hicolor', '48x48',
                     'apps', 'py-words.png')
 
@@ -42,15 +53,30 @@ def program_files() -> list[str]:
             f.startswith('data' + os.sep)]
 
 
-def build(out: str) -> list[str]:
-    """Writes the site into OUT (emptied first); returns its files."""
+def redirect_page(server: str) -> str:
+    """The page of the site: to SERVER, with the search."""
+    with open(os.path.join(HERE, 'redirect.html'), encoding='utf-8') as f:
+        page = f.read()
+    return page.replace('$server', html.escape(server)).replace(
+        '$json_server', json.dumps(server).replace('<', '\\u003c')).replace(
+        '$browser', BROWSER + '/')
+
+
+def build(out: str, server: str = SERVER) -> list[str]:
+    """Writes the site into OUT (emptied first): its page, to SERVER, and
+    the version in the browser in OUT/browser.  Returns the files of
+    OUT."""
     if os.path.isdir(out):
         shutil.rmtree(out)
-    os.makedirs(out)
+    browser = os.path.join(out, BROWSER)
+    os.makedirs(browser)
     for name in ('index.html', 'app.js'):
-        shutil.copy(os.path.join(HERE, name), out)
-    shutil.copy(ICON, os.path.join(out, 'icon.png'))
-    with zipfile.ZipFile(os.path.join(out, 'py-words.zip'), 'w',
+        shutil.copy(os.path.join(HERE, name), browser)
+    for folder in (out, browser):
+        shutil.copy(ICON, os.path.join(folder, 'icon.png'))
+    with open(os.path.join(out, 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(redirect_page(server))
+    with zipfile.ZipFile(os.path.join(browser, 'py-words.zip'), 'w',
                          zipfile.ZIP_DEFLATED) as z:
         for f in program_files():
             z.write(os.path.join(ROOT, f), f.replace(os.sep, '/'))
@@ -67,9 +93,13 @@ def main(argv=None):
         description='Build the static site of py-words (with Pyodide).')
     parser.add_argument('-o', '--output', default=os.path.join(ROOT, 'site'),
                         help='the folder to write it in (default: site/)')
+    parser.add_argument('--server', default=SERVER,
+                        help=f'where its page sends the visitors (default: '
+                             f'{SERVER})')
     args = parser.parse_args(argv)
-    names = build(args.output)
-    size = os.path.getsize(os.path.join(args.output, 'py-words.zip'))
+    names = build(args.output, args.server)
+    size = os.path.getsize(os.path.join(args.output, BROWSER,
+                                        'py-words.zip'))
     print(f'Wrote {args.output}: {", ".join(names)} '
           f'(py-words.zip: {size / 1e6:.1f} MB)')
 

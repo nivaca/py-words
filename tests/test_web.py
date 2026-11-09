@@ -353,6 +353,7 @@ class SiteTests(unittest.TestCase):
         spec.loader.exec_module(build)
         with tempfile.TemporaryDirectory() as out:
             build.build(out)
+            out = os.path.join(out, 'browser')
             with zipfile.ZipFile(os.path.join(out, 'py-words.zip')) as z:
                 z.extractall(os.path.join(out, 'unpacked'))
                 names = set(z.namelist())
@@ -360,3 +361,27 @@ class SiteTests(unittest.TestCase):
             self.assertIn('data/dictionary.xml', names)
             data = os.path.join(out, 'unpacked', 'data')
             self.assertEqual(sorted(languages.names(data)), ['en', 'es'])
+
+    def test_the_page(self):
+        """The page of the site sends the visitor to the server, with the
+        search, and links to the version in the browser, which is in
+        browser/ with all its files."""
+        import importlib.util
+        import tempfile
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        spec = importlib.util.spec_from_file_location(
+            'build', os.path.join(root, 'pages', 'build.py'))
+        build = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(build)
+        server = 'https://example.org/words/'
+        with tempfile.TemporaryDirectory() as out:
+            build.build(out, server)
+            with open(os.path.join(out, 'index.html'), encoding='utf-8') as f:
+                page = f.read()
+            self.assertEqual(sorted(os.listdir(os.path.join(out, 'browser'))),
+                             ['app.js', 'icon.png', 'index.html',
+                              'py-words.zip'])
+        self.assertIn('location.replace("https://example.org/words/" + '
+                      'location.search + location.hash);', page)
+        self.assertIn('<a href="browser/">', page)
+        self.assertNotIn('$', page)
