@@ -2,6 +2,7 @@
 application."""
 
 import io
+import json
 import os
 import sys
 import unittest
@@ -218,6 +219,117 @@ class LanguageTests(unittest.TestCase):
         self.assertIn('Latin → Spanish', page)
         self.assertEqual(self.call('/language', method='POST',
                                    body='language=en')[0], '403 Forbidden')
+
+
+class PublicTests(unittest.TestCase):
+    """public_app(), for everyone: each visitor's choices in their own
+    cookies, and nothing saved on the server."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.app = words_web.public_app()
+
+    @classmethod
+    def tearDownClass(cls):
+        import interface
+        interface.use('en')
+
+    def call(self, jar, path='/', query='', method='GET', body='',
+             accept=''):
+        """A request of the visitor whose cookies are JAR (changed as the
+        browser would)."""
+        from urllib.parse import quote
+        env = {'PATH_INFO': path, 'QUERY_STRING': query,
+               'REQUEST_METHOD': method, 'HTTP_HOST': 'example.org',
+               'CONTENT_LENGTH': str(len(body.encode())),
+               'wsgi.input': io.BytesIO(body.encode()),
+               'HTTP_COOKIE': '; '.join(f'{k}={quote(v, safe="")}'
+                                        for k, v in jar.items())}
+        if accept:
+            env['HTTP_ACCEPT_LANGUAGE'] = accept
+        setup_testing_defaults(env)
+        got = {}
+
+        def start(status, headers):
+            got['status'] = status
+            got['headers'] = headers
+        out = b''.join(self.app(env, start)).decode()
+        from urllib.parse import unquote
+        for name, value in got['headers']:
+            if name == 'Set-Cookie':
+                pair, *attributes = value.split('; ')
+                key, _, value = pair.partition('=')
+                if 'Max-Age=0' in attributes:
+                    jar.pop(key, None)
+                else:
+                    jar[key] = unquote(value)
+        return got['status'], out
+
+    def post(self, jar, path, fields=''):
+        self.call(jar)                          # (the page: its token)
+        body = f'token={jar["words_token"]}' + (f'&{fields}' if fields
+                                                else '')
+        return self.call(jar, path, method='POST', body=body)
+
+    def test_visitors_apart(self):
+        """What a visitor changes is theirs only, and is not saved on the
+        server."""
+        import config
+        from history import History
+        a, b = {}, {}
+        before = History().items
+        self.assertEqual(self.post(a, '/appearance', 'dark=1')[0],
+                         '303 See Other')
+        self.post(a, '/interface', 'interface=es')
+        self.post(a, '/settings', 'on=show_codes')
+        self.call(a, query='q=amicus')
+        page_a = self.call(a)[1]
+        self.assertIn('<html lang="es" data-theme="dark">', page_a)
+        self.assertIn('href="/?q=amicus"', page_a)
+        self.assertEqual(a['words_interface'], 'es')
+        self.assertEqual(a['words_language'], 'es')
+        page_b = self.call(b)[1]
+        self.assertIn('<html lang="en">', page_b)
+        self.assertNotIn('href="/?q=amicus"', page_b)
+        self.assertIn('Changes are kept in this browser', page_b)
+        self.assertEqual(config.section('appearance'), {})
+        self.assertEqual(History().items, before)
+        self.assertIn('<html lang="es" data-theme="dark">', self.call(a)[1])
+
+    def test_history(self):
+        """The earlier searches, newest first, in a cookie; cleared, the
+        cookie goes."""
+        jar = {}
+        for q in ('amo', 'amicus', 'amo'):
+            self.call(jar, query='q=' + q)
+        self.assertEqual(json.loads(jar['words_history']),
+                         ['amicus', 'amo'])
+        page = self.call(jar)[1]
+        self.assertLess(page.index('href="/?q=amo"'),
+                        page.index('href="/?q=amicus"'))
+        self.post(jar, '/history/clear')
+        self.assertNotIn('words_history', jar)
+        #  the message, once, to this visitor only
+        self.assertIn('The history of the searches is cleared.',
+                      self.call(jar)[1])
+        self.assertNotIn('is cleared', self.call(jar)[1])
+
+    def test_browser_language(self):
+        """With no cookies, the interface and the meanings in the
+        browser's language (if there are files for it)."""
+        self.assertIn('<html lang="es">',
+                      self.call({}, accept='es-CO,es;q=0.9,en;q=0.8')[1])
+        self.assertIn('<html lang="en">', self.call({}, accept='fr')[1])
+
+    def test_token(self):
+        """A form needs the token of the visitor's own cookie."""
+        jar = {}
+        self.call(jar)
+        self.assertEqual(self.call({}, '/appearance', method='POST',
+                                   body=f'token={jar["words_token"]}')[0],
+                         '403 Forbidden')
+        self.assertEqual(self.call(jar, '/appearance', method='POST',
+                                   body='token=no')[0], '403 Forbidden')
 
 
 if __name__ == '__main__':

@@ -105,10 +105,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
 it executable and run it:
 
-    $ chmod +x py-words-v.3.8-x86_64.AppImage
-    $ ./py-words-v.3.8-x86_64.AppImage                # the window
-    $ ./py-words-v.3.8-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.8-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.9-x86_64.AppImage
+    $ ./py-words-v.3.9-x86_64.AppImage                # the window
+    $ ./py-words-v.3.9-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.9-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
@@ -189,7 +189,7 @@ for distributing it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.8.zip` (with the version of the program;
+This writes `dist/py-words-v.3.9.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the
 same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
@@ -205,7 +205,7 @@ In Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.8-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.9-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
 [python-appimage](https://github.com/niess/python-appimage)) and
 [appimagetool](https://github.com/AppImage/appimagetool) are downloaded
@@ -336,6 +336,25 @@ any web server can host, in its root or inside a folder.  In GitHub, the
 workflow `.github/workflows/pages.yml` runs the tests, builds the site
 and publishes it in GitHub Pages in each push to `main`.  (In the
 settings of the repository, Pages needs Source: GitHub Actions.)
+
+The whole program can also run on a web server for everyone, which is
+faster than the version in the browser (the searches are made by the
+server, and there is nothing to download).  Its WSGI application is then
+`public_app()`, and each visitor has their own settings, languages of the
+meanings and of the interface, dark mode and earlier searches, kept in
+the cookies of their browser; nothing of this is saved on the server.
+With no cookies, the page is in the language of the browser, if there is
+one for it.  In PythonAnywhere, for example (a web app with "Manual
+configuration"), its WSGI file is:
+
+    import sys
+    sys.path.insert(0, '/home/USER/py-words')
+    from words_web import public_app
+    application = public_app(hosts={'USER.pythonanywhere.com'})
+
+(`hosts`: the names of the site; without it, any.)  `python3 words_web.py
+--public` tries this mode in your computer.  The searches are part of the
+address of the page, so the server can keep them in its logs.
 
 ### In KRunner (KDE Plasma)
 
@@ -1219,6 +1238,13 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.9:
+  - `words_web.py` can serve everyone: `public_app()` (the WSGI
+    application for a web server, as PythonAnywhere) and `--public` keep
+    each visitor's settings, languages, dark mode and earlier searches in
+    the cookies of their browser, and save nothing on the server.  With
+    no cookies, the page follows the language of the browser.  See
+    "Online".
 - 3.8:
   - In the window, changing the language of the interface no longer
     leaves the parts of the window built before tied to the changes of

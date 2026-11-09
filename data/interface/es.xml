@@ -2699,4 +2699,20 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <en>With use_tricks, also try medieval spellings (e for ae, y for i, michi for mihi, single for doubled consonants ...), also for a word that is found: its e may be ae or oe (queruntur, of queror, is also quaeruntur, of quaero).</en>
     <tr>Con use_tricks, probar también grafías medievales (e por ae, y por i, michi por mihi, consonantes simples por dobles ...), también para una palabra que se encuentra: su e puede ser ae u oe (queruntur, de queror, es también quaeruntur, de quaero).</tr>
   </text>
+  <text>
+    <en>Changes are kept in this browser (in its cookies).</en>
+    <tr>Los cambios se conservan en este navegador (en sus cookies).</tr>
+  </text>
+  <text>
+    <en>Forget the earlier searches?</en>
+    <tr>¿Olvidar las búsquedas anteriores?</tr>
+  </text>
+  <text>
+    <en>as on a web server for everyone: each visitor with their own settings and history, in cookies</en>
+    <tr>como en un servidor web para todos: cada visitante con sus propios ajustes e historial, en cookies</tr>
+  </text>
+  <text>
+    <en>On a web server open to everyone (as PythonAnywhere), the application is public_app(): each visitor's settings, languages, look and earlier searches are kept in the cookies of their browser, and nothing is saved on the server (--public tries it here).</en>
+    <tr>En un servidor web abierto a todos (como PythonAnywhere), la aplicación es public_app(): los ajustes, idiomas, aspecto y búsquedas anteriores de cada visitante se guardan en las cookies de su navegador, y nada se guarda en el servidor (--public lo prueba aquí).</tr>
+  </text>
 </interface>

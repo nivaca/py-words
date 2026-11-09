@@ -109,10 +109,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.8-x86_64.AppImage
-    $ ./py-words-v.3.8-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.8-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.8-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.9-x86_64.AppImage
+    $ ./py-words-v.3.9-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.9-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.9-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -195,7 +195,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.8.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.9.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -210,7 +210,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.8-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.9-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -340,6 +340,27 @@ web puede alojar, en su raíz o en una carpeta.  En GitHub, el flujo de
 trabajo `.github/workflows/pages.yml` corre las pruebas, construye el
 sitio y lo publica en GitHub Pages con cada push a `main`.  (En los
 ajustes del repositorio, Pages tiene que tener Source: GitHub Actions.)
+
+El programa entero puede también funcionar en un servidor web para
+todos, lo que es más rápido que la versión en el navegador (las
+búsquedas las hace el servidor, y no hay nada que descargar).  Su
+aplicación WSGI es entonces `public_app()`, y cada visitante tiene sus
+propios ajustes, idiomas de los significados y de la interfaz, modo
+oscuro y búsquedas anteriores, guardados en las cookies de su navegador;
+nada de esto se guarda en el servidor.  Sin cookies, la página está en
+el idioma del navegador, si hay uno para él.  En PythonAnywhere, por
+ejemplo (una aplicación web con "Manual configuration"), su archivo WSGI
+es:
+
+    import sys
+    sys.path.insert(0, '/home/USUARIO/py-words')
+    from words_web import public_app
+    application = public_app(hosts={'USUARIO.pythonanywhere.com'})
+
+(`hosts`: los nombres del sitio; sin él, cualquiera.)  `python3
+words_web.py --public` prueba este modo en su computador.  Las búsquedas
+forman parte de la dirección de la página, así que el servidor puede
+guardarlas en sus registros.
 
 ### En KRunner (KDE Plasma)
 
@@ -1248,6 +1269,13 @@ con `git diff`.
 Versiones
 ---------
 
+- 3.9:
+  - `words_web.py` puede servir a todos: `public_app()` (la aplicación
+    WSGI para un servidor web, como PythonAnywhere) y `--public` guardan
+    los ajustes, idiomas, modo oscuro y búsquedas anteriores de cada
+    visitante en las cookies de su navegador, y no guardan nada en el
+    servidor.  Sin cookies, la página sigue el idioma del navegador.
+    Véase "En línea".
 - 3.8:
   - En la ventana, cambiar el idioma de la interfaz ya no deja las
     partes de la ventana hechas antes atadas a los cambios del aspecto

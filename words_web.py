@@ -18,6 +18,11 @@ Only this computer can reach the server, unless --host says otherwise
 (--host 0.0.0.0: every computer that can reach this one, as a phone on
 the same network).  There are no passwords, so do that only on a network
 you trust; the dictionary cannot be edited from the browser.
+
+On a web server open to everyone (as PythonAnywhere), the application is
+public_app(): each visitor's settings, languages, look and earlier
+searches are kept in the cookies of their browser, and nothing is saved
+on the server (--public tries it here).
 """
 
 from version import check_python
@@ -36,7 +41,7 @@ import threading
 import webbrowser
 from string import Template
 from socketserver import ThreadingMixIn
-from urllib.parse import parse_qs, urlencode
+from urllib.parse import parse_qs, quote, unquote, urlencode
 from wsgiref.simple_server import WSGIRequestHandler, WSGIServer, make_server
 
 import config
@@ -72,12 +77,41 @@ HOME_PAGE = 'https://nicolasvaughan.org'
 SHOWN = tuple(n for n in MODES + DEV_MODES
               if n not in COMMAND_LINE + ON_SCREEN)
 
+#  Public mode (see public_app): what a visitor chooses is kept in cookies
+#  (words_settings, words_language ...), for a year
+COOKIE = 'words_'
+COOKIE_AGE = 365 * 24 * 3600
+VISITOR = SHOWN + ON_SCREEN             # (the settings in words_settings)
+KEPT_SEARCH = 200                       # (longer searches are not kept)
+KEPT_SEARCHES = 2500                    # (characters of words_history)
+TOKEN_LENGTH = 32
+
 
 
 def from_language(params: dict) -> str:
     """The language a search is in, if not Latin: lang= in PARAMS."""
     lang = params.get('lang', [''])[0]
     return '' if lang == 'la' else lang
+
+
+def cookies_of(environ) -> dict[str, str]:
+    """The cookies of this program that the browser sent."""
+    jar = {}
+    for part in environ.get('HTTP_COOKIE', '').split(';'):
+        name, eq, value = part.strip().partition('=')
+        if eq and name.startswith(COOKIE):
+            jar.setdefault(name, unquote(value))
+    return jar
+
+
+def browser_language(environ, codes) -> str | None:
+    """The first of the browser's languages (Accept-Language) among
+    CODES."""
+    for item in environ.get('HTTP_ACCEPT_LANGUAGE', '').split(','):
+        code = item.split(';')[0].strip().lower().split('-')[0]
+        if code in codes:
+            return code
+    return None
 
 
 def esc(text: str) -> str:
@@ -113,11 +147,15 @@ class WebApp:
     """The dictionary as a WSGI application: WebApp(datadir) can be given to
     any WSGI server (see main)."""
 
-    def __init__(self, datadir: str, hosts: set[str] | None = None):
+    def __init__(self, datadir: str, hosts: set[str] | None = None,
+                 public: bool = False):
         """HOSTS: the names the server may be reached by (None: any), so
-        that other web sites cannot use it through their own names."""
+        that other web sites cannot use it through their own names.
+        PUBLIC: for everyone (see public_app), each visitor with their
+        own settings and history, in cookies."""
         self.datadir = datadir
         self.hosts = hosts
+        self.public = public
         settings = Settings()
         settings.load(datadir)
         #  the settings as saved (kept for the command line), and those
@@ -126,7 +164,16 @@ class WebApp:
         settings.pause_in_screen_output = False
         self.mtime = self._mtime()
         self.session = Session(Lexicon.load(datadir), settings)
-        self.lock = threading.Lock()
+        #  (public: a whole request at a time, as the settings and the
+        #  language of the interface are those of its visitor)
+        self.lock = threading.RLock()
+        #  public: the settings of a visitor with no cookies, and those
+        #  of the request (see _visit)
+        self.defaults = self.saved.copy()
+        self.jar: dict[str, str] = {}
+        self.outgoing: dict[str, str] = {}
+        self.theme = 'system'
+        self.secure = False
         #  sent with every form, so that only this page can change things
         self.token = secrets.token_urlsafe(24)
         self.message = self.session.notice
@@ -154,6 +201,20 @@ class WebApp:
     # Requests -------------------------------------------------------------
 
     def __call__(self, environ, start_response):
+        if not self.public:
+            return self._answer(environ, start_response)
+        with self.lock:
+            self._visit(environ)
+
+            def respond(status, headers, exc_info=None):
+                headers = [*headers, *(('Set-Cookie', c) for c in
+                                       self.outgoing.values())]
+                if exc_info is None:
+                    return start_response(status, headers)
+                return start_response(status, headers, exc_info)
+            return self._answer(environ, respond)
+
+    def _answer(self, environ, start_response):
         method = environ.get('REQUEST_METHOD', 'GET')
         path = environ.get('PATH_INFO') or '/'
         if not self._host_allowed(environ.get('HTTP_HOST', '')):
@@ -180,6 +241,109 @@ class WebApp:
                                [('Allow', allowed)])
         return handler(environ, start_response)
 
+    # Visitors (public) ------------------------------------------------------
+
+    def _visit(self, environ):
+        """Takes the settings, languages, look and message of the visitor
+        from their cookies (or the server's settings, with the languages
+        of their browser)."""
+        self.jar = jar = cookies_of(environ)
+        self.outgoing = {}
+        self.secure = (environ.get('wsgi.url_scheme') == 'https' or
+                       environ.get('HTTP_X_FORWARDED_PROTO') == 'https')
+        wanted = self.defaults.copy()
+        for item in jar.get(COOKIE + 'settings', '').split('.'):
+            name, _, value = item.partition(':')
+            if name in VISITOR:
+                setattr(wanted, name, value == '1')
+        for child, parent in DEPENDS.items():
+            if not getattr(wanted, parent):
+                setattr(wanted, child, False)
+        languages = self.session.lexicon.language_names()
+        names = interface.names()
+        code = jar.get(COOKIE + 'interface')
+        if code is None:
+            code = browser_language(environ, names)
+            if code in languages and COOKIE + 'language' not in jar:
+                wanted.language = code
+        if code in names:
+            wanted.interface = code
+        code = jar.get(COOKIE + 'language')
+        if code in languages:
+            wanted.language = code
+        changed = False
+        for name in VISITOR + ('language', 'interface'):
+            value = getattr(wanted, name)
+            setattr(self.saved, name, value)
+            if getattr(self.session.settings, name) != value:
+                setattr(self.session.settings, name, value)
+                changed = True
+        if changed:
+            self.session.settings_changed()
+        if interface.code() != wanted.interface:
+            interface.use(wanted.interface)
+        theme = jar.get(COOKIE + 'theme')
+        self.theme = theme if theme in ('dark', 'light') else 'system'
+        self.message = jar.get(COOKIE + 'message', '')[:1000]
+        if self.message:
+            self._keep('message', None)
+
+    def _keep(self, name: str, value: str | None):
+        """Sends the cookie words_NAME with VALUE (None: removes it)."""
+        age = COOKIE_AGE if value is not None else 0
+        self.outgoing[name] = (
+            f'{COOKIE}{name}={quote(value or "", safe="")}; Path=/; '
+            f'Max-Age={age}; SameSite=Lax; HttpOnly'
+            f'{"; Secure" if self.secure else ""}')
+
+    def _keep_settings(self, names):
+        """Keeps, in the cookies, the settings NAMES changed."""
+        s = self.saved
+        if any(n in VISITOR for n in names):
+            self._keep('settings', '.'.join(
+                f'{n}:{int(getattr(s, n))}' for n in VISITOR
+                if getattr(s, n) != getattr(self.defaults, n)) or None)
+        for name in ('language', 'interface'):
+            if name in names:
+                self._keep(name, getattr(s, name))
+
+    def _token(self) -> str:
+        """The token the forms of the page send back: public, the
+        visitor's (in a cookie, so that it works with several processes
+        of the server)."""
+        if not self.public:
+            return self.token
+        token = self.jar.get(COOKIE + 'token', '')
+        if len(token) != TOKEN_LENGTH or not token.isascii() or \
+                not all(c.isalnum() or c in '-_' for c in token):
+            token = secrets.token_urlsafe(24)
+            self.jar[COOKIE + 'token'] = token
+            self._keep('token', token)
+        return token
+
+    def _history(self) -> History:
+        """The earlier searches: public, the visitor's (in a cookie,
+        oldest first)."""
+        if not self.public:
+            return History()
+        history = History(None)
+        try:
+            items = json.loads(self.jar.get(COOKIE + 'history', '[]'))
+        except ValueError:
+            items = []
+        if isinstance(items, list):
+            history.items = [' '.join(i.split()) for i in items
+                             if isinstance(i, str) and i.strip()][-RECENT:]
+        return history
+
+    def _keep_history(self, history: History):
+        items = [i for i in reversed(history.recent(RECENT))
+                 if len(i) <= KEPT_SEARCH]
+        while items and len(quote(json.dumps(items), safe='')) > \
+                KEPT_SEARCHES:
+            del items[0]
+        self._keep('history', json.dumps(items) if items else None)
+
     def _host_allowed(self, host: str) -> bool:
         if self.hosts is None:
             return True
@@ -200,7 +364,8 @@ class WebApp:
         body = environ['wsgi.input'].read(size).decode('utf-8', 'replace')
         form = parse_qs(body, keep_blank_values=True)
         token = form.get('token', [''])[0]
-        if not secrets.compare_digest(token.encode(), self.token.encode()):
+        if not secrets.compare_digest(token.encode(),
+                                      self._token().encode()):
             return None
         return form
 
@@ -210,9 +375,12 @@ class WebApp:
                                 *headers])
         return [text.encode()]
 
-    @staticmethod
-    def _back(start_response, form: dict, **more):
-        """Back to the search page (with the search the form came from)."""
+    def _back(self, start_response, form: dict, **more):
+        """Back to the search page (with the search the form came from;
+        public, the message for it in a cookie)."""
+        if self.public and self.message:
+            self._keep('message', self.message)
+            self.message = ''
         query = form.get('q', [''])[0]
         start_response('303 See Other',
                        [('Location', link(query, from_language(form),
@@ -237,9 +405,11 @@ class WebApp:
         query = ' '.join(params.get('q', [''])[0][:MAX_QUERY].split())
         reverse = bool(from_language(params))
         language = self.session.language
-        history = History()
+        history = self._history()
         if query:
             history.add(query)
+            if self.public:
+                self._keep_history(history)
             with self.lock:
                 self._fresh()
                 self.session.reverse = reverse
@@ -256,16 +426,19 @@ class WebApp:
         message, self.message = self.message, ''
         nonce = secrets.token_urlsafe(16)
         name = tr(language.name)
+        texts, script = PAGE_TEXTS, SCRIPT_TEXTS
+        if self.public:
+            texts, script = PAGE_TEXTS | PUBLIC_TEXTS, \
+                SCRIPT_TEXTS | PUBLIC_SCRIPT_TEXTS
         body = PAGE.substitute(
-            {key: esc(tr(text)) for key, text in PAGE_TEXTS.items()},
-            **{key: json.dumps(tr(text)) for key, text in
-               SCRIPT_TEXTS.items()},
+            {key: esc(tr(text)) for key, text in texts.items()},
+            **{key: json.dumps(tr(text)) for key, text in script.items()},
             html_lang=esc(interface.code()),
             title=esc(f'{query} – {NAME}' if query else
                       tr('{name}: A Latin Dictionary', name=NAME)),
             name=esc(NAME), version=esc(VERSION), about=about_html(),
             home=esc(HOME_PAGE), home_name=esc(HOME_PAGE.split('//')[1]),
-            query=esc(query), token=esc(self.token), nonce=nonce,
+            query=esc(query), token=esc(self._token()), nonce=nonce,
             la_checked='' if reverse else ' checked',
             en_checked=' checked' if reverse else '',
             lang=esc(language.code) if reverse else 'la',
@@ -398,11 +571,13 @@ class WebApp:
             f'{" selected" if code == current else ""}>{esc(name)}</option>'
             for code, name in interface.names().items())
 
-    @staticmethod
-    def appearance() -> str:
+    def appearance(self) -> str:
         """The look of the page: 'dark' or 'light', as the setting
         dark_mode of the configuration file (shared with the windows) says,
-        or 'system' if it says nothing (the browser follows the system)."""
+        or 'system' if it says nothing (the browser follows the system).
+        Public, as the visitor chose."""
+        if self.public:
+            return self.theme
         dark = config.section(APPEARANCE).get('dark_mode')
         return 'dark' if dark is True else 'light' if dark is False \
             else 'system'
@@ -515,6 +690,10 @@ class WebApp:
         if form is None:
             return self._plain(start_response, '403 Forbidden',
                                tr('Reload the page and try again.'))
+        if self.public:
+            self.theme = 'dark' if 'dark' in form else 'light'
+            self._keep('theme', self.theme)
+            return self._back(start_response, form)
         try:
             config.update(APPEARANCE, {'dark_mode': 'dark' in form})
         except (OSError, ConfigError) as e:
@@ -536,7 +715,8 @@ class WebApp:
 
     def change(self, values: dict[str, bool | str]):
         """Changes settings, applies them, and keeps them in the
-        configuration file (as the window does)."""
+        configuration file (as the window does; public, in the visitor's
+        cookies)."""
         if not values:
             return
         with self.lock:
@@ -544,6 +724,9 @@ class WebApp:
                 setattr(self.saved, name, value)
                 setattr(self.session.settings, name, value)
             self.session.settings_changed()     # (language, cache)
+            if self.public:
+                self._keep_settings(values)
+                return
             try:
                 for section in {section_of(name) for name in values}:
                     self.saved.save(section, only=[
@@ -557,7 +740,10 @@ class WebApp:
         if form is None:
             return self._plain(start_response, '403 Forbidden',
                                tr('Reload the page and try again.'))
-        History().clear()
+        if self.public:
+            self._keep('history', None)
+        else:
+            History().clear()
         self.message = tr('The history of the searches is cleared.')
         return self._back(start_response, {'lang': form.get('lang', [''])})
 
@@ -577,11 +763,17 @@ PAGE_TEXTS = {
     't_fuzzy': N_('Fuzzy search'),
 }
 APPEARANCE = 'appearance'               # (the section of config.toml)
+PUBLIC_TEXTS = {
+    't_kept': N_('Changes are kept in this browser (in its cookies).'),
+}
 
 SCRIPT_TEXTS = {
     'j_forget': N_('Forget the earlier searches (also those of the window '
                    'and the command line)?'),
     'j_usual': N_('Go back to the default value of every setting?'),
+}
+PUBLIC_SCRIPT_TEXTS = {
+    'j_forget': N_('Forget the earlier searches?'),
 }
 
 PAGE = Template("""<!doctype html>
@@ -901,6 +1093,26 @@ def address(host: str, port: int) -> str:
     return f'http://{host}:{port}/'
 
 
+def public_app(datadir: str | None = None,
+               hosts: set[str] | None = None) -> WebApp:
+    """The application for a web server open to everyone: each visitor
+    has their own settings, languages, look and earlier searches, in the
+    cookies of their browser, and nothing is saved on the server.  In the
+    WSGI file of the server (as PythonAnywhere's):
+
+        import sys
+        sys.path.insert(0, '/home/USER/py-words')
+        from words_web import public_app
+        application = public_app()
+
+    DATADIR: as in words.py; HOSTS: the names of the site (None: any)."""
+    datadir = datadir or default_datadir()
+    if not os.path.isfile(os.path.join(datadir, DICTIONARY)):
+        raise FileNotFoundError(tr('there is no {file} in {folder}',
+                                   file=DICTIONARY, folder=datadir))
+    return WebApp(datadir, hosts, public=True)
+
+
 def main(argv=None):
     ensure_config()                 # (made at the first start)
     interface.use_configured()
@@ -918,6 +1130,10 @@ def main(argv=None):
                                 port=PORT))
     parser.add_argument('--no-browser', action='store_true',
                         help=tr('do not open the browser'))
+    parser.add_argument('--public', action='store_true',
+                        help=tr('as on a web server for everyone: each '
+                                'visitor with their own settings and '
+                                'history, in cookies'))
     parser.add_argument('--datadir', metavar=tr('DATADIR'),
                         help=tr('the folder with the data files (default: '
                                 'as for words.py)'))
@@ -930,7 +1146,7 @@ def main(argv=None):
     print(tr('Loading the dictionary…'), flush=True)
     try:
         app = WebApp(datadir, {'localhost', '127.0.0.1', '::1'}
-                     if local else None)
+                     if local else None, public=args.public)
     except DataError as e:
         sys.exit(f'words_web.py: {e}')
     try:
