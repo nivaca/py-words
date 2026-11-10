@@ -47,10 +47,12 @@ def bundle_zip():
 
 def program_files() -> list[str]:
     """The program's .py files and data (those of the distribution, but not
-    its icons, documents or tests), relative to ROOT."""
+    its icons, documents or tests; only the university's logo, which the
+    page shows), relative to ROOT."""
     return [f for f in bundle_zip().files()
             if (f.endswith('.py') and os.sep not in f) or
-            f.startswith('data' + os.sep)]
+            f.startswith('data' + os.sep) or
+            f == os.path.join('icons', 'uniandes.svg')]
 
 
 def redirect_page(server: str) -> str:

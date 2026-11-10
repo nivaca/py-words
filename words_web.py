@@ -68,6 +68,16 @@ RECENT = 20                     # earlier searches listed
 ICON = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons',
                     'linux', 'icons', 'hicolor', '48x48', 'apps',
                     'py-words.png')
+#  The footer the Universidad de los Andes asks for: its logo (an SVG drawn
+#  in currentColor, so that it follows the theme) and its legal notice
+LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons',
+                    'uniandes.svg')
+LOGO_LABEL = 'Universidad de los Andes · Facultad de Artes y Humanidades'
+LEGAL = ('Universidad de los Andes | Vigilada Mineducación. Reconocimiento '
+         'como universidad: Decreto 1297 del 30 de mayo de 1964. '
+         'Reconocimiento de personería jurídica: Resolución 28 del 23 de '
+         'febrero de 1949, Minjusticia. Acreditación institucional de alta '
+         'calidad, 10 años: Resolución 000194 del 16 de enero del 2025.')
 
 #  The author's web page, linked at the top right of the page
 HOME_PAGE = 'https://nicolasvaughan.org'
@@ -116,6 +126,25 @@ def browser_language(environ, codes) -> str | None:
 
 def esc(text: str) -> str:
     return html.escape(text, quote=True)
+
+
+_logo = None
+
+
+def footer_html() -> str:
+    """The footer: the university's logo (inline, read once; left out if
+    its file is missing) and its legal notice."""
+    global _logo
+    if _logo is None:
+        try:
+            with open(LOGO, encoding='utf-8') as f:
+                svg = f.read().strip()
+            _logo = svg.replace(
+                '<svg ', f'<svg role="img" aria-label="{esc(LOGO_LABEL)}" ',
+                1)
+        except OSError:
+            _logo = ''
+    return f'<footer>{_logo}<p>{esc(LEGAL)}</p></footer>'
 
 
 def about_html() -> str:
@@ -437,6 +466,7 @@ class WebApp:
             title=esc(f'{query} – {NAME}' if query else
                       tr('{name}: A Latin Dictionary', name=NAME)),
             name=esc(NAME), version=esc(VERSION), about=about_html(),
+            footer=footer_html(),
             home=esc(HOME_PAGE), home_name=esc(HOME_PAGE.split('//')[1]),
             query=esc(query), token=esc(self._token()), nonce=nonce,
             la_checked='' if reverse else ' checked',
@@ -896,6 +926,12 @@ pre.about { color: var(--muted); font-size: .85rem;
   Consolas, monospace; background: var(--panel); overflow-x: auto;
   border: 1px solid var(--line); border-radius: 6px; padding: .5rem .8rem; }
 .guide li { margin: .25rem 0; }
+footer { border-top: 1px solid var(--line); margin-top: 1.5rem;
+  padding-top: 1rem; color: var(--muted); font-size: .75rem;
+  line-height: 1.4; }
+footer svg { display: block; height: 3rem; width: auto; max-width: 100%;
+  margin-bottom: .6rem; color: var(--fg); }
+footer p { margin: 0; }
 </style>
 </head>
 <body>
@@ -980,6 +1016,7 @@ $help
 </div></details>
 <details><summary>$t_about</summary>
 <pre class="about">$about</pre></details>
+$footer
 </div>
 <script nonce="$nonce">
 for (const box of document.querySelectorAll('#settings input[name=on]'))

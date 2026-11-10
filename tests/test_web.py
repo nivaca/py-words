@@ -51,6 +51,17 @@ class WebTests(unittest.TestCase):
                       page)
         self.assertIn('William Whitaker', page)
 
+    def test_footer(self):
+        """At the foot of the page, the university's logo (drawn in the
+        colour of the text, for both themes) and its legal notice."""
+        page = self.call()[2]
+        footer = page[page.index('<footer>'):page.index('</footer>')]
+        self.assertIn('<svg role="img" aria-label="Universidad de los Andes',
+                      footer)
+        self.assertIn('fill="currentColor"', footer)
+        self.assertIn('Vigilada Mineducación', footer)
+        self.assertIn('Resolución 000194 del 16 de enero del 2025.', footer)
+
     def test_dark_mode(self):
         """The box of the page: ticked, dark, if not, light (until it is
         used, as the system); kept in the configuration file, which the
@@ -359,6 +370,7 @@ class SiteTests(unittest.TestCase):
                 names = set(z.namelist())
             self.assertIn('words.py', names)
             self.assertIn('data/dictionary.xml', names)
+            self.assertIn('icons/uniandes.svg', names)    # (the footer)
             data = os.path.join(out, 'unpacked', 'data')
             self.assertEqual(sorted(languages.names(data)), ['en', 'es'])
 
