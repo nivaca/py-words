@@ -53,7 +53,7 @@ KINDS = ('cli', 'gui', 'tui', 'web')
 #  the web page (pixels, before the scale)
 TERMINAL = {'cli': (110, 22), 'tui': (100, 30)}
 WINDOW = (1000, 620)
-PAGE = (1000, 640)
+PAGE = (1000, 840)                      # (down to the footer)
 SCALE = 2
 
 #  The colours of the terminal drawn: those of Konsole's Breeze, its usual
