@@ -69,9 +69,11 @@ copr-cli create py-words \
    #+begin_src sh
    git status --short        # should print nothing
    #+end_src
-2. Build the SRPM. You do not need =--sign=: COPR signs with its own key.
+2. Build the SRPM, signed (always: the RPMs are always signed; gpg asks
+   for the passphrase, so run it in a terminal). COPR signs its own builds
+   with its own key too.
    #+begin_src sh
-   packaging/build-rpm.sh
+   packaging/build-rpm.sh --sign
    ls build/rpm/SRPMS/       # py-words-3.9-1.fc45.src.rpm
    #+end_src
 3. Submit it:
@@ -105,13 +107,16 @@ copr-cli create py-words \
    - For a packaging-only fix with the same upstream version, leave out
      =-n=. That bumps =Release:= (1 → 2).
    - Keep the README's "Version" notes in step.
-2. Commit, and tag and publish as usual with =tools/release.py=.
-3. Rebuild and upload the SRPM as above:
+2. Commit, then publish with =tools/release.py --rpm=. Besides the
+   tag and the releases, it builds the signed RPM (gpg asks for the
+   passphrase), attaches it and its key to both releases, and sends the
+   SRPM to COPR (=copr-cli build py-words build/rpm/SRPMS/py-words-X.Y-*.src.rpm=).
+   =--no-copr= leaves that last step out; to do it by hand:
    #+begin_src sh
-   packaging/build-rpm.sh
+   packaging/build-rpm.sh --sign
    copr-cli build py-words build/rpm/SRPMS/py-words-3.10-*.src.rpm
    #+end_src
-4. Users get it with =sudo dnf upgrade=. COPR regenerates the repo
+3. Users get it with =sudo dnf upgrade=. COPR regenerates the repo
    metadata after each build. dnf can take a while to notice, because of
    its metadata cache (=sudo dnf upgrade --refresh= forces a check).
 
@@ -192,7 +197,6 @@ copr-cli get nivaca/py-words          # project settings
 * Quick reference: release checklist
 - [ ] Bump =version.py= (and the rest its comment lists)
 - [ ] =rpmdev-bumpspec -n X.Y -c "..." packaging/py-words.spec=
-- [ ] Commit; =tools/release.py= (tags vX.Y, publishes on both forges)
-- [ ] =packaging/build-rpm.sh= (clean tree)
-- [ ] =copr-cli build py-words build/rpm/SRPMS/py-words-X.Y-*.src.rpm=
+- [ ] Commit; =tools/release.py --rpm --notes-file F= (tags vX.Y,
+      publishes on both forges with the signed RPM, and builds it on COPR)
 - [ ] =sudo dnf upgrade --refresh py-words= and smoke-test (=py-words cli amo=)

@@ -275,7 +275,8 @@ puts together the `.ico` with Pillow and the `.icns` as
 A release on GitHub and Codeberg, with both files, is made with
 
     $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-          [--no-build] [--no-appimage] [--rpm] [--only github|codeberg]
+          [--no-build] [--no-appimage] [--rpm [--no-copr]]
+          [--only github|codeberg]
           [--dry-run] [--yes]
 
 It needs `gh` (GitHub) and `tea` (Codeberg), and a clean `main`.  It
@@ -286,7 +287,8 @@ name.  It shows the commands and asks before running them; `--dry-run`
 only shows them.  If the tag is on another commit it stops, unless
 `--redo` moves it, which remakes a release.  `--rpm` attaches also the
 signed RPM and its public key (see "An RPM package (Fedora)"), made with
-`packaging/build-rpm.sh --sign`.
+`packaging/build-rpm.sh --sign`, and sends the RPM to Copr
+(`copr-cli build py-words`; `--no-copr` does not).
 
 Usage
 -----

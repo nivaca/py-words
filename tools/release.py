@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Publishes a release of py-words on GitHub (with gh) and on Codeberg
 (with tea): the tag vVERSION (the version of version.py), with the zip and
-the AppImage attached.
+the AppImage attached, and (--rpm) the signed RPM, also published on Copr.
 
     python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-                             [--no-build] [--no-appimage] [--rpm]
+                             [--no-build] [--no-appimage] [--rpm [--no-copr]]
                              [--only github|codeberg] [--dry-run] [--yes]
 
 In order, each step only if it is needed:
@@ -20,7 +20,12 @@ In order, each step only if it is needed:
 4. pushes main and the tag to the remote (origin, which pushes to both
    GitHub and Codeberg; --redo pushes the tag with --force);
 5. on each forge, makes the release of the tag, or keeps the one there
-   is, and attaches the files to it, replacing those of the same name.
+   is, and attaches the files to it, replacing those of the same name;
+6. with --rpm, sends the (signed) source RPM to Copr (copr-cli build,
+   project nivaca/py-words), unless --no-copr.  Copr builds it for each
+   Fedora of the project and signs it with its own key; each build needs
+   a higher version-release than the last, so the spec must have been
+   bumped (rpmdev-bumpspec, see packaging/COPR.org).
 
 Before doing anything, it shows the commands it will run and asks; --yes
 does not ask, --dry-run only shows them.  The notes of a new release are
@@ -54,11 +59,13 @@ ZIP = os.path.join('dist', f'py-words-v.{VERSION}.zip')
 APPIMAGE = os.path.join('dist', f'py-words-v.{VERSION}-x86_64.AppImage')
 SPEC = os.path.join('packaging', 'py-words.spec')
 RPM_KEY = os.path.join('build', 'rpm', 'RPM-GPG-KEY-py-words')
+COPR_PROJECT = 'py-words'       # (of the copr-cli user, nivaca)
 
 
-def rpm() -> str:
-    """The path of the RPM that packaging/build-rpm.sh makes, as its spec
-    names it (py-words-3.10-1.fc45.noarch.rpm)."""
+def rpm_nvr() -> str:
+    """NAME-VERSION-RELEASE of the RPM that packaging/build-rpm.sh makes,
+    as its spec says (py-words-3.10-1.fc45); stops if the spec is not at
+    VERSION."""
     try:
         nvr = subprocess.run(
             ['rpmspec', '-q', '--srpm', '--qf',
@@ -70,8 +77,18 @@ def rpm() -> str:
     if not nvr.startswith(f'py-words-{VERSION}-'):
         sys.exit(f'release.py: {SPEC} is not at version {VERSION} '
                  '(rpmdev-bumpspec -n VERSION)')
+    return nvr
+
+
+def rpm() -> str:
+    """The path of the RPM (py-words-3.10-1.fc45.noarch.rpm)."""
     return os.path.join('build', 'rpm', 'RPMS', 'noarch',
-                        nvr + '.noarch.rpm')
+                        rpm_nvr() + '.noarch.rpm')
+
+
+def srpm() -> str:
+    """The path of the source RPM, which goes to Copr."""
+    return os.path.join('build', 'rpm', 'SRPMS', rpm_nvr() + '.src.rpm')
 BRANCH = 'main'
 
 
@@ -123,9 +140,13 @@ class Release:
     # Checks -----------------------------------------------------------
 
     def check(self):
-        for tool in ('git',) + tuple(
-                t for t, f in (('gh', 'github'), ('tea', 'codeberg'))
-                if f in self.forges):
+        tools = ('git',) + tuple(
+            t for t, f in (('gh', 'github'), ('tea', 'codeberg'))
+            if f in self.forges)
+        if self.args.rpm:
+            tools += ('rpmbuild',) + (
+                () if self.args.no_copr else ('copr-cli',))
+        for tool in tools:
             if not shutil.which(tool):
                 sys.exit(f'release.py: {tool} is not installed')
         branch = self.read('git', 'rev-parse', '--abbrev-ref', 'HEAD')
@@ -262,6 +283,14 @@ class Release:
         return [{re.sub('[^a-z]', '', k.lower()): v for k, v in r.items()}
                 for r in rows]
 
+    def copr(self):
+        if self.args.no_build and not os.path.isfile(
+                os.path.join(ROOT, srpm())):
+            sys.exit(f'release.py: there is no {srpm()} (leave out '
+                     '--no-build to make it)')
+        self.plan(f'Copr: build the RPM (project {COPR_PROJECT})',
+                  'copr-cli', 'build', COPR_PROJECT, srpm())
+
     # All --------------------------------------------------------------
 
     def __call__(self):
@@ -276,6 +305,8 @@ class Release:
         self.tag()
         for forge in self.forges:
             getattr(self, forge)(repos[forge])
+        if args.rpm and not args.no_copr:
+            self.copr()
         self.run_plan()
 
 
@@ -300,7 +331,10 @@ def main(argv=None):
                         help='only the zip')
     parser.add_argument('--rpm', action='store_true',
                         help='also the signed RPM and its public key '
-                             '(packaging/build-rpm.sh --sign)')
+                             '(packaging/build-rpm.sh --sign), and a Copr '
+                             'build of it')
+    parser.add_argument('--no-copr', action='store_true',
+                        help='with --rpm, do not send it to Copr')
     parser.add_argument('--only', choices=('github', 'codeberg'),
                         help='publish on one forge only')
     parser.add_argument('--remote', default='origin',

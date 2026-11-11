@@ -282,7 +282,8 @@ que dibuja cada tamaño con Inkscape (el Flatpak, si lo hay) y arma el
 Una release en GitHub y en Codeberg, con los dos archivos, se hace con
 
     $ python3 tools/release.py [--redo] [--notes TEXTO | --notes-file ARCHIVO]
-          [--no-build] [--no-appimage] [--rpm] [--only github|codeberg]
+          [--no-build] [--no-appimage] [--rpm [--no-copr]]
+          [--only github|codeberg]
           [--dry-run] [--yes]
 
 Necesita `gh` (GitHub) y `tea` (Codeberg), y `main` sin cambios por
@@ -293,7 +294,8 @@ Muestra las órdenes y pregunta antes de ejecutarlas; `--dry-run` solo
 las muestra.  Si el tag está en otro commit se detiene, a menos que
 `--redo` lo mueva, lo que rehace una release.  `--rpm` adjunta también
 el RPM firmado y su clave pública (véase "Un paquete RPM (Fedora)"),
-hechos con `packaging/build-rpm.sh --sign`.
+hechos con `packaging/build-rpm.sh --sign`, y envía el RPM a Copr
+(`copr-cli build py-words`; `--no-copr` lo omite).
 
 Uso
 ---
