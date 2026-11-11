@@ -125,8 +125,15 @@ it; tools such as AppImageLauncher or Gear Lever add it to the menu.
 
 In Fedora (and other systems with RPM packages) the program can be
 installed as a package, which uses the system's Python and Tk and adds
-the four menu entries and the icon.  Download
-`py-words-VERSION-1.fc45.noarch.rpm` and `RPM-GPG-KEY-py-words` from the
+the four menu entries and the icon.  The simplest is from
+[Copr](https://copr.fedorainfracloud.org/coprs/nivaca/py-words/), so that
+`dnf upgrade` brings each new version:
+
+    $ sudo dnf copr enable nivaca/py-words
+    $ sudo dnf install py-words
+
+Or download `py-words-VERSION-1.fc45.noarch.rpm` and
+`RPM-GPG-KEY-py-words` from the
 [Releases](https://github.com/nivaca/py-words/releases) of GitHub (the
 package is signed; import its key once) and install it:
 

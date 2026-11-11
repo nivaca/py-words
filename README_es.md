@@ -130,8 +130,15 @@ Gear Lever la añaden al menú.
 
 En Fedora (y otros sistemas con paquetes RPM) el programa se puede
 instalar como paquete, que usa el Python y el Tk del sistema y añade los
-cuatro accesos del menú y el icono.  Descargue
-`py-words-VERSIÓN-1.fc45.noarch.rpm` y `RPM-GPG-KEY-py-words` de las
+cuatro accesos del menú y el icono.  Lo más sencillo es desde
+[Copr](https://copr.fedorainfracloud.org/coprs/nivaca/py-words/), así
+`dnf upgrade` trae cada versión nueva:
+
+    $ sudo dnf copr enable nivaca/py-words
+    $ sudo dnf install py-words
+
+O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
+`RPM-GPG-KEY-py-words` de las
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub (el
 paquete va firmado; importe su clave una vez) e instálelo:
 
