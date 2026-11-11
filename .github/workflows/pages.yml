@@ -20,7 +20,10 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Not ubuntu-latest: on ubuntu-26.04 (latest since 2026-11-11) the
+    # fonts below are not preinstalled and the runners could not reach
+    # Ubuntu's mirrors to fetch them, so every build failed.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
