@@ -21,7 +21,7 @@ import guide
 import interface
 from config import ConfigError
 from editor import read_only
-from gui_fonts import Fonts
+from gui_fonts import Fonts, scaled
 from gui_results import Results
 from gui_settings import SettingsDialog
 from gui_theme import Theme
@@ -53,7 +53,7 @@ class App:
         self.settings_window = None
         self.help_window = None
         self.lock = threading.Lock()
-        root.geometry('1000x620')
+        root.geometry(scaled(root, '1000x620'))
         self.fonts = Fonts.of(root)
         self.theme = Theme.of(root)
         #  the searches (of this and earlier sessions, and of the command
@@ -481,7 +481,7 @@ class App:
                                         # have changed)
         win = self.help_window = tk.Toplevel(self.root)
         win.title(tr('{name}: help', name=NAME))
-        win.geometry('820x640')
+        win.geometry(scaled(win, '820x640'))
         frame = ttk.Frame(win, padding=(8, 8, 8, 0))
         frame.pack(fill='both', expand=True)
         text = tk.Text(frame, wrap='word', padx=10, pady=8,

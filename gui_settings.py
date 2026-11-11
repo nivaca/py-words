@@ -14,6 +14,7 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 
 import interface
+from gui_fonts import scaled
 from helptext import HELP
 from interface import tr
 from settings import (CHARACTERS, COMMAND_LINE, DEPENDS, DEV_MODES, GROUPS,
@@ -36,7 +37,7 @@ class SettingsDialog:
         self.win = win = tk.Toplevel(parent)
         win.title(tr('{name}: settings', name=name))
         win.transient(parent.winfo_toplevel())
-        win.geometry('720x620')
+        win.geometry(scaled(win, '720x620'))
 
         self.interface_row(win, fonts)
         notebook = ttk.Notebook(win)

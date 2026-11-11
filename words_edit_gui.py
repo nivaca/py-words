@@ -28,7 +28,7 @@ from settings import Settings, ensure_config
 from lexicon import default_datadir
 from editor import Editor, Editing, Fields, FIELD_LABELS, POS_CHOICES
 from editor import READ_ONLY, read_only
-from gui_fonts import Fonts
+from gui_fonts import Fonts, scaled
 from gui_theme import Theme
 from lexicon import DICTIONARY
 from version import NAME, VERSION
@@ -56,7 +56,7 @@ class EditorWindow:
         self.win = win = tk.Toplevel(master) if master else tk.Tk()
         win.title(tr('{name} {version}: dictionary editor', name=NAME,
                      version=VERSION))
-        win.geometry('1080x720')
+        win.geometry(scaled(win, '1080x720'))
         self.fonts = Fonts.of(win)
         Theme.of(win)                   # (light or dark, as saved)
         win.protocol('WM_DELETE_WINDOW', self.close)
