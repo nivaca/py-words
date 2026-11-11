@@ -108,10 +108,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.10-x86_64.AppImage
-    $ ./py-words-v.3.10-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.10-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.10-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.11-x86_64.AppImage
+    $ ./py-words-v.3.11-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.11-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.11-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -143,7 +143,7 @@ O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
 paquete va firmado; importe su clave una vez) e instálelo:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.10-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.11-1.fc45.noarch.rpm
 
 Funciona en cualquier Fedora con Python 3.11 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
@@ -247,7 +247,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.10.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.11.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -262,7 +262,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.10-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.11-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -1337,6 +1337,15 @@ con `git diff`.
 Versiones
 ---------
 
+- 3.11:
+  - En una pantalla de alta resolución con el escritorio escalado (por
+    ejemplo al 200 % en Plasma), las ventanas de la AppImage salían muy
+    pequeñas: su Tk (8.6) no hacía caso de la escala que el escritorio da
+    a los programas X11 (`Xft.dpi`).  Ahora las ventanas la leen, y su
+    texto y su tamaño crecen con ella.  (El RPM, con el Tk 9 del sistema,
+    ya estaba bien.)
+  - `tools/release.py --rpm` envía también el RPM firmado a Copr
+    (`--no-copr` lo omite).
 - 3.10:
   - Un paquete RPM para Fedora (`packaging/`), firmado, que va en las
     releases con su clave pública: instala el programa en

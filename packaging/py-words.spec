@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.10
+Version:        3.11
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -105,6 +105,9 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Wed Nov 11 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.11-1
+- The windows follow the desktop's scaling (Xft.dpi) on hi-res displays
+
 * Wed Nov 11 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.10-1
 - First package: runs on the system's Python and Tk; the py-words
   command starts the window, the command line, the terminal program,

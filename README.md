@@ -105,10 +105,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
 it executable and run it:
 
-    $ chmod +x py-words-v.3.10-x86_64.AppImage
-    $ ./py-words-v.3.10-x86_64.AppImage                # the window
-    $ ./py-words-v.3.10-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.10-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.11-x86_64.AppImage
+    $ ./py-words-v.3.11-x86_64.AppImage                # the window
+    $ ./py-words-v.3.11-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.11-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
@@ -138,7 +138,7 @@ Or download `py-words-VERSION-1.fc45.noarch.rpm` and
 package is signed; import its key once) and install it:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.10-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.11-1.fc45.noarch.rpm
 
 It runs on any Fedora with Python 3.11 or later, whatever the `fc`
 number in its name.  Or build it from the program's folder (a git
@@ -239,7 +239,7 @@ for distributing it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.10.zip` (with the version of the program;
+This writes `dist/py-words-v.3.11.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the
 same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
@@ -255,7 +255,7 @@ In Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.10-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.11-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
 [python-appimage](https://github.com/niess/python-appimage)) and
 [appimagetool](https://github.com/AppImage/appimagetool) are downloaded
@@ -1304,6 +1304,14 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.11:
+  - On a hi-res display with the desktop scaled (for example at 200% in
+    Plasma), the windows of the AppImage came out very small: its Tk
+    (8.6) ignored the scaling that the desktop gives to X11 programs
+    (`Xft.dpi`).  Now the windows read it, and their text and size grow
+    with it.  (The RPM, with the system's Tk 9, was already right.)
+  - `tools/release.py --rpm` also sends the signed RPM to Copr
+    (`--no-copr` does not).
 - 3.10:
   - An RPM package for Fedora (`packaging/`), signed, attached to the
     releases with its public key: it installs the program in
