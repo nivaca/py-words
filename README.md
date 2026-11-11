@@ -105,10 +105,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
 it executable and run it:
 
-    $ chmod +x py-words-v.3.9-x86_64.AppImage
-    $ ./py-words-v.3.9-x86_64.AppImage                # the window
-    $ ./py-words-v.3.9-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.9-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.10-x86_64.AppImage
+    $ ./py-words-v.3.10-x86_64.AppImage                # the window
+    $ ./py-words-v.3.10-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.10-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
@@ -120,6 +120,47 @@ says why, and `edit` and `edit-gui` stop with a message.  To edit it,
 copy the `data` folder somewhere and give the copy as the data folder
 (in the settings, with `--datadir` or with `$PY_WORDS_DATADIR`).  `words_install.py` is not in
 it; tools such as AppImageLauncher or Gear Lever add it to the menu.
+
+### An RPM package (Fedora)
+
+In Fedora (and other systems with RPM packages) the program can be
+installed as a package, which uses the system's Python and Tk and adds
+the four menu entries and the icon.  Download
+`py-words-VERSION-1.fc45.noarch.rpm` and `RPM-GPG-KEY-py-words` from the
+[Releases](https://github.com/nivaca/py-words/releases) of GitHub (the
+package is signed; import its key once) and install it:
+
+    $ sudo rpm --import RPM-GPG-KEY-py-words
+    $ sudo dnf install ./py-words-3.10-1.fc45.noarch.rpm
+
+It runs on any Fedora with Python 3.11 or later, whatever the `fc`
+number in its name.  Or build it from the program's folder (a git
+clone):
+
+    $ sudo dnf install rpm-build python3-devel desktop-file-utils
+    $ packaging/build-rpm.sh
+    $ sudo dnf install build/rpm/RPMS/noarch/py-words-*.rpm
+
+Then `py-words` starts it, with the same commands as the AppImage:
+
+    $ py-words                    # the window
+    $ py-words cli amicus         # the command line
+    $ py-words help               # the other programs
+
+The program goes in `/usr/share/py-words`, which cannot be written to,
+so editing the dictionary is off as in the AppImage (copy the `data`
+folder and give the copy as the data folder to edit it).  The settings,
+the history and the cache are in the user's folders, as always.  If you
+ran `words_install.py` before, run `python3 words_install.py --uninstall`,
+or its entries are shown instead of the package's.
+
+The package is built from the files in the folder as they are,
+committed or not.  Packages you build are not signed, so `dnf` warns
+that it skipped the OpenPGP check; `packaging/build-rpm.sh --sign` (your
+default GPG key) or `--sign=KEY` signs them, which needs `rpm-sign`, and
+exports the public key as `build/rpm/RPM-GPG-KEY-py-words`, which others
+import once before installing: `sudo rpm --import RPM-GPG-KEY-py-words`.
+`packaging/COPR.org` tells how to publish it on Fedora's Copr.
 
 ### A menu entry
 
@@ -179,6 +220,8 @@ What is where
     *.py                the rest of the program, used by the above
     data/               the dictionary and the other data files
     icons/              the program's icons
+    packaging/          the RPM package: its spec, build-rpm.sh, the menu
+                        entries and the py-words command (not in the zip)
     pages/              the dictionary online, in a browser with no server
     tests/              the tests (not needed to use the program)
     tools/              scripts to make the zip, the AppImage, the icons,
@@ -189,7 +232,7 @@ for distributing it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.9.zip` (with the version of the program;
+This writes `dist/py-words-v.3.10.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the
 same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
@@ -197,7 +240,7 @@ commit it was made from, which "About" shows.  It does not contain hidden files
 (`.git` ...), nor the things that are made when the program runs or is
 edited (`__pycache__`, `.bak` files, WORD.OUT ...), nor the things that
 are in its folder but are not part of it (the built `site/`, `dist/`,
-`local-only/`, `tools/`, the `TAGS` of an editor), and neither the tests, except
+`local-only/`, `tools/`, `packaging/`, `build/`, the `TAGS` of an editor), and neither the tests, except
 if you give `--tests`.
 
 In Linux, the AppImage (see "An AppImage") is made with
@@ -205,7 +248,7 @@ In Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.9-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.10-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
 [python-appimage](https://github.com/niess/python-appimage)) and
 [appimagetool](https://github.com/AppImage/appimagetool) are downloaded
@@ -225,7 +268,7 @@ puts together the `.ico` with Pillow and the `.icns` as
 A release on GitHub and Codeberg, with both files, is made with
 
     $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-          [--no-build] [--no-appimage] [--only github|codeberg]
+          [--no-build] [--no-appimage] [--rpm] [--only github|codeberg]
           [--dry-run] [--yes]
 
 It needs `gh` (GitHub) and `tea` (Codeberg), and a clean `main`.  It
@@ -234,7 +277,9 @@ makes the zip and the AppImage, tags the commit `vVERSION`, pushes
 one there is), attaching the files and replacing those of the same
 name.  It shows the commands and asks before running them; `--dry-run`
 only shows them.  If the tag is on another commit it stops, unless
-`--redo` moves it, which remakes a release.
+`--redo` moves it, which remakes a release.  `--rpm` attaches also the
+signed RPM and its public key (see "An RPM package (Fedora)"), made with
+`packaging/build-rpm.sh --sign`.
 
 Usage
 -----
@@ -1250,6 +1295,17 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.10:
+  - An RPM package for Fedora (`packaging/`), signed, attached to the
+    releases with its public key: it installs the program in
+    `/usr/share/py-words`, the `py-words` command (with the commands of
+    the AppImage), the four menu entries and the icon.  See "An RPM
+    package (Fedora)".
+  - The web page ends with the logo of the Universidad de los Andes
+    (School of Arts and Humanities) and its legal notice.
+  - The former address of the site, <https://nicolasvaughan.org/py-words/>,
+    sends to <https://nivaca.pythonanywhere.com/> with the search; the
+    version that runs in the browser is now at `browser/`.  See "Online".
 - 3.9:
   - `words_web.py` can serve everyone: `public_app()` (the WSGI
     application for a web server, as PythonAnywhere) and `--public` keep

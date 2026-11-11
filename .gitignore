@@ -13,3 +13,5 @@ site/
 local-only/
 dicts/
 dist/
+# packaging/build-rpm.sh output
+build/

@@ -8,7 +8,8 @@ folder), with the program in a folder of the same name.  It has the programs, th
 icons and the documents, but no hidden files or folders (.git ...), and
 none of what is made while the program runs or is edited (__pycache__,
 .bak and .tmp files, WORD.OUT ...), nor what is in its folder but not
-part of it (the built site, local-only/, tools/, an editor's TAGS).  The tests
+part of it (the built site, local-only/, tools/, packaging/ and
+build/, an editor's TAGS).  The tests
 are left out, unless --tests says otherwise.  It has also COMMIT, the
 commit it was made from (for "About").
 """
@@ -43,7 +44,8 @@ LEFT_OUT = ('__pycache__', '*.pyc', '*.bak', '*.tmp', '*~', 'WORD.MOD',
 #  the releases
 #  TODO: no lee .gitignore.  Una carpeta nueva que no deba ir en el zip
 #  hay que añadirla aquí a mano.
-NOT_PART = ('site', 'dist', 'local-only', 'TAGS', 'tools')
+NOT_PART = ('site', 'dist', 'local-only', 'TAGS', 'tools', 'packaging',
+            'build')
 
 
 def name() -> str:

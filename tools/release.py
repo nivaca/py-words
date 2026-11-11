@@ -4,7 +4,7 @@
 the AppImage attached.
 
     python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-                             [--no-build] [--no-appimage]
+                             [--no-build] [--no-appimage] [--rpm]
                              [--only github|codeberg] [--dry-run] [--yes]
 
 In order, each step only if it is needed:
@@ -13,6 +13,8 @@ In order, each step only if it is needed:
    and that gh and tea are installed;
 2. makes the zip and the AppImage in dist/ (tools/bundle-zip.py and
    tools/bundle-appimage.py), unless --no-build (then those in dist/ are used);
+   with --rpm, also the signed RPM and its public key in build/rpm/
+   (packaging/build-rpm.sh --sign; gpg asks for the passphrase);
 3. tags HEAD as vVERSION.  If the tag is there already on another commit,
    it stops, unless --redo moves it;
 4. pushes main and the tag to the remote (origin, which pushes to both
@@ -50,6 +52,26 @@ from version import VERSION  # noqa: E402
 TAG = f'v{VERSION}'
 ZIP = os.path.join('dist', f'py-words-v.{VERSION}.zip')
 APPIMAGE = os.path.join('dist', f'py-words-v.{VERSION}-x86_64.AppImage')
+SPEC = os.path.join('packaging', 'py-words.spec')
+RPM_KEY = os.path.join('build', 'rpm', 'RPM-GPG-KEY-py-words')
+
+
+def rpm() -> str:
+    """The path of the RPM that packaging/build-rpm.sh makes, as its spec
+    names it (py-words-3.10-1.fc45.noarch.rpm)."""
+    try:
+        nvr = subprocess.run(
+            ['rpmspec', '-q', '--srpm', '--qf',
+             '%{name}-%{version}-%{release}', SPEC], cwd=ROOT,
+            capture_output=True, text=True, check=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        sys.exit('release.py: rpmspec cannot read the spec (sudo dnf '
+                 'install rpm-build)')
+    if not nvr.startswith(f'py-words-{VERSION}-'):
+        sys.exit(f'release.py: {SPEC} is not at version {VERSION} '
+                 '(rpmdev-bumpspec -n VERSION)')
+    return os.path.join('build', 'rpm', 'RPMS', 'noarch',
+                        nvr + '.noarch.rpm')
 BRANCH = 'main'
 
 
@@ -145,6 +167,9 @@ class Release:
         if APPIMAGE in self.files:
             self.plan('Make the AppImage', sys.executable,
                       os.path.join('tools', 'bundle-appimage.py'))
+        if RPM_KEY in self.files:
+            self.plan('Make the signed RPM', os.path.join(
+                'packaging', 'build-rpm.sh'), '--sign')
 
     def tag(self):
         head = self.read('git', 'rev-parse', 'HEAD')
@@ -243,6 +268,8 @@ class Release:
         args = self.args
         self.forges = [args.only] if args.only else ['github', 'codeberg']
         self.files = [ZIP] + ([] if args.no_appimage else [APPIMAGE])
+        if args.rpm:
+            self.files += [rpm(), RPM_KEY]
         self.check()
         repos = self.repos()
         self.build()
@@ -255,8 +282,8 @@ class Release:
 def main(argv=None):
     parser = argparse.ArgumentParser(
         prog='tools/release.py',
-        description=f'Publish {TAG} on GitHub and Codeberg, with the zip '
-                    'and the AppImage.')
+        description=f'Publish {TAG} on GitHub and Codeberg, with the zip, '
+                    'the AppImage and (--rpm) the RPM.')
     parser.add_argument('--redo', action='store_true',
                         help=f'move {TAG} to HEAD if it is on another commit '
                              '(here and on the remote), and replace the '
@@ -271,6 +298,9 @@ def main(argv=None):
                              'making them again')
     parser.add_argument('--no-appimage', action='store_true',
                         help='only the zip')
+    parser.add_argument('--rpm', action='store_true',
+                        help='also the signed RPM and its public key '
+                             '(packaging/build-rpm.sh --sign)')
     parser.add_argument('--only', choices=('github', 'codeberg'),
                         help='publish on one forge only')
     parser.add_argument('--remote', default='origin',

@@ -1,0 +1,65 @@
+#!/bin/bash
+# py-words, a Latin dictionary and parser.
+# Copyright (C) 2026 Nicolas Vaughan <nivaca@fastmail.com>
+#
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation, either version 3 of the License, or (at your
+# option) any later version. This program is distributed WITHOUT ANY
+# WARRANTY; see the LICENCE.txt file, or <https://www.gnu.org/licenses/>.
+#
+# Starts py-words as installed by the RPM (packaging/py-words.spec), with
+# the same commands as the AppImage:
+#
+#   py-words [gui|cli|tui|web|edit|edit-gui|check|convert] [ARGUMENTS ...]
+
+PROGRAM="@DATADIR@"
+SELF="$0"
+
+usage() {
+    echo "Usage: ${SELF##*/} [COMMAND] [ARGUMENTS ...]"
+    echo
+    echo "Commands (gui if none is given):"
+    echo "  gui       words_gui.py"
+    echo "  cli       words.py"
+    echo "  tui       words_tui.py"
+    echo "  web       words_web.py"
+    echo "  edit      words_edit.py"
+    echo "  edit-gui  words_edit_gui.py"
+    echo "  check     words_check.py"
+    echo "  convert   words_convert.py"
+    echo
+    echo "\"${SELF##*/} COMMAND --help\" tells what each one takes."
+    echo "The data folder, $PROGRAM/data, cannot be written to: to edit the"
+    echo "dictionary, copy it somewhere and give the copy with --datadir."
+}
+
+program() {
+    case "$1" in
+        gui|words_gui) echo words_gui.py ;;
+        cli|words) echo words.py ;;
+        tui|words_tui) echo words_tui.py ;;
+        web|words_web) echo words_web.py ;;
+        edit|words_edit) echo words_edit.py ;;
+        edit-gui|words_edit_gui) echo words_edit_gui.py ;;
+        check|words_check) echo words_check.py ;;
+        convert|words_convert) echo words_convert.py ;;
+        *) return 1 ;;
+    esac
+}
+
+#  A link named after a program runs it; otherwise the first argument says
+#  which, or the window
+name="$(basename -- "$SELF")"
+name="${name%.py}"
+if script="$(program "$name")"; then
+    :
+elif [ "$1" = help ] || [ "$1" = --help ] || [ "$1" = -h ]; then
+    usage
+    exit 0
+elif script="$(program "$1")"; then
+    shift
+else
+    script=words_gui.py
+fi
+exec @PYTHON@ "$PROGRAM/$script" "$@"

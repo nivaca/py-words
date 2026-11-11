@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=py-words (GUI)
+Comment=A Latin Dictionary
+Comment[es]=Diccionario latino
+Keywords=dictionary;Latin;
+Keywords[es]=diccionario;latín;
+Categories=Education;Languages;
+Icon=py-words
+Exec=py-words gui
+Terminal=false
+StartupNotify=true
+StartupWMClass=py-words

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=py-words (TUI)
+Comment=A Latin Dictionary
+Comment[es]=Diccionario latino
+Keywords=dictionary;Latin;
+Keywords[es]=diccionario;latín;
+Categories=Education;Languages;
+Icon=py-words
+Exec=py-words tui
+Terminal=true

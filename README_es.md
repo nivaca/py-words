@@ -108,10 +108,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.9-x86_64.AppImage
-    $ ./py-words-v.3.9-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.9-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.9-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.10-x86_64.AppImage
+    $ ./py-words-v.3.10-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.10-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.10-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -125,6 +125,50 @@ dé la copia como carpeta de datos (en la configuración, con `--datadir`
 o con `$PY_WORDS_DATADIR`).
 `words_install.py` no va en ella; herramientas como AppImageLauncher o
 Gear Lever la añaden al menú.
+
+### Un paquete RPM (Fedora)
+
+En Fedora (y otros sistemas con paquetes RPM) el programa se puede
+instalar como paquete, que usa el Python y el Tk del sistema y añade los
+cuatro accesos del menú y el icono.  Descargue
+`py-words-VERSIÓN-1.fc45.noarch.rpm` y `RPM-GPG-KEY-py-words` de las
+[Releases](https://github.com/nivaca/py-words/releases) de GitHub (el
+paquete va firmado; importe su clave una vez) e instálelo:
+
+    $ sudo rpm --import RPM-GPG-KEY-py-words
+    $ sudo dnf install ./py-words-3.10-1.fc45.noarch.rpm
+
+Funciona en cualquier Fedora con Python 3.11 o posterior, sea cual sea
+el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
+clon de git):
+
+    $ sudo dnf install rpm-build python3-devel desktop-file-utils
+    $ packaging/build-rpm.sh
+    $ sudo dnf install build/rpm/RPMS/noarch/py-words-*.rpm
+
+Después `py-words` lo inicia, con las mismas órdenes que la AppImage:
+
+    $ py-words                    # la ventana
+    $ py-words cli amicus         # la línea de órdenes
+    $ py-words help               # los demás programas
+
+El programa va en `/usr/share/py-words`, donde no se puede escribir, así
+que la edición del diccionario está desactivada como en la AppImage
+(para editarlo, copie la carpeta `data` y dé la copia como carpeta de
+datos).  La configuración, el historial y la caché están en las carpetas
+del usuario, como siempre.  Si antes ejecutó `words_install.py`,
+ejecute `python3 words_install.py --uninstall`, o se verán sus accesos en
+lugar de los del paquete.
+
+El paquete se hace con los archivos de la carpeta tal como están, con
+commit o sin él.  Los paquetes que usted hace no van firmados, así que
+`dnf` avisa de que omitió la comprobación OpenPGP;
+`packaging/build-rpm.sh --sign` (su clave GPG por omisión) o
+`--sign=CLAVE` los firma, para lo que hace falta `rpm-sign`, y exporta la
+clave pública como `build/rpm/RPM-GPG-KEY-py-words`, que los demás
+importan una vez antes de instalar:
+`sudo rpm --import RPM-GPG-KEY-py-words`.  `packaging/COPR.org` explica
+cómo publicarlo en Copr, de Fedora.
 
 ### Un acceso en el menú
 
@@ -185,6 +229,8 @@ Qué hay en cada sitio
     *.py                el resto del programa, que usan los anteriores
     data/               el diccionario y los demás archivos de datos
     icons/              los iconos del programa
+    packaging/          el paquete RPM: su spec, build-rpm.sh, los accesos
+                        del menú y la orden py-words (no van en el zip)
     pages/              el diccionario en línea, en un navegador sin servidor
     tests/              las pruebas (no hacen falta para usar el programa)
     tools/              scripts para hacer el zip, la AppImage, los iconos,
@@ -194,7 +240,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.9.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.10.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -202,14 +248,14 @@ commit del que se hizo, que muestra "Acerca de".  Deja fuera los archivos oculto
 (`.git`...), lo que se genera al usar o editar el programa
 (`__pycache__`, archivos `.bak`, WORD.OUT...), lo que está en la carpeta
 sin ser parte del programa (el `site/` construido, `dist/`,
-`local-only/`, `tools/`, el `TAGS` de un editor) y las pruebas, a menos que ponga `--tests`.
+`local-only/`, `tools/`, `packaging/`, `build/`, el `TAGS` de un editor) y las pruebas, a menos que ponga `--tests`.
 
 En Linux, la AppImage (vea "Una AppImage") se hace con
 
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.9-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.10-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -229,7 +275,7 @@ que dibuja cada tamaño con Inkscape (el Flatpak, si lo hay) y arma el
 Una release en GitHub y en Codeberg, con los dos archivos, se hace con
 
     $ python3 tools/release.py [--redo] [--notes TEXTO | --notes-file ARCHIVO]
-          [--no-build] [--no-appimage] [--only github|codeberg]
+          [--no-build] [--no-appimage] [--rpm] [--only github|codeberg]
           [--dry-run] [--yes]
 
 Necesita `gh` (GitHub) y `tea` (Codeberg), y `main` sin cambios por
@@ -238,7 +284,9 @@ sube `main` y el tag, y hace la release en cada forja (o conserva la que
 haya), adjuntando los archivos y reemplazando los del mismo nombre.
 Muestra las órdenes y pregunta antes de ejecutarlas; `--dry-run` solo
 las muestra.  Si el tag está en otro commit se detiene, a menos que
-`--redo` lo mueva, lo que rehace una release.
+`--redo` lo mueva, lo que rehace una release.  `--rpm` adjunta también
+el RPM firmado y su clave pública (véase "Un paquete RPM (Fedora)"),
+hechos con `packaging/build-rpm.sh --sign`.
 
 Uso
 ---
@@ -1280,6 +1328,18 @@ con `git diff`.
 Versiones
 ---------
 
+- 3.10:
+  - Un paquete RPM para Fedora (`packaging/`), firmado, que va en las
+    releases con su clave pública: instala el programa en
+    `/usr/share/py-words`, la orden `py-words` (con las órdenes de la
+    AppImage), los cuatro accesos del menú y el icono.  Véase "Un
+    paquete RPM (Fedora)".
+  - La página web termina con el logo de la Universidad de los Andes
+    (Facultad de Artes y Humanidades) y su aviso legal.
+  - La antigua dirección del sitio, <https://nicolasvaughan.org/py-words/>,
+    lleva a <https://nivaca.pythonanywhere.com/> con la búsqueda; la
+    versión que funciona en el navegador está ahora en `browser/`.
+    Véase "En línea".
 - 3.9:
   - `words_web.py` puede servir a todos: `public_app()` (la aplicación
     WSGI para un servidor web, como PythonAnywhere) y `--public` guardan
