@@ -64,15 +64,15 @@ copr-cli create py-words \
 
 ** 5. Signing key
 All RPMs are signed with one key, the same on all the author's machines:
-=1C1655FFC02962828A87315EE750A4F969989DA6= (Nicolas Vaughan, RSA 3072, 2021).
+=81870643CA221AF90C30554EBE6832CD35994948= (Nicolas Vaughan, RPM signing, ed25519, 2026).
 =build-rpm.sh= pins it (=SIGNING_KEY=); =--sign= uses only that key and stops
 if it isn't in this machine's keyring, and =release.py --rpm= checks for it
 first. A copy of the public key is in =packaging/RPM-GPG-KEY-py-words=; the
 one exported next to the RPMs must match it. To set up another machine:
 #+begin_src sh
-gpg --export-secret-keys --armor 1C1655FFC02962828A87315EE750A4F969989DA6 > key.asc   # where it is
+gpg --export-secret-keys --armor 81870643CA221AF90C30554EBE6832CD35994948 > key.asc   # where it is
 gpg --import key.asc && shred -u key.asc                                            # on the new one
-gpg --edit-key 1C1655FFC02962828A87315EE750A4F969989DA6 trust                        # 5 = ultimate
+gpg --edit-key 81870643CA221AF90C30554EBE6832CD35994948 trust                        # 5 = ultimate
 #+end_src
 
 * Workflow A: upload an SRPM

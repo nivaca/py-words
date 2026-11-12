@@ -175,8 +175,10 @@ commit o sin él.  Los paquetes que usted hace no van firmados, así que
 falta `rpm-sign`, y exporta la clave pública como
 `build/rpm/RPM-GPG-KEY-py-words`, que los demás importan una vez antes de
 instalar: `sudo rpm --import RPM-GPG-KEY-py-words`.  Las versiones
-publicadas van todas firmadas con la clave del autor, de huella
-`1C16 55FF C029 6282 8A87 315E E750 A4F9 6998 9DA6`; hay una copia en
+publicadas van firmadas con la clave del autor, de huella
+`8187 0643 CA22 1AF9 0C30 554E BE68 32CD 3599 4948` (desde la 3.11; las
+anteriores, con `1C16 55FF C029 6282 8A87 315E E750 A4F9 6998 9DA6`); hay
+una copia en
 `packaging/RPM-GPG-KEY-py-words`.  `packaging/COPR.org` explica
 cómo publicarlo en Copr, de Fedora.
 
