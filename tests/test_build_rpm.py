@@ -18,6 +18,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPT = os.path.join(ROOT, "packaging", "build-rpm.sh")
 
 
+def pinned_key():
+    """The project's signing key, as build-rpm.sh pins it."""
+    with open(SCRIPT, encoding="utf-8") as f:
+        m = re.search(r'SIGNING_KEY="\$\{SIGNING_KEY:-([0-9A-F]{40})\}"',
+                      f.read())
+    assert m, "build-rpm.sh must pin the project's signing key"
+    return m.group(1)
+
+
 @unittest.skipUnless(shutil.which("rpmbuild") and shutil.which("rpmspec"),
                      "rpm-build not installed")
 class Options(unittest.TestCase):
@@ -52,13 +61,24 @@ class Options(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("dnf install rpm-sign", out)
 
-    def test_no_key_says_how_to_make_one(self):
+    def test_without_the_signing_key_says_how_to_import_it(self):
         # An rpmsign that exists, so the key check is what fails; it would
-        # never run, as nothing gets that far.
+        # never run, as nothing gets that far.  --sign uses only the
+        # project's key, which the empty keyring doesn't have.
         code, out = self.run_script("--sign", RPMSIGN="/bin/true")
         self.assertEqual(code, 1)
-        self.assertIn("no secret key in gpg", out)
-        self.assertIn("gpg --quick-generate-key", out)
+        self.assertIn("no secret key matching " + pinned_key(), out)
+        self.assertIn("gpg --import", out)
+
+    def test_the_shipped_key_is_the_pinned_one(self):
+        out = subprocess.run(
+            ["gpg", "--batch", "--with-colons", "--show-keys",
+             os.path.join(ROOT, "packaging", "RPM-GPG-KEY-py-words")],
+            capture_output=True, text=True,
+            env=dict(os.environ, GNUPGHOME=tempfile.mkdtemp())).stdout
+        fprs = [line.split(":")[9] for line in out.splitlines()
+                if line.startswith("fpr:")]
+        self.assertEqual(fprs[:1], [pinned_key()])
 
     def test_an_unknown_key_is_named(self):
         code, out = self.run_script("--sign=nobody@example.invalid",

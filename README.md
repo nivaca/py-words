@@ -163,10 +163,14 @@ or its entries are shown instead of the package's.
 
 The package is built from the files in the folder as they are,
 committed or not.  Packages you build are not signed, so `dnf` warns
-that it skipped the OpenPGP check; `packaging/build-rpm.sh --sign` (your
-default GPG key) or `--sign=KEY` signs them, which needs `rpm-sign`, and
-exports the public key as `build/rpm/RPM-GPG-KEY-py-words`, which others
-import once before installing: `sudo rpm --import RPM-GPG-KEY-py-words`.
+that it skipped the OpenPGP check; `packaging/build-rpm.sh --sign` signs
+them with the project's key (`SIGNING_KEY` in the script; `--sign=KEY`
+for another one), which needs `rpm-sign`, and exports the public key as
+`build/rpm/RPM-GPG-KEY-py-words`, which others import once before
+installing: `sudo rpm --import RPM-GPG-KEY-py-words`.  The releases are
+all signed with the author's key, fingerprint `1C16 55FF C029 6282 8A87
+315E E750 A4F9 6998 9DA6`; a copy is in
+`packaging/RPM-GPG-KEY-py-words`.
 `packaging/COPR.org` tells how to publish it on Fedora's Copr.
 
 ### A menu entry

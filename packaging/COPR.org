@@ -62,6 +62,19 @@ copr-cli create py-words \
   fine here because nothing is downloaded during =%build=.
 - You can also do all of this in the web UI: "New Project".
 
+** 5. Signing key
+All RPMs are signed with one key, the same on all the author's machines:
+=1C1655FFC02962828A87315EE750A4F969989DA6= (Nicolas Vaughan, RSA 3072, 2021).
+=build-rpm.sh= pins it (=SIGNING_KEY=); =--sign= uses only that key and stops
+if it isn't in this machine's keyring, and =release.py --rpm= checks for it
+first. A copy of the public key is in =packaging/RPM-GPG-KEY-py-words=; the
+one exported next to the RPMs must match it. To set up another machine:
+#+begin_src sh
+gpg --export-secret-keys --armor 1C1655FFC02962828A87315EE750A4F969989DA6 > key.asc   # where it is
+gpg --import key.asc && shred -u key.asc                                            # on the new one
+gpg --edit-key 1C1655FFC02962828A87315EE750A4F969989DA6 trust                        # 5 = ultimate
+#+end_src
+
 * Workflow A: upload an SRPM
 ** First release (or any release)
 1. Make sure the tree is clean and committed. =build-rpm.sh= packs

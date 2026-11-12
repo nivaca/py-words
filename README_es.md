@@ -170,11 +170,14 @@ lugar de los del paquete.
 El paquete se hace con los archivos de la carpeta tal como están, con
 commit o sin él.  Los paquetes que usted hace no van firmados, así que
 `dnf` avisa de que omitió la comprobación OpenPGP;
-`packaging/build-rpm.sh --sign` (su clave GPG por omisión) o
-`--sign=CLAVE` los firma, para lo que hace falta `rpm-sign`, y exporta la
-clave pública como `build/rpm/RPM-GPG-KEY-py-words`, que los demás
-importan una vez antes de instalar:
-`sudo rpm --import RPM-GPG-KEY-py-words`.  `packaging/COPR.org` explica
+`packaging/build-rpm.sh --sign` los firma con la clave del proyecto
+(`SIGNING_KEY` en el script; `--sign=CLAVE` para otra), para lo que hace
+falta `rpm-sign`, y exporta la clave pública como
+`build/rpm/RPM-GPG-KEY-py-words`, que los demás importan una vez antes de
+instalar: `sudo rpm --import RPM-GPG-KEY-py-words`.  Las versiones
+publicadas van todas firmadas con la clave del autor, de huella
+`1C16 55FF C029 6282 8A87 315E E750 A4F9 6998 9DA6`; hay una copia en
+`packaging/RPM-GPG-KEY-py-words`.  `packaging/COPR.org` explica
 cómo publicarlo en Copr, de Fedora.
 
 ### Un acceso en el menú
