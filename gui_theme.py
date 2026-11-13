@@ -273,6 +273,9 @@ class Theme:
             add(f'*{cls}.foreground', fg, 'interactive')
             add(f'*{cls}.selectBackground', c['select'], 'interactive')
             add(f'*{cls}.selectForeground', c['select_fg'], 'interactive')
+        #  (a selection where the text is not focused, as the results, which
+        #  cannot be typed in, would be light grey under the white text)
+        add('*Text.inactiveSelectBackground', c['select'], 'interactive')
         add('*Text.insertBackground', c['insert'], 'interactive')
         add('*Text.highlightBackground', c['border'], 'interactive')
         add('*Text.highlightColor', c['focus'], 'interactive')
@@ -311,6 +314,7 @@ class Theme:
                                  insertbackground=c['insert'],
                                  selectbackground=c['select'],
                                  selectforeground=c['select_fg'],
+                                 inactiveselectbackground=c['select'],
                                  highlightbackground=c['border'],
                                  highlightcolor=c['focus'])
             elif cls == 'Scrollbar':

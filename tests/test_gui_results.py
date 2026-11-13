@@ -86,6 +86,26 @@ class WindowTests(unittest.TestCase):
         self.assertEqual(t.get('1.0', 'end-1c'),
                          self.app.shown[0])
 
+    def test_selection_is_over_the_colours(self):
+        #  (else selected text keeps its colour, and a headword, in the
+        #  selection's own colour in light mode, cannot be seen)
+        self.look_up('arma')
+        t = self.app.text
+        t.tag_add('sel', '1.0', 'end')
+        coloured = [tag for tag in t.tag_names()
+                    if tag != 'sel' and (t.tag_cget(tag, 'foreground') or
+                                         t.tag_cget(tag, 'background'))]
+        self.assertIn('headword', coloured)
+        for index in ('2.3', t.tag_ranges('codes')[0],
+                      t.tag_ranges('analysis')[0]):
+            here = [tag for tag in t.tag_names(index)
+                    if tag in coloured or tag == 'sel']
+            self.assertEqual(here[-1], 'sel', index)
+            self.assertGreater(len(here), 1, index)
+        names = t.tag_names()           # (lowest priority first)
+        for tag in coloured:
+            self.assertLess(names.index(tag), names.index('sel'), tag)
+
     def test_links_and_double_clicks(self):
         self.look_up('arma')
         links = list(self.app.results.links.values())

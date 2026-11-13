@@ -137,6 +137,9 @@ class Results(ttk.Frame):
         t.tag_config('found', background=c['found'])
         t.tag_config('found_now', background=c['found_now'])
         t.tag_raise('found_now')
+        #  (selected text in the selection's colours, over those of the
+        #  tags: the headword's is the selection's own in light mode)
+        t.tag_raise('sel')
         if self.tip is not None:
             self._tip_hide()
 
