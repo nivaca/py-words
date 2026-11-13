@@ -105,10 +105,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
 it executable and run it:
 
-    $ chmod +x py-words-v.3.15-x86_64.AppImage
-    $ ./py-words-v.3.15-x86_64.AppImage                # the window
-    $ ./py-words-v.3.15-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.15-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.16-x86_64.AppImage
+    $ ./py-words-v.3.16-x86_64.AppImage                # the window
+    $ ./py-words-v.3.16-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.16-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
@@ -138,7 +138,7 @@ Or download `py-words-VERSION-1.fc45.noarch.rpm` and
 package is signed; import its key once) and install it:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.15-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.16-1.fc45.noarch.rpm
 
 It runs on any Fedora with Python 3.11 or later, whatever the `fc`
 number in its name.  Or build it from the program's folder (a git
@@ -183,7 +183,7 @@ apart from the rest of the system, with its own Python and Tk.  Download
 install it (Flatpak brings from Flathub the runtime it needs, if it is
 not there yet):
 
-    $ flatpak install --user py-words-v.3.15.flatpak
+    $ flatpak install --user py-words-v.3.16.flatpak
     $ flatpak run io.github.nivaca.PyWords                 # the window
     $ flatpak run io.github.nivaca.PyWords cli amicus      # the command line
     $ flatpak run io.github.nivaca.PyWords help            # the other programs
@@ -285,7 +285,7 @@ for distributing it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.15.zip` (with the version of the program;
+This writes `dist/py-words-v.3.16.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the
 same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
@@ -301,7 +301,7 @@ In Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.15-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.16-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
 [python-appimage](https://github.com/niess/python-appimage)) and
 [appimagetool](https://github.com/AppImage/appimagetool) are downloaded
@@ -1335,6 +1335,12 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.16:
+  - Selected text in the results of the window is readable: it was
+    drawn in the colours of the results (a headword, in light mode, in
+    the very colour of the selection), and where the results were not
+    focused, white on light grey.  Now it is white on the colour of the
+    selection, in both looks.
 - 3.15:
   - The window has an Edit menu, with Cut, Copy and Paste (Ctrl and X,
     C, V), for the search box and the box of "Find in results", or for

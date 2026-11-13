@@ -53,7 +53,7 @@ SOURCES = '    sources:\n      # (tools/bundle-flatpak.py'
 
 
 def name() -> str:
-    """The name of the bundle: py-words-v.3.15.flatpak."""
+    """The name of the bundle: py-words-v.3.16.flatpak."""
     return f'py-words-v.{VERSION}.flatpak'
 
 

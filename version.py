@@ -15,7 +15,7 @@ NAME = 'py-words'
 #  "Version"/"Versiones", Version: y %changelog de
 #  packaging/py-words.spec (rpmdev-bumpspec), y un <release> nuevo arriba
 #  en packaging/flatpak/io.github.nivaca.PyWords.metainfo.xml.
-VERSION = '3.15'
+VERSION = '3.16'
 URL = 'https://github.com/nivaca/py-words'
 
 HERE = os.path.dirname(os.path.abspath(__file__))
