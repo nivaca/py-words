@@ -245,8 +245,11 @@ ipse
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-i           NOM.PL.M
+    qu-i           NOM.SG.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -254,14 +257,6 @@ qui
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
   queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
     to be able, can; (Lewis and Short)
@@ -278,13 +273,13 @@ ego
 aliquis
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; someone; some/few; some (particular) thing;
+    aliqu-is       DAT.PL
+    aliqu-is       ABL.PL
+    aliqu-is       NOM.SG.C
   pronoun, adjectival  [XXXAO]
     some; any; a few; a particular/certain ~; some other; about/like (NUM);
     aliqu-is       DAT.PL
     aliqu-is       ABL.PL
-  pronoun, indefinite  [XXXAO]
-    anyone/anybody/anything; someone; some/few; some (particular) thing;
-    aliqu-is       NOM.SG.C
 
 bonus
   bonus, boni  noun, 2nd declension, masculine  [XXXCO]
@@ -425,8 +420,6 @@ amatis
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     am-ātis        2PL.PRS.ACT.IND
-  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
-    to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     amāt-īs        PRF.PASS.PTCP.DAT.PL
     amāt-īs        PRF.PASS.PTCP.ABL.PL
   amata, amatae  noun, 1st declension, feminine  [XXXFO]  very rare
@@ -508,8 +501,6 @@ amate
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     am-āte         2PL.PRS.ACT.IMP
-  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
-    to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     amāt-e         PRF.PASS.PTCP.VOC.SG.M
   amatus, amata, amatum  adjective, 1st/2nd declension  [XXXEO]  uncommon
     loved, beloved;
@@ -587,8 +578,6 @@ amatum
     amāt-um        PRF.PASS.PTCP.VOC.SG.N
     amāt-um        PRF.PASS.PTCP.ACC.SG.M
     amāt-um        PRF.PASS.PTCP.ACC.SG.N
-  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
-    to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     amāt-um        SUP.ACC
   amatus, amata, amatum  adjective, 1st/2nd declension  [XXXEO]  uncommon
     loved, beloved;
@@ -925,8 +914,6 @@ amato
     to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     am-ātō         2SG.FUT.ACT.IMP
     am-ātō         3SG.FUT.ACT.IMP
-  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
-    to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     amāt-ō         PRF.PASS.PTCP.DAT.SG.M
     amāt-ō         PRF.PASS.PTCP.DAT.SG.N
     amāt-ō         PRF.PASS.PTCP.ABL.SG.M

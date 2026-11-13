@@ -17,6 +17,7 @@ from model import (Pos, Number, Gender, Tense, Voice, Mood, Age,
                     Freq, Decl, VerbKind, Form, Inflection, Entry, Unique,
                     Prefix, Suffix, Tackon, NO_INFLECTION)
 from settings import Settings
+from forms import principal_parts, describe_part
 
 
 class Origin(IntEnum):
@@ -311,13 +312,39 @@ NOMINAL = (Pos.N, Pos.PRON, Pos.PACK, Pos.ADJ, Pos.NUM)
 VERBAL = (Pos.V, Pos.VPAR, Pos.SUPINE)
 
 
+def _entry_key(p: Parse) -> tuple | None:
+    """What makes P's dictionary entry the same as another's in the
+    results: what they show (its dictionary form, grammar, codes and
+    meaning), not its id, since WORDS has some words twice, and a pronoun
+    as qui once for each gender and number, with stems and declensions
+    that the results do not show; and an irregular form, once for each
+    form it can be.  None for anything else."""
+    if p.origin == Origin.UNIQUE and isinstance(p.source, Unique):
+        u = p.source            # (eadem: one for each case it can be)
+        return (p.origin, u.word, u.form.pos, str(u.codes), u.meaning)
+    e = p.entry
+    if e is None or not from_dictionary(p.origin):
+        return None
+    return (p.origin, principal_parts(e), describe_part(e.part),
+            str(e.codes), e.meaning, p.form.pos in VERBAL)
+
+
 def group(findings: list[Found]) -> list[Reading]:
     """Gathers the forms of the same entry and part of speech, as they are
     shown, into readings; each mark is a reading of its own.  A compound
-    with esse joins the reading of its participle."""
+    with esse joins the reading of its participle.  The forms of a
+    dictionary entry found together (in the same finding, under the same
+    marks) make one reading, even when other entries come between them
+    (quae: qui and quis, in the feminine singular and in the plural)."""
     readings: list[Reading] = []
     current: Reading | None = None
-    for p in shown(findings):
+    #  The readings of dictionary entries in this finding, by entry
+    by_entry: dict[tuple, Reading] = {}
+    finding = -1
+    for n, p in ((n, p) for n, f in enumerate(findings)
+                 for p in f.marks + f.parses):
+        if n != finding:
+            finding, by_entry = n, {}
         pos = p.form.pos
         same = current is not None and current.pos == pos and \
             current.origin != Origin.UNIQUE and p.origin != Origin.UNIQUE
@@ -325,13 +352,24 @@ def group(findings: list[Found]) -> list[Reading]:
                 p.id == current.forms[0].id:
             current.forms.append(p)
             continue
-        if same and pos in VERBAL and p.id == current.forms[0].id:
+        # (a verb's forms and its participles and supines: one entry)
+        if current is not None and pos in VERBAL and \
+                current.pos in VERBAL and \
+                Origin.UNIQUE not in (current.origin, p.origin) and \
+                p.id == current.forms[0].id:
             current.forms.append(p)
             continue
         if p.origin == Origin.COMPOUND and pos in VERBAL and \
                 current is not None and current.pos in VERBAL:
             current.forms.append(p)
             continue
+        key = _entry_key(p)
+        if key in by_entry:
+            current = by_entry[key]
+            current.forms.append(p)
+            continue
         current = Reading(p.origin, p.source, [p])
         readings.append(current)
+        if key is not None:
+            by_entry[key] = current
     return readings

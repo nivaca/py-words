@@ -226,8 +226,6 @@ infixi
   infigo, infigere, infixi, infixus  verb, 3rd conjugation  [XXXDX]  lesser
     to fix, thrust, drive, fasten in; to infix, impress, imprint; (Lewis and Short)
     īnfix-ī        1SG.PRF.ACT.IND
-  infigo, infigere, infixi, infixus  verb, 3rd conjugation  [XXXDX]  lesser
-    to fix, thrust, drive, fasten in; to infix, impress, imprint; (Lewis and Short)
     īnfix-ī        PRF.PASS.PTCP.GEN.SG.M
     īnfix-ī        PRF.PASS.PTCP.GEN.SG.N
     īnfix-ī        PRF.PASS.PTCP.NOM.PL.M
@@ -477,30 +475,31 @@ soror
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -541,8 +540,13 @@ terrent
 quis
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
+    qu-is          NOM.SG.C
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -551,8 +555,6 @@ quis
     who?, which?, what?; what kind of?;
     qu-is          DAT.PL
     qu-is          ABL.PL
-  pronoun, interrogative  [XXXAO]
-    who/what/which?, what/which one/man/person/thing? what kind/type of?;
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
     qu-is          NOM.SG.C
@@ -877,30 +879,31 @@ fatis
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -991,8 +994,6 @@ fixum
     fix-um         PRF.PASS.PTCP.VOC.SG.N
     fix-um         PRF.PASS.PTCP.ACC.SG.M
     fix-um         PRF.PASS.PTCP.ACC.SG.N
-  figo, figere, fixi, fixus  verb, 3rd conjugation  [XXXBX]
-    to fix, fasten, drive, thrust in, attach, affix; to fix by piercing through, to transfix, pierce; to fix, fasten, direct; to sting; to taunt, rally; fixed, fast, immovable; it is fixed, determined; fixedly; (Lewis and Short)
     fix-um         SUP.ACC
   fixum, fixi  noun, 2nd declension, neuter  [XXXFO]  very rare
     fixtures (pl.), fittings;
@@ -1149,8 +1150,6 @@ pertaesum
     pertaes-um     PRF.PASS.PTCP.VOC.SG.N
     pertaes-um     PRF.PASS.PTCP.ACC.SG.M
     pertaes-um     PRF.PASS.PTCP.ACC.SG.N
-  pertaedet, pertaedere, pertaeduit, pertaesus est  verb, 2nd conjugation, impersonal  [XXXDX]  lesser
-    to be disgusted, wearied, feel disgust at, be sick of; (Lewis and Short)
     pertaes-um     SUP.ACC
 
 thalami
@@ -1728,8 +1727,11 @@ primus
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-i           NOM.PL.M
+    qu-i           NOM.SG.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -1737,14 +1739,6 @@ qui
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
   queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
     to be able, can; (Lewis and Short)
@@ -2886,8 +2880,6 @@ dis
   dis  noun  [XEXCX]
     god;
     dis            ABL.PL
-  dis  noun  [XEXCX]
-    god;
     dis            DAT.PL
   Dis, Ditis  noun, 3rd declension, masculine  [XEIDO]  lesser
     godhead, deity; the god of the infernal regions, Pluto; (Lewis and Short)
@@ -2986,8 +2978,6 @@ cursum
     curs-um        PRF.PASS.PTCP.VOC.SG.N
     curs-um        PRF.PASS.PTCP.ACC.SG.M
     curs-um        PRF.PASS.PTCP.ACC.SG.N
-  curro, currere, cucurri, cursus  verb, 3rd conjugation, intransitive  [XXXAO]
-    to run, move quickly, hasten, fly; (Lewis and Short)
     curs-um        SUP.ACC
   cursus, cursus  noun, 4th declension, masculine  [XXXAO]
     a running on foot, on a horse, chariot, ship, a course, way, march, passage, voyage, journey; flying; the course, flow of a stream; posts, relays divided into stations, for the speedy transmission of information upon state affairs; a course, progress, direction, way, flow of discourse; (Lewis and Short)
@@ -3088,30 +3078,31 @@ cernes
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -3300,8 +3291,6 @@ litatis
   lito, litare, litavi, litatus  verb, 1st conjugation  [XXXDX]  lesser
     to make an offering which exhibits favorable prognostics, to sacrifice under favorable auspices, to obtain favorable omens; to give a favorable omen, promise a successful event; to make an offering, offer sacrifice; To bring an offering to, to make atonement to, to propitiate, appease, satisfy; To devote, consecrate; (Lewis and Short)
     lit-ātis       2PL.PRS.ACT.IND
-  lito, litare, litavi, litatus  verb, 1st conjugation  [XXXDX]  lesser
-    to make an offering which exhibits favorable prognostics, to sacrifice under favorable auspices, to obtain favorable omens; to give a favorable omen, promise a successful event; to make an offering, offer sacrifice; To bring an offering to, to make atonement to, to propitiate, appease, satisfy; To devote, consecrate; (Lewis and Short)
     litāt-īs       PRF.PASS.PTCP.DAT.PL
     litāt-īs       PRF.PASS.PTCP.ABL.PL
 
@@ -3474,30 +3463,14 @@ dictis
 incensum
   incendo, incendere, incendi, incensus  verb, 3rd conjugation, transitive  [XXXAO]
     to set fire to, to kindle, burn; To light up with fire, to make a fire upon; To heat, make hot; To make bright, shining, to brighten, illumine, to make brilliant, to adorn; To kindle, inflame, set on fire; to fire, rouse, excite; to irritate, incense, set on fire with, fill with; To enhance, raise the price of corn, to produce a dearness, scarcity; To destroy, ruin, lay waste; inflamed, burning, hot; (Lewis and Short)
-    incēns-um      PRF.PASS.PTCP.NOM.SG.N
-    incēns-um      PRF.PASS.PTCP.VOC.SG.N
-    incēns-um      PRF.PASS.PTCP.ACC.SG.M
-    incēns-um      PRF.PASS.PTCP.ACC.SG.N
-  incendo, incendere, incendi, incensus  verb, 3rd conjugation, transitive  [XXXAO]
-    to set fire to, to kindle, burn; To light up with fire, to make a fire upon; To heat, make hot; To make bright, shining, to brighten, illumine, to make brilliant, to adorn; To kindle, inflame, set on fire; to fire, rouse, excite; to irritate, incense, set on fire with, fill with; To enhance, raise the price of corn, to produce a dearness, scarcity; To destroy, ruin, lay waste; inflamed, burning, hot; (Lewis and Short)
-    incēns-um      SUP.ACC
   incendo, incendere, incendi, incensus  verb, 3rd conjugation, transitive  [XXXAO]
     scorch; make fiery hot (fever/thirst); light up; cause to glow; intensify;
-    incēns-um      PRF.PASS.PTCP.NOM.SG.N
-    incēns-um      PRF.PASS.PTCP.VOC.SG.N
-    incēns-um      PRF.PASS.PTCP.ACC.SG.M
-    incēns-um      PRF.PASS.PTCP.ACC.SG.N
-  incendo, incendere, incendi, incensus  verb, 3rd conjugation, transitive  [XXXAO]
-    scorch; make fiery hot (fever/thirst); light up; cause to glow; intensify;
-    incēns-um      SUP.ACC
   incendo, incendere, incendi, incensus  verb, 3rd conjugation, transitive  [XXXAO]
     inspire, fire, rouse, excite, inflame; provoke, incense, aggravate;
     incēns-um      PRF.PASS.PTCP.NOM.SG.N
     incēns-um      PRF.PASS.PTCP.VOC.SG.N
     incēns-um      PRF.PASS.PTCP.ACC.SG.M
     incēns-um      PRF.PASS.PTCP.ACC.SG.N
-  incendo, incendere, incendi, incensus  verb, 3rd conjugation, transitive  [XXXAO]
-    inspire, fire, rouse, excite, inflame; provoke, incense, aggravate;
     incēns-um      SUP.ACC
   incensum, incensi  noun, 2nd declension, neuter  [EEXDP]  later  lesser
     A setting fire to, lighting; incense; sacrifice; (Lewis and Short)
@@ -4271,8 +4244,6 @@ tacitum
     tacit-um       PRF.PASS.PTCP.VOC.SG.N
     tacit-um       PRF.PASS.PTCP.ACC.SG.M
     tacit-um       PRF.PASS.PTCP.ACC.SG.N
-  taceo, tacere, tacui, tacitus  verb, 2nd conjugation  [XXXAX]
-    to be silent, not speak, say nothing, hold one's peace; to be still, noiseless, quiet, at rest; to pass over in silence, be silent respecting; things not to be uttered; that is passed over in silence, not spoken of, kept secret; that is done without words, assumed as a matter of course, silent, implied, tacit; That is done, exists in silence; silent, secret, hidden, concealed; a secret; that does not speak, not uttering a sound, silent, still, quiet, noiseless, mute; silence; the goddess of Silence; silently, in silence, secretly; (Lewis and Short)
     tacit-um       SUP.ACC
   Tacitus, Taciti  noun, 2nd declension, masculine  [DLIDZ]  late  lesser
     a Roman proper name; (Lewis and Short)
@@ -4879,11 +4850,7 @@ eadem
   eadem  pronoun  [XXXBX]
     same, the same, the very same; also; (idem, eadem, idem);
     eadem          NOM.SG.F
-  eadem  pronoun  [XXXBX]
-    same, the same, the very same; also; (idem, eadem, idem);
     eadem          NOM.PL.N
-  eadem  pronoun  [XXXBX]
-    same, the same, the very same; also; (idem, eadem, idem);
     eadem          ACC.PL.N
   eadem  adverb  [XXXDX]  lesser
     By the same way; by the same piece of work, At the same time, likewise; now ... now, at one time ... at another; (Lewis and Short)
@@ -6189,8 +6156,13 @@ sed
 quis
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
+    qu-is          NOM.SG.C
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -6199,8 +6171,6 @@ quis
     who?, which?, what?; what kind of?;
     qu-is          DAT.PL
     qu-is          ABL.PL
-  pronoun, interrogative  [XXXAO]
-    who/what/which?, what/which one/man/person/thing? what kind/type of?;
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
     qu-is          NOM.SG.C
@@ -6751,8 +6721,13 @@ venus
 quis
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
+    qu-is          NOM.SG.C
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -6761,8 +6736,6 @@ quis
     who?, which?, what?; what kind of?;
     qu-is          DAT.PL
     qu-is          ABL.PL
-  pronoun, interrogative  [XXXAO]
-    who/what/which?, what/which one/man/person/thing? what kind/type of?;
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
     qu-is          NOM.SG.C
@@ -6887,48 +6860,18 @@ memoras
 factum
   facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
     make/build/construct/create/cause/do; have built/made; fashion; work (metal);
-    fact-um        PRF.PASS.PTCP.NOM.SG.N
-    fact-um        PRF.PASS.PTCP.VOC.SG.N
-    fact-um        PRF.PASS.PTCP.ACC.SG.M
-    fact-um        PRF.PASS.PTCP.ACC.SG.N
-  facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
-    make/build/construct/create/cause/do; have built/made; fashion; work (metal);
-    fact-um        SUP.ACC
   facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
     act/take action/be active; (bowels); act/work (things), function, be effective;
-    fact-um        PRF.PASS.PTCP.NOM.SG.N
-    fact-um        PRF.PASS.PTCP.VOC.SG.N
-    fact-um        PRF.PASS.PTCP.ACC.SG.M
-    fact-um        PRF.PASS.PTCP.ACC.SG.N
-  facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
-    act/take action/be active; (bowels); act/work (things), function, be effective;
-    fact-um        SUP.ACC
   facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
     produce; produce by growth; bring forth (young); create, bring into existence;
-    fact-um        PRF.PASS.PTCP.NOM.SG.N
-    fact-um        PRF.PASS.PTCP.VOC.SG.N
-    fact-um        PRF.PASS.PTCP.ACC.SG.M
-    fact-um        PRF.PASS.PTCP.ACC.SG.N
-  facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
-    produce; produce by growth; bring forth (young); create, bring into existence;
-    fact-um        SUP.ACC
   facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
     compose/write; classify; provide; do/perform; commit crime; suppose/imagine;
-    fact-um        PRF.PASS.PTCP.NOM.SG.N
-    fact-um        PRF.PASS.PTCP.VOC.SG.N
-    fact-um        PRF.PASS.PTCP.ACC.SG.M
-    fact-um        PRF.PASS.PTCP.ACC.SG.N
-  facio, facere, feci, factus  verb, 3rd conjugation, transitive  [XXXAO]
-    compose/write; classify; provide; do/perform; commit crime; suppose/imagine;
-    fact-um        SUP.ACC
   facio, facere, feci, factus  verb, 3rd conjugation, transitive  [FXXEM]  medieval  uncommon
     make up, amount to;
     fact-um        PRF.PASS.PTCP.NOM.SG.N
     fact-um        PRF.PASS.PTCP.VOC.SG.N
     fact-um        PRF.PASS.PTCP.ACC.SG.M
     fact-um        PRF.PASS.PTCP.ACC.SG.N
-  facio, facere, feci, factus  verb, 3rd conjugation, transitive  [FXXEM]  medieval  uncommon
-    make up, amount to;
     fact-um        SUP.ACC
   factum, facti  noun, 2nd declension, neuter  [XXXDX]  lesser
     fact, deed, act; achievement;
@@ -6937,30 +6880,14 @@ factum
     fact-um        ACC.SG
   fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
     happen, come about; result (from); take place, be held, occur, arise (event);
-    fact-um        PRF.PASS.PTCP.NOM.SG.N
-    fact-um        PRF.PASS.PTCP.VOC.SG.N
-    fact-um        PRF.PASS.PTCP.ACC.SG.M
-    fact-um        PRF.PASS.PTCP.ACC.SG.N
-  fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
-    happen, come about; result (from); take place, be held, occur, arise (event);
-    fact-um        SUP.ACC
   fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
     be made/created/instituted/elected/appointed/given; be prepared/done; develop;
-    fact-um        PRF.PASS.PTCP.NOM.SG.N
-    fact-um        PRF.PASS.PTCP.VOC.SG.N
-    fact-um        PRF.PASS.PTCP.ACC.SG.M
-    fact-um        PRF.PASS.PTCP.ACC.SG.N
-  fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
-    be made/created/instituted/elected/appointed/given; be prepared/done; develop;
-    fact-um        SUP.ACC
   fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
     be made/become; (facio PASS); [fiat => so be it, very well; it is being done];
     fact-um        PRF.PASS.PTCP.NOM.SG.N
     fact-um        PRF.PASS.PTCP.VOC.SG.N
     fact-um        PRF.PASS.PTCP.ACC.SG.M
     fact-um        PRF.PASS.PTCP.ACC.SG.N
-  fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
-    be made/become; (facio PASS); [fiat => so be it, very well; it is being done];
     fact-um        SUP.ACC
   (less likely forms are not shown)
 
@@ -7312,21 +7239,19 @@ qua
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-a           ABL.SG.F
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-a           ABL.SG.F
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-a           ABL.SG.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
-  pronoun, indefinite  [XXXBO]
-    anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-a           NOM.PL.N
     qu-a           ACC.PL.N
   qua  adverb  [XXXBX]
@@ -7412,21 +7337,12 @@ docebo
 venatum
   venor, venari, venatus sum  verb, 1st conjugation, deponent  [XXXBX]
     to hunt, chase; to hunt, seek after, pursue; (Lewis and Short)
-    vēnāt-um       PRF.PTCP.NOM.SG.N
-    vēnāt-um       PRF.PTCP.VOC.SG.N
-    vēnāt-um       PRF.PTCP.ACC.SG.M
-    vēnāt-um       PRF.PTCP.ACC.SG.N
-  venor, venari, venatus sum  verb, 1st conjugation, deponent  [XXXBX]
-    to hunt, chase; to hunt, seek after, pursue; (Lewis and Short)
-    vēnāt-um       SUP.ACC
   venor, venari, venatus sum  verb, 1st conjugation, deponent  [FXXEM]  medieval  uncommon
     woo;
     vēnāt-um       PRF.PTCP.NOM.SG.N
     vēnāt-um       PRF.PTCP.VOC.SG.N
     vēnāt-um       PRF.PTCP.ACC.SG.M
     vēnāt-um       PRF.PTCP.ACC.SG.N
-  venor, venari, venatus sum  verb, 1st conjugation, deponent  [FXXEM]  medieval  uncommon
-    woo;
     vēnāt-um       SUP.ACC
   venatus, venatus  noun, 4th declension, masculine  [XXXDX]  lesser
     hunting, the chase; Fishing; Game; (Lewis and Short)
@@ -9339,8 +9255,6 @@ ventum
     vent-um        PRF.PASS.PTCP.VOC.SG.N
     vent-um        PRF.PASS.PTCP.ACC.SG.M
     vent-um        PRF.PASS.PTCP.ACC.SG.N
-  venio, venire, veni, ventus  verb, 4th conjugation  [XXXAX]
-    to come; to be descended; to come, happen; to come into, obtain one's friendship, alliance; to come to, reach the point; (Lewis and Short)
     vent-um        SUP.ACC
   ventus, venti  noun, 2nd declension, masculine  [XXXAX]
     wind; the winds; flatulence; A light stuff; (Lewis and Short)
@@ -10742,21 +10656,19 @@ qua
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-a           ABL.SG.F
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-a           ABL.SG.F
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-a           ABL.SG.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
-  pronoun, indefinite  [XXXBO]
-    anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-a           NOM.PL.N
     qu-a           ACC.PL.N
   qua  adverb  [XXXBX]
@@ -10800,8 +10712,6 @@ mobilitate
   mobilito, mobilitare, mobilitavi, mobilitatus  verb, 1st conjugation, transitive  [XXXEC]  uncommon
     to make movable, to make quick; (Lewis and Short)
     mōbilit-āte    2PL.PRS.ACT.IMP
-  mobilito, mobilitare, mobilitavi, mobilitatus  verb, 1st conjugation, transitive  [XXXEC]  uncommon
-    to make movable, to make quick; (Lewis and Short)
     mōbilitāt-e    PRF.PASS.PTCP.VOC.SG.M
   mobilitas, mobilitatis  noun, 3rd declension, feminine  [XXXBX]
     movableness, mobility, activity, speed, rapidity, quickness; agility, rapidity, looseness; (Lewis and Short)
@@ -11933,39 +11843,16 @@ sanguine
 cretum
   cerno, cernere, crevi, cretus  verb, 3rd conjugation, transitive  [XXXAO]
     To separate, sift; To separate, distinguish by the senses, by the eyes, perceive, see, discern; to become distinguished, known in something; Have before the mind, have respect to, regard; to perceive, comprehend, understand; to foresee, discern beforehand; To decide something that is contested or doubtful, decree, determine; To decide by contending, fighting; to decide for something, conclude upon, resolve; To resolve to enter upon an inheritance; To make known this determination; to enter upon an inheritance; (Lewis and Short)
-    crēt-um        PRF.PASS.PTCP.NOM.SG.N
-    crēt-um        PRF.PASS.PTCP.VOC.SG.N
-    crēt-um        PRF.PASS.PTCP.ACC.SG.M
-    crēt-um        PRF.PASS.PTCP.ACC.SG.N
-  cerno, cernere, crevi, cretus  verb, 3rd conjugation, transitive  [XXXAO]
-    To separate, sift; To separate, distinguish by the senses, by the eyes, perceive, see, discern; to become distinguished, known in something; Have before the mind, have respect to, regard; to perceive, comprehend, understand; to foresee, discern beforehand; To decide something that is contested or doubtful, decree, determine; To decide by contending, fighting; to decide for something, conclude upon, resolve; To resolve to enter upon an inheritance; To make known this determination; to enter upon an inheritance; (Lewis and Short)
-    crēt-um        SUP.ACC
   cresco, crescere, crevi, cretus  verb, 3rd conjugation, intransitive  [XXXAO]
     to come forth, grow, arise, spring, be born, become visible, appear; arisen, sprung, descended from, born of; to rise in height, rise, grow, grow up, thrive, increase; to increase in number, augment, multiply; to grow, increase, be enlarged, strengthened; to rise, increase in distinction, honor, courage, be promoted, advanced, prosper, become great, attain honor; (Lewis and Short)
-    crēt-um        PRF.PASS.PTCP.NOM.SG.N
-    crēt-um        PRF.PASS.PTCP.VOC.SG.N
-    crēt-um        PRF.PASS.PTCP.ACC.SG.M
-    crēt-um        PRF.PASS.PTCP.ACC.SG.N
-  cresco, crescere, crevi, cretus  verb, 3rd conjugation, intransitive  [XXXAO]
-    to come forth, grow, arise, spring, be born, become visible, appear; arisen, sprung, descended from, born of; to rise in height, rise, grow, grow up, thrive, increase; to increase in number, augment, multiply; to grow, increase, be enlarged, strengthened; to rise, increase in distinction, honor, courage, be promoted, advanced, prosper, become great, attain honor; (Lewis and Short)
-    crēt-um        SUP.ACC
   cresco, crescere, crevi, cretus  verb, 3rd conjugation, intransitive  [XXXAO]
     thrive, increase (size/number/honor), multiply; ascend; attain, be promoted;
-    crēt-um        PRF.PASS.PTCP.NOM.SG.N
-    crēt-um        PRF.PASS.PTCP.VOC.SG.N
-    crēt-um        PRF.PASS.PTCP.ACC.SG.M
-    crēt-um        PRF.PASS.PTCP.ACC.SG.N
-  cresco, crescere, crevi, cretus  verb, 3rd conjugation, intransitive  [XXXAO]
-    thrive, increase (size/number/honor), multiply; ascend; attain, be promoted;
-    crēt-um        SUP.ACC
   cresco, crescere, crevi, cretus  verb, 3rd conjugation, intransitive  [FXXEM]  medieval  uncommon
     increase (trans.), make grow;
     crēt-um        PRF.PASS.PTCP.NOM.SG.N
     crēt-um        PRF.PASS.PTCP.VOC.SG.N
     crēt-um        PRF.PASS.PTCP.ACC.SG.M
     crēt-um        PRF.PASS.PTCP.ACC.SG.N
-  cresco, crescere, crevi, cretus  verb, 3rd conjugation, intransitive  [FXXEM]  medieval  uncommon
-    increase (trans.), make grow;
     crēt-um        SUP.ACC
   cretus, creta, cretum  adjective, 1st/2nd declension  [XXXCS]
     born of; arisen/sprung/descended from;
@@ -13230,30 +13117,31 @@ femina
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -14113,8 +14001,11 @@ karthagine
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-i           NOM.PL.M
+    qu-i           NOM.SG.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -14122,14 +14013,6 @@ qui
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
   queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
     to be able, can; (Lewis and Short)
@@ -14408,8 +14291,11 @@ fore
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-i           NOM.PL.M
+    qu-i           NOM.SG.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -14417,14 +14303,6 @@ qui
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
   queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
     to be able, can; (Lewis and Short)
@@ -14839,21 +14717,19 @@ qua
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-a           ABL.SG.F
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-a           ABL.SG.F
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-a           ABL.SG.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
-  pronoun, indefinite  [XXXBO]
-    anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-a           NOM.PL.N
     qu-a           ACC.PL.N
   qua  adverb  [XXXBX]
@@ -15218,30 +15094,31 @@ aurea
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -15700,8 +15577,11 @@ caelum
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-i           NOM.PL.M
+    qu-i           NOM.SG.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -15709,14 +15589,6 @@ qui
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
   queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
     to be able, can; (Lewis and Short)
@@ -15773,21 +15645,12 @@ cinctum
     cinct-um       ACC.SG.N
   cingo, cingere, cinxi, cinctus  verb, 3rd conjugation, transitive  [XXXAO]
     to go round in a circle, surround, encompass, gird, wreathe, crown; to cover; To surround the body with a girdle, gird on, gird; to be girded, encircled with something, armed, equipped, enrolled; to make one's self ready for any thing, prepare; To encircle with a garland, crown; To encircle other parts of the body; to surround, encircle, invest, enclose, have a circuit of; to surround a place, army for defence, in a hostile manner, fortify, invest, beset, besiege; To escort, accompany; To peel off the bark around; (Lewis and Short)
-    cinct-um       PRF.PASS.PTCP.NOM.SG.N
-    cinct-um       PRF.PASS.PTCP.VOC.SG.N
-    cinct-um       PRF.PASS.PTCP.ACC.SG.M
-    cinct-um       PRF.PASS.PTCP.ACC.SG.N
-  cingo, cingere, cinxi, cinctus  verb, 3rd conjugation, transitive  [XXXAO]
-    to go round in a circle, surround, encompass, gird, wreathe, crown; to cover; To surround the body with a girdle, gird on, gird; to be girded, encircled with something, armed, equipped, enrolled; to make one's self ready for any thing, prepare; To encircle with a garland, crown; To encircle other parts of the body; to surround, encircle, invest, enclose, have a circuit of; to surround a place, army for defence, in a hostile manner, fortify, invest, beset, besiege; To escort, accompany; To peel off the bark around; (Lewis and Short)
-    cinct-um       SUP.ACC
   cingo, cingere, cinxi, cinctus  verb, 3rd conjugation, transitive  [FXXEM]  medieval  uncommon
     knight (gird with a sword);
     cinct-um       PRF.PASS.PTCP.NOM.SG.N
     cinct-um       PRF.PASS.PTCP.VOC.SG.N
     cinct-um       PRF.PASS.PTCP.ACC.SG.M
     cinct-um       PRF.PASS.PTCP.ACC.SG.N
-  cingo, cingere, cinxi, cinctus  verb, 3rd conjugation, transitive  [FXXEM]  medieval  uncommon
-    knight (gird with a sword);
     cinct-um       SUP.ACC
   (less likely forms are not shown)
 
@@ -16227,30 +16090,31 @@ similis
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -16800,30 +16664,31 @@ dives
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -17148,8 +17013,11 @@ terras
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-i           NOM.PL.M
+    qu-i           NOM.SG.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -17157,14 +17025,6 @@ qui
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
   queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
     to be able, can; (Lewis and Short)
@@ -17302,21 +17162,19 @@ qua
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-a           ABL.SG.F
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-a           ABL.SG.F
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-a           ABL.SG.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
-  pronoun, indefinite  [XXXBO]
-    anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-a           NOM.PL.N
     qu-a           ACC.PL.N
   qua  adverb  [XXXBX]
@@ -18054,30 +17912,31 @@ adfatu
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -18470,30 +18329,31 @@ et
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -18651,30 +18511,31 @@ et
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -18722,8 +18583,13 @@ tempora
 quis
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
+    qu-is          NOM.SG.C
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -18732,8 +18598,6 @@ quis
     who?, which?, what?; what kind of?;
     qu-is          DAT.PL
     qu-is          ABL.PL
-  pronoun, interrogative  [XXXAO]
-    who/what/which?, what/which one/man/person/thing? what kind/type of?;
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
     qu-is          NOM.SG.C
@@ -18974,11 +18838,7 @@ eadem
   eadem  pronoun  [XXXBX]
     same, the same, the very same; also; (idem, eadem, idem);
     eadem          NOM.SG.F
-  eadem  pronoun  [XXXBX]
-    same, the same, the very same; also; (idem, eadem, idem);
     eadem          NOM.PL.N
-  eadem  pronoun  [XXXBX]
-    same, the same, the very same; also; (idem, eadem, idem);
     eadem          ACC.PL.N
   eadem  adverb  [XXXDX]  lesser
     By the same way; by the same piece of work, At the same time, likewise; now ... now, at one time ... at another; (Lewis and Short)
@@ -19051,8 +18911,6 @@ cursumque
     curs-um        PRF.PASS.PTCP.VOC.SG.N
     curs-um        PRF.PASS.PTCP.ACC.SG.M
     curs-um        PRF.PASS.PTCP.ACC.SG.N
-  curro, currere, cucurri, cursus  verb, 3rd conjugation, intransitive  [XXXAO]
-    to run, move quickly, hasten, fly; (Lewis and Short)
     curs-um        SUP.ACC
   cursus, cursus  noun, 4th declension, masculine  [XXXAO]
     a running on foot, on a horse, chariot, ship, a course, way, march, passage, voyage, journey; flying; the course, flow of a stream; posts, relays divided into stations, for the speedy transmission of information upon state affairs; a course, progress, direction, way, flow of discourse; (Lewis and Short)
@@ -19223,20 +19081,10 @@ ubi
 audito
   audio, audire, audivi, auditus  verb, 4th conjugation  [XXXAO]
     to hear, to perceive, understand by hearing, to learn; to hear concerning any one; to hear, attend, give ear, listen; to listen to, to give ear to, hearken to, attend; to hear a teacher, to receive instruction from, to study under; to listen, hearken to, to examine; to hear, listen to, lend an ear to, regard, grant, to hear one, to grant his desire or prayer; to hear a person, thing with approbation, to assent to, agree with, approve, grant, allow; To hear, to listen to, to obey, heed; to be obedient to, to obey; To hear thus and thus, to be named, styled somehow, to be in good, bad repute, to be praised, blamed, to have a good, bad character; As it were to hear, to hear mentally, to understand, to supply; A hearer, auditor; a hearer of, obedient to; (Lewis and Short)
-    aud-ītō        2SG.FUT.ACT.IMP
-    aud-ītō        3SG.FUT.ACT.IMP
-  audio, audire, audivi, auditus  verb, 4th conjugation  [XXXAO]
-    to hear, to perceive, understand by hearing, to learn; to hear concerning any one; to hear, attend, give ear, listen; to listen to, to give ear to, hearken to, attend; to hear a teacher, to receive instruction from, to study under; to listen, hearken to, to examine; to hear, listen to, lend an ear to, regard, grant, to hear one, to grant his desire or prayer; to hear a person, thing with approbation, to assent to, agree with, approve, grant, allow; To hear, to listen to, to obey, heed; to be obedient to, to obey; To hear thus and thus, to be named, styled somehow, to be in good, bad repute, to be praised, blamed, to have a good, bad character; As it were to hear, to hear mentally, to understand, to supply; A hearer, auditor; a hearer of, obedient to; (Lewis and Short)
-    audīt-ō        PRF.PASS.PTCP.DAT.SG.M
-    audīt-ō        PRF.PASS.PTCP.DAT.SG.N
-    audīt-ō        PRF.PASS.PTCP.ABL.SG.M
-    audīt-ō        PRF.PASS.PTCP.ABL.SG.N
   audio, audire, audivi, auditus  verb, 4th conjugation  [FXXEM]  medieval  uncommon
     audit (account);
     aud-ītō        2SG.FUT.ACT.IMP
     aud-ītō        3SG.FUT.ACT.IMP
-  audio, audire, audivi, auditus  verb, 4th conjugation  [FXXEM]  medieval  uncommon
-    audit (account);
     audīt-ō        PRF.PASS.PTCP.DAT.SG.M
     audīt-ō        PRF.PASS.PTCP.DAT.SG.N
     audīt-ō        PRF.PASS.PTCP.ABL.SG.M
@@ -19762,8 +19610,6 @@ altum
     alt-um         PRF.PASS.PTCP.VOC.SG.N
     alt-um         PRF.PASS.PTCP.ACC.SG.M
     alt-um         PRF.PASS.PTCP.ACC.SG.N
-  alo, alere, alui, altus  verb, 3rd conjugation, transitive  [XXXAO]
-    to feed, to nourish, support, sustain, maintain; to be nourished, sustained with, by something, to live, feed upon; to nourish, cherish, promote, strengthen; (Lewis and Short)
     alt-um         SUP.ACC
   altum, alti  noun, 2nd declension, neuter  [XXXBO]
     the_deep, the_sea; deep water; a height/depth; remote/obscure period/source;
@@ -20206,8 +20052,6 @@ quicquam
   quicquam  pronoun  [XXXCX]
     any; anything; anything whatsoever;
     quicquam       NOM.SG.N
-  quicquam  pronoun  [XXXCX]
-    any; anything; anything whatsoever;
     quicquam       ACC.SG.N
 
 dulce
@@ -20302,8 +20146,13 @@ si
 quis
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
+    qu-is          NOM.SG.C
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -20312,8 +20161,6 @@ quis
     who?, which?, what?; what kind of?;
     qu-is          DAT.PL
     qu-is          ABL.PL
-  pronoun, interrogative  [XXXAO]
-    who/what/which?, what/which one/man/person/thing? what kind/type of?;
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
     qu-is          NOM.SG.C
@@ -20464,21 +20311,19 @@ qua
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-a           ABL.SG.F
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-a           ABL.SG.F
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-a           ABL.SG.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
-  pronoun, indefinite  [XXXBO]
-    anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-a           NOM.PL.N
     qu-a           ACC.PL.N
   qua  adverb  [XXXBX]
@@ -20777,21 +20622,19 @@ qua
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-a           ABL.SG.F
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-a           ABL.SG.F
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-a           ABL.SG.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-a           NOM.PL.N
+    qu-a           ACC.PL.N
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
-  pronoun, indefinite  [XXXBO]
-    anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-a           NOM.PL.N
     qu-a           ACC.PL.N
   qua  adverb  [XXXBX]
@@ -20863,8 +20706,13 @@ si
 quis
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
+    qu-is          NOM.SG.C
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -20873,8 +20721,6 @@ quis
     who?, which?, what?; what kind of?;
     qu-is          DAT.PL
     qu-is          ABL.PL
-  pronoun, interrogative  [XXXAO]
-    who/what/which?, what/which one/man/person/thing? what kind/type of?;
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
     qu-is          NOM.SG.C
@@ -20917,8 +20763,11 @@ aeneas
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-i           NOM.PL.M
+    qu-i           NOM.SG.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -20926,14 +20775,6 @@ qui
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
   queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
     to be able, can; (Lewis and Short)
@@ -21254,30 +21095,31 @@ te
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -22169,30 +22011,31 @@ urbis
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -23330,30 +23173,31 @@ aut
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -23541,30 +23385,31 @@ est
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -23743,30 +23588,14 @@ fides
 eiectum
   eicio, eicere, ejeci, ejectus  verb, 3rd conjugation, transitive  [XXXDX]  lesser
     to cast, thrust, drive out; to eject, expel; to miscarry; to rush out; to drive, to land; to bring to land; to run aground, cast ashore; to strand, wreck; wrecked; an outcast; to expel; to reject, to hiss, hoot off; (Lewis and Short)
-    eiect-um       PRF.PASS.PTCP.NOM.SG.N
-    eiect-um       PRF.PASS.PTCP.VOC.SG.N
-    eiect-um       PRF.PASS.PTCP.ACC.SG.M
-    eiect-um       PRF.PASS.PTCP.ACC.SG.N
-  eicio, eicere, ejeci, ejectus  verb, 3rd conjugation, transitive  [XXXDX]  lesser
-    to cast, thrust, drive out; to eject, expel; to miscarry; to rush out; to drive, to land; to bring to land; to run aground, cast ashore; to strand, wreck; wrecked; an outcast; to expel; to reject, to hiss, hoot off; (Lewis and Short)
-    eiect-um       SUP.ACC
   eicio, eicere, ejeci, ejectus  verb, 3rd conjugation, transitive  [XXXDA]  lesser
     to cast, thrust, drive out; to eject, expel; to miscarry; to rush out; to drive, land; to bring to land; to run aground, cast ashore; to strand, wreck; wrecked; an outcast; to expel; to reject, hiss, hoot off; (Lewis and Short)
-    eiect-um       PRF.PASS.PTCP.NOM.SG.N
-    eiect-um       PRF.PASS.PTCP.VOC.SG.N
-    eiect-um       PRF.PASS.PTCP.ACC.SG.M
-    eiect-um       PRF.PASS.PTCP.ACC.SG.N
-  eicio, eicere, ejeci, ejectus  verb, 3rd conjugation, transitive  [XXXDA]  lesser
-    to cast, thrust, drive out; to eject, expel; to miscarry; to rush out; to drive, land; to bring to land; to run aground, cast ashore; to strand, wreck; wrecked; an outcast; to expel; to reject, hiss, hoot off; (Lewis and Short)
-    eiect-um       SUP.ACC
   eicio, eicere, ejeci, ejectus  verb, 3rd conjugation, transitive  [FXXEM]  medieval  uncommon
     jettison;
     eiect-um       PRF.PASS.PTCP.NOM.SG.N
     eiect-um       PRF.PASS.PTCP.VOC.SG.N
     eiect-um       PRF.PASS.PTCP.ACC.SG.M
     eiect-um       PRF.PASS.PTCP.ACC.SG.N
-  eicio, eicere, ejeci, ejectus  verb, 3rd conjugation, transitive  [FXXEM]  medieval  uncommon
-    jettison;
     eiect-um       SUP.ACC
   ejectus, ejectus  noun, 4th declension, masculine  [XXXFO]  very rare
     expulsion, driving out; banishment/exile (Ecc);
@@ -23777,8 +23606,6 @@ eiectum
     ēiect-um       PRF.PASS.PTCP.VOC.SG.N
     ēiect-um       PRF.PASS.PTCP.ACC.SG.M
     ēiect-um       PRF.PASS.PTCP.ACC.SG.N
-  ejicio, ejicere, ejeci, ejectus  verb, 3rd conjugation, transitive  [XXXCS]
-    cast/throw/fling/drive out/up, extract, expel, discharge, vomit; out (tongue);
     ēiect-um       SUP.ACC
   (less likely forms are not shown)
 
@@ -25970,8 +25797,13 @@ fervet
 quis
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
+    qu-is          NOM.SG.C
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -25980,8 +25812,6 @@ quis
     who?, which?, what?; what kind of?;
     qu-is          DAT.PL
     qu-is          ABL.PL
-  pronoun, interrogative  [XXXAO]
-    who/what/which?, what/which one/man/person/thing? what kind/type of?;
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
     qu-is          NOM.SG.C
@@ -28731,21 +28561,12 @@ inceptum
     incept-um      ACC.SG
   incipio, incipere, incepi, inceptus  verb, 3rd conjugation  [XXXAX]
     to begin, to take in hand; to begin to be, to begin, commence; a beginning, attempt, undertaking; (Lewis and Short)
-    incept-um      PRF.PASS.PTCP.NOM.SG.N
-    incept-um      PRF.PASS.PTCP.VOC.SG.N
-    incept-um      PRF.PASS.PTCP.ACC.SG.M
-    incept-um      PRF.PASS.PTCP.ACC.SG.N
-  incipio, incipere, incepi, inceptus  verb, 3rd conjugation  [XXXAX]
-    to begin, to take in hand; to begin to be, to begin, commence; a beginning, attempt, undertaking; (Lewis and Short)
-    incept-um      SUP.ACC
   incipio, incipere, incepi, inceptus  verb, 3rd conjugation  [FXXCM]  medieval
     incept (university);
     incept-um      PRF.PASS.PTCP.NOM.SG.N
     incept-um      PRF.PASS.PTCP.VOC.SG.N
     incept-um      PRF.PASS.PTCP.ACC.SG.M
     incept-um      PRF.PASS.PTCP.ACC.SG.N
-  incipio, incipere, incepi, inceptus  verb, 3rd conjugation  [FXXCM]  medieval
-    incept (university);
     incept-um      SUP.ACC
   (less likely forms are not shown)
 
@@ -28996,21 +28817,12 @@ hoc
 visum
   video, videre, vidi, visus  verb, 2nd conjugation  [XXXAX]
     to see, perceive; to see, have the eyes open, be awake; to see; to look out on, afford a view of; to perceive, observe; to see, look at; to see, perceive, mark, observe, discern, understand, comprehend, be aware, know; To look at, look to, consider, think, reflect upon; To look out for, see to, care for, provide; To take care, see to it, make sure; To see, reach, attain, obtain, enjoy; to see, live to see; to see, go to see, visit; to receive attention, be visited; to be looked upon, regarded, seem, appear; it seems proper, right, fit, it seems good, pleases, likes; as you will; (Lewis and Short)
-    vīs-um         PRF.PASS.PTCP.NOM.SG.N
-    vīs-um         PRF.PASS.PTCP.VOC.SG.N
-    vīs-um         PRF.PASS.PTCP.ACC.SG.M
-    vīs-um         PRF.PASS.PTCP.ACC.SG.N
-  video, videre, vidi, visus  verb, 2nd conjugation  [XXXAX]
-    to see, perceive; to see, have the eyes open, be awake; to see; to look out on, afford a view of; to perceive, observe; to see, look at; to see, perceive, mark, observe, discern, understand, comprehend, be aware, know; To look at, look to, consider, think, reflect upon; To look out for, see to, care for, provide; To take care, see to it, make sure; To see, reach, attain, obtain, enjoy; to see, live to see; to see, go to see, visit; to receive attention, be visited; to be looked upon, regarded, seem, appear; it seems proper, right, fit, it seems good, pleases, likes; as you will; (Lewis and Short)
-    vīs-um         SUP.ACC
   video, videre, vidi, visus  verb, 2nd conjugation  [FLXEM]  medieval  uncommon
     view, inspect (leg.);
     vīs-um         PRF.PASS.PTCP.NOM.SG.N
     vīs-um         PRF.PASS.PTCP.VOC.SG.N
     vīs-um         PRF.PASS.PTCP.ACC.SG.M
     vīs-um         PRF.PASS.PTCP.ACC.SG.N
-  video, videre, vidi, visus  verb, 2nd conjugation  [FLXEM]  medieval  uncommon
-    view, inspect (leg.);
     vīs-um         SUP.ACC
   visum, visi  noun, 2nd declension, neuter  [XXXDX]  lesser
     something seen, sight, appearance, vision; an impression made by some external object upon the senses, an image; (Lewis and Short)
@@ -29028,8 +28840,6 @@ visum
     vīs-um         PRF.PASS.PTCP.VOC.SG.N
     vīs-um         PRF.PASS.PTCP.ACC.SG.M
     vīs-um         PRF.PASS.PTCP.ACC.SG.N
-  viso, visere, visi, visus  verb, 3rd conjugation  [XXXBA]
-    to look at attentively, view, behold, survey; to be seen, worth seeing; objects worth notice, sights; to come in order to look at, see to, look after; To go to see, visit; (Lewis and Short)
     vīs-um         SUP.ACC
   (less likely forms are not shown)
 
@@ -29312,8 +29122,6 @@ revinctum
     revinct-um     PRF.PASS.PTCP.VOC.SG.N
     revinct-um     PRF.PASS.PTCP.ACC.SG.M
     revinct-um     PRF.PASS.PTCP.ACC.SG.N
-  revincio, revincire, revinxi, revinctus  verb, 4th conjugation  [XXXDX]  lesser
-    To bind back, backwards; to bind around, bind fast, fasten; bound around; to bind, fasten; loose; (Lewis and Short)
     revinct-um     SUP.ACC
 
 hinc
@@ -29562,8 +29370,6 @@ fletum
     flēt-um        PRF.PASS.PTCP.VOC.SG.N
     flēt-um        PRF.PASS.PTCP.ACC.SG.M
     flēt-um        PRF.PASS.PTCP.ACC.SG.N
-  fleo, flere, flevi, fletus  verb, 2nd conjugation  [XXXAX]
-    to weep, cry, shed tears; to neigh; to drop, trickle; to weep for, bewail, lament; to sing mournfully, to sing; weeping; (Lewis and Short)
     flēt-um        SUP.ACC
   fletus, fletus  noun, 4th declension, masculine  [XXXDX]  lesser
     a weeping, wailing, lamenting; tears; (Lewis and Short)
@@ -30429,30 +30235,31 @@ viam
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -30654,21 +30461,12 @@ ardentibus
 aptum
   apo, apere, -, aptus  verb, 3rd conjugation, transitive  [XXXES]  uncommon
     To fasten, attach, join, bind, tie to; arising from; Joined, bound, tied together, connected; endowed, furnished, ornamented with something, furnished with wings, winged; fitted, suited, suitable, proper, apposite, fit, appropriate, adapted, conformable to; closely, fitly, suitably, nicely, rightly; fitly, suitably, properly, duly, rightly; (Lewis and Short)
-    apt-um         PRF.PASS.PTCP.NOM.SG.N
-    apt-um         PRF.PASS.PTCP.VOC.SG.N
-    apt-um         PRF.PASS.PTCP.ACC.SG.M
-    apt-um         PRF.PASS.PTCP.ACC.SG.N
-  apo, apere, -, aptus  verb, 3rd conjugation, transitive  [XXXES]  uncommon
-    To fasten, attach, join, bind, tie to; arising from; Joined, bound, tied together, connected; endowed, furnished, ornamented with something, furnished with wings, winged; fitted, suited, suitable, proper, apposite, fit, appropriate, adapted, conformable to; closely, fitly, suitably, nicely, rightly; fitly, suitably, properly, duly, rightly; (Lewis and Short)
-    apt-um         SUP.ACC
   apio, apere, -, aptus  verb, 3rd conjugation, transitive  [XXXEO]  uncommon
     fasten, attach, join, connect, bind;
     apt-um         PRF.PASS.PTCP.NOM.SG.N
     apt-um         PRF.PASS.PTCP.VOC.SG.N
     apt-um         PRF.PASS.PTCP.ACC.SG.M
     apt-um         PRF.PASS.PTCP.ACC.SG.N
-  apio, apere, -, aptus  verb, 3rd conjugation, transitive  [XXXEO]  uncommon
-    fasten, attach, join, connect, bind;
     apt-um         SUP.ACC
   apiscor, apisci, aptus sum  verb, 3rd conjugation, deponent  [XXXCO]
     to reach after, in order to take, seize, get possession of; To pursue, with effort, zeal; To take, seize upon; To reach, attain to, get, gain, acquire, to reach something in mind, to perceive, understand; (Lewis and Short)
@@ -30676,8 +30474,6 @@ aptum
     apt-um         PRF.PTCP.VOC.SG.N
     apt-um         PRF.PTCP.ACC.SG.M
     apt-um         PRF.PTCP.ACC.SG.N
-  apiscor, apisci, aptus sum  verb, 3rd conjugation, deponent  [XXXCO]
-    to reach after, in order to take, seize, get possession of; To pursue, with effort, zeal; To take, seize upon; To reach, attain to, get, gain, acquire, to reach something in mind, to perceive, understand; (Lewis and Short)
     apt-um         SUP.ACC
   aptus, apta -um, aptior -or -us, aptissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     suitable, adapted; ready; apt, proper; tied, attached to; dependent on (w/ex);
@@ -30783,30 +30579,31 @@ draconi
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -31421,30 +31218,31 @@ thalamo
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -31530,30 +31328,14 @@ lectumque
     lect-um        ACC.SG.N
   lego, legere, legi, lectus  verb, 3rd conjugation  [XXXAX]
     to bring together, to gather, collect; To take out, pick out, extract, remove; To pluck, strip, gather fruit from; to wind up; to draw together, furl; To take to one's self unjustly, to carry off, steal, purloin, plunder, abstract; to wander through, to follow one's footsteps, to track, pursue; to sail by, to skirt, to coast along a shore, land, place; to choose, to pick out, single out, select, elect; To catch up, overhear; To catch with the eye, to view, observe, behold, survey, see; to read, peruse; To read out, read aloud, recite; To find; to read over, call off the names of senators; chosen, picked out, selected; choice, excellent, good, of full weight; choicely, selectly; (Lewis and Short)
-    lect-um        PRF.PASS.PTCP.NOM.SG.N
-    lect-um        PRF.PASS.PTCP.VOC.SG.N
-    lect-um        PRF.PASS.PTCP.ACC.SG.M
-    lect-um        PRF.PASS.PTCP.ACC.SG.N
-  lego, legere, legi, lectus  verb, 3rd conjugation  [XXXAX]
-    to bring together, to gather, collect; To take out, pick out, extract, remove; To pluck, strip, gather fruit from; to wind up; to draw together, furl; To take to one's self unjustly, to carry off, steal, purloin, plunder, abstract; to wander through, to follow one's footsteps, to track, pursue; to sail by, to skirt, to coast along a shore, land, place; to choose, to pick out, single out, select, elect; To catch up, overhear; To catch with the eye, to view, observe, behold, survey, see; to read, peruse; To read out, read aloud, recite; To find; to read over, call off the names of senators; chosen, picked out, selected; choice, excellent, good, of full weight; choicely, selectly; (Lewis and Short)
-    lect-um        SUP.ACC
   lego, legere, legi, lectus  verb, 3rd conjugation  [XXXAA]
     to bring together, gather, collect; to take out, pick out, extract, remove; to pluck, strip, gather fruit from; to wind up; to draw together, furl; to take to one's self unjustly, carry off, steal, purloin, plunder, abstract; to wander through, follow one's footsteps, track, pursue; to sail by, skirt, coast along a shore, land, place; to choose, pick out, single out, select, elect; to catch up, overhear; to catch with the eye, view, observe, behold, survey, see; to read, peruse; to read out, read aloud, recite; to find; to read over, call off the names of senators; chosen, picked out, selected; choice, excellent, good, of full weight; choicely, selectly; (Lewis and Short)
-    lect-um        PRF.PASS.PTCP.NOM.SG.N
-    lect-um        PRF.PASS.PTCP.VOC.SG.N
-    lect-um        PRF.PASS.PTCP.ACC.SG.M
-    lect-um        PRF.PASS.PTCP.ACC.SG.N
-  lego, legere, legi, lectus  verb, 3rd conjugation  [XXXAA]
-    to bring together, gather, collect; to take out, pick out, extract, remove; to pluck, strip, gather fruit from; to wind up; to draw together, furl; to take to one's self unjustly, carry off, steal, purloin, plunder, abstract; to wander through, follow one's footsteps, track, pursue; to sail by, skirt, coast along a shore, land, place; to choose, pick out, single out, select, elect; to catch up, overhear; to catch with the eye, view, observe, behold, survey, see; to read, peruse; to read out, read aloud, recite; to find; to read over, call off the names of senators; chosen, picked out, selected; choice, excellent, good, of full weight; choicely, selectly; (Lewis and Short)
-    lect-um        SUP.ACC
   lego, legere, legi, lectus  verb, 3rd conjugation  [EXXCM]  later
     lecture, teach (university);
     lect-um        PRF.PASS.PTCP.NOM.SG.N
     lect-um        PRF.PASS.PTCP.VOC.SG.N
     lect-um        PRF.PASS.PTCP.ACC.SG.M
     lect-um        PRF.PASS.PTCP.ACC.SG.N
-  lego, legere, legi, lectus  verb, 3rd conjugation  [EXXCM]  later
-    lecture, teach (university);
     lect-um        SUP.ACC
   (less likely forms are not shown)
 
@@ -32232,8 +32014,6 @@ relictum
     relict-um      PRF.PASS.PTCP.VOC.SG.N
     relict-um      PRF.PASS.PTCP.ACC.SG.M
     relict-um      PRF.PASS.PTCP.ACC.SG.N
-  relinquo, relinquere, reliqui, relictus  verb, 3rd conjugation  [XXXAX]
-    To leave behind; to leave, move away from; to leave, abandon; to remain, be left behind; To leave behind one, bequeath; to leave remaining; to allow, permit to remain, let remain, be left, remain; there is nothing left, nothing remains, but, hence it follows that; to let remain, suffer to be; to go away from; to forsake, abandon, desert; to die; to leave in the lurch; to leave, give up, abandon; to leave, let alone, give up, neglect, forsake, abandon, relinquish, lay aside every thing else; (Lewis and Short)
     relict-um      SUP.ACC
   (less likely forms are not shown)
 
@@ -33308,39 +33088,36 @@ quaeque
   qu  pronoun, adjectival  [XXXEX]  uncommon
     (w/-que) any; each;
     qu-ae          NOM.PL.F
-  qu  pronoun, indefinite  [XXXAX]
-    (w/-que) each, each one; every, everybody, everything (more than 2); whatever;
-  qu  pronoun, adjectival  [XXXEX]  uncommon
-    (w/-que) any; each;
     qu-ae          NOM.SG.F
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -33392,39 +33169,36 @@ quaeque
   qu  pronoun, adjectival  [XXXEX]  uncommon
     (w/-que) any; each;
     qu-ae          NOM.PL.F
-  qu  pronoun, indefinite  [XXXAX]
-    (w/-que) each, each one; every, everybody, everything (more than 2); whatever;
-  qu  pronoun, adjectival  [XXXEX]  uncommon
-    (w/-que) any; each;
     qu-ae          NOM.SG.F
   -que  enclitic
     -que = and (enclitic, translated before attached word); completes plerus/uter;
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -34254,8 +34028,13 @@ facti
 quis
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
+    qu-is          NOM.SG.C
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -34264,8 +34043,6 @@ quis
     who?, which?, what?; what kind of?;
     qu-is          DAT.PL
     qu-is          ABL.PL
-  pronoun, interrogative  [XXXAO]
-    who/what/which?, what/which one/man/person/thing? what kind/type of?;
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
     qu-is          NOM.SG.C
@@ -34345,8 +34122,6 @@ invisam
     To look after, to go to see, to visit; To look into; (Lewis and Short)
     invīs-am       1SG.PRS.ACT.SBJV
     invīs-am       1SG.FUT.ACT.IND
-  inviso, invisere, invisi, invisus  verb, 3rd conjugation  [XXXDX]  lesser
-    To look after, to go to see, to visit; To look into; (Lewis and Short)
     invīs-am       PRF.PASS.PTCP.ACC.SG.F
 
 accipiet
@@ -35304,8 +35079,6 @@ paratis
   paro, parare, paravi, paratus  verb, 1st conjugation, transitive  [XXXAO]
     to make, get ready, prepare, furnish, provide; to order, contrive, design; to prepare, resolve, purpose, determine, be on the point of, be about; to make preparations, prepare one's self; to prepare, destine; to procure, acquire, get, obtain; to procure with money, buy, purchase; prepared; ready, easy victory; Prepared, provided, furnished, fitted, equipped; well versed, skilled, experienced; prepared, ready; Preparedly, with preparation; Carefully, vigilantly; Readily, promptly; (Lewis and Short)
     par-ātis       2PL.PRS.ACT.IND
-  paro, parare, paravi, paratus  verb, 1st conjugation, transitive  [XXXAO]
-    to make, get ready, prepare, furnish, provide; to order, contrive, design; to prepare, resolve, purpose, determine, be on the point of, be about; to make preparations, prepare one's self; to prepare, destine; to procure, acquire, get, obtain; to procure with money, buy, purchase; prepared; ready, easy victory; Prepared, provided, furnished, fitted, equipped; well versed, skilled, experienced; prepared, ready; Preparedly, with preparation; Carefully, vigilantly; Readily, promptly; (Lewis and Short)
     parāt-īs       PRF.PASS.PTCP.DAT.PL
     parāt-īs       PRF.PASS.PTCP.ABL.PL
   paratus, parata -um, paratior -or -us, paratissimus -a -um  adjective, 1st/2nd declension  [XXXDX]  lesser
@@ -35697,30 +35470,31 @@ nec
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -36368,23 +36142,11 @@ aeneas
 subitis
   subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAO]
     to come, go under, approach, draw near, advance, proceed to, go on; to follow, succeed; to go down, sink; to come up, spring up; to enter; to come on secretly, advance, approach stealthily, steal upon; to come in, succeed, take place; to enter stealthily, come secretly, by degrees; to come into the mind, occur, suggest itself; to submit to; To come into, enter, occur to; To follow, interrupt, answer; To subject one's self to, take upon one's self, undergo, submit to, sustain, endure, suffer; to attempt, try, undertake; that has come on suddenly, unexpectedly, sudden, unexpected, hastily collected; not newly sprung up, old, ancient; steep; a sudden, unexpected thing, a sudden occurrence; off-hand; suddenly, unexpectedly; (Lewis and Short)
-    subi-tis       2PL.PRS.ACT.IND
-  subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAO]
-    to come, go under, approach, draw near, advance, proceed to, go on; to follow, succeed; to go down, sink; to come up, spring up; to enter; to come on secretly, advance, approach stealthily, steal upon; to come in, succeed, take place; to enter stealthily, come secretly, by degrees; to come into the mind, occur, suggest itself; to submit to; To come into, enter, occur to; To follow, interrupt, answer; To subject one's self to, take upon one's self, undergo, submit to, sustain, endure, suffer; to attempt, try, undertake; that has come on suddenly, unexpectedly, sudden, unexpected, hastily collected; not newly sprung up, old, ancient; steep; a sudden, unexpected thing, a sudden occurrence; off-hand; suddenly, unexpectedly; (Lewis and Short)
-    subit-īs       PRF.PASS.PTCP.DAT.PL
-    subit-īs       PRF.PASS.PTCP.ABL.PL
   subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAO]
     place/be placed under/in support; come up w/aid; assume a form; undergo, endure
-    subi-tis       2PL.PRS.ACT.IND
-  subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAO]
-    place/be placed under/in support; come up w/aid; assume a form; undergo, endure
-    subit-īs       PRF.PASS.PTCP.DAT.PL
-    subit-īs       PRF.PASS.PTCP.ABL.PL
   subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAA]
     to come, go under, approach, draw near, advance, proceed to, go on; to follow, succeed; to go down, sink; to come up, spring up; to enter; to come on secretly, advance, approach stealthily, steal upon; to come in, succeed, take place; to enter stealthily, come secretly, by degrees; to come into the mind, occur, suggest itself; to come, go under, enter; to submit to; to approach; to approach secretly, steal upon; to come into, enter, occur to; to follow, interrupt, answer; to subject one's self to, take upon one's self, undergo, submit to, sustain, endure, suffer; to attempt, try, undertake; that has come on suddenly, unexpectedly, sudden, unexpected, hastily collected; not newly sprung up, old, ancient; steep; a sudden, unexpected thing, a sudden occurrence; off-hand; suddenly, unexpectedly; (Lewis and Short)
     subi-tis       2PL.PRS.ACT.IND
-  subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAA]
-    to come, go under, approach, draw near, advance, proceed to, go on; to follow, succeed; to go down, sink; to come up, spring up; to enter; to come on secretly, advance, approach stealthily, steal upon; to come in, succeed, take place; to enter stealthily, come secretly, by degrees; to come into the mind, occur, suggest itself; to come, go under, enter; to submit to; to approach; to approach secretly, steal upon; to come into, enter, occur to; to follow, interrupt, answer; to subject one's self to, take upon one's self, undergo, submit to, sustain, endure, suffer; to attempt, try, undertake; that has come on suddenly, unexpectedly, sudden, unexpected, hastily collected; not newly sprung up, old, ancient; steep; a sudden, unexpected thing, a sudden occurrence; off-hand; suddenly, unexpectedly; (Lewis and Short)
     subit-īs       PRF.PASS.PTCP.DAT.PL
     subit-īs       PRF.PASS.PTCP.ABL.PL
   subitus, subita, subitum  adjective, 1st/2nd declension  [XXXDX]  lesser
@@ -36464,8 +36226,6 @@ vigilate
   vigilo, vigilare, vigilavi, vigilatus  verb, 1st conjugation  [XXXAX]
     to watch, keep awake, not sleep, be wakeful; to be watchful, vigilant; to keep watch; to watch through, spend in watching, make while watching; watchful, anxious, careful, vigilant; watchfully, carefully, vigilantly; (Lewis and Short)
     vigil-āte      2PL.PRS.ACT.IMP
-  vigilo, vigilare, vigilavi, vigilatus  verb, 1st conjugation  [XXXAX]
-    to watch, keep awake, not sleep, be wakeful; to be watchful, vigilant; to keep watch; to watch through, spend in watching, make while watching; watchful, anxious, careful, vigilant; watchfully, carefully, vigilantly; (Lewis and Short)
     vigilāt-e      PRF.PASS.PTCP.VOC.SG.M
 
 viri
@@ -37282,8 +37042,6 @@ aequatis
   aequo, aequare, aequavi, aequatus  verb, 1st conjugation, transitive  [XXXAO]
     to make one thing equal to another; to place a thing on an equality with, to compare; to make level, even, smooth, divided into equal parts; to make an equal front; to become equal to one, to equal, come up to, attain to; (Lewis and Short)
     aequ-ātis      2PL.PRS.ACT.IND
-  aequo, aequare, aequavi, aequatus  verb, 1st conjugation, transitive  [XXXAO]
-    to make one thing equal to another; to place a thing on an equality with, to compare; to make level, even, smooth, divided into equal parts; to make an equal front; to become equal to one, to equal, come up to, attain to; (Lewis and Short)
     aequāt-īs      PRF.PASS.PTCP.DAT.PL
     aequāt-īs      PRF.PASS.PTCP.ABL.PL
 
@@ -37655,8 +37413,6 @@ ite
   eo, ire, ivi(ii), itus  verb, irregular  [XXXAX]
     to walk, ride, sail, fly, move; to proceed against, to march against; to pass away; to proceed, move, advance; to go over, accede to any opinion; to vote against a bill; to be sold at; to proceed, turn out, happen; to set about, to prepare, to wish, to be about; (Lewis and Short)
     i-te           2PL.PRS.ACT.IMP
-  eo, ire, ivi(ii), itus  verb, irregular  [XXXAX]
-    to walk, ride, sail, fly, move; to proceed against, to march against; to pass away; to proceed, move, advance; to go over, accede to any opinion; to vote against a bill; to be sold at; to proceed, turn out, happen; to set about, to prepare, to wish, to be about; (Lewis and Short)
     it-e           PRF.PASS.PTCP.VOC.SG.M
 
 ferte
@@ -37700,21 +37456,11 @@ flammas
 date
   do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
     to give, give away, grant, allow, permit; to give up, yield, present, confer, furnish, afford; to offer; to write to one; to join in a conference, converse; gifts, presents; to enroll one's self for military service, enlist; To grant, consent, permit; it is permitted, allowed, granted; to put, place, carry, betake one's self; to cause, make, bring about, inflict, impose; to move, be moved; to please, humor; to give up, sacrifice; to give one's self up wholly, dedicate one's self, serve; to announce, tell, relate, communicate; to exhibit, produce a play; to deceive, cheat; to impute, assign, ascribe, attribute; to give one a dinner, entertain at table; To grant, allow; (Lewis and Short)
-    d-āte          2PL.PRS.ACT.IMP
-  do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
-    to give, give away, grant, allow, permit; to give up, yield, present, confer, furnish, afford; to offer; to write to one; to join in a conference, converse; gifts, presents; to enroll one's self for military service, enlist; To grant, consent, permit; it is permitted, allowed, granted; to put, place, carry, betake one's self; to cause, make, bring about, inflict, impose; to move, be moved; to please, humor; to give up, sacrifice; to give one's self up wholly, dedicate one's self, serve; to announce, tell, relate, communicate; to exhibit, produce a play; to deceive, cheat; to impute, assign, ascribe, attribute; to give one a dinner, entertain at table; To grant, allow; (Lewis and Short)
-    dat-e          PRF.PASS.PTCP.VOC.SG.M
   do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
     surrender/give over; send to die; ascribe/attribute; give birth/produce; utter;
-    d-āte          2PL.PRS.ACT.IMP
-  do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
-    surrender/give over; send to die; ascribe/attribute; give birth/produce; utter;
-    dat-e          PRF.PASS.PTCP.VOC.SG.M
   do, dare, dedi, datus  verb, 1st conjugation, transitive  [FXXEM]  medieval  uncommon
     give in marriage;
     d-āte          2PL.PRS.ACT.IMP
-  do, dare, dedi, datus  verb, 1st conjugation, transitive  [FXXEM]  medieval  uncommon
-    give in marriage;
     dat-e          PRF.PASS.PTCP.VOC.SG.M
 
 vela
@@ -37774,30 +37520,31 @@ sum
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -38048,48 +37795,18 @@ confectum
     cōnfect-um     ACC.SG.N
   conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [XXXAO]
     To make a thing completely ready, make, prepare, bring about, complete, accomplish, execute; to settle, close a bargain, finish; to pass over, accomplish, traverse, go over, make; to produce, cause, make, bring about, effect; to complete, finish, end, spend, pass; to bring forward, show, deduce; to follow logically, be deduced; to diminish, lessen, weaken an object; to sweep away, destroy, kill, wear out, consume; impaired, weakened; to prepare, provide, procure, bring together; effecting, causing, producing, efficient, productive of physical good; (Lewis and Short)
-    cōnfect-um     PRF.PASS.PTCP.NOM.SG.N
-    cōnfect-um     PRF.PASS.PTCP.VOC.SG.N
-    cōnfect-um     PRF.PASS.PTCP.ACC.SG.M
-    cōnfect-um     PRF.PASS.PTCP.ACC.SG.N
-  conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [XXXAO]
-    To make a thing completely ready, make, prepare, bring about, complete, accomplish, execute; to settle, close a bargain, finish; to pass over, accomplish, traverse, go over, make; to produce, cause, make, bring about, effect; to complete, finish, end, spend, pass; to bring forward, show, deduce; to follow logically, be deduced; to diminish, lessen, weaken an object; to sweep away, destroy, kill, wear out, consume; impaired, weakened; to prepare, provide, procure, bring together; effecting, causing, producing, efficient, productive of physical good; (Lewis and Short)
-    cōnfect-um     SUP.ACC
   conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [XXXAO]
     compose; amass, collect; raise (troops); traverse; eat up, consume; expend;
-    cōnfect-um     PRF.PASS.PTCP.NOM.SG.N
-    cōnfect-um     PRF.PASS.PTCP.VOC.SG.N
-    cōnfect-um     PRF.PASS.PTCP.ACC.SG.M
-    cōnfect-um     PRF.PASS.PTCP.ACC.SG.N
-  conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [XXXAO]
-    compose; amass, collect; raise (troops); traverse; eat up, consume; expend;
-    cōnfect-um     SUP.ACC
   conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [XXXAO]
     finish off; kill, dispatch; defeat finally, subdue/reduce/pacify; chop/cut up;
-    cōnfect-um     PRF.PASS.PTCP.NOM.SG.N
-    cōnfect-um     PRF.PASS.PTCP.VOC.SG.N
-    cōnfect-um     PRF.PASS.PTCP.ACC.SG.M
-    cōnfect-um     PRF.PASS.PTCP.ACC.SG.N
-  conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [XXXAO]
-    finish off; kill, dispatch; defeat finally, subdue/reduce/pacify; chop/cut up;
-    cōnfect-um     SUP.ACC
   conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [XXXAA]
     to make a thing completely ready, make, prepare, bring about, complete, accomplish, execute; to settle, close a bargain, finish; to pass over, accomplish, traverse, go over, make; to produce, cause, make, bring about, effect; to complete, finish, end, spend, pass; to bring forward, show, deduce; to follow logically, to be deduced; to diminish, lessen, weaken an object; to sweep away, destroy, kill, wear out, consume; impaired, weakened; to prepare, provide, procure, bring together; effecting, causing, producing, efficient, productive of physical good; (Lewis and Short)
-    cōnfect-um     PRF.PASS.PTCP.NOM.SG.N
-    cōnfect-um     PRF.PASS.PTCP.VOC.SG.N
-    cōnfect-um     PRF.PASS.PTCP.ACC.SG.M
-    cōnfect-um     PRF.PASS.PTCP.ACC.SG.N
-  conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [XXXAA]
-    to make a thing completely ready, make, prepare, bring about, complete, accomplish, execute; to settle, close a bargain, finish; to pass over, accomplish, traverse, go over, make; to produce, cause, make, bring about, effect; to complete, finish, end, spend, pass; to bring forward, show, deduce; to follow logically, to be deduced; to diminish, lessen, weaken an object; to sweep away, destroy, kill, wear out, consume; impaired, weakened; to prepare, provide, procure, bring together; effecting, causing, producing, efficient, productive of physical good; (Lewis and Short)
-    cōnfect-um     SUP.ACC
   conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [FEXEM]  medieval  uncommon
     consecrate (bread or wine) (eccl.);
     cōnfect-um     PRF.PASS.PTCP.NOM.SG.N
     cōnfect-um     PRF.PASS.PTCP.VOC.SG.N
     cōnfect-um     PRF.PASS.PTCP.ACC.SG.M
     cōnfect-um     PRF.PASS.PTCP.ACC.SG.N
-  conficio, conficere, confeci, confectus  verb, 3rd conjugation, transitive  [FEXEM]  medieval  uncommon
-    consecrate (bread or wine) (eccl.);
     cōnfect-um     SUP.ACC
 
 aetate
@@ -38138,8 +37855,6 @@ abreptum
     ābrept-um      PRF.PASS.PTCP.VOC.SG.N
     ābrept-um      PRF.PASS.PTCP.ACC.SG.M
     ābrept-um      PRF.PASS.PTCP.ACC.SG.N
-  abripio, abripere, abripui, abreptus  verb, 3rd conjugation, transitive  [XXXBO]
-    to take away by violence, to drag away, to tear off, away; to run, scamper away; to dissipate, squander; to carry off, detach; (Lewis and Short)
     ābrept-um      SUP.ACC
 
 divellere
@@ -38481,21 +38196,12 @@ natumque
     -que = and (enclitic, translated before attached word); completes plerus/uter;
   nascor, nasci, natus sum  verb, 3rd conjugation, deponent  [XXXAO]
     to be born, to be begotten; to rise, take beginning, derive origin, spring forth, grow, be found; To rise, be formed; To arise, spring forth, proceed from, be produced; to be regenerated, born again; arising, beginning, nascent, infant, immature; organic bodies, plants; born; a son, a daughter, children, offspring; born, made, destined, designed, intended, produced by nature; Formed, constituted by nature; under the present circumstances, according to the state of affairs, as matters are; so old, of the age of; (Lewis and Short)
-    nāt-um         PRF.PTCP.NOM.SG.N
-    nāt-um         PRF.PTCP.VOC.SG.N
-    nāt-um         PRF.PTCP.ACC.SG.M
-    nāt-um         PRF.PTCP.ACC.SG.N
-  nascor, nasci, natus sum  verb, 3rd conjugation, deponent  [XXXAO]
-    to be born, to be begotten; to rise, take beginning, derive origin, spring forth, grow, be found; To rise, be formed; To arise, spring forth, proceed from, be produced; to be regenerated, born again; arising, beginning, nascent, infant, immature; organic bodies, plants; born; a son, a daughter, children, offspring; born, made, destined, designed, intended, produced by nature; Formed, constituted by nature; under the present circumstances, according to the state of affairs, as matters are; so old, of the age of; (Lewis and Short)
-    nāt-um         SUP.ACC
   nascor, nasci, natus sum  verb, 3rd conjugation, deponent  [XXXAO]
     be born/begotten/formed/destined; rise (stars), dawn; start, originate; arise;
     nāt-um         PRF.PTCP.NOM.SG.N
     nāt-um         PRF.PTCP.VOC.SG.N
     nāt-um         PRF.PTCP.ACC.SG.M
     nāt-um         PRF.PTCP.ACC.SG.N
-  nascor, nasci, natus sum  verb, 3rd conjugation, deponent  [XXXAO]
-    be born/begotten/formed/destined; rise (stars), dawn; start, originate; arise;
     nāt-um         SUP.ACC
   natus, nati  noun, 2nd declension, masculine  [XXXCO]
     son; child; children (pl.);
@@ -38608,8 +38314,11 @@ sol
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-i           NOM.PL.M
+    qu-i           NOM.SG.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -38617,14 +38326,6 @@ qui
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
   queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
     to be able, can; (Lewis and Short)
@@ -38845,8 +38546,6 @@ di
   di  noun  [XEXCX]
     god;
     di             NOM.PL
-  di  noun  [XEXCX]
-    god;
     di             VOC.PL
   di  Roman numeral
     501
@@ -38894,8 +38593,6 @@ meritumque
     merit-um       PRF.PASS.PTCP.VOC.SG.N
     merit-um       PRF.PASS.PTCP.ACC.SG.M
     merit-um       PRF.PASS.PTCP.ACC.SG.N
-  mereo, merere, merui, meritus  verb, 2nd conjugation  [XXXAO]
-    to deserve, merit, to be entitled to, be worthy of; To earn, gain, get, obtain, acquire; To get by purchase, to buy, purchase; to serve for pay, to serve as a soldier, serve in the army; to behave, to deserve well, ill; deserving, guilty; that has rendered himself deserving, well-deserving; Deserving; committed, perpetrated; merited, just; That which one deserves, desert, reward, recompense, punishment; That by which one deserves, a merit, a service, kindness, benefit, favor; demerit, blame, fault; worth, value, importance; (Lewis and Short)
     merit-um       SUP.ACC
   mereor, mereri, meritus sum  verb, 2nd conjugation, deponent  [XXXAO]
     earn; deserve/merit/have right; win/gain/incur; earn soldier/whore pay, serve;
@@ -38903,8 +38600,6 @@ meritumque
     merit-um       PRF.PTCP.VOC.SG.N
     merit-um       PRF.PTCP.ACC.SG.M
     merit-um       PRF.PTCP.ACC.SG.N
-  mereor, mereri, meritus sum  verb, 2nd conjugation, deponent  [XXXAO]
-    earn; deserve/merit/have right; win/gain/incur; earn soldier/whore pay, serve;
     merit-um       SUP.ACC
   meritum, meriti  noun, 2nd declension, neuter  [XXXDX]  lesser
     merit, service; value, due reward;
@@ -38970,15 +38665,9 @@ nostras
 audite
   audio, audire, audivi, auditus  verb, 4th conjugation  [XXXAO]
     to hear, to perceive, understand by hearing, to learn; to hear concerning any one; to hear, attend, give ear, listen; to listen to, to give ear to, hearken to, attend; to hear a teacher, to receive instruction from, to study under; to listen, hearken to, to examine; to hear, listen to, lend an ear to, regard, grant, to hear one, to grant his desire or prayer; to hear a person, thing with approbation, to assent to, agree with, approve, grant, allow; To hear, to listen to, to obey, heed; to be obedient to, to obey; To hear thus and thus, to be named, styled somehow, to be in good, bad repute, to be praised, blamed, to have a good, bad character; As it were to hear, to hear mentally, to understand, to supply; A hearer, auditor; a hearer of, obedient to; (Lewis and Short)
-    aud-īte        2PL.PRS.ACT.IMP
-  audio, audire, audivi, auditus  verb, 4th conjugation  [XXXAO]
-    to hear, to perceive, understand by hearing, to learn; to hear concerning any one; to hear, attend, give ear, listen; to listen to, to give ear to, hearken to, attend; to hear a teacher, to receive instruction from, to study under; to listen, hearken to, to examine; to hear, listen to, lend an ear to, regard, grant, to hear one, to grant his desire or prayer; to hear a person, thing with approbation, to assent to, agree with, approve, grant, allow; To hear, to listen to, to obey, heed; to be obedient to, to obey; To hear thus and thus, to be named, styled somehow, to be in good, bad repute, to be praised, blamed, to have a good, bad character; As it were to hear, to hear mentally, to understand, to supply; A hearer, auditor; a hearer of, obedient to; (Lewis and Short)
-    audīt-e        PRF.PASS.PTCP.VOC.SG.M
   audio, audire, audivi, auditus  verb, 4th conjugation  [FXXEM]  medieval  uncommon
     audit (account);
     aud-īte        2PL.PRS.ACT.IMP
-  audio, audire, audivi, auditus  verb, 4th conjugation  [FXXEM]  medieval  uncommon
-    audit (account);
     audīt-e        PRF.PASS.PTCP.VOC.SG.M
 
 preces
@@ -39822,13 +39511,13 @@ exoriare
 aliquis
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; someone; some/few; some (particular) thing;
+    aliqu-is       DAT.PL
+    aliqu-is       ABL.PL
+    aliqu-is       NOM.SG.C
   pronoun, adjectival  [XXXAO]
     some; any; a few; a particular/certain ~; some other; about/like (NUM);
     aliqu-is       DAT.PL
     aliqu-is       ABL.PL
-  pronoun, indefinite  [XXXAO]
-    anyone/anybody/anything; someone; some/few; some (particular) thing;
-    aliqu-is       NOM.SG.C
 
 nostris
   noster, nostri  noun, 2nd declension, masculine  [XXXDX]  lesser
@@ -39864,8 +39553,11 @@ ultor
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-i           NOM.PL.M
+    qu-i           NOM.SG.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -39873,14 +39565,6 @@ qui
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
   queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
     to be able, can; (Lewis and Short)
@@ -40204,8 +39888,6 @@ invisam
     To look after, to go to see, to visit; To look into; (Lewis and Short)
     invīs-am       1SG.PRS.ACT.SBJV
     invīs-am       1SG.FUT.ACT.IND
-  inviso, invisere, invisi, invisus  verb, 3rd conjugation  [XXXDX]  lesser
-    To look after, to go to see, to visit; To look into; (Lewis and Short)
     invīs-am       PRF.PASS.PTCP.ACC.SG.F
 
 quaerens
@@ -40644,30 +40326,31 @@ stygio
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -41166,8 +40849,6 @@ quaesitum
     quaesīt-um     PRF.PASS.PTCP.VOC.SG.N
     quaesīt-um     PRF.PASS.PTCP.ACC.SG.M
     quaesīt-um     PRF.PASS.PTCP.ACC.SG.N
-  quaero, quaerere, quaesivi, quaesitus  verb, 3rd conjugation  [XXXAX]
-    to seek; To seek to get, procure, seek, search for; to get, procure, obtain, acquire; To seek for, miss; To ask; to seek, think over, meditate, aim at, plan; To look for, seek to gain, get, acquire, obtain, procure; to demand, need, require; To seek to learn, ask, inquire, interrogate; to prefer, seek; To examine, inquire into judicially, investigate, institute an investigation; to say the truth, in fact, to speak honestly, in short, in one word; sought out; select, special, extraordinary; far-fetched, studied, affected, assumed; A question; (Lewis and Short)
     quaesīt-um     SUP.ACC
   quaesitum, quaesiti  noun, 2nd declension, neuter  [XXXDX]  lesser
     question, inquiry; gain, acquisition, earnings;
@@ -41245,30 +40926,14 @@ notumque
     -que = and (enclitic, translated before attached word); completes plerus/uter;
   nosco, noscere, novi, notus  verb, 3rd conjugation, transitive  [XXXAO]
     to get a knowledge of, become acquainted with, come to know; to have become acquainted with, have learned, know; To examine, consider, take cognizance of; to know, recognize; to acknowledge, allow, admit of; To be acquainted with, practise, possess; to know; known; acquaintances, friends; notorious; (Lewis and Short)
-    nōt-um         PRF.PASS.PTCP.NOM.SG.N
-    nōt-um         PRF.PASS.PTCP.VOC.SG.N
-    nōt-um         PRF.PASS.PTCP.ACC.SG.M
-    nōt-um         PRF.PASS.PTCP.ACC.SG.N
-  nosco, noscere, novi, notus  verb, 3rd conjugation, transitive  [XXXAO]
-    to get a knowledge of, become acquainted with, come to know; to have become acquainted with, have learned, know; To examine, consider, take cognizance of; to know, recognize; to acknowledge, allow, admit of; To be acquainted with, practise, possess; to know; known; acquaintances, friends; notorious; (Lewis and Short)
-    nōt-um         SUP.ACC
   nosco, noscere, novi, notus  verb, 3rd conjugation, transitive  [XXXAO]
     examine, study, inspect; try (case); recognize, accept as valid/true; recall;
-    nōt-um         PRF.PASS.PTCP.NOM.SG.N
-    nōt-um         PRF.PASS.PTCP.VOC.SG.N
-    nōt-um         PRF.PASS.PTCP.ACC.SG.M
-    nōt-um         PRF.PASS.PTCP.ACC.SG.N
-  nosco, noscere, novi, notus  verb, 3rd conjugation, transitive  [XXXAO]
-    examine, study, inspect; try (case); recognize, accept as valid/true; recall;
-    nōt-um         SUP.ACC
   nosco, noscere, novi, notus  verb, 3rd conjugation, transitive  [XXXAA]
     to get a knowledge of, become acquainted with, come to know; to have become acquainted with, have learned, to know; to examine, consider, take cognizance of; to know, recognize; to acknowledge, allow, admit of; to be acquainted with, practise, possess; to know; known; acquaintances, friends; notorious; (Lewis and Short)
     nōt-um         PRF.PASS.PTCP.NOM.SG.N
     nōt-um         PRF.PASS.PTCP.VOC.SG.N
     nōt-um         PRF.PASS.PTCP.ACC.SG.M
     nōt-um         PRF.PASS.PTCP.ACC.SG.N
-  nosco, noscere, novi, notus  verb, 3rd conjugation, transitive  [XXXAA]
-    to get a knowledge of, become acquainted with, come to know; to have become acquainted with, have learned, to know; to examine, consider, take cognizance of; to know, recognize; to acknowledge, allow, admit of; to be acquainted with, practise, possess; to know; known; acquaintances, friends; notorious; (Lewis and Short)
     nōt-um         SUP.ACC
   notus, noti  noun, 2nd declension, masculine  [XXXDX]  lesser
     friends (pl.), acquaintances;
@@ -41286,21 +40951,12 @@ notumque
     nōt-um         ACC.SG.N
   novi, novisse, notus  verb, 3rd conjugation, perfect with present meaning  [XXXDX]  lesser
     know, know of; know how, be able (to); experience;  (PERF form, PRES force);
-    not-um         PRF.PASS.PTCP.NOM.SG.N
-    not-um         PRF.PASS.PTCP.VOC.SG.N
-    not-um         PRF.PASS.PTCP.ACC.SG.M
-    not-um         PRF.PASS.PTCP.ACC.SG.N
-  novi, novisse, notus  verb, 3rd conjugation, perfect with present meaning  [XXXDX]  lesser
-    know, know of; know how, be able (to); experience;  (PERF form, PRES force);
-    not-um         SUP.ACC
   novi, novisse, notus  verb, 3rd conjugation, perfect with present meaning  [XXXDX]  lesser
     know; be familiar/acquainted/conversant with/aware of; accept, recognize;
     not-um         PRF.PASS.PTCP.NOM.SG.N
     not-um         PRF.PASS.PTCP.VOC.SG.N
     not-um         PRF.PASS.PTCP.ACC.SG.M
     not-um         PRF.PASS.PTCP.ACC.SG.N
-  novi, novisse, notus  verb, 3rd conjugation, perfect with present meaning  [XXXDX]  lesser
-    know; be familiar/acquainted/conversant with/aware of; accept, recognize;
     not-um         SUP.ACC
   (less likely forms are not shown)
 
@@ -41587,8 +41243,6 @@ cursum
     curs-um        PRF.PASS.PTCP.VOC.SG.N
     curs-um        PRF.PASS.PTCP.ACC.SG.M
     curs-um        PRF.PASS.PTCP.ACC.SG.N
-  curro, currere, cucurri, cursus  verb, 3rd conjugation, intransitive  [XXXAO]
-    to run, move quickly, hasten, fly; (Lewis and Short)
     curs-um        SUP.ACC
   cursus, cursus  noun, 4th declension, masculine  [XXXAO]
     a running on foot, on a horse, chariot, ship, a course, way, march, passage, voyage, journey; flying; the course, flow of a stream; posts, relays divided into stations, for the speedy transmission of information upon state affairs; a course, progress, direction, way, flow of discourse; (Lewis and Short)
@@ -43105,11 +42759,7 @@ eadem
   eadem  pronoun  [XXXBX]
     same, the same, the very same; also; (idem, eadem, idem);
     eadem          NOM.SG.F
-  eadem  pronoun  [XXXBX]
-    same, the same, the very same; also; (idem, eadem, idem);
     eadem          NOM.PL.N
-  eadem  pronoun  [XXXBX]
-    same, the same, the very same; also; (idem, eadem, idem);
     eadem          ACC.PL.N
   eadem  adverb  [XXXDX]  lesser
     By the same way; by the same piece of work, At the same time, likewise; now ... now, at one time ... at another; (Lewis and Short)
@@ -43200,11 +42850,7 @@ eadem
   eadem  pronoun  [XXXBX]
     same, the same, the very same; also; (idem, eadem, idem);
     eadem          NOM.SG.F
-  eadem  pronoun  [XXXBX]
-    same, the same, the very same; also; (idem, eadem, idem);
     eadem          NOM.PL.N
-  eadem  pronoun  [XXXBX]
-    same, the same, the very same; also; (idem, eadem, idem);
     eadem          ACC.PL.N
   eadem  adverb  [XXXDX]  lesser
     By the same way; by the same piece of work, At the same time, likewise; now ... now, at one time ... at another; (Lewis and Short)
@@ -43411,21 +43057,11 @@ tuam
 date
   do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
     to give, give away, grant, allow, permit; to give up, yield, present, confer, furnish, afford; to offer; to write to one; to join in a conference, converse; gifts, presents; to enroll one's self for military service, enlist; To grant, consent, permit; it is permitted, allowed, granted; to put, place, carry, betake one's self; to cause, make, bring about, inflict, impose; to move, be moved; to please, humor; to give up, sacrifice; to give one's self up wholly, dedicate one's self, serve; to announce, tell, relate, communicate; to exhibit, produce a play; to deceive, cheat; to impute, assign, ascribe, attribute; to give one a dinner, entertain at table; To grant, allow; (Lewis and Short)
-    d-āte          2PL.PRS.ACT.IMP
-  do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
-    to give, give away, grant, allow, permit; to give up, yield, present, confer, furnish, afford; to offer; to write to one; to join in a conference, converse; gifts, presents; to enroll one's self for military service, enlist; To grant, consent, permit; it is permitted, allowed, granted; to put, place, carry, betake one's self; to cause, make, bring about, inflict, impose; to move, be moved; to please, humor; to give up, sacrifice; to give one's self up wholly, dedicate one's self, serve; to announce, tell, relate, communicate; to exhibit, produce a play; to deceive, cheat; to impute, assign, ascribe, attribute; to give one a dinner, entertain at table; To grant, allow; (Lewis and Short)
-    dat-e          PRF.PASS.PTCP.VOC.SG.M
   do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
     surrender/give over; send to die; ascribe/attribute; give birth/produce; utter;
-    d-āte          2PL.PRS.ACT.IMP
-  do, dare, dedi, datus  verb, 1st conjugation, transitive  [XXXAO]
-    surrender/give over; send to die; ascribe/attribute; give birth/produce; utter;
-    dat-e          PRF.PASS.PTCP.VOC.SG.M
   do, dare, dedi, datus  verb, 1st conjugation, transitive  [FXXEM]  medieval  uncommon
     give in marriage;
     d-āte          2PL.PRS.ACT.IMP
-  do, dare, dedi, datus  verb, 1st conjugation, transitive  [FXXEM]  medieval  uncommon
-    give in marriage;
     dat-e          PRF.PASS.PTCP.VOC.SG.M
 
 volnera
@@ -43470,8 +43106,13 @@ si
 quis
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-is          DAT.PL
+    qu-is          ABL.PL
+    qu-is          NOM.SG.C
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXAO]
@@ -43480,8 +43121,6 @@ quis
     who?, which?, what?; what kind of?;
     qu-is          DAT.PL
     qu-is          ABL.PL
-  pronoun, interrogative  [XXXAO]
-    who/what/which?, what/which one/man/person/thing? what kind/type of?;
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
     qu-is          NOM.SG.C
@@ -43763,8 +43402,6 @@ infixum
     īnfix-um       PRF.PASS.PTCP.VOC.SG.N
     īnfix-um       PRF.PASS.PTCP.ACC.SG.M
     īnfix-um       PRF.PASS.PTCP.ACC.SG.N
-  infigo, infigere, infixi, infixus  verb, 3rd conjugation  [XXXDX]  lesser
-    to fix, thrust, drive, fasten in; to infix, impress, imprint; (Lewis and Short)
     īnfix-um       SUP.ACC
 
 stridit
@@ -44103,30 +43740,31 @@ olympo
 quae
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
+    qu-ae          NOM.PL.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
+    qu-ae          NOM.PL.F
+    qu-ae          NOM.PL.N
+    qu-ae          ACC.PL.N
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-ae          NOM.PL.F
-  pronoun, relative  [XXXAO]
-    who; that; which, what; of which kind/degree; person/thing/time/point that;
+    qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXBO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, indefinite  [XXXAO]
-    who/whatever, everyone who, all that, anything that;
   pronoun, adjectival  [XXXBO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-  pronoun, adjectival  [XXXAO]
-    who?, which?, what?; what kind of?;
     qu-ae          NOM.SG.F
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; whoever you pick; something (or other); any (NOM S);
-  pronoun, adjectival  [XXXAO]
-    any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
     qu-ae          NOM.PL.N
     qu-ae          ACC.PL.N
 
@@ -44296,30 +43934,12 @@ subitoque
     -que = and (enclitic, translated before attached word); completes plerus/uter;
   subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAO]
     to come, go under, approach, draw near, advance, proceed to, go on; to follow, succeed; to go down, sink; to come up, spring up; to enter; to come on secretly, advance, approach stealthily, steal upon; to come in, succeed, take place; to enter stealthily, come secretly, by degrees; to come into the mind, occur, suggest itself; to submit to; To come into, enter, occur to; To follow, interrupt, answer; To subject one's self to, take upon one's self, undergo, submit to, sustain, endure, suffer; to attempt, try, undertake; that has come on suddenly, unexpectedly, sudden, unexpected, hastily collected; not newly sprung up, old, ancient; steep; a sudden, unexpected thing, a sudden occurrence; off-hand; suddenly, unexpectedly; (Lewis and Short)
-    subi-tō        2SG.FUT.ACT.IMP
-    subi-tō        3SG.FUT.ACT.IMP
-  subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAO]
-    to come, go under, approach, draw near, advance, proceed to, go on; to follow, succeed; to go down, sink; to come up, spring up; to enter; to come on secretly, advance, approach stealthily, steal upon; to come in, succeed, take place; to enter stealthily, come secretly, by degrees; to come into the mind, occur, suggest itself; to submit to; To come into, enter, occur to; To follow, interrupt, answer; To subject one's self to, take upon one's self, undergo, submit to, sustain, endure, suffer; to attempt, try, undertake; that has come on suddenly, unexpectedly, sudden, unexpected, hastily collected; not newly sprung up, old, ancient; steep; a sudden, unexpected thing, a sudden occurrence; off-hand; suddenly, unexpectedly; (Lewis and Short)
-    subit-ō        PRF.PASS.PTCP.DAT.SG.M
-    subit-ō        PRF.PASS.PTCP.DAT.SG.N
-    subit-ō        PRF.PASS.PTCP.ABL.SG.M
-    subit-ō        PRF.PASS.PTCP.ABL.SG.N
   subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAO]
     place/be placed under/in support; come up w/aid; assume a form; undergo, endure
-    subi-tō        2SG.FUT.ACT.IMP
-    subi-tō        3SG.FUT.ACT.IMP
-  subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAO]
-    place/be placed under/in support; come up w/aid; assume a form; undergo, endure
-    subit-ō        PRF.PASS.PTCP.DAT.SG.M
-    subit-ō        PRF.PASS.PTCP.DAT.SG.N
-    subit-ō        PRF.PASS.PTCP.ABL.SG.M
-    subit-ō        PRF.PASS.PTCP.ABL.SG.N
   subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAA]
     to come, go under, approach, draw near, advance, proceed to, go on; to follow, succeed; to go down, sink; to come up, spring up; to enter; to come on secretly, advance, approach stealthily, steal upon; to come in, succeed, take place; to enter stealthily, come secretly, by degrees; to come into the mind, occur, suggest itself; to come, go under, enter; to submit to; to approach; to approach secretly, steal upon; to come into, enter, occur to; to follow, interrupt, answer; to subject one's self to, take upon one's self, undergo, submit to, sustain, endure, suffer; to attempt, try, undertake; that has come on suddenly, unexpectedly, sudden, unexpected, hastily collected; not newly sprung up, old, ancient; steep; a sudden, unexpected thing, a sudden occurrence; off-hand; suddenly, unexpectedly; (Lewis and Short)
     subi-tō        2SG.FUT.ACT.IMP
     subi-tō        3SG.FUT.ACT.IMP
-  subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAA]
-    to come, go under, approach, draw near, advance, proceed to, go on; to follow, succeed; to go down, sink; to come up, spring up; to enter; to come on secretly, advance, approach stealthily, steal upon; to come in, succeed, take place; to enter stealthily, come secretly, by degrees; to come into the mind, occur, suggest itself; to come, go under, enter; to submit to; to approach; to approach secretly, steal upon; to come into, enter, occur to; to follow, interrupt, answer; to subject one's self to, take upon one's self, undergo, submit to, sustain, endure, suffer; to attempt, try, undertake; that has come on suddenly, unexpectedly, sudden, unexpected, hastily collected; not newly sprung up, old, ancient; steep; a sudden, unexpected thing, a sudden occurrence; off-hand; suddenly, unexpectedly; (Lewis and Short)
     subit-ō        PRF.PASS.PTCP.DAT.SG.M
     subit-ō        PRF.PASS.PTCP.DAT.SG.N
     subit-ō        PRF.PASS.PTCP.ABL.SG.M
