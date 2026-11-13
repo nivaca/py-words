@@ -71,7 +71,7 @@ class WindowTests(unittest.TestCase):
         bar = self.app.menu_bar
         labels = [bar.entrycget(i, 'label')
                   for i in range(bar.index('end') + 1)]
-        self.assertEqual(labels, ['Dictionary', 'View', 'Help'])
+        self.assertEqual(labels, ['Dictionary', 'Edit', 'View', 'Help'])
 
     def test_styled_results(self):
         self.look_up('arma')

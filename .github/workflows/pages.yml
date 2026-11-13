@@ -1,5 +1,6 @@
-# Publishes the site of py-words (pages/build.py: the dictionary in the
-# browser, with Pyodide) on GitHub Pages, with each push to main.
+# Publishes the site of py-words (pages/build.py: a page that sends the
+# visitors to the program on its server; the version in the browser, with
+# Pyodide, is no longer built) on GitHub Pages, with each push to main.
 # In the repository's settings: Pages > Source: GitHub Actions.
 
 name: Pages

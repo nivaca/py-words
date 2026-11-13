@@ -27,7 +27,7 @@ from interface import tr
 from settings import Settings, ensure_config
 from lexicon import default_datadir
 from editor import Editor, Editing, Fields, FIELD_LABELS, POS_CHOICES
-from editor import READ_ONLY, read_only
+from editor import read_only, read_only_message
 from gui_fonts import Fonts, scaled
 from gui_theme import Theme
 from lexicon import DICTIONARY
@@ -470,7 +470,7 @@ def main():
         raise SystemExit(tr('There is no {file} in {folder}',
                             file=DICTIONARY, folder=datadir))
     if read_only(datadir):
-        raise SystemExit(tr(READ_ONLY, folder=datadir))
+        raise SystemExit(read_only_message(datadir))
     settings = Settings()
     settings.load(datadir)
     window = EditorWindow(None, datadir, language=settings.language)

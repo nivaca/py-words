@@ -292,6 +292,11 @@ from its root or from a folder.  In GitHub, a workflow runs the tests,
 builds the site and publishes it in GitHub Pages with each push to the
 main branch.
 
+Later the program went to a server for everyone
+(<https://nivaca.pythonanywhere.com/>), and the old address sends
+there.  The version in the browser is no longer published, although
+`pages/build.py --browser` still builds it.
+
 7. A fuzzy search
 -----------------
 

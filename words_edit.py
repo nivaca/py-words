@@ -34,7 +34,7 @@ import interface
 from interface import N_, tr, yes
 from settings import Settings, ensure_config
 from lexicon import default_datadir
-from editor import READ_ONLY, read_only
+from editor import read_only, read_only_message
 from editor import (Editor, Editing, Fields, FIELD_LABELS, POS_CHOICES,
                     CODE_FIELDS)
 from lexicon import DICTIONARY
@@ -510,7 +510,7 @@ def main(argv=None):
         sys.exit('words_edit.py: ' + tr('there is no {file} in {folder}',
                                         file=DICTIONARY, folder=datadir))
     if read_only(datadir):
-        sys.exit('words_edit.py: ' + tr(READ_ONLY, folder=datadir))
+        sys.exit('words_edit.py: ' + read_only_message(datadir))
     if not sys.stdin.isatty() or not sys.stdout.isatty():
         sys.exit('words_edit.py: ' + tr('this is a full-screen program; '
                                         'run it in a terminal (or use '

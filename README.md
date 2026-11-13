@@ -311,8 +311,9 @@ for searching (Up and Down bring back the earlier searches), the results
 below (PgUp and PgDn scroll them), and the keys are shown in the last
 line.  F2 changes between Latin to English and English to Latin, F3
 lists the settings (Space changes one), F4 opens the dictionary editor,
-F5 chooses the language of the meanings, F6 the one of the interface, F9
-clears the history, F1 shows the help, and F10 quits.  It shares the
+F5 chooses the language of the meanings, F6 the one of the interface, F7
+copies all the results, F9 clears the history, F1 shows the help, and F10
+quits.  It shares the
 settings and the history with `words.py` and with the window.  (In
 Windows it needs the package windows-curses.)
 
@@ -368,45 +369,27 @@ settings and earlier searches.  The former address,
 <https://nicolasvaughan.org/py-words/>, sends there, together with the
 search (`?q=amicus+est`), so the old links and bookmarks still work.
 
-There is also a version that runs in the browser, at
-<https://nicolasvaughan.org/py-words/browser/>.  It is the page of
-`words_web.py`, but without a server: the browser downloads Python itself
-(Pyodide, that is Python compiled for WebAssembly), together with the
-program and its data (a zip of less than 3 MB), and it makes the searches
-by itself.  Nothing of what you write goes out of the browser.
-
-The first visit takes some seconds, the most part of them downloading
-Python.  After that, the browser keeps Python, the program and a cache of
-the dictionary, so the next visits start in one second and a half more or
-less, and each search is immediate.  When there is a new version, you see
-it in your next visit.
-
-You find there everything that `words_web.py` does: the searches in both
-directions, the languages of the meanings and of the interface, the
-settings, the earlier searches, the dark mode.  Each search has its own
-address
-(`https://nicolasvaughan.org/py-words/browser/?q=amicus+est`),
-useful for the bookmarks.  The settings and the history are kept in the browser (in
-its local storage), so they are not shared with the programs in your
-computer, nor with other browsers.  It is not possible to edit the
-dictionary online.  You need a more or less recent browser, and a
-connection for starting it.
+There was also a version that ran in the browser, with Pyodide (Python
+compiled for WebAssembly), at <https://nicolasvaughan.org/py-words/browser/>.
+It is no longer published: its addresses send to the server too.  It
+can still be built (see below).
 
 The site is built from `pages/`:
 
     $ python3 pages/build.py [-o FOLDER]       # writes site/
-    $ python3 -m http.server -d site 8001      # try localhost:8001/browser/
+    $ python3 -m http.server -d site 8001      # try localhost:8001
 
 The result is a static site, that any web server can host, in its root
-or inside a folder.  In `browser/` is the version in the browser (the
-page, its script, the icon, and `py-words.zip`, with the `.py` files of
-the program and its data); the page of the site (`pages/redirect.html`)
-sends the visitors, with their search, to the program on the server
-(`--server URL` chooses it; by default nivaca.pythonanywhere.com), and
-links to `browser/`.  In GitHub, the
-workflow `.github/workflows/pages.yml` runs the tests, builds the site
-and publishes it in GitHub Pages in each push to `main`.  (In the
-settings of the repository, Pages needs Source: GitHub Actions.)
+or inside a folder.  Its page (`pages/redirect.html`, also as `404.html`
+for any other address) sends the visitors, with their search, to the
+program on the server (`--server URL` chooses it; by default
+nivaca.pythonanywhere.com).  With `--browser` the site has also, in
+`browser/`, the version in the browser (the page, its script, the icon,
+and `py-words.zip`, with the `.py` files of the program and its data),
+and its page links to it.  In GitHub, the workflow
+`.github/workflows/pages.yml` runs the tests, builds the site (without
+`--browser`) and publishes it in GitHub Pages in each push to `main`.
+(In the settings of the repository, Pages needs Source: GitHub Actions.)
 
 The whole program can also run on a web server for everyone, which is
 faster than the version in the browser (the searches are made by the
@@ -479,9 +462,9 @@ then the sun (☀) makes them light again.  Both choices are remembered in the c
 "Settings and files").  For starting the program from the applications
 menu, see "Installation" above.
 
-The window has three menus: Dictionary (the dictionary editor, the
-Settings, and Quit), View (find in the results, the size of the text, the
-fonts and the dark mode) and Help (the help and the credits).  The
+The window has four menus: Dictionary (the dictionary editor, the
+Settings, and Quit), Edit (cut, copy and paste), View (find in the
+results, the size of the text, the fonts and the dark mode) and Help (the help and the credits).  The
 results are the same text as in the command line, but with some order
 for the eyes: the word looked up is bigger, the dictionary form is in
 bold, and the codes, the forms and the notes have other colours.  You can

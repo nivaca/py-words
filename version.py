@@ -13,7 +13,8 @@ NAME = 'py-words'
 #  Al subir la versión: también el nombre del zip y del RPM en los dos
 #  README, el título de docs/DESCRIPCIÓN_es.md, las notas de "Version"/
 #  "Versiones" y Version: y %changelog de packaging/py-words.spec
-#  (rpmdev-bumpspec).
+#  (rpmdev-bumpspec), y un <release> nuevo arriba en
+#  packaging/flatpak/io.github.nivaca.PyWords.metainfo.xml.
 VERSION = '3.14'
 URL = 'https://github.com/nivaca/py-words'
 

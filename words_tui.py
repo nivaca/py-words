@@ -12,6 +12,7 @@
     F4 / Ctrl-E     edit the dictionary
     F5 / Ctrl-G     the language of the meanings
     F6              the language of the interface
+    F7              copy all the results
     F9              clear the history of the searches
     F1              this help
     F10 / Ctrl-Q    quit
@@ -30,6 +31,7 @@ import os
 import sys
 import textwrap
 
+import clipboard
 import guide
 import interface
 from config import ConfigError
@@ -49,11 +51,12 @@ KEYS = {
     'settings': (curses.KEY_F3, ctrl('o')), 'edit': (curses.KEY_F4,
                                                      ctrl('e')),
     'meanings': (curses.KEY_F5, ctrl('g')), 'interface': (curses.KEY_F6,),
+    'clipboard': (curses.KEY_F7,),
     'clear': (curses.KEY_F9,), 'quit': (curses.KEY_F10, ctrl('q'),
                                         ctrl('c')),
 }
 BAR = N_('F1 help  F2 direction  F3 settings  F4 edit  F5 meanings  '
-         'F6 interface  F9 clear  F10 quit')
+         'F6 interface  F7 copy  F9 clear  F10 quit')
 
 #  The help (F1, --help): the second and third paragraphs of the
 #  docstring, without their indentation
@@ -221,6 +224,17 @@ class DictionaryTUI(Screen):
         self.message = tr('The interface is in {language}.',
                           language=names[codes[pos]])
 
+    def copy_results(self):
+        """All the results, as they are (not wrapped), into the
+        clipboard."""
+        if self.welcome:
+            self.message = tr('There are no results yet.')
+            return
+        self.message = tr('The results were copied.') \
+            if clipboard.copy('\n'.join(self.lines) + '\n') else \
+            tr('The results were copied, if the terminal lets programs '
+               'use the clipboard.')
+
     def clear_history(self):
         if self.confirm(tr('Forget the earlier searches (also those of the '
                            'window and the command line)?')):
@@ -241,11 +255,11 @@ class DictionaryTUI(Screen):
         """The dictionary editor, in this terminal; the dictionary is
         read again after it."""
         import words_edit
-        from editor import READ_ONLY, read_only
+        from editor import read_only, read_only_message
         if read_only(self.datadir):
             h, w = self.scr.getmaxyx()
             self.popup(tr('Edit dictionary…').rstrip('…'), textwrap.wrap(
-                tr(READ_ONLY, folder=self.datadir), max(30, min(70, w - 8))))
+                read_only_message(self.datadir), max(30, min(70, w - 8))))
             return
         path = os.path.join(self.datadir, DICTIONARY)
         before = os.path.getmtime(path)
@@ -347,6 +361,7 @@ class DictionaryTUI(Screen):
                    'settings': self.settings, 'edit': self.edit_dictionary,
                    'meanings': self.choose_language,
                    'interface': self.choose_interface,
+                   'clipboard': self.copy_results,
                    'clear': self.clear_history}
         for name, action in actions.items():
             if code in KEYS[name]:

@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Publishes a release of py-words on GitHub (with gh) and on Codeberg
 (with tea): the tag vVERSION (the version of version.py), with the zip and
-the AppImage attached, and (--rpm) the signed RPM, also published on Copr.
+the AppImage attached, (--rpm) the signed RPM, also published on Copr,
+and (--flatpak) the Flatpak.
 
     python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
                              [--no-build] [--no-appimage] [--rpm [--no-copr]]
+                             [--flatpak]
                              [--only github|codeberg] [--dry-run] [--yes]
 
 In order, each step only if it is needed:
@@ -14,7 +16,8 @@ In order, each step only if it is needed:
 2. makes the zip and the AppImage in dist/ (tools/bundle-zip.py and
    tools/bundle-appimage.py), unless --no-build (then those in dist/ are used);
    with --rpm, also the signed RPM and its public key in build/rpm/
-   (packaging/build-rpm.sh --sign; gpg asks for the passphrase);
+   (packaging/build-rpm.sh --sign; gpg asks for the passphrase); with
+   --flatpak, the Flatpak in dist/ (tools/bundle-flatpak.py);
 3. tags HEAD as vVERSION.  If the tag is there already on another commit,
    it stops, unless --redo moves it;
 4. pushes main and the tag to the remote (origin, which pushes to both
@@ -58,6 +61,7 @@ TAG = f'v{VERSION}'
 ZIP = os.path.join('dist', f'py-words-v.{VERSION}.zip')
 APPIMAGE = os.path.join('dist', f'py-words-v.{VERSION}-x86_64.AppImage')
 SPEC = os.path.join('packaging', 'py-words.spec')
+FLATPAK = os.path.join('dist', f'py-words-v.{VERSION}.flatpak')
 RPM_KEY = os.path.join('build', 'rpm', 'RPM-GPG-KEY-py-words')
 COPR_PROJECT = 'py-words'       # (of the copr-cli user, nivaca)
 
@@ -155,6 +159,8 @@ class Release:
         if self.args.rpm:
             tools += ('rpmbuild',) + (
                 () if self.args.no_copr else ('copr-cli',))
+        if self.args.flatpak and not self.args.no_build:
+            tools += ('flatpak', 'flatpak-builder')
         for tool in tools:
             if not shutil.which(tool):
                 sys.exit(f'release.py: {tool} is not installed')
@@ -208,6 +214,9 @@ class Release:
         if RPM_KEY in self.files:
             self.plan('Make the signed RPM', os.path.join(
                 'packaging', 'build-rpm.sh'), '--sign')
+        if FLATPAK in self.files:
+            self.plan('Make the Flatpak', sys.executable,
+                      os.path.join('tools', 'bundle-flatpak.py'))
 
     def tag(self):
         head = self.read('git', 'rev-parse', 'HEAD')
@@ -316,6 +325,8 @@ class Release:
         self.files = [ZIP] + ([] if args.no_appimage else [APPIMAGE])
         if args.rpm:
             self.files += [rpm(), RPM_KEY]
+        if args.flatpak:
+            self.files.append(FLATPAK)
         self.check()
         repos = self.repos()
         self.build()
@@ -331,7 +342,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(
         prog='tools/release.py',
         description=f'Publish {TAG} on GitHub and Codeberg, with the zip, '
-                    'the AppImage and (--rpm) the RPM.')
+                    'the AppImage, (--rpm) the RPM and (--flatpak) the '
+                    'Flatpak.')
     parser.add_argument('--redo', action='store_true',
                         help=f'move {TAG} to HEAD if it is on another commit '
                              '(here and on the remote), and replace the '
@@ -352,6 +364,8 @@ def main(argv=None):
                              'build of it')
     parser.add_argument('--no-copr', action='store_true',
                         help='with --rpm, do not send it to Copr')
+    parser.add_argument('--flatpak', action='store_true',
+                        help='also the Flatpak (tools/bundle-flatpak.py)')
     parser.add_argument('--only', choices=('github', 'codeberg'),
                         help='publish on one forge only')
     parser.add_argument('--remote', default='origin',

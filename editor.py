@@ -44,6 +44,17 @@ READ_ONLY = N_('The dictionary cannot be edited: its folder {folder} '
                'cannot be written to (as in the AppImage).  Copy the folder '
                'somewhere and give the copy as the data folder (in the '
                'settings, with --datadir or with $PY_WORDS_DATADIR).')
+#  The same in the Flatpak, which cannot reach a copy in the user's folders
+READ_ONLY_FLATPAK = N_('The dictionary cannot be edited in the Flatpak: its '
+                       'files cannot be written to.  To edit it, use the zip '
+                       'or a clone of the program (see the README).')
+
+
+def read_only_message(datadir: str) -> str:
+    """Why the dictionary in DATADIR cannot be edited, translated."""
+    if os.environ.get('FLATPAK_ID') or os.path.exists('/.flatpak-info'):
+        return tr(READ_ONLY_FLATPAK)
+    return tr(READ_ONLY, folder=datadir)
 
 
 def read_only(datadir: str) -> bool:

@@ -363,7 +363,7 @@ class SiteTests(unittest.TestCase):
         build = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(build)
         with tempfile.TemporaryDirectory() as out:
-            build.build(out)
+            build.build(out, browser=True)
             out = os.path.join(out, 'browser')
             with zipfile.ZipFile(os.path.join(out, 'py-words.zip')) as z:
                 z.extractall(os.path.join(out, 'unpacked'))
@@ -375,8 +375,9 @@ class SiteTests(unittest.TestCase):
             self.assertEqual(sorted(languages.names(data)), ['en', 'es'])
 
     def test_the_page(self):
-        """The page of the site sends the visitor to the server, with the
-        search, and links to the version in the browser, which is in
+        """The page of the site (also for any other address: 404.html)
+        sends the visitor to the server, with the search; the version in
+        the browser is only built, and linked to, with --browser, in
         browser/ with all its files."""
         import importlib.util
         import tempfile
@@ -387,13 +388,22 @@ class SiteTests(unittest.TestCase):
         spec.loader.exec_module(build)
         server = 'https://example.org/words/'
         with tempfile.TemporaryDirectory() as out:
-            build.build(out, server)
+            self.assertEqual(build.build(out, server),
+                             ['.nojekyll', '404.html', 'icon.png',
+                              'index.html'])
             with open(os.path.join(out, 'index.html'), encoding='utf-8') as f:
                 page = f.read()
+            with open(os.path.join(out, '404.html'), encoding='utf-8') as f:
+                self.assertEqual(f.read(), page)
+            build.build(out, server, browser=True)
             self.assertEqual(sorted(os.listdir(os.path.join(out, 'browser'))),
                              ['app.js', 'icon.png', 'index.html',
                               'py-words.zip'])
+            with open(os.path.join(out, 'index.html'), encoding='utf-8') as f:
+                with_browser = f.read()
         self.assertIn('location.replace("https://example.org/words/" + '
                       'location.search + location.hash);', page)
-        self.assertIn('<a href="browser/">', page)
-        self.assertNotIn('$', page)
+        self.assertNotIn('browser/', page)
+        self.assertIn('<a href="browser/">', with_browser)
+        for p in (page, with_browser):
+            self.assertNotIn('$', p)

@@ -74,9 +74,12 @@ WINDOW = (
        '"Meanings in" the language of the meanings, and "Fuzzy search", '
        'beside it, whether a word that finds nothing is followed by its '
        'near spellings.  The menus have the rest: Dictionary (the '
-       'dictionary editor, and the other settings, each with its help), '
-       'View (find in the results, the size of the text, the fonts, dark '
-       'mode) and Help (this text, and the version and the credits).'),
+       'dictionary editor, greyed out where the dictionary cannot be '
+       'written to, as in the AppImage and the Flatpak; and the other '
+       'settings, each with its help), '
+       'Edit (cut, copy and paste), View (find in the results, the size of '
+       'the text, the fonts, dark mode) and Help (this text, and the '
+       'version and the credits).'),
     N_('In the results, click the first word of an entry to look it up, or '
        'double-click any word (a word of the meanings is looked up in '
        'Latin).  Point at the codes in brackets or at an analysis (GEN.PL) '

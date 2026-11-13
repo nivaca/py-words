@@ -1022,8 +1022,8 @@
     <tr>No había nada que quitar.</tr>
   </text>
   <text>
-    <en>F1 help  F2 direction  F3 settings  F4 edit  F5 meanings  F6 interface  F9 clear  F10 quit</en>
-    <tr>F1 ayuda  F2 dirección  F3 ajustes  F4 editar  F5 significados  F6 interfaz  F9 borrar  F10 salir</tr>
+    <en>F1 help  F2 direction  F3 settings  F4 edit  F5 meanings  F6 interface  F7 copy  F9 clear  F10 quit</en>
+    <tr>F1 ayuda  F2 dirección  F3 ajustes  F4 editar  F5 significados  F6 interfaz  F7 copiar  F9 borrar  F10 salir</tr>
   </text>
   <text>
     <en>The interface is in {language}.</en>
@@ -2005,6 +2005,7 @@ F3 / Ctrl-O     settings: every parameter and developer mode
 F4 / Ctrl-E     edit the dictionary
 F5 / Ctrl-G     the language of the meanings
 F6              the language of the interface
+F7              copy all the results
 F9              clear the history of the searches
 F1              this help
 F10 / Ctrl-Q    quit</en>
@@ -2019,6 +2020,7 @@ F3 / Ctrl-O     ajustes: todos los parámetros y modos de desarrollo
 F4 / Ctrl-E     editar el diccionario
 F5 / Ctrl-G     el idioma de los significados
 F6              el idioma de la interfaz
+F7              copiar todos los resultados
 F9              borrar el historial de búsquedas
 F1              esta ayuda
 F10 / Ctrl-Q    salir</tr>
@@ -2383,8 +2385,8 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>Escriba en el cuadro de arriba y pulse Intro, o "Buscar"; la flecha a la derecha del cuadro lista las búsquedas anteriores.</tr>
   </text>
   <text>
-    <en>"Latin → …" and "… → Latin" choose the direction of the search, "Meanings in" the language of the meanings, and "Fuzzy search", beside it, whether a word that finds nothing is followed by its near spellings.  The menus have the rest: Dictionary (the dictionary editor, and the other settings, each with its help), View (find in the results, the size of the text, the fonts, dark mode) and Help (this text, and the version and the credits).</en>
-    <tr>"Latín → …" y "… → latín" eligen la dirección de la búsqueda, "Significados en" el idioma de los significados, y "Búsqueda aproximada", a su lado, si a una palabra que no encuentra nada le siguen sus grafías cercanas.  Los menús tienen lo demás: Diccionario (el editor del diccionario y los demás ajustes, cada uno con su ayuda), Ver (buscar en los resultados, el tamaño del texto, las fuentes, el modo oscuro) y Ayuda (este texto, y la versión y los créditos).</tr>
+    <en>"Latin → …" and "… → Latin" choose the direction of the search, "Meanings in" the language of the meanings, and "Fuzzy search", beside it, whether a word that finds nothing is followed by its near spellings.  The menus have the rest: Dictionary (the dictionary editor, greyed out where the dictionary cannot be written to, as in the AppImage and the Flatpak; and the other settings, each with its help), Edit (cut, copy and paste), View (find in the results, the size of the text, the fonts, dark mode) and Help (this text, and the version and the credits).</en>
+    <tr>"Latín → …" y "… → latín" eligen la dirección de la búsqueda, "Significados en" el idioma de los significados, y "Búsqueda aproximada", a su lado, si a una palabra que no encuentra nada le siguen sus grafías cercanas.  Los menús tienen lo demás: Diccionario (el editor del diccionario, en gris donde el diccionario no se puede escribir, como en la AppImage y el Flatpak; y los demás ajustes, cada uno con su ayuda), Editar (cortar, copiar y pegar), Ver (buscar en los resultados, el tamaño del texto, las fuentes, el modo oscuro) y Ayuda (este texto, y la versión y los créditos).</tr>
   </text>
   <text>
     <en>In the results, click the first word of an entry to look it up, or double-click any word (a word of the meanings is looked up in Latin).  Point at the codes in brackets or at an analysis (GEN.PL) to see what they mean.  A right click copies or looks up a word, and Ctrl and F finds a text in the results.</en>
@@ -2714,5 +2716,33 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
   <text>
     <en>On a web server open to everyone (as PythonAnywhere), the application is public_app(): each visitor's settings, languages, look and earlier searches are kept in the cookies of their browser, and nothing is saved on the server (--public tries it here).</en>
     <tr>En un servidor web abierto a todos (como PythonAnywhere), la aplicación es public_app(): los ajustes, idiomas, aspecto y búsquedas anteriores de cada visitante se guardan en las cookies de su navegador, y nada se guarda en el servidor (--public lo prueba aquí).</tr>
+  </text>
+  <text>
+    <en>Edit</en>
+    <tr>Editar</tr>
+  </text>
+  <text>
+    <en>Cut</en>
+    <tr>Cortar</tr>
+  </text>
+  <text>
+    <en>Paste</en>
+    <tr>Pegar</tr>
+  </text>
+  <text>
+    <en>There are no results yet.</en>
+    <tr>Aún no hay resultados.</tr>
+  </text>
+  <text>
+    <en>The results were copied.</en>
+    <tr>Los resultados se copiaron.</tr>
+  </text>
+  <text>
+    <en>The results were copied, if the terminal lets programs use the clipboard.</en>
+    <tr>Los resultados se copiaron, si la terminal deja a los programas usar el portapapeles.</tr>
+  </text>
+  <text>
+    <en>The dictionary cannot be edited in the Flatpak: its files cannot be written to.  To edit it, use the zip or a clone of the program (see the README).</en>
+    <tr>En el Flatpak no se puede editar el diccionario: sus archivos no se pueden escribir.  Para editarlo, use el zip o un clon del programa (véase el README).</tr>
   </text>
 </interface>

@@ -318,8 +318,9 @@ búsqueda (Arriba y Abajo traen las búsquedas anteriores), los resultados
 debajo (RePág y AvPág los desplazan) y las teclas a la vista en la última
 línea: F2 alterna entre latín al inglés e inglés al latín, F3
 lista los ajustes (Espacio cambia uno), F4 abre el editor del diccionario,
-F5 elige el idioma de los significados, F6 el de la interfaz, F9 borra el
-historial, F1 muestra la ayuda y F10 sale.  Comparte los ajustes y el
+F5 elige el idioma de los significados, F6 el de la interfaz, F7 copia
+todos los resultados, F9 borra el historial, F1 muestra la ayuda y F10
+sale.  Comparte los ajustes y el
 historial con `words.py` y la ventana.  (En Windows necesita el paquete
 windows-curses.)
 
@@ -376,43 +377,29 @@ propios ajustes y búsquedas anteriores.  La dirección anterior,
 búsqueda (`?q=amicus+est`), así que los enlaces y marcadores viejos
 siguen sirviendo.
 
-Hay también una versión que funciona en el navegador, en
-<https://nicolasvaughan.org/py-words/browser/>.  Es la página de
-`words_web.py`, pero sin servidor: el navegador descarga el propio Python (Pyodide, Python
-compilado para WebAssembly) y el programa con sus datos (un zip de menos
-de 3 MB), y hace las búsquedas por su cuenta.  Nada de lo que se escribe
-sale del navegador.
-
-La primera visita tarda unos segundos, casi todos en descargar Python.
-Después el navegador guarda Python, el programa y una caché del
-diccionario, así que las visitas siguientes arrancan en un segundo y
-medio, más o menos, y cada búsqueda es inmediata.  Cuando hay una versión
-nueva, se ve en la visita siguiente.
-
-Hace todo lo que hace `words_web.py`: búsquedas en los dos sentidos, los
-idiomas de los significados y de la interfaz, los ajustes, las búsquedas
-anteriores, el modo oscuro.  Cada búsqueda tiene su propia dirección
-(`https://nicolasvaughan.org/py-words/browser/?q=amicus+est`),
-que se puede guardar en marcadores.  Los ajustes y el historial se guardan en el
-navegador (en su almacenamiento local), así que no se comparten con los
-programas del equipo ni con otros navegadores.  En línea no se puede
-editar el diccionario.  Hace falta un navegador más o menos reciente, y conexión para arrancar.
+Hubo también una versión que funcionaba en el navegador, con Pyodide
+(Python compilado para WebAssembly), en
+<https://nicolasvaughan.org/py-words/browser/>.  Ya no se publica: sus
+direcciones llevan también al servidor.  Todavía se puede construir
+(véase más abajo).
 
 El sitio se construye a partir de `pages/`:
 
     $ python3 pages/build.py [-o CARPETA]      # escribe site/
-    $ python3 -m http.server -d site 8001      # pruebe localhost:8001/browser/
+    $ python3 -m http.server -d site 8001      # pruebe localhost:8001
 
 Sale un sitio estático que cualquier servidor web puede alojar, en su
-raíz o en una carpeta.  En `browser/` está la versión en el navegador
-(la página, su script, el icono y `py-words.zip`, con los archivos `.py`
-del programa y sus datos); la página del sitio (`pages/redirect.html`)
-lleva a los visitantes, con su búsqueda, al programa en el servidor
-(`--server URL` lo elige; por omisión, nivaca.pythonanywhere.com), y
-enlaza con `browser/`.  En GitHub, el flujo de
-trabajo `.github/workflows/pages.yml` corre las pruebas, construye el
-sitio y lo publica en GitHub Pages con cada push a `main`.  (En los
-ajustes del repositorio, Pages tiene que tener Source: GitHub Actions.)
+raíz o en una carpeta.  Su página (`pages/redirect.html`, también como
+`404.html` para cualquier otra dirección) lleva a los visitantes, con su
+búsqueda, al programa en el servidor (`--server URL` lo elige; por
+omisión, nivaca.pythonanywhere.com).  Con `--browser` el sitio tiene
+también, en `browser/`, la versión en el navegador (la página, su
+script, el icono y `py-words.zip`, con los archivos `.py` del programa y
+sus datos), y su página enlaza con ella.  En GitHub, el flujo de trabajo
+`.github/workflows/pages.yml` corre las pruebas, construye el sitio (sin
+`--browser`) y lo publica en GitHub Pages con cada push a `main`.  (En
+los ajustes del repositorio, Pages tiene que tener Source: GitHub
+Actions.)
 
 El programa entero puede también funcionar en un servidor web para
 todos, lo que es más rápido que la versión en el navegador (las
@@ -488,9 +475,9 @@ las vuelve a aclarar.  Ambas elecciones se recuerdan en el archivo de
 configuración (véase "Ajustes y archivos"). Para abrir el programa desde el menú de aplicaciones, véase
 "Instalación" más arriba.
 
-La ventana tiene tres menús: Diccionario (el editor del diccionario, los
-Ajustes y Salir), Ver (buscar en los resultados, el tamaño del texto, las
-fuentes y el modo oscuro) y Ayuda (la ayuda y los créditos).  Los
+La ventana tiene cuatro menús: Diccionario (el editor del diccionario, los
+Ajustes y Salir), Editar (cortar, copiar y pegar), Ver (buscar en los
+resultados, el tamaño del texto, las fuentes y el modo oscuro) y Ayuda (la ayuda y los créditos).  Los
 resultados son el mismo texto que en la línea de órdenes, pero más fácil
 de recorrer con la vista: la palabra buscada va más grande, la forma de
 diccionario en negrita, y los códigos, las formas y las notas en otros

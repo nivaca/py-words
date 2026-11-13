@@ -43,6 +43,28 @@ WELCOME = N_('Type a Latin word or line, and press Enter.  "Help" explains '
              'the results, and "About" shows the credits.')
 
 
+def selected(widget) -> bool:
+    """Whether WIDGET (an entry or a text) has text selected."""
+    try:
+        if isinstance(widget, tk.Text):
+            return bool(widget.tag_ranges('sel'))
+        return isinstance(widget, (tk.Entry, ttk.Entry)) and \
+            widget.selection_present()
+    except tk.TclError:
+        return False
+
+
+def editable(widget) -> bool:
+    """Whether text can be typed in WIDGET (not in the results, nor in a
+    list to choose from)."""
+    if not isinstance(widget, (tk.Entry, ttk.Entry, tk.Text)):
+        return False
+    try:
+        return str(widget.cget('state')) == 'normal'
+    except tk.TclError:
+        return False
+
+
 class App:
     def __init__(self, root, datadir, query: str = '', to_latin=False):
         self.root = root
@@ -147,7 +169,7 @@ class App:
         self.fit()
 
     def menus(self):
-        """The menu bar: Dictionary, View and Help."""
+        """The menu bar: Dictionary, Edit, View and Help."""
         root = self.root
         bar = tk.Menu(root, tearoff=False)
         key = 'Command' if sys.platform == 'darwin' else 'Ctrl'
@@ -163,6 +185,15 @@ class App:
         dictionary.add_command(label=tr('Quit'), accelerator=f'{key}+Q',
                                command=root.destroy)
         bar.add_cascade(label=tr('Dictionary'), menu=dictionary)
+        #  (the keys are Tk's own, in every box of text)
+        edit = tk.Menu(bar, tearoff=False)
+        edit.config(postcommand=lambda: self.edit_states(edit))
+        for name, letter, event in ((N_('Cut'), 'X', '<<Cut>>'),
+                                    (N_('Copy'), 'C', '<<Copy>>'),
+                                    (N_('Paste'), 'V', '<<Paste>>')):
+            edit.add_command(label=tr(name), accelerator=f'{key}+{letter}',
+                             command=lambda e=event: self.edit_event(e))
+        bar.add_cascade(label=tr('Edit'), menu=edit)
         view = tk.Menu(bar, tearoff=False)
         view.add_command(label=tr('Find in results…'),
                          accelerator=f'{key}+F', command=self.find)
@@ -192,6 +223,42 @@ class App:
         root.bind('<F1>', lambda e: self.help())
         root.bind(f'<{mod}-f>', lambda e: self.find())
         root.bind(f'<{mod}-q>', lambda e: root.destroy())
+
+    # The Edit menu acts on the box with the keyboard's focus (the search
+    # box, or the one of "Find in results"), or, for copying, on the
+    # results, where text is selected but not typed.
+
+    def edit_widget(self, event: str):
+        """The widget that EVENT (<<Cut>>, <<Copy>> or <<Paste>>) would act
+        on, or None if it cannot now."""
+        try:
+            focus = self.root.focus_get()
+        except (KeyError, tk.TclError):     # (in a combobox's list)
+            focus = None
+        if event == '<<Copy>>':
+            for widget in (focus, self.text):
+                if selected(widget):
+                    return widget
+            return None
+        if not editable(focus):
+            return None
+        if event == '<<Cut>>':
+            return focus if selected(focus) else None
+        try:
+            return focus if self.root.clipboard_get() else None
+        except tk.TclError:                 # (the clipboard is empty)
+            return None
+
+    def edit_states(self, menu: tk.Menu):
+        """Greys out what the Edit menu cannot do now."""
+        for i, event in enumerate(('<<Cut>>', '<<Copy>>', '<<Paste>>')):
+            menu.entryconfig(i, state='normal' if self.edit_widget(event)
+                             else 'disabled')
+
+    def edit_event(self, event: str):
+        widget = self.edit_widget(event)
+        if widget is not None:
+            widget.event_generate(event)
 
     def choose_dark(self):
         self.theme.set(self.dark.get())
