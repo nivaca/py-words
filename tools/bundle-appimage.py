@@ -40,6 +40,7 @@ import argparse
 import glob
 import importlib.util
 import json
+import re
 import shutil
 import stat
 import subprocess
@@ -64,6 +65,24 @@ PYTHON_RELEASES = 'https://api.github.com/repos/niess/python-appimage/' \
 MANYLINUX = ('manylinux2014', 'manylinux_2_28')
 APPIMAGETOOL = 'https://github.com/AppImage/appimagetool/releases/' \
     f'download/continuous/appimagetool-{ARCH}.AppImage'
+
+#  The terminals whose descriptions go in the AppImage.  Its Python has the
+#  ncurses 5 of manylinux, which cannot read the descriptions that newer
+#  systems (Fedora, Debian 12...) compile in the format of ncurses 6.1 for
+#  every terminal with 256 colours, and then curses does not start.  So the
+#  AppImage carries them in the old format, made from those of the system
+#  that builds it (those it does not know are left out).
+TERMINALS = (
+    'xterm', 'xterm-color', 'xterm-256color', 'xterm-direct', 'xterm-kitty',
+    'screen', 'screen-256color', 'tmux', 'tmux-256color', 'linux', 'vt100',
+    'vt220', 'rxvt', 'rxvt-unicode', 'rxvt-unicode-256color', 'konsole',
+    'konsole-256color', 'gnome', 'gnome-256color', 'vte', 'vte-256color',
+    'putty', 'putty-256color', 'alacritty', 'foot', 'foot-direct', 'wezterm',
+    'st', 'st-256color', 'dumb', 'ansi', 'cygwin', 'ms-terminal', 'contour',
+    'ghostty',
+)
+#  (the biggest number the old format holds)
+SHORT_MAX = 32767
 
 #  What is not for the AppImage: the installer of menu entries (they would
 #  point inside the AppImage, which is mounted somewhere else each time).
@@ -102,13 +121,16 @@ export APPDIR="${APPDIR:-$ROOT}"
 PROGRAM="$APPDIR/opt/py-words"
 SELF="${ARGV0:-$0}"
 
-#  The Tcl/Tk and certificates of the Python of the AppImage
+#  The Tcl/Tk, terminal descriptions and certificates of the Python of the
+#  AppImage
 for d in "$APPDIR"/usr/share/tcltk/tcl8* "$APPDIR"/usr/share/tcltk/tcl9*; do
     [ -d "$d" ] && export TCL_LIBRARY="$d"
 done
 for d in "$APPDIR"/usr/share/tcltk/tk8* "$APPDIR"/usr/share/tcltk/tk9*; do
     [ -d "$d" ] && export TK_LIBRARY="$d" TKPATH="$d"
 done
+[ -d "$APPDIR/usr/share/terminfo" ] && \
+    export TERMINFO_DIRS="${TERMINFO_DIRS:+$TERMINFO_DIRS:}$APPDIR/usr/share/terminfo:/usr/share/terminfo:/lib/terminfo:/etc/terminfo"
 for f in "$APPDIR"/opt/python*/lib/python*/site-packages/certifi/cacert.pem; do
     [ -f "$f" ] && export SSL_CERT_FILE="${SSL_CERT_FILE:-$f}"
 done
@@ -150,7 +172,7 @@ exec "$APPDIR/%(python)s" "$PROGRAM/$script" "$@"
 
 
 def name() -> str:
-    """The name of the AppImage: py-words-v.3.13-x86_64.AppImage."""
+    """The name of the AppImage: py-words-v.3.14-x86_64.AppImage."""
     return f'py-words-v.{VERSION}-{ARCH}.AppImage'
 
 
@@ -273,6 +295,44 @@ def make_appdir(appdir: str, commit: str | None):
         shutil.copytree(hicolor,
                         os.path.join(appdir, 'usr', 'share', 'icons',
                                      'hicolor'), dirs_exist_ok=True)
+    terminfo(os.path.join(appdir, 'usr', 'share', 'terminfo'))
+
+
+def short_numbers(source: str) -> str:
+    """SOURCE (a description, as infocmp gives it) with its numbers above
+    SHORT_MAX made SHORT_MAX (pairs#0x10000 of 256 colours, say), so that tic
+    writes it in the old format."""
+    def cap(m):
+        number = m.group(2)
+        value = int(number, 16) if number[:2].lower() == '0x' else int(number)
+        return m.group(1) + (str(SHORT_MAX) if value > SHORT_MAX else number)
+    return re.sub(r'(\b[\w.]+#)(0x[0-9a-fA-F]+|\d+)\b', cap, source)
+
+
+def terminfo(folder: str):
+    """Writes into FOLDER the descriptions of TERMINALS, in the format of
+    ncurses 5, as the AppRun looks for them there first."""
+    if not (shutil.which('infocmp') and shutil.which('tic')):
+        print('Warning: without infocmp and tic (ncurses), the AppImage has no '
+              'terminal descriptions, and words_tui.py may not start in it',
+              file=sys.stderr)
+        return
+    os.makedirs(folder, exist_ok=True)
+    done = []
+    for term in TERMINALS:
+        source = subprocess.run(['infocmp', '-x', '-1', term],
+                                capture_output=True, text=True)
+        if source.returncode != 0:
+            continue
+        made = subprocess.run(['tic', '-x', '-o', folder, '-'],
+                              input=short_numbers(source.stdout),
+                              capture_output=True, text=True)
+        if made.returncode == 0:
+            done.append(term)
+        else:
+            print(f'Warning: tic {term}: {made.stderr.strip()}', file=sys.stderr)
+    print(f'Terminal descriptions: {len(done)} of {len(TERMINALS)}',
+          file=sys.stderr)
 
 
 def open_to_all(appdir: str):
