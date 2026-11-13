@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.14
+Version:        3.15
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -105,6 +105,11 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.15-1
+- An Edit menu in the window (cut, copy, paste); F7 in the terminal copies
+  all the results
+- A Flatpak of the program
+
 * Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.14-1
 - The AppImage carries terminal descriptions in the old format, so words_tui.py
   starts in it

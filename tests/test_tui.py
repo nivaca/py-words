@@ -157,5 +157,27 @@ class TerminalDictionaryTests(unittest.TestCase):
         self.assertIn('dictionary editor', out)
 
 
+@unittest.skipUnless(_pty_available(), 'needs curses')
+class KeyBarTests(unittest.TestCase):
+    def test_help_and_quit_always_shown(self):
+        """However narrow the terminal, the last line shows F1 (the help,
+        which lists every key) and F10 (quit); the keys between them go
+        from the end."""
+        import interface
+        import words_tui
+        before = interface.code()
+        self.addCleanup(interface.use, before)
+        for code in ('en', 'es'):
+            interface.use(code)
+            full = words_tui.key_bar(200)
+            self.assertNotIn('F10', full[:-12])
+            for width in (40, 60, 79, 99):
+                bar = words_tui.key_bar(width)
+                self.assertLessEqual(len(bar), width)
+                self.assertTrue(bar.startswith('F1 '), bar)
+                self.assertIn('F10 ', bar)
+                self.assertTrue(full.startswith(bar.rsplit('  ', 1)[0]))
+
+
 if __name__ == '__main__':
     unittest.main()

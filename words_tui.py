@@ -70,6 +70,16 @@ CTRL_UP = ('kUP5', 'kUP')
 CTRL_DOWN = ('kDN5', 'kDN')
 
 
+def key_bar(width: int) -> str:
+    """The keys of the last line, in WIDTH: when they do not fit, those
+    before the last are left out, from the end, but the help (F1, which
+    lists them all) and quitting stay."""
+    keys = tr(BAR).split('  ')
+    while len('  '.join(keys)) > width and len(keys) > 2:
+        del keys[-2]
+    return '  '.join(keys)[:width]
+
+
 class DictionaryTUI(Screen):
     def __init__(self, screen, datadir):
         super().__init__(screen)
@@ -117,7 +127,7 @@ class DictionaryTUI(Screen):
                          (' ' + tr('{n} more', n=more) + ' ↓ ').rjust(16),
                          curses.A_DIM)
         self.put(h - 2, 0, self.message[:w - 1])
-        self.put(h - 1, 0, tr(BAR)[:w - 1].ljust(w - 1), curses.A_REVERSE)
+        self.put(h - 1, 0, key_bar(w - 1).ljust(w - 1), curses.A_REVERSE)
         if hasattr(self, 'query'):
             scr.move(1, min(3 + self.query.cursor - self.offset(w - 4),
                             w - 1))

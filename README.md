@@ -105,10 +105,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
 it executable and run it:
 
-    $ chmod +x py-words-v.3.14-x86_64.AppImage
-    $ ./py-words-v.3.14-x86_64.AppImage                # the window
-    $ ./py-words-v.3.14-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.14-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.15-x86_64.AppImage
+    $ ./py-words-v.3.15-x86_64.AppImage                # the window
+    $ ./py-words-v.3.15-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.15-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
@@ -138,7 +138,7 @@ Or download `py-words-VERSION-1.fc45.noarch.rpm` and
 package is signed; import its key once) and install it:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.14-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.15-1.fc45.noarch.rpm
 
 It runs on any Fedora with Python 3.11 or later, whatever the `fc`
 number in its name.  Or build it from the program's folder (a git
@@ -173,6 +173,45 @@ signed with the author's key, fingerprint `8187 0643 CA22 1AF9 0C30
 C029 6282 8A87 315E E750 A4F9 6998 9DA6`); a copy is in
 `packaging/RPM-GPG-KEY-py-words`.
 `packaging/COPR.org` tells how to publish it on Fedora's Copr.
+
+### A Flatpak (Linux)
+
+The program is also a Flatpak, which runs on any Linux with Flatpak,
+apart from the rest of the system, with its own Python and Tk.  Download
+`py-words-v.VERSION.flatpak` from the
+[Releases](https://github.com/nivaca/py-words/releases) of GitHub and
+install it (Flatpak brings from Flathub the runtime it needs, if it is
+not there yet):
+
+    $ flatpak install --user py-words-v.3.15.flatpak
+    $ flatpak run io.github.nivaca.PyWords                 # the window
+    $ flatpak run io.github.nivaca.PyWords cli amicus      # the command line
+    $ flatpak run io.github.nivaca.PyWords help            # the other programs
+
+It adds the four menu entries, and takes the same commands as the
+AppImage.  Its settings, history and cache are its own, in
+`~/.var/app/io.github.nivaca.PyWords`, and not shared with the other
+ways of running the program.  It can use the network only so that the
+browser reaches the page of `py-words web`.
+
+The Flatpak cannot be written to, so editing the dictionary is off:
+"Edit dictionary…" is greyed out in the window, F4 in the terminal
+version says why, and `edit` and `edit-gui` stop with a message.  Nor
+does a copy of the `data` folder help here, because the Flatpak does not
+see the user's folders: to edit the dictionary, use the zip or a clone.
+
+It is built from the program's folder (a git clone) with
+
+    $ python3 tools/bundle-flatpak.py [--install]
+
+which needs `flatpak-builder` and the SDK of the manifest (`flatpak
+install --user flathub org.freedesktop.Sdk//26.08`), works in
+`build/flatpak/` and writes `dist/py-words-v.VERSION.flatpak`
+(`--install` also installs it).  The manifest is
+`packaging/flatpak/io.github.nivaca.PyWords.yml`: it builds Tcl, Tk and
+Python's tkinter, which the runtime does not have, and then the program
+from the files of the zip.  `packaging/flatpak/FLATHUB.org` tells how to
+publish it on Flathub.
 
 ### A menu entry
 
@@ -233,18 +272,20 @@ What is where
     data/               the dictionary and the other data files
     icons/              the program's icons
     packaging/          the RPM package: its spec, build-rpm.sh, the menu
-                        entries and the py-words command (not in the zip)
+                        entries and the py-words command; in flatpak/,
+                        the Flatpak's manifest (not in the zip)
     pages/              the dictionary online, in a browser with no server
     tests/              the tests (not needed to use the program)
-    tools/              scripts to make the zip, the AppImage, the icons,
-                        the screenshots and the releases (not in the zip)
+    tools/              scripts to make the zip, the AppImage, the Flatpak,
+                        the icons, the screenshots and the releases (not
+                        in the zip)
 
 To use it in another place, copy the folder, or make a zip of the program
 for distributing it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.14.zip` (with the version of the program;
+This writes `dist/py-words-v.3.15.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the
 same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
@@ -260,7 +301,7 @@ In Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.14-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.15-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
 [python-appimage](https://github.com/niess/python-appimage)) and
 [appimagetool](https://github.com/AppImage/appimagetool) are downloaded
@@ -1294,6 +1335,23 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.15:
+  - The window has an Edit menu, with Cut, Copy and Paste (Ctrl and X,
+    C, V), for the search box and the box of "Find in results", or for
+    copying text selected in the results.
+  - In the terminal, F7 copies all the results, as they are (not cut at
+    the width of the screen), through the system's clipboard program
+    (wl-copy, xclip, xsel, pbcopy, clip) or else the terminal itself.
+    When the keys do not fit in the last line (as in 80 columns), those
+    between F5 and F10 are left out, so that F1 (the help, which lists
+    them all) and F10 (quit) are always seen.
+  - The program is also a Flatpak (see "A Flatpak"): a single file
+    attached to the releases, and `tools/bundle-flatpak.py` to build it;
+    `tools/release.py --flatpak` attaches it.  In the Flatpak the
+    dictionary cannot be edited, and the program says so.
+  - The version that ran in the browser (Pyodide) is no longer
+    published: its address sends to the server too, and
+    `pages/build.py` builds it only with `--browser`.
 - 3.14:
   - The terminal interface starts in the AppImage.  The Python in the
     AppImage could not read how most terminals describe themselves

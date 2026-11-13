@@ -27,10 +27,13 @@ cleanup:
   - /man
 
 modules:
+  # (both with their scripts as files: zipfs appends them to the library,
+  # and the build's strip takes them off again)
   - name: tcl
     subdir: unix
     config-opts:
       - --disable-static
+      - --disable-zipfs
     post-install:
       - chmod u+w /app/lib/libtcl*.so
     sources:
@@ -55,6 +58,7 @@ modules:
     subdir: unix
     config-opts:
       - --disable-static
+      - --disable-zipfs
       - --with-tcl=/app/lib
     post-install:
       - chmod u+w /app/lib/libtcl*tk*.so
