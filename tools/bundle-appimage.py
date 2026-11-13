@@ -150,7 +150,7 @@ exec "$APPDIR/%(python)s" "$PROGRAM/$script" "$@"
 
 
 def name() -> str:
-    """The name of the AppImage: py-words-v.3.12-x86_64.AppImage."""
+    """The name of the AppImage: py-words-v.3.13-x86_64.AppImage."""
     return f'py-words-v.{VERSION}-{ARCH}.AppImage'
 
 
