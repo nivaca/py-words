@@ -13,12 +13,6 @@ ludica
     -ic; of, pertaining/belonging to; connected with; derived/coming from (place);
   ludia, ludiae  noun, 1st declension, feminine  [XXXES]  uncommon
     An actress, a female stage-dancer; A female gladiator, a gladiator's wife, mistress; (Lewis and Short)
-    ludic-a        adjective, NOM.SG.F
-    ludic-a        adjective, VOC.SG.F
-    ludic-ā        adjective, ABL.SG.F
-    ludic-a        adjective, NOM.PL.N
-    ludic-a        adjective, VOC.PL.N
-    ludic-a        adjective, ACC.PL.N
   ludius, ludi(i)  noun, 2nd declension, masculine  [XDXEO]  uncommon
     A stage-player, pantomimist; A gladiator; (Lewis and Short)
     ludic-a        adjective, NOM.SG.F

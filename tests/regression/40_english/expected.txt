@@ -109,7 +109,7 @@ in
     a daughter's husband, a son-in-law; a daughter's bridegroom; the husband of a granddaughter; a sister's husband, brother-in-law; a daughter's paramour; (Lewis and Short)
   obsideo, obsidere, obsedi, obsessus  verb, 2nd conjugation  [XWXBX]
     to remain on, in, haunt, inhabit, frequent; to sit down before, hem in, beset, besiege, invest, blockade; To occupy, fill, possess; to occupy, possess, take possession of; To have one's eye upon, watch closely, be on the look-out for; (Lewis and Short)
-  (131 more not shown)
+  (130 more not shown)
 
 a
   (no match)
@@ -146,7 +146,7 @@ are
     He who entertains a stranger, a host, one upon whom soldiers are quartered, she who entertains a guest, a hostess, a concubine; A sojourner, visitor, guest, friend; a stranger, foreigner, a female stranger; a stranger, ignorant of; hospitable; strange, foreign; (Lewis and Short)
   sagax, (gen.), sagacis  adjective, 3rd declension  [XXXBX]
     of quick perception, whose senses are acute, sagacious; keen-scented; intellectually quick, keen, acute, shrewd, sagacious; knowing the future; Quickly, sharply, keenly, with quickness of scent, with a fine sense of smell; acutely, shrewdly, accurately, sagaciously; (Lewis and Short)
-  (111 more not shown)
+  (110 more not shown)
 
 fun
   delicia, deliciae  noun, 1st declension, feminine  [XXXAO]
@@ -176,7 +176,7 @@ free
     clean, pure; Clean, free from dirt, filth, pure; free, clear, cleared; clear, bright; plain, natural, naked, without figures chased upon it; Cleansing, purifying; Pure, spotless, chaste, faultless, stainless; without exception, absolute; entire, complete; Clear, complete, over and above; free from religious claims, consecration; Not desecrated; fresh; Not defiled by a funeral, burial; Free from mourning; purely, clearly, without spot, mixture; brightly, clearly; purely, chastely; plainly, clearly, simply; simply, absolutely; (Lewis and Short)
   solvo, solvere, solvi, solutus  verb, 3rd conjugation  [XXXAX]
     to loosen an object, release, loose; To loose, release, set free, dissolve, take apart; to free, set free; to open; to detach, disengage; to free a ship from the land, set sail, weigh anchor, leave land; To loosen, break up, dissolve, disperse, divide, take apart, scatter; to loosen, let fall; To dissolve; to be dissolved, changed; to melt, dissolve; to rarefy; To consume, destroy, dissolve, extinguish life; To free, release, loose, emancipate, set free; to unfetter the tongue, give flow to words; to dismiss a soldier from service, exempt from public duties; to acquit, absolve, cleanse; to be overwhelmed by sleep; to relax, smooth, unbend, quiet, soothe; To release from siege; To exempt from laws, release from a testamentary disposition; not subject to, released from, unrestrained by the laws; To dissolve, separate, break up; to separate armies engaged in battle; disfranchised; to break up a sentence, verse; To relax, make effeminate, weaken; to deprive a verse of its proper rhythm; To make torpid by removing sensation; To relax, benumb; to die; to refute; To disperse, dispel; To loose, cancel; to slacken, unlock, open; To efface; to suffer punishment, cancel the obligation of suffering; to relieve, soothe; To raise; to remove restraint; To overthrow, subvert; to abolish, violate; To subvert discipline; to loosen, impair, weaken, scatter, disperse; to sever, dissolve, destroy; to end; To delay; to dispel; to compose, settle; to solve, explain; To pay; to free one's property and person from debts, pay; to pay, free from debt; to pay money; to make a partial payment; to pay out of funds supplied by any one, out of any fund; to pay the amount adjudged by the court; to be solvent; to be insolvent; To fulfil the duty; to fulfil a vow; to fulfil a promise; to acquit one's self of the duty to return property intrusted to him; free, loose, at large; loose, friable; a state of looseness; Rarefied, thin, diffused; fluent, ready; Exempt, free; Free from punishment, not liable; Free from cares; At leisure, free from labor, business; Unbound, relaxed, merry, jovial; Free; Free, insolent, loose; Regardless of rules, careless, loose; free from rules of composition; a free style, conversational, epistolary style; prose; loose, inharmonious; words freed from their proper meaning, metaphors; a fragmentary, disconnected style; Effeminate, luxurious; disorderly; Lax, remiss, weak; Paid, discharged; that which is paid, a discharged debt; to accept in payment; to acquire by prescription something given in payment by the debtor, but not belonging to him; Thinly; fluently; Irregularly, loosely; Freely, without restraint; without connection, loosely; disorderly, negligently; Weakly, tamely, without vigor; (Lewis and Short)
-  (211 more not shown)
+  (209 more not shown)
 
 money
   aestimo, aestimare, aestimavi, aestimatus  verb, 1st conjugation, transitive  [XXXAO]
@@ -219,9 +219,9 @@ be
     a number; the counting, reckoning; A certain collective quantity, a body, number, a great number; the mathematics, astronomy; a division, a troop, band; a mere number; dice; number, rank, place, position, estimation, relation, class, category, to be of the number of, to be reckoned among, to be; member, category; to be complete, perfect; Order; An office, duty, part; Musical measure, time, rhythm, harmony, numbers; improper; A measure, number; A verse; precisely, exactly, just; Just, precisely, at the right time, on the instant; Quickly, rapidly, soon, too quickly, too soon; too quickly, too hastily, too soon; (Lewis and Short)
   verso, versare, versavi, versatus  verb, 1st conjugation  [XXXAX]
     to turn, wind, twist, whirl about often, violently; to turn over, read, study; to turn one's self often, turn, revolve; to turn, twist, bend; to turn upside down, disturb, vex, agitate; To turn over, think over, meditate, reflect upon, revolve, consider; to transact, carry on; to dwell, live, remain, stay, abide; to be; to be circumstanced, situated; to occupy, busy one's self, be engaged; (Lewis and Short)
-  verso, versare, versavi, versatus  verb, 1st conjugation  [XXXAA]
-    to turn, wind, twist, whirl about often, violently; to turn over, read, study; to turn one's self often, turn, revolve; to turn, twist, bend; to turn upside down, disturb, vex, agitate; to turn over, think over, meditate, reflect upon, revolve, consider; to transact, carry on; to dwell, live, remain, stay, abide; to be; to be circumstanced, situated; to occupy, busy one's self, be engaged; (Lewis and Short)
-  (5 more not shown)
+  consto, constare, constiti, constatus  verb, 1st conjugation, intransitive  [XXXAO]
+    To stand together, stand with; to stand with, agree with, be in accord, agreement, correspond, fit; to agree, accord with itself, remain like one's self, be consistent; the account agrees, is correct, proves right; to stand firm, remain immovable, unchanging, steadfast, abide, last, endure, persevere; to stop, halt; to be established, settled, certain, manifest, evident, well known; it is settled, established, undisputed, certain, well known; I am determined, I am fully resolved; to exist, be, abide; to consist in, of, be composed of, rest upon something; to stand at, cost; standing firm, firm, unchangeable, constant, immovable, uniform, fixed, stable, invariable; the mature age; Agreeing, accordant with itself, consistent, harmonious; intellectually, morally certain, sure, steadfast, constant, faithful, steady, unchanging; Firmly, immovably, steadily, constantly; Harmoniously, evenly, uniformly, consistently; Steadily, calmly, tranquilly, sedately; (Lewis and Short)
+  (4 more not shown)
 
 great
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
@@ -285,7 +285,7 @@ hard
     morally rude, hard, unmerciful, hard-hearted, cruel, severe, fierce; cruelly, in a cruel manner; (Lewis and Short)
   rigidus, rigida, rigidum  adjective, 1st/2nd declension  [XXXBX]
     stiff, hard, rigid; hardy, stern, rough; Inflexibly; in a straight line; Rigorously, severely; (Lewis and Short)
-  (71 more not shown)
+  (70 more not shown)
 
 never
   numquam  adverb  [XXXAX]
@@ -315,7 +315,7 @@ say
     to say yes, to assent; To say, affirm, assert something; they say so; to speak, thus he speaks, says; as one says; as they say, as is said, as the saying is; the law, the praetor says, prescribes, commands; do you really mean so? indeed? really? is it possible?, what?; what do you say? what?; what do you mean? what do you say, think?; what is your opinion? what do you say?, affirming, affirmative; (Lewis and Short)
   celebro, celebrare, celebravi, celebratus  verb, 1st conjugation, transitive  [XXXAO]
     To go to a place, person in great numbers, often, frequent, fill; to do something frequently, in multitudes, engage in, say, use, employ, repeat; to fill up with something; To go in great numbers to a celebration, celebrate, solemnize, keep a festival; To honor, praise, celebrate the praises of a person, thing, celebrate in song, make renowned, celebrate one's honor; to make something known, publish abroad; Frequented, much visited; Customary, usual, frequent; Solemn, festive, brilliant; Known, celebrated, famous; (Lewis and Short)
-  (100 more not shown)
+  (98 more not shown)
 
 stop
   cesso, cessare, cessavi, cessatus  verb, 1st conjugation, intransitive  [XXXAO]
@@ -330,5 +330,5 @@ stop
     stop/stay/remain, abide; linger, delay; detain, be delayed (menses); dwell on;
   cohibeo, cohibere, cohibui, cohibitus  verb, 2nd conjugation, transitive  [XXXAO]
     To hold together, hold, contain, embrace, comprise; to hold, keep, keep back, hinder, stay, stop; to stop, kill; to stop something, one's self, hold in check, limit, keep back, tame, subdue; to keep something from something, somebody, ward off; confined, limited, moderate; (Lewis and Short)
-  (102 more not shown)
+  (100 more not shown)
 

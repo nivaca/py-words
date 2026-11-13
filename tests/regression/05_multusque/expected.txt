@@ -41,9 +41,6 @@ viri
     vir-ī          VOC.PL
   vis, viris  noun, 3rd declension, feminine  [XXXAX]
     strength (bodily) (pl.), force, power, might, violence; resources; large body;
-    vīr-i          LOC.SG  (early)
-    vīr-ī          DAT.SG
-    vīr-ī          ABL.SG
   vis, viris  noun, 3rd declension, feminine  [XXXAA]
     strength, force, vigor, power, energy, virtue; energy, virtue, potency; hostile strength, force, violence; force, violence; quantity, number, abundance; military forces, troops; the virile forces, organs; mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
     vīr-i          LOC.SG  (early)
@@ -53,12 +50,8 @@ viri
 virtus
   virtus, virtutis  noun, 3rd declension, feminine  [XXXAX]
     manliness, manhood, strength, vigor; bravery, capacity; worth, excellence, virtue; worth, value, power, strength; by the aid, merit of the gods; Moral perfection, virtue; Virtue; Military talents, courage, valor, bravery, gallantry, fortitude; Obstinacy; (Lewis and Short)
-    virtūs         NOM.SG
-    virtūs         VOC.SG
   virtus, virtutis  noun, 3rd declension, feminine  [EEXCR]  later
     army; host; mighty works (pl.); class of Angels; [Dominus ~ => Lord of hosts];
-    virtūs         NOM.SG
-    virtūs         VOC.SG
   virtus, virtutis  noun, 3rd declension, feminine  [FSXEM]  medieval  uncommon
     virtue, property (alch.);
     virtūs         NOM.SG
@@ -67,15 +60,12 @@ virtus
 animo
   animus, animi  noun, 2nd declension, masculine  [XXXAO]
     the rational soul in man, the senses, independently of the body; the intellect, the sensibility, the will, the understanding, the reason, reason, intellect; The will; the reason, intellect, mind; the memory; Consciousness, the vital power; judgment, according to my mind; The imagination, the fancy; The power of feeling, the sensibility, the heart, the feelings, affections, inclinations, disposition, passions; heart, soul, spirit, feeling, inclination, affection, passion, mind and heart, in mind and heart, thought, from the heart, from the bottom of one's heart, deeply, truly, sincerely; disposition, character; Courage, spirit, to be of good courage, hope; arrogance, pride; Violent passion, vehemence, wrath; patience, contentedness, an even mind, with even mind, patiently; Agreeable feeling, pleasure, for the sake of amusement; Disposition toward any one, kind, friendly feeling, affection, kindness, liberality, my heart, my soul; The power of willing, the will, inclination, purpose, design, intention, to have a mind for, to aim at, to resolve upon doing something; the Divine Mind, the Mind of God; (Lewis and Short)
-    anim-ō         DAT.SG
-    anim-ō         ABL.SG
   animus, animi  noun, 2nd declension, masculine  [XXXAA]
     the rational soul in man; the intellect, the sensibility, the will, the understanding, the reason; the reason, intellect, mind; the memory; consciousness, the vital power; judgment; the imagination, the fancy; the power of feeling, the sensibility, the heart, the feelings, affections, inclinations, disposition, passions; heart, soul, spirit, feeling, inclination, affection, passion, mind and heart; thought; from the heart, from the bottom of one's heart, deeply, truly, sincerely; disposition, character; courage, spirit, hope; arrogance, pride; violent passion, vehemence, wrath; patience, contentedness, an even mind; agreeable feeling, pleasure; disposition toward any one, kind, friendly feeling, affection, kindness, liberality; my heart, my soul; the power of willing, the will, inclination, purpose, design, intention; to have a mind for, to aim at, to resolve upon doing something; the Divine Mind, the Mind of God; (Lewis and Short)
     anim-ō         DAT.SG
     anim-ō         ABL.SG
   animo, animare, animavi, animatus  verb, 1st conjugation, transitive  [XXXBO]
     To fill with breath, air; To quicken, animate; To endow with a particular temperament, disposition of mind; to transform a lifeless object to a living being, to change into by giving life; to enliven, to light, kindle, to refresh, revive, to encourage, help, to move; Animated; Brought, put into a particular frame of mind, disposed, inclined, minded; Endowed with courage, courageous, stouthearted; to be animate, living; animate, living; any living, animate being; an animal, living beings; (Lewis and Short)
-    anim-o         1SG.PRS.ACT.IND
   animo, animare, animavi, animatus  verb, 1st conjugation, transitive  [FXXEM]  medieval  uncommon
     support (proposals);
     anim-o         1SG.PRS.ACT.IND

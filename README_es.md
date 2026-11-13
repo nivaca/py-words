@@ -108,10 +108,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.11-x86_64.AppImage
-    $ ./py-words-v.3.11-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.11-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.11-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.12-x86_64.AppImage
+    $ ./py-words-v.3.12-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.12-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.12-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -143,7 +143,7 @@ O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
 paquete va firmado; importe su clave una vez) e instálelo:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.11-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.12-1.fc45.noarch.rpm
 
 Funciona en cualquier Fedora con Python 3.11 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
@@ -252,7 +252,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.11.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.12.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -267,7 +267,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.11-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.12-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -1079,7 +1079,7 @@ significado en los editores, el código desaparece, pues el texto ya no
 es el del diccionario.
 
 Lo mismo se hizo con el inglés y Lewis y Short.  Cada entrada que él
-tiene (30 715) muestra su definición: las glosas en cursiva de sus
+tiene (30 601) muestra su definición: las glosas en cursiva de sus
 sentidos, sin las citas, los ejemplos latinos ni las notas de
 gramática, y tras ella los resultados dicen "(Lewis and Short)".  Una
 entrada toma su definición solo si comparte palabras con la nuestra,
@@ -1104,6 +1104,9 @@ demás vuelven a tener sus propios significados: en español la
 traducción que tenían antes (1935 entradas), en inglés el de WORDS o el
 de Latham (1040).  Ahora 48 744 significados en español vienen de De
 Miguel y 169 de Echave-Sustaeta, y los otros 44 872 son traducciones.
+En la 3.12 se hizo lo mismo con 114 definiciones inglesas que la 3.3
+había pasado por alto, porque las copias solo se diferenciaban en las
+mayúsculas (*subsisto*, *agmen*, *cura*).
 
 La traducción sigue de cerca el inglés: conserva los sentidos y su orden
 (separados por `;`), los códigos de fuente y las abreviaturas (L+S, OLD,
@@ -1342,6 +1345,16 @@ con `git diff`.
 Versiones
 ---------
 
+- 3.12:
+  - Las entradas de una misma palabra que tienen las mismas formas, como
+    una palabra de WORDS y su sentido medieval de Latham (*subsisto*,
+    *cura*), muestran esas formas una vez, tras la última de ellas, como
+    hacía WORDS, en lugar de tras cada una.
+  - 114 entradas mostraban en inglés la misma definición de Lewis y
+    Short que otra entrada de la misma palabra (*subsisto*, *agmen*):
+    ahora solo la tiene la entrada a la que pertenece, y las demás
+    vuelven a tener sus propios significados (véase "Los significados
+    en español").
 - 3.11:
   - En una pantalla de alta resolución con el escritorio escalado (por
     ejemplo al 200 % en Plasma), las ventanas de la AppImage salían muy
@@ -1836,7 +1849,7 @@ El diccionario de py-words viene de estas obras:
 - C. T. Lewis y C. Short, *A Latin Dictionary* (Oxford: Clarendon Press,
   1879): 6653 palabras raras y 1783 nombres que WORDS no tenía (código
   de fuente S), con las vocales largas de sus lemas, y las definiciones
-  inglesas de 30 715 entradas (véase "Los significados en español").
+  inglesas de 30 601 entradas (véase "Los significados en español").
   Text provided under a CC BY-SA license by Perseus Digital Library, <http://www.perseus.tufts.edu>, with funding from The National
   Endowment for the Humanities.  Data accessed from
   <https://github.com/PerseusDL/lexica/> on 23 October 2026.  (Es la

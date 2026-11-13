@@ -105,10 +105,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
 it executable and run it:
 
-    $ chmod +x py-words-v.3.11-x86_64.AppImage
-    $ ./py-words-v.3.11-x86_64.AppImage                # the window
-    $ ./py-words-v.3.11-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.11-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.12-x86_64.AppImage
+    $ ./py-words-v.3.12-x86_64.AppImage                # the window
+    $ ./py-words-v.3.12-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.12-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
@@ -138,7 +138,7 @@ Or download `py-words-VERSION-1.fc45.noarch.rpm` and
 package is signed; import its key once) and install it:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.11-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.12-1.fc45.noarch.rpm
 
 It runs on any Fedora with Python 3.11 or later, whatever the `fc`
 number in its name.  Or build it from the program's folder (a git
@@ -244,7 +244,7 @@ for distributing it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.11.zip` (with the version of the program;
+This writes `dist/py-words-v.3.12.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the
 same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
@@ -260,7 +260,7 @@ In Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.11-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.12-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
 [python-appimage](https://github.com/niess/python-appimage)) and
 [appimagetool](https://github.com/AppImage/appimagetool) are downloaded
@@ -1054,7 +1054,7 @@ is a translation.  When you change a meaning in the editors, the code
 goes away, since the text is no longer the dictionary's.
 
 The same was done for English with Lewis and Short.  Every entry he has
-(30,715 of them) shows his definition: the glosses in italics of his
+(30,601 of them) shows his definition: the glosses in italics of his
 senses, without the citations, the Latin examples and the notes on
 grammar, after which the results say "(Lewis and Short)".  An entry
 takes his definition only if it shares words with ours, so a medieval
@@ -1076,7 +1076,9 @@ shares most words with it, or else the main one), and the others have
 their own meanings again: in Spanish the translation they had before
 (1,935 entries), in English that of WORDS or of Latham (1,040).  Now
 48,744 Spanish meanings come from De Miguel and 169 from
-Echave-Sustaeta, and the other 44,872 are translations.
+Echave-Sustaeta, and the other 44,872 are translations.  In 3.12 the
+same was done for 114 English definitions that 3.3 had missed, because
+the copies differed only in capitals (*subsisto*, *agmen*, *cura*).
 
 The translation follows the English closely: it keeps the senses and
 their order (separated by `;`), the source codes and the abbreviations
@@ -1309,6 +1311,15 @@ files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 Version
 -------
 
+- 3.12:
+  - Entries of the same word that have the same forms, as a word of
+    WORDS and its medieval sense from Latham (*subsisto*, *cura*), show
+    those forms once, after the last of them, as WORDS did, instead of
+    after each one.
+  - 114 entries showed in English the same definition of Lewis and
+    Short as another entry of the same word (*subsisto*, *agmen*):
+    now only the entry it belongs to has it, and the others have their
+    own meanings again (see "The Spanish meanings").
 - 3.11:
   - On a hi-res display with the desktop scaled (for example at 200% in
     Plasma), the windows of the AppImage came out very small: its Tk
@@ -1778,7 +1789,7 @@ The dictionary of py-words comes from these works:
 - C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon
   Press, 1879): 6,653 rare words and 1,783 names that WORDS did not have
   (source code S), with the long vowels of their headwords, and the
-  English definitions of 30,715 entries (see "The Spanish meanings").
+  English definitions of 30,601 entries (see "The Spanish meanings").
   Text provided under a CC BY-SA license by Perseus Digital Library,
   <http://www.perseus.tufts.edu>, with funding from The National
   Endowment for the Humanities.  Data accessed from

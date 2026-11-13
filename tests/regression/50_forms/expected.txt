@@ -21,7 +21,6 @@ amici
     amīc-ī         VOC.PL.M
   amicio, amicire, amicui, amictus  verb, 4th conjugation, transitive  [XXXBO]
     to throw round, to wrap about, veil one's self; to cover, clothe, wrap up; (Lewis and Short)
-    amic-ī         2SG.PRS.ACT.IMP
   amicio, amicire, amixi, amictus  verb, 4th conjugation, transitive  [XXXBO]
     to throw round, to wrap about, veil one's self; to cover, clothe, wrap up; (Lewis and Short)
     amic-ī         2SG.PRS.ACT.IMP
@@ -76,9 +75,6 @@ amicorum
 amicis
   amica, amicae  noun, 1st declension, feminine  [XXXCO]
     female friend; girl friend, sweetheart; patron; mistress, concubine; courtesan;
-    amīc-is        LOC.PL
-    amīc-īs        DAT.PL
-    amīc-īs        ABL.PL
   amicus, amici  noun, 2nd declension, masculine  [XXXBO]
     A friend, patron, protector, companion; a friend of the State, an ally; courtier, minister of a prince; a female friend; a concubine, mistress, courtesan; (Lewis and Short)
     amīc-is        LOC.PL
@@ -90,7 +86,6 @@ amicis
     amīc-īs        ABL.PL
   amicio, amicire, amicui, amictus  verb, 4th conjugation, transitive  [XXXBO]
     to throw round, to wrap about, veil one's self; to cover, clothe, wrap up; (Lewis and Short)
-    amic-īs        2SG.PRS.ACT.IND
   amicio, amicire, amixi, amictus  verb, 4th conjugation, transitive  [XXXBO]
     to throw round, to wrap about, veil one's self; to cover, clothe, wrap up; (Lewis and Short)
     amic-īs        2SG.PRS.ACT.IND
@@ -105,8 +100,6 @@ puella
 rex
   rex, regis  noun, 3rd declension, masculine  [XLXAX]
     a ruler, a king; tyrant, priest; ruling, that rules, sways; head, chief, leader, master, governor, preceptor, king, protector, patron; the son of a king, chieftain, a prince; a powerful, rich, fortunate person; the king and queen, the whole royal family; the character, sentiments, feelings of a king; (Lewis and Short)
-    rex            NOM.SG
-    rex            VOC.SG
   rex, regis  noun, 3rd declension, masculine  [FXXEM]  medieval  uncommon
     king (at chess) [~ scaccorum];
     rex            NOM.SG
@@ -115,14 +108,8 @@ rex
 corpus
   corpus, corporis  noun, 3rd declension, neuter  [XXXAO]
     any object composed of materials perceptible by the senses, body, substance; a body; The flesh of animal bodies; the wood under the bark of a tree; A lifeless body, a corpse, the souls of the dead, the shades, departed spirits; the trunk; the body, person; the individual, the person, heads; a whole composed of parts united, a body, frame, system, structure, community, corporation, a book; (Lewis and Short)
-    corpus         NOM.SG
-    corpus         VOC.SG
-    corpus         ACC.SG
   corpus, corporis  noun, 3rd declension, neuter  [XXXAO]
     substantial/material/concrete object/body; particle/atom; corporation, guild;
-    corpus         NOM.SG
-    corpus         VOC.SG
-    corpus         ACC.SG
   corpus, corporis  noun, 3rd declension, neuter  [FXXEM]  medieval  uncommon
     bodily service in time of war;
     corpus         NOM.SG
@@ -135,11 +122,6 @@ mare
     mare           NOM.SG.N
   mare, maris  noun, 3rd declension, neuter  [XXXAX]
     the sea; Sea-water, salt-water; The color of the sea, sea-green; the sea, expanse of air; A large vessel; (Lewis and Short)
-    mare           NOM.SG
-    mare           VOC.SG
-    mar-e          LOC.SG
-    mar-e          DAT.SG  (early)
-    mare           ACC.SG
   mare, maris  noun, 3rd declension, neuter  [FXXEM]  medieval  uncommon
     mere, lake;
     mare           NOM.SG
@@ -159,12 +141,6 @@ mare
 manus
   manus, manus  noun, 4th declension, feminine  [XXXAX]
     a hand; at hand, near; by hand, artificially, by the hand of man; by force, forcibly; The hand as the instrument used in fight, personal valor, bravery; Force, violence, fighting, close combat; A hand, handwriting, work, workmanship; a side; a stake; a thrust, hit, blow; The trunk; The fore-paws; The branches; iron hooks with which an enemy's ship was grappled, grappling-irons; an armed force, corps; a body, host, number, company, multitude; Labor, hands, workmen; Power; the legal power of a husband over his wife, the manus; an arrest; (Lewis and Short)
-    man-us         NOM.SG
-    man-us         VOC.SG
-    man-ūs         GEN.SG
-    man-ūs         NOM.PL
-    man-ūs         VOC.PL
-    man-ūs         ACC.PL
   manus, manus  noun, 4th declension, feminine  [XXXAA]
     a hand; to lay the finger on the lips; to be obvious, clear; to be in everybody's hands, to be well known; to be near, to be present; to have in hand, to be engaged on; to fondle, caress, make much of; to come hand to hand, come to close quarters; to deliver from hand to hand, with great care; to be too old for the rod; from a distance; with a full, plentiful hand, bountifully, liberally; with hands and feet, with all one's power, with might and main; from mouth to mouth; to hand down from father to son; by force, by main force, forcibly; in one's hands, under one's hands, palpable, evident; in one's arms; at hand, near; readily, immediately, on the instant; according to one's wish; by one's hand, with the hand, by hand, artificially, by the hand of man; artificial, elaborate; to be a surgeon; with equal advantage; to lay hands on, to destroy, weaken; to give, lend a hand, to help, assist; to give the hands, to give up, yield, surrender; to raise the hand, to yield, submit; to stretch out the hands to one; with both hands, willingly, readily; not to turn the hand, to take no pains, make no effort; the hand as the instrument used in fight, personal valor, bravery; force, violence, fighting, close combat; to put the finishing hand to; enough; a hand, handwriting, work, workmanship; a side; a stake; a thrust, hit, blow; the trunk; the fore-paws; the branches; iron hooks with which an enemy's ship was grappled, grappling-irons; an armed force, corps; a body, host, number, company, multitude; labor, hands, workmen; power; the legal power of a husband over his wife; an arrest; (Lewis and Short)
     man-us         NOM.SG
@@ -190,18 +166,8 @@ cornu
 res
   res, rei  noun, 5th declension, feminine  [XXXAX]
     a thing, being; a matter, affair, event, fact, circumstance, occurrence, deed, condition, case, something; a historian; agriculture; an actual thing, the thing itself, reality, truth, fact; in fact, really, in truth, indeed, in reality; Effects, substance, property, possessions; whatever may be the subject of a right; Benefit, profit, advantage, interest, weal; to the purpose, with advantage, usefully; contrary to his interest, to his injury; Cause, reason, ground, account; therefore, on that account; An affair, matter of business, business; A case in law, a lawsuit, cause, suit; An affair, a battle, campaign, military operations; Acts, events, a story, history; the common weal, a commonwealth, state, republic, civil affairs, administration, power; for the good of the State, for the public benefit; the State; political changes, a revolution; (Lewis and Short)
-    r-ēs           NOM.SG
-    r-ēs           VOC.SG
-    r-ēs           NOM.PL
-    r-ēs           VOC.PL
-    r-ēs           ACC.PL
   res, rei  noun, 5th declension, feminine  [XXXAA]
-    a thing, being; a matter, affair, event, fact, circumstance, occurrence, deed, condition, case, something; a historian; agriculture; an actual thing, the thing itself, reality, truth, fact; in fact, really, in truth, indeed, in reality; effects, substance, property, possessions; whatever may be the subject of a right; benefit, profit, advantage, interest, weal; to the purpose, with advantage, usefully; contrary to his interest, to his injury; cause, reason, ground, account; therefore, on that account; an affair, matter of business, business; a case in law, a lawsuit, cause, suit; an affair, a battle, campaign, military operations; acts, events, a story, history; the common weal, a commonwealth, state, republic, civil affairs, administration, power; for the good of the State, for the public benefit; the State; political changes, a revolution; (Lewis and Short)
-    r-ēs           NOM.SG
-    r-ēs           VOC.SG
-    r-ēs           NOM.PL
-    r-ēs           VOC.PL
-    r-ēs           ACC.PL
+    circumstances; reality; wealth; [res publica => state; res gestae => exploits]
   res, rei  noun, 5th declension, feminine  [FSXEM]  medieval  uncommon
     reality, essence (phil.);
     r-ēs           NOM.SG
@@ -217,11 +183,6 @@ res
 acies
   acies, aciei  noun, 5th declension, feminine  [XXXAO]
     a sharp edge, point; Keenness of look, glance, sharpness of vision, sight; the pupil of the eye, the eye; A looking at an object with fixed attention, look, aim, at the first glance; the front of an army, line of battle, battle-array; an army drawn up in order of battle, a long line of fire; The action of the troops drawn up in battle-array, a battle, engagement; steel; sheen; Acuteness of the mind, force, power; A verbal contest, disputation, discussion, debate; (Lewis and Short)
-    aci-ēs         NOM.SG
-    aci-ēs         VOC.SG
-    aci-ēs         NOM.PL
-    aci-ēs         VOC.PL
-    aci-ēs         ACC.PL
   acies, aciei  noun, 5th declension, feminine  [FXXEM]  medieval  uncommon
     scaling-ladder;
     aci-ēs         NOM.SG
@@ -233,9 +194,6 @@ acies
 ingenium
   ingenium, ingenii  noun, 2nd declension, neuter  [EXXDB]  later  lesser
     trick, clever device;
-    ingeni-um      NOM.SG
-    ingeni-um      VOC.SG
-    ingeni-um      ACC.SG
   ingenium, ingeni(i)  noun, 2nd declension, neuter  [XXXAX]
     innate, natural quality, nature; Natural disposition, temper, mode of thinking, character, bent, inclination; peculiarity of disposition; Natural capacity, talents, parts, abilities, genius; A genius, a man of genius, a clever, ingenious person; an invention, a clever thought; (Lewis and Short)
     ingeni-um      NOM.SG
@@ -251,12 +209,8 @@ filius
 aspis
   aspis, aspidis  noun, 3rd declension, feminine  [EXAEW]  later  uncommon
     asp, venomous snake of North Africa;
-    aspis          NOM.SG
-    aspis          VOC.SG
   aspis, aspidis  noun, 3rd declension, feminine  [GXXFM]  neo-Latin  very rare
     newt, eft;
-    aspis          NOM.SG
-    aspis          VOC.SG
   aspis, aspidos/is  noun, 3rd declension, feminine  [XXACO]
     asp, venomous snake of North Africa;
     aspis          NOM.SG
@@ -284,7 +238,6 @@ ille
 ipse
   ipse, ipsa, ipsum  pronoun  [XXXAO]
     self, in person, himself, herself, itself; very, just, precisely; by oneself, of one's own accord; alone; (Lewis and Short)
-    ips-e          NOM.SG.M
   ipse, ipsa, ipsum  pronoun  [FXXEM]  medieval  uncommon
     the same;
     ips-e          NOM.SG.M
@@ -292,28 +245,21 @@ ipse
 qui
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
-    qu-i           NOM.PL.M
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
-    qu-i           NOM.PL.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
-    qu-i           NOM.PL.M
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-    qu-i           NOM.PL.M
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
-    qu-i           NOM.SG.M
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
-    qu-i           NOM.SG.M
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-    qu-i           NOM.SG.M
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-i           NOM.SG.M
@@ -332,8 +278,6 @@ ego
 aliquis
   pronoun, indefinite  [XXXAO]
     anyone/anybody/anything; someone; some/few; some (particular) thing;
-    aliqu-is       DAT.PL
-    aliqu-is       ABL.PL
   pronoun, adjectival  [XXXAO]
     some; any; a few; a particular/certain ~; some other; about/like (NUM);
     aliqu-is       DAT.PL
@@ -384,19 +328,14 @@ felix
 maximus
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
     great, large; great, large, vast, extensive, spacious; great, much, abundant, considerable; loud, powerful, strong, mighty; the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous; great things, important matters; the great year, the Platonic year, cycle; great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest; one who has attained his twenty-fifth year, who is of age, adults; ancestors, forefathers; high, dear, of great value, at a high price; higher, highest, very high, most highly prized; too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; there is greater reason, there is more cause; more and more; no more ... than; just as much ... as; just as little ... as; not more, less, not so much ... as; less ... than; more or less; in different degrees; in the highest degree, most of all, most particularly, especially, exceedingly, very; at most; the more ... the more; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly; just now; certainly, by all means, very well, yes; certainly not, by no means; (Lewis and Short)
-    maxi-mus       NOM.SG.M.SPRL
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
     great (achievement); mighty; distinguished; skilled; bold/confident; proud;
-    maxi-mus       NOM.SG.M.SPRL
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAO]
     full/complete/utter/pure; intense; loud; at high price; notable/famous; old;
-    maxi-mus       NOM.SG.M.SPRL
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [XXXAA]
     great, large; great, large, vast, extensive, spacious; great, much, abundant, considerable; loud, powerful, strong, mighty; the majority; great, grand, mighty, noble, lofty, important, of great weight, importance, momentous; great things, important matters; the great year, the Platonic year, cycle; great in comparison with, too great for; advanced in years, of great age, aged, older, the elder, the oldest, eldest; one who has attained his twenty-fifth year, who is of age, adults; ancestors, forefathers; the old master, the master of the house, the old man; the young master; the Senate; a great-uncle; high, dear, of great value, at a high price; higher, highest, very high, most highly prized; too greatly, too highly, greater than it is, in an exaggerated manner; greatly, loudly; in a higher degree, more completely, more; there is greater reason, there is more cause that; more and more; no more ... than; just as much ... as; just as little ... as; not more, less, not so much ... as; less ... than; more or less; one more than another, in different degrees; in the highest degree, most of all, most particularly, especially, exceedingly, very; at most; the more ... the more, less; first of all, in the first place; especially, particularly, principally, but more especially, just, precisely, exactly; just now; certainly, by all means, very well, yes; certainly not, by no means; (Lewis and Short)
-    maxi-mus       NOM.SG.M.SPRL
   magnus, magna -um, major -or -us, maximus -a -um  adjective, 1st/2nd declension  [FXXEM]  medieval  uncommon
     senior, the elder;
-    maxi-mus       NOM.SG.M.SPRL
   maximus, maxima, maximum  adjective, superlative  [XXXAO]
     greatest/biggest/largest; longest; oldest; highest, utmost; leading, chief;
     maxi-mus       NOM.SG.M.SPRL
@@ -426,16 +365,12 @@ nequam
     nequam
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
-    qu-am          ACC.SG.F
   pronoun, interrogative  [XXXAO]
     who/what/which?, what/which one/man/person/thing? what kind/type of?;
-    qu-am          ACC.SG.F
   pronoun, indefinite  [XXXAO]
     who/whatever, everyone who, all that, anything that;
-    qu-am          ACC.SG.F
   pronoun, adjectival  [XXXAO]
     any; anyone/anything, any such; unspecified some; (after si/sin/sive/ne);
-    qu-am          ACC.SG.F
   pronoun, adjectival  [XXXAO]
     who?, which?, what?; what kind of?;
     qu-am          ACC.SG.F
@@ -745,7 +680,6 @@ rego
 audio
   audio, audire, audivi, auditus  verb, 4th conjugation  [XXXAO]
     to hear, to perceive, understand by hearing, to learn; to hear concerning any one; to hear, attend, give ear, listen; to listen to, to give ear to, hearken to, attend; to hear a teacher, to receive instruction from, to study under; to listen, hearken to, to examine; to hear, listen to, lend an ear to, regard, grant, to hear one, to grant his desire or prayer; to hear a person, thing with approbation, to assent to, agree with, approve, grant, allow; To hear, to listen to, to obey, heed; to be obedient to, to obey; To hear thus and thus, to be named, styled somehow, to be in good, bad repute, to be praised, blamed, to have a good, bad character; As it were to hear, to hear mentally, to understand, to supply; A hearer, auditor; a hearer of, obedient to; (Lewis and Short)
-    audi-o         1SG.PRS.ACT.IND
   audio, audire, audivi, auditus  verb, 4th conjugation  [FXXEM]  medieval  uncommon
     audit (account);
     audi-o         1SG.PRS.ACT.IND
@@ -753,7 +687,6 @@ audio
 capio
   capio, capere, cepi, captus  verb, 3rd conjugation, transitive  [XXXAO]
     to take in hand, take hold of, lay hold of, take, seize, grasp, to take up arms, engage in war, battle, to take, partake of; To take into possession, take captive, seize, make prisoner; a prisoner, captive, a female captive; to catch, hunt down, take; To win, captivate, charm, allure, enchain, enslave, fascinate; To cheat, seduce, deceive, mislead, betray, delude, catch; To defeat, convict, overcome; To deprive of his powers, faculties, to harm; to lame, mutilate, maim, impair, weaken; to deprive of sense, intellect, silly, insane, crazy, crazed, lunatic, mad; To choose, select, elect, take, pick out, adopt, accept; To occupy, choose, select, take possession of, to take up a position, select a place; To take by force, capture, storm, reduce, conquer, seize; To reach, attain, arrive at, betake one's self to; to take, seize, wrest, receive, obtain, acquire, get; to take illegally, exact, extort; to take, inherit, obtain, acquire, get, accept; to collect, receive, obtain; to take, seize, obtain, get, enjoy, reap; to take, assume, acquire, put on; to take, assume, adopt, cultivate, cherish, possess; to undertake, assume, enter upon, accept, take upon one's self, to obtain for, secure for; to begin, enter upon, take, undertake, to take a start, gather momentum; to seize, embrace, take; to form, conceive, entertain, come to, reach; to take, derive, draw, obtain; to take, entertain, conceive, receive, be subjected to, suffer, experience; to seize, overcome, possess, occupy, affect, take possession of, move; to suffer, take, be subjected to; To take in, receive, hold, contain, be large enough for; not to hold, to be too small for; To swallow up, take in; To contain, hold, be large, strong enough for, bear; to admit of, be capable of, undergo; to be susceptible of, to be of a nature to; to take, receive into the mind, comprehend, grasp, embrace; (Lewis and Short)
-    capi-o         1SG.PRS.ACT.IND
   capio, capere, cepi, captus  verb, 3rd conjugation, transitive  [FXXEM]  medieval  uncommon
     to take in hand, take hold of, lay hold of, take, seize, grasp; to take up arms, engage in war, battle; to take, partake of; to take into possession, take captive, seize, make prisoner; a prisoner, captive, a female captive; to catch, hunt down, take; to win, captivate, charm, allure, enchain, enslave, fascinate; to cheat, seduce, deceive, mislead, betray, delude, catch; to defeat, convict, overcome; to deprive of his powers, faculties, harm; to lame, mutilate, maim, impair, weaken; to deprive of sense, intellect; silly, insane, crazy, crazed, lunatic, mad; to choose, select, elect, take, pick out, adopt, accept; to occupy, choose, select, take possession of, take up a position, select a place; to take by force, capture, storm, reduce, conquer, seize; to reach, attain, arrive at, betake one's self to; to take, seize, wrest, receive, obtain, acquire, get; to take illegally, exact, extort; to take, inherit, obtain, acquire, get, accept; to collect, receive, obtain; to take, seize, obtain, get, enjoy, reap; to take, assume, acquire, put on; to take, assume, adopt, cultivate, cherish, possess; to undertake, assume, enter upon, accept, take upon one's self; to obtain for, secure for; to begin, enter upon, take, undertake, take a start, gather momentum; to seize, embrace, take; to form, conceive, entertain, come to, reach; to take, derive, draw, obtain; to take, entertain, conceive, receive, be subjected to, suffer, experience; to seize, overcome, possess, occupy, affect, take possession of, move; to suffer, take, be subjected to; to take in, receive, hold, contain, be large enough for; not to hold, be too small for; to swallow up, take in; to contain, hold, be large, strong enough for, bear; to admit of, be capable of, undergo; to be susceptible of, be of a nature to; to take, receive into the mind, comprehend, grasp, embrace; a surname of Minerva; (Lewis and Short)
     capi-o         1SG.PRS.ACT.IND
@@ -776,20 +709,16 @@ possum
 eo
   eo, eare, evi, etus  verb, 1st conjugation  [FXXFZ]  medieval  very rare
     go, walk; march, advance; pass; flow; pass (time); ride; be in the middle;
-    e-o            1SG.PRS.ACT.IND
   eo, ire, ivi(ii), itus  verb, irregular  [XXXAX]
     to walk, ride, sail, fly, move; to proceed against, to march against; to pass away; to proceed, move, advance; to go over, accede to any opinion; to vote against a bill; to be sold at; to proceed, turn out, happen; to set about, to prepare, to wish, to be about; (Lewis and Short)
     e-o            1SG.PRS.ACT.IND
   eo  adverb  [XXXCO]
     there, in that place, in that condition; therefore, on that account, for that reason; so much, by so much, so much the worse, the less; to that place, thither; thereto, in addition to that, besides; to that end, with that purpose, to this result; to that degree, extent, so far, to such a point; up to the time, until, so long; (Lewis and Short)
-    eō             POS
   eo  adverb  [XXXBO]
     there, to/toward that place; in that direction; to that object/point/stage;
     eō             POS
   is, ea, id  pronoun, personal  [XXXAX]
     he/she/it/they (by GENDER/NUMBER); DEMONST: that, he/she/it, they/them;
-    e-ō            ABL.SG.M
-    e-ō            ABL.SG.N
   idem, eadem, idem  pronoun, demonstrative  [XXXAX]
     the same; at the same time, likewise, also; nevertheless, yet, on the contrary; the same as, identical with, of the same meaning as; (Lewis and Short)
     e-ō            ABL.SG.M
@@ -808,7 +737,6 @@ fero
     fer-ō          ABL.SG.N
   fero, ferre, tuli, latus  verb, 3rd conjugation  [XXXAX]
     to bear, carry, bring; to set in motion, to move onward quickly, rapidly, to bear, lead, conduct, drive away; to move, go swiftly, to haste, speed, betake one's self, to flow, mount, run down; to move, go swiftly, to hasten, rush; to carry off, take away by force, to plunder, spoil, ravage; to bear, produce, yield; to bear offspring, be pregnant; to offer; to get, receive, acquire, obtain; to bear, carry, bring, bring assistance, aid, help; to entertain suspicion; to move, to bring, lead, conduct, drive, raise; to carry off, take away; to bear, produce; to bear away, to get, obtain, receive; to be convicted of a false accusation; to bear, support, to suffer, tolerate, endure; to bear; to bear, put up with, to suffer, tolerate, endure, sustain, resist; to make public, to disclose, show, exhibit; to show, manifest, to let be seen, to declare; to report, relate, make known, assert, celebrate; they relate, tell, say; it is said, it appears; to give out, to pass off, to pass current; to give in one's vote, to vote; to bring forward, move a proposition, to propose a law; to offer, propose to the defendant as judge, to propose a judge to, to bring a suit against, to sue; to enter, to set, note down; to require, demand, render necessary; to allow, permit, suffer; (Lewis and Short)
-    fer-o          1SG.PRS.ACT.IND
   fero, ferre, tuli, latus  verb, 3rd conjugation  [XXXAA]
     to bear, carry, bring; to set in motion, move onward quickly, rapidly, to bear, lead, conduct, drive away; to move, go swiftly, haste, speed, betake one's self; to flow, mount, run down; to move, go swiftly, hasten, rush; to carry off, take away by force, plunder, spoil, ravage; to bear, produce, yield; to bear offspring, be pregnant; to offer; to get, receive, acquire, obtain; to bear, carry, bring assistance, aid, help; to entertain suspicion; to move, bring, lead, conduct, drive, raise; to carry off, take away; to bear, produce; to bear away, get, obtain, receive; to bear, support, suffer, tolerate, endure, sustain, resist; to put up with; to make public, disclose, show, exhibit; to show, manifest, let be seen, declare; to report, relate, make known, assert, celebrate; they relate, tell, say; it is said, it appears; to give out, pass off, pass current; to give in one's vote, vote; to bring forward, move a proposition, propose a law; to offer, propose to the defendant as judge, to propose a judge to, to bring a suit against, sue; to enter, set, note down; to require, demand, render necessary; to allow, permit, suffer; (Lewis and Short)
     fer-o          1SG.PRS.ACT.IND
@@ -816,10 +744,8 @@ fero
 volo
   volo, velle, volui, -  verb, irregular  [XXXAX]
     to wish, want, purpose, be willing, consent, mean, will, intention, plan, policy; to try, endeavor, attempt; to mean, intend to say; to be going to; to be about to, on the point of; will, would; to resolve, conclude; to be willing, ready, to consent, like to do something; think, mean, pretend; to like, have no objection to, approve of; to choose, be pleased; to dedicate some writing to; to order, command; to consent, allow; to be of opinion that something should be, require, demand; to imagine, consider; to hold; to say, assert; to pretend; to provide; to take care for, advocate somebody's interests; to want, wish for, like to have; to want, aim at, like; to mean, signify; to want somebody, in order to see him, to speak with him; to love, like somebody, be fond of somebody; to wish to have; to want something of somebody; to wish something to somebody; to wish one well, ill, to like, dislike one, to like one better, best; to like one for his own sake, personally; to will, have a will, wish, consent, assent; to prefer; to wish above all, more than any thing, to like best; willing, voluntary, favorably disposed; eagerly; on purpose, intentionally; voluntarily, willingly, gladly, spontaneously; favorably, kindly; welcome, acceptable, pleasing; one who wishes; one who intends, is about; one who is willing; one who consents, one who does a thing voluntarily; things pleasing, acceptable; (Lewis and Short)
-    vol-o          1SG.PRS.ACT.IND
   volo, volare, volavi, volatus  verb, 1st conjugation  [XXXAX]
     fly;
-    vol-o          1SG.PRS.ACT.IND
   volo, volare, volavi, volatus  verb, 1st conjugation  [EXXEM]  later  uncommon
     evaporate;
     vol-o          1SG.PRS.ACT.IND
@@ -831,7 +757,6 @@ volo
 memini
   memini, meminisse, -  verb, 2nd conjugation, perfect with present meaning  [XXXAO]
     to remember, recollect, think of, be mindful of, not to have forgotten, bear in mind; be sure to, do not fail to; to make mention of, mention; mindful; (Lewis and Short)
-    memin-ī        1SG.PRF.ACT.IND
   memini, meminisse, -  verb, 2nd conjugation, perfect with present meaning  [XXXAA]
     mention;
     memin-ī        1SG.PRF.ACT.IND
@@ -844,16 +769,10 @@ collibuit
 accidit
   accido, accidere, accidi, accisus  verb, 3rd conjugation, transitive  [XXXCO]
     to begin to cut, to cut into, so to cut a thing that it falls, to fell, to cut; eaten up, to use up; to impair, weaken, cut off, down; impaired, ruined, troubled, unfortunate state of things; (Lewis and Short)
-    accid-it       3SG.PRS.ACT.IND
-    accid-it       3SG.PRF.ACT.IND
   accidit, accidere, accidit, accisus est  verb, 3rd conjugation, impersonal  [XXXCO]
     happens, turns out, befalls; fall upon; come to pass, occur;
-    accid-it       3SG.PRS.ACT.IND
-    accid-it       3SG.PRF.ACT.IND
   accido, accidere, accidi, -  verb, 3rd conjugation  [XXXAO]
     to fall upon, down upon, to reach by falling; to fall at one's knees; to strike the senses, to reach a thing by means of the senses, reaches the ear; to fall out, come to pass, happen, occur, to happen to, to befall, it happened, came to pass, that, it happened that; to die; if any thing should happen to one; To turn out; to belong to; (Lewis and Short)
-    accid-it       3SG.PRS.ACT.IND
-    accid-it       3SG.PRF.ACT.IND
   accido, accidere, accidi, -  verb, 3rd conjugation  [FXXEM]  medieval  uncommon
     accrue, fall to the share of;
     accid-it       3SG.PRS.ACT.IND
@@ -866,7 +785,6 @@ pluit
     plu-it         3SG.PRF.ACT.IND
   pluit, pluere, pluvit, pluvitus est  verb, 3rd conjugation, impersonal  [XXXDX]  lesser
     it rains;
-    plu-it         3SG.PRS.ACT.IND
   pluo, pluere, pluvi, -  verb, 3rd conjugation  [XXXDX]  lesser
     to rain; (Lewis and Short)
     plu-it         3SG.PRS.ACT.IND
@@ -874,7 +792,6 @@ pluit
 licet
   licet, licere, licuit, licitus est  verb, 2nd conjugation, impersonal  [XXXAX]
     it is lawful, it is allowed, permitted; one may, can, one is at liberty; that may be, may be done, I have no objection; even if, although, notwithstanding; free, unrestrained, uncurbed, bold, forward, presumptuous, licentious; freely, according to one's own pleasure, fancy, without restraint, boldly, impudently, licentiously; permitted, allowed, allowable, lawful; things that are lawful; rightfully, lawfully; (Lewis and Short)
-    lic-et         3SG.PRS.ACT.IND
   liceo, licere, licui, -  verb, 2nd conjugation, intransitive  [XXXDX]  lesser
     to be for sale; to have a price put upon, to be valued, esteemed at; to offer for sale, to fix the price, to value; (Lewis and Short)
     lic-et         3SG.PRS.ACT.IND
@@ -981,13 +898,11 @@ decem
 cum
   cum  adverb  [XXXAO]
     when, as, while, after, since; when, if, whenever; even when; when, if, while; while, now that; seeing that; when, after; whenever; when first, the first time that, as soon as; while; precisely when, just when; when, that, during which, while; since, after; at the end of which; When, on an occasion, on which; in consequence of which; at which time however, and yet, while nevertheless; during which; while nevertheless, whereas; now especially, just now, just then, just while, especially when; since, because, as; especially since, the more so because; since of course, since obviously, when of course; seeing that; while, whereas; although; (Lewis and Short)
-    cum            POS
   cum  adverb  [XXXAO]
     as soon; while, as (well as); whereas, in that, seeing that; on/during which;
     cum            POS
   cum  preposition, with the ablative  [XXXAO]
     with, together/jointly/along/simultaneous with, amid; supporting; attached;
-    cum            ABL
   cum  preposition, with the ablative  [XXXAO]
     under command/at the head of; having/containing/including; using/by means of;
     cum            ABL
@@ -1062,10 +977,8 @@ amatus
 fio
   fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
     happen, come about; result (from); take place, be held, occur, arise (event);
-    fī-o           1SG.PRS.ACT.IND
   fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
     be made/created/instituted/elected/appointed/given; be prepared/done; develop;
-    fī-o           1SG.PRS.ACT.IND
   fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
     be made/become; (facio PASS); [fiat => so be it, very well; it is being done];
     fī-o           1SG.PRS.ACT.IND
@@ -1073,10 +986,8 @@ fio
 fieri
   fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
     happen, come about; result (from); take place, be held, occur, arise (event);
-    f-ieri         PRS.ACT.INF
   fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
     be made/created/instituted/elected/appointed/given; be prepared/done; develop;
-    f-ieri         PRS.ACT.INF
   fio, fieri, factus sum  verb, 3rd conjugation, semi-deponent  [XXXAO]
     be made/become; (facio PASS); [fiat => so be it, very well; it is being done];
     f-ieri         PRS.ACT.INF
@@ -1095,7 +1006,6 @@ audeo
 gaudeo
   gaudeo, gaudere, gavisus sum  verb, 2nd conjugation, semi-deponent  [XXXAX]
     to rejoice, be glad, joyful, to take pleasure in, be pleased with; to rejoice in; to rejoice within one's self, secretly, to feel a quiet joy; joyful, cheerful; (Lewis and Short)
-    gaud-eo        1SG.PRS.ACT.IND
   gaudeo, gaudere, gavisus sum  verb, 2nd conjugation, semi-deponent  [FXXCM]  medieval
     enjoy the use of, possess [~ me de];
     gaud-eo        1SG.PRS.ACT.IND
@@ -1107,8 +1017,6 @@ prior
     pri-or         VOC.SG.C.CMPR
   prior, prioris  noun, 3rd declension, masculine  [XXXDX]  lesser
     former, previous, prior, first; Former, deceased; forefathers, ancestors, the ancients; better, superior, more excellent, important; Before, sooner, first, previously; Before that, before; Sooner, rather; formerly, in former times; (Lewis and Short)
-    prior          NOM.SG
-    prior          VOC.SG
   prior, prioris  noun, 3rd declension, masculine  [EEXCB]  later
     superior/elder monk; (later) second in dignity to abbot/head of priory, prior;
     prior          NOM.SG

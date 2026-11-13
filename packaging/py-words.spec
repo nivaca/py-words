@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.11
+Version:        3.12
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -105,6 +105,10 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.12-1
+- Entries of the same word with the same forms show them once; 114 English
+  meanings that repeated another entry's are their own again
+
 * Wed Nov 11 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.11-1
 - The windows follow the desktop's scaling (Xft.dpi) on hi-res displays
 

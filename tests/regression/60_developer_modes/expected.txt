@@ -21,7 +21,6 @@ virumque
 01 vir-um         ACC.SG  (always, most frequent)
 02 vis, viris  noun, 3rd declension, feminine  [XXXAX]  very frequent
 03 strength (bodily) (pl.), force, power, might, violence; resources; large body;
-01 vīr-um         GEN.PL  (always, sometimes)
 02 vis, viris  noun, 3rd declension, feminine  [XXXAA]  very frequent
 03 strength, force, vigor, power, energy, virtue; energy, virtue, potency; hostile strength, force, violence; force, violence; quantity, number, abundance; military forces, troops; the virile forces, organs; mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
 01 vīr-um         GEN.PL  (always, sometimes)
@@ -30,8 +29,6 @@ virumque
 cano
 02 canus, cani  noun, 2nd declension, masculine  [XBXCO]  common
 03 gray hairs (pl.); old age;
-01 can-ō          DAT.SG  (always, most frequent)
-01 can-ō          ABL.SG  (always, most frequent)
 02 canum, cani  noun, 2nd declension, neuter  [XXXFS]  very rare
 03 wicker basket (used for food/flowers and in sacrifices);
 01 can-ō          DAT.SG  (always, most frequent)
@@ -44,7 +41,6 @@ cano
 01 cān-ō          ABL.SG.N  (always, most frequent)
 02 cano, canere, cani, canitus  verb, 3rd conjugation  [EXXFS]  later  very rare
 03 to produce melodious sounds, to make something the subject of one's singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one's singing, playing; to sing, play; to sing for one's self, to consult only one's own advantage; to sing, to cause to resound, to celebrate in song, to sing of, to croak; to celebrate, to trumpet abroad; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
-01 can-o          1SG.PRS.ACT.IND  (always, most frequent)
 02 cano, canere, cecini, cantus  verb, 3rd conjugation  [XXXAO]  very frequent
 03 to produce melodious sounds, to make something the subject of one's singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one's singing, playing; to sing, play; to sing for one's self, to consult only one's own advantage; to sing, to cause to resound, to celebrate in song, to sing of, to croak; to celebrate, to trumpet abroad; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
 01 can-o          1SG.PRS.ACT.IND  (always, most frequent)
@@ -61,12 +57,8 @@ amicorum
 aspis
 02 aspis, aspidis  noun, 3rd declension, feminine  [EXAEW]  later  uncommon
 03 asp, venomous snake of North Africa;
-01 aspis          NOM.SG  (always, most frequent)
-01 aspis          VOC.SG  (always, most frequent)
 02 aspis, aspidis  noun, 3rd declension, feminine  [GXXFM]  neo-Latin  very rare
 03 newt, eft;
-01 aspis          NOM.SG  (always, most frequent)
-01 aspis          VOC.SG  (always, most frequent)
 02 aspis, aspidos/is  noun, 3rd declension, feminine  [XXACO]  common
 03 asp, venomous snake of North Africa;
 01 aspis          NOM.SG  (always, most frequent)
@@ -96,7 +88,6 @@ xyzzyq
 redeo
 02 redeo, redire, redivi(ii), reditus  verb, irregular  [XXXAX]  very frequent
 03 to come back; to turn back, return, turn around; to come to one's self, recover one's senses; to go back, recur; To come in, arise, proceed; To come to, be brought, reduced to; to arrive at, reach, attain; to sink, slope down, descend; (Lewis and Short)
-01 rede-o         1SG.PRS.ACT.IND  (always, most frequent)
 02 redeo, redire, redivi(ii), reditus  verb, irregular  [FLXEM]  medieval  uncommon
 03 revert (leg.);
 01 rede-o         1SG.PRS.ACT.IND  (always, most frequent)
@@ -115,7 +106,6 @@ XIV
 quamdiu
 02 quamdiu  adverb  [XXXBO]  frequent
 03 how long ago? how long?; as long as, until, during; Until; inasmuch as, in that; (Lewis and Short)
-01 quamdiū        POS  (always, most frequent)
 02 quamdiu  adverb  [XXXBO]  frequent
 03 for the preceding period until; up to the time that; inasmuch as; (quam diu);
 01 quamdiū        POS  (always, most frequent)

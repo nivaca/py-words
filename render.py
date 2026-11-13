@@ -6,7 +6,9 @@
         amic-us   nominative singular
 
 Each word is followed by its readings: a dictionary entry (its principal
-parts and grammar, its meaning, then the forms the word can be), an
+parts and grammar, its meaning, then the forms the word can be; entries
+that would show the same forms, as a word of WORDS and its medieval sense
+from Latham, show them once, after the last of them, as WORDS did), an
 irregular form, an affix or enclitic found on the word, or a note on a
 trick that was needed to find it.  The meanings are in the language given
 (see languages.py), and so is the rest, if the language translates it
@@ -129,13 +131,16 @@ class Renderer:
                 self.line(self.t(f'(near spellings: {", ".join(near)})'), 2)
             return self.text()
         shown = set()
-        for reading in result.readings:
-            self.reading(reading, result, shown)
+        readings = result.readings
+        for i, reading in enumerate(readings):
+            self.reading(reading, result, shown,
+                         readings[i + 1] if i + 1 < len(readings) else None)
         if result.trimmed:
             self.line(self.t('(less likely forms are not shown)'), 2)
         return self.text()
 
-    def reading(self, r: Reading, result: WordResult, shown: set):
+    def reading(self, r: Reading, result: WordResult, shown: set,
+                following: Reading | None = None):
         src = r.source
         if isinstance(src, (Prefix, Suffix, Tackon)):
             self.affix(src)
@@ -160,7 +165,7 @@ class Renderer:
         elif isinstance(src, Unique):
             self.unique(r, src)
         elif isinstance(src, Entry):
-            self.entry(r, src, result)
+            self.entry(r, src, result, following)
 
     def affix(self, a):
         if isinstance(a, Prefix):
@@ -192,15 +197,36 @@ class Renderer:
             words.append(self.t(f'(entry {entry.id})'))
         return '  '.join(w for w in words if w)
 
-    def entry(self, r: Reading, entry: Entry, result: WordResult):
+    def entry(self, r: Reading, entry: Entry, result: WordResult,
+              following: Reading | None = None):
+        """An entry and its forms; these are left for the FOLLOWING
+        reading if it is an entry with the very same forms."""
         header = self.entry_header(entry)
         if header:
             self.line(header, 2, ENTRY_CODE)
         self.line(self.meaning_of(entry, r.forms[0]), 4, MEANING_CODE)
+        forms = self.form_lines(r, entry, result)
+        if forms and following is not None and \
+                isinstance(following.source, Entry) and \
+                self.form_lines(following, following.source,
+                                result) == forms:
+            return
+        self.lines += forms
+
+    def form_lines(self, r: Reading, entry: Entry,
+                   result: WordResult) -> list[str]:
+        """The lines of the forms of an entry's reading (none for a
+        conjunction or interjection, whose form says no more than the
+        header, nor with meanings_only)."""
         if self.meanings_only or r.pos in (Pos.CONJ, Pos.INTERJ):
-            return              # (the form says no more than the header)
-        for p in r.forms:
-            self.form(p, entry, result)
+            return []
+        saved, self.lines = self.lines, []
+        try:
+            for p in r.forms:
+                self.form(p, entry, result)
+            return self.lines
+        finally:
+            self.lines = saved
 
     def unique(self, r: Reading, u: Unique):
         words = [u.word, self.t(POS_NAME.get(u.form.pos, ''))]
