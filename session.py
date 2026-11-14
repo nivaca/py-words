@@ -4,12 +4,18 @@ The meanings are in the language of the settings (see languages.py); in
 reverse (~E), words of that language are looked up in Latin.  With the
 parameter fuzzy_search, a word that finds nothing is followed by the
 results of its near spellings (see fuzzy.py).
+
+The direction last chosen (Latin to the language, or back) is kept in the
+section [search] of the configuration file, for the next start of any of
+the programs (saved_to_latin, save_to_latin).
 """
 
 from __future__ import annotations
 
 from collections.abc import Callable
 
+import colours
+import config
 import reverse
 from analyzer import Analyzer, is_capitalized
 from interface import tr
@@ -19,6 +25,28 @@ from model import Pos
 from render import Renderer
 from settings import Settings
 from xmldata import DataError
+
+#  The section of the configuration file with the direction last chosen
+SEARCH = 'search'
+
+
+def saved_to_latin() -> bool:
+    """Whether the direction last chosen was to Latin (from the language
+    of the meanings)."""
+    return config.section(SEARCH).get('to_latin') is True
+
+
+def save_to_latin(to_latin: bool) -> str:
+    """Keeps the direction, for the next start; returns '' or why it could
+    not be kept.  (Nothing is written if it is the one kept already.)"""
+    if saved_to_latin() == bool(to_latin):
+        return ''
+    try:
+        config.update(SEARCH, {**config.section(SEARCH),
+                               'to_latin': bool(to_latin)})
+    except (OSError, config.ConfigError) as e:
+        return tr('The settings were not saved: {error}', error=e)
+    return ''
 
 class Session:
     def __init__(self, lexicon: Lexicon, settings: Settings,
@@ -34,6 +62,10 @@ class Session:
         #  Another source for the Latin words (see logeion.py and words.py
         #  --logeion): a line -> the text to show; None for this dictionary
         self.other_source: Callable[[str], str] | None = None
+        #  (words.py: its lookup in Logeion, kept while ~G switches it off)
+        self.logeion = None
+        #  whether the results are coloured for a terminal (colours.py)
+        self.colour = False
         self.analyzer = Analyzer(lexicon, settings)
         self.settings_changed()
 
@@ -56,10 +88,11 @@ class Session:
             self.notice = tr('The meanings are in English: {error}.',
                              error=e)
 
-    def renderer(self) -> Renderer:
-        return Renderer(self.settings, self.meanings_only,
-                        self.lexicon.glosses, self.language,
-                        self.lexicon.long_stems)
+    def renderer(self, cls: type = Renderer) -> Renderer:
+        """A renderer of the results (CLS: Renderer or a subclass)."""
+        return cls(self.settings, self.meanings_only,
+                   self.lexicon.glosses, self.language,
+                   self.lexicon.long_stems)
 
     # -----------------------------------------------------------------
 
@@ -82,10 +115,14 @@ class Session:
     def lookup(self, line: str) -> str:
         """The text for a line of input, in the current direction."""
         if self.reverse:
-            return self.lookup_reverse(line)
-        if self.other_source is not None:
-            return self.other_source(line)
-        return self.lookup_latin(line)
+            text = self.lookup_reverse(line)
+        elif self.other_source is not None:
+            return self.other_source(line)      # (coloured by itself)
+        else:
+            text = self.lookup_latin(line)
+        if self.colour and not self.settings.pearse_codes:
+            text = colours.results(text)
+        return text
 
     def lookup_latin(self, line: str) -> str:
         az = self.analyzer

@@ -52,7 +52,7 @@ class BundleTests(unittest.TestCase):
         bundle = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(bundle)
         with tempfile.TemporaryDirectory() as tmp:
-            for f in ('words.py', 'TAGS', 'site/index.html',
+            for f in ('words.py', 'TAGS',
                       'local-only/notes.org', 'tools/bundle-zip.py',
                       'data/dictionary.xml',
                       'data/site/x.xml', 'data/TAGS'):

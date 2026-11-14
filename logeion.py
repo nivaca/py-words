@@ -7,16 +7,18 @@ Logeion has the entries of many dictionaries (Lewis and Short, Georges,
 Gaffiot, DMLBS, Du Cange …) but does not analyse an inflected form, so the
 words are analysed here first, and Logeion is asked for their lemmas: the
 first of the principal parts of each entry found (arma: armum and armo;
-dixit: dico).  A word with no lemma here (one that is not found, an
-irregular form or pronoun) is asked for as it is written, and Logeion
-finds what it can for it.
+dixit: dico).  The analysis is shown before Logeion's entries, as this
+program shows it but without its meanings: the entries and the forms
+(dixi: dico, dicere, dixi, dictus; dix-ī  1SG.PRF.ACT.IND).  A word
+with no lemma here (one that is not found, an irregular form or pronoun)
+is asked for as it is written, and Logeion finds what it can for it.
 
 The entries can be those of all the dictionaries of Logeion, or of one
 (DICTIONARIES): the others are left out, but not the short definition,
 the frequency and the examples from the corpus.  The source and the
 dictionary chosen are kept in the section [logeion] of the configuration
 file (source = "local" or "logeion", dictionary = "all" or a code of
-DICTIONARIES), for the window and the terminal interface.  Asking
+DICTIONARIES), for the next start of any of the programs.  Asking
 Logeion needs the internet; its pages are kept in memory while the
 program runs.  The engine that asks Logeion and renders its entries
 (logeion_api.py, logeion_entry.py, logeion_render.py, logeion_dom.py,
@@ -28,15 +30,18 @@ from __future__ import annotations
 import textwrap
 from dataclasses import dataclass, field
 
+import colours
 import config
 import logeion_api as api
 from config import ConfigError
-from forms import principal_parts
+from forms import describe_part, principal_parts
 from interface import N_, tr
 from logeion_entry import DICTIONARIES as NAMES_OF, DICTIONARY, Entry, \
     Options, page_entry, slug
 from logeion_render import Style, render_entry
+from layout import kind_of
 from model import Pos, PronounKind
+from render import MEANING_CODE, Renderer
 from results import Origin, WordResult
 
 LOCAL, LOGEION = 'local', 'logeion'
@@ -48,6 +53,7 @@ SECTION = 'logeion'
 #  The dictionaries to choose from: all, or one of the Latin ones of
 #  Logeion, by their codes (those of py-logeion: -d ls), with their names
 ALL = 'all'
+LEWIS_SHORT = 'ls'
 DICTIONARIES = {ALL: N_('All dictionaries')} | {
     code: name for code, name in (NAMES_OF[dname] for dname in (
         'LewisShort', 'Lewis', 'Georges', 'Gaffiot 2016', 'DMLBS', 'LaNe',
@@ -158,16 +164,62 @@ class Page:
 
 @dataclass
 class Word:
-    """A word looked up, and the pages of its lemmas."""
+    """A word looked up, its analysis (the lines of analysis()) and the
+    pages of its lemmas."""
     word: str
     lemmas: list[str]
     pages: list[Page] = field(default_factory=list)
+    analysis: list[str] = field(default_factory=list)
+
+
+class AnalysisRenderer(Renderer):
+    """The results of this program without their meanings (those of
+    Logeion come after them), and with each entry only as its dictionary
+    form and its part of speech: its codes, flags (medieval, rare …) and
+    number belong to this program's meaning, which is not shown, and
+    would only tell apart entries that are, here, the same word (the four
+    entries of dico)."""
+
+    def line(self, text: str, indent: int = 0, code: int | None = None):
+        if code != MEANING_CODE:
+            super().line(text, indent, code)
+
+    def entry_header(self, entry) -> str:
+        if not self.s.show_dictionary_forms:
+            return ''
+        return '  '.join(w for w in (principal_parts(entry, self.t),
+                                     describe_part(entry.part, self.t))
+                         if w)
+
+
+def analysis(session, result: WordResult) -> list[str]:
+    """The lines of the analysis RESULT, as this program shows them but
+    without the line of the word (the line of the results of Logeion
+    shows it) nor the meanings (see AnalysisRenderer); an entry once where
+    several of them are alike (dico: four entries; quae: eight of qui and
+    quis, four kinds of pronoun), with all their forms."""
+    text = session.renderer(AnalysisRenderer).word(result)
+    lines = text.rstrip('\n').split('\n')[1:]
+    if session.settings.pearse_codes:   # (no indentation to go by)
+        return [line for n, line in enumerate(lines)
+                if n == 0 or line != lines[n - 1]]
+    #  an entry (two spaces in), and its forms below: those of the same
+    #  entry line together, each form once, in the order they come
+    blocks: dict[str, list[str]] = {}
+    current: list[str] = []
+    for line in lines:
+        if len(line) - len(line.lstrip(' ')) <= 2:
+            current = blocks.setdefault(line, [])
+        elif line not in current:
+            current.append(line)
+    return [line for head, forms in blocks.items()
+            for line in [head] + forms]
 
 
 def queries(session, line: str) -> list[Word]:
-    """The words of LINE (Latin) and their lemmas, from the analysis of
+    """The words of LINE (Latin), their analysis and their lemmas, from
     SESSION (without asking Logeion yet)."""
-    return [Word(r.word, lemmas(r))
+    return [Word(r.word, lemmas(r), analysis=analysis(session, r))
             for r in session.analyzer.analyze_line(line)]
 
 
@@ -179,9 +231,11 @@ class Logeion:
 
     def fetch(self, words: list[Word]) -> list[Word]:
         """The pages of the lemmas of WORDS (filled in, and returned); first,
-        that of the word as written, if it is a headword of Logeion's
-        (arma, whose lemma here is armum).  If Logeion cannot be reached,
-        a page says why, and the rest are not asked for."""
+        that of the word as written, if it is a headword of Lewis and
+        Short's (arma, whose lemma here is armum; not dixi or est, which
+        other dictionaries have only to send to dico and sum).  If Logeion
+        cannot be reached, a page says why, and the rest are not asked
+        for."""
         shown: set[str] = set()         # (two lemmas, one page: volo)
         for word in words:
             if word.word not in word.lemmas:
@@ -193,7 +247,9 @@ class Logeion:
                     word.pages.append(unreachable(word.word, e))
                     return words
                 if page is not None and \
-                        page['word'] == api.normal_word(word.word):
+                        page['word'] == api.normal_word(word.word) and \
+                        LEWIS_SHORT in (s.code for s in
+                                        page_entry(page).dictionaries):
                     self._add(word, word.word, page, shown)
             for name in word.lemmas:
                 try:
@@ -241,18 +297,23 @@ def reason(e: BaseException) -> str:
 
 # Showing ------------------------------------------------------------------
 
-#  The kinds of the lines of render(): the line of a word looked up, and
-#  those of the pages (and of the problems) after it
-HEAD, PAGE = 'head', 'page'
+#  The kinds of the lines of render(): the line of a word looked up, those
+#  of its analysis (as this program shows its results), and those of the
+#  pages (and of the problems) after it
+HEAD, ANALYSIS, PAGE = 'head', 'analysis', 'page'
 
 
 def render(words: list[Word], style: Style, width: int,
-           dictionary: str = ALL) -> list[tuple[str, str]]:
+           dictionary: str = ALL, wrap_analysis: bool = True,
+           colour: bool = False) -> list[tuple[str, str]]:
     """The lines of WORDS, WIDTH wide, as (kind, line): for each word, a
-    line with it and its lemmas (HEAD), then the pages (PAGE), with the
-    ANSI codes and links of STYLE, which the terminal interface and the
-    window turn into their own.  DICTIONARY: all of them, or the code of
-    the only one shown."""
+    line with it and its lemmas (HEAD), its analysis (ANALYSIS: plain
+    text, as this program's results; wrapped to WIDTH unless not
+    WRAP_ANALYSIS, for the window, which styles them as those), then the
+    pages (PAGE), with the ANSI codes and links of STYLE, which the
+    terminal interface and the window turn into their own; with COLOUR,
+    the analysis too, as colours.py colours this program's results.
+    DICTIONARY: all of them, or the code of the only one shown."""
     lines: list[tuple[str, str]] = []
     for word in words:
         if lines:
@@ -261,6 +322,13 @@ def render(words: list[Word], style: Style, width: int,
         if word.lemmas != [word.word]:
             head += style.dim('  →  ' + ', '.join(word.lemmas))
         lines.append((HEAD, head))
+        for line in word.analysis:
+            pieces = wrapped(line, width, wrap_analysis)
+            if colour:
+                rest = colours.KINDS.get(kind_of(line), '')
+                pieces = [colours.line(pieces[0])] + \
+                    [colours.styled(p, rest) for p in pieces[1:]]
+            lines += [(ANALYSIS, piece) for piece in pieces]
         for page in word.pages:
             lines.append((PAGE, ''))
             if page.entry is None:
@@ -275,6 +343,15 @@ def render(words: list[Word], style: Style, width: int,
                                         textwrap.wrap(missing, width)]
             lines += [(PAGE, line) for line in rendered]
     return lines
+
+
+def wrapped(line: str, width: int, wrap: bool = True) -> list[str]:
+    """LINE of the analysis in lines of WIDTH (if WRAP), the next ones
+    indented two spaces more, as words_tui.py wraps the results."""
+    if not wrap or len(line) <= width:
+        return [line]
+    indent = ' ' * (len(line) - len(line.lstrip()) + 2)
+    return textwrap.wrap(line, width, subsequent_indent=indent) or [line]
 
 
 def missing_from(entry: Entry, dictionary: str) -> str:
@@ -296,6 +373,8 @@ def missing_from(entry: Entry, dictionary: str) -> str:
 
 def text(words: list[Word], width: int = 78, styled: bool = False,
          dictionary: str = ALL) -> str:
+    """WORDS as text (STYLED: with the colours and links of a terminal)."""
     return '\n'.join(line for _, line in
-                     render(words, Style(styled), width, dictionary))
+                     render(words, Style(styled), width, dictionary,
+                            colour=styled))
 

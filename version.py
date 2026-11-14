@@ -18,8 +18,8 @@ VERSION = '3.17'
 URL = 'https://github.com/nivaca/py-words'
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-#  The commit the program was made from, written into the zip and the site
-#  by tools/bundle-zip.py and pages/build.py (a clone asks git instead)
+#  The commit the program was made from, written into the zip by
+#  tools/bundle-zip.py (a clone asks git instead)
 COMMIT_FILE = 'COMMIT'
 
 #  The credits, with {name}, {version} and {url} for those above

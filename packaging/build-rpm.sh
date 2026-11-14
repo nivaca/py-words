@@ -23,7 +23,7 @@
 # passphrase as usual. Needs rpm-sign; RPMSIGN names another rpmsign.
 #
 # The source tarball is made from the files git knows about, committed or
-# not (ignored files, such as site/ and dist/, are left out), so a change can be
+# not (ignored files, such as dist/, are left out), so a change can be
 # packaged before it is committed. For a release, build from a clean tree.
 #
 # The commit of HEAD goes into the tarball as COMMIT, for "About" and

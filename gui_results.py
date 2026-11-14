@@ -285,8 +285,11 @@ class Results(ttk.Frame):
         self.logeion_words, self.logeion_width = words, width
         t = self.text
         lines = logeion.render(words, Style(True), width,
-                               self.logeion_dictionary)
+                               self.logeion_dictionary, wrap_analysis=False)
         for n, (kind, line) in enumerate(lines):
+            if kind == logeion.ANALYSIS:
+                self._line(line)        # (as this program's results)
+                continue
             line_start = t.index('end-1c')
             for piece, codes, url in styled_segments(line):
                 start = t.index('end-1c')

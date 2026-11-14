@@ -94,7 +94,9 @@ WINDOW = (
        'DMLBS, Du Cange …), which needs the internet.  Logeion does not '
        'analyse inflected forms, so each word is analysed here and Logeion '
        'is asked for its lemmas (arma: armum and armo; and arma itself, a '
-       'headword of Logeion\'s).  It searches in Latin only: the other '
+       'headword of Lewis and Short\'s); the analysis is shown first, '
+       'without its meanings (dixi: dix-ī 1SG.PRF.ACT.IND), and then '
+       'Logeion\'s entries.  It searches in Latin only: the other '
        'direction, the language of the meanings, the fuzzy search and the '
        'dictionary editor (which edits this dictionary) are greyed out '
        'meanwhile.  The list beside "Search in" chooses '
@@ -102,7 +104,9 @@ WINDOW = (
        'the short definition, the frequency and the examples are shown '
        'with any.  Its links to other words look them up; the others open '
        'in the browser.  In the terminal, F8 changes the source and F5 the '
-       'dictionary; on the command line, --logeion and --dictionary.'),
+       'dictionary; on the command line, --logeion and --dictionary, and '
+       'in interactive mode ~G and ~D.  The source, the dictionary and the '
+       'direction last chosen are kept for the next start.'),
 )
 WEB = (
     N_('Type in the box at the top and press Enter, or "Look up"; the two '

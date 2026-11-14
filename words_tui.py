@@ -19,7 +19,8 @@
     F1              this help
     F10 / Ctrl-Q    quit
 
-The results are those of words.py, or with F8 the entries of Logeion
+The results are those of words.py (in colour, if the terminal has
+colours and $NO_COLOR is not set), or with F8 the entries of Logeion
 for the lemmas of the words (it needs the internet); the settings, the
 configuration file and the history of the searches are shared with it
 and the window.  (On
@@ -36,6 +37,7 @@ import sys
 import textwrap
 
 import clipboard
+import colours
 import guide
 import interface
 import logeion
@@ -43,10 +45,11 @@ from config import ConfigError
 from helptext import HELP
 from history import History
 from interface import N_, tr
+from layout import kind_of
 from lexicon import DICTIONARY, Lexicon, default_datadir
 from logeion_render import Style
 from logeion_text import char_width, styled_segments
-from session import Session
+from session import Session, save_to_latin, saved_to_latin
 from settings import (COMMAND_LINE, DEPENDS, DEV_MODES, MODES, Settings,
                       ensure_config, first_sentence, label, section_of)
 from tui import ENTER, Field, Screen, ctrl
@@ -80,9 +83,29 @@ HELP_TEXT = textwrap.dedent('\n\n'.join(__doc__.split('\n\n')[1:3]))
 CTRL_UP = ('kUP5', 'kUP')
 CTRL_DOWN = ('kDN5', 'kDN')
 
-#  The curses attributes of the ANSI codes of the entries of Logeion
+#  The curses attributes of the ANSI codes of the results (colours.py) and
+#  of the entries of Logeion; the colours are added by use_colours()
 ATTRIBUTES = {1: curses.A_BOLD, 2: curses.A_DIM, 4: curses.A_UNDERLINE,
               3: getattr(curses, 'A_ITALIC', 0), 36: curses.A_BOLD}
+#  The ANSI colours used, and those of curses
+ANSI_COLOURS = {31: 'COLOR_RED', 32: 'COLOR_GREEN', 34: 'COLOR_BLUE',
+                36: 'COLOR_CYAN'}
+
+
+def use_colours() -> bool:
+    """Gives the ANSI colours their curses attributes (on the terminal's
+    own background), if it has colours and they are wanted; returns
+    whether it does."""
+    if not colours.enabled() or not curses.has_colors():
+        return False
+    try:
+        for n, (code, name) in enumerate(ANSI_COLOURS.items(), 1):
+            curses.init_pair(n, getattr(curses, name), -1)
+            ATTRIBUTES[code] = curses.color_pair(n) | \
+                (curses.A_BOLD if code == 36 else 0)
+    except curses.error:
+        return False
+    return True
 
 
 def key_bar(width: int, bar: str = BAR) -> str:
@@ -115,10 +138,15 @@ class DictionaryTUI(Screen):
         self.lines: list[str] = [tr(WELCOME)]
         self.top = 0                    # the first line of results shown
         self.message = self.session.notice
+        #  where and how words are looked up, as last chosen (and kept at
+        #  each change)
         self.source = logeion.saved_source()
         self.dictionary = logeion.saved_dictionary()    # (its code)
+        self.session.reverse = self.source == logeion.LOCAL and \
+            saved_to_latin()
         self.logeion = logeion.Logeion()    # (its pages, kept)
         self.words = None               # (the results of Logeion shown)
+        self.colour = False             # (run() says if there are colours)
         self.wrapped: tuple[int, list[str]] = (0, [])
 
     # Drawing --------------------------------------------------------------
@@ -145,10 +173,7 @@ class DictionaryTUI(Screen):
             self.put(1, 0, '=> ' + self.query.value[self.offset(w - 4):])
             for i, line in enumerate(self.shown(w)[self.top:
                                                    self.top + self.rows()]):
-                if self.words is None:
-                    self.put(2 + i, 0, line)
-                else:
-                    self.put_styled(2 + i, line)
+                self.put_styled(2 + i, line)
             more = len(self.shown(w)) - self.top - self.rows()
             if more > 0:
                 self.put(h - 3, w - 18,
@@ -173,8 +198,8 @@ class DictionaryTUI(Screen):
         return max(0, self.query.cursor - width + 1)
 
     def put_styled(self, y: int, line: str):
-        """A LINE of the entries of Logeion, in the attributes of its ANSI
-        codes."""
+        """A LINE of the results or of the entries of Logeion, in the
+        attributes of its ANSI codes."""
         x = 0
         for piece, codes, _ in styled_segments(line):
             attr = 0
@@ -188,16 +213,24 @@ class DictionaryTUI(Screen):
         if self.words is not None:      # (wrapped as Logeion's are)
             if self.wrapped[0] != width:
                 self.wrapped = (width, [line for _, line in logeion.render(
-                    self.words, Style(True), width - 1, self.dictionary)])
+                    self.words, Style(True), width - 1, self.dictionary,
+                    colour=self.colour)])
             return self.wrapped[1]
+        colour = self.colour and not self.welcome and \
+            not self.session.settings.pearse_codes
         out = []
         for line in self.lines:
             if len(line) < width:
-                out.append(line)
+                out.append(colours.line(line) if colour else line)
                 continue
             indent = ' ' * (len(line) - len(line.lstrip()) + 2)
-            out += textwrap.wrap(line, width - 1,
-                                 subsequent_indent=indent) or ['']
+            pieces = textwrap.wrap(line, width - 1,
+                                   subsequent_indent=indent) or ['']
+            if colour:                  # (the rest in the colour of the
+                rest = colours.KINDS.get(kind_of(line), '')     # line)
+                pieces = [colours.line(pieces[0])] + \
+                    [colours.styled(p, rest) for p in pieces[1:]]
+            out += pieces
         return out
 
     def scroll(self, step: int):
@@ -255,7 +288,8 @@ class DictionaryTUI(Screen):
             else logeion.LOGEION
         if self.source == logeion.LOGEION:
             self.session.reverse = False
-        self.message = logeion.save_source(self.source) or (
+        self.message = logeion.save_source(self.source) or \
+            save_to_latin(self.session.reverse) or (
             tr('Searching in Logeion: the entries of its dictionaries for '
                'the lemmas of the words (it needs the internet).')
             if self.source == logeion.LOGEION else
@@ -268,10 +302,10 @@ class DictionaryTUI(Screen):
             return
         self.session.reverse = not self.session.reverse
         name = tr(self.session.language.name)
-        self.message = tr('{language} to Latin: type a word in '
-                          '{language}.', language=name) \
-            if self.session.reverse else \
-            tr('Latin to {language}.', language=name)
+        self.message = save_to_latin(self.session.reverse) or (
+            tr('{language} to Latin: type a word in {language}.',
+               language=name) if self.session.reverse else
+            tr('Latin to {language}.', language=name))
 
     def choose_meanings(self):
         """F5: the language of the meanings, or with Logeion its
@@ -513,6 +547,7 @@ def run(screen, datadir):
     curses.use_default_colors()
     screen.keypad(True)
     tui = DictionaryTUI(screen, datadir)
+    tui.colour = use_colours()
     while True:
         tui.draw()
         try:

@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the package, when run from anywhere
@@ -323,6 +324,8 @@ class InteractiveTests(InTempDir):
                       out.getvalue())
 
     def repl(self, *lines):
+        #  (~E and ~L keep the direction: forgotten after the test)
+        self.addCleanup(config.update, 'search', {})
         session, out = self.session()
         replies = iter(lines)
 
@@ -456,6 +459,108 @@ class ConvertTests(InTempDir):
             f.write(self.DICTLINE.replace('N      2 1', 'Q      2 1'))
         with self.assertRaises(convert.ConvertError):
             convert.convert_dictline('DICTLINE.GEN')
+
+
+
+#  A pager for the tests: it appends what it is given, and $LESS, to the
+#  file $FAKE_PAGER_OUT
+FAKE_PAGER = """import os, sys
+data = sys.stdin.buffer.read()
+with open(os.environ['FAKE_PAGER_OUT'], 'ab') as f:
+    f.write(('<' + os.environ.get('LESS', '') + '>').encode() + data)
+"""
+
+
+class PagerTests(InTempDir):
+    """Long results in the system's pager (words.Pager)."""
+
+    def setUp(self):
+        super().setUp()
+        script = os.path.join(self.tmp.name, 'pager.py')
+        with open(script, 'w') as f:
+            f.write(FAKE_PAGER)
+        self.paged = os.path.join(self.tmp.name, 'paged')
+        env = {'PAGER': f'{sys.executable} {script}',
+               'FAKE_PAGER_OUT': self.paged, 'COLUMNS': '40', 'LINES': '10'}
+        patch = mock.patch.dict(os.environ, env)
+        patch.start()
+        self.addCleanup(patch.stop)
+        self.session = Session(lexicon(), Settings())
+        self.written = []
+
+    def pager(self, ask=None, terminal=True):
+        return cli.Pager(self.session, ask, self.written.append, terminal)
+
+    def shown(self) -> str:
+        if not os.path.exists(self.paged):
+            return ''
+        with open(self.paged, encoding='utf-8') as f:
+            return f.read()
+
+    def test_long_results_are_paged(self):
+        text = ''.join(f'line {n}\n' for n in range(20))
+        self.pager().write(text)
+        self.assertEqual(self.shown(), '<FRX>' + text)
+        self.assertEqual(self.written, [])
+
+    def test_short_results_are_not(self):
+        self.pager().write('amo\n  amo, amare\n')
+        self.assertEqual(self.written, ['amo\n  amo, amare\n'])
+        self.assertEqual(self.shown(), '')
+
+    def test_wrapped_and_styled_lines(self):
+        #  (a line of 100 letters takes three of 40; the codes take none)
+        self.assertEqual(cli.screen_lines('x' * 100 + '\nab', 40), 4)
+        self.assertEqual(cli.screen_lines('\033[1mab\033[0m', 2), 1)
+        self.assertEqual(cli.screen_lines(
+            '\033]8;;https://example.org\033\\ab\033]8;;\033\\', 2), 1)
+        self.pager().write('x' * 400 + '\n')
+        self.assertTrue(self.shown())
+
+    def test_less_options_of_the_user(self):
+        os.environ['LESS'] = 'R'
+        self.pager().write('x\n' * 30)
+        self.assertTrue(self.shown().startswith('<R>'))
+
+    def test_not_a_terminal_or_turned_off(self):
+        self.pager(terminal=False).write('x\n' * 30)
+        self.session.settings.pause_in_screen_output = False
+        self.pager().write('y\n' * 30)
+        self.assertEqual(self.shown(), '')
+        self.assertEqual(self.written, ['x\n' * 30, 'y\n' * 30])
+
+    def test_no_pager(self):
+        os.environ['PAGER'] = 'cat'
+        self.assertIsNone(cli.system_pager())
+        os.environ['PAGER'] = 'no-such-pager-here'
+        self.assertIsNone(cli.system_pager())
+        #  (interactive mode pauses instead after each screenful)
+        asked = []
+        self.pager(ask=asked.append).write('x\n' * 30)
+        self.assertEqual(asked, ['-- more (Enter) --'])
+        self.assertEqual(self.shown(), '')
+
+    def test_held_results_are_paged_together(self):
+        pager = self.pager()
+        with pager.hold():
+            pager.write('a\n' * 6)
+            pager.write('b\n' * 6)
+            self.assertEqual(self.shown(), '')
+        self.assertEqual(self.shown(), '<FRX>' + 'a\n' * 6 + 'b\n' * 6)
+
+    def test_a_file_is_paged_once(self):
+        self.session.write = self.pager().write
+        path = os.path.join(self.tmp.name, 'lines.txt')
+        with open(path, 'w') as f:
+            f.write('arma virumque cano\nTroiae qui primus\n')
+        cli.run_file(self.session, path, self.written.append)
+        self.assertEqual(self.shown().count('<FRX>'), 1)
+        self.assertIn('primus', self.shown())
+
+    def test_never_into_a_pipe(self):
+        out = run('arma', 'virumque', 'cano', 'Troiae').stdout.decode()
+        self.assertIn('arm-a', out)
+        self.assertEqual(self.shown(), '')
 
 
 if __name__ == '__main__':

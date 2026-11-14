@@ -22,6 +22,13 @@ these:
 
     ~E / ~L     English (the language of the meanings) to Latin / Latin
                 to English
+    ~G          Logeion or this dictionary (as --logeion)
+    ~D [DICT]   Logeion's dictionary (as --dictionary; alone, a list)
+
+The direction (~E, ~L), the source (~G) and the dictionary (~D) last
+chosen are kept for the next start, also of the other programs; words
+looked up from the command line use the source and dictionary kept
+(--local, --logeion and --dictionary change them for one run).
     ~H          the help: how to search and read the results
     ~A          about: the version and the credits
     @FILE       look up the lines of FILE
@@ -31,6 +38,12 @@ these:
 
 An empty line twice, or end of input, quits.  Ctrl-C stops what is being
 done (a long list of results, a file, a dialogue), but does not quit.
+
+In a terminal, results longer than the screen open in the system's pager
+(less, or $PAGER): PgUp, PgDn and the arrows scroll them, / finds a text
+and q goes back.  The setting pause_in_screen_output turns this off.  In
+a terminal the results are also in colour (colours.py), unless $NO_COLOR
+is set.
 """
 
 from __future__ import annotations
@@ -39,12 +52,19 @@ from version import check_python
 check_python()          # (before the modules that need it)
 
 import argparse
+import contextlib
+import math
 import os
+import re
+import shlex
 import shutil
+import signal
+import subprocess
 import sys
 from collections.abc import Callable
 
 from version import NAME, VERSION, about
+import colours
 import config
 import guide
 import interface
@@ -56,7 +76,7 @@ from interface import tr
 from lexicon import Lexicon, default_datadir
 from settings import (Settings, DEPENDS, DEV_MODES, GROUPS,
                       is_command_character)
-from session import Session
+from session import Session, save_to_latin, saved_to_latin
 from xmldata import DataError
 
 SCREEN_LINES = 20
@@ -215,23 +235,88 @@ def banner(session: Session) -> str:
            file=s.start_file_character,
            parameters=s.change_parameters_character,
            developer=s.change_developer_modes_character),
+        logeion_state(session),
         tr('An empty line twice quits.')])
 
 
-class Pager:
-    """Writes text, pausing after each screenful if asked to."""
+#  less as git runs it, unless $LESS says otherwise: it quits at once if
+#  the text fits the screen (F), keeps the colours and links (R) and
+#  leaves what was shown on the screen (X)
+LESS = 'FRX'
+#  The ANSI codes of styled text (Logeion's), which take no room
+ANSI = re.compile(r'\033\[[0-9;]*m|\033\]8;[^\033\a]*(?:\033\\|\a)')
 
-    def __init__(self, session: Session, ask: Ask, write):
+
+def system_pager() -> list[str] | None:
+    """The command of the pager for long results: $PAGER, or else less;
+    None if there is none (as usually on Windows), or if $PAGER is empty
+    or cat."""
+    wanted = os.environ.get('PAGER')
+    if wanted is None:
+        less = shutil.which('less')
+        return [less] if less else None
+    try:
+        command = shlex.split(wanted)
+    except ValueError:
+        return None
+    if not command or os.path.basename(command[0]) == 'cat' or \
+            shutil.which(command[0]) is None:
+        return None
+    return command
+
+
+def screen_lines(text: str, columns: int) -> int:
+    """How many lines of the screen TEXT takes, COLUMNS wide."""
+    return sum(max(1, math.ceil(len(ANSI.sub('', line)) / columns))
+               for line in text.split('\n'))
+
+
+class Pager:
+    """Writes the results.  In a terminal (TERMINAL), a result longer than
+    the screen goes to the system's pager (system_pager), where PgUp, PgDn
+    and the arrows scroll it, / finds a text and q goes back; where there
+    is none, in interactive mode (ASK given), the pause "-- more (Enter)
+    --" after each screenful.  All this only while the setting
+    pause_in_screen_output is on.  Within hold() (a file), the results
+    are kept and paged together at its end."""
+
+    def __init__(self, session: Session, ask: Ask | None, write,
+                 terminal: bool = False):
         self.session = session
         self.ask = ask
         self._write = write
+        self.pager = system_pager() if terminal else None
         self.count = 0
+        self.held: list[str] | None = None
 
     def reset(self):
         self.count = 0
 
+    @contextlib.contextmanager
+    def hold(self):
+        """Keeps what is written until the end, and then pages it."""
+        self.held = []
+        try:
+            yield
+        finally:
+            text, self.held = ''.join(self.held), None
+            if text:
+                self.write(text)
+
     def write(self, text: str):
+        if self.held is not None:
+            self.held.append(text)
+            return
         if not self.session.settings.pause_in_screen_output:
+            self._write(text)
+            return
+        if self.pager is not None:
+            size = shutil.get_terminal_size()
+            if screen_lines(text.rstrip('\n'), size.columns) < \
+                    size.lines - 1 or not self.page(text):
+                self._write(text)
+            return
+        if self.ask is None:
             self._write(text)
             return
         for line in text.splitlines(keepends=True):
@@ -245,16 +330,45 @@ class Pager:
             self.count += 1
 
 
+    def page(self, text: str) -> bool:
+        """Shows TEXT in the pager; False if it could not be started.
+        (Ctrl-C is the pager's while it runs.)"""
+        sys.stdout.flush()
+        env = dict(os.environ)
+        env.setdefault('LESS', LESS)
+        env.setdefault('LESSCHARSET', 'utf-8')
+        try:
+            interrupt = signal.signal(signal.SIGINT, signal.SIG_IGN)
+        except ValueError:              # (not the main thread)
+            interrupt = None
+        try:
+            subprocess.run(self.pager, input=text.encode('utf-8', 'replace'),
+                           env=env, check=False)
+            return True
+        except OSError:
+            return False
+        finally:
+            if interrupt is not None:
+                signal.signal(signal.SIGINT, interrupt)
+
+
+def holding(session: Session):
+    """Pager.hold of the pager SESSION writes through, if it has one."""
+    pager = getattr(session.write, '__self__', None)
+    return pager.hold() if isinstance(pager, Pager) else \
+        contextlib.nullcontext()
+
 def repl(session: Session, ask: Ask = input,
          write: Callable[[str], None] = None,
          remember: Callable[[str], None] | None = None) -> None:
     """The interactive mode.  REMEMBER(line) is told each line typed at
     the prompt (for the history)."""
+    terminal = write is None and sys.stdout.isatty()
     write = write or (lambda text: print(text, end='', flush=True))
 
     def say(text):
         write(text + '\n')
-    pager = Pager(session, ask, write)
+    pager = Pager(session, ask, write, terminal)
     session.write = pager.write
     say(banner(session))
     blank = 0
@@ -292,12 +406,22 @@ def command(session: Session, line: str, ask: Ask, say) -> None:
     """Does what a line typed in interactive mode says."""
     s = session.settings
     first = line.lstrip()[0]
+    word = line.strip()[:2].upper()
     if line.strip().upper() == '~A':
         say(about())
     elif line.strip().upper() == '~H':
         say(help_text(session).rstrip('\n'))
+    elif word == '~G':
+        say(switch_logeion(session, keep=True))
+    elif word == '~D':
+        say(choose_dictionary(session, line.strip()[2:].strip(), ask,
+                              keep=True))
     elif first == '~':
         say(session.set_language(line.lstrip()[1:2]))
+        if word in ('~E', '~L'):        # (kept for the next start)
+            error = save_to_latin(session.reverse)
+            if error:
+                say(error)
     elif first == s.start_file_character:
         run_file(session, line.lstrip()[1:].strip(), say)
     elif first == s.change_parameters_character:
@@ -350,6 +474,11 @@ def interactive_help(s: Settings, language: str = 'English') -> str:
            '{language}).', language=language),
         '  ~E / ~L    ' + tr('{language} to Latin / Latin to {language}',
                              language=language),
+        '  ~G         ' + tr('Local ↔ Logeion (its entries for the lemmas '
+                             'of the words)'),
+        '  ~D ' + f'{tr("DICT"):<7} ' + tr("Logeion's dictionary (ls, "
+                                           "gaffiot … or all; ~D alone "
+                                           "lists them)"),
         f'  {s.start_file_character}{tr("FILE"):<9} ' +
         tr('look up each line of FILE'),
         f'  {s.change_parameters_character}          ' +
@@ -362,18 +491,27 @@ def interactive_help(s: Settings, language: str = 'English') -> str:
         tr('In the parameter dialogues, ? explains each setting.'),
         tr('Up and Down bring back earlier searches (also those of earlier '
            'sessions).'),
+        tr('Results longer than the screen open in the pager: PgUp and '
+           'PgDn scroll them, / finds a text, q comes back here.'),
         tr('An empty line twice, or Ctrl-D, quits; Ctrl-C stops what is '
            'being done.')])
 
 
 def feed(session: Session, lines, say=None) -> None:
-    """Looks up LINES; a line ~E or ~L changes the language."""
+    """Looks up LINES; a line ~E or ~L changes the language, ~G the source
+    and ~D DICT the dictionary of Logeion."""
     for line in lines:
         text = line.strip()
         if not text:
             continue
         if text.startswith('~'):
-            message = session.set_language(text[1:2])
+            if text[:2].upper() == '~G':
+                message = switch_logeion(session)
+            elif text[:2].upper() == '~D' and text[2:].strip():
+                message = choose_dictionary(session, text[2:].strip(),
+                                            input)
+            else:
+                message = session.set_language(text[1:2])
             if say is not None:
                 say(message)
         else:
@@ -382,8 +520,10 @@ def feed(session: Session, lines, say=None) -> None:
 
 def run_file(session: Session, name: str, say) -> None:
     try:
-        with open(name, encoding='utf-8', errors='replace') as f:
-            feed(session, f, say)
+        with open(name, encoding='utf-8', errors='replace') as f, \
+                holding(session):
+            #  (its messages in their place among the results held)
+            feed(session, f, lambda text: session.write(text + '\n'))
     except OSError as e:
         say(tr('Cannot read {path}: {error}', path=name, error=e.strerror))
 
@@ -453,6 +593,9 @@ def _main(argv: list[str] | None, meanings_only: bool):
                                 '(logeion.uchicago.edu) for the lemmas of '
                                 'the Latin words, instead of those of this '
                                 'dictionary (it needs the internet)'))
+    parser.add_argument('--local', action='store_true',
+                        help=tr('this dictionary, also if Logeion was the '
+                                'source last chosen; this time only'))
     parser.add_argument('--dictionary', metavar=tr('DICTIONARY'),
                         help=tr('with Logeion (and --logeion is then not '
                                 'needed): only the entries of this '
@@ -538,9 +681,15 @@ def _main(argv: list[str] | None, meanings_only: bool):
     if args.language:
         settings.language = args.language
     session = Session(lexicon, settings, args.meanings_only, out.write)
-    session.reverse = args.english
-    if args.logeion or dictionary:
-        session.other_source = logeion_source(session, out, dictionary)
+    if out is sys.stdout and sys.stdout.isatty() and not interactive:
+        #  (long results in the pager; interactive mode makes its own)
+        session.write = Pager(session, None, out.write, True).write
+    #  (in colour in a terminal: colours.py)
+    session.colour = out is sys.stdout and colours.enabled(out)
+    if args.local and (args.logeion or dictionary):
+        parser.error(tr('--local cannot go with --logeion or --dictionary'))
+    restore(session, out, interactive, args.local, args.logeion, dictionary,
+            args.english)
     if session.notice:
         print(session.notice, file=sys.stderr)
     if args.guide:
@@ -559,7 +708,7 @@ def _main(argv: list[str] | None, meanings_only: bool):
         else:
             source = sys.stdin if args.file in (None, '-') else \
                 open(args.file, encoding='utf-8', errors='replace')
-            with source:
+            with source, holding(session):
                 feed(session, source)
     except BrokenPipeError:
         pass
@@ -568,22 +717,135 @@ def _main(argv: list[str] | None, meanings_only: bool):
             out.close()
 
 
-def logeion_source(session: Session, out,
-                   dictionary: str | None = None) -> Callable[[str], str]:
+class LogeionLookup:
     """The lookup of a line of Latin in Logeion (logeion.py), for
     Session.other_source: in the width of the terminal, and with its styles
-    and links if it is one (and NO_COLOR is not set); of the dictionary
-    whose code is DICTIONARY, or all."""
-    import logeion
-    pages = logeion.Logeion()
-    terminal = out is sys.stdout and out.isatty()
-    styled = terminal and not os.environ.get('NO_COLOR')
-    width = shutil.get_terminal_size().columns - 1 if terminal else 78
+    and links if OUT is one (and NO_COLOR is not set); of the dictionary
+    whose code is DICTIONARY (None: the one kept, see logeion.py), which
+    ~D changes.  The pages are kept while it lives."""
 
-    def look_up(line: str) -> str:
-        return logeion.text(pages.look_up(session, line), max(40, width),
-                            styled, dictionary or logeion.ALL)
-    return look_up
+    def __init__(self, session: Session, out=None,
+                 dictionary: str | None = None):
+        import logeion
+        self.logeion = logeion
+        self.session = session
+        self.pages = logeion.Logeion()
+        self.dictionary = dictionary or logeion.saved_dictionary()
+        out = out or sys.stdout
+        terminal = out is sys.stdout and out.isatty()
+        self.styled = terminal and colours.enabled()
+        self.width = shutil.get_terminal_size().columns - 1 if terminal \
+            else 78
+
+    def __call__(self, line: str) -> str:
+        return self.logeion.text(self.pages.look_up(self.session, line),
+                                 max(40, self.width), self.styled,
+                                 self.dictionary)
+
+
+def logeion_state(session: Session) -> str:
+    """Where the words are looked up, for the start of interactive mode."""
+    import logeion
+    local, other = tr(logeion.NAMES[logeion.LOCAL]), \
+        tr(logeion.NAMES[logeion.LOGEION])
+    if session.other_source is None:
+        return tr('~G: {source} → {other}', source=local, other=other)
+    return tr('~G: {source} → {other}', source=other, other=local) + \
+        '   ' + tr('~D: the dictionary ({dictionary})',
+                   dictionary=logeion.dictionary_name(
+                       session.logeion.dictionary))
+
+
+def restore(session: Session, out=None, interactive: bool = False,
+            local: bool = False, logeion_on: bool = False,
+            dictionary: str | None = None, english: bool = False) -> None:
+    """The source, the dictionary and the direction to start with: those
+    of the options (LOCAL, LOGEION_ON, DICTIONARY, ENGLISH: --local,
+    --logeion, --dictionary, -e), or else the ones last chosen, here or in
+    the other programs (the direction only in INTERACTIVE mode: words
+    given are Latin unless -e)."""
+    import logeion
+    on = not local and (logeion_on or bool(dictionary) or
+                        logeion.saved_source() == logeion.LOGEION)
+    if on:
+        session.logeion = LogeionLookup(session, out, dictionary)
+        session.other_source = session.logeion
+    session.reverse = english or (interactive and not on and
+                                  saved_to_latin())
+
+
+def use_logeion(session: Session, on: bool) -> None:
+    """Looks up in Logeion (ON) or in this dictionary."""
+    if not on:
+        session.other_source = None
+        return
+    if session.logeion is None:
+        session.logeion = LogeionLookup(session)
+    session.other_source = session.logeion
+    session.reverse = False
+
+
+def keep_source(session: Session) -> str:
+    """Keeps the source, the dictionary and the direction for the next
+    start; returns '' or why they could not be kept."""
+    import logeion
+    on = session.other_source is not None
+    return logeion.save_source(logeion.LOGEION if on else logeion.LOCAL) \
+        or (on and logeion.save_dictionary(session.logeion.dictionary)) \
+        or save_to_latin(session.reverse)
+
+
+def switch_logeion(session: Session, on: bool | None = None,
+                   keep: bool = False) -> str:
+    """~G: Logeion, or this dictionary again (ON: which one; None: the
+    other); with KEEP, kept for the next start.  Returns a message."""
+    import logeion
+    use_logeion(session, session.other_source is None if on is None
+                else on)
+    error = keep_source(session) if keep else ''
+    if session.other_source is None:
+        return error or tr('Searching in this dictionary.')
+    return error or tr('Searching in Logeion ({dictionary}): the entries of '
+                       'its dictionaries for the lemmas of the words (it '
+                       'needs the internet).', dictionary=logeion
+                       .dictionary_name(session.logeion.dictionary))
+
+
+def choose_dictionary(session: Session, wanted: str, ask: Ask,
+                      keep: bool = False) -> str:
+    """~D [DICT]: Logeion's dictionary (and Logeion, if it was not on):
+    WANTED, by its code or name, or else one chosen from a list; with
+    KEEP, kept for the next start.  Returns a message."""
+    import logeion
+    codes = list(logeion.DICTIONARIES)
+    current = session.logeion.dictionary if session.logeion else \
+        logeion.saved_dictionary()
+    if not wanted:
+        lines = [f"{'*' if code == current else ' '} {n:>2}  {code:<9} "
+                 f"{logeion.dictionary_name(code)}"
+                 for n, code in enumerate(codes, 1)]
+        try:
+            wanted = ask('\n'.join(lines) + '\n' + tr(
+                'Dictionary (its number, code or name; Enter keeps '
+                '{dictionary}): ', dictionary=logeion.dictionary_name(
+                    current))).strip()
+        except EOFError:
+            wanted = ''
+        if not wanted:
+            return tr('Logeion: {dictionary}.',
+                      dictionary=logeion.dictionary_name(current))
+    if wanted.isdigit() and 1 <= int(wanted) <= len(codes):
+        code = codes[int(wanted) - 1]
+    else:
+        code = logeion.dictionary_code(wanted)
+    if code is None:
+        return tr('There is no dictionary {name} in Logeion (~D lists '
+                  'them).', name=wanted)
+    use_logeion(session, True)
+    session.logeion.dictionary = code
+    return (keep and keep_source(session)) or tr(
+        'Searching in Logeion: {dictionary}.',
+        dictionary=logeion.dictionary_name(code))
 
 
 def make_config(settings: Settings) -> str:

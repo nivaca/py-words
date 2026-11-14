@@ -180,7 +180,9 @@ Chicago, in place of those of py-words ("Search in" in the window, F8 in
 the terminal, `--logeion`).  Logeion does not analyse inflected forms,
 so py-words analyses each word and asks Logeion for its lemmas, the
 first of the principal parts of each entry found (and for the form
-itself, shown only if it is a headword there, as *arma*); the irregular
+itself, shown only if it is a headword of Lewis and Short, as *arma*),
+and shows first its own analysis of the word (the entries and the forms,
+as *dix-ī 1SG.PRF.ACT.IND*), without its meanings; the irregular
 pronouns, which have no principal parts here, get their nominatives
 (*mihi*: *ego*; *quae*: *qui* and *quis*).  The part that asks Logeion
 and renders its entries (`logeion_*.py`) comes from py-logeion; the
@@ -303,15 +305,15 @@ takes around one second in the browser, and to read the cache around a
 quarter of one, so the first visit takes some seconds (the most part
 downloading Python) and the next ones around one second and a half.
 
-`pages/build.py` builds the static site, which any web server can host,
-from its root or from a folder.  In GitHub, a workflow runs the tests,
-builds the site and publishes it in GitHub Pages with each push to the
-main branch.
+`pages/build.py` built the static site, which any web server could
+host, from its root or from a folder.  In GitHub, a workflow ran the
+tests, built the site and published it in GitHub Pages with each push to
+the main branch (now it only runs the tests).
 
 Later the program went to a server for everyone
-(<https://nivaca.pythonanywhere.com/>), and the old address sends
-there.  The version in the browser was then taken out, and its code
-with it: the site is now only the page that sends to the server.
+(<https://nivaca.pythonanywhere.com/>), and for a while the old address
+sent there.  Then the version in the browser was taken out, and later
+the whole site, with its code (`pages/`).
 
 7. A fuzzy search
 -----------------

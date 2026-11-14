@@ -34,7 +34,7 @@ from history import History
 from interface import N_, tr
 from lexicon import default_datadir
 from lexicon import Lexicon, DICTIONARY
-from session import Session
+from session import Session, save_to_latin, saved_to_latin
 from settings import COMMAND_LINE, Settings, section_of
 from version import NAME, URL, VERSION, about
 
@@ -87,7 +87,10 @@ class App:
         #  line), in the list of the box where words are typed
         self.history = History()
         self.languages: dict[str, str] = {}         # name -> code
-        self.reverse = tk.BooleanVar(value=False)
+        #  the direction: that of the words given, or else the one last
+        #  chosen (kept when chosen with its buttons)
+        self.reverse = tk.BooleanVar(
+            value=to_latin if query.strip() else saved_to_latin())
         self.fuzzy = tk.BooleanVar(value=Settings().fuzzy_search)
         self.source = tk.StringVar(value=logeion.saved_source())
         self.dictionary = logeion.saved_dictionary()    # (its code)
@@ -153,11 +156,11 @@ class App:
         english = tr('English')
         self.to_language = ttk.Radiobutton(
             direction, text=tr('Latin → {language}', language=english),
-            value=False, variable=self.reverse)
+            value=False, variable=self.reverse, command=self.keep_direction)
         self.to_language.pack(side='left')
         self.to_latin = ttk.Radiobutton(
             direction, text=tr('{language} → Latin', language=english),
-            value=True, variable=self.reverse)
+            value=True, variable=self.reverse, command=self.keep_direction)
         self.to_latin.pack(side='left', padx=(16, 0))
         #  (the choices of the language are known once the dictionary is
         #  loaded)
@@ -466,6 +469,13 @@ class App:
             self.settings_window.refresh()
         if self.entry.get().strip():
             self.lookup()
+
+    def keep_direction(self):
+        """Keeps the direction chosen with its buttons for the next
+        start."""
+        error = save_to_latin(self.reverse.get())
+        if error:
+            self.status.config(text=error)
 
     def choose_source(self):
         """The choice of "Search in": kept, and the words looked up again

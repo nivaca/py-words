@@ -1,9 +1,6 @@
-# Publishes the site of py-words (pages/build.py: a page that sends the
-# visitors to the program on its server) on GitHub Pages, with each push to
-# main.
-# In the repository's settings: Pages > Source: GitHub Actions.
+# Runs the tests of py-words with each push to main (and by hand).
 
-name: Pages
+name: Tests
 
 on:
   push:
@@ -12,15 +9,13 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: tests
+  cancel-in-progress: true
 
 jobs:
-  build:
+  tests:
     # Not ubuntu-latest: on ubuntu-26.04 (latest since 2026-11-11) the
     # fonts below are not preinstalled and the runners could not reach
     # Ubuntu's mirrors to fetch them, so every build failed.
@@ -37,19 +32,3 @@ jobs:
       # (tests/isolate.py starts an Xvfb of its own for the windows)
       - name: Tests
         run: python3 -m unittest discover -s tests
-      - name: Build the site
-        run: python3 pages/build.py -o site
-      - uses: actions/configure-pages@v6
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5

@@ -194,8 +194,8 @@
     <tr>Empezar cada línea de los resultados con un código que dice qué es (01 una forma, 02 una entrada, 03 un significado, 05 un afijo, 06 un truco, 00 una palabra desconocida), para programas que leen la salida.</tr>
   </text>
   <text>
-    <en>In interactive use, pause after each screenful of results.</en>
-    <tr>En el uso interactivo, hacer una pausa tras cada pantalla de resultados.</tr>
+    <en>On the command line, in a terminal, show results longer than the screen in the pager (less, or $PAGER: PgUp and PgDn scroll, / finds, q goes back); where there is none, pause after each screenful in interactive use.</en>
+    <tr>En la línea de órdenes, en una terminal, mostrar los resultados más largos que la pantalla en el paginador (less, o $PAGER: RePág y AvPág los desplazan, / busca, q vuelve); donde no lo hay, hacer una pausa tras cada pantalla en el uso interactivo.</tr>
   </text>
   <text>
     <en>The characters that start a command at the beginning of a line: reading a file (@), the parameters (#) and the developer modes (!).  They must be punctuation, and different from each other and from ~.</en>
@@ -2030,12 +2030,14 @@ F1              esta ayuda
 F10 / Ctrl-Q    salir</tr>
   </text>
   <text>
-    <en>The results are those of words.py, or with F8 the entries of Logeion
+    <en>The results are those of words.py (in colour, if the terminal has
+colours and $NO_COLOR is not set), or with F8 the entries of Logeion
 for the lemmas of the words (it needs the internet); the settings, the
 configuration file and the history of the searches are shared with it
 and the window.  (On Windows, curses needs the windows-curses package.)
 </en>
-    <tr>Los resultados son los de words.py o, con F8, las entradas de Logeion
+    <tr>Los resultados son los de words.py (en color, si la terminal tiene
+colores y $NO_COLOR no está definida) o, con F8, las entradas de Logeion
 para los lemas de las palabras (necesita internet); los ajustes, el
 archivo de configuración y el historial de búsquedas se comparten con él
 y con la ventana.  (En Windows, curses necesita el paquete windows-curses.)</tr>
@@ -2749,12 +2751,24 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
   </text>
   <!-- Logeion (logeion.py): the other source of the words -->
   <text>
-    <en>"Search in" chooses where the words are looked up: Local, this dictionary, or Logeion (logeion.uchicago.edu), the dictionaries of the University of Chicago (Lewis and Short, Georges, Gaffiot, DMLBS, Du Cange …), which needs the internet.  Logeion does not analyse inflected forms, so each word is analysed here and Logeion is asked for its lemmas (arma: armum and armo; and arma itself, a headword of Logeion's).  It searches in Latin only: the other direction, the language of the meanings, the fuzzy search and the dictionary editor (which edits this dictionary) are greyed out meanwhile.  The list beside "Search in" chooses Logeion's dictionary (Lewis and Short, Gaffiot …) or all of them; the short definition, the frequency and the examples are shown with any.  Its links to other words look them up; the others open in the browser.  In the terminal, F8 changes the source and F5 the dictionary; on the command line, --logeion and --dictionary.</en>
-    <tr>"Buscar en" elige dónde se buscan las palabras: Local, este diccionario, o Logeion (logeion.uchicago.edu), los diccionarios de la Universidad de Chicago (Lewis y Short, Georges, Gaffiot, DMLBS, Du Cange …), que necesita internet.  Logeion no analiza las formas flexionadas, así que cada palabra se analiza aquí y a Logeion se le piden sus lemas (arma: armum y armo; y arma misma, que es un lema de Logeion).  Solo busca en latín: la otra dirección, el idioma de los significados, la búsqueda aproximada y el editor del diccionario (que edita este diccionario) quedan en gris mientras tanto.  La lista junto a "Buscar en" elige el diccionario de Logeion (Lewis y Short, Gaffiot …) o todos; la definición breve, la frecuencia y los ejemplos se muestran con cualquiera.  Sus enlaces a otras palabras las buscan; los demás se abren en el navegador.  En la terminal, F8 cambia la fuente y F5 el diccionario; en la línea de órdenes, --logeion y --dictionary.</tr>
+    <en>"Search in" chooses where the words are looked up: Local, this dictionary, or Logeion (logeion.uchicago.edu), the dictionaries of the University of Chicago (Lewis and Short, Georges, Gaffiot, DMLBS, Du Cange …), which needs the internet.  Logeion does not analyse inflected forms, so each word is analysed here and Logeion is asked for its lemmas (arma: armum and armo; and arma itself, a headword of Lewis and Short's); the analysis is shown first, without its meanings (dixi: dix-ī 1SG.PRF.ACT.IND), and then Logeion's entries.  It searches in Latin only: the other direction, the language of the meanings, the fuzzy search and the dictionary editor (which edits this dictionary) are greyed out meanwhile.  The list beside "Search in" chooses Logeion's dictionary (Lewis and Short, Gaffiot …) or all of them; the short definition, the frequency and the examples are shown with any.  Its links to other words look them up; the others open in the browser.  In the terminal, F8 changes the source and F5 the dictionary; on the command line, --logeion and --dictionary, and in interactive mode ~G and ~D.  The source, the dictionary and the direction last chosen are kept for the next start.</en>
+    <tr>"Buscar en" elige dónde se buscan las palabras: Local, este diccionario, o Logeion (logeion.uchicago.edu), los diccionarios de la Universidad de Chicago (Lewis y Short, Georges, Gaffiot, DMLBS, Du Cange …), que necesita internet.  Logeion no analiza las formas flexionadas, así que cada palabra se analiza aquí y a Logeion se le piden sus lemas (arma: armum y armo; y arma misma, que es un lema de Lewis y Short); el análisis se muestra primero, sin sus significados (dixi: dix-ī 1SG.PRF.ACT.IND), y luego las entradas de Logeion.  Solo busca en latín: la otra dirección, el idioma de los significados, la búsqueda aproximada y el editor del diccionario (que edita este diccionario) quedan en gris mientras tanto.  La lista junto a "Buscar en" elige el diccionario de Logeion (Lewis y Short, Gaffiot …) o todos; la definición breve, la frecuencia y los ejemplos se muestran con cualquiera.  Sus enlaces a otras palabras las buscan; los demás se abren en el navegador.  En la terminal, F8 cambia la fuente y F5 el diccionario; en la línea de órdenes, --logeion y --dictionary, y en el modo interactivo ~G y ~D.  La fuente, el diccionario y la dirección elegidos por última vez se guardan para el próximo arranque.</tr>
   </text>
   <text>
-    <en>Where the window and the terminal interface look words up: source = "local" (this dictionary) or "logeion" (the entries of Logeion for the lemmas of the words, which needs the internet); and dictionary = "all" or the code of the only dictionary of Logeion shown (ls, gaffiot …; words.py --dictionaries lists them).  Also changed with "Search in" and the list beside it in the window, and F8 and F5 in the terminal; on the command line, --logeion and --dictionary.</en>
-    <tr>Dónde buscan las palabras la ventana y la interfaz de terminal: source = "local" (este diccionario) o "logeion" (las entradas de Logeion para los lemas de las palabras, que necesita internet); y dictionary = "all" o el código del único diccionario de Logeion que se muestra (ls, gaffiot …; words.py --dictionaries los lista).  También se cambia con "Buscar en" y la lista junto a ella en la ventana, y F8 y F5 en la terminal; en la línea de órdenes, --logeion y --dictionary.</tr>
+    <en>Where the programs look words up: source = "local" (this dictionary) or "logeion" (the entries of Logeion for the lemmas of the words, which needs the internet); and dictionary = "all" or the code of the only dictionary of Logeion shown (ls, gaffiot …; words.py --dictionaries lists them).  Kept when changed with "Search in" and the list beside it in the window, F8 and F5 in the terminal, and ~G and ~D in interactive mode; --logeion, --local and --dictionary change them for one run.</en>
+    <tr>Dónde buscan las palabras los programas: source = "local" (este diccionario) o "logeion" (las entradas de Logeion para los lemas de las palabras, que necesita internet); y dictionary = "all" o el código del único diccionario de Logeion que se muestra (ls, gaffiot …; words.py --dictionaries los lista).  Se guardan al cambiarlos con "Buscar en" y la lista junto a ella en la ventana, F8 y F5 en la terminal, y ~G y ~D en el modo interactivo; --logeion, --local y --dictionary los cambian para una ejecución.</tr>
+  </text>
+  <text>
+    <en>The direction of the last search, for the next start: to_latin = true (from the language of the meanings to Latin) or false.  Kept when changed in the window, with F2 in the terminal and with ~E and ~L in interactive mode.</en>
+    <tr>La dirección de la última búsqueda, para el próximo arranque: to_latin = true (del idioma de los significados al latín) o false.  Se guarda al cambiarla en la ventana, con F2 en la terminal y con ~E y ~L en el modo interactivo.</tr>
+  </text>
+  <text>
+    <en>--local cannot go with --logeion or --dictionary</en>
+    <tr>--local no puede ir con --logeion ni con --dictionary</tr>
+  </text>
+  <text>
+    <en>this dictionary, also if Logeion was the source last chosen; this time only</en>
+    <tr>este diccionario, aunque Logeion haya sido la última fuente elegida; solo esta vez</tr>
   </text>
   <text>
     <en>Asking Logeion…</en>
@@ -2851,5 +2865,45 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
   <text>
     <en>The dictionary editor edits this dictionary, not Logeion: F8 goes back to it.</en>
     <tr>El editor del diccionario edita este diccionario, no Logeion: F8 vuelve a él.</tr>
+  </text>
+  <text>
+    <en>DICT</en>
+    <tr>DICC</tr>
+  </text>
+  <text>
+    <en>Dictionary (its number, code or name; Enter keeps {dictionary}): </en>
+    <tr>Diccionario (su número, código o nombre; Intro conserva {dictionary}): </tr>
+  </text>
+  <text>
+    <en>Logeion's dictionary (ls, gaffiot … or all; ~D alone lists them)</en>
+    <tr>el diccionario de Logeion (ls, gaffiot … o all; ~D solo los lista)</tr>
+  </text>
+  <text>
+    <en>Searching in Logeion ({dictionary}): the entries of its dictionaries for the lemmas of the words (it needs the internet).</en>
+    <tr>Se busca en Logeion ({dictionary}): las entradas de sus diccionarios para los lemas de las palabras (necesita internet).</tr>
+  </text>
+  <text>
+    <en>Searching in Logeion: {dictionary}.</en>
+    <tr>Se busca en Logeion: {dictionary}.</tr>
+  </text>
+  <text>
+    <en>There is no dictionary {name} in Logeion (~D lists them).</en>
+    <tr>No hay ningún diccionario {name} en Logeion (~D los lista).</tr>
+  </text>
+  <text>
+    <en>Results longer than the screen open in the pager: PgUp and PgDn scroll them, / finds a text, q comes back here.</en>
+    <tr>Los resultados más largos que la pantalla se abren en el paginador: RePág y AvPág los desplazan, / busca un texto, q vuelve aquí.</tr>
+  </text>
+  <text>
+    <en>~G: {source} → {other}</en>
+    <tr>~G: {source} → {other}</tr>
+  </text>
+  <text>
+    <en>~D: the dictionary ({dictionary})</en>
+    <tr>~D: el diccionario ({dictionary})</tr>
+  </text>
+  <text>
+    <en>Local ↔ Logeion (its entries for the lemmas of the words)</en>
+    <tr>Local ↔ Logeion (sus entradas para los lemas de las palabras)</tr>
   </text>
 </interface>

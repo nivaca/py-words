@@ -11,9 +11,10 @@
     [developer]    the developer modes and command characters (!)
     [fonts]        the fonts of the windows
     [appearance]   dark_mode: whether the windows are dark
-    [logeion]      source: where the window and the terminal interface
-                   look words up ("local" or "logeion"; see logeion.py),
-                   and dictionary: Logeion's dictionary shown (or "all")
+    [logeion]      source: where the programs look words up ("local" or
+                   "logeion"; see logeion.py), and dictionary: Logeion's
+                   dictionary shown (or "all")
+    [search]       to_latin: whether the last search was to Latin
 
 Every setting may be left out, and then has its usual value.  The program
 writes the file when settings are saved (with all the comments, but not
@@ -32,7 +33,7 @@ from interface import N_, tr
 
 CONFIG_FILE = 'config.toml'
 SECTIONS = ('data', 'parameters', 'developer', 'fonts', 'appearance',
-            'logeion')
+            'logeion', 'search')
 
 
 class ConfigError(Exception):
@@ -160,15 +161,19 @@ INTRO = {
                      'true for dark, false for light (none: the web page '
                      'follows the system).  Also changed with the moon (or '
                      'sun) in the window and on the web page.'),
-    'logeion': N_('Where the window and the terminal interface look words '
-                  'up: source = "local" (this dictionary) or "logeion" (the '
-                  'entries of Logeion for the lemmas of the words, which '
-                  'needs the internet); and dictionary = "all" or the code '
-                  'of the only dictionary of Logeion shown (ls, gaffiot …; '
-                  'words.py --dictionaries lists them).  Also changed with '
-                  '"Search in" and the list beside it in the window, and F8 '
-                  'and F5 in the terminal; on the command line, --logeion '
-                  'and --dictionary.'),
+    'logeion': N_('Where the programs look words up: source = "local" (this '
+                  'dictionary) or "logeion" (the entries of Logeion for the '
+                  'lemmas of the words, which needs the internet); and '
+                  'dictionary = "all" or the code of the only dictionary of '
+                  'Logeion shown (ls, gaffiot …; words.py --dictionaries '
+                  'lists them).  Kept when changed with "Search in" and the '
+                  'list beside it in the window, F8 and F5 in the terminal, '
+                  'and ~G and ~D in interactive mode; --logeion, --local and '
+                  '--dictionary change them for one run.'),
+    'search': N_('The direction of the last search, for the next start: '
+                 'to_latin = true (from the language of the meanings to '
+                 'Latin) or false.  Kept when changed in the window, with F2 '
+                 'in the terminal and with ~E and ~L in interactive mode.'),
 }
 FONTS = N_('text_family and text_size: the results (a fixed-width font); '
            'ui_family and ui_size: the rest of the windows.')

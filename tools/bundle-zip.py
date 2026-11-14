@@ -38,14 +38,12 @@ DIST = os.path.join(ROOT, 'dist')
 #  What is made while the program runs or is edited (as in .gitignore)
 LEFT_OUT = ('__pycache__', '*.pyc', '*.bak', '*.tmp', '*~', 'WORD.MOD',
             'WORD.MDV', 'WORD.OUT', 'WORD.UNK', 'WORD.STA', 'py-words-v*.zip')
-#  What is in the program's folder but not part of it: the site built by
-#  pages/build.py, the folder of the bundles, a folder kept out of git,
-#  an editor's tags, and the tools that make the bundles, the icons and
-#  the releases
+#  What is in the program's folder but not part of it: the folder of the
+#  bundles, a folder kept out of git, an editor's tags, and the tools that
+#  make the bundles, the icons and the releases
 #  TODO: no lee .gitignore.  Una carpeta nueva que no deba ir en el zip
 #  hay que añadirla aquí a mano.
-NOT_PART = ('site', 'dist', 'local-only', 'TAGS', 'tools', 'packaging',
-            'build')
+NOT_PART = ('dist', 'local-only', 'TAGS', 'tools', 'packaging', 'build')
 
 
 def name() -> str:

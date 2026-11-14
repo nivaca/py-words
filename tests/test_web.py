@@ -343,34 +343,5 @@ class PublicTests(unittest.TestCase):
                                    body='token=no')[0], '403 Forbidden')
 
 
-class SiteTests(unittest.TestCase):
-    """The static site (pages/build.py)."""
-
-    def test_the_page(self):
-        """The page of the site (also for any other address: 404.html)
-        sends the visitor to the server, with the search; nothing else is
-        built (the version in the browser is gone)."""
-        import importlib.util
-        import tempfile
-        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        spec = importlib.util.spec_from_file_location(
-            'build', os.path.join(root, 'pages', 'build.py'))
-        build = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(build)
-        server = 'https://example.org/words/'
-        with tempfile.TemporaryDirectory() as out:
-            self.assertEqual(build.build(out, server),
-                             ['.nojekyll', '404.html', 'icon.png',
-                              'index.html'])
-            with open(os.path.join(out, 'index.html'), encoding='utf-8') as f:
-                page = f.read()
-            with open(os.path.join(out, '404.html'), encoding='utf-8') as f:
-                self.assertEqual(f.read(), page)
-        self.assertIn('location.replace("https://example.org/words/" + '
-                      'location.search + location.hash);', page)
-        self.assertNotIn('browser', page)
-        self.assertNotIn('$', page)
-
-
 if __name__ == '__main__':
     unittest.main()

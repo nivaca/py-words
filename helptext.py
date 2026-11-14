@@ -88,7 +88,10 @@ HELP = {
            '(01 a form, 02 an entry, 03 a meaning, 05 an affix, 06 a '
            'trick, 00 an unknown word), for programs that read the output.'),
     'pause_in_screen_output':
-        N_('In interactive use, pause after each screenful of results.'),
+        N_('On the command line, in a terminal, show results longer than '
+           'the screen in the pager (less, or $PAGER: PgUp and PgDn '
+           'scroll, / finds, q goes back); where there is none, pause '
+           'after each screenful in interactive use.'),
     'characters':
         N_('The characters that start a command at the beginning of a '
            'line: reading a file (@), the parameters (#) and the developer '

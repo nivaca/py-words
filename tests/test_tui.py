@@ -39,7 +39,7 @@ class TerminalDictionaryTests(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
-    def run_keys(self, keys, args=()):
+    def run_keys(self, keys, args=(), env=None):
         import fcntl
         import pty
         import struct
@@ -49,6 +49,8 @@ class TerminalDictionaryTests(unittest.TestCase):
             os.environ.update(TERM='xterm', ESCDELAY='25',
                               PY_WORDS_HISTORY=self.history,
                               PY_WORDS_CONFIG=self.config)
+            os.environ.pop('NO_COLOR', None)
+            os.environ.update(env or {})
             os.execvp(sys.executable, [sys.executable,
                                        os.path.join(ROOT, 'words_tui.py'),
                                        *args])
@@ -96,6 +98,17 @@ class TerminalDictionaryTests(unittest.TestCase):
         self.assertIn('GEN.PL', out)
         self.assertIn('more ↓', out)            # (a long result scrolls)
 
+    def test_colours(self):
+        """The results in colour (the headword red: SGR 31), unless
+        $NO_COLOR."""
+        status, out = self.run_keys([('amicus\r', 1.5), (F10, 1)])
+        self.assertEqual(status, 0)
+        self.assertIn('\x1b[31m', out)
+        status, out = self.run_keys([('amicus\r', 1.5), (F10, 1)],
+                                    env={'NO_COLOR': '1'})
+        self.assertIn('amic', out)
+        self.assertNotIn('\x1b[31m', out)
+
     def test_history(self):
         with open(self.history, 'w') as f:
             f.write('laudatus\n')
@@ -139,6 +152,16 @@ class TerminalDictionaryTests(unittest.TestCase):
         self.assertIn('Searching in this dictionary.', out)
         with open(os.path.join(self.config, 'config.toml'), 'rb') as f:
             self.assertEqual(tomllib.load(f)['logeion']['source'], 'local')
+
+    def test_direction_kept(self):
+        """F2 is kept for the next start."""
+        import tomllib
+        status, out = self.run_keys([(F2, 0.8), (F10, 1)])
+        with open(os.path.join(self.config, 'config.toml'), 'rb') as f:
+            self.assertIs(tomllib.load(f)['search']['to_latin'], True)
+        status, out = self.run_keys([(F10, 1)])
+        self.assertEqual(status, 0)
+        self.assertIn('English → Latin', out)
 
     def test_dictionary_of_logeion(self):
         """With Logeion, F5 chooses its dictionary (kept), not the

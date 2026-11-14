@@ -234,8 +234,6 @@ What is where
     icons/              the program's icons
     packaging/          the RPM package: its spec, build-rpm.sh, the menu
                         entries and the py-words command (not in the zip)
-    pages/              the site at nicolasvaughan.org/py-words, which
-                        sends to the server
     tests/              the tests (not needed to use the program)
     tools/              scripts to make the zip, the AppImage, the icons,
                         the screenshots and the releases (not in the zip)
@@ -373,20 +371,36 @@ dictionaries of the University of Chicago: Lewis and Short, Lewis's
 Elementary, Georges, Gaffiot, the DMLBS, Du Cange and others, with the
 short definition, the frequency and examples from its corpus.  In the
 window it is "Search in" (Local or Logeion), above the direction; in
-`words_tui.py`, F8; on the command line, `--logeion` (for one run).
-The window and `words_tui.py` keep the choice for next time (`source` in
-the section `[logeion]` of the configuration file).  It needs the
-internet.
+`words_tui.py`, F8; in the interactive command line, `~G`.  The choice
+last made in any of them is kept for the next start of all of them
+(`source` in the section `[logeion]` of the configuration file), and so
+are Logeion's dictionary (see below) and the direction, Latin to English
+or back (`to_latin` in `[search]`): the programs start as they were
+left.  On the command line, `--logeion`, `--local` and `--dictionary`
+change them for one run, without keeping them.  It needs the internet.
 
 Logeion does not analyse inflected forms, so the words are analysed
 here first, and Logeion is asked for their lemmas: the first of the
 principal parts of each entry found (*dixit*: *dico*; *est*: *edo* and
 *sum*; *mihi*: *ego*).  The form as written is asked for too, but shown
-only when it is a headword of its own in Logeion (*arma*, whose lemma
-here is *armum*).  The line of each word shows its lemmas:
+only when it is a headword of its own in Lewis and Short (*arma*, whose
+lemma here is *armum*; not *dixi*, which other dictionaries have only to
+send to *dico*).  Each word shows first its analysis, as this program
+gives it but without its meanings (the entries and the forms, with their
+explanations in the window; each entry only as its dictionary form and
+part of speech, without the codes, flags and numbers that go with this
+program's meanings, and alike entries once, with all their forms: the
+four of *dico*, the eight of *quae*), and then Logeion's pages of its
+lemmas:
 
     $ python3 words.py --logeion arma
     arma  →  armum, armo
+      armum, armi  noun, 2nd declension, neuter
+        arm-a          NOM.PL
+        arm-a          VOC.PL
+        arm-a          ACC.PL
+      armo, armare, armavi, armatus  verb, 1st conjugation, transitive
+        arm-ā          2SG.PRS.ACT.IMP
 
     arma
 
@@ -401,6 +415,14 @@ the language of the meanings, the fuzzy search and "Edit dictionary…"
 (the editor edits this dictionary, not Logeion) are greyed out in the
 window, and F4 in `words_tui.py` says so.
 
+In the interactive command line, `~G` changes between Logeion and this
+dictionary, and `~D` chooses Logeion's dictionary: `~D gaffiot`, or `~D`
+alone for a numbered list (it turns Logeion on, as `--dictionary`
+does).  Both are kept for the next start, as `~E` and `~L` keep the
+direction; the start of the session says which source is in use.  The
+lines `~E`, `~L`, `~G` and `~D DICT` of a file (`-f`, `@`) change them
+only while it is read.
+
 The entries can be those of all the dictionaries of Logeion, or of only
 one: in the window, the list beside "Search in" (available when Logeion
 is chosen); in `words_tui.py`, F5 (which, with Logeion, chooses the
@@ -414,10 +436,10 @@ Frieze-Dennison for Vergil (`frieze`) and the Latino-Sinicum
 (`sinicum`).  The short definition, the frequency and the examples from
 the corpus are shown with any of them; a lemma that the dictionary does
 not have says which ones have it.  Changing the dictionary shows the
-results again at once, without asking Logeion, and the window and
-`words_tui.py` keep it for next time (`dictionary` in `[logeion]`).  Its entries are wrapped to the width of the window or the
-terminal; in the window, their links to other words look these up, and
-the other links open in the browser.  The pages are kept while the
+results again at once, without asking Logeion, and it is kept for next
+time (`dictionary` in `[logeion]`).  Its entries are wrapped to the width
+of the window or the terminal; in the window, their links to other
+words look these up, and the other links open in the browser.  The pages are kept while the
 program runs, so a word asked for again is shown at once.  The part of
 the program that asks Logeion and shows its entries (`logeion_*.py`)
 comes from my program [py-logeion](https://github.com/nivaca/py-logeion).
@@ -427,27 +449,10 @@ comes from my program [py-logeion](https://github.com/nivaca/py-logeion).
 The dictionary is also online, with nothing to install, at
 <https://nivaca.pythonanywhere.com/>: the page of `words_web.py`, on a
 server for everyone (see below), where each visitor has their own
-settings and earlier searches.  The former address,
-<https://nicolasvaughan.org/py-words/>, sends there, together with the
-search (`?q=amicus+est`), so the old links and bookmarks still work.
-
-There was also a version that ran in the browser, with Pyodide (Python
-compiled for WebAssembly), at `nicolasvaughan.org/py-words/browser/`.
-It is gone, and so is its code (`pages/index.html`, `pages/app.js`).
-
-The site is built from `pages/`:
-
-    $ python3 pages/build.py [-o FOLDER]       # writes site/
-    $ python3 -m http.server -d site 8001      # try localhost:8001
-
-The result is a static site, that any web server can host, in its root
-or inside a folder.  Its page (`pages/redirect.html`, also as `404.html`
-for any other address) sends the visitors, with their search, to the
-program on the server (`--server URL` chooses it; by default
-nivaca.pythonanywhere.com).  In GitHub, the workflow
-`.github/workflows/pages.yml` runs the tests, builds the site and
-publishes it in GitHub Pages in each push to `main`.
-(In the settings of the repository, Pages needs Source: GitHub Actions.)
+settings and earlier searches.  The former site,
+`nicolasvaughan.org/py-words/` (first a version that ran in the browser,
+with Pyodide, and then a page that sent to the server), is no longer
+published, and its code (`pages/`) is gone.
 
 The whole program can also run on a web server for everyone (the
 searches are made by the server, and there is nothing to download).  Its
@@ -559,6 +564,8 @@ In interactive mode, each line is looked up, except if it starts with one
 of these:
 
     ~E / ~L    English to Latin / Latin to English
+    ~G         Logeion or this dictionary (see "Logeion")
+    ~D [DICT]  Logeion's dictionary (alone: a list to choose from)
     @FILE      look up each line of FILE
     #          change the parameters
     !          change the developer modes
@@ -569,7 +576,29 @@ Two empty lines, or Ctrl-D, quit.  Ctrl-C does not quit: it stops what
 the program is doing (a long list of results, a file, a dialogue, that in
 this case saves nothing), and the program waits for the next line;
 outside the interactive mode, Ctrl-C ends the program.  A file given with
-`-f` or `@` can also change the direction with lines `~E` and `~L`.
+`-f` or `@` can also change the direction with lines `~E` and `~L`, and
+the source with `~G` and `~D DICT`.
+
+In a terminal, results longer than the screen (a long line of Latin, the
+entries of Logeion, a file) open in the system's pager, as `git` and
+`man` do: `less`, or the one `$PAGER` names.  PgUp and PgDn (or Space
+and `b`) and the arrows scroll them, `/` finds a text, `g` and `G` go to
+the start and the end, and `q` comes back (in interactive mode, to the
+`=>` prompt, with what was shown left on the screen).  `less` gets the
+options `FRX` unless `$LESS` gives others.  Shorter results, and those
+written to a file or a pipe, are printed as always.  The developer mode
+`pause_in_screen_output` turns this off; where there is no pager (as
+usually in Windows), interactive mode pauses instead after each
+screenful ("-- more (Enter) --").
+
+In a terminal the results are also in colour, as in the window: the word
+looked up in bold, the entries in bold with their headword in red and
+their codes dimmed, the analyses of the forms in blue, and the notes
+dimmed; Logeion's entries have their own (headings in cyan, examples in
+green).  These are the terminal's own colours, so they follow its light
+or dark theme.  `words_tui.py` shows the same colours.  Results written
+to a file or a pipe are plain, and `NO_COLOR=1` (see <https://no-color.org>)
+turns the colours off.
 
 The program remembers the searches, also from one session to the other:
 in interactive mode, Up and Down bring them back, and in the window the
