@@ -1346,7 +1346,17 @@ differences are on purpose:
 Testing
 -------
 
-    $ python3 -m unittest discover -s tests
+    $ python3 tools/test.py                    # all, at once (1–2 minutes)
+    $ python3 tools/test.py test_cli test_editor.TranslationTests
+    $ python3 -m unittest discover -s tests    # all, one after the other
+
+`tools/test.py` runs each class of tests in a process of its own, as many
+at a time as the computer has processors (`-j` changes it), so the whole
+suite takes about as long as its slowest class; `-v` shows each class as
+it ends, and the output of the classes that fail comes at the end.  The
+tests share a cache of the dictionary of their own (never the user's),
+made once, and the tests of `words_tui.py` and of the terminal editor
+wait for the program's answers rather than for fixed times.
 
 This runs the unit tests and the regression tests in `tests/regression`,
 which compare the output for some inputs (between them, 735 lines of the

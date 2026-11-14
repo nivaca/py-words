@@ -1383,9 +1383,19 @@ deliberadas:
 Pruebas
 -------
 
-    $ python3 -m unittest discover -s tests
+    $ python3 tools/test.py                    # todas, a la vez (1-2 minutos)
+    $ python3 tools/test.py test_cli test_editor.TranslationTests
+    $ python3 -m unittest discover -s tests    # todas, una tras otra
 
-ejecuta las pruebas unitarias y las pruebas de regresión de
+`tools/test.py` ejecuta cada clase de pruebas en un proceso propio,
+tantas a la vez como procesadores tenga el equipo (`-j` lo cambia), así
+que el conjunto tarda más o menos lo que su clase más lenta; `-v` muestra
+cada clase al terminar, y la salida de las clases que fallan va al
+final.  Las pruebas comparten una caché del diccionario propia (nunca la
+del usuario), hecha una vez, y las de `words_tui.py` y del editor de
+terminal esperan las respuestas del programa en lugar de tiempos fijos.
+
+Esto ejecuta las pruebas unitarias y las pruebas de regresión de
 `tests/regression`, que comparan la salida de algunas entradas (entre
 ellas 735 versos de la *Eneida*) con la salida esperada.  Algunas pruebas
 de regresión activan opciones con un `config.toml` propio: los ejemplos en

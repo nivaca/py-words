@@ -409,51 +409,14 @@ class TerminalEditorTests(WithData):
     """Runs words-edit in a pseudo-terminal, as a person would."""
 
     def run_keys(self, keys, *args):
-        import fcntl
-        import pty
-        import struct
-        import termios
-        pid, fd = pty.fork()
-        if pid == 0:
-            os.environ.update(TERM='xterm', ESCDELAY='25')
-            os.execvp(sys.executable, [sys.executable,
-                                       os.path.join(ROOT, 'words_edit.py'),
-                                       '--datadir', self.dir, *args])
-        fcntl.ioctl(fd, termios.TIOCSWINSZ,
-                    struct.pack('HHHH', 30, 110, 0, 0))
-        output = []
-
-        def pump(seconds):
-            end = time.time() + seconds
-            while time.time() < end:
-                ready, _, _ = select.select([fd], [], [], 0.05)
-                if ready:
-                    try:
-                        data = os.read(fd, 65536)
-                    except OSError:
-                        return
-                    if not data:
-                        return
-                    output.append(data)
-        pump(4)
-        for key, wait in keys:
-            os.write(fd, key.encode())
-            pump(wait)
-        pump(2)
-        end = time.time() + 20          # (a prompt left unanswered)
-        while True:
-            done, status = os.waitpid(pid, os.WNOHANG)
-            if done:
-                break
-            if time.time() > end:
-                os.kill(pid, 9)
-                os.waitpid(pid, 0)
-                os.close(fd)
-                self.fail('the editor did not quit: '
-                          + b''.join(output)[-300:].decode(errors='replace'))
-            pump(0.2)
-        os.close(fd)
-        return status, b''.join(output)
+        """Runs words_edit.py with KEYS (see terminal.py): its exit status
+        and what it wrote."""
+        import terminal
+        return terminal.run(
+            self, [sys.executable, os.path.join(ROOT, 'words_edit.py'),
+                   '--datadir', self.dir, *args],
+            keys, {'TERM': 'xterm', 'ESCDELAY': '25'}, size=(30, 110),
+            name='the editor')
 
     def test_add_an_entry(self):
         down = '\x1bOB'

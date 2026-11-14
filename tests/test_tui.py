@@ -2,7 +2,6 @@
 pseudo-terminal as a person would."""
 
 import os
-import select
 import sys
 import tempfile
 import time
@@ -40,53 +39,18 @@ class TerminalDictionaryTests(unittest.TestCase):
         self.tmp.cleanup()
 
     def run_keys(self, keys, args=(), env=None):
-        import fcntl
-        import pty
-        import struct
-        import termios
-        pid, fd = pty.fork()
-        if pid == 0:
-            os.environ.update(TERM='xterm', ESCDELAY='25',
-                              PY_WORDS_HISTORY=self.history,
-                              PY_WORDS_CONFIG=self.config)
-            os.environ.pop('NO_COLOR', None)
-            os.environ.update(env or {})
-            os.execvp(sys.executable, [sys.executable,
-                                       os.path.join(ROOT, 'words_tui.py'),
-                                       *args])
-        fcntl.ioctl(fd, termios.TIOCSWINSZ,
-                    struct.pack('HHHH', 30, 100, 0, 0))
-        output = []
-
-        def pump(seconds):
-            end = time.time() + seconds
-            while time.time() < end:
-                ready, _, _ = select.select([fd], [], [], 0.05)
-                if ready:
-                    try:
-                        data = os.read(fd, 65536)
-                    except OSError:
-                        return
-                    if not data:
-                        return
-                    output.append(data)
-        pump(4)
-        for key, wait in keys:
-            os.write(fd, key.encode())
-            pump(wait)
-        end = time.time() + 15
-        while True:
-            done, status = os.waitpid(pid, os.WNOHANG)
-            if done:
-                break
-            if time.time() > end:
-                os.kill(pid, 9)
-                os.waitpid(pid, 0)
-                os.close(fd)
-                self.fail('words_tui.py did not quit')
-            pump(0.2)
-        os.close(fd)
-        return status, b''.join(output).decode(errors='replace')
+        """Runs words_tui.py with KEYS (see terminal.py): its exit status
+        and what it wrote, from when it is ready (its welcome line)."""
+        import terminal
+        status, out = terminal.run(
+            self, [sys.executable, os.path.join(ROOT, 'words_tui.py'),
+                   *args],
+            keys, {'TERM': 'xterm', 'ESCDELAY': '25',
+                   'PY_WORDS_HISTORY': self.history,
+                   'PY_WORDS_CONFIG': self.config, 'NO_COLOR': '',
+                   **(env or {})},
+            ready=b'Type a Latin word', name='words_tui.py')
+        return status, out.decode(errors='replace')
 
     def test_look_up_and_scroll(self):
         status, out = self.run_keys([

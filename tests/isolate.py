@@ -1,7 +1,10 @@
 """Imported first by every test module: the tests (and the programs they
-run) use no cache and an empty settings folder, so that neither the
-user's cache nor their config.toml changes the results, and the tests
-change neither.
+run) use a cache and a settings folder of their own, empty at first, so
+that neither the user's cache nor their config.toml changes the results,
+and the tests change neither.  The cache makes the dictionary be read
+from its XML once (around a second) and from the cache after that (a
+quarter of one); tools/test.py, which runs the test files at once, gives
+them all the same one ($PY_WORDS_TEST_CACHE).
 
 Their windows are opened, as those of tools/screenshots.py, on an Xvfb
 of their own if there is one (out of sight, and the same on every
@@ -18,7 +21,11 @@ import subprocess
 import sys
 import tempfile
 
-os.environ['PY_WORDS_CACHE'] = ''
+CACHE = os.environ.get('PY_WORDS_TEST_CACHE')
+if not CACHE:
+    CACHE = tempfile.mkdtemp(prefix='py-words-cache-')
+    atexit.register(shutil.rmtree, CACHE, ignore_errors=True)
+os.environ['PY_WORDS_CACHE'] = CACHE
 CONFIG = tempfile.mkdtemp(prefix='py-words-config-')
 os.environ['PY_WORDS_CONFIG'] = CONFIG
 atexit.register(shutil.rmtree, CONFIG, ignore_errors=True)
