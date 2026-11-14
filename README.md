@@ -105,10 +105,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
 it executable and run it:
 
-    $ chmod +x py-words-v.3.17-x86_64.AppImage
-    $ ./py-words-v.3.17-x86_64.AppImage                # the window
-    $ ./py-words-v.3.17-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.17-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.18-x86_64.AppImage
+    $ ./py-words-v.3.18-x86_64.AppImage                # the window
+    $ ./py-words-v.3.18-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.18-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
@@ -138,7 +138,7 @@ Or download `py-words-VERSION-1.fc45.noarch.rpm` and
 package is signed; import its key once) and install it:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.17-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.18-1.fc45.noarch.rpm
 
 It runs on any Fedora with Python 3.11 or later, whatever the `fc`
 number in its name.  Or build it from the program's folder (a git
@@ -243,7 +243,7 @@ for distributing it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.17.zip` (with the version of the program;
+This writes `dist/py-words-v.3.18.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the
 same name.  It contains the programs,
 the data, the icons and the documents, and a file `COMMIT` with the
@@ -259,7 +259,7 @@ In Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.17-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.18-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
 [python-appimage](https://github.com/niess/python-appimage)) and
 [appimagetool](https://github.com/AppImage/appimagetool) are downloaded
@@ -1378,6 +1378,28 @@ them.
 Version
 -------
 
+- 3.18:
+  - With Logeion, each word shows first its analysis, as this program
+    gives it but without its meanings (*dixi*: *dico, dicere, dixi,
+    dictus*, *dix-ī 1SG.PRF.ACT.IND*), and then Logeion's entries.  Each
+    entry shows only its dictionary form and part of speech, and alike
+    entries come once with all their forms (the four of *dico*, the eight
+    of *quae*).  A form's own page is shown only if Lewis and Short has
+    it (*arma*, not *dixi*).
+  - The source, Logeion's dictionary and the direction last chosen are
+    kept for the next start of every program (`[logeion]` and `[search]`
+    in the configuration file); `--local`, `--logeion`, `--dictionary`
+    and `-e` change them for one run.
+  - In interactive mode, `~G` changes between Local and Logeion
+    ("~G: Local → Logeion") and `~D` chooses Logeion's dictionary; they
+    work in files too.
+  - In a terminal, results longer than the screen open in the pager
+    (`less`, or `$PAGER`), and the results of the command line and of
+    `words_tui.py` are in colour (`NO_COLOR` turns this off).
+  - The site at `nicolasvaughan.org/py-words/` is gone with its code
+    (`pages/`); the dictionary online is at nivaca.pythonanywhere.com.
+  - The tests run at once with `tools/test.py` (about a minute and a
+    half instead of nine).
 - 3.17:
   - Logeion as a second source (see "Logeion"): the window ("Search in":
     Local or Logeion), `words_tui.py` (F8) and the command line

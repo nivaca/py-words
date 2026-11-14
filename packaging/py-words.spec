@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.17
+Version:        3.18
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -105,6 +105,12 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Sat Nov 14 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.18-1
+- With Logeion, the analysis of each word comes first, without duplicates
+- The source, dictionary and direction last chosen are kept for the next
+  start; ~G and ~D in interactive mode
+- Long results in the pager, and colours, in the terminal
+
 * Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.17-1
 - Logeion as a second source: its entries for the lemmas of the words, of
   all its dictionaries or of one
