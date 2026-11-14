@@ -26,7 +26,7 @@ BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  desktop-file-utils
 
-Requires:       python3 >= 3.11
+Requires:       python3 >= 3.13
 # The window (words_gui.py) and the dictionary editor's window are Tk.
 Requires:       python3-tkinter
 Requires:       hicolor-icon-theme

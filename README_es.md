@@ -31,7 +31,7 @@ de la versión en Ada que se mantiene en
 luego lo rehíce en Python idiomático, con los mismos análisis, una salida
 más fácil de leer y una línea de órdenes moderna, y rehíce sus datos,
 de los archivos de texto de columnas fijas del original a XML.  Basta con tener
-Python 3.11 o posterior.  Y si no se quiere instalar nada, se puede usar
+Python 3.13 o posterior.  Y si no se quiere instalar nada, se puede usar
 en línea: <https://nivaca.pythonanywhere.com/> (véase "En línea").
 
 [Nicolas Vaughan](https://artehum.uniandes.edu.co/profesores/nicolas-vaughan/)
@@ -68,7 +68,7 @@ Instalación
 
 ### Qué se necesita
 
-Python 3.11 o posterior, y ya está: el programa no usa nada fuera de la
+Python 3.13 o posterior, y ya está: el programa no usa nada fuera de la
 biblioteca estándar.  Las ventanas (el diccionario y el editor) necesitan
 Tk, que viene con Python en Windows y con los instaladores de
 [python.org](https://www.python.org/downloads/) en macOS.  En Linux, y
@@ -145,7 +145,7 @@ paquete va firmado; importe su clave una vez) e instálelo:
     $ sudo rpm --import RPM-GPG-KEY-py-words
     $ sudo dnf install ./py-words-3.19-1.fc45.noarch.rpm
 
-Funciona en cualquier Fedora con Python 3.11 o posterior, sea cual sea
+Funciona en cualquier Fedora con Python 3.13 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
 clon de git):
 

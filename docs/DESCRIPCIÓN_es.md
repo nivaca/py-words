@@ -40,7 +40,7 @@ Para que el programa arranque rápido, lo que se lee de los datos se guarda en u
 
 ## Implementación
 
-Está escrito en Python 3.11 o superior y usa solo la biblioteca estándar, sin paquetes externos. Son 44 archivos, unas 17 000 líneas. Aprovecha lo que ofrece el Python actual: clases de datos inmutables con `slots`, anotaciones de tipos, `match`/`case`, f-strings y `tomllib` para leer la configuración.
+Está escrito en Python 3.13 o superior y usa solo la biblioteca estándar, sin paquetes externos. Son 44 archivos, unas 17 000 líneas. Aprovecha lo que ofrece el Python actual: clases de datos inmutables con `slots`, anotaciones de tipos, `match`/`case`, f-strings y `tomllib` para leer la configuración.
 
 La ventana y el editor gráfico usan Tkinter, con fuentes ajustables, zoom con Ctrl y +/− y un diálogo de ajustes con todas las opciones de la línea de órdenes. La pantalla completa para la terminal (`words_tui.py`) y el editor de terminal usan `curses`. La versión web (`words_web.py`) es una aplicación WSGI servida por `wsgiref`, de la biblioteca estándar: una página con el cuadro de búsqueda, el historial, un enlace de cada entrada a su propia búsqueda y todas las opciones, en claro u oscuro. La línea de órdenes usa `argparse` y tiene un modo interactivo. Desde la versión 2.12, la ventana y la página web muestran los resultados con más orden: cada línea según lo que es (la palabra buscada, una entrada, un significado, una forma, una nota), algo que `layout.py` reconoce a partir de la disposición del texto, sin Tk, para que también lo use la versión en línea. La primera palabra de una entrada es un enlace, un doble clic busca cualquier palabra, y los códigos entre corchetes y los análisis se explican solos al pasar el puntero por encima (o al tocarlos en el teléfono). La ventana tiene además menús, una barra de búsqueda y un menú con el botón derecho. Todas comparten el historial de búsquedas.
 
@@ -92,11 +92,11 @@ El rediseño se comparó con la traducción fiel sobre un corpus de 133 671 pala
 
 Hay 366 pruebas automáticas; `python3 tools/test.py` las corre todas a la vez, cada clase de pruebas en un proceso propio, en cerca de un minuto y medio (`python3 -m unittest discover -s tests` las corre una tras otra). Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador y el servidor web, incluidas sus protecciones. Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
 
-La versión en línea se probó en un navegador manejado por un script (búsquedas en los dos sentidos, los enlaces de los resultados, el botón Atrás, el modo oscuro, la interfaz en español y los ajustes que se conservan al recargar), tanto desde un servidor local como desde el sitio entonces publicado. Las pruebas corren en Python 3.11, la versión mínima, y en 3.14. Las ventanas se revisaron además a ojo, con capturas de pantalla, y con un Python demasiado viejo el programa da un mensaje claro en lugar de un error.
+La versión en línea se probó en un navegador manejado por un script (búsquedas en los dos sentidos, los enlaces de los resultados, el botón Atrás, el modo oscuro, la interfaz en español y los ajustes que se conservan al recargar), tanto desde un servidor local como desde el sitio entonces publicado. Las pruebas corren en Python 3.13, la versión mínima, y en la más reciente. Las ventanas se revisaron además a ojo, con capturas de pantalla, y con un Python demasiado viejo el programa da un mensaje claro en lugar de un error.
 
 ## Plataforma
 
-Funciona en Linux (y en otros sistemas tipo Unix con menús freedesktop), Windows y macOS. Necesita Python 3.11 o superior con Tkinter, que viene en los instaladores de python.org; en algunas distribuciones de Linux es un paquete aparte, como `python3-tkinter` o `python3-tk`. En Windows, el editor de terminal pide además el paquete `windows-curses`.
+Funciona en Linux (y en otros sistemas tipo Unix con menús freedesktop), Windows y macOS. Necesita Python 3.13 o superior con Tkinter, que viene en los instaladores de python.org; en algunas distribuciones de Linux es un paquete aparte, como `python3-tkinter` o `python3-tk`. En Windows, el editor de terminal pide además el paquete `windows-curses`.
 
 En el equipo es una aplicación de escritorio, de terminal y de navegador, y no necesita internet. La versión web levanta su propio servidor, que por omisión solo atiende al mismo equipo; con `--host` se puede abrir a la red local, por ejemplo para usarla desde el teléfono. No tiene contraseñas ni permite editar el diccionario, y rechaza las peticiones que llegan con otro nombre de equipo y los formularios enviados desde otros sitios.
 
@@ -104,6 +104,6 @@ En línea, en https://nivaca.pythonanywhere.com/, basta un navegador: las búsqu
 
 ## Ambiente
 
-Lo desarrollé en Fedora Linux 44 con KDE Plasma, con Python 3.14 para el trabajo diario y Python 3.11 para comprobar que sigue funcionando con la versión mínima, y con git, con repositorios en GitHub y Codeberg.
+Lo desarrollé en Fedora Linux 44 con KDE Plasma, con Python 3.14 para el trabajo diario y Python 3.13 para comprobar que sigue funcionando con la versión mínima, y con git, con repositorios en GitHub y Codeberg.
 
 Para usarlo no hay que instalar nada: se copia o descomprime la carpeta del programa y se ejecuta (`python3 words.py`, `python3 words_gui.py`, `python3 words_tui.py`, `python3 words_web.py`). En línea, basta abrir https://nivaca.pythonanywhere.com/. Si se quiere, `python3 words_install.py` añade accesos al menú de aplicaciones, con su icono y sin permisos de administrador. Los ajustes quedan en la carpeta de configuración del usuario (`~/.config/py-words/config.toml` en Linux) y la caché en su carpeta de caché.

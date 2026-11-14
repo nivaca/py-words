@@ -105,7 +105,7 @@ def about():
 
 
 #  The oldest Python the program runs on
-MIN_PYTHON = (3, 11)
+MIN_PYTHON = (3, 13)
 
 
 def check_python():

@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.12'
+          python-version: '3.13'      # (the oldest it supports)
       # A virtual display (Xvfb), so that the tests of the windows run too
       # instead of being skipped
       - name: Virtual display

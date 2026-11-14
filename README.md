@@ -29,7 +29,7 @@ faithful translation of the Ada version maintained at
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words); then I
 redesigned it as idiomatic Python, with the same analyses, easier-to-read
 output and a modern command line, and moved its data from the fixed-column
-text files of the original to XML.  The only thing you need is Python 3.11
+text files of the original to XML.  The only thing you need is Python 3.13
 or later.  You can also use it online:
 <https://nivaca.pythonanywhere.com/> (see "Online").
 
@@ -66,7 +66,7 @@ Installation
 
 ### What is needed
 
-Only Python 3.11 or later: the program uses just the standard library of
+Only Python 3.13 or later: the program uses just the standard library of
 Python, nothing more.  The windows (the dictionary and the editor) need
 Tk, which comes with Python on Windows, and with the installers of
 [python.org](https://www.python.org/downloads/) on macOS.  On Linux, and
@@ -140,7 +140,7 @@ package is signed; import its key once) and install it:
     $ sudo rpm --import RPM-GPG-KEY-py-words
     $ sudo dnf install ./py-words-3.19-1.fc45.noarch.rpm
 
-It runs on any Fedora with Python 3.11 or later, whatever the `fc`
+It runs on any Fedora with Python 3.13 or later, whatever the `fc`
 number in its name.  Or build it from the program's folder (a git
 clone):
 

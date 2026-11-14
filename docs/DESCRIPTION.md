@@ -128,7 +128,7 @@ the editors and the converter respect.
 Startup got faster: the XML is read as a stream, and what is read goes to
 a cache, so the program starts in around a quarter of a second.  The
 organisation is simple (the programs in one folder, the data in `data/`),
-and there is nothing to install apart from Python 3.11 or later.  The code
+and there is nothing to install apart from Python 3.13 or later.  The code
 was updated to Python 3.11 (modern type annotations, f-strings, `match`,
 dataclasses with slots), and each program says clearly when the Python
 running it is too old.
@@ -386,14 +386,14 @@ Testing
 -------
 
 The program has unit tests and regression tests (`tests/`), 366 in total,
-that run with Python 3.11 (the oldest it supports) and with the latest
+that run with Python 3.13 (the oldest it supports) and with the latest
 Python; `tools/test.py` runs them all at once, each class of tests in a
-process of its own, in about a minute and a half.  The regression tests run the inputs inherited from the Ada
-version and compare the output with expected files already reviewed.  The
-editors are tested by using them as a user does, in a terminal and in a
-window, and the languages with a Spanish file of their own.  The online
-version was tried in a browser controlled by a script (searches in both
-directions, the links of the results, the Back button, dark mode, the
-Spanish interface, and the settings that stay after reloading), from a
-local server and also on the site then published.  The program now has
-44 files, around 17,000 lines.
+process of its own, in about a minute and a half.  The regression tests
+run the inputs inherited from the Ada version and compare the output with
+expected files already reviewed.  The editors are tested by using them as
+a user does, in a terminal and in a window, and the languages with a
+Spanish file of their own.  The online version was tried in a browser
+controlled by a script (searches in both directions, the links of the
+results, the Back button, dark mode, the Spanish interface, and the
+settings that stay after reloading), from a local server and also on the
+site then published.  The program now has 44 files, around 17,000 lines.
