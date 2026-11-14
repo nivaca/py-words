@@ -23,7 +23,7 @@ history are not touched:
 * the command line (words.py, interactive) and the terminal in full screen
   (words_tui.py) in a hidden tmux terminal of a fixed size; what it shows,
   with its colours, is written as a web page like a terminal, and Chrome
-  takes it as the other.
+  takes it like the other.
 
 It needs Linux with an X display (XWayland is enough) or Xvfb,
 ImageMagick, tmux and Google Chrome (or Chromium); the program itself
@@ -463,8 +463,8 @@ pre {{ margin: 0; padding: {MARGIN}px; color: {FOREGROUND};
     size = (math.ceil(columns * FONT_SIZE * CHAR_WIDTH) + 2 * MARGIN,
             math.ceil(len(lines) * FONT_SIZE * LINE_HEIGHT) + 2 * MARGIN)
     shoot('file://' + page, size, out, scale, folder)
-    #  (the width of the letters is only near: the space left over is cut,
-    #  and the same margin put all round)
+    #  (the width of the letters is only approximate: the space left over
+    #  is cut, and the same margin put all round)
     subprocess.run([magick(), out, '-trim', '+repage', '-bordercolor',
                     BACKGROUND, '-border', str(round(MARGIN * scale)), out],
                    check=True)

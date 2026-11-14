@@ -32,7 +32,7 @@ KINDS = {'word': WORD, 'entry': ENTRY, 'note': NOTE, 'detail': NOTE,
 
 def enabled(stream=None) -> bool:
     """Whether to colour what is written to STREAM (None: only the
-    variables of the environment are asked)."""
+    environment variables are checked)."""
     if os.environ.get('NO_COLOR') or os.environ.get('TERM') == 'dumb':
         return False
     if stream is None:

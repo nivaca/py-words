@@ -182,8 +182,8 @@ class TerminalDictionaryTests(unittest.TestCase):
 class KeyBarTests(unittest.TestCase):
     def test_help_and_quit_always_shown(self):
         """However narrow the terminal, the last line shows F1 (the help,
-        which lists every key) and F10 (quit); the keys between them go
-        from the end."""
+        which lists every key) and F10 (quit); the keys between them are
+        dropped from the end."""
         import interface
         import words_tui
         before = interface.code()

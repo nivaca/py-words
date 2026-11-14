@@ -1,17 +1,17 @@
 """Imported first by every test module: the tests (and the programs they
 run) use a cache and a settings folder of their own, empty at first, so
 that neither the user's cache nor their config.toml changes the results,
-and the tests change neither.  The cache makes the dictionary be read
+and the tests change neither.  With the cache, the dictionary is read
 from its XML once (around a second) and from the cache after that (a
 quarter of one); tools/test.py, which runs the test files at once, gives
 them all the same one ($PY_WORDS_TEST_CACHE).
 
-Their windows are opened, as those of tools/screenshots.py, on an Xvfb
+Their windows are opened, like those of tools/screenshots.py, on an Xvfb
 of their own if there is one (out of sight, and the same on every
 computer: no scaling or fonts of the desktop), started here once for the
 whole run and stopped at its end; the programs the tests run use it too.
-Without Xvfb they use the display there is, or are skipped (display()).
-$PY_WORDS_TEST_DISPLAY=screen keeps the display there is, to watch them.
+Without Xvfb they use the current display, or are skipped (display()).
+$PY_WORDS_TEST_DISPLAY=screen keeps the current display, to watch them.
 """
 
 import atexit

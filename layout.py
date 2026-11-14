@@ -1,6 +1,6 @@
 """The layout of the results (see render.py): what each line is, as the
-window (gui_results.py) and the web page (words_web.py) need to know for
-showing it with some order.  No Tk here: the web page has none.
+window (gui_results.py) and the web page (words_web.py) need to know to
+lay it out.  No Tk here: the web page has none.
 
 The kinds, by the indentation of the line: the word looked up (no
 indentation), an entry or a note (two spaces), a meaning or a form (four)

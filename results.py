@@ -316,7 +316,7 @@ def _entry_key(p: Parse) -> tuple | None:
     """What makes P's dictionary entry the same as another's in the
     results: what they show (its dictionary form, grammar, codes and
     meaning), not its id, since WORDS has some words twice, and a pronoun
-    as qui once for each gender and number, with stems and declensions
+    such as qui once for each gender and number, with stems and declensions
     that the results do not show; and an irregular form, once for each
     form it can be.  None for anything else."""
     if p.origin == Origin.UNIQUE and isinstance(p.source, Unique):

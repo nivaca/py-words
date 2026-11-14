@@ -258,8 +258,9 @@ los datos, los iconos y los documentos, y un archivo `COMMIT` con el
 commit del que se hizo, que muestra "Acerca de".  Deja fuera los archivos ocultos
 (`.git`...), lo que se genera al usar o editar el programa
 (`__pycache__`, archivos `.bak`, WORD.OUT...), lo que está en la carpeta
-sin ser parte del programa (el `site/` construido, `dist/`,
-`local-only/`, `tools/`, `packaging/`, `build/`, el `TAGS` de un editor) y las pruebas, a menos que ponga `--tests`.
+sin ser parte del programa (`dist/`, `local-only/`, `tools/`,
+`packaging/`, `build/`, el `TAGS` de un editor) y las pruebas, a menos
+que ponga `--tests`.
 
 En Linux, la AppImage (vea "Una AppImage") se hace con
 
@@ -293,7 +294,8 @@ Una release en GitHub y en Codeberg, con los dos archivos, se hace con
 Necesita `gh` (GitHub) y `tea` (Codeberg), y `main` sin cambios por
 confirmar.  Hace el zip y la AppImage, pone el tag `vVERSIÓN` al commit,
 sube `main` y el tag, y hace la release en cada forja (o conserva la que
-haya), adjuntando los archivos y reemplazando los del mismo nombre.
+haya), a la que adjunta los archivos, que reemplazan a los del mismo
+nombre.
 Muestra las órdenes y pregunta antes de ejecutarlas; `--dry-run` solo
 las muestra.  Si el tag está en otro commit se detiene, a menos que
 `--redo` lo mueva, lo que rehace una release.  `--rpm` adjunta también
@@ -1963,7 +1965,7 @@ Antecedentes
 ------------
 
 WORDS lo escribió el coronel William Whitaker (USAF, retirado), que murió
-en 2010.  La versión en Ada en que se basa esta adaptación es una versión
+en 2010.  La versión en Ada de la que partió py-words es una versión
 depurada de su programa, mantenida como ejercicio de preservación
 digital.  Su léxico no registra la cantidad de las vocales; py-words la
 toma de Collatinus.

@@ -221,7 +221,7 @@ def uninstall_linux() -> list[str]:
 ICO = os.path.join(ICON_DIR, 'windows', APP_ID + '.ico')
 
 #  Makes a shortcut with the Windows Script Host, from the values in the
-#  environment (which spares quoting them in the script).
+#  environment (which saves quoting them in the script).
 SHORTCUT_SCRIPT = (
     '$s = (New-Object -ComObject WScript.Shell).CreateShortcut($env:PYW_LNK);'
     ' $s.TargetPath = $env:PYW_TARGET;'

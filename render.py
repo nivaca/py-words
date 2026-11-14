@@ -7,8 +7,8 @@
 
 Each word is followed by its readings: a dictionary entry (its principal
 parts and grammar, its meaning, then the forms the word can be; entries
-that would show the same forms, as a word of WORDS and its medieval sense
-from Latham, show them once, after the last of them, as WORDS did), an
+that would show the same forms, such as a word of WORDS and its medieval
+sense from Latham, show them once, after the last of them, as WORDS did), an
 irregular form, an affix or enclitic found on the word, or a note on a
 trick that was needed to find it.  The meanings are in the language given
 (see languages.py), and so is the rest, if the language translates it

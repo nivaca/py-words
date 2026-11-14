@@ -144,8 +144,8 @@ class Lexicon:
     tackons: list[Tackon] = field(default_factory=list)
     packons: list[Tackon] = field(default_factory=list)
     #  the abbreviations of the analyses, from gloss.xml: {(category,
-    #  code): abbreviation}, as ('case', 'GEN'): 'GEN' ({}: none, and the
-    #  analyses are in words)
+    #  code): abbreviation}, such as ('case', 'GEN'): 'GEN' ({}: none, and
+    #  the analyses are in words)
     glosses: dict[tuple[str, str], str] = field(default_factory=dict)
     #  the long vowels of the stems, from quantities.xml: {entry id: its
     #  stems with the long vowels marked, '-' where they are not known}

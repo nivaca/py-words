@@ -98,7 +98,7 @@ def save_source(source: str) -> str:
 
 
 def save_dictionary(code: str) -> str:
-    """Keeps the dictionary CODE, as save_source."""
+    """Keeps the dictionary CODE, like save_source."""
     return _save('dictionary', code)
 
 
@@ -233,7 +233,7 @@ class Logeion:
         """The pages of the lemmas of WORDS (filled in, and returned); first,
         that of the word as written, if it is a headword of Lewis and
         Short's (arma, whose lemma here is armum; not dixi or est, which
-        other dictionaries have only to send to dico and sum).  If Logeion
+        other dictionaries have only to refer to dico and sum).  If Logeion
         cannot be reached, a page says why, and the rest are not asked
         for."""
         shown: set[str] = set()         # (two lemmas, one page: volo)
@@ -308,8 +308,8 @@ def render(words: list[Word], style: Style, width: int,
            colour: bool = False) -> list[tuple[str, str]]:
     """The lines of WORDS, WIDTH wide, as (kind, line): for each word, a
     line with it and its lemmas (HEAD), its analysis (ANALYSIS: plain
-    text, as this program's results; wrapped to WIDTH unless not
-    WRAP_ANALYSIS, for the window, which styles them as those), then the
+    text, like this program's results; wrapped to WIDTH unless not
+    WRAP_ANALYSIS, for the window, which styles them like those), then the
     pages (PAGE), with the ANSI codes and links of STYLE, which the
     terminal interface and the window turn into their own; with COLOUR,
     the analysis too, as colours.py colours this program's results.

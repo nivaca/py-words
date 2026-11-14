@@ -1,12 +1,12 @@
-"""The results in the window: the same text that words.py prints, shown
-with some order for the eye, and with things to click.
+"""The results in the window: the same text that words.py prints, laid
+out for the eye, and with things to click.
 
 * Each line is styled by what it is, which the layout of the results
   tells (see render.py): the word looked up (bold, larger), the line of an
   entry (its dictionary form bold, its codes in brackets grey), the
   meaning, the forms (stem-ending and the analysis, in another colour),
   and the notes in parentheses (grey).  With the Pearse codes (a developer
-  mode) the layout is another one, and the text is shown as it is.
+  mode) the layout is different, and the text is shown as it is.
 * The first word of an entry is a link to its own search; a double click
   on any word looks it up (to Latin, if it is a word of the meanings).
 * Pointing at the codes ([XXXBO]) or at an analysis (GEN.PL) shows what
@@ -49,9 +49,9 @@ COLOURS = {
 
 
 def unbind(widget, bound):
-    """Takes off WIDGET the BOUND commands, [(event, funcid)] of bind(...,
-    add='+'), and only those (tkinter's unbind takes off all of the event
-    in Pythons before 3.13)."""
+    """Takes the BOUND commands, [(event, funcid)] of bind(..., add='+'),
+    off WIDGET, and only those (tkinter's unbind takes off all those of the
+    event in Pythons before 3.13)."""
     if not widget.winfo_exists():
         return
     for event, funcid in bound:
@@ -288,7 +288,7 @@ class Results(ttk.Frame):
                                self.logeion_dictionary, wrap_analysis=False)
         for n, (kind, line) in enumerate(lines):
             if kind == logeion.ANALYSIS:
-                self._line(line)        # (as this program's results)
+                self._line(line)        # (like this program's results)
                 continue
             line_start = t.index('end-1c')
             for piece, codes, url in styled_segments(line):

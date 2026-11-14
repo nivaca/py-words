@@ -508,7 +508,7 @@ class WebApp:
         its kind, the words looked up in bold, each entry's first word a
         link to its search, and the codes and analyses explained by their
         title (and by the page's script, for a tap).  With the Pearse codes
-        (a developer mode) the layout is another one: as it is."""
+        (a developer mode) the layout is different: shown as it is."""
         if self.session.settings.pearse_codes:
             return esc(text)
         code = interface.code()
@@ -715,7 +715,7 @@ class WebApp:
 
     def choose_appearance(self, environ, start_response):
         """The "Dark mode" box: ticked, the page is dark, if not, light
-        (kept, as the windows' dark mode, in the configuration file)."""
+        (kept, like the windows' dark mode, in the configuration file)."""
         form = self._form(environ)
         if form is None:
             return self._plain(start_response, '403 Forbidden',
@@ -1135,7 +1135,7 @@ def public_app(datadir: str | None = None,
     """The application for a web server open to everyone: each visitor
     has their own settings, languages, look and earlier searches, in the
     cookies of their browser, and nothing is saved on the server.  In the
-    WSGI file of the server (as PythonAnywhere's):
+    WSGI file of the server (such as PythonAnywhere's):
 
         import sys
         sys.path.insert(0, '/home/USER/py-words')

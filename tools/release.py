@@ -20,8 +20,8 @@ In order, each step only if it is needed:
    it stops, unless --redo moves it;
 4. pushes main and the tag to the remote (origin, which pushes to both
    GitHub and Codeberg; --redo pushes the tag with --force);
-5. on each forge, makes the release of the tag, or keeps the one there
-   is, and attaches the files to it, replacing those of the same name;
+5. on each forge, makes the release of the tag, or keeps the existing
+   one, and attaches the files to it, replacing those of the same name;
 6. with --rpm, sends the (signed) source RPM to Copr (copr-cli build,
    project nivaca/py-words), unless --no-copr.  Copr builds it for each
    Fedora of the project and signs it with its own key; each build needs
@@ -31,10 +31,10 @@ In order, each step only if it is needed:
 Before doing anything, it shows the commands it will run and asks; --yes
 does not ask, --dry-run only shows them.  The notes of a new release are
 --notes, --notes-file, or else made by GitHub from the commits (on
-Codeberg, none); a release that is there keeps its notes.
+Codeberg, none); an existing release keeps its notes.
 
 The repositories are found from the push addresses of the remote; tea
-uses the login named codeberg unless --tea-login says another.
+uses the login named codeberg unless --tea-login names another.
 
 When the tag is pushed, GitHub runs .github/workflows/appimage.yml, which
 makes the AppImage again and replaces the one attached here (same

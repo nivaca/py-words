@@ -42,7 +42,7 @@ SECTION = 'appearance'
 OWN_THEME = 'clam'
 DARK_THEME = OWN_THEME
 
-#  The colours of the two looks (as those of the web page: the window is
+#  The colours of the two looks (like those of the web page: the window is
 #  its panels, and what is typed or shown is on its page)
 DARK = {
     'background': '#242428', 'foreground': '#e8e6e1',
@@ -142,7 +142,7 @@ class Theme:
         self.colours = colours
         self._options(colours)
         self._recolour(self.root, colours)
-        #  (for what has colours of its own, as the styled results)
+        #  (for what has colours of its own, such as the styled results)
         self.root.event_generate('<<ThemeChanged>>', when='tail')
 
     def _styles(self, d: dict):
@@ -179,7 +179,7 @@ class Theme:
               bordercolor=[('disabled', d['border']),
                            ('focus', d['focus'])],
               foreground=[('disabled', d['disabled'])])
-        #  a button with no border (as the dark mode one), only a shade
+        #  a button with no border (like the dark mode one), only a shade
         #  under the mouse
         s.configure('Flat.Toolbutton', background=d['background'],
                     relief='flat', borderwidth=0)
@@ -273,8 +273,9 @@ class Theme:
             add(f'*{cls}.foreground', fg, 'interactive')
             add(f'*{cls}.selectBackground', c['select'], 'interactive')
             add(f'*{cls}.selectForeground', c['select_fg'], 'interactive')
-        #  (a selection where the text is not focused, as the results, which
-        #  cannot be typed in, would be light grey under the white text)
+        #  (a selection where the text is not focused, such as the results,
+        #  which cannot be typed in, would be light grey under the white
+        #  text)
         add('*Text.inactiveSelectBackground', c['select'], 'interactive')
         add('*Text.insertBackground', c['insert'], 'interactive')
         add('*Text.highlightBackground', c['border'], 'interactive')
@@ -302,7 +303,7 @@ class Theme:
         """The colours of the Tk widgets already there."""
         cls = widget.winfo_class()
         if isinstance(widget, (tk.Tk, tk.Toplevel)):
-            cls = 'Toplevel'            # (whatever its class, as py-words)
+            cls = 'Toplevel'            # (whatever its class, e.g. py-words)
         try:
             if cls in ('Tk', 'Toplevel', 'Frame', 'Canvas'):
                 widget.configure(background=c['background'])

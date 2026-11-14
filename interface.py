@@ -15,7 +15,7 @@ to the program, data/interface/CODE.xml (see words.xsd):
 
 A text is found by its English, with its spaces made single (so a text
 may be laid out on several lines); the translation is shown as it is
-written.  A text may have named parts, as "Saved in {path}", which tr()
+written.  A text may have named parts, such as "Saved in {path}", which tr()
 fills in; the translation has the same parts.  What the file does not
 translate is shown in English.
 

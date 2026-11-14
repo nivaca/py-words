@@ -23,14 +23,14 @@ long vowels come from Collatinus, Lewis and Short and De Miguel (see
 "Sources").  It is free software, under the GNU General Public License
 (see "Licensing").
 
-I am Nicolas Vaughan (<nivaca@fastmail.com> and <n.vaughan@uniandes.edu.co>),
-and I wrote it in 2026.  First it was a faithful translation of the Ada
-version maintained at
-[mk270/whitakers-words](https://github.com/mk270/whitakers-words); after,
-I redesigned it as idiomatic Python, with the same analyses, an output
-more easy to read and a modern command line, and its data, from the
-fixed-column text files of the original to XML.  The only thing you need is
-Python 3.11 or later.  You can use it also online:
+I am Nicolas Vaughan (<nivaca@fastmail.com> and
+<n.vaughan@uniandes.edu.co>), and I wrote it in 2026.  First it was a
+faithful translation of the Ada version maintained at
+[mk270/whitakers-words](https://github.com/mk270/whitakers-words); then I
+redesigned it as idiomatic Python, with the same analyses, easier-to-read
+output and a modern command line, and moved its data from the fixed-column
+text files of the original to XML.  The only thing you need is Python 3.11
+or later.  You can also use it online:
 <https://nivaca.pythonanywhere.com/> (see "Online").
 
 [Nicolas Vaughan](https://artehum.uniandes.edu.co/profesores/nicolas-vaughan/) is Associate Professor of Literature at the School of Arts
@@ -44,7 +44,7 @@ in dark mode):
 
 ![The window](docs/img/gui_en.png)
 
-in the command line (`words.py`, interactive):
+on the command line (`words.py`, interactive):
 
 ![The command line](docs/img/cli_en.png)
 
@@ -56,10 +56,10 @@ and in a web browser (`words_web.py`):
 
 ![The web page](docs/img/web_en.png)
 
-These eight pictures (four programs, two languages) are made by
-`python3 tools/screenshots.py`, which runs each program out of sight and
-writes them in `docs/img/`. It needs Linux with a graphical session,
-ImageMagick, tmux and Chrome; `--help` tells the options.
+These eight pictures (four programs, two languages) are made by `python3
+tools/screenshots.py`, which runs each program out of sight and writes
+them to `docs/img/`.  It needs Linux with a graphical session,
+ImageMagick, tmux and Chrome; `--help` lists the options.
 
 Installation
 ------------
@@ -68,20 +68,20 @@ Installation
 
 Only Python 3.11 or later: the program uses just the standard library of
 Python, nothing more.  The windows (the dictionary and the editor) need
-Tk, which comes with Python in Windows, and with the installers of
-[python.org](https://www.python.org/downloads/) in macOS.  In Linux, and
-with the Python of Homebrew in macOS, maybe it is a separate package:
+Tk, which comes with Python on Windows, and with the installers of
+[python.org](https://www.python.org/downloads/) on macOS.  On Linux, and
+with Homebrew's Python on macOS, it may be a separate package:
 
     $ sudo dnf install python3-tkinter         # Fedora
     $ sudo apt install python3-tk              # Debian, Ubuntu
     $ brew install python-tk                   # macOS with Homebrew
 
-To know which Python you have, run `python3 --version`.  The Python that
+To see which Python you have, run `python3 --version`.  The Python that
 comes with macOS can be too old; in that case, install a more recent one
 from python.org or with Homebrew.  If the Python is too old, the program
 tells you so and stops.
 
-The commands below use `python3`; in Windows, write `python` instead.
+The commands below use `python3`; on Windows, write `python` instead.
 
 ### Getting the program
 
@@ -89,9 +89,9 @@ Clone the repository:
 
     $ git clone https://github.com/nivaca/py-words.git
 
-or download it as a zip (in GitHub: "Code", and then "Download ZIP") and
-unpack it in any place.  The folder is the complete program: there is
-nothing to build or to install, and you can run it from where it is:
+or download it as a zip (on GitHub: "Code", and then "Download ZIP") and
+unpack it anywhere.  The folder is the complete program: there is nothing
+to build or to install, and you can run it from where it is:
 
     $ cd py-words                              # (or the unpacked folder)
     $ python3 words.py amicus                  # a first test
@@ -99,33 +99,33 @@ nothing to build or to install, and you can run it from where it is:
 
 ### An AppImage (Linux)
 
-In Linux there is also an AppImage, a single file that brings its own
+On Linux there is also an AppImage, a single file that brings its own
 Python (with Tk), so that nothing else is needed.  Download
 `py-words-v.VERSION-x86_64.AppImage` from the
-[Releases](https://github.com/nivaca/py-words/releases) of GitHub, make
-it executable and run it:
+[Releases](https://github.com/nivaca/py-words/releases) on GitHub, make it
+executable and run it:
 
     $ chmod +x py-words-v.3.18-x86_64.AppImage
     $ ./py-words-v.3.18-x86_64.AppImage                # the window
     $ ./py-words-v.3.18-x86_64.AppImage cli amicus     # the command line
     $ ./py-words-v.3.18-x86_64.AppImage help           # the other programs
 
-The first argument chooses the program: `gui` (the default), `cli`,
-`tui`, `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments
-after it go to the program.  A link to the AppImage named like one of
-the programs (`words`, `words_tui` ...) runs that one.  The AppImage
-cannot be written to, so editing the dictionary is off: "Edit
-dictionary…" is greyed out in the window, F4 in the terminal version
-says why, and `edit` and `edit-gui` stop with a message.  To edit it,
-copy the `data` folder somewhere and give the copy as the data folder
-(in the settings, with `--datadir` or with `$PY_WORDS_DATADIR`).  `words_install.py` is not in
-it; tools such as AppImageLauncher or Gear Lever add it to the menu.
+The first argument chooses the program: `gui` (the default), `cli`, `tui`,
+`web`, `edit`, `edit-gui`, `check` or `convert`; the arguments after it go
+to the program.  A link to the AppImage named after one of the programs
+(`words`, `words_tui` ...) runs that one.  The AppImage cannot be written
+to, so editing the dictionary is off: "Edit dictionary…" is greyed out in
+the window, F4 in the terminal version says why, and `edit` and `edit-gui`
+stop with a message.  To edit it, copy the `data` folder somewhere and
+give the copy as the data folder (in the settings, with `--datadir` or
+with `$PY_WORDS_DATADIR`).  `words_install.py` is not in it; tools such as
+AppImageLauncher or Gear Lever add it to the menu.
 
 ### An RPM package (Fedora)
 
-In Fedora (and other systems with RPM packages) the program can be
-installed as a package, which uses the system's Python and Tk and adds
-the four menu entries and the icon.  The simplest is from
+On Fedora (and other systems with RPM packages) the program can be
+installed as a package, which uses the system's Python and Tk and adds the
+four menu entries and the icon.  The simplest way is from
 [Copr](https://copr.fedorainfracloud.org/coprs/nivaca/py-words/), so that
 `dnf upgrade` brings each new version:
 
@@ -134,7 +134,7 @@ the four menu entries and the icon.  The simplest is from
 
 Or download `py-words-VERSION-1.fc45.noarch.rpm` and
 `RPM-GPG-KEY-py-words` from the
-[Releases](https://github.com/nivaca/py-words/releases) of GitHub (the
+[Releases](https://github.com/nivaca/py-words/releases) on GitHub (the
 package is signed; import its key once) and install it:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
@@ -154,8 +154,8 @@ Then `py-words` starts it, with the same commands as the AppImage:
     $ py-words cli amicus         # the command line
     $ py-words help               # the other programs
 
-The program goes in `/usr/share/py-words`, which cannot be written to,
-so editing the dictionary is off as in the AppImage (copy the `data`
+The program is installed in `/usr/share/py-words`, which cannot be written
+to, so editing the dictionary is off as in the AppImage (copy the `data`
 folder and give the copy as the data folder to edit it).  The settings,
 the history and the cache are in the user's folders, as always.  If you
 ran `words_install.py` before, run `python3 words_install.py --uninstall`,
@@ -176,23 +176,22 @@ C029 6282 8A87 315E E750 A4F9 6998 9DA6`); a copy is in
 
 ### A menu entry
 
-If you want to start the program from the applications menu, run one
-time
+If you want to start the program from the applications menu, run once
 
     $ python3 words_install.py
 
-This adds four entries, with the icon of the program: the window, the
-command line, the version for the terminal in full screen (these two
-open in a terminal), and the web version (its server runs in a terminal,
-and the browser opens).  Where they go depends on the system:
+This adds four entries, with the program's icon: the window, the command
+line, the full-screen terminal version (these two open in a terminal), and
+the web version (its server runs in a terminal, and the browser opens).
+Where they go depends on the system:
 
 * Linux (and other systems with freedesktop menus): in the applications
   menu, as `.desktop` files and icons in `~/.local/share`;
 * Windows: in the Start menu, as shortcuts;
 * macOS: in `~/Applications`, as four small applications.
 
-To add only the entry of the window, give `--only-gui` (the other three
-are removed, if they were there from before):
+To add only the window's entry, give `--only-gui` (the other three are
+removed, if they were already there):
 
     $ python3 words_install.py --only-gui
 
@@ -202,19 +201,19 @@ its folder, so if you move the folder you must run the script again.
 ### Updating
 
 With git, do `git pull` in the folder; if not, download the program again
-and replace the folder.  In case you edited the dictionary, first keep a
-copy of `data/dictionary.xml` (with git, make a commit).  The menu entries
-continue working while the folder stays in the same place.
+and replace the folder.  If you edited the dictionary, first keep a copy
+of `data/dictionary.xml` (with git, make a commit).  The menu entries keep
+working as long as the folder stays in the same place.
 
 ### Uninstalling
 
     $ python3 words_install.py --uninstall     # remove the menu entries
 
-and after that delete the folder.  The program keeps also a cache, which
-you can delete too: `~/.cache/py-words` in Linux,
-`~/Library/Caches/py-words` in macOS, `%LOCALAPPDATA%\py-words` in
+and after that delete the folder.  The program also keeps a cache, which
+you can delete too: `~/.cache/py-words` on Linux,
+`~/Library/Caches/py-words` on macOS, `%LOCALAPPDATA%\py-words` on
 Windows; the configuration file, if it was created (see "Settings and
-files"); and the history of the searches (see "Usage").
+files"); and the search history (see "Usage").
 
 What is where
 -------------
@@ -238,35 +237,35 @@ What is where
     tools/              scripts to make the zip, the AppImage, the icons,
                         the screenshots and the releases (not in the zip)
 
-To use it in another place, copy the folder, or make a zip of the program
-for distributing it:
+To use it elsewhere, copy the folder, or make a zip of the program to
+distribute it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
 This writes `dist/py-words-v.3.18.zip` (with the version of the program;
-`-o` gives another folder), with the program inside a folder of the
-same name.  It contains the programs,
-the data, the icons and the documents, and a file `COMMIT` with the
-commit it was made from, which "About" shows.  It does not contain hidden files
-(`.git` ...), nor the things that are made when the program runs or is
-edited (`__pycache__`, `.bak` files, WORD.OUT ...), nor the things that
-are in its folder but are not part of it (the built `site/`, `dist/`,
-`local-only/`, `tools/`, `packaging/`, `build/`, the `TAGS` of an editor), and neither the tests, except
-if you give `--tests`.
+`-o` gives another folder), with the program inside a folder of the same
+name.  It contains the programs, the data, the icons and the documents,
+and a file `COMMIT` with the commit it was made from, which "About" shows.
+It does not contain hidden files (`.git` ...), nor the things that are
+made when the program runs or is edited (`__pycache__`, `.bak` files,
+WORD.OUT ...), nor the things that are in its folder but are not part of
+it (`dist/`, `local-only/`, `tools/`, `packaging/`, `build/`, the `TAGS`
+of an editor), nor the tests, unless you give `--tests`.
 
-In Linux, the AppImage (see "An AppImage") is made with
+On Linux, the AppImage (see "An AppImage") is made with
 
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
 It writes `dist/py-words-v.3.18-x86_64.AppImage` (`-o` gives another
-folder), with the same files as the zip (but not `words_install.py`), a Python of its own and the menu entry and icons.  The Python (Python 3.13 with Tk, from
-[python-appimage](https://github.com/niess/python-appimage)) and
-[appimagetool](https://github.com/AppImage/appimagetool) are downloaded
-the first time and kept in `~/.cache/py-words-build`; `--python` and
-`--appimagetool` give others instead.  The workflow
-`.github/workflows/appimage.yml` makes it in GitHub, and adds it to the
-release of each tag that is pushed.
+folder), with the same files as the zip (but not `words_install.py`), a
+Python of its own and the menu entry and icons.  The Python (Python 3.13
+with Tk, from [python-appimage](https://github.com/niess/python-appimage))
+and [appimagetool](https://github.com/AppImage/appimagetool) are
+downloaded the first time and kept in `~/.cache/py-words-build`;
+`--python` and `--appimagetool` give others instead.  The workflow
+`.github/workflows/appimage.yml` makes it on GitHub, and adds it to the
+release of each pushed tag.
 
 The icons in `icons/` are all made from `icons/py-words.svg` with
 
@@ -283,16 +282,16 @@ A release on GitHub and Codeberg, with both files, is made with
           [--only github|codeberg]
           [--dry-run] [--yes]
 
-It needs `gh` (GitHub) and `tea` (Codeberg), and a clean `main`.  It
-makes the zip and the AppImage, tags the commit `vVERSION`, pushes
-`main` and the tag, and makes the release on each forge (or keeps the
-one there is), attaching the files and replacing those of the same
-name.  It shows the commands and asks before running them; `--dry-run`
-only shows them.  If the tag is on another commit it stops, unless
-`--redo` moves it, which remakes a release.  `--rpm` attaches also the
-signed RPM and its public key (see "An RPM package (Fedora)"), made with
-`packaging/build-rpm.sh --sign`, and sends the RPM to Copr
-(`copr-cli build py-words`; `--no-copr` does not).
+It needs `gh` (GitHub) and `tea` (Codeberg), and a clean `main`.  It makes
+the zip and the AppImage, tags the commit `vVERSION`, pushes `main` and
+the tag, and makes the release on each forge (or keeps the existing one),
+attaching the files and replacing those of the same name.  It shows the
+commands and asks before running them; `--dry-run` only shows them.  If
+the tag is on another commit it stops, unless `--redo` moves it, which
+remakes a release.  `--rpm` also attaches the signed RPM and its public
+key (see "An RPM package (Fedora)"), made with `packaging/build-rpm.sh
+--sign`, and sends the RPM to Copr (`copr-cli build py-words`; `--no-copr`
+skips this).
 
 Usage
 -----
@@ -310,41 +309,40 @@ Usage
 `words_tui.py` is like the window, but in the terminal: there is a line
 for searching (Up and Down bring back the earlier searches), the results
 below (PgUp and PgDn scroll them), and the keys are shown in the last
-line.  F2 changes between Latin to English and English to Latin, F3
-lists the settings (Space changes one), F4 opens the dictionary editor,
-F5 chooses the language of the meanings (with Logeion, its dictionary),
-F6 the one of the interface, F7
-copies all the results, F8 searches in this dictionary or in Logeion (see
-"Logeion"), F9 clears the history, F1 shows the help, and F10 quits.  It shares the
-settings and the history with `words.py` and with the window.  (In
-Windows it needs the package windows-curses.)
+line.  F2 switches between Latin to English and English to Latin, F3 lists
+the settings (Space changes one), F4 opens the dictionary editor, F5
+chooses the language of the meanings (with Logeion, its dictionary), F6
+that of the interface, F7 copies all the results, F8 searches in this
+dictionary or in Logeion (see "Logeion"), F9 clears the history, F1 shows
+the help, and F10 quits.  It shares the settings and the history with
+`words.py` and with the window.  (On Windows it needs the package
+windows-curses.)
 
-`words_web.py` starts a small web server and opens the browser in
-`http://127.0.0.1:8000/` (or in another port, if this one is busy).  The
+`words_web.py` starts a small web server and opens the browser at
+`http://127.0.0.1:8000/` (or on another port, if this one is busy).  The
 page has a search box with Latin to English or English to Latin, the
-language of the meanings, the results like in the window (the first word
-of each entry is a link to its own search), the earlier searches, and all
-the settings.  Each search has its own address, for example
+language of the meanings, the results as in the window (the first word of
+each entry is a link to its own search), the earlier searches, and all the
+settings.  Each search has its own address, for example
 `http://127.0.0.1:8000/?q=amicus+est` (`&lang=en` for English to Latin),
-so you can put it in your bookmarks.  It shares the settings and the
-history with the other programs, and it reads the dictionary again when
-an editor changes it.  Only this computer can access it, except if you
-say otherwise with `--host` (`--host 0.0.0.0` allows to use it from a
-phone in the same network); there are no passwords, so do this only in a
-network you trust.  Its moon (☾), next to "Meanings in", makes the page
-dark, and then the sun (☀) light again (until you use it the first
-time, the page follows the system); it is the same setting as the one of
-the window.  It is not possible to edit the dictionary from the browser.
-`--port` chooses the port and `--no-browser` does not open the browser;
-Ctrl-C stops the server.
+so you can bookmark it.  It shares the settings and the history with the
+other programs, and it reads the dictionary again when an editor changes
+it.  Only this computer can access it, unless you say otherwise with
+`--host` (`--host 0.0.0.0` lets you use it from a phone on the same
+network); there are no passwords, so do this only on a network you trust.
+Its moon (☾), next to "Meanings in", makes the page dark, and then the sun
+(☀) light again (until you first use it, the page follows the system); it
+is the same setting as the window's.  The dictionary cannot be edited from
+the browser.  `--port` chooses the port and `--no-browser` does not open
+the browser; Ctrl-C stops the server.
 
-The results in the page are shown like in the window: the dictionary
-form in bold and as a link, the codes and the notes in grey, the analyses
-in blue.  If you put the mouse over the codes in brackets or over an
-analysis (GEN.PL), or if you touch them in a phone, a small box explains
-what they mean.  A double click in any word looks it up (a word of the
-meanings is looked up in Latin), and before the first search there are
-some examples for clicking.  All this works also in the online version.
+The results on the page are shown as in the window: the dictionary form in
+bold and as a link, the codes and the notes in grey, the analyses in blue.
+If you hover the mouse over the codes in brackets or over an analysis
+(GEN.PL), or tap them on a phone, a small box explains what they mean.  A
+double click on any word looks it up (a word of the meanings is looked up
+in Latin), and before the first search there are some examples to click.
+All this also works in the online version.
 
 The credits (the authors, the sources and the Spanish translation) are
 shown only when you ask for them: "About" in the window and at the foot
@@ -353,45 +351,44 @@ line, and `--version`.
 
 ### Help
 
-Each program has a help that explains how to search and how to read the
-results: what means each line, the codes in brackets after an entry
+Each program has a help guide that explains how to search and how to read
+the results: what each line means, the codes in brackets after an entry
 ([XXXBO]; see "The codes in brackets") and the abbreviations of the
-analyses, with a real example taken from the dictionary.  In the window
-it is "Help" (or F1); in the web page, "Help" at the foot; in
-`words_tui.py`, F1; in the interactive command line, `~H`; and
-`python3 words.py --guide` prints it.  It comes in the language of the
-interface.
+analyses, with a real example taken from the dictionary.  In the window it
+is "Help" (or F1); on the web page, "Help" at the foot; in `words_tui.py`,
+F1; in the interactive command line, `~H`; and `python3 words.py --guide`
+prints it.  It comes in the language of the interface.
 
 ### Logeion
 
-The window, `words_tui.py` and the command line can also show, instead
-of the entries of this dictionary, those of
-[Logeion](https://logeion.uchicago.edu), the Latin and Greek
-dictionaries of the University of Chicago: Lewis and Short, Lewis's
-Elementary, Georges, Gaffiot, the DMLBS, Du Cange and others, with the
-short definition, the frequency and examples from its corpus.  In the
-window it is "Search in" (Local or Logeion), above the direction; in
-`words_tui.py`, F8; in the interactive command line, `~G`.  The choice
-last made in any of them is kept for the next start of all of them
-(`source` in the section `[logeion]` of the configuration file), and so
-are Logeion's dictionary (see below) and the direction, Latin to English
-or back (`to_latin` in `[search]`): the programs start as they were
-left.  On the command line, `--logeion`, `--local` and `--dictionary`
-change them for one run, without keeping them.  It needs the internet.
+The window, `words_tui.py` and the command line can also show, instead of
+the entries of this dictionary, those of
+[Logeion](https://logeion.uchicago.edu), the Latin and Greek dictionaries
+of the University of Chicago: Lewis and Short, Lewis's Elementary,
+Georges, Gaffiot, the DMLBS, Du Cange and others, with the short
+definition, the frequency and examples from its corpus.  In the window it
+is "Search in" (Local or Logeion), above the direction; in `words_tui.py`,
+F8; in the interactive command line, `~G`.  The last choice made in any of
+them is kept the next time any of them starts (`source` in the section
+`[logeion]` of the configuration file), and so are Logeion's dictionary
+(see below) and the direction, Latin to English or back (`to_latin` in
+`[search]`): the programs start as they were left.  On the command line,
+`--logeion`, `--local` and `--dictionary` change them for one run, without
+keeping them.  It needs an internet connection.
 
-Logeion does not analyse inflected forms, so the words are analysed
-here first, and Logeion is asked for their lemmas: the first of the
-principal parts of each entry found (*dixit*: *dico*; *est*: *edo* and
-*sum*; *mihi*: *ego*).  The form as written is asked for too, but shown
-only when it is a headword of its own in Lewis and Short (*arma*, whose
-lemma here is *armum*; not *dixi*, which other dictionaries have only to
-send to *dico*).  Each word shows first its analysis, as this program
-gives it but without its meanings (the entries and the forms, with their
-explanations in the window; each entry only as its dictionary form and
-part of speech, without the codes, flags and numbers that go with this
-program's meanings, and alike entries once, with all their forms: the
-four of *dico*, the eight of *quae*), and then Logeion's pages of its
-lemmas:
+Logeion does not analyse inflected forms, so the words are analysed here
+first, and Logeion is asked for their lemmas: the first of the principal
+parts of each entry found (*dixit*: *dico*; *est*: *edo* and *sum*;
+*mihi*: *ego*).  The form as written is asked for too, but shown only when
+it is a headword of its own in Lewis and Short (*arma*, whose lemma here
+is *armum*; not *dixi*, which other dictionaries have only as a
+cross-reference to *dico*).  Each word shows first its analysis, as this
+program gives it but without its meanings (the entries and the forms, with
+their explanations in the window; each entry only as its dictionary form
+and part of speech, without the codes, flags and numbers that go with this
+program's meanings, and entries that are alike only once, with all their
+forms: the four of *dico*, the eight of *quae*), and then Logeion's pages
+of its lemmas:
 
     $ python3 words.py --logeion arma
     arma  →  armum, armo
@@ -415,54 +412,53 @@ the language of the meanings, the fuzzy search and "Edit dictionary…"
 (the editor edits this dictionary, not Logeion) are greyed out in the
 window, and F4 in `words_tui.py` says so.
 
-In the interactive command line, `~G` changes between Logeion and this
+In the interactive command line, `~G` switches between Logeion and this
 dictionary, and `~D` chooses Logeion's dictionary: `~D gaffiot`, or `~D`
-alone for a numbered list (it turns Logeion on, as `--dictionary`
-does).  Both are kept for the next start, as `~E` and `~L` keep the
-direction; the start of the session says which source is in use.  The
-lines `~E`, `~L`, `~G` and `~D DICT` of a file (`-f`, `@`) change them
-only while it is read.
+alone for a numbered list (it turns Logeion on, as `--dictionary` does).
+Both are kept for the next start, as `~E` and `~L` keep the direction; the
+start of the session says which source is in use.  The lines `~E`, `~L`,
+`~G` and `~D DICT` of a file (`-f`, `@`) change them only while it is
+read.
 
 The entries can be those of all the dictionaries of Logeion, or of only
-one: in the window, the list beside "Search in" (available when Logeion
-is chosen); in `words_tui.py`, F5 (which, with Logeion, chooses the
-dictionary instead of the language of the meanings); on the command
-line, `--dictionary` with its code or name (`--dictionary ls`,
-`--dictionary "Du Cange"`; it needs no `--logeion`, and
-`--dictionaries` lists them).  The choices are Lewis & Short (`ls`),
-Lewis's Elementary (`lewis`), Georges, Gaffiot 2016 (`gaffiot`), the
-DMLBS, LaNe, Du Cange (`ducange`), Lana-Michelone (`lana`),
-Frieze-Dennison for Vergil (`frieze`) and the Latino-Sinicum
-(`sinicum`).  The short definition, the frequency and the examples from
-the corpus are shown with any of them; a lemma that the dictionary does
-not have says which ones have it.  Changing the dictionary shows the
-results again at once, without asking Logeion, and it is kept for next
-time (`dictionary` in `[logeion]`).  Its entries are wrapped to the width
-of the window or the terminal; in the window, their links to other
-words look these up, and the other links open in the browser.  The pages are kept while the
-program runs, so a word asked for again is shown at once.  The part of
-the program that asks Logeion and shows its entries (`logeion_*.py`)
-comes from my program [py-logeion](https://github.com/nivaca/py-logeion).
+one: in the window, the list beside "Search in" (available when Logeion is
+chosen); in `words_tui.py`, F5 (which, with Logeion, chooses the
+dictionary instead of the language of the meanings); on the command line,
+`--dictionary` with its code or name (`--dictionary ls`, `--dictionary "Du
+Cange"`; it needs no `--logeion`, and `--dictionaries` lists them).  The
+choices are Lewis & Short (`ls`), Lewis's Elementary (`lewis`), Georges,
+Gaffiot 2016 (`gaffiot`), the DMLBS, LaNe, Du Cange (`ducange`),
+Lana-Michelone (`lana`), Frieze-Dennison for Vergil (`frieze`) and the
+Latino-Sinicum (`sinicum`).  The short definition, the frequency and the
+examples from the corpus are shown with any of them; a lemma that the
+dictionary does not have says which ones have it.  Changing the dictionary
+shows the results again at once, without asking Logeion, and it is kept
+for next time (`dictionary` in `[logeion]`).  Its entries are wrapped to
+the width of the window or the terminal; in the window, their links to
+other words look those words up, and the other links open in the browser.
+The pages are kept while the program runs, so a word asked for again is
+shown at once.  The part of the program that asks Logeion and shows its
+entries (`logeion_*.py`) comes from my program
+[py-logeion](https://github.com/nivaca/py-logeion).
 
 ### Online
 
 The dictionary is also online, with nothing to install, at
 <https://nivaca.pythonanywhere.com/>: the page of `words_web.py`, on a
-server for everyone (see below), where each visitor has their own
-settings and earlier searches.  The former site,
-`nicolasvaughan.org/py-words/` (first a version that ran in the browser,
-with Pyodide, and then a page that sent to the server), is no longer
-published, and its code (`pages/`) is gone.
+public server (see below), where each visitor has their own settings and
+earlier searches.  The former site, `nicolasvaughan.org/py-words/` (first
+a version that ran in the browser, with Pyodide, and then a page that
+redirected to the server), is no longer published, and its code (`pages/`)
+is gone.
 
-The whole program can also run on a web server for everyone (the
-searches are made by the server, and there is nothing to download).  Its
-WSGI application is then
-`public_app()`, and each visitor has their own settings, languages of the
-meanings and of the interface, dark mode and earlier searches, kept in
-the cookies of their browser; nothing of this is saved on the server.
-With no cookies, the page is in the language of the browser, if there is
-one for it.  In PythonAnywhere, for example (a web app with "Manual
-configuration"), its WSGI file is:
+The whole program can also run on a public web server (the searches are
+made by the server, and there is nothing to download).  Its WSGI
+application is then `public_app()`, and each visitor has their own
+settings, languages of the meanings and of the interface, dark mode and
+earlier searches, kept in the cookies of their browser; none of this is
+saved on the server.  With no cookies, the page is in the language of the
+browser, if there is one for it.  On PythonAnywhere, for example (a web
+app with "Manual configuration"), its WSGI file is:
 
     import sys
     sys.path.insert(0, '/home/USER/py-words')
@@ -470,7 +466,7 @@ configuration"), its WSGI file is:
     application = public_app(hosts={'USER.pythonanywhere.com'})
 
 (`hosts`: the names of the site; without it, any.)  `python3 words_web.py
---public` tries this mode in your computer.  The searches are part of the
+--public` tries this mode on your computer.  The searches are part of the
 address of the page, so the server can keep them in its logs.
 
 ### In KRunner (KDE Plasma)
@@ -478,14 +474,14 @@ address of the page, so the server can keep them in its logs.
 In KDE Plasma 6, a separate helper,
 [krunner-py-words](https://github.com/nivaca/krunner-py-words), puts the
 dictionary in KRunner (Alt+Space): type `la amicorum`, or `la ~e friend`
-for the Latin of a word, and the entries appear as you type, each one
-with its meaning and its forms.  Enter copies the results, and an action
-opens the search online.  It uses this program (by default in the folder
+for the Latin of a word, and the entries appear as you type, each one with
+its meaning and its forms.  Enter copies the results, and an action opens
+the search online.  It uses this program (by default in the folder
 `py-words` next to its own) and its settings, and has a small settings
-window of its own (`la ?`): the prefix `la`, the languages of the
-meanings and of the interface, and how many results to show.  It needs
-the D-Bus bindings of Python (python3-dbus and python3-gobject); see its
-README for installing it.
+window of its own (`la ?`): the prefix `la`, the languages of the meanings
+and of the interface, and how many results to show.  It needs the D-Bus
+bindings of Python (python3-dbus and python3-gobject); see its README for
+how to install it.
 
 ### The language of the interface
 
@@ -493,15 +489,15 @@ The programs can talk in English or in Spanish: their menus, buttons,
 labels, messages, help, the settings and what they mean, the dictionary
 editors, the checker and the comments of the configuration file.  You
 choose the language with "Language of the interface" in the Settings of
-the window and in the settings of the web page, with F6 in
-`words_tui.py`, or at the end of the `#` dialogue of `words.py`
-(`--interface es` uses another one for one run only).  The choice is kept
-in the configuration file (the setting `interface`, `en` if it does not
-say other thing), so all the programs start with it, also the next time;
-if a program saves another setting, it does not touch this one.  The
-window and the web page change immediately.
+the window and in the settings of the web page, with F6 in `words_tui.py`,
+or at the end of the `#` dialogue of `words.py` (`--interface es` uses
+another one for one run only).  The choice is kept in the configuration
+file (the setting `interface`, `en` unless it says otherwise), so all the
+programs start with it, including the next time; if a program saves
+another setting, it does not touch this one.  The window and the web page
+change immediately.
 
-When you change the language of the interface, the one of the meanings
+When you change the language of the interface, that of the meanings
 changes too, if the dictionary has it (Spanish: the Spanish meanings;
 English: the English ones).  After that you can still choose the meanings
 separately (see "The languages of the meanings"): the interface can be in
@@ -511,33 +507,33 @@ programs, with the English (`<en>`) and its translation (`<tr>`); to add
 another language, make a file for it (`fr.xml` ...), and what it does not
 translate is shown in English.
 
-In Windows, write `python` instead of `python3`; `pythonw words_gui.py`
+On Windows, write `python` instead of `python3`; `pythonw words_gui.py`
 opens the window without a console.
 
 In the windows, Ctrl and + or − make the text bigger or smaller, and Ctrl
-and 0 puts again the normal size (in macOS, Command instead of Ctrl).
-"Font…", in the menu View and in the Settings of the window (and in the
-window of the editor), chooses the fonts: one of fixed width for the
-results, because their columns must be aligned, and another for the rest
-of the window.  The moon (☾) at the bottom right of the window makes the
-windows dark at once (the dictionary, its dialogues and the editor), and
-then the sun (☀) makes them light again.  Both choices are remembered in the configuration file (see
-"Settings and files").  For starting the program from the applications
-menu, see "Installation" above.
+and 0 restores the normal size (on macOS, Command instead of Ctrl).
+"Font…", in the View menu and in the Settings of the window (and in the
+editor's window), chooses the fonts: a fixed-width one for the results,
+because their columns must be aligned, and another for the rest of the
+window.  The moon (☾) at the bottom right of the window makes the windows
+dark at once (the dictionary, its dialogues and the editor), and then the
+sun (☀) makes them light again.  Both choices are remembered in the
+configuration file (see "Settings and files").  To start the program from
+the applications menu, see "Installation" above.
 
 The window has four menus: Dictionary (the dictionary editor, the
 Settings, and Quit), Edit (cut, copy and paste), View (find in the
-results, the size of the text, the fonts and the dark mode) and Help (the help and the credits).  The
-results are the same text as in the command line, but with some order
-for the eyes: the word looked up is bigger, the dictionary form is in
-bold, and the codes, the forms and the notes have other colours.  You can
-click the first word of an entry for looking it up, or make double click
-in any word (a word of the meanings is looked up in Latin).  If you put
-the mouse over the codes in brackets or over an analysis (GEN.PL), a
-small box explains what they mean.  With the right button you can copy or
-look up a word, and Ctrl and F finds a text in the results.  When the
-developer mode pearse_codes is on, the results are shown as they are,
-without colours, because their layout is different.
+results, the size of the text, the fonts and the dark mode) and Help (the
+help and the credits).  The results are the same text as on the command
+line, but laid out more clearly for the eye: the word looked up is bigger,
+the dictionary form is in bold, and the codes, the forms and the notes
+have other colours.  You can click the first word of an entry to look it
+up, or double-click any word (a word of the meanings is looked up in
+Latin).  If you hover the mouse over the codes in brackets or over an
+analysis (GEN.PL), a small box explains what they mean.  With a right
+click you can copy or look up a word, and Ctrl and F finds a text in the
+results.  When the developer mode pearse_codes is on, the results are
+shown as they are, without colours, because their layout is different.
 
     words.py                          interactive
     words.py amicus est               look up words (a line of Latin)
@@ -557,11 +553,11 @@ without colours, because their layout is different.
     words.py --help
 
 The program looks for the data files first with `--datadir`, then in
-`$PY_WORDS_DATADIR`, then in the folder of the configuration file,
-and at the end in the folder `data` next to the program.
+`$PY_WORDS_DATADIR`, then in the folder of the configuration file, and
+finally in the folder `data` next to the program.
 
-In interactive mode, each line is looked up, except if it starts with one
-of these:
+In interactive mode, each line is looked up, unless it starts with one of
+these:
 
     ~E / ~L    English to Latin / Latin to English
     ~G         Logeion or this dictionary (see "Logeion")
@@ -572,24 +568,24 @@ of these:
     ~A         about: the version and the credits
     ?          help
 
-Two empty lines, or Ctrl-D, quit.  Ctrl-C does not quit: it stops what
-the program is doing (a long list of results, a file, a dialogue, that in
-this case saves nothing), and the program waits for the next line;
-outside the interactive mode, Ctrl-C ends the program.  A file given with
-`-f` or `@` can also change the direction with lines `~E` and `~L`, and
-the source with `~G` and `~D DICT`.
+Two empty lines, or Ctrl-D, quit.  Ctrl-C does not quit: it stops what the
+program is doing (a long list of results, a file, a dialogue, which in
+this case saves nothing), and the program waits for the next line; outside
+the interactive mode, Ctrl-C ends the program.  A file given with `-f` or
+`@` can also change the direction with lines `~E` and `~L`, and the source
+with `~G` and `~D DICT`.
 
 In a terminal, results longer than the screen (a long line of Latin, the
-entries of Logeion, a file) open in the system's pager, as `git` and
-`man` do: `less`, or the one `$PAGER` names.  PgUp and PgDn (or Space
-and `b`) and the arrows scroll them, `/` finds a text, `g` and `G` go to
-the start and the end, and `q` comes back (in interactive mode, to the
-`=>` prompt, with what was shown left on the screen).  `less` gets the
-options `FRX` unless `$LESS` gives others.  Shorter results, and those
-written to a file or a pipe, are printed as always.  The developer mode
+entries of Logeion, a file) open in the system's pager, as `git` and `man`
+do: `less`, or the one `$PAGER` names.  PgUp and PgDn (or Space and `b`)
+and the arrows scroll them, `/` finds a text, `g` and `G` go to the start
+and the end, and `q` goes back (in interactive mode, to the `=>` prompt,
+with what was shown left on the screen).  `less` gets the options `FRX`
+unless `$LESS` gives others.  Shorter results, and those written to a file
+or a pipe, are printed as always.  The developer mode
 `pause_in_screen_output` turns this off; where there is no pager (as
-usually in Windows), interactive mode pauses instead after each
-screenful ("-- more (Enter) --").
+usually on Windows), interactive mode pauses instead after each screenful
+("-- more (Enter) --").
 
 In a terminal the results are also in colour, as in the window: the word
 looked up in bold, the entries in bold with their headword in red and
@@ -600,16 +596,16 @@ or dark theme.  `words_tui.py` shows the same colours.  Results written
 to a file or a pipe are plain, and `NO_COLOR=1` (see <https://no-color.org>)
 turns the colours off.
 
-The program remembers the searches, also from one session to the other:
-in interactive mode, Up and Down bring them back, and in the window the
-box where you write the words lists them (Down opens the list, the most
-recent first).  The command line and the window share them.  The last
-1,000 are kept in `$XDG_STATE_HOME/py-words/history` in Linux (normally
-`~/.local/state/py-words`), in `~/Library/Application Support/py-words`
-in macOS and in `%LOCALAPPDATA%\py-words` in Windows
-(`$PY_WORDS_HISTORY` gives another file; if it is empty, nothing
-is kept).  `words.py --clear-history`, or "Clear history" in the Settings
-of the window, forgets them.
+The program remembers the searches, even from one session to the next: in
+interactive mode, Up and Down bring them back, and in the window the box
+where you type the words lists them (Down opens the list, the most recent
+first).  The command line and the window share them.  The last 1,000 are
+kept in `$XDG_STATE_HOME/py-words/history` on Linux (normally
+`~/.local/state/py-words`), in `~/Library/Application Support/py-words` on
+macOS and in `%LOCALAPPDATA%\py-words` on Windows (`$PY_WORDS_HISTORY`
+gives another file; if it is empty, nothing is kept).  `words.py
+--clear-history`, or "Clear history" in the Settings of the window,
+forgets them.
 
 The output
 ----------
@@ -624,22 +620,23 @@ After each word, the program shows what it can be:
           PERF PASSIVE PPL + verb TO_BE => PASSIVE perfect system
 
 For a dictionary entry it shows the principal parts and the grammar, the
-codes in brackets (see below; the parameter show_codes hides them), the meaning, and the forms that the word can be, written as
-stem-ending.  If the word has a prefix, a suffix or an enclitic, or if a
-trick was necessary for finding it (a change of spelling, a syncopated
-perfect, two words written as one ...), this has its own line, followed
-by what was found with it.  A word not found is marked "(unknown)", and
-"(less likely forms are not shown)" means that trim_output left out some
-results.  When the meanings are in another language, the rest is also in
-that language, as far as its file translates it (`sustantivo, 2.ª
-declinación, masculino`; see "The languages of the meanings").
+codes in brackets (see below; the parameter show_codes hides them), the
+meaning, and the forms that the word can be, written as stem-ending.  If
+the word has a prefix, a suffix or an enclitic, or if a trick was needed
+to find it (a change of spelling, a syncopated perfect, two words written
+as one ...), this has its own line, followed by what was found with it.  A
+word not found is marked "(unknown)", and "(less likely forms are not
+shown)" means that trim_output left out some results.  When the meanings
+are in another language, the rest is also in that language, as far as its
+file translates it (`sustantivo, 2.ª declinación, masculino`; see "The
+languages of the meanings").
 
-A form shows its long vowels, in the stem and in the ending, when they
-are known: amīc-ōrum, rēg-is, am-ābat, ros-ā (the parameter
-show_long_vowels hides them).  The stems come from `data/quantities.xml`
-and the endings from `data/inflections.xml`, both made from Collatinus
-(see "The long vowels" below).  The marks typed in a word are still
-taken away before the analysis, so rosā shows all the readings of rosa.
+A form shows its long vowels, in the stem and in the ending, when they are
+known: amīc-ōrum, rēg-is, am-ābat, ros-ā (the parameter show_long_vowels
+hides them).  The stems come from `data/quantities.xml` and the endings
+from `data/inflections.xml`, both made from Collatinus (see "The long
+vowels" below).  Marks typed in a word are still removed before the
+analysis, so rosā shows all the readings of rosa.
 
 ### The codes in brackets
 
@@ -678,21 +675,22 @@ and taken from the Oxford Latin Dictionary.  The letters are:
   Du Cange; V Blatt, Saxo; W Whitaker's guess; Y temporary; Z sent by a
   user; and, in lower case, m De Miguel, Nuevo diccionario latino-español.
 
-When the age is known, it is written also in words after the codes, and
-the same with the frequency when it is lesser or more rare (`archaic`,
-`lesser` ...).  The names of the sources come from `data/sources.xml`.
+When the age is known, it is also written in words after the codes, and so
+is the frequency when it is lesser or rarer (`archaic`, `lesser` ...).
+The names of the sources come from `data/sources.xml`.
 
 An entry can have more than one source: then the others follow the five
 letters, each after a `+`.  For example `[XXXBO+A]`, of *tectum*, is read
-as before, and the meaning comes also from Echave-Sustaeta (A).
+as before, and the meaning also comes from Echave-Sustaeta (A).
 
 ### The abbreviations of the analyses
 
 The analyses of the forms are written with glossing abbreviations, as in
-the [Leipzig Glossing Rules](https://www.eva.mpg.de/lingua/resources/glossing-rules.php):
-the categories are separated by dots, and the person and the number go
+the [Leipzig Glossing
+Rules](https://www.eva.mpg.de/lingua/resources/glossing-rules.php): the
+categories are separated by dots, and the person and the number go
 together (`2SG.PRF.ACT.IND` is 2nd person singular perfect active
-indicative).  The abbreviations are the ones of the [list of glossing
+indicative).  The abbreviations are those of the [list of glossing
 abbreviations](https://en.wikipedia.org/wiki/List_of_glossing_abbreviations);
 the ones marked with * are not part of the standard Leipzig ones:
 
@@ -714,20 +712,19 @@ the ones marked with * are not part of the standard Leipzig ones:
 
 They are kept in `data/gloss.xml`, and you can change them there.  With
 the parameter `use_glosses` off ("Use glosses" in the Settings of the
-window; `--no-glosses` in the command line, for one run), or if that
-file is missing, the analyses are written in words ("genitive plural",
-"2nd person singular perfect active indicative").
+window; `--no-glosses` on the command line, for one run), or if that file
+is missing, the analyses are written in words ("genitive plural", "2nd
+person singular perfect active indicative").
 
 ### Fuzzy search
 
-Normally the program looks up a word exactly as it was written (well,
-with u/v and i/j as the same letter, and with the spelling tricks of
-WORDS), so with a typo it finds nothing.  For this there is the fuzzy
-search.  When a word of three letters or more still finds nothing, it
-tries the words that are at one change of distance (one letter less, one
-more, one different, or two letters together exchanged) and shows the
-results of three of them at most, first the ones of the most frequent
-entries and of the most probable typos:
+Normally the program looks up a word exactly as it was written (well, with
+u/v and i/j as the same letter, and with the spelling tricks of WORDS), so
+with a typo it finds nothing.  That is what the fuzzy search is for.  When
+a word of three letters or more still finds nothing, it tries the words
+one change away (one letter less, one more, one different, or two adjacent
+letters swapped) and shows the results of three of them at most, first
+those of the most frequent entries and of the most probable typos:
 
     amcius
       (unknown)
@@ -737,18 +734,17 @@ entries and of the most probable typos:
       amicus, amici  noun, 2nd declension, masculine  [XXXBO]
       ...
 
-The search to Latin makes the same with the words of the meanings, and so
-it finds also other forms of a word: "freind" finds "friend", "wolfs"
-finds "wolf", and in Spanish "corazn" finds "corazón" (`(near words:
-...)`).  The words that find something are shown as always.  The same
-with the words with capital letter when the unknown names are ignored,
-and with the words that the search to Latin never looks for ("the", "a"
-...).
+The search to Latin does the same with the words of the meanings, so it
+also finds other forms of a word: "freind" finds "friend", "wolfs" finds
+"wolf", and in Spanish "corazn" finds "corazón" (`(near words: ...)`).
+The words that find something are shown as always.  So are capitalised
+words when unknown names are ignored, and with the words that the search
+to Latin never looks for ("the", "a" ...).
 
-It is the parameter `fuzzy_search`, and it is on except if you untick
-it: the box "Fuzzy search" next to "Meanings in", in the window and in
-the web page; F3 in `words_tui.py`; the `#` dialogue; or `--no-fuzzy` in
-the command line, for one run.
+It is the parameter `fuzzy_search`, and it is on unless you untick it: the
+box "Fuzzy search" next to "Meanings in", in the window and on the web
+page; F3 in `words_tui.py`; the `#` dialogue; or `--no-fuzzy` on the
+command line, for one run.
 
 Settings and files
 ------------------
@@ -760,24 +756,24 @@ applied immediately.  The parameters are of two kinds.  What the results
 show: show_dictionary_forms, show_only_meanings, use_glosses,
 show_long_vowels, show_codes, explain_codes (the age and frequency in
 words), trim_output and trim_medieval.  How words are looked up:
-fuzzy_search, use_affixes, use_tricks, medieval_spellings,
-read_compounds, ignore_unknown_names and near_entries.  The developer
-modes are show_entry_source, pearse_codes and pause_in_screen_output.
-In 3.2 three more went away: show_examples (the English example
-glosses), unknowns_only and word_list_check.
+fuzzy_search, use_affixes, use_tricks, medieval_spellings, read_compounds,
+ignore_unknown_names and near_entries.  The developer modes are
+show_entry_source, pearse_codes and pause_in_screen_output.  In 3.2 three
+more were removed: show_examples (the English example glosses),
+unknowns_only and word_list_check.
 
-Until 3.1 there were 33 of them, many only for testing WORDS itself.
-Now some became one (show_age and show_frequency are explain_codes;
+Until 3.1 there were 33 of them, many only for testing WORDS itself.  Now
+some have been merged (show_age and show_frequency are explain_codes;
 show_dictionary and show_dictionary_line, show_entry_source), others were
-taken out, because they are always on as they usually were (the
+removed, because they are now always on, as they usually were (the
 prefixes, suffixes and enclitics, syncope, the two words written as one,
-and leaving out archaic and uncommon forms with trim_output), and the
-rest received clearer names (do_fixes is use_affixes, do_tricks
-use_tricks, and so on).  A configuration file with the old names is read
-as before, and it is written again with the new ones; the old WORD.MOD
-and WORD.MDV files can keep their names.  They are kept, together with the fonts of
-the windows and (if you want) the data folder, in one configuration
-file, `config.toml`:
+and leaving out archaic and uncommon forms with trim_output), and the rest
+got clearer names (do_fixes is use_affixes, do_tricks use_tricks, and so
+on).  A configuration file with the old names is read as before, and
+written back with the new ones; the old WORD.MOD and WORD.MDV files can
+keep their names.  They are kept, together with the fonts of the windows
+and (if you want) the data folder, in one configuration file,
+`config.toml`:
 
 | System  | Configuration file                                         |
 |---------|------------------------------------------------------------|
@@ -815,21 +811,21 @@ text, with a comment for each setting, and you can edit it by hand:
     [appearance]
     dark_mode = true         # dark windows and web page (false: light)
 
-You can leave out any setting, and then it has its normal value.  When
+You can leave out any setting, and then it has its default value.  When
 the program writes the file again it keeps the values, but not your own
 comments.
 
 The settings files of the original program, WORD.MOD (the parameters) and
 WORD.MDV (the developer modes), are still read if they exist, in the
-current folder or in the folder of the program, but the configuration
-file has priority.
+current folder or in the program's folder, but the configuration file
+takes priority.
 
 The original program could also write the results, the unknown words and
-some statistics to the files WORD.OUT, WORD.UNK and WORD.STA.  I took
-these settings out: to keep the results in a file, use `-o FILE` or
-redirect the output (`words.py -f text.txt > results.txt`).  A
-configuration file that still has those settings is read without
-complaint, and they are dropped from it when it is saved again.
+some statistics to the files WORD.OUT, WORD.UNK and WORD.STA.  I removed
+these settings: to keep the results in a file, use `-o FILE` or redirect
+the output (`words.py -f text.txt > results.txt`).  A configuration file
+that still has those settings is read without complaint, and they are
+dropped from it when it is saved again.
 
 The data files
 --------------
@@ -847,24 +843,24 @@ The data files
 | `languages/`      | the languages of the meanings, one file each |
 | `interface/`      | the languages of the interface, one file each (those next to the program are used) |
 
-Each entry says its source with a code of one letter (`source="O"`), or
-with several codes separated by spaces, the main one first
-(`source="O M"`: the Oxford Latin Dictionary, and also Latham); X, general
-or unknown, goes alone.  The entries that cite Latham in their meaning,
-"(Latham)", have his code M among their sources.  `sources.xml` says what
-each code means, for example:
+Each entry gives its source as a one-letter code (`source="O"`), or with
+several codes separated by spaces, the main one first (`source="O M"`: the
+Oxford Latin Dictionary, and also Latham); X, general or unknown, goes
+alone.  The entries that cite Latham in their meaning, "(Latham)", have
+his code M among their sources.  `sources.xml` says what each code means,
+for example:
 
     <source code="O" name="Oxford Latin Dictionary"/>
     <source code="U" name="Du Cange"/>
 
 The editors show these names when you choose the main source; the other
 sources are typed as letters in the field "other sources" (`M A`).
-`words_check.py` warns about the entries with a code that is not in the
-list.  For adding a source, give it there a letter that is not used.
+`words_check.py` warns about entries with a code that is not in the list.
+To add a source, give it an unused letter there.
 
-`words.xsd` describes their format, so an XML editor can check them while
-you write.  The grammatical codes are the ones of the original files; an
-entry of `dictionary.xml` looks like this:
+`words.xsd` describes their format, so an XML editor can check them as you
+write.  The grammatical codes are those of the original files; an entry of
+`dictionary.xml` looks like this:
 
     <entry id="3014" pos="N" decl="2 1" gender="M" kind="P" age="X"
       area="X" geo="X" freq="B" source="O">
@@ -874,21 +870,21 @@ entry of `dictionary.xml` looks like this:
     </entry>
 
 The order of the elements is important.  The editors and the converter
-write the dictionary with this layout (each `<meaning>` must be in only
-one line).
+write the dictionary with this layout (each `<meaning>` must be on a
+single line).
 
 The `id` of an entry (and of an irregular form or an affix) is a number
 that does not change when entries are added, moved or deleted: the
 translations of the meanings use it.  In each file every id is used only
-one time (`words_check.py` reports an id used twice); the editors keep the
-id of an entry that changes, and give to a new entry the next free
-number.  If the id is missing, it is the position in the file.
+once (`words_check.py` reports an id used twice); the editors keep the id
+of an entry that changes, and give a new entry the next free number.  If
+the id is missing, it is the position in the file.
 
 ### The languages of the meanings
 
-The meanings are in English, but it is possible to add other languages,
-with one file for each one in `data/languages/`, with the code of the
-language as name (`es.xml`):
+The meanings are in English, but other languages can be added, with one
+file for each in `data/languages/`, named with the code of the language
+(`es.xml`):
 
     <language code="es" name="Spanish" native="Español">
       <noise>el la los las un una</noise>
@@ -904,7 +900,7 @@ language as name (`es.xml`):
 
 * `<meaning>`: the meaning of the entry of `dictionary.xml` (`entry`), of
   `special.xml` (`special`), of the irregular form (`unique`) or of the
-  affix (`addon`) with that id, or of *esse*, that is built into the
+  affix (`addon`) with that id, or of *esse*, which is built into the
   program.  A language does not need to translate everything: what it
   leaves out is shown in English, marked `[en]`.
 * `<noise>` and `<common>`: for the search from the language to Latin
@@ -913,30 +909,30 @@ language as name (`es.xml`):
   looked for only in the entries of the parts of speech in `pos`).  The
   words are compared without capitals and without accents: "corazon"
   finds "corazón".
-* `<numeral>`: what means a form of a numeral, by its sort (`CARD`,
-  `ORD`, `DIST`, `ADVERB`; `X` for a form that is not a numeral), with
-  `{n}` for its value.
+* `<numeral>`: what a form of a numeral means, by its sort (`CARD`, `ORD`,
+  `DIST`, `ADVERB`; `X` for a form that is not a numeral), with `{n}` for
+  its value.
 * `<text>`: the rest of the results in the language, by their English
   (`en`): the grammar in words (noun, 2nd declension, genitive plural),
   the labels (prefix, Roman numeral, spelling) and the notes about the
   tricks and the compound tenses.  The English can be a pattern, with
   `{1}`, `{2}` ... for its parts, which are also translated if they are
   texts themselves (`{1} {2} participle`: `participio {1} {2}`).  What is
-  not translated is shown in English, without mark.  The glossing
+  not translated is shown in English, unmarked.  The glossing
   abbreviations (`GEN.PL`) are the same in all the languages.
 
 `en.xml` is the English, the language of the data files
 (`reference="yes"`): it does not have `<meaning>`s, only the lists of
 words and the numerals.
 
-You choose the language with the list "Meanings in" in the window and in
+You choose the language with the list "Meanings in" in the window and on
 the web page, or with F5 in `words_tui.py`; the choice is kept for the
-next time (the setting `language` in the configuration file, `en` if it
-does not say other thing).  `--language es` uses another one for one run
-of `words.py`, and `--languages` lists the ones that exist.  The search to
+next time (the setting `language` in the configuration file, `en` unless
+it says otherwise).  `--language es` uses another one for one run of
+`words.py`, and `--languages` lists the ones that exist.  The search to
 Latin (`~E`, the second direction in the window, F2) goes from the
-language chosen.  `words_check.py` checks also
-the language files, and warns about meanings of ids that don't exist.
+language chosen.  `words_check.py` also checks the language files, and
+warns about meanings of ids that don't exist.
 
 ### The long vowels
 
@@ -946,32 +942,32 @@ vowels marked, or `-` where they are not known:
     <stems entry="3014">amīc amīc</stems>
     <stems entry="2870">am am amāv amāt</stems>
 
-I made it from the lemmas and the models of Collatinus (`lemmes.la`,
+I made it from the lemmas and models of Collatinus (`lemmes.la`,
 `lem_ext.la`, `modeles.la`): I matched each lemma of Collatinus to our
 entries by its citation form, its part of speech and, for the nouns, its
-genitive and gender (a proper name goes only with a proper name, and
-when two lemmas claim the same entry neither is used), and the stems of
-the entry were found among the stems that the model of the lemma
-builds.  About 30,000 entries were matched, and 20,297 of
-them have some long vowel.  Collatinus marks the length of the
-syllables, for scanning verse, so it marks also the vowels that are long
-only by position (cōrd for cor, cordis); the marks before two consonants
-(or x or z) were therefore left out, and a vowel long there by nature
-(rēx, āctum) is not marked.  Only before ns and nf I kept them, because
-a vowel there is always long (amāns, īnfāns).  The diphthongs (ae, au,
-oe) are not marked either.  `words_check.py` checks that each marked
-stem has the letters of the stem of its entry; a stem changed later in
-the dictionary simply loses its marks.
+genitive and gender (a proper name goes only with a proper name, and when
+two lemmas claim the same entry neither is used), and the stems of the
+entry were found among the stems that the model of the lemma builds.
+About 30,000 entries were matched, and 20,297 of them have some long
+vowel.  Collatinus marks the length of the syllables, for scanning verse,
+so it also marks vowels that are long only by position (cōrd for cor,
+cordis); the marks before two consonants (or x or z) were therefore left
+out, and a vowel long there by nature (rēx, āctum) is not marked.  I kept
+them only before ns and nf, because a vowel there is always long (amāns,
+īnfāns).  The diphthongs (ae, au, oe) are not marked either.
+`words_check.py` checks that each marked stem has the letters of the stem
+of its entry; a stem changed later in the dictionary simply loses its
+marks.
 
 The endings are marked in `data/inflections.xml`, with the attribute
 `long` (`ending="abat" long="ābat"`).  I built all the forms that the
 models of Collatinus give for the matched lemmas, with their quantities,
-and put each one beside the ending of py-words that makes the same form
-of the same entry; an ending got the marks on which at least nine of
-ten of its forms agree.  731 endings were marked this way.  Some endings
-stay unmarked because their length depends on the word: the ablative
--e or -ī of the adjectives of the 3rd declension, -imur in legimur and
-audīmur, -ei in diēī and reī.
+and put each one beside the ending of py-words that makes the same form of
+the same entry; an ending got the marks on which at least nine out of ten
+of its forms agree.  731 endings were marked this way.  Some endings stay
+unmarked because their length depends on the word: the ablative -e or -ī
+of the adjectives of the 3rd declension, -imur in legimur and audīmur, -ei
+in diēī and reī.
 
 ### The Spanish meanings
 
@@ -1003,78 +999,75 @@ ex-consul; *recitatio*; the noun *ornatus*; *timiditas*; *inrisus*).
 All of them have the source code A, Echave-Sustaeta: after their own
 source, when they had one other than X (`source="O A"`), or alone.
 
-Later in October 2026 the dictionary was compared also with R. E.
-Latham's *Revised Medieval Latin Word-List from British and Irish
-Sources*.  This was done with the help of Claude, the large language
-model of Anthropic (the model Claude Opus 5.5, `claude-opus-5-5`), at the
-request and under the direction of Nicolas Vaughan, in two steps.  First,
-for the words that the dictionary already had, the medieval senses of
-Latham that our entries lacked were added, each one in a new entry after
-the old ones, as WORDS does with medieval senses (2,444 entries).  61
-entries more were added where Latham uses a word as another part of
-speech (the noun *coronatus*, a tonsured cleric), and 21 meanings were
-corrected (*humiditas* had the meanings of *humilitas*).  Second, 1,079
-words that the dictionary did not have were added: the ones that Latham
-marks as frequent (\*), and also the doubtful (†) and glossary-only (‡)
-ones with a clear meaning.  Their grammar was inferred from their form.
-Last, 1,204 spelling variants that Latham gives for these words (and for
-words that the dictionary had) were added, each with the meaning of its
-word; very short variants, which would be confused with common Latin
-words, and lines that the scanned text of the list left unreadable were
-left out.  All these entries have
-the source code M, Latham, an age from the earliest date he gives, and a
-frequency from his marks (C for the frequent words, F for the doubtful
-ones); their Spanish meanings were translated in the same work.  With
-them the dictionary has 44,380 entries.
+Later in October 2026 the dictionary was also compared with R. E. Latham's
+*Revised Medieval Latin Word-List from British and Irish Sources*.  This
+was done with the help of Claude, the large language model of Anthropic
+(the model Claude Opus 5.5, `claude-opus-5-5`), at the request and under
+the direction of Nicolas Vaughan, in two steps.  First, for the words that
+the dictionary already had, the medieval senses of Latham that our entries
+lacked were added, each one in a new entry after the old ones, as WORDS
+does with medieval senses (2,444 entries).  61 more entries were added
+where Latham uses a word as another part of speech (the noun *coronatus*,
+a tonsured cleric), and 21 meanings were corrected (*humiditas* had the
+meanings of *humilitas*).  Second, 1,079 words that the dictionary did not
+have were added: the ones that Latham marks as frequent (\*), and also the
+doubtful (†) and glossary-only (‡) ones with a clear meaning.  Their
+grammar was inferred from their form.  Last, 1,204 spelling variants that
+Latham gives for these words (and for words that the dictionary had) were
+added, each with the meaning of its word; very short variants, which would
+be confused with common Latin words, and lines that the scanned text of
+the list left unreadable were left out.  All these entries have the source
+code M, Latham, an age from the earliest date he gives, and a frequency
+from his marks (C for the frequent words, F for the doubtful ones); their
+Spanish meanings were translated in the same work.  With them the
+dictionary has 44,380 entries.
 
-Last, also in October 2026, I added the rare words of Lewis and Short's
-*A Latin Dictionary* (Oxford, 1879) that WORDS did not have, from the
-digital text of the Perseus Digital Library (CC BY-SA 4.0; see
-"Sources").  Of its 51,600 entries, about 21,000 ordinary words were not
-in our dictionary, but almost 10,000 of them the program read already
-(participles, compounds, other spellings) and almost 8,000 are only
-cross-references (*v. ab*).  For the rest, the grammar was taken from
-what Lewis and Short gives (the genitive or the principal parts, the
-gender, the conjugation), and the meaning from the italic glosses of its
-first senses, in our short style; then each new entry was tried, and it
-was kept only if the analyzer reads its headword as its dictionary form.
-The meanings were revised one by one and translated into Spanish with
-the help of Claude (the model Claude Opus 5.5, `claude-opus-5-5`), at
-the request and under the direction of Nicolas Vaughan; about 460 words
-whose grammar or meaning was not clear, and 26 names and titles, were
-left out, and also 31 that only added a strange reading to a frequent
-word (*nome*, an ulcer, read *nomen* as its accusative).  So 3,060
-entries were added, with the source code S (the code
-that WORDS already gave to Lewis and Short), an age from Lewis and
-Short's notes (ante-class. B, post-class. D, late or ecclesiastical E),
-an area from its subject notes, and the frequency E, or F for words
-attested only once.  1,566 of them have also the long vowels of the
-headword of Lewis and Short (`data/quantities.xml`).  With them the
+Last, also in October 2026, I added the rare words of Lewis and Short's *A
+Latin Dictionary* (Oxford, 1879) that WORDS did not have, from the digital
+text of the Perseus Digital Library (CC BY-SA 4.0; see "Sources").  Of its
+51,600 entries, about 21,000 ordinary words were not in our dictionary,
+but the program already read almost 10,000 of them (participles,
+compounds, other spellings) and almost 8,000 are only cross-references
+(*v. ab*).  For the rest, the grammar was taken from what Lewis and Short
+gives (the genitive or the principal parts, the gender, the conjugation),
+and the meaning from the italic glosses of its first senses, in our short
+style; then each new entry was tested, and it was kept only if the
+analyzer reads its headword as its dictionary form.  The meanings were
+revised one by one and translated into Spanish with the help of Claude
+(the model Claude Opus 5.5, `claude-opus-5-5`), at the request and under
+the direction of Nicolas Vaughan; about 460 words whose grammar or meaning
+was not clear, and 26 names and titles, were left out, and also 31 that
+only added a strange reading to a frequent word (*nome*, an ulcer, read
+*nomen* as its accusative).  So 3,060 entries were added, with the source
+code S (the code that WORDS already gave to Lewis and Short), an age from
+Lewis and Short's notes (ante-class. B, post-class. D, late or
+ecclesiastical E), an area from its subject notes, and the frequency E, or
+F for words attested only once.  1,566 of them also have the long vowels
+of the headword of Lewis and Short (`data/quantities.xml`).  With them the
 dictionary has 47,446 entries.
 
 Then, still in October 2026, I added the words and proper names of
 Raimundo de Miguel and the Marqués de Morante's *Nuevo diccionario
-latino-español etimológico* (Leipzig, 1867) that WORDS did not have,
-from a digital text of the book.  Of its 60,000 headwords, 44,000 are
-ordinary words, but only 2,800 of them were neither in our dictionary
-nor read already by the program (participles, compounds, other
-spellings); of its 16,000 proper names, 14,600 were missing.  As with
-Lewis and Short, the grammar was taken from what De Miguel gives (the
-genitive or the principal parts, the gender), each new entry was kept
-only if the analyzer reads its headword as its dictionary form, and
-about 520 were left out because they only added a strange reading to a
-frequent word (the active forms of some deponents, such as *loquo*,
-which De Miguel gives, were kept).  The Spanish meanings were shortened
-from De Miguel's own, and the English ones translated from them, with
-the help of Claude (the model Claude Opus 5.5, `claude-opus-5-5`), at
-the request and under the direction of Nicolas Vaughan; 69 more entries
-were left out then, and 228 names that were really common words which
-the program read already.  So 12,918 entries were added, 1,813 words
-and 11,105 names (the peoples, towns, rivers and persons of the ancient
-world, and some later ones), with the source code m (in lower case,
-because all the capitals were taken), the age F or H when De Miguel
-marks a word as medieval or modern, and the frequency E.  5,966 of them
-have also the long vowels of the headword of De Miguel
+latino-español etimológico* (Leipzig, 1867) that WORDS did not have, from
+a digital text of the book.  Of its 60,000 headwords, 44,000 are ordinary
+words, but only 2,800 of them were neither in our dictionary nor already
+read by the program (participles, compounds, other spellings); of its
+16,000 proper names, 14,600 were missing.  As with Lewis and Short, the
+grammar was taken from what De Miguel gives (the genitive or the principal
+parts, the gender), each new entry was kept only if the analyzer reads its
+headword as its dictionary form, and about 520 were left out because they
+only added a strange reading to a frequent word (the active forms of some
+deponents, such as *loquo*, which De Miguel gives, were kept).  The
+Spanish meanings were shortened from De Miguel's own, and the English ones
+translated from them, with the help of Claude (the model Claude Opus 5.5,
+`claude-opus-5-5`), at the request and under the direction of Nicolas
+Vaughan; 69 more entries were left out then, and 228 names that were
+really common words which the program already read.  So 12,918 entries
+were added, 1,813 words and 11,105 names (the peoples, towns, rivers and
+persons of the ancient world, and some later ones), with the source code m
+(in lower case, because all the capitals were taken), the age F or H when
+De Miguel marks a word as medieval or modern, and the frequency E.  5,966
+of them also have the long vowels of the headword of De Miguel
 (`data/quantities.xml`).  With them the dictionary has 60,364 entries.
 
 Last, I wanted the Spanish meanings to come, as far as possible, from
@@ -1113,15 +1106,15 @@ At first the meanings taken from De Miguel were shortened to our style,
 but Nicolas Vaughan preferred his whole definitions.  So now a Spanish
 meaning taken from De Miguel is his definition as he wrote it, with his
 spelling of 1867 (*ú*, *razon*): everything after the headword, the
-grammar and the etymology, without the examples (after "—") and the
-names of the authors he cites; his senses, which he ends with a period,
-are separated by ";" as ours.  And the results say where a Spanish
-meaning comes from, after it: "(De Miguel)" or "(Echave-Sustaeta)".  The
-search from Spanish ignores accents, so *corazón* finds his *corazon*.  In
+grammar and the etymology, without the examples (after "—") and the names
+of the authors he cites; his senses, which he ends with a period, are
+separated by ";" like ours.  And the results say where a Spanish meaning
+comes from, after it: "(De Miguel)" or "(Echave-Sustaeta)".  The search
+from Spanish ignores accents, so *corazón* finds his *corazon*.  In
 `data/languages/es.xml` a meaning taken from a dictionary carries its
-source code (`<meaning entry="12" source="m">`); a meaning without it
-is a translation.  When you change a meaning in the editors, the code
-goes away, since the text is no longer the dictionary's.
+source code (`<meaning entry="12" source="m">`); a meaning without it is a
+translation.  When you change a meaning in the editors, the code goes
+away, since the text is no longer the dictionary's.
 
 The same was done for English with Lewis and Short.  Every entry he has
 (30,601 of them) shows his definition: the glosses in italics of his
@@ -1159,12 +1152,12 @@ follows it anyway.  A translation of this size surely has mistakes; you
 can correct them with the dictionary editors (see "Editing the
 dictionary"), or directly in the file.
 
-To read the files takes around half a second, so the program keeps what
-it read in a cache (in `~/.cache/py-words` in Linux,
-`~/Library/Caches/py-words` in macOS, `%LOCALAPPDATA%\py-words` in
-Windows) and uses it while the files don't change; then the next start
-takes around a quarter of a second.  The cache keeps four data folders
-at most.  `$PY_WORDS_CACHE` gives another folder for it; if it is
+Reading the files takes around half a second, so the program keeps what it
+read in a cache (in `~/.cache/py-words` on Linux,
+`~/Library/Caches/py-words` on macOS, `%LOCALAPPDATA%\py-words` on
+Windows) and uses it as long as the files don't change; then the next
+start takes around a quarter of a second.  The cache keeps four data
+folders at most.  `$PY_WORDS_CACHE` gives another folder for it; if it is
 empty, there is no cache.  It is always safe to delete the cache.
 
 Editing the dictionary
@@ -1176,14 +1169,14 @@ There are two editors for adding, correcting and deleting entries of
     $ python3 words_edit_gui.py      # a window
     $ python3 words_edit.py          # in the terminal
 
-The window opens also with "Edit dictionary..." in the main window; the
-editor for the terminal is a program in full screen (with F keys or Ctrl
-keys, shown at the bottom; in Windows it needs the package
-windows-curses).  In both of them:
+The window also opens with "Edit dictionary..." in the main window; the
+terminal editor is a full-screen program (with F keys or Ctrl keys, shown
+at the bottom; on Windows it needs the package windows-curses).  In both
+of them:
 
 * you find an entry by a Latin form ("amicorum"), a stem or a word of its
   meaning;
-* you correct it, add a new one (from zero, or "like this" one), or
+* you correct it, add a new one (from scratch, or "like this" one), or
   delete it.  The fields depend on the part of speech, and you choose the
   codes from lists that explain them;
 * the preview shows the entry as WORDS will show it (amicus, amici  noun,
@@ -1200,12 +1193,12 @@ windows-curses).  In both of them:
 A change in an entry goes into the dictionary with "Apply changes" (F3 in
 the terminal).  "Save" (F2) also applies the entry that is shown before
 writing the file, and if you choose another entry, start a new one or
-close the editor when the entry shown has changes not applied, the
-editor asks if you want to apply them.  Nothing is written until you
-save.  Saving writes also to its file the meanings changed in the
-language chosen (`languages/es.xml`), and deleting an entry takes out its
-meanings from every language file.  The first time you save in a session,
-the original files are kept as `.bak` files.
+close the editor when the entry shown has changes not applied, the editor
+asks if you want to apply them.  Nothing is written until you save.
+Saving also writes the meanings changed in the chosen language to its file
+(`languages/es.xml`), and deleting an entry removes its meanings from
+every language file.  The first time you save in a session, the original
+files are kept as `.bak` files.
 
 You can also edit the files by hand: copy the entry of a similar word in
 `data/dictionary.xml` and change it, and after that run
@@ -1215,8 +1208,8 @@ You can also edit the files by hand: copy the entry of a similar word in
 This reports, with the line numbers, what WORDS cannot read (malformed
 XML, unknown codes, stems with characters that are not letters), and the
 entries that probably don't do what you wanted (a declension without
-endings, a stem missing, a too long meaning, a duplicate).  WORDS itself
-stops in the file and the line of the first error.
+endings, a missing stem, a meaning that is too long, a duplicate).  WORDS
+itself stops at the file and line of the first error.
 
 Data in the original text format (DICTLINE.GEN, INFLECTS.LAT, UNIQUES.LAT,
 ADDONS.LAT) is converted with
@@ -1257,71 +1250,70 @@ How it works
 | `tui.py`      | what the two full-screen terminal programs share              |
 | `words_*.py`, `meanings.py` | the other programs (see above)                  |
 
-To analyse a word, the program divides it in all the possible stems and
-endings, looks for the stems in the dictionary, and keeps the
-combinations where the grammar agrees (the declension, the gender, the
-number of the stem ...).  If this gives nothing, it tries prefixes and
-suffixes, enclitics (-que, -ne ...) and, for the unknown words, the
-tricks.  Everything is looked up with u/v and i/j as the same letter.
-Before, the line loses its long marks and other accents, and æ and œ are
-written ae and oe (`plain_letters` in `analyzer.py`): so amīcus, ămīcŭs
-and AMĪCUS are all amicus, and cælum is caelum.  The dictionary does not
-register the length of the vowels, so the marks cannot help to choose
-between forms (rosā shows all the readings of rosa).
+To analyse a word, the program splits it into all the possible stems and
+endings, looks for the stems in the dictionary, and keeps the combinations
+where the grammar agrees (the declension, the gender, the number of the
+stem ...).  If this gives nothing, it tries prefixes and suffixes,
+enclitics (-que, -ne ...) and, for the unknown words, the tricks.
+Everything is looked up with u/v and i/j as the same letter.  Before that,
+the line loses its long marks and other accents, and æ and œ are written
+ae and oe (`plain_letters` in `analyzer.py`): so amīcus, ămīcŭs and AMĪCUS
+are all amicus, and cælum is caelum.  The dictionary does not register the
+length of the vowels, so the marks cannot help to choose between forms
+(rosā shows all the readings of rosa).
 
 The tricks of WORDS change one thing at a time, so a medieval word with
 two changes, like hystorie for historiae, was not found.  With the
 medieval tricks, `tricks._medieval_spellings` now compares the stems and
 endings of the word with those of the dictionary under
-`model.medieval_fold`, which writes e for ae and oe, i for y, f for ph,
-no h, ci for ti before a vowel, mn for mpn and single consonants for
-doubled ones (in the stems only).  So hystorie, phylosophia, dyabolus,
-ecclesie and ympnus are found, and michi and nichil too (ch read as h).
-It keeps the respellings of the most frequent entries.  A word that is
-found as it is may still be a medieval spelling with e for ae or oe:
-queruntur is a form of queror, but it can also be quaeruntur, of quaero.
-So `tricks.diphthongs` reads each e of a word that is found (but a
-final one) as ae or oe too, and adds what it finds; it keeps only
-frequent entries, and no names, so that esse is not also essae, nor eum
-Aea.  Also, a final
--st can stand for est after a vowel, m or s (amatust, factumst, bonast,
-opust: amatus est, factum est, bona est, opus est); this is
-`Analyzer.prodelision`, and a participle found this way makes the
-compound tense with that est.  I took the two ideas from Collatinus, but
-the code is new.  Two words declined together, written as one
-(rempublicam, reipublicae, rerumpublicarum, usumfructum), are now read
-with the forms of both that agree in case, number and (unless both are
-nouns) gender, instead of all the forms of each.  From the small lists
-of Collatinus came also five abbreviations of praenomina that the
-dictionary did not have (Agr., Opet., Sert., Vol., Vop.), Kalen. for the
-Kalends, and the irregular quaesumus.
+`model.medieval_fold`, which writes e for ae and oe, i for y, f for ph, no
+h, ci for ti before a vowel, mn for mpn and single consonants for doubled
+ones (in the stems only).  So hystorie, phylosophia, dyabolus, ecclesie
+and ympnus are found, and michi and nichil too (ch read as h).  It keeps
+the respellings of the most frequent entries.  A word that is found as it
+is may still be a medieval spelling with e for ae or oe: queruntur is a
+form of queror, but it can also be quaeruntur, of quaero.  So
+`tricks.diphthongs` reads each e of a word that is found (except a final
+one) as ae or oe too, and adds what it finds; it keeps only frequent
+entries, and no names, so that esse is not also essae, nor eum Aea.  A
+final -st can also stand for est after a vowel, m or s (amatust, factumst,
+bonast, opust: amatus est, factum est, bona est, opus est); this is
+`Analyzer.prodelision`, and a participle found this way makes the compound
+tense with that est.  I took the two ideas from Collatinus, but the code
+is new.  Two words declined together, written as one (rempublicam,
+reipublicae, rerumpublicarum, usumfructum), are now read with the forms of
+both that agree in case, number and (unless both are nouns) gender,
+instead of all the forms of each.  From the small lists of Collatinus also
+came five abbreviations of praenomina that the dictionary did not have
+(Agr., Opet., Sert., Vol., Vop.), Kalen. for the Kalends, and the
+irregular quaesumus.
 
 The fuzzy search is not a new way of searching; it is the normal search,
-but with other spellings.  `fuzzy.edits` makes all the spellings at one
-change of the word (around 350 for a word of seven letters).  From
+but with other spellings.  `fuzzy.edits` makes all the spellings one
+change away from the word (around 350 for a word of seven letters).  From
 Latin, `Analyzer.near_spellings` keeps the ones that are words of the
-dictionary by themselves: stems and endings, irregular forms, qu-
-pronouns and tackons, but not prefixes, suffixes or tricks, because with
-them almost any string becomes something.  It orders them by their most
-frequent entry, and then by how common is the typo (first the letters
-exchanged, and the letters doubled or not doubled).  To Latin,
-`ReverseIndex.near` keeps the words of the index that find entries of
-the part of speech asked, ordered by their best entry, and
-`reverse.spelled` gives them back their accents ("corazon" is shown as
-"corazón").  None of these searches go to the cache.  It costs around ten milliseconds for an unknown Latin word,
-and less than one in the search to Latin.  `Session` decides when to use
-it (the setting is on, nothing was found, the word has at least three
+dictionary by themselves: stems and endings, irregular forms, qu- pronouns
+and tackons, but not prefixes, suffixes or tricks, because with them
+almost any string becomes something.  It orders them by their most
+frequent entry, and then by how common the typo is (first swapped letters,
+and the letters doubled or not doubled).  To Latin, `ReverseIndex.near`
+keeps the words of the index that find entries of the part of speech asked
+for, ordered by their best entry, and `reverse.spelled` gives them back
+their accents ("corazon" is shown as "corazón").  None of these searches
+go to the cache.  It costs around ten milliseconds for an unknown Latin
+word, and less than one in the search to Latin.  `Session` decides when to
+use it (the setting is on, nothing was found, the word has at least three
 letters and it is not an ignored name or a word that the search to Latin
-skips), and shows the results of the near spellings after the note
-`(near spellings: ...)`, as if they were written by you, but without
-counting them as words of the line.
+skips), and shows the results of the near spellings after the note `(near
+spellings: ...)`, as if you had typed them, but without counting them as
+words of the line.
 
 Changes from the original program
 ---------------------------------
 
-The analyses are the ones of the original program; with a corpus of
-134,000 generated words, more than 99% give the same result.  The
-differences are on purpose:
+The analyses are those of the original program; with a corpus of 134,000
+generated words, more than 99% give the same result.  The differences are
+deliberate:
 
 * the layout of the output and the command line are new;
 * some bugs that only the Ada structure of the original explains are
@@ -1335,13 +1327,12 @@ differences are on purpose:
 * the enclitic -cumque with adjectives, which the original read wrong
   from ADDONS.LAT and so never used, is now used;
 * there is no fixed limit for the number of results;
-* the English index is built from the meanings with a more simple
-  reading, but with the same ranking; most of the searches give the same
-  results;
+* the English index is built from the meanings with a simpler reading, but
+  with the same ranking; most of the searches give the same results;
 * the developer modes that did nothing are removed (NO_MEANINGS,
   DO_I_FOR_J, DO_U_FOR_V, NO_SCREEN_ACTIVITY, UPDATE_LOCAL_DICTIONARY,
   UPDATE_MEANINGS, MINIMIZE_OUTPUT, IGNORE_UNKNOWN_CAPS), and also the
-  local dictionary DICT.LOC, which the original never could load.
+  local dictionary DICT.LOC, which the original could never load.
 
 Testing
 -------
@@ -1359,17 +1350,17 @@ made once, and the tests of `words_tui.py` and of the terminal editor
 wait for the program's answers rather than for fixed times.
 
 This runs the unit tests and the regression tests in `tests/regression`,
-which compare the output for some inputs (between them, 735 lines of the
+which compare the output for some inputs (among them, 735 lines of the
 Aeneid) with the expected output.  Some regression tests activate options
 with their own `config.toml`: the English examples and the dictionary
 forms of every kind (`50_forms`), the developer modes
 (`60_developer_modes`), and leaving out dictionary forms or known words.
-After a change in the output that is on purpose, make again the expected
-files with `UPDATE_GOLDEN=1` and review them with `git diff`.
+After a deliberate change in the output, remake the expected files with
+`UPDATE_GOLDEN=1` and review them with `git diff`.
 
 The tests of the windows run on a virtual display of their own, as
 `tools/screenshots.py` does, if Xvfb is installed (`sudo dnf install
-xorg-x11-server-Xvfb`, or `xvfb` in Debian and Ubuntu): nothing shows on
+xorg-x11-server-Xvfb`, or `xvfb` on Debian and Ubuntu): nothing shows on
 the screen, and the scaling and fonts of the desktop do not change the
 results.  Without Xvfb they use the screen, or are skipped if there is
 none; `PY_WORDS_TEST_DISPLAY=screen` uses the screen anyway, to watch
@@ -1382,17 +1373,17 @@ Version
   - With Logeion, each word shows first its analysis, as this program
     gives it but without its meanings (*dixi*: *dico, dicere, dixi,
     dictus*, *dix-ī 1SG.PRF.ACT.IND*), and then Logeion's entries.  Each
-    entry shows only its dictionary form and part of speech, and alike
-    entries come once with all their forms (the four of *dico*, the eight
-    of *quae*).  A form's own page is shown only if Lewis and Short has
-    it (*arma*, not *dixi*).
+    entry shows only its dictionary form and part of speech, and entries
+    that are alike come once with all their forms (the four of *dico*, the
+    eight of *quae*).  A form's own page is shown only if Lewis and Short
+    has it (*arma*, not *dixi*).
   - The source, Logeion's dictionary and the direction last chosen are
-    kept for the next start of every program (`[logeion]` and `[search]`
-    in the configuration file); `--local`, `--logeion`, `--dictionary`
-    and `-e` change them for one run.
-  - In interactive mode, `~G` changes between Local and Logeion
-    ("~G: Local → Logeion") and `~D` chooses Logeion's dictionary; they
-    work in files too.
+    kept the next time every program starts (`[logeion]` and `[search]` in
+    the configuration file); `--local`, `--logeion`, `--dictionary` and
+    `-e` change them for one run.
+  - In interactive mode, `~G` switches between Local and Logeion ("~G:
+    Local → Logeion") and `~D` chooses Logeion's dictionary; they work in
+    files too.
   - In a terminal, results longer than the screen open in the pager
     (`less`, or `$PAGER`), and the results of the command line and of
     `words_tui.py` are in colour (`NO_COLOR` turns this off).
@@ -1417,32 +1408,32 @@ Version
     (Xvfb), without `xvfb-run` and out of sight.
   - The lists of `words_tui.py` (F5, F6) show their whole title.
 - 3.16:
-  - Selected text in the results of the window is readable: it was
-    drawn in the colours of the results (a headword, in light mode, in
-    the very colour of the selection), and where the results were not
-    focused, white on light grey.  Now it is white on the colour of the
-    selection, in both looks.
+  - Selected text in the results of the window is readable: it was drawn
+    in the colours of the results (a headword, in light mode, in the same
+    colour as the selection), and where the results were not focused,
+    white on light grey.  Now it is white on the colour of the selection,
+    in both looks.
 - 3.15:
   - The window has an Edit menu, with Cut, Copy and Paste (Ctrl and X,
     C, V), for the search box and the box of "Find in results", or for
     copying text selected in the results.
-  - In the terminal, F7 copies all the results, as they are (not cut at
+  - In the terminal, F7 copies all the results, as they are (not cut to
     the width of the screen), through the system's clipboard program
     (wl-copy, xclip, xsel, pbcopy, clip) or else the terminal itself.
-    When the keys do not fit in the last line (as in 80 columns), those
+    When the keys do not fit on the last line (as in 80 columns), those
     between F5 and F10 are left out, so that F1 (the help, which lists
     them all) and F10 (quit) are always seen.
   - The program is also a Flatpak, a single file attached to the
     releases of 3.15 and 3.16 (it is no longer made after them).
-  - The version that ran in the browser (Pyodide) is no longer
-    published: its address sends to the server too, and
-    `pages/build.py` builds it only with `--browser`.
+  - The version that ran in the browser (Pyodide) is no longer published:
+    its address redirects to the server too, and `pages/build.py` builds
+    it only with `--browser`.
 - 3.14:
   - The terminal interface starts in the AppImage.  The Python in the
-    AppImage could not read how most terminals describe themselves
-    (those with 256 colours, as in Fedora and Debian 12 and later), and
-    the `tui` stopped at once with "setupterm: could not find terminal".
-    The AppImage now carries those descriptions in a form it can read.
+    AppImage could not read how most terminals describe themselves (those
+    with 256 colours, as on Fedora and Debian 12 and later), and the `tui`
+    stopped at once with "setupterm: could not find terminal".  The
+    AppImage now carries those descriptions in a form it can read.
 - 3.13:
   - An entry is shown once for each word, with all its forms under it.
     A verb's own forms and its participles came under two copies of
@@ -1455,10 +1446,10 @@ Version
     WORDS and its medieval sense from Latham (*subsisto*, *cura*), show
     those forms once, after the last of them, as WORDS did, instead of
     after each one.
-  - 114 entries showed in English the same definition of Lewis and
-    Short as another entry of the same word (*subsisto*, *agmen*):
-    now only the entry it belongs to has it, and the others have their
-    own meanings again (see "The Spanish meanings").
+  - 114 entries showed in English the same Lewis and Short definition as
+    another entry of the same word (*subsisto*, *agmen*): now only the
+    entry it belongs to has it, and the others have their own meanings
+    again (see "The Spanish meanings").
 - 3.11:
   - On a hi-res display with the desktop scaled (for example at 200% in
     Plasma), the windows of the AppImage came out very small: its Tk
@@ -1466,7 +1457,7 @@ Version
     (`Xft.dpi`).  Now the windows read it, and their text and size grow
     with it.  (The RPM, with the system's Tk 9, was already right.)
   - `tools/release.py --rpm` also sends the signed RPM to Copr
-    (`--no-copr` does not).
+    (`--no-copr` skips this).
 - 3.10:
   - An RPM package for Fedora (`packaging/`), signed, attached to the
     releases with its public key: it installs the program in
@@ -1475,25 +1466,26 @@ Version
     package (Fedora)".
   - The web page ends with the logo of the Universidad de los Andes
     (School of Arts and Humanities) and its legal notice.
-  - The former address of the site, <https://nicolasvaughan.org/py-words/>,
-    sends to <https://nivaca.pythonanywhere.com/> with the search; the
-    version that runs in the browser is now at `browser/`.  See "Online".
+  - The former address of the site,
+    <https://nicolasvaughan.org/py-words/>, redirects to
+    <https://nivaca.pythonanywhere.com/> with the search; the version that
+    runs in the browser is now at `browser/`.  See "Online".
 - 3.9:
   - `words_web.py` can serve everyone: `public_app()` (the WSGI
-    application for a web server, as PythonAnywhere) and `--public` keep
-    each visitor's settings, languages, dark mode and earlier searches in
-    the cookies of their browser, and save nothing on the server.  With
-    no cookies, the page follows the language of the browser.  See
-    "Online".
+    application for a web server, such as PythonAnywhere) and `--public`
+    keep each visitor's settings, languages, dark mode and earlier
+    searches in the cookies of their browser, and save nothing on the
+    server.  With no cookies, the page follows the language of the
+    browser.  See "Online".
 - 3.8:
-  - In the window, changing the language of the interface no longer
-    leaves the parts of the window built before tied to the changes of
-    the look and of the fonts, which gave errors after each change.
+  - In the window, changing the language of the interface no longer leaves
+    the parts of the window built earlier tied to the changes of the look
+    and of the fonts, which gave errors after each change.
   - If the file of a language of the interface is wrong, the window
     stays in the language it was in and says why in the status bar
     (before, it went on in English without a word).
 - 3.7:
-  - `words_install.py --uninstall` removes in Linux only the `.desktop`
+  - `words_install.py --uninstall` removes on Linux only the `.desktop`
     entries and the icons (`py-words.png` and `.svg`, in every size that
     is installed, even one the program no longer has), and nothing else.
   - `icons/linux/uninstall.sh` removes the same: the four entries and the
@@ -1501,9 +1493,9 @@ Version
   - The titles, the web page and the menu entries say "A Latin
     Dictionary" (in Spanish, "Un diccionario de latín").
 - 3.6:
-  - `words_install.py --only-gui` adds only the entry of the window (and
-    removes the other three, if they were there from before);
-    `--uninstall` removes the entries, as before.
+  - `words_install.py --only-gui` adds only the window's entry (and
+    removes the other three, if they were already there); `--uninstall`
+    removes the entries, as before.
   - The scripts that make the zip and the AppImage are now in `tools/`:
     `tools/bundle-zip.py` and `tools/bundle-appimage.py`.
   - `tools/icons.py` makes all the icons in `icons/` from
@@ -1514,17 +1506,17 @@ Version
     first argument chooses another program (`cli`, `tui`, `web`, `edit`
     ...).  See "An AppImage (Linux)".
   - `bundle-appimage.py` makes it, and a workflow
-    (`.github/workflows/appimage.yml`) makes it in GitHub and adds it to
-    the release of each tag that is pushed.
+    (`.github/workflows/appimage.yml`) makes it on GitHub and adds it to
+    the release of each pushed tag.
   - `bundle-zip.py` writes the zip in `dist/` (made if need be), unless
     `-o` gives another folder, and leaves `dist/` out of it;
     `bundle-appimage.py` writes the AppImage there too.
   - The dictionary cannot be edited where its data folder cannot be
     written to, as in the AppImage: "Edit dictionary…" is greyed out,
     and the editors say why instead of failing when they save.
-  - The version of the program is shown in the title of the window and
-    of the editors, and at the start of the interactive mode (the
-    terminal version and the web page showed it already).
+  - The version of the program is shown in the title of the window and of
+    the editors, and at the start of the interactive mode (the terminal
+    version and the web page already showed it).
   - `tools/release.py` makes a release on GitHub and Codeberg.
 - 3.4:
   - With the medieval spellings, the e of a word that is found may also
@@ -1562,10 +1554,10 @@ Version
     that py-words now includes a new English dictionary (Lewis and
     Short) and two new Spanish ones (Echave-Sustaeta and De Miguel).
 - 3.2:
-  - The dictionary has now 93,370 entries.  Lewis and Short gave 6,653
-    rare words and 1,783 names, R. de Miguel's *Nuevo diccionario latino-español
-    etimológico* (1867) 25,149 words and names, and Latham 16,995 more
-    medieval words (see "The Spanish meanings").
+  - The dictionary now has 93,370 entries.  Lewis and Short gave 6,653
+    rare words and 1,783 names, R. de Miguel's *Nuevo diccionario
+    latino-español etimológico* (1867) 25,149 words and names, and Latham
+    16,995 more medieval words (see "The Spanish meanings").
   - The Spanish meanings come from De Miguel (50,678, his whole
     definitions, in his spelling) and from Echave-Sustaeta (168) where
     they have the word; the other 42,515 are translations.  In
@@ -1580,24 +1572,24 @@ Version
   - Only English and Spanish remain as languages of the meanings; the
     meanings in French, German, Catalan and Galician of Collatinus were
     taken out.
-  - The settings are 18 instead of 33, in three groups (see "Settings and files"):
-    some became one, some are now always on, others got clearer names.
-    The English example glosses (show_examples), unknowns_only and
-    word_list_check are gone.  Configuration files with the old names
-    are still read.
+  - There are 18 settings instead of 33, in three groups (see "Settings
+    and files"): some became one, some are now always on, others got
+    clearer names.  The English example glosses (show_examples),
+    unknowns_only and word_list_check are gone.  Configuration files with
+    the old names are still read.
   - The environment variables are now `$PY_WORDS_DATADIR`,
     `$PY_WORDS_CONFIG`, `$PY_WORDS_HISTORY` and `$PY_WORDS_CACHE`; the
     old `$WHITAKERS_WORDS_...` still work.
-  - In the web page, the link to nicolasvaughan.org is under the name of
+  - On the web page, the link to nicolasvaughan.org is under the name of
     the program, on the left.
 - 3.1:
   - The online version starts with a loading bar.  The download of
     `py-words.zip` moves it by its bytes, and the other stages (loading
-    Python, unpacking, reading the dictionary) by how long they took at
+    Python, unpacking, reading the dictionary) by how long they took on
     the last visit in that browser; while Python reads the dictionary the
-    bar is moved by a CSS transition, which the browser animates even
-    when the page is busy.  After a new version, when the cache is made
-    again, it expects the longer time of that first reading.
+    bar is moved by a CSS transition, which the browser animates even when
+    the page is busy.  After a new version, when the cache is made again,
+    it expects the longer time of that first reading.
   - The online zip is smaller (3.2 MB instead of 4.4): the meanings in
     French, German, Catalan and Galician are downloaded only the first
     time their language is chosen.  The zip keeps only the start of
@@ -1606,7 +1598,7 @@ Version
 - 3.0:
   - The new first number marks, with these changes, those of 2.16: the
     GNU General Public License and the data of Collatinus.
-  - The program says now where its dictionary comes from: WORDS, by
+  - The program now says where its dictionary comes from: WORDS, by
     William Whitaker; R. E. Latham's *Revised Medieval Latin Word-List*;
     J. Echave-Sustaeta's *Lengua latina. Vocabulario básico*; and
     Collatinus, by Yves Ouvrard and Philippe Verkerk.  These sources, and
@@ -1622,19 +1614,19 @@ Version
     José Luis Redrejo and Philipp Roelli (see "Sources").  The files taken
     from Collatinus (`fr.xml`, `de.xml`, `ca.xml`, `gl.xml`,
     `quantities.xml`) name them in their first comment.
-  - Dark mode is chosen now with a moon (☾), which becomes a sun (☀) while
+  - Dark mode is now chosen with a moon (☾), which becomes a sun (☀) while
     the window or the page is dark, instead of the box "Dark mode".  It
     needs no images: they are two letters that the usual fonts have.
   - The button "Usual settings" of the Settings is now "Default settings",
     and its question asks about the default values.
 - 2.16:
-  - py-words is distributed now under the GNU General Public License,
+  - py-words is now distributed under the GNU General Public License,
     version 3 or later (until 2.15, the MIT License), so that it can take
-    code and data from Collatinus, of Yves Ouvrard and Philippe Verkerk
+    code and data from Collatinus, by Yves Ouvrard and Philippe Verkerk
     (see "Licensing").
-  - The meanings can be also in French, German, Catalan and Galician
-    (`--language fr`, or the list "Meanings in"), taken from the lemmas
-    of Collatinus: 23,044 entries in French, 6,301 in German, 7,624 in
+  - The meanings can also be in French, German, Catalan and Galician
+    (`--language fr`, or the list "Meanings in"), taken from the lemmas of
+    Collatinus: 23,044 entries in French, 6,301 in German, 7,624 in
     Catalan and 7,699 in Galician; the rest is shown in English (see "The
     meanings from Collatinus").
   - The forms show their long vowels, in the stem and in the ending
@@ -1644,18 +1636,18 @@ Version
     endings have an attribute `long` in `data/inflections.xml`.
   - Medieval spellings are recognized in a more general way (michi,
     ecclesie, hystorie), the prodelision of est is understood (amatust,
-    bonumst), and two words declined together (rempublicam) give only
-    the forms that agree.  Six abbreviations (Agr., Kalen. ...) and the
-    form quaesumus were added: the dictionary has now 44,386 entries.
-  - The settings that wrote the files WORD.OUT, WORD.UNK and WORD.STA
-    were taken out, with the files (have_output_file,
-    write_output_to_file, write_unknowns_to_file, have_statistics_file,
-    write_statistics_file and include_unknown_context).  For keeping the
-    results in a file there is `-o FILE`; a configuration file that still
-    has these settings is read without complaint.
+    bonumst), and two words declined together (rempublicam) give only the
+    forms that agree.  Six abbreviations (Agr., Kalen. ...) and the form
+    quaesumus were added: the dictionary now has 44,386 entries.
+  - The settings that wrote the files WORD.OUT, WORD.UNK and WORD.STA were
+    taken out, with the files (have_output_file, write_output_to_file,
+    write_unknowns_to_file, have_statistics_file, write_statistics_file
+    and include_unknown_context).  To keep the results in a file there is
+    `-o FILE`; a configuration file that still has these settings is read
+    without complaint.
 - 2.15:
   - The dictionary was compared with the medieval word-list of R. E.
-    Latham, and it has now 44,380 entries (39,846 before), all with their
+    Latham, and it now has 44,380 entries (39,846 before), all with their
     Spanish meanings (see "The Spanish meanings").  It gave 2,444 medieval
     senses of words that the dictionary had, 21 corrected meanings, 1,140
     new words and parts of speech, and 1,204 spelling variants.  These
@@ -1664,108 +1656,108 @@ Version
   - The dictionary was compared with the Latin-Spanish basic vocabulary of
     J. Echave-Sustaeta: 321 entries were corrected and 254 added, in
     English and in Spanish (see "The Spanish meanings").
-  - An entry can have now several sources (`source="O M"`), and the codes
+  - An entry can now have several sources (`source="O M"`), and the codes
     show them with "+" (`[XXXCO+M]`); the dictionary editors have a field
     "other sources" for them, and `words_check.py` checks each one.  The
     new source code A is Echave-Sustaeta.
-  - The menus of the window (the menu bar, its menus and the menu of the
-    right button) follow now the dark mode too.
+  - The menus of the window (the menu bar, its menus and the right-click
+    menu) now follow the dark mode too.
   - `tools/screenshots.py` makes the pictures of this README.
 - 2.13:
   - The Spanish texts of the programs and of the README address the user
     with "usted" and not with "tú" (for example "Escriba una palabra… y
     pulse Intro", "Haga doble clic", "Pruebe, por ejemplo:").
 - 2.12:
-  - The window is more easy to read and to use.  The results are the same
-    text, but with some order for the eyes: the word looked up is bigger,
-    the dictionary form is in bold, and the codes, the forms and the notes
-    have other colours, also in dark mode.  A click in the first word of an
-    entry looks it up, and a double click in any word too (a word of the
-    meanings is looked up in Latin, and arm-a looks up arma).  If you put
-    the mouse over the codes in brackets or over an analysis (GEN.PL), a
-    small box explains what they mean.  There is a menu with the right
-    button (Copy, Look up), and Ctrl and F finds a text in the results.
-  - The window has now three menus, Dictionary, View and Help, instead of
-    the four buttons of before, and before the first search it shows some
-    examples for clicking.
+  - The window is easier to read and to use.  The results are the same
+    text, but laid out more clearly for the eye: the word looked up is
+    bigger, the dictionary form is in bold, and the codes, the forms and
+    the notes have other colours, also in dark mode.  A click on the first
+    word of an entry looks it up, and so does a double click on any word
+    (a word of the meanings is looked up in Latin, and arm-a looks up
+    arma).  If you hover the mouse over the codes in brackets or over an
+    analysis (GEN.PL), a small box explains what they mean.  There is a
+    right-click menu (Copy, Look up), and Ctrl and F finds a text in the
+    results.
+  - The window now has three menus, Dictionary, View and Help, instead of
+    the four buttons it had, and before the first search it shows some
+    examples to click.
   - The web page (also the online version) has the same: the colours, the
-    explanations of the codes and analyses (also with a touch, in a phone),
+    explanations of the codes and analyses (also with a tap, on a phone),
     the double click and the examples.
-  - What each line of the results is, the window and the page take it now
-    from `layout.py`, which does not need Tk.
+  - The window and the page now take what each line of the results is from
+    `layout.py`, which does not need Tk.
   - The web page has a small link to my page (nicolasvaughan.org) at the
     top right; it opens in a new tab, so the dictionary stays open.
   - In Spanish, the buttons for going back to the usual fonts and settings
-    say now "Fuentes por defecto" and "Ajustes por defecto".
-  - A warning of Python when starting `words_web.py` (`"\p" is an invalid
+    now say "Fuentes por defecto" and "Ajustes por defecto".
+  - A Python warning when starting `words_web.py` (`"\p" is an invalid
     escape sequence`) is corrected.
 - 2.11:
-  - The words written with long marks are read correctly now.  Before,
-    each letter with a mark cut the word in pieces: amīcus was looked up
-    as "am" and "cus", and the same happened with breves (ămīcŭs),
-    diaeresis (poëta) and the ligatures æ and œ (cælum).  Now the marks
-    are taken out before the search, and æ and œ are written ae and oe,
-    so amīcus is amicus and cælum is caelum, in all the programs.  The
-    dictionary does not register the length of the vowels, so rosā shows
-    all the readings of rosa, as before.  See "How it works".
-  - The help does not say anymore to write the words without long marks.
+  - Words written with long marks are now read correctly.  Before, each
+    marked letter split the word into pieces: amīcus was looked up as "am"
+    and "cus", and the same happened with breves (ămīcŭs), diaereses
+    (poëta) and the ligatures æ and œ (cælum).  Now the marks are taken
+    out before the search, and æ and œ are written ae and oe, so amīcus is
+    amicus and cælum is caelum, in all the programs.  The dictionary does
+    not register the length of the vowels, so rosā shows all the readings
+    of rosa, as before.  See "How it works".
+  - The help no longer says to write the words without long marks.
 - 2.10:
-  - "Fuzzy search" is not anymore in the Settings: now it is in the main
+  - "Fuzzy search" is no longer in the Settings: now it is on the main
     screen of the window and of the web page, as a box next to "Meanings
-    in".  When you tick or untick it, the search is made again.  In
+    in".  When you tick or untick it, the search is run again.  In
     `words_tui.py` (F3) and in the interactive command line (`#`) it is
-    still between the settings.
+    still among the settings.
 - 2.9:
-  - The online version starts more quickly.  The program is downloaded
-    now at the same time as Python, and the cache of the dictionary is
-    kept in the browser (IndexedDB), so only the first visit, and the
-    first after a new version, read the XML.  The next visits take
-    around 1.4 seconds instead of 2.1, and the first one up to 2 seconds
-    less.  See "Online" and "How it works".
+  - The online version starts more quickly.  The program is now downloaded
+    at the same time as Python, and the cache of the dictionary is kept in
+    the browser (IndexedDB), so only the first visit, and the first after
+    a new version, read the XML.  The next visits take around 1.4 seconds
+    instead of 2.1, and the first one up to 2 seconds less.  See "Online"
+    and "How it works".
 - 2.8:
-  - A help in each program ("Help" and F1 in the window, "Help" at the
-    foot of the web page, F1 in `words_tui.py`, `~H` and `--guide` in the
-    command line), about how to search and how to read the results,
-    together with what mean the codes in brackets (`[XXXBO]`) and the
+  - A help guide in each program ("Help" and F1 in the window, "Help" at
+    the foot of the web page, F1 in `words_tui.py`, `~H` and `--guide` on
+    the command line), about how to search and how to read the results,
+    together with what the codes in brackets mean (`[XXXBO]`) and the
     abbreviations of the analyses.  See "Help" and "The codes in
     brackets".
-  - The READMEs explain now the codes in brackets, and they don't say
-    anymore that the codes appear only with show_dictionary_codes (which
-    is on anyway).
+  - The READMEs now explain the codes in brackets, and no longer say that
+    the codes appear only with show_dictionary_codes (which is on anyway).
 - 2.7:
   - A fuzzy search: when a word of three letters or more finds nothing,
     from Latin or to Latin, the results of three near spellings at most
-    come after it ("amicuss" finds *amicus*, "freind" finds "friend").
-    It is the parameter `fuzzy_search`, on except if you untick it
-    ("Fuzzy search" in the Settings, `--no-fuzzy` in the command line).
-    See "Fuzzy search", and "How it works" for the details.
-  - `bundle-zip.py` leaves out also `local-only/` and the `TAGS` of an
+    come after it ("amicuss" finds *amicus*, "freind" finds "friend").  It
+    is the parameter `fuzzy_search`, on unless you untick it ("Fuzzy
+    search" in the Settings, `--no-fuzzy` on the command line).  See
+    "Fuzzy search", and "How it works" for the details.
+  - `bundle-zip.py` also leaves out `local-only/` and the `TAGS` of an
     editor.
 - 2.6:
-  - The online version takes a new version in the next visit: the browser
-    asks now to the server if its copy of the program is current, and does
-    not keep it anymore until 10 minutes.
+  - The online version picks up a new version on the next visit: the
+    browser now asks the server if its copy of the program is current, and
+    no longer keeps it for up to 10 minutes.
 - 2.5:
-  - The dictionary is online, in <https://nicolasvaughan.org/py-words/>.
+  - The dictionary is online, at <https://nicolasvaughan.org/py-words/>.
     A workflow (`.github/workflows/pages.yml`) runs the tests, builds the
-    site and publishes it in GitHub Pages in each push to `main`.
-  - The online version works from a folder of the server (like in GitHub
+    site and publishes it on GitHub Pages on each push to `main`.
+  - The online version works from a folder on the server (as on GitHub
     Pages), and its address goes back to the start page together with the
     page.
   - `bundle-zip.py` leaves out the built site (`site/`).
   - The documents describe the online version ("Online", "How it
     works", and the descriptions in `docs/`).
 - 2.4:
-  - A first version that works in the browser, without a server (thanks
-    to Pyodide): `python3 pages/build.py` writes a static site in
-    `site/`, that any web server can host (GitHub Pages ...).
+  - A first version that works in the browser, without a server (thanks to
+    Pyodide): `python3 pages/build.py` writes a static site in `site/`,
+    which any web server can host (GitHub Pages ...).
 - 2.3:
   - The screenshots of the Spanish README show the programs in Spanish.
 - 2.2:
   - Dark mode for the windows and for the web page: a box "Dark mode" in
     the window (at the bottom right) and in the page (next to "Meanings
     in"), with one setting kept in the configuration file.
-  - When the language of the interface changes, the one of the meanings
+  - When the language of the interface changes, that of the meanings
     changes too, if the dictionary has it; the message at the start
     changes with it.
   - `bundle-zip.py` makes the zip of the distribution,
@@ -1777,7 +1769,7 @@ Version
   - The complete dictionary in Spanish: the meanings of every entry,
     irregular form and affix, translated from the English with the help
     of Claude (Claude Opus 5.5, Anthropic; see "The Spanish meanings").
-  - A language can translate also the rest of the results (the grammar in
+  - A language can also translate the rest of the results (the grammar in
     words, the labels, the notes about tricks and compound tenses), with
     `<text>`s; Spanish does it.
   - The interface can be in Spanish: the menus, buttons, messages and
@@ -1786,46 +1778,44 @@ Version
     web page, F6 in `words_tui.py`, the `#` dialogue or `--interface` in
     `words.py`, or the setting `interface`, kept in the configuration
     file).  The translations are in `data/interface/es.xml`.
-  - The dictionary editors edit the meanings also in a language that is
-    not English ("Meanings in" in the window, F7 or `--language` in the
-    terminal), and save them to its file; deleting an entry takes out its
+  - The dictionary editors also edit the meanings in a language other than
+    English ("Meanings in" in the window, F7 or `--language` in the
+    terminal), and save them to its file; deleting an entry removes its
     meanings from the language files.
-  - The credits are not shown anymore when the programs start, only when
-    you ask for them ("About", F1 in `words_tui.py`, `~A`, `--version`).
+  - The credits are no longer shown when the programs start, only when you
+    ask for them ("About", F1 in `words_tui.py`, `~A`, `--version`).
   - `words.py`: `~A` in interactive mode shows the credits; Ctrl-C stops
     what the program is doing instead of ending it.
   - The button "Font…" of the window is in its Settings dialogue.
-  - A program that saves a setting does not put back anymore the other
-    ones as they were when it started (maybe another program changed
-    them).
+  - A program that saves a setting no longer puts the other ones back as
+    they were when it started (maybe another program changed them).
   - The README in Spanish: `README_es.md`.
 - 2.0:
-  - The meanings can be in other languages than English: one file for
-    each language in `data/languages/` (`es.xml` ...), with the meanings
-    it translates; what it leaves out is shown in English, marked
-    `[en]`.  `en.xml` has the English word lists of the search to Latin
-    and the meanings of the numerals, which before were in the program.
-  - You choose the language with a list "Meanings in" in the window and
-    in the web page, F5 in `words_tui.py`, or `--language` (and
-    `--languages` lists them) in `words.py`; it is kept in the
-    configuration file.  The search to Latin goes from the language
-    chosen, and finds the words without their accents ("corazon":
-    "corazón").
+  - The meanings can be in languages other than English: one file for each
+    language in `data/languages/` (`es.xml` ...), with the meanings it
+    translates; what it leaves out is shown in English, marked `[en]`.
+    `en.xml` has the English word lists of the search to Latin and the
+    meanings of the numerals, which before were in the program.
+  - You choose the language with a list "Meanings in" in the window and on
+    the web page, F5 in `words_tui.py`, or `--language` (and `--languages`
+    lists them) in `words.py`; it is kept in the configuration file.  The
+    search to Latin goes from the language chosen, and finds the words
+    without their accents ("corazon": "corazón").
   - Each entry, irregular form and affix has an `id`, which does not
     change when others are added or moved; the translations use it.  The
     editors keep the ids, and `words_check.py` checks them and the
     language files.
-  - `words_tui.py`: F1 shows again all the keys.
+  - `words_tui.py`: F1 again shows all the keys.
 - 1.8:
   - `words_web.py`: the dictionary in a web browser, from a small web
-    server in this computer (with only the standard library of Python):
-    a search box with the history of the searches, both languages, links
-    from each entry to its own search, and all the settings.
-    `words_install.py` adds a menu entry for it.
+    server on this computer (with only the standard library of Python): a
+    search box with the search history, both languages, links from each
+    entry to its own search, and all the settings.  `words_install.py`
+    adds a menu entry for it.
   - The analysis is written in normal Python, without the structures it
     kept from the Ada program; the results are the same.
 - 1.7:
-  - `words_tui.py`: the dictionary in the terminal, in full screen, with a
+  - `words_tui.py`: the dictionary in the terminal, full-screen, with a
     line for searching and its history, results that scroll, and keys for
     the language (F2), the settings (F3), the dictionary editor (F4) and
     for clearing the history (F9).  `words_install.py` adds a menu entry
@@ -1844,7 +1834,7 @@ Version
   - The new parameter `use_glosses` (on by default) chooses between
     glossing abbreviations and words in the analyses: "Use glosses" in the
     Settings of the window, the `#` dialogue or `--glosses` /
-    `--no-glosses` in the command line.
+    `--no-glosses` on the command line.
 - 1.4:
   - The analyses of the forms are written with glossing abbreviations, as
     in the Leipzig Glossing Rules: `GEN.PL` (before, "genitive plural"),
@@ -1865,18 +1855,18 @@ Version
     own options, in its own `config.toml`.
 - 1.2:
   - The two dictionary editors share one implementation for editing an
-    entry (to apply the changes, to ask before losing them, to save), in
-    `editor.py`, so they work in the same way.
+    entry (applying the changes, asking before losing them, saving), in
+    `editor.py`, so they work the same way.
   - Corrected: after "Apply changes", the editor in the window listed the
-    entry two times (the old and the new); its button did not say "Add to
-    the dictionary" with a new entry; and deleting from the list in the
-    terminal editor did not ask about the changes not applied to the entry
-    in edition.
+    entry twice (the old and the new); its button did not say "Add to the
+    dictionary" with a new entry; and deleting from the list in the
+    terminal editor did not ask about the unapplied changes to the entry
+    being edited.
 - 1.1:
-  - The dictionary editors don't lose changes anymore: "Save" (F2)
-    applies the entry in edition before writing the file, and if you
-    choose another entry, start a new one or close the editor when the
-    entry has changes not applied, it asks if you want to apply them.
+  - The dictionary editors no longer lose changes: "Save" (F2) applies the
+    entry being edited before writing the file, and if you choose another
+    entry, start a new one or close the editor when the entry has
+    unapplied changes, it asks if you want to apply them.
   - The names of the sources (Oxford Latin Dictionary, Du Cange ...) are
     kept in `data/sources.xml`, where you can change them or add new ones.
     `words_check.py` checks the file, and warns about entries with a
@@ -1897,7 +1887,7 @@ Background
 ----------
 
 WORDS was written by Colonel William Whitaker (USAF, Retired), who died in
-2010.  The Ada version on which this port is based is a cleaned version of
+2010.  The Ada version that py-words started from is a cleaned version of
 his programme, maintained as an exercise of digital preservation.  Its
 lexicon does not register the length of the vowels; py-words takes them
 from Collatinus.
@@ -1925,16 +1915,16 @@ The dictionary of py-words comes from these works:
   corrected and 254 added, in English and in Spanish, and the Spanish
   meanings of 168 entries that De Miguel does not cover (source code A;
   see "The Spanish meanings").
-- C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon
-  Press, 1879): 6,653 rare words and 1,783 names that WORDS did not have
-  (source code S), with the long vowels of their headwords, and the
-  English definitions of 30,601 entries (see "The Spanish meanings").
-  Text provided under a CC BY-SA license by Perseus Digital Library,
-  <http://www.perseus.tufts.edu>, with funding from The National
-  Endowment for the Humanities.  Data accessed from
-  <https://github.com/PerseusDL/lexica/> on 23 October 2026.  The
-  licence of this text, CC BY-SA 4.0, allows to use it in a program under
-  the GPL version 3, as py-words is.
+- C. T. Lewis and C. Short, *A Latin Dictionary* (Oxford: Clarendon Press,
+  1879): 6,653 rare words and 1,783 names that WORDS did not have (source
+  code S), with the long vowels of their headwords, and the English
+  definitions of 30,601 entries (see "The Spanish meanings").  Text
+  provided under a CC BY-SA license by Perseus Digital Library,
+  <http://www.perseus.tufts.edu>, with funding from The National Endowment
+  for the Humanities.  Data accessed from
+  <https://github.com/PerseusDL/lexica/> on 23 October 2026.  The licence
+  of this text, CC BY-SA 4.0, lets it be used in a program under the GPL
+  version 3, as py-words is.
 - R. de Miguel and the Marqués de Morante, *Nuevo diccionario
   latino-español etimológico* (Leipzig: F. A. Brockhaus, 1867): 25,149
   words and proper names that WORDS did not have, in Spanish and in
@@ -1942,12 +1932,12 @@ The dictionary of py-words comes from these works:
   headwords, and the Spanish meanings of 48,744 entries in all (see "The
   Spanish meanings").  The book is in the public domain.
 - Collatinus 11, by Yves Ouvrard and Philippe Verkerk
-  (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL:
-  the long vowels of the stems and endings, six abbreviations and the
-  form quaesumus (source code H), and the ideas of some tricks (see "The
-  long vowels").  Until 3.1 py-words had also meanings in French,
-  German, Catalan and Galician from Collatinus; I took them out
-  afterwards, to keep only English and Spanish.
+  (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL: the
+  long vowels of the stems and endings, six abbreviations and the form
+  quaesumus (source code H), and the ideas of some tricks (see "The long
+  vowels").  Until 3.1 py-words also had meanings in French, German,
+  Catalan and Galician from Collatinus; I took them out afterwards, to
+  keep only English and Spanish.
 
 Collatinus, in its turn, thanks others for its lexicon (in
 "Remerciements", the last page of its guide), and as these data are now
@@ -1972,18 +1962,18 @@ Spanish meanings").
 Licensing
 ---------
 
-py-words is distributed under the GNU General Public License, version 3
-or (at your option) any later version (see [LICENCE.txt](LICENCE.txt)):
-anybody can use, copy, change and redistribute it, also commercially,
-but a changed or bigger program that includes it must be distributed
-under the same licence, with its source code.  The copyright notices
-recognize Nicolas Vaughan (<nivaca@fastmail.com>, 2026) for the Python
-program and William A. Whitaker (1936-2010) for WORDS and its dictionary
-data.  Until version 2.15 py-words was distributed under the MIT License;
-I changed to the GPL so that the program can include code from
-Collatinus, of Yves Ouvrard and Philippe Verkerk, which is under the GPL
-too.  The original permission of Whitaker, which allows any use of his
-program and data (so also under the GPL), says:
+py-words is distributed under the GNU General Public License, version 3 or
+(at your option) any later version (see [LICENCE.txt](LICENCE.txt)):
+anybody can use, copy, change and redistribute it, even commercially, but
+a changed or bigger program that includes it must be distributed under the
+same licence, with its source code.  The copyright notices recognize
+Nicolas Vaughan (<nivaca@fastmail.com>, 2026) for the Python program and
+William A. Whitaker (1936-2010) for WORDS and its dictionary data.  Until
+version 2.15 py-words was distributed under the MIT License; I changed to
+the GPL so that the program can include code from Collatinus, by Yves
+Ouvrard and Philippe Verkerk, which is under the GPL too.  The original
+permission of Whitaker, which allows any use of his program and data (so
+also under the GPL), says:
 
 WORDS, a Latin dictionary, by Colonel William Whitaker (USAF, Retired)
 

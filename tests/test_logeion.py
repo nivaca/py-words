@@ -193,7 +193,7 @@ class FetchTests(unittest.TestCase):
                          ['short', 'ls'])
 
     def test_a_form_without_lewis_and_short_is_left_out(self):
-        #  (dixi: Gaffiot has it, only to send to dico)
+        #  (dixi: Gaffiot has it, only to refer to dico)
         pages = {'dixi': {**page('dixi', ''), 'detail': {'dicos': [{
                      'dname': 'Gaffiot 2016',
                      'es': ['dīxī, parf. de dico.']}]}},
@@ -422,7 +422,7 @@ class InteractiveTests(unittest.TestCase):
         self.assertIn('\nLewis & Short\n', rest)
         self.assertNotIn('\nGaffiot 2016\n', rest)
         self.assertIn('There is no dictionary lsj in Logeion', rest)
-        #  (Enter keeps the one there is: marked in the list)
+        #  (Enter keeps the current one: marked in the list)
         self.assertIn('*  2  ls', rest)
         self.assertIn('Logeion: Lewis & Short.', rest.rsplit('*  2', 1)[1])
 
@@ -579,7 +579,7 @@ class WindowTests(unittest.TestCase):
                   str(app.button['state']) == 'normal')
         self.assertEqual(t.get('1.0', '1.end'), 'arma  →  armum, armo')
         self.assertIn('word', t.tag_names('1.0'))
-        #  (the analysis, styled as this program's results)
+        #  (the analysis, styled like this program's results)
         self.assertEqual(t.get('2.0', '2.end'),
                          '  armum, armi  noun, 2nd declension, neuter')
         self.assertIn('headword', t.tag_names('2.3'))

@@ -15,7 +15,7 @@ the programs:
     py-words.AppImage [gui|cli|tui|web|edit|edit-gui|check|convert] ...
 
 and so does the name it is called by, if it is a link named words,
-words_tui, words_web ... (as the programs, without .py).  "help" lists
+words_tui, words_web ... (like the programs, without .py).  "help" lists
 them.  The AppImage cannot be written to: to edit the dictionary, copy the
 data folder somewhere and give it as the data folder (in the settings, or
 with --datadir or $PY_WORDS_DATADIR).

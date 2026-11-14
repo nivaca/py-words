@@ -10,7 +10,7 @@ none of what is made while the program runs or is edited (__pycache__,
 .bak and .tmp files, WORD.OUT ...), nor what is in its folder but not
 part of it (the built site, local-only/, tools/, packaging/ and
 build/, an editor's TAGS).  The tests
-are left out, unless --tests says otherwise.  It has also COMMIT, the
+are left out, unless --tests says otherwise.  It also has COMMIT, the
 commit it was made from (for "About").
 """
 

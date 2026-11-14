@@ -64,14 +64,14 @@ class WebTests(unittest.TestCase):
 
     def test_dark_mode(self):
         """The box of the page: ticked, dark, if not, light (until it is
-        used, as the system); kept in the configuration file, which the
+        used, following the system); kept in the configuration file, which the
         windows share."""
         import config
         token = self.app.token
         box = '<input type="checkbox" name="dark" value="1"'
         try:
             page = self.call()[2]
-            self.assertIn('<html lang="en">', page)    # (as the system)
+            self.assertIn('<html lang="en">', page)    # (following the system)
             self.assertIn(box + '>', page)
             self.assertIn('<label title="Dark mode">\n', page)  # (a moon)
             for body, saved, attribute, checked in (

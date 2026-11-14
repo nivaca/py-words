@@ -249,7 +249,7 @@ ANSI = re.compile(r'\033\[[0-9;]*m|\033\]8;[^\033\a]*(?:\033\\|\a)')
 
 def system_pager() -> list[str] | None:
     """The command of the pager for long results: $PAGER, or else less;
-    None if there is none (as usually on Windows), or if $PAGER is empty
+    None if there is none (as usual on Windows), or if $PAGER is empty
     or cat."""
     wanted = os.environ.get('PAGER')
     if wanted is None:
