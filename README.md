@@ -105,10 +105,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) on GitHub, make it
 executable and run it:
 
-    $ chmod +x py-words-v.3.19-x86_64.AppImage
-    $ ./py-words-v.3.19-x86_64.AppImage                # the window
-    $ ./py-words-v.3.19-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.19-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.20-x86_64.AppImage
+    $ ./py-words-v.3.20-x86_64.AppImage                # the window
+    $ ./py-words-v.3.20-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.20-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`, `tui`,
 `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments after it go
@@ -138,7 +138,7 @@ Or download `py-words-VERSION-1.fc45.noarch.rpm` and
 package is signed; import its key once) and install it:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.19-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.20-1.fc45.noarch.rpm
 
 It runs on any Fedora with Python 3.13 or later, whatever the `fc`
 number in its name.  Or build it from the program's folder (a git
@@ -242,7 +242,7 @@ distribute it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.19.zip` (with the version of the program;
+This writes `dist/py-words-v.3.20.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the same
 name.  It contains the programs, the data, the icons and the documents,
 and a file `COMMIT` with the commit it was made from, which "About" shows.
@@ -257,7 +257,7 @@ On Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.19-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.20-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a
 Python of its own and the menu entry and icons.  The Python (Python 3.13
 with Tk, from [python-appimage](https://github.com/niess/python-appimage))
@@ -1369,6 +1369,11 @@ them.
 Version
 -------
 
+- 3.20:
+  - Python 3.13 or later is needed (it was 3.11), as in the other
+    programs of the author.  The AppImage carries its own Python 3.13,
+    and every supported Fedora has a newer one, so only those who run
+    the zip with an older Python are affected.
 - 3.19:
   - The documentation and the comments of the code read more plainly
     and idiomatically, in English and in Spanish; the program is the
