@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.16
+Version:        3.17
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -105,6 +105,11 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.17-1
+- Logeion as a second source: its entries for the lemmas of the words, of
+  all its dictionaries or of one
+- No Flatpak, and no version in the browser, any more
+
 * Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.16-1
 - Selected text in the results of the window is readable
 

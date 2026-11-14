@@ -108,10 +108,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.16-x86_64.AppImage
-    $ ./py-words-v.3.16-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.16-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.16-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.17-x86_64.AppImage
+    $ ./py-words-v.3.17-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.17-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.17-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -143,7 +143,7 @@ O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
 paquete va firmado; importe su clave una vez) e instálelo:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.16-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.17-1.fc45.noarch.rpm
 
 Funciona en cualquier Fedora con Python 3.11 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
@@ -253,7 +253,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.16.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.17.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -268,7 +268,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.16-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.17-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -1377,6 +1377,22 @@ verlas.
 Versiones
 ---------
 
+- 3.17:
+  - Logeion como segunda fuente (véase "Logeion"): la ventana ("Buscar
+    en": Local o Logeion), `words_tui.py` (F8) y la línea de órdenes
+    (`--logeion`) pueden mostrar, en lugar de las entradas de este
+    diccionario, las de Logeion para los lemas de las palabras, que se
+    analizan aquí primero (Logeion no analiza las formas flexionadas).
+    Una lista junto a "Buscar en" (F5 en la terminal, `--dictionary` en
+    la línea de órdenes) muestra solo uno de sus diccionarios, o todos.
+    Mientras tanto, la otra dirección, el idioma de los significados, la
+    búsqueda aproximada y el editor del diccionario quedan en gris.
+  - Ya no se hace el Flatpak, y la versión que funcionaba en el
+    navegador ya no existe, ni su código (`pages/index.html`,
+    `pages/app.js`, `pages/build.py --browser`).
+  - Las pruebas de las ventanas se ejecutan en una pantalla virtual
+    propia (Xvfb), sin `xvfb-run` y fuera de la vista.
+  - Las listas de `words_tui.py` (F5, F6) muestran su título entero.
 - 3.16:
   - El texto seleccionado en los resultados de la ventana se puede leer:
     se dibujaba con los colores de los resultados (un lema, en el modo

@@ -1,4 +1,4 @@
-# py-words 3.16: descripción
+# py-words 3.17: descripción
 
 ## Análisis
 
