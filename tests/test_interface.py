@@ -14,7 +14,7 @@ from contextlib import redirect_stdout
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the program, when run from anywhere
-import isolate  # noqa: F401,E402  (before anything that reads settings)
+import isolate  # noqa: E402  (before anything that reads settings)
 
 import interface  # noqa: E402
 from interface import tr, yes  # noqa: E402
@@ -165,18 +165,6 @@ class ProgramTests(unittest.TestCase):
         self.assertIn('Idioma de la interfaz', body)
 
 
-
-def _display():
-    if not (os.environ.get('DISPLAY') or os.environ.get('WAYLAND_DISPLAY')):
-        return False
-    try:
-        import tkinter
-        tkinter.Tk().destroy()
-        return True
-    except Exception:
-        return False
-
-
 class KeptTests(unittest.TestCase):
     """The language of the interface is kept in the configuration file,
     whichever program chooses it, and the others start in it."""
@@ -252,7 +240,7 @@ class KeptTests(unittest.TestCase):
         self.assertEqual(self.kept(), 'es')
         self.assertEqual(self.meanings(), 'es')
 
-    @unittest.skipUnless(_display(), 'needs a display')
+    @unittest.skipUnless(isolate.display(), 'needs a display')
     def test_window(self):
         import tkinter as tk
         import words_gui
@@ -276,7 +264,7 @@ class KeptTests(unittest.TestCase):
             root.destroy()
         self.assertEqual(self.kept(), 'es')
 
-    @unittest.skipUnless(_display(), 'needs a display')
+    @unittest.skipUnless(isolate.display(), 'needs a display')
     def test_window_back_and_forth(self):
         """The language changes every time it is chosen in the settings,
         without errors from the parts of the window built before; and a

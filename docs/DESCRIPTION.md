@@ -174,6 +174,22 @@ typed do not help yet to choose between forms, but since 2.16 the
 results show the long vowels themselves (see "8. What came from
 Collatinus").
 
+The window, the terminal and the command line can also show the entries
+of Logeion (logeion.uchicago.edu), the dictionaries of the University of
+Chicago, in place of those of py-words ("Search in" in the window, F8 in
+the terminal, `--logeion`).  Logeion does not analyse inflected forms,
+so py-words analyses each word and asks Logeion for its lemmas, the
+first of the principal parts of each entry found (and for the form
+itself, shown only if it is a headword there, as *arma*); the irregular
+pronouns, which have no principal parts here, get their nominatives
+(*mihi*: *ego*; *quae*: *qui* and *quis*).  The part that asks Logeion
+and renders its entries (`logeion_*.py`) comes from py-logeion; the
+results are kept in memory, wrapped to the width of the window or the
+terminal, and its links to other words look them up.  A list beside
+"Search in" (F5 in the terminal, `--dictionary` on the command line)
+shows only one of Logeion's dictionaries, or all of them; changing it
+shows the results again without asking Logeion.
+
 5. Other languages of the meanings
 ----------------------------------
 
@@ -294,8 +310,8 @@ main branch.
 
 Later the program went to a server for everyone
 (<https://nivaca.pythonanywhere.com/>), and the old address sends
-there.  The version in the browser is no longer published, although
-`pages/build.py --browser` still builds it.
+there.  The version in the browser was then taken out, and its code
+with it: the site is now only the page that sends to the server.
 
 7. A fuzzy search
 -----------------

@@ -97,7 +97,7 @@ class Screen:
         """Shows LINES in a box; with CHOOSE, returns the index chosen
         (None if cancelled).  Up/Down/PgUp/PgDn scroll, Esc closes."""
         h, w = self.scr.getmaxyx()
-        bw = min(w - 4, max([len(title) + 4] + [len(s) + 4 for s in lines]))
+        bw = min(w - 4, max([len(title) + 6] + [len(s) + 4 for s in lines]))
         bh = min(h - 4, len(lines) + 2)
         win = curses.newwin(bh, bw, (h - bh) // 2, (w - bw) // 2)
         win.keypad(True)

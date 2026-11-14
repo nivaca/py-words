@@ -343,42 +343,13 @@ class PublicTests(unittest.TestCase):
                                    body='token=no')[0], '403 Forbidden')
 
 
-if __name__ == '__main__':
-    unittest.main()
-
-
 class SiteTests(unittest.TestCase):
-    """The static site (pages/build.py): what app.js expects to find."""
-
-    def test_the_zip(self):
-        """py-words.zip has the program and its data, with the English and
-        Spanish meanings."""
-        import importlib.util
-        import tempfile
-        import zipfile
-        import languages
-        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        spec = importlib.util.spec_from_file_location(
-            'build', os.path.join(root, 'pages', 'build.py'))
-        build = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(build)
-        with tempfile.TemporaryDirectory() as out:
-            build.build(out, browser=True)
-            out = os.path.join(out, 'browser')
-            with zipfile.ZipFile(os.path.join(out, 'py-words.zip')) as z:
-                z.extractall(os.path.join(out, 'unpacked'))
-                names = set(z.namelist())
-            self.assertIn('words.py', names)
-            self.assertIn('data/dictionary.xml', names)
-            self.assertIn('icons/uniandes.svg', names)    # (the footer)
-            data = os.path.join(out, 'unpacked', 'data')
-            self.assertEqual(sorted(languages.names(data)), ['en', 'es'])
+    """The static site (pages/build.py)."""
 
     def test_the_page(self):
         """The page of the site (also for any other address: 404.html)
-        sends the visitor to the server, with the search; the version in
-        the browser is only built, and linked to, with --browser, in
-        browser/ with all its files."""
+        sends the visitor to the server, with the search; nothing else is
+        built (the version in the browser is gone)."""
         import importlib.util
         import tempfile
         root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -395,15 +366,11 @@ class SiteTests(unittest.TestCase):
                 page = f.read()
             with open(os.path.join(out, '404.html'), encoding='utf-8') as f:
                 self.assertEqual(f.read(), page)
-            build.build(out, server, browser=True)
-            self.assertEqual(sorted(os.listdir(os.path.join(out, 'browser'))),
-                             ['app.js', 'icon.png', 'index.html',
-                              'py-words.zip'])
-            with open(os.path.join(out, 'index.html'), encoding='utf-8') as f:
-                with_browser = f.read()
         self.assertIn('location.replace("https://example.org/words/" + '
                       'location.search + location.hash);', page)
-        self.assertNotIn('browser/', page)
-        self.assertIn('<a href="browser/">', with_browser)
-        for p in (page, with_browser):
-            self.assertNotIn('$', p)
+        self.assertNotIn('browser', page)
+        self.assertNotIn('$', page)
+
+
+if __name__ == '__main__':
+    unittest.main()

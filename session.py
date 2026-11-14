@@ -31,6 +31,9 @@ class Session:
         self.language: Language | None = None
         self.notice = ''                # (why the language is not used)
         self.write = write or (lambda text: print(text, end=''))
+        #  Another source for the Latin words (see logeion.py and words.py
+        #  --logeion): a line -> the text to show; None for this dictionary
+        self.other_source: Callable[[str], str] | None = None
         self.analyzer = Analyzer(lexicon, settings)
         self.settings_changed()
 
@@ -80,6 +83,8 @@ class Session:
         """The text for a line of input, in the current direction."""
         if self.reverse:
             return self.lookup_reverse(line)
+        if self.other_source is not None:
+            return self.other_source(line)
         return self.lookup_latin(line)
 
     def lookup_latin(self, line: str) -> str:

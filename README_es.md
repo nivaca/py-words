@@ -182,46 +182,6 @@ una copia en
 `packaging/RPM-GPG-KEY-py-words`.  `packaging/COPR.org` explica
 cómo publicarlo en Copr, de Fedora.
 
-### Un Flatpak (Linux)
-
-El programa es también un Flatpak, que funciona en cualquier Linux con
-Flatpak, aparte del resto del sistema, con su propio Python y su propio
-Tk.  Descargue `py-words-v.VERSIÓN.flatpak` de las
-[Releases](https://github.com/nivaca/py-words/releases) de GitHub e
-instálelo (Flatpak trae de Flathub el runtime que necesita, si no lo
-tiene ya):
-
-    $ flatpak install --user py-words-v.3.16.flatpak
-    $ flatpak run io.github.nivaca.PyWords                 # la ventana
-    $ flatpak run io.github.nivaca.PyWords cli amicus      # la línea de órdenes
-    $ flatpak run io.github.nivaca.PyWords help            # los demás programas
-
-Añade los cuatro accesos del menú y acepta las mismas órdenes que la
-AppImage.  Su configuración, su historial y su caché son suyos, en
-`~/.var/app/io.github.nivaca.PyWords`, y no se comparten con las otras
-formas de ejecutar el programa.  Solo usa la red para que el navegador
-llegue a la página de `py-words web`.
-
-En el Flatpak no se puede escribir, así que la edición del diccionario
-está desactivada: "Editar diccionario…" aparece en gris en la ventana,
-F4 en la versión de terminal explica por qué, y `edit` y `edit-gui` se
-detienen con un mensaje.  Tampoco sirve aquí una copia de la carpeta
-`data`, porque el Flatpak no ve las carpetas del usuario: para editar el
-diccionario, use el zip o un clon.
-
-Se construye desde la carpeta del programa (un clon de git) con
-
-    $ python3 tools/bundle-flatpak.py [--install]
-
-que necesita `flatpak-builder` y el SDK del manifiesto (`flatpak install
---user flathub org.freedesktop.Sdk//26.08`), trabaja en `build/flatpak/`
-y escribe `dist/py-words-v.VERSIÓN.flatpak` (`--install` además lo
-instala).  El manifiesto es
-`packaging/flatpak/io.github.nivaca.PyWords.yml`: construye Tcl, Tk y el
-tkinter de Python, que el runtime no trae, y después el programa con los
-archivos del zip.  `packaging/flatpak/FLATHUB.org` explica cómo
-publicarlo en Flathub.
-
 ### Un acceso en el menú
 
 Si quiere abrir el programa desde el menú de aplicaciones, ejecute una
@@ -282,13 +242,12 @@ Qué hay en cada sitio
     data/               el diccionario y los demás archivos de datos
     icons/              los iconos del programa
     packaging/          el paquete RPM: su spec, build-rpm.sh, los accesos
-                        del menú y la orden py-words; en flatpak/, el
-                        manifiesto del Flatpak (no van en el zip)
-    pages/              el diccionario en línea, en un navegador sin servidor
+                        del menú y la orden py-words (no van en el zip)
+    pages/              el sitio en nicolasvaughan.org/py-words, que lleva
+                        al servidor
     tests/              las pruebas (no hacen falta para usar el programa)
-    tools/              scripts para hacer el zip, la AppImage, el Flatpak,
-                        los iconos, las capturas y las releases (no van
-                        en el zip)
+    tools/              scripts para hacer el zip, la AppImage, los iconos,
+                        las capturas y las releases (no van en el zip)
 
 Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
@@ -354,15 +313,18 @@ Uso
     $ python3 words_gui.py -e mirar            # una ventana, al latín
     $ python3 words_tui.py                     # pantalla completa, en una terminal
     $ python3 words_web.py                     # en un navegador web
+    $ python3 words.py --logeion arma          # las entradas de Logeion
+    $ python3 words.py --dictionary ls arma    # las de Lewis y Short
 
 `words_tui.py` es como la ventana, pero en la terminal: una línea de
 búsqueda (Arriba y Abajo traen las búsquedas anteriores), los resultados
 debajo (RePág y AvPág los desplazan) y las teclas a la vista en la última
 línea: F2 alterna entre latín al inglés e inglés al latín, F3
 lista los ajustes (Espacio cambia uno), F4 abre el editor del diccionario,
-F5 elige el idioma de los significados, F6 el de la interfaz, F7 copia
-todos los resultados, F9 borra el historial, F1 muestra la ayuda y F10
-sale.  Comparte los ajustes y el
+F5 elige el idioma de los significados (con Logeion, su diccionario), F6
+el de la interfaz, F7 copia
+todos los resultados, F8 busca en este diccionario o en Logeion (véase
+"Logeion"), F9 borra el historial, F1 muestra la ayuda y F10 sale.  Comparte los ajustes y el
 historial con `words.py` y la ventana.  (En Windows necesita el paquete
 windows-curses.)
 
@@ -409,6 +371,65 @@ al pie; en `words_tui.py`, F1; en la línea de órdenes interactiva, `~H`,
 y `python3 words.py --guide` la imprime.  Sale en el idioma de la
 interfaz.
 
+### Logeion
+
+La ventana, `words_tui.py` y la línea de órdenes también pueden mostrar,
+en lugar de las entradas de este diccionario, las de
+[Logeion](https://logeion.uchicago.edu), los diccionarios latinos y
+griegos de la Universidad de Chicago: Lewis y Short, el Elementary de
+Lewis, Georges, Gaffiot, el DMLBS, Du Cange y otros, con la definición
+breve, la frecuencia y ejemplos de su corpus.  En la ventana es "Buscar
+en" (Local o Logeion), encima de la dirección; en `words_tui.py`, F8; en
+la línea de órdenes, `--logeion` (para una ejecución).  La ventana y
+`words_tui.py` guardan la elección para la próxima vez (`source` en la
+sección `[logeion]` del archivo de configuración).  Necesita internet.
+
+Logeion no analiza las formas flexionadas, así que las palabras se
+analizan aquí primero, y a Logeion se le piden sus lemas: la primera de
+las partes principales de cada entrada encontrada (*dixit*: *dico*;
+*est*: *edo* y *sum*; *mihi*: *ego*).  También se pide la forma tal como
+se escribió, pero solo se muestra cuando es un lema propio en Logeion
+(*arma*, cuyo lema aquí es *armum*).  La línea de cada palabra muestra
+sus lemas:
+
+    $ python3 words.py --logeion arma
+    arma  →  armum, armo
+
+    arma
+
+    Short definition
+      • arma, weapons; implements, outfit, instruments, tools
+
+    Lewis & Short
+      arma, ōrum, n. ...
+
+Logeion solo busca en latín: mientras está elegido, la otra dirección, el
+idioma de los significados, la búsqueda aproximada y "Editar
+diccionario…" (el editor edita este diccionario, no Logeion) quedan en
+gris en la ventana, y F4 en `words_tui.py` lo dice.
+
+Las entradas pueden ser las de todos los diccionarios de Logeion, o las
+de uno solo: en la ventana, la lista junto a "Buscar en" (disponible
+cuando se elige Logeion); en `words_tui.py`, F5 (que, con Logeion, elige
+el diccionario en lugar del idioma de los significados); en la línea de
+órdenes, `--dictionary` con su código o su nombre (`--dictionary ls`,
+`--dictionary "Du Cange"`; no necesita `--logeion`, y `--dictionaries`
+los lista).  Se puede elegir Lewis & Short (`ls`), el Elementary de
+Lewis (`lewis`), Georges, Gaffiot 2016 (`gaffiot`), el DMLBS, LaNe, Du
+Cange (`ducange`), Lana-Michelone (`lana`), Frieze-Dennison para
+Virgilio (`frieze`) y el Latino-Sinicum (`sinicum`).  La definición
+breve, la frecuencia y los ejemplos del corpus se muestran con
+cualquiera; un lema que el diccionario no tiene dice cuáles lo tienen.
+Cambiar de diccionario vuelve a mostrar los resultados enseguida, sin
+consultar a Logeion, y la ventana y `words_tui.py` lo guardan para la
+próxima vez (`dictionary` en `[logeion]`).  Sus entradas se ajustan al ancho de la ventana o de la
+terminal; en la ventana, sus enlaces a otras palabras las buscan, y los
+demás enlaces se abren en el navegador.  Las páginas se guardan mientras
+el programa está abierto, así que una palabra que se vuelve a pedir se
+muestra enseguida.  La parte del programa que consulta Logeion y muestra
+sus entradas (`logeion_*.py`) viene de mi programa
+[py-logeion](https://github.com/nivaca/py-logeion).
+
 ### En línea
 
 El diccionario también está en línea, sin nada que instalar, en
@@ -421,9 +442,8 @@ siguen sirviendo.
 
 Hubo también una versión que funcionaba en el navegador, con Pyodide
 (Python compilado para WebAssembly), en
-<https://nicolasvaughan.org/py-words/browser/>.  Ya no se publica: sus
-direcciones llevan también al servidor.  Todavía se puede construir
-(véase más abajo).
+`nicolasvaughan.org/py-words/browser/`.  Ya no existe, y tampoco su
+código (`pages/index.html`, `pages/app.js`).
 
 El sitio se construye a partir de `pages/`:
 
@@ -434,18 +454,15 @@ Sale un sitio estático que cualquier servidor web puede alojar, en su
 raíz o en una carpeta.  Su página (`pages/redirect.html`, también como
 `404.html` para cualquier otra dirección) lleva a los visitantes, con su
 búsqueda, al programa en el servidor (`--server URL` lo elige; por
-omisión, nivaca.pythonanywhere.com).  Con `--browser` el sitio tiene
-también, en `browser/`, la versión en el navegador (la página, su
-script, el icono y `py-words.zip`, con los archivos `.py` del programa y
-sus datos), y su página enlaza con ella.  En GitHub, el flujo de trabajo
-`.github/workflows/pages.yml` corre las pruebas, construye el sitio (sin
-`--browser`) y lo publica en GitHub Pages con cada push a `main`.  (En
+omisión, nivaca.pythonanywhere.com).  En GitHub, el flujo de trabajo
+`.github/workflows/pages.yml` corre las pruebas, construye el sitio y lo
+publica en GitHub Pages con cada push a `main`.  (En
 los ajustes del repositorio, Pages tiene que tener Source: GitHub
 Actions.)
 
 El programa entero puede también funcionar en un servidor web para
-todos, lo que es más rápido que la versión en el navegador (las
-búsquedas las hace el servidor, y no hay nada que descargar).  Su
+todos (las búsquedas las hace el servidor, y no hay nada que
+descargar).  Su
 aplicación WSGI es entonces `public_app()`, y cada visitante tiene sus
 propios ajustes, idiomas de los significados y de la interfaz, modo
 oscuro y búsquedas anteriores, guardados en las cookies de su navegador;
@@ -1307,28 +1324,6 @@ resultados de las grafías cercanas tras la nota `(grafías cercanas:
 ...)`, como si se hubieran escrito, sin contarlas como palabras de la
 línea.
 
-En línea, `pages/app.js` ejecuta la aplicación WSGI de `words_web.py`
-dentro de Pyodide.  Descomprime `py-words.zip` en los archivos de
-Pyodide, intercepta los enlaces y formularios de la página, se los pasa a
-la aplicación como peticiones y pone en su lugar la página que recibe.
-El archivo de configuración y el historial también son archivos allí: se
-copian al almacenamiento local del navegador tras cada petición y se
-recuperan en la visita siguiente.  El zip se descarga a la vez que
-Pyodide, y se descomprime conservando las fechas de sus archivos, porque
-la caché del diccionario (véase lexicon.py) las compara: con el
-descompresor de Pyodide cada archivo quedaba con la hora de la visita, y
-la caché nunca coincidía.  La caché es una carpeta que se guarda en el
-IndexedDB del navegador, de modo que solo la primera visita, y la
-primera tras una versión nueva, leen el XML (cerca de un segundo; la
-caché tarda un cuarto).
-
-Mientras la página arranca, una barra muestra cuánto
-falta: la descarga del zip la mueve según sus bytes, y las demás etapas
-según lo que tardaron en la última visita en ese navegador (guardado en
-su almacenamiento local).  Mientras Python lee el diccionario la página
-no puede hacer nada, así que entonces la barra avanza con una transición
-de CSS, que el navegador anima de todos modos.
-
 Cambios respecto del programa original
 --------------------------------------
 
@@ -1371,6 +1366,14 @@ diccionario o de las palabras conocidas.  Tras un cambio deliberado en la
 salida, regenere los archivos esperados con `UPDATE_GOLDEN=1` y revíselos
 con `git diff`.
 
+Las pruebas de las ventanas se ejecutan en una pantalla virtual propia,
+como hace `tools/screenshots.py`, si Xvfb está instalado (`sudo dnf
+install xorg-x11-server-Xvfb`, o `xvfb` en Debian y Ubuntu): no se ve
+nada en la pantalla, y la escala y las fuentes del escritorio no cambian
+los resultados.  Sin Xvfb usan la pantalla, o se omiten si no la hay;
+`PY_WORDS_TEST_DISPLAY=screen` usa la pantalla de todos modos, para
+verlas.
+
 Versiones
 ---------
 
@@ -1390,10 +1393,8 @@ Versiones
     terminal.  Cuando las teclas no caben en la última línea (como en 80
     columnas), se omiten las que van entre F5 y F10, para que siempre se
     vean F1 (la ayuda, que las enumera todas) y F10 (salir).
-  - El programa es también un Flatpak (véase "Un Flatpak"): un solo
-    archivo adjunto a las releases, y `tools/bundle-flatpak.py` para
-    construirlo; `tools/release.py --flatpak` lo adjunta.  En el Flatpak
-    no se puede editar el diccionario, y el programa lo dice.
+  - El programa es también un Flatpak, un solo archivo adjunto a las
+    releases de 3.15 y 3.16 (después ya no se hace).
   - La versión que funcionaba en el navegador (Pyodide) ya no se
     publica: su dirección lleva también al servidor, y `pages/build.py`
     solo la construye con `--browser`.

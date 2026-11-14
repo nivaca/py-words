@@ -10,15 +10,19 @@
                     or back
     F3 / Ctrl-O     settings: every parameter and developer mode
     F4 / Ctrl-E     edit the dictionary
-    F5 / Ctrl-G     the language of the meanings
+    F5 / Ctrl-G     the language of the meanings (with Logeion: its
+                    dictionary, or all)
     F6              the language of the interface
     F7              copy all the results
+    F8              search in this dictionary or in Logeion
     F9              clear the history of the searches
     F1              this help
     F10 / Ctrl-Q    quit
 
-The results are those of words.py; the settings, the configuration file
-and the history of the searches are shared with it and the window.  (On
+The results are those of words.py, or with F8 the entries of Logeion
+for the lemmas of the words (it needs the internet); the settings, the
+configuration file and the history of the searches are shared with it
+and the window.  (On
 Windows, curses needs the windows-curses package.)
 """
 
@@ -34,11 +38,14 @@ import textwrap
 import clipboard
 import guide
 import interface
+import logeion
 from config import ConfigError
 from helptext import HELP
 from history import History
 from interface import N_, tr
 from lexicon import DICTIONARY, Lexicon, default_datadir
+from logeion_render import Style
+from logeion_text import char_width, styled_segments
 from session import Session
 from settings import (COMMAND_LINE, DEPENDS, DEV_MODES, MODES, Settings,
                       ensure_config, first_sentence, label, section_of)
@@ -51,12 +58,16 @@ KEYS = {
     'settings': (curses.KEY_F3, ctrl('o')), 'edit': (curses.KEY_F4,
                                                      ctrl('e')),
     'meanings': (curses.KEY_F5, ctrl('g')), 'interface': (curses.KEY_F6,),
-    'clipboard': (curses.KEY_F7,),
+    'clipboard': (curses.KEY_F7,), 'source': (curses.KEY_F8,),
     'clear': (curses.KEY_F9,), 'quit': (curses.KEY_F10, ctrl('q'),
                                         ctrl('c')),
 }
 BAR = N_('F1 help  F2 direction  F3 settings  F4 edit  F5 meanings  '
-         'F6 interface  F7 copy  F9 clear  F10 quit')
+         'F6 interface  F7 copy  F8 source  F9 clear  F10 quit')
+#  (with Logeion, F5 chooses its dictionary)
+BAR_LOGEION = N_('F1 help  F2 direction  F3 settings  F4 edit  '
+                 'F5 dictionary  F6 interface  F7 copy  F8 source  '
+                 'F9 clear  F10 quit')
 
 #  The help (F1, --help): the second and third paragraphs of the
 #  docstring, without their indentation
@@ -69,12 +80,16 @@ HELP_TEXT = textwrap.dedent('\n\n'.join(__doc__.split('\n\n')[1:3]))
 CTRL_UP = ('kUP5', 'kUP')
 CTRL_DOWN = ('kDN5', 'kDN')
 
+#  The curses attributes of the ANSI codes of the entries of Logeion
+ATTRIBUTES = {1: curses.A_BOLD, 2: curses.A_DIM, 4: curses.A_UNDERLINE,
+              3: getattr(curses, 'A_ITALIC', 0), 36: curses.A_BOLD}
 
-def key_bar(width: int) -> str:
+
+def key_bar(width: int, bar: str = BAR) -> str:
     """The keys of the last line, in WIDTH: when they do not fit, those
     before the last are left out, from the end, but the help (F1, which
     lists them all) and quitting stay."""
-    keys = tr(BAR).split('  ')
+    keys = tr(bar).split('  ')
     while len('  '.join(keys)) > width and len(keys) > 2:
         del keys[-2]
     return '  '.join(keys)[:width]
@@ -100,6 +115,11 @@ class DictionaryTUI(Screen):
         self.lines: list[str] = [tr(WELCOME)]
         self.top = 0                    # the first line of results shown
         self.message = self.session.notice
+        self.source = logeion.saved_source()
+        self.dictionary = logeion.saved_dictionary()    # (its code)
+        self.logeion = logeion.Logeion()    # (its pages, kept)
+        self.words = None               # (the results of Logeion shown)
+        self.wrapped: tuple[int, list[str]] = (0, [])
 
     # Drawing --------------------------------------------------------------
 
@@ -112,6 +132,11 @@ class DictionaryTUI(Screen):
         language = tr('{language} → Latin', language=name) \
             if session and session.reverse else \
             tr('Latin → {language}', language=name)
+        if getattr(self, 'source', None) == logeion.LOGEION:
+            language = tr('Latin → Logeion') \
+                if self.dictionary == logeion.ALL else \
+                tr('Latin → {dictionary}',
+                   dictionary=logeion.dictionary_name(self.dictionary))
         title = ' ' + tr('{name} {version}: A Latin Dictionary', name=NAME,
                          version=VERSION)
         self.put(0, 0, (title + language.rjust(w - len(title) - 1) + ' ')
@@ -120,14 +145,20 @@ class DictionaryTUI(Screen):
             self.put(1, 0, '=> ' + self.query.value[self.offset(w - 4):])
             for i, line in enumerate(self.shown(w)[self.top:
                                                    self.top + self.rows()]):
-                self.put(2 + i, 0, line)
+                if self.words is None:
+                    self.put(2 + i, 0, line)
+                else:
+                    self.put_styled(2 + i, line)
             more = len(self.shown(w)) - self.top - self.rows()
             if more > 0:
                 self.put(h - 3, w - 18,
                          (' ' + tr('{n} more', n=more) + ' ↓ ').rjust(16),
                          curses.A_DIM)
         self.put(h - 2, 0, self.message[:w - 1])
-        self.put(h - 1, 0, key_bar(w - 1).ljust(w - 1), curses.A_REVERSE)
+        bar = BAR_LOGEION if getattr(self, 'source', None) == \
+            logeion.LOGEION else BAR
+        self.put(h - 1, 0, key_bar(w - 1, bar).ljust(w - 1),
+                 curses.A_REVERSE)
         if hasattr(self, 'query'):
             scr.move(1, min(3 + self.query.cursor - self.offset(w - 4),
                             w - 1))
@@ -141,8 +172,24 @@ class DictionaryTUI(Screen):
         """Where the visible part of the search line starts."""
         return max(0, self.query.cursor - width + 1)
 
+    def put_styled(self, y: int, line: str):
+        """A LINE of the entries of Logeion, in the attributes of its ANSI
+        codes."""
+        x = 0
+        for piece, codes, _ in styled_segments(line):
+            attr = 0
+            for code in codes:
+                attr |= ATTRIBUTES.get(code, 0)
+            self.put(y, x, piece, attr)
+            x += sum(char_width(c) for c in piece)
+
     def shown(self, width: int) -> list[str]:
         """The results, long lines wrapped to WIDTH."""
+        if self.words is not None:      # (wrapped as Logeion's are)
+            if self.wrapped[0] != width:
+                self.wrapped = (width, [line for _, line in logeion.render(
+                    self.words, Style(True), width - 1, self.dictionary)])
+            return self.wrapped[1]
         out = []
         for line in self.lines:
             if len(line) < width:
@@ -166,6 +213,20 @@ class DictionaryTUI(Screen):
             return
         self.history.add(line)
         self.back = 0
+        self.words = None
+        if self.source == logeion.LOGEION:
+            self.message = tr('Asking Logeion…')
+            self.draw()
+            try:
+                self.words = self.logeion.look_up(self.session, line)
+                self.wrapped = (0, [])
+            except Exception as e:      # show it, keep going
+                self.lines = [tr('(error: {error})', error=e)]
+            self.welcome = False
+            self.top = 0
+            self.message = ''
+            self.query = Field('query', '', '')
+            return
         try:
             text = self.session.lookup(line)
         except Exception as e:          # show it, keep going
@@ -188,13 +249,54 @@ class DictionaryTUI(Screen):
         value = items[-back] if back else getattr(self, 'draft', '')
         self.query = Field('query', '', value)
 
+    def choose_source(self):
+        """F8: this dictionary, or Logeion (kept for next time)."""
+        self.source = logeion.LOCAL if self.source == logeion.LOGEION \
+            else logeion.LOGEION
+        if self.source == logeion.LOGEION:
+            self.session.reverse = False
+        self.message = logeion.save_source(self.source) or (
+            tr('Searching in Logeion: the entries of its dictionaries for '
+               'the lemmas of the words (it needs the internet).')
+            if self.source == logeion.LOGEION else
+            tr('Searching in this dictionary.'))
+
     def language(self):
+        if self.source == logeion.LOGEION:
+            self.message = tr('Logeion is searched in Latin only (F8: '
+                              'this dictionary).')
+            return
         self.session.reverse = not self.session.reverse
         name = tr(self.session.language.name)
         self.message = tr('{language} to Latin: type a word in '
                           '{language}.', language=name) \
             if self.session.reverse else \
             tr('Latin to {language}.', language=name)
+
+    def choose_meanings(self):
+        """F5: the language of the meanings, or with Logeion its
+        dictionary."""
+        if self.source == logeion.LOGEION:
+            self.choose_dictionary()
+        else:
+            self.choose_language()
+
+    def choose_dictionary(self):
+        """A list of the dictionaries of Logeion; Enter chooses one (kept
+        for next time), and the results are shown again with it."""
+        codes = list(logeion.DICTIONARIES)
+        lines = [f"{'*' if code == self.dictionary else ' '} "
+                 f"{logeion.dictionary_name(code)}" for code in codes]
+        pos = self.popup(tr('Dictionary (Enter chooses)'), lines,
+                         choose=True, start=codes.index(self.dictionary))
+        if pos is None or codes[pos] == self.dictionary:
+            return
+        self.dictionary = codes[pos]
+        self.wrapped = (0, [])
+        self.top = 0
+        self.message = logeion.save_dictionary(self.dictionary) or \
+            tr('Logeion: {dictionary}.',
+               dictionary=logeion.dictionary_name(self.dictionary))
 
     def choose_language(self):
         """A list of the languages of the meanings; Enter chooses one."""
@@ -240,8 +342,11 @@ class DictionaryTUI(Screen):
         if self.welcome:
             self.message = tr('There are no results yet.')
             return
+        lines = self.lines if self.words is None else \
+            logeion.text(self.words,
+                         dictionary=self.dictionary).split('\n')
         self.message = tr('The results were copied.') \
-            if clipboard.copy('\n'.join(self.lines) + '\n') else \
+            if clipboard.copy('\n'.join(lines) + '\n') else \
             tr('The results were copied, if the terminal lets programs '
                'use the clipboard.')
 
@@ -266,6 +371,10 @@ class DictionaryTUI(Screen):
         read again after it."""
         import words_edit
         from editor import read_only, read_only_message
+        if self.source == logeion.LOGEION:
+            self.message = tr('The dictionary editor edits this dictionary, '
+                              'not Logeion: F8 goes back to it.')
+            return
         if read_only(self.datadir):
             h, w = self.scr.getmaxyx()
             self.popup(tr('Edit dictionary…').rstrip('…'), textwrap.wrap(
@@ -369,9 +478,10 @@ class DictionaryTUI(Screen):
             return False
         actions = {'help': self.help, 'language': self.language,
                    'settings': self.settings, 'edit': self.edit_dictionary,
-                   'meanings': self.choose_language,
+                   'meanings': self.choose_meanings,
                    'interface': self.choose_interface,
                    'clipboard': self.copy_results,
+                   'source': self.choose_source,
                    'clear': self.clear_history}
         for name, action in actions.items():
             if code in KEYS[name]:

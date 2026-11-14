@@ -9,6 +9,11 @@
     words -m ...                   only dictionary forms and meanings
     words --language es ...        the meanings in another language
                                    (--languages lists them)
+    words --logeion arma           the entries of Logeion for the lemmas
+                                   of the words (armum, armo), from the
+                                   internet
+    words --dictionary ls arma     the same, of one of its dictionaries
+                                   (--dictionaries lists them)
     words --guide                  the help: how to search and read the
                                    results
 
@@ -35,6 +40,7 @@ check_python()          # (before the modules that need it)
 
 import argparse
 import os
+import shutil
 import sys
 from collections.abc import Callable
 
@@ -442,6 +448,19 @@ def _main(argv: list[str] | None, meanings_only: bool):
                                 'results of its near spellings (or not, '
                                 'with --no-fuzzy); this time only (the '
                                 'setting is fuzzy_search)'))
+    parser.add_argument('--logeion', action='store_true',
+                        help=tr('show the entries of Logeion '
+                                '(logeion.uchicago.edu) for the lemmas of '
+                                'the Latin words, instead of those of this '
+                                'dictionary (it needs the internet)'))
+    parser.add_argument('--dictionary', metavar=tr('DICTIONARY'),
+                        help=tr('with Logeion (and --logeion is then not '
+                                'needed): only the entries of this '
+                                'dictionary, by its code or name (ls, '
+                                'gaffiot, "Du Cange" ...)'))
+    parser.add_argument('--dictionaries', action='store_true',
+                        help=tr("list Logeion's dictionaries that "
+                                "--dictionary can choose, and exit"))
     parser.add_argument('--language', metavar=tr('CODE'),
                         help=tr('the language of the meanings (en, es ...); '
                                 'this time only (the setting is language)'))
@@ -489,6 +508,19 @@ def _main(argv: list[str] | None, meanings_only: bool):
                 else ''
             print(f'{code:<8}{tr(name)}{mark}')
         return
+    dictionary = None
+    if args.dictionaries:
+        import logeion
+        for code in logeion.DICTIONARIES:
+            print(f'{code:<10}{logeion.dictionary_name(code)}')
+        return
+    if args.dictionary:
+        import logeion
+        dictionary = logeion.dictionary_code(args.dictionary)
+        if dictionary is None:
+            sys.exit('words: ' + tr('there is no dictionary {name} in '
+                                    'Logeion (--dictionaries lists them)',
+                                    name=args.dictionary))
     interactive = not args.words and not args.file and sys.stdin.isatty()
     lexicon = load(datadir)
 
@@ -507,6 +539,8 @@ def _main(argv: list[str] | None, meanings_only: bool):
         settings.language = args.language
     session = Session(lexicon, settings, args.meanings_only, out.write)
     session.reverse = args.english
+    if args.logeion or dictionary:
+        session.other_source = logeion_source(session, out, dictionary)
     if session.notice:
         print(session.notice, file=sys.stderr)
     if args.guide:
@@ -532,6 +566,24 @@ def _main(argv: list[str] | None, meanings_only: bool):
     finally:
         if out is not sys.stdout:
             out.close()
+
+
+def logeion_source(session: Session, out,
+                   dictionary: str | None = None) -> Callable[[str], str]:
+    """The lookup of a line of Latin in Logeion (logeion.py), for
+    Session.other_source: in the width of the terminal, and with its styles
+    and links if it is one (and NO_COLOR is not set); of the dictionary
+    whose code is DICTIONARY, or all."""
+    import logeion
+    pages = logeion.Logeion()
+    terminal = out is sys.stdout and out.isatty()
+    styled = terminal and not os.environ.get('NO_COLOR')
+    width = shutil.get_terminal_size().columns - 1 if terminal else 78
+
+    def look_up(line: str) -> str:
+        return logeion.text(pages.look_up(session, line), max(40, width),
+                            styled, dictionary or logeion.ALL)
+    return look_up
 
 
 def make_config(settings: Settings) -> str:

@@ -14,7 +14,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the package, when run from anywhere
-import isolate  # noqa: F401,E402  (before anything that reads settings)
+import isolate  # noqa: E402  (before anything that reads settings)
 
 import xmldata
 from editor import Editor, Editing, Fields, plain_message, read_only
@@ -527,18 +527,7 @@ class TerminalEditorTests(WithData):
         self.assertNotIn('blogg', self.read())
 
 
-def _display():
-    if not (os.environ.get('DISPLAY') or os.environ.get('WAYLAND_DISPLAY')):
-        return False
-    try:
-        import tkinter
-        tkinter.Tk().destroy()
-        return True
-    except Exception:
-        return False
-
-
-@unittest.skipUnless(_display(), 'needs a display')
+@unittest.skipUnless(isolate.display(), 'needs a display')
 class WindowEditorTests(WithData):
 
     def test_find_change_add_save(self):
@@ -653,8 +642,7 @@ class WindowEditorTests(WithData):
             w.win.destroy()
 
 
-
-@unittest.skipUnless(_display(), 'needs a display')
+@unittest.skipUnless(isolate.display(), 'needs a display')
 class WindowTranslationTests(TranslationTests):
     """The window editor with the meanings in Spanish too."""
 
@@ -680,7 +668,6 @@ class WindowTranslationTests(TranslationTests):
             self.assertFalse(w.editor.translating)
         finally:
             w.win.destroy()
-
 
 
 if __name__ == '__main__':

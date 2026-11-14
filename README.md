@@ -174,45 +174,6 @@ C029 6282 8A87 315E E750 A4F9 6998 9DA6`); a copy is in
 `packaging/RPM-GPG-KEY-py-words`.
 `packaging/COPR.org` tells how to publish it on Fedora's Copr.
 
-### A Flatpak (Linux)
-
-The program is also a Flatpak, which runs on any Linux with Flatpak,
-apart from the rest of the system, with its own Python and Tk.  Download
-`py-words-v.VERSION.flatpak` from the
-[Releases](https://github.com/nivaca/py-words/releases) of GitHub and
-install it (Flatpak brings from Flathub the runtime it needs, if it is
-not there yet):
-
-    $ flatpak install --user py-words-v.3.16.flatpak
-    $ flatpak run io.github.nivaca.PyWords                 # the window
-    $ flatpak run io.github.nivaca.PyWords cli amicus      # the command line
-    $ flatpak run io.github.nivaca.PyWords help            # the other programs
-
-It adds the four menu entries, and takes the same commands as the
-AppImage.  Its settings, history and cache are its own, in
-`~/.var/app/io.github.nivaca.PyWords`, and not shared with the other
-ways of running the program.  It can use the network only so that the
-browser reaches the page of `py-words web`.
-
-The Flatpak cannot be written to, so editing the dictionary is off:
-"Edit dictionary…" is greyed out in the window, F4 in the terminal
-version says why, and `edit` and `edit-gui` stop with a message.  Nor
-does a copy of the `data` folder help here, because the Flatpak does not
-see the user's folders: to edit the dictionary, use the zip or a clone.
-
-It is built from the program's folder (a git clone) with
-
-    $ python3 tools/bundle-flatpak.py [--install]
-
-which needs `flatpak-builder` and the SDK of the manifest (`flatpak
-install --user flathub org.freedesktop.Sdk//26.08`), works in
-`build/flatpak/` and writes `dist/py-words-v.VERSION.flatpak`
-(`--install` also installs it).  The manifest is
-`packaging/flatpak/io.github.nivaca.PyWords.yml`: it builds Tcl, Tk and
-Python's tkinter, which the runtime does not have, and then the program
-from the files of the zip.  `packaging/flatpak/FLATHUB.org` tells how to
-publish it on Flathub.
-
 ### A menu entry
 
 If you want to start the program from the applications menu, run one
@@ -272,13 +233,12 @@ What is where
     data/               the dictionary and the other data files
     icons/              the program's icons
     packaging/          the RPM package: its spec, build-rpm.sh, the menu
-                        entries and the py-words command; in flatpak/,
-                        the Flatpak's manifest (not in the zip)
-    pages/              the dictionary online, in a browser with no server
+                        entries and the py-words command (not in the zip)
+    pages/              the site at nicolasvaughan.org/py-words, which
+                        sends to the server
     tests/              the tests (not needed to use the program)
-    tools/              scripts to make the zip, the AppImage, the Flatpak,
-                        the icons, the screenshots and the releases (not
-                        in the zip)
+    tools/              scripts to make the zip, the AppImage, the icons,
+                        the screenshots and the releases (not in the zip)
 
 To use it in another place, copy the folder, or make a zip of the program
 for distributing it:
@@ -346,15 +306,18 @@ Usage
     $ python3 words_gui.py -e look             # a window, to Latin
     $ python3 words_tui.py                     # full screen, in a terminal
     $ python3 words_web.py                     # in a web browser
+    $ python3 words.py --logeion arma          # the entries of Logeion
+    $ python3 words.py --dictionary ls arma    # those of Lewis and Short
 
 `words_tui.py` is like the window, but in the terminal: there is a line
 for searching (Up and Down bring back the earlier searches), the results
 below (PgUp and PgDn scroll them), and the keys are shown in the last
 line.  F2 changes between Latin to English and English to Latin, F3
 lists the settings (Space changes one), F4 opens the dictionary editor,
-F5 chooses the language of the meanings, F6 the one of the interface, F7
-copies all the results, F9 clears the history, F1 shows the help, and F10
-quits.  It shares the
+F5 chooses the language of the meanings (with Logeion, its dictionary),
+F6 the one of the interface, F7
+copies all the results, F8 searches in this dictionary or in Logeion (see
+"Logeion"), F9 clears the history, F1 shows the help, and F10 quits.  It shares the
 settings and the history with `words.py` and with the window.  (In
 Windows it needs the package windows-curses.)
 
@@ -401,6 +364,64 @@ it is "Help" (or F1); in the web page, "Help" at the foot; in
 `python3 words.py --guide` prints it.  It comes in the language of the
 interface.
 
+### Logeion
+
+The window, `words_tui.py` and the command line can also show, instead
+of the entries of this dictionary, those of
+[Logeion](https://logeion.uchicago.edu), the Latin and Greek
+dictionaries of the University of Chicago: Lewis and Short, Lewis's
+Elementary, Georges, Gaffiot, the DMLBS, Du Cange and others, with the
+short definition, the frequency and examples from its corpus.  In the
+window it is "Search in" (Local or Logeion), above the direction; in
+`words_tui.py`, F8; on the command line, `--logeion` (for one run).
+The window and `words_tui.py` keep the choice for next time (`source` in
+the section `[logeion]` of the configuration file).  It needs the
+internet.
+
+Logeion does not analyse inflected forms, so the words are analysed
+here first, and Logeion is asked for their lemmas: the first of the
+principal parts of each entry found (*dixit*: *dico*; *est*: *edo* and
+*sum*; *mihi*: *ego*).  The form as written is asked for too, but shown
+only when it is a headword of its own in Logeion (*arma*, whose lemma
+here is *armum*).  The line of each word shows its lemmas:
+
+    $ python3 words.py --logeion arma
+    arma  →  armum, armo
+
+    arma
+
+    Short definition
+      • arma, weapons; implements, outfit, instruments, tools
+
+    Lewis & Short
+      arma, ōrum, n. ...
+
+Logeion searches in Latin only: while it is chosen, the other direction,
+the language of the meanings, the fuzzy search and "Edit dictionary…"
+(the editor edits this dictionary, not Logeion) are greyed out in the
+window, and F4 in `words_tui.py` says so.
+
+The entries can be those of all the dictionaries of Logeion, or of only
+one: in the window, the list beside "Search in" (available when Logeion
+is chosen); in `words_tui.py`, F5 (which, with Logeion, chooses the
+dictionary instead of the language of the meanings); on the command
+line, `--dictionary` with its code or name (`--dictionary ls`,
+`--dictionary "Du Cange"`; it needs no `--logeion`, and
+`--dictionaries` lists them).  The choices are Lewis & Short (`ls`),
+Lewis's Elementary (`lewis`), Georges, Gaffiot 2016 (`gaffiot`), the
+DMLBS, LaNe, Du Cange (`ducange`), Lana-Michelone (`lana`),
+Frieze-Dennison for Vergil (`frieze`) and the Latino-Sinicum
+(`sinicum`).  The short definition, the frequency and the examples from
+the corpus are shown with any of them; a lemma that the dictionary does
+not have says which ones have it.  Changing the dictionary shows the
+results again at once, without asking Logeion, and the window and
+`words_tui.py` keep it for next time (`dictionary` in `[logeion]`).  Its entries are wrapped to the width of the window or the
+terminal; in the window, their links to other words look these up, and
+the other links open in the browser.  The pages are kept while the
+program runs, so a word asked for again is shown at once.  The part of
+the program that asks Logeion and shows its entries (`logeion_*.py`)
+comes from my program [py-logeion](https://github.com/nivaca/py-logeion).
+
 ### Online
 
 The dictionary is also online, with nothing to install, at
@@ -411,9 +432,8 @@ settings and earlier searches.  The former address,
 search (`?q=amicus+est`), so the old links and bookmarks still work.
 
 There was also a version that ran in the browser, with Pyodide (Python
-compiled for WebAssembly), at <https://nicolasvaughan.org/py-words/browser/>.
-It is no longer published: its addresses send to the server too.  It
-can still be built (see below).
+compiled for WebAssembly), at `nicolasvaughan.org/py-words/browser/`.
+It is gone, and so is its code (`pages/index.html`, `pages/app.js`).
 
 The site is built from `pages/`:
 
@@ -424,17 +444,14 @@ The result is a static site, that any web server can host, in its root
 or inside a folder.  Its page (`pages/redirect.html`, also as `404.html`
 for any other address) sends the visitors, with their search, to the
 program on the server (`--server URL` chooses it; by default
-nivaca.pythonanywhere.com).  With `--browser` the site has also, in
-`browser/`, the version in the browser (the page, its script, the icon,
-and `py-words.zip`, with the `.py` files of the program and its data),
-and its page links to it.  In GitHub, the workflow
-`.github/workflows/pages.yml` runs the tests, builds the site (without
-`--browser`) and publishes it in GitHub Pages in each push to `main`.
+nivaca.pythonanywhere.com).  In GitHub, the workflow
+`.github/workflows/pages.yml` runs the tests, builds the site and
+publishes it in GitHub Pages in each push to `main`.
 (In the settings of the repository, Pages needs Source: GitHub Actions.)
 
-The whole program can also run on a web server for everyone, which is
-faster than the version in the browser (the searches are made by the
-server, and there is nothing to download).  Its WSGI application is then
+The whole program can also run on a web server for everyone (the
+searches are made by the server, and there is nothing to download).  Its
+WSGI application is then
 `public_app()`, and each visitor has their own settings, languages of the
 meanings and of the interface, dark mode and earlier searches, kept in
 the cookies of their browser; nothing of this is saved on the server.
@@ -1270,27 +1287,6 @@ skips), and shows the results of the near spellings after the note
 `(near spellings: ...)`, as if they were written by you, but without
 counting them as words of the line.
 
-Online, `pages/app.js` runs the WSGI application of `words_web.py` inside
-Pyodide.  It unpacks `py-words.zip` into the files of Pyodide, catches
-the links and the forms of the page, gives them to the application as
-requests, and puts the page that comes back in place of the old one.
-The configuration file and the history are files there too; they are
-copied to the local storage of the browser after each request, and
-recovered in the next visit.  The zip is downloaded at the same time as
-Pyodide.  It is unpacked keeping the dates of its files, because the
-cache of the dictionary (see lexicon.py) compares them: when Pyodide
-unpacked it, every file had the hour of the visit, and the cache never
-was valid.  The cache itself is a folder kept in the IndexedDB of the
-browser, so only the first visit, and the first one after a new
-version, read the XML (around one second; the cache takes a quarter of
-this).
-
-While the page starts, a bar shows how far it is: the download of the zip moves it by
-its bytes, and the other stages by how long they took at the last visit
-in that browser (kept in its local storage).  While Python reads the
-dictionary the page cannot do anything, so the bar is moved then by a
-CSS transition, which the browser animates all the same.
-
 Changes from the original program
 ---------------------------------
 
@@ -1332,6 +1328,14 @@ forms of every kind (`50_forms`), the developer modes
 After a change in the output that is on purpose, make again the expected
 files with `UPDATE_GOLDEN=1` and review them with `git diff`.
 
+The tests of the windows run on a virtual display of their own, as
+`tools/screenshots.py` does, if Xvfb is installed (`sudo dnf install
+xorg-x11-server-Xvfb`, or `xvfb` in Debian and Ubuntu): nothing shows on
+the screen, and the scaling and fonts of the desktop do not change the
+results.  Without Xvfb they use the screen, or are skipped if there is
+none; `PY_WORDS_TEST_DISPLAY=screen` uses the screen anyway, to watch
+them.
+
 Version
 -------
 
@@ -1351,10 +1355,8 @@ Version
     When the keys do not fit in the last line (as in 80 columns), those
     between F5 and F10 are left out, so that F1 (the help, which lists
     them all) and F10 (quit) are always seen.
-  - The program is also a Flatpak (see "A Flatpak"): a single file
-    attached to the releases, and `tools/bundle-flatpak.py` to build it;
-    `tools/release.py --flatpak` attaches it.  In the Flatpak the
-    dictionary cannot be edited, and the program says so.
+  - The program is also a Flatpak, a single file attached to the
+    releases of 3.15 and 3.16 (it is no longer made after them).
   - The version that ran in the browser (Pyodide) is no longer
     published: its address sends to the server too, and
     `pages/build.py` builds it only with `--browser`.

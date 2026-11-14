@@ -1,9 +1,7 @@
 <!doctype html>
 <!-- The page of the site (see build.py): it sends the visitor to the
      program on a server ($server), with the search of the address
-     (?q=amicus+est&lang=...), so that old links and bookmarks still work.
-     $browser_en and $browser_es: a link to the version in the browser,
-     when the site has it (build.py --browser). -->
+     (?q=amicus+est&lang=...), so that old links and bookmarks still work. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -40,9 +38,9 @@ a { color: var(--accent); }
 <body>
 <main>
 <h1>py-words</h1>
-<p>The dictionary is now at <a href="$server">$server</a>.$browser_en</p>
+<p>The dictionary is now at <a href="$server">$server</a>.</p>
 <p class="es" lang="es">El diccionario está ahora en
-<a href="$server">$server</a>.$browser_es</p>
+<a href="$server">$server</a>.</p>
 </main>
 </body>
 </html>

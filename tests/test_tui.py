@@ -14,7 +14,7 @@ import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UP, DOWN, PGDN = '\x1bOA', '\x1bOB', '\x1b[6~'
-F5 = '\x1b[15~'
+F5, F8 = '\x1b[15~', '\x1b[19~'
 F1, F2, F3, F4, F9, F10 = ('\x1bOP', '\x1bOQ', '\x1bOR', '\x1bOS',
                            '\x1b[20~', '\x1b[21~')
 
@@ -120,6 +120,40 @@ class TerminalDictionaryTests(unittest.TestCase):
         self.assertIn('English → Latin', out)
         self.assertIn('amicus', out)
 
+    def test_source(self):
+        """F8 changes the source to Logeion and back, and keeps it; F2 says
+        that Logeion is searched in Latin only, and F4 that the editor is
+        not for it.  (Logeion is not asked: see test_logeion.py.)"""
+        import tomllib
+        status, out = self.run_keys([(F8, 0.8), (F2, 0.8), (F4, 0.8),
+                                     (F10, 1)])
+        self.assertEqual(status, 0)
+        self.assertIn('Searching in Logeion', out)
+        self.assertIn('Logeion is searched in Latin only', out)
+        self.assertIn('The dictionary editor edits this dictionary, not '
+                      'Logeion', out)
+        with open(os.path.join(self.config, 'config.toml'), 'rb') as f:
+            self.assertEqual(tomllib.load(f)['logeion']['source'],
+                             'logeion')
+        status, out = self.run_keys([(F8, 0.8), (F10, 1)])
+        self.assertIn('Searching in this dictionary.', out)
+        with open(os.path.join(self.config, 'config.toml'), 'rb') as f:
+            self.assertEqual(tomllib.load(f)['logeion']['source'], 'local')
+
+    def test_dictionary_of_logeion(self):
+        """With Logeion, F5 chooses its dictionary (kept), not the
+        language of the meanings."""
+        import tomllib
+        status, out = self.run_keys([(F8, 0.8), (F5, 0.8),
+                                     (DOWN + '\r', 0.8), (F10, 1)])
+        self.assertEqual(status, 0)
+        self.assertIn('Dictionary (Enter chooses)', out)
+        self.assertIn('Logeion: Lewis & Short.', out)
+        with open(os.path.join(self.config, 'config.toml'), 'rb') as f:
+            data = tomllib.load(f)['logeion']
+        self.assertEqual((data['source'], data['dictionary']),
+                         ('logeion', 'ls'))
+
     def test_language_of_the_meanings(self):
         import tomllib
         import spanish
@@ -169,14 +203,18 @@ class KeyBarTests(unittest.TestCase):
         self.addCleanup(interface.use, before)
         for code in ('en', 'es'):
             interface.use(code)
-            full = words_tui.key_bar(200)
-            self.assertNotIn('F10', full[:-12])
-            for width in (40, 60, 79, 99):
-                bar = words_tui.key_bar(width)
-                self.assertLessEqual(len(bar), width)
-                self.assertTrue(bar.startswith('F1 '), bar)
-                self.assertIn('F10 ', bar)
-                self.assertTrue(full.startswith(bar.rsplit('  ', 1)[0]))
+            for keys in (words_tui.BAR, words_tui.BAR_LOGEION):
+                full = words_tui.key_bar(200, keys)
+                self.assertNotIn('F10', full[:-12])
+                for width in (40, 60, 79, 99):
+                    bar = words_tui.key_bar(width, keys)
+                    self.assertLessEqual(len(bar), width)
+                    self.assertTrue(bar.startswith('F1 '), bar)
+                    self.assertIn('F10 ', bar)
+                    self.assertTrue(full.startswith(bar.rsplit('  ', 1)[0]))
+        interface.use('en')
+        self.assertIn('F5 dictionary',
+                      words_tui.key_bar(200, words_tui.BAR_LOGEION))
 
 
 if __name__ == '__main__':

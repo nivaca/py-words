@@ -10,11 +10,10 @@ import subprocess
 import sys
 
 NAME = 'py-words'
-#  Al subir la versión: también el nombre del zip, del RPM y del Flatpak
-#  en los dos README, el título de docs/DESCRIPCIÓN_es.md, las notas de
-#  "Version"/"Versiones", Version: y %changelog de
-#  packaging/py-words.spec (rpmdev-bumpspec), y un <release> nuevo arriba
-#  en packaging/flatpak/io.github.nivaca.PyWords.metainfo.xml.
+#  Al subir la versión: también el nombre del zip y del RPM en los dos
+#  README, el título de docs/DESCRIPCIÓN_es.md, las notas de
+#  "Version"/"Versiones", y Version: y %changelog de
+#  packaging/py-words.spec (rpmdev-bumpspec).
 VERSION = '3.16'
 URL = 'https://github.com/nivaca/py-words'
 
@@ -82,7 +81,7 @@ def _git_commit(folder):
             ['git', '-C', folder, 'rev-parse', '--show-toplevel', 'HEAD'],
             capture_output=True, text=True, timeout=5,
             creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
-    except Exception:           # (no git; no processes, as in Pyodide)
+    except Exception:           # (no git, or no processes)
         return None
     lines = out.stdout.split('\n')
     if out.returncode != 0 or len(lines) < 2:

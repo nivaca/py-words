@@ -8,22 +8,10 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the program, when run from anywhere
-import isolate  # noqa: F401,E402  (before anything that reads settings)
+import isolate  # noqa: E402  (before anything that reads settings)
 
 
-def _display():
-    if not (os.environ.get('DISPLAY') or os.environ.get('WAYLAND_DISPLAY')
-            or sys.platform in ('win32', 'darwin')):
-        return False
-    try:
-        import tkinter
-        tkinter.Tk().destroy()
-        return True
-    except Exception:
-        return False
-
-
-@unittest.skipUnless(_display(), 'needs a display')
+@unittest.skipUnless(isolate.display(), 'needs a display')
 class FontTests(unittest.TestCase):
 
     def setUp(self):

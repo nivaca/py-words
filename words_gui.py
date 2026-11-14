@@ -4,6 +4,10 @@
 Type Latin words (or, in the other direction, a word in the language of
 the meanings) and press Enter; the results are those the command line
 shows.  WORDs given are looked up at once (with -e, to Latin).
+
+"Search in" chooses where: Local (this program's dictionary) or Logeion
+(its entries for the lemmas of the words, see logeion.py), which needs
+the internet; then the list beside it chooses its dictionary (or all).
 """
 
 from version import check_python
@@ -19,6 +23,7 @@ from tkinter import filedialog, font as tkfont, messagebox, ttk
 
 import guide
 import interface
+import logeion
 from config import ConfigError
 from editor import read_only
 from gui_fonts import Fonts, scaled
@@ -84,10 +89,15 @@ class App:
         self.languages: dict[str, str] = {}         # name -> code
         self.reverse = tk.BooleanVar(value=False)
         self.fuzzy = tk.BooleanVar(value=Settings().fuzzy_search)
+        self.source = tk.StringVar(value=logeion.saved_source())
+        self.dictionary = logeion.saved_dictionary()    # (its code)
+        self.logeion = logeion.Logeion()    # (its pages, kept)
+        self.shown_words = None         # (the results of Logeion shown)
         self.dark = tk.BooleanVar(value=self.theme.dark)
         self.shown = None               # (the results, and their direction)
         self.gloss_table: dict[str, str] = {}
         self.build()
+        self.show_source()
         self.welcome = True             # (until the first search)
         self.show_welcome()
         self.status.config(text=tr('Loading the dictionary…'))
@@ -119,6 +129,25 @@ class App:
         #  meanings; on the right, the buttons
         choices = ttk.Frame(lang)
         choices.pack(side='left')
+        #  where to search: this dictionary, or Logeion
+        sources = ttk.Frame(choices)
+        sources.pack(anchor='w', pady=(0, 6))
+        ttk.Label(sources, text=tr('Search in')).pack(side='left',
+                                                      padx=(0, 6))
+        for i, source in enumerate(logeion.SOURCES):
+            ttk.Radiobutton(sources, text=tr(logeion.NAMES[source]),
+                            value=source, variable=self.source,
+                            command=self.choose_source
+                            ).pack(side='left', padx=(16 if i else 0, 0))
+        #  and in Logeion, which dictionary
+        names = [logeion.dictionary_name(c) for c in logeion.DICTIONARIES]
+        self.dictionaries = ttk.Combobox(
+            sources, values=names, state='readonly',
+            width=max(map(len, names)))
+        self.dictionaries.set(logeion.dictionary_name(self.dictionary))
+        self.dictionaries.pack(side='left', padx=(10, 0))
+        self.dictionaries.bind('<<ComboboxSelected>>',
+                               lambda e: self.choose_dictionary())
         direction = ttk.Frame(choices)
         direction.pack(anchor='w')
         english = tr('English')
@@ -140,9 +169,10 @@ class App:
         self.language.pack(side='left')
         self.language.bind('<<ComboboxSelected>>',
                            lambda e: self.choose_language())
-        ttk.Checkbutton(meanings, text=tr('Fuzzy search'),
-                        variable=self.fuzzy, command=self.choose_fuzzy
-                        ).pack(side='left', padx=(16, 0))
+        self.fuzzy_box = ttk.Checkbutton(
+            meanings, text=tr('Fuzzy search'), variable=self.fuzzy,
+            command=self.choose_fuzzy)
+        self.fuzzy_box.pack(side='left', padx=(16, 0))
         self.menus()
         #  the status line and the dark mode box, at the bottom (packed
         #  before the results, so that they stay when the window is small
@@ -175,10 +205,11 @@ class App:
         key = 'Command' if sys.platform == 'darwin' else 'Ctrl'
         dictionary = tk.Menu(bar, tearoff=False)
         #  (greyed out where the data cannot be written, as in the
-        #  AppImage)
+        #  AppImage, and while Logeion is chosen: see show_source)
         dictionary.add_command(
             label=tr('Edit dictionary…'), command=self.edit_dictionary,
             state='disabled' if read_only(self.datadir) else 'normal')
+        self.dictionary_menu = dictionary
         dictionary.add_command(label=tr('Settings…'),
                                command=self.settings_dialog)
         dictionary.add_separator()
@@ -305,10 +336,14 @@ class App:
                 child.destroy()
         self.build()
         self.entry.insert(0, query)
-        if self.welcome or self.shown is None:
+        if self.welcome:
             self.show_welcome()
-        else:
+        elif self.shown_words is not None:
+            self.results.show_logeion(self.shown_words, self.dictionary)
+        elif self.shown is not None:
             self.show_results(*self.shown)
+        else:
+            self.show_welcome()
         self.status.config(text=tr('Loading the dictionary…') if busy
                            else tr('Ready.'))
         self.set_busy(busy)
@@ -319,6 +354,7 @@ class App:
             self.language.config(values=list(self.languages),
                                  state='readonly')
             self.show_language()
+        self.show_source()
 
     # The dictionary is loaded, and words looked up, on a worker thread,
     # which hands the results to the window through a queue (Tk may only
@@ -363,6 +399,7 @@ class App:
                           session.lexicon.language_names().items()}
         self.language.config(values=list(self.languages), state='readonly')
         self.show_language()
+        self.show_source()
         self.fuzzy.set(self.saved.fuzzy_search)
         self.gloss_table = guide.gloss_table(session)
         if self.welcome:
@@ -430,6 +467,48 @@ class App:
         if self.entry.get().strip():
             self.lookup()
 
+    def choose_source(self):
+        """The choice of "Search in": kept, and the words looked up again
+        there."""
+        error = logeion.save_source(self.source.get())
+        self.show_source()
+        if error:
+            self.status.config(text=error)
+        if self.entry.get().strip():
+            self.lookup()
+
+    def show_source(self):
+        """What Logeion cannot do (search to Latin, the meanings in a
+        language, the fuzzy search), and the dictionary editor, greyed
+        out while it is chosen."""
+        on = self.source.get() == logeion.LOGEION
+        if on:
+            self.reverse.set(False)
+        #  (the editor edits this dictionary, not Logeion's)
+        self.dictionary_menu.entryconfig(
+            0, state='disabled' if on or read_only(self.datadir)
+            else 'normal')
+        self.dictionaries.config(state='readonly' if on else 'disabled')
+        self.to_latin.config(state='disabled' if on else 'normal')
+        self.fuzzy_box.config(state='disabled' if on else 'normal')
+        if self.session is not None:
+            self.language.config(state='disabled' if on else 'readonly')
+
+    def choose_dictionary(self):
+        """The dictionary of Logeion chosen: kept, and the results shown
+        again with it (Logeion is not asked again)."""
+        self.dictionaries.selection_clear()
+        names = {logeion.dictionary_name(c): c for c in logeion.DICTIONARIES}
+        code = names.get(self.dictionaries.get(), logeion.ALL)
+        if code == self.dictionary:
+            return
+        self.dictionary = code
+        error = logeion.save_dictionary(code)
+        if error:
+            self.status.config(text=error)
+        if self.shown_words is not None:
+            self.results.show_logeion(self.shown_words, code)
+
     def show_language(self):
         """The language of the meanings, in the pull-down and the
         direction buttons."""
@@ -470,6 +549,11 @@ class App:
         given."""
         if self.session is None or str(self.button['state']) == 'disabled':
             return
+        if to_latin and self.source.get() == logeion.LOGEION:
+            #  (an example to Latin, which only this dictionary does)
+            self.source.set(logeion.LOCAL)
+            logeion.save_source(logeion.LOCAL)
+            self.show_source()
         self.reverse.set(to_latin)
         self.entry.delete(0, 'end')
         self.entry.insert(0, query)
@@ -489,6 +573,9 @@ class App:
         self.history.add(line)
         self.entry.configure(values=self.history.recent())
         self.set_busy(True)
+        if self.source.get() == logeion.LOGEION:
+            self.lookup_logeion(line)
+            return
         self.status.config(text=tr('Looking up…'))
         reverse = self.reverse.get()
 
@@ -502,13 +589,39 @@ class App:
             self.done.put((self.show, (result, reverse)))
         threading.Thread(target=work, daemon=True).start()
 
+    def lookup_logeion(self, line: str):
+        """Looks the words of LINE up in Logeion: their lemmas (from the
+        analysis here), and then the pages of these (from the internet)."""
+        self.status.config(text=tr('Asking Logeion…'))
+
+        def work():
+            try:
+                with self.lock:
+                    words = logeion.queries(self.session, line)
+                self.logeion.fetch(words)
+            except Exception as e:          # show it, keep going
+                self.done.put((self.show, (tr('(error: {error})',
+                                              error=e),)))
+                return
+            self.done.put((self.show_logeion, (words,)))
+        threading.Thread(target=work, daemon=True).start()
+
+    def show_logeion(self, words):
+        self.welcome = False
+        self.shown, self.shown_words = None, words
+        self.results.show_logeion(words, self.dictionary)
+        self.status.config(text=tr('Ready.'))
+        self.set_busy(False)
+        self.entry.select_range(0, 'end')
+        self.entry.focus_set()
+
     def show_welcome(self):
         """The welcome text, with examples to click."""
         code = self.session.language.code if self.session else 'en'
         self.results.show_welcome(tr(WELCOME), guide.examples(code))
 
     def show_results(self, text: str, to_latin: bool):
-        self.shown = (text, to_latin)
+        self.shown, self.shown_words = (text, to_latin), None
         plain = self.session is None or \
             self.session.settings.pearse_codes   # (another layout)
         self.results.show(text, to_latin, styled=not plain)
@@ -524,7 +637,10 @@ class App:
 
     def edit_dictionary(self):
         """Opens the dictionary editor; after a save, the dictionary is
-        loaded again."""
+        loaded again.  (Not while Logeion is chosen: its menu item is
+        greyed out then.)"""
+        if self.source.get() == logeion.LOGEION:
+            return
         from words_edit_gui import EditorWindow
         try:
             EditorWindow(self.root, self.datadir, on_save=self.reload,

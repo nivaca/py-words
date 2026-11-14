@@ -13,6 +13,10 @@ with some order for the eye, and with things to click.
   they mean, with the words of the help (guide.py).
 * A right click gives Copy, Look up and Find; Ctrl-F opens a bar to find
   a text in the results.
+* The entries of Logeion (see logeion.py) are shown in their own styles,
+  wrapped to the width of the results (and again when it changes); their
+  links to other words of Logeion look them up, and the others open in
+  the browser.
 
 The colours follow the light or dark look (<<ThemeChanged>>), and the
 fonts the size chosen (<<FontsChanged>>).
@@ -22,9 +26,14 @@ from __future__ import annotations
 
 import sys
 import tkinter as tk
+import webbrowser
 from tkinter import font as tkfont, ttk
 
+import logeion
 from interface import tr
+from logeion_api import entry_target
+from logeion_render import Style
+from logeion_text import styled_segments
 from layout import (FORM_LINE, CODES, HEADWORD, WORD,  # noqa: F401
                     analysis_of, kind_of)
 
@@ -69,6 +78,11 @@ class Results(ttk.Frame):
         self.explain_codes = explain_codes
         self.explain_analysis = explain_analysis
         self.links: dict[str, tuple[str, bool]] = {}
+        self.urls: dict[str, str] = {}  # (links to open in the browser)
+        self.logeion_words = None       # (the Logeion results shown)
+        self.logeion_width = 0
+        self.logeion_dictionary = logeion.ALL
+        self.rewrap_after = None
         self.to_latin_words = False     # (the words looked up are not Latin)
         self.tip = None
         self.tip_after = None
@@ -90,6 +104,7 @@ class Results(ttk.Frame):
         self.word_font = tkfont.Font(self)
         self.bold_font = tkfont.Font(self)
         self.note_font = tkfont.Font(self)
+        self.bold_italic_font = tkfont.Font(self)
         self.restyle()
         #  On the window, so they are taken off when this is destroyed (the
         #  window builds a new one when the interface changes)
@@ -108,6 +123,7 @@ class Results(ttk.Frame):
                 e, tag))
             t.tag_bind(tag, '<Leave>', lambda e: self._tip_hide())
         t.bind('<Double-Button-1>', self._double_click)
+        t.bind('<Configure>', lambda e: self._rewrap_later(), add='+')
         menu_button = '<Button-2>' if sys.platform == 'darwin' \
             else '<Button-3>'
         t.bind(menu_button, self._menu)
@@ -123,6 +139,8 @@ class Results(ttk.Frame):
         self.word_font.config(family=family, size=size + 2, weight='bold')
         self.bold_font.config(family=family, size=size, weight='bold')
         self.note_font.config(family=family, size=size, slant='italic')
+        self.bold_italic_font.config(family=family, size=size,
+                                     weight='bold', slant='italic')
         c = COLOURS[self.theme.dark]
         t = self.text
         t.tag_config('word', font=self.word_font, spacing1=8, spacing3=3)
@@ -134,6 +152,17 @@ class Results(ttk.Frame):
         t.tag_config('form', foreground=c['form'])
         t.tag_config('analysis', foreground=c['analysis'])
         t.tag_config('link', underline=False)
+        #  (the entries of Logeion)
+        t.tag_config('lg_title', font=self.word_font, spacing1=6,
+                     spacing3=2)
+        t.tag_config('lg_section', font=self.bold_font,
+                     foreground=c['headword'], spacing1=4)
+        t.tag_config('lg_bold', font=self.bold_font)
+        t.tag_config('lg_italic', font=self.note_font)
+        t.tag_config('lg_bold_italic', font=self.bold_italic_font)
+        t.tag_config('lg_dim', foreground=c['muted'])
+        t.tag_config('lg_example', foreground=c['analysis'])
+        t.tag_config('lg_link', foreground=self.theme.palette['link'])
         t.tag_config('found', background=c['found'])
         t.tag_config('found_now', background=c['found_now'])
         t.tag_raise('found_now')
@@ -142,6 +171,8 @@ class Results(ttk.Frame):
         t.tag_raise('sel')
         if self.tip is not None:
             self._tip_hide()
+        if self.logeion_words is not None:      # (the fonts' width)
+            self._rewrap_later()
 
     # Showing ---------------------------------------------------------------
 
@@ -149,9 +180,11 @@ class Results(ttk.Frame):
         t = self.text
         t.config(state='normal')
         t.delete('1.0', 'end')
-        for tag in self.links:
+        for tag in list(self.links) + list(self.urls):
             t.tag_delete(tag)
         self.links = {}
+        self.urls = {}
+        self.logeion_words = None
         self._clear_found()
 
     def _end(self):
@@ -228,6 +261,94 @@ class Results(ttk.Frame):
                       f'{line_start}+{column + len(label)}c')
         self._end()
 
+    def show_logeion(self, words: list, dictionary: str = logeion.ALL):
+        """The entries of Logeion for WORDS (logeion.Word), wrapped to the
+        width of the results: those of all its dictionaries, or of the one
+        whose code is DICTIONARY."""
+        self.logeion_dictionary = dictionary
+        self._show_logeion(words, self._width())
+        self.text.yview_moveto(0)
+
+    def _width(self) -> int:
+        """How many characters of the text font fit in a line."""
+        t = self.text
+        font = tkfont.Font(font=t.cget('font'))
+        pixels = t.winfo_width() - 2 * (int(t.cget('padx')) +
+                                        int(t.cget('highlightthickness')))
+        if pixels < 50:                 # (not drawn yet)
+            pixels = t.winfo_reqwidth()
+        return max(30, pixels // max(1, font.measure('0')) - 1)
+
+    def _show_logeion(self, words: list, width: int):
+        top = self.text.yview()[0]
+        self._start()
+        self.logeion_words, self.logeion_width = words, width
+        t = self.text
+        lines = logeion.render(words, Style(True), width,
+                               self.logeion_dictionary)
+        for n, (kind, line) in enumerate(lines):
+            line_start = t.index('end-1c')
+            for piece, codes, url in styled_segments(line):
+                start = t.index('end-1c')
+                t.insert('end', piece, self._tags(codes))
+                if url:
+                    self._url(start, t.index('end-1c'), url)
+            if kind == logeion.HEAD:
+                t.tag_add('word', line_start, 'end-1c')
+            t.insert('end', '\n')
+        self.text.delete('end-1c')              # (the last newline)
+        self._end()
+        self.text.yview_moveto(top)
+
+    @staticmethod
+    def _tags(codes: tuple) -> tuple:
+        """The tags of a piece of an entry of Logeion with the ANSI CODES
+        (those of logeion_render.Style)."""
+        if 4 in codes:
+            return ('lg_title',)
+        if 36 in codes:
+            return ('lg_section',)
+        tags = []
+        if 1 in codes and 3 in codes:
+            tags.append('lg_bold_italic')
+        elif 1 in codes:
+            tags.append('lg_bold')
+        elif 3 in codes:
+            tags.append('lg_italic')
+        if 2 in codes:
+            tags.append('lg_dim')
+        if 32 in codes:
+            tags.append('lg_example')
+        return tuple(tags)
+
+    def _url(self, start: str, end: str, url: str):
+        """A link of an entry of Logeion: to a word of Logeion, looked up;
+        else, to open in the browser."""
+        target = entry_target(url)
+        n = len(self.links) + len(self.urls)
+        tag = f'link{n}'
+        if target is not None:
+            self.links[tag] = (target[0], False)
+        else:
+            self.urls[tag] = url
+        for name in ('link', 'lg_link', tag):
+            self.text.tag_add(name, start, end)
+
+    def _rewrap_later(self):
+        """Wraps the entries of Logeion again, a moment after the width
+        changes (as the window is being resized)."""
+        if self.logeion_words is None:
+            return
+        if self.rewrap_after is not None:
+            self.after_cancel(self.rewrap_after)
+        self.rewrap_after = self.after(150, self._rewrap)
+
+    def _rewrap(self):
+        self.rewrap_after = None
+        if self.logeion_words is not None and \
+                self._width() != self.logeion_width:
+            self._show_logeion(self.logeion_words, self._width())
+
     # Clicking --------------------------------------------------------------
 
     def _follow(self, event):
@@ -237,10 +358,17 @@ class Results(ttk.Frame):
             if tag in self.links:
                 self.on_lookup(*self.links[tag])
                 return 'break'
+            if tag in self.urls:
+                webbrowser.open(self.urls[tag])
+                return 'break'
 
     def _word_at(self, index: str) -> tuple[str, bool] | None:
         """(the word at INDEX, whether to look it up to Latin), or None."""
         t = self.text
+        if self.logeion_words is not None:      # (Latin, as it is)
+            word = t.get(f'{index} wordstart', f'{index} wordend')
+            return (word, False) if WORD.fullmatch(word) and \
+                len(word) > 1 else None
         line = t.get(f'{index} linestart', f'{index} lineend')
         kind = kind_of(line)
         if kind == 'form':

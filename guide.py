@@ -75,7 +75,7 @@ WINDOW = (
        'beside it, whether a word that finds nothing is followed by its '
        'near spellings.  The menus have the rest: Dictionary (the '
        'dictionary editor, greyed out where the dictionary cannot be '
-       'written to, as in the AppImage and the Flatpak; and the other '
+       'written to, as in the AppImage; and the other '
        'settings, each with its help), '
        'Edit (cut, copy and paste), View (find in the results, the size of '
        'the text, the fonts, dark mode) and Help (this text, and the '
@@ -88,6 +88,21 @@ WINDOW = (
     N_('Ctrl and + or − make the text larger or smaller (Ctrl and 0: as '
        'usual), and the moon at the bottom right makes the window dark (a '
        'sun, then, makes it light again).'),
+    N_('"Search in" chooses where the words are looked up: Local, this '
+       'dictionary, or Logeion (logeion.uchicago.edu), the dictionaries of '
+       'the University of Chicago (Lewis and Short, Georges, Gaffiot, '
+       'DMLBS, Du Cange …), which needs the internet.  Logeion does not '
+       'analyse inflected forms, so each word is analysed here and Logeion '
+       'is asked for its lemmas (arma: armum and armo; and arma itself, a '
+       'headword of Logeion\'s).  It searches in Latin only: the other '
+       'direction, the language of the meanings, the fuzzy search and the '
+       'dictionary editor (which edits this dictionary) are greyed out '
+       'meanwhile.  The list beside "Search in" chooses '
+       'Logeion\'s dictionary (Lewis and Short, Gaffiot …) or all of them; '
+       'the short definition, the frequency and the examples are shown '
+       'with any.  Its links to other words look them up; the others open '
+       'in the browser.  In the terminal, F8 changes the source and F5 the '
+       'dictionary; on the command line, --logeion and --dictionary.'),
 )
 WEB = (
     N_('Type in the box at the top and press Enter, or "Look up"; the two '

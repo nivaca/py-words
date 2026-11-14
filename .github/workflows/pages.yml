@@ -1,6 +1,6 @@
 # Publishes the site of py-words (pages/build.py: a page that sends the
-# visitors to the program on its server; the version in the browser, with
-# Pyodide, is no longer built) on GitHub Pages, with each push to main.
+# visitors to the program on its server) on GitHub Pages, with each push to
+# main.
 # In the repository's settings: Pages > Source: GitHub Actions.
 
 name: Pages
@@ -29,14 +29,14 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          # El mismo Python que trae Pyodide (PYODIDE en pages/app.js)
-          python-version: '3.12'      # (that of Pyodide 0.26)
+          python-version: '3.12'
       # A virtual display (Xvfb), so that the tests of the windows run too
       # instead of being skipped
       - name: Virtual display
         run: sudo apt-get install -y xvfb fonts-dejavu
+      # (tests/isolate.py starts an Xvfb of its own for the windows)
       - name: Tests
-        run: xvfb-run -a python3 -m unittest discover -s tests
+        run: python3 -m unittest discover -s tests
       - name: Build the site
         run: python3 pages/build.py -o site
       - uses: actions/configure-pages@v6

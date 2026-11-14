@@ -8,10 +8,10 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
     __file__))))                        # the program, when run from anywhere
-import isolate  # noqa: F401,E402  (before anything that reads settings)
+import isolate  # noqa: E402  (before anything that reads settings)
 
 from gui_results import kind_of  # noqa: E402
-from test_gui_settings import DATA, _display  # noqa: E402
+from test_gui_settings import DATA  # noqa: E402
 
 
 class KindTests(unittest.TestCase):
@@ -34,7 +34,7 @@ class KindTests(unittest.TestCase):
             self.assertEqual(kind_of(line), kind, line)
 
 
-@unittest.skipUnless(_display(), 'needs a display')
+@unittest.skipUnless(isolate.display(), 'needs a display')
 class WindowTests(unittest.TestCase):
 
     def setUp(self):
