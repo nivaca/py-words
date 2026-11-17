@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.20
+Version:        3.21
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -105,6 +105,9 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Tue Nov 17 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.21-1
+- The documentation no longer describes the former in-browser version
+
 * Sat Nov 14 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.20-1
 - Python 3.13 or later is needed
 
