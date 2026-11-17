@@ -23,8 +23,8 @@ long vowels come from Collatinus, Lewis and Short and De Miguel (see
 "Sources").  It is free software, under the GNU General Public License
 (see "Licensing").
 
-I am Nicolas Vaughan (<nivaca@fastmail.com> and
-<n.vaughan@uniandes.edu.co>), and I wrote it in 2026.  First it was a
+I am Nicolas Vaughan (<nicolasvaughan@proton.me>), and I wrote it
+in 2026.  First it was a
 faithful translation of the Ada version maintained at
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words); then I
 redesigned it as idiomatic Python, with the same analyses, easier-to-read
@@ -1979,7 +1979,7 @@ py-words is distributed under the GNU General Public License, version 3 or
 anybody can use, copy, change and redistribute it, even commercially, but
 a changed or bigger program that includes it must be distributed under the
 same licence, with its source code.  The copyright notices recognize
-Nicolas Vaughan (<nivaca@fastmail.com>, 2026) for the Python program and
+Nicolas Vaughan (<nicolasvaughan@proton.me>, 2026) for the Python program and
 William A. Whitaker (1936-2010) for WORDS and its dictionary data.  Until
 version 2.15 py-words was distributed under the MIT License; I changed to
 the GPL so that the program can include code from Collatinus, by Yves

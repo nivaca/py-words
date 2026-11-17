@@ -42,7 +42,7 @@ CREDITS_TEXT = (
     'español etimológico, 1867 (rare words and proper names, Latin-'
     'Spanish);\n'
     'Collatinus, by Yves Ouvrard and Philippe Verkerk (long vowels).\n'
-    'Code © 2026 Nicolas Vaughan (nivaca@fastmail.com), under the GNU '
+    'Code © 2026 Nicolas Vaughan (nicolasvaughan@proton.me), under the GNU '
     'General\n'
     'Public License, version 3 or later (see LICENCE.txt).  The data of '
     'WORDS,\n'

@@ -292,7 +292,7 @@ class CommandLineTests(InTempDir):
         out = run('--version').stdout.decode()
         self.assertIn('py-words', out)
         self.assertIn('William Whitaker', out)
-        self.assertIn('nivaca@fastmail.com', out)
+        self.assertIn('nicolasvaughan@proton.me', out)
         self.assertIn('https://github.com/nivaca/py-words', out)
         self.assertIn('Associate Professor of Literature', out)
         self.assertIn('Universidad de los Andes, Bogotá, Colombia', out)

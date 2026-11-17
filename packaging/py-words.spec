@@ -1,5 +1,5 @@
 # py-words, a Latin dictionary and parser.
-# Copyright (C) 2026 Nicolas Vaughan <nivaca@fastmail.com>
+# Copyright (C) 2026 Nicolas Vaughan <nicolasvaughan@proton.me>
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
@@ -105,50 +105,50 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
-* Tue Nov 17 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.21-1
+* Tue Nov 17 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.21-1
 - The documentation no longer describes the former in-browser version
 
-* Sat Nov 14 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.20-1
+* Sat Nov 14 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.20-1
 - Python 3.13 or later is needed
 
-* Sat Nov 14 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.19-1
+* Sat Nov 14 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.19-1
 - Plainer, more idiomatic documentation and comments; stale facts corrected
 
-* Sat Nov 14 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.18-1
+* Sat Nov 14 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.18-1
 - With Logeion, the analysis of each word comes first, without duplicates
 - The source, dictionary and direction last chosen are kept for the next
   start; ~G and ~D in interactive mode
 - Long results in the pager, and colours, in the terminal
 
-* Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.17-1
+* Fri Nov 13 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.17-1
 - Logeion as a second source: its entries for the lemmas of the words, of
   all its dictionaries or of one
 - No Flatpak, and no version in the browser, any more
 
-* Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.16-1
+* Fri Nov 13 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.16-1
 - Selected text in the results of the window is readable
 
-* Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.15-1
+* Fri Nov 13 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.15-1
 - An Edit menu in the window (cut, copy, paste); F7 in the terminal copies
   all the results
 - A Flatpak of the program
 
-* Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.14-1
+* Fri Nov 13 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.14-1
 - The AppImage carries terminal descriptions in the old format, so words_tui.py
   starts in it
 
-* Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.13-1
+* Fri Nov 13 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.13-1
 - An entry is shown once per word, with all its forms: a verb's forms and
   its participles together, and entries that show the same only once
 
-* Fri Nov 13 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.12-1
+* Fri Nov 13 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.12-1
 - Entries of the same word with the same forms show them once; 114 English
   meanings that repeated another entry's are their own again
 
-* Wed Nov 11 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.11-1
+* Wed Nov 11 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.11-1
 - The windows follow the desktop's scaling (Xft.dpi) on hi-res displays
 
-* Wed Nov 11 2026 Nicolas Vaughan <nivaca@fastmail.com> - 3.10-1
+* Wed Nov 11 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.10-1
 - First package: runs on the system's Python and Tk; the py-words
   command starts the window, the command line, the terminal program,
   the web page or the editor, as the AppImage does

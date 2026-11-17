@@ -24,8 +24,8 @@ Latham, y las vocales largas vienen de Collatinus, de Lewis y Short y de
 De Miguel (véase "Fuentes").  Es software libre, bajo la Licencia Pública General de GNU
 (véase "Licencia").
 
-Lo escribí yo, Nicolas Vaughan (<nivaca@fastmail.com> y
-<n.vaughan@uniandes.edu.co>), en 2026.  Empezó como una traducción fiel
+Lo escribí yo, Nicolas Vaughan (<nicolasvaughan@proton.me>), en 2026.
+Empezó como una traducción fiel
 de la versión en Ada que se mantiene en
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words), y
 luego lo rehíce en Python idiomático, con los mismos análisis, una salida
@@ -2060,7 +2060,7 @@ versión 3 o (a su elección) cualquier versión posterior (véase
 modificarlo y redistribuirlo, también con fines comerciales, pero un
 programa modificado o mayor que lo incluya debe distribuirse bajo la
 misma licencia, con su código fuente.  Los avisos de copyright reconocen
-a Nicolas Vaughan (<nivaca@fastmail.com>, 2026) por el programa en Python
+a Nicolas Vaughan (<nicolasvaughan@proton.me>, 2026) por el programa en Python
 y a William A. Whitaker (1936-2010) por WORDS y los datos de su
 diccionario.  Hasta la versión 2.15, py-words se distribuía bajo la
 licencia MIT; la cambié por la GPL para que el programa pueda incluir

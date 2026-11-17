@@ -1,6 +1,6 @@
 py-words, a Latin dictionary and parser
 
-Copyright (C) 2026 Nicolas Vaughan <nivaca@fastmail.com> and <n.vaughan@uniandes.edu.co>
+Copyright (C) 2026 Nicolas Vaughan <nicolasvaughan@proton.me>
   (py-words, the Python program)
 Copyright (C) William A. Whitaker (1936-2010)
   (WORDS, the original program, and its dictionary data in data/)
