@@ -461,10 +461,7 @@ sus entradas (`logeion_*.py`) viene de mi programa
 El diccionario también está en línea, sin nada que instalar, en
 <https://nivaca.pythonanywhere.com/>: la página de `words_web.py`, en un
 servidor para todos (véase más abajo), donde cada visitante tiene sus
-propios ajustes y búsquedas anteriores.  El sitio anterior,
-`nicolasvaughan.org/py-words/` (primero una versión que funcionaba en el
-navegador, con Pyodide, y luego una página que llevaba al servidor), ya
-no se publica, y su código (`pages/`) ya no existe.
+propios ajustes y búsquedas anteriores.
 
 El programa entero puede también funcionar en un servidor web para
 todos (las búsquedas las hace el servidor, y no hay nada que

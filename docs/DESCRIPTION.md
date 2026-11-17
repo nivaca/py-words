@@ -267,47 +267,14 @@ Short; the English meanings of the entries Lewis and Short has (30,601)
 are now his definitions.  The dictionary now has 93,370 entries.  The
 README tells how it was done.
 
-6. In the browser
------------------
+6. Online
+---------
 
-After that, the dictionary went online, at
-<https://nicolasvaughan.org/py-words/>, so it could be used without
-installing anything.  There was no server behind it.  The browser ran the
-program itself with Pyodide (CPython compiled for WebAssembly), and as
-py-words needs only the standard library, Pyodide did not need anything
-more.
-
-The page was the same one that `words_web.py` serves.  Its WSGI
-application ran inside Pyodide, and a short script, `pages/app.js`, played
-the part of the web server: it caught the links and the forms of the page,
-gave them to the application as requests, and put the page that came back
-in place of the old one.  Each search kept its own address, so it could be
-bookmarked and the Back button worked.
-
-The program and its data travelled in one zip of less than 3 MB, which was
-downloaded at the same time as Pyodide and unpacked into Pyodide's file
-system.  After that, a search took a few milliseconds, as on a computer.
-On each visit the browser asked if its copy of the zip was still current,
-so a new version appeared immediately.  The configuration file and the
-history lived in the local storage of the browser between visits, and the
-cache of the dictionary in its IndexedDB.  There was one problem: the
-cache compares the dates of the files, and when Pyodide unpacked the zip
-every file had the time of the visit, so the cache was never valid.  From
-then on the zip was unpacked keeping the dates it has inside, and the
-cache stayed valid until a new version.  Reading the XML took around one
-second in the browser, and reading the cache around a quarter of one, so
-the first visit took a few seconds (most of it downloading Python) and
-later ones around a second and a half.
-
-`pages/build.py` built the static site, which any web server could host,
-from its root or from a folder.  On GitHub, a workflow ran the tests,
-built the site and published it on GitHub Pages with each push to the main
-branch (now it only runs the tests).
-
-Later the program moved to a public server
-(<https://nivaca.pythonanywhere.com/>), and for a while the old address
-redirected there.  Then the version in the browser was taken out, and
-later the whole site, with its code (`pages/`).
+After that, the dictionary went online, so it could be used without
+installing anything.  It runs on a public server, at
+<https://nivaca.pythonanywhere.com/>: the page that `words_web.py` serves,
+whose WSGI application is the same program.  The searches are made by the
+server, and each visitor keeps their own settings and earlier searches.
 
 7. A fuzzy search
 -----------------

@@ -446,10 +446,7 @@ entries (`logeion_*.py`) comes from my program
 The dictionary is also online, with nothing to install, at
 <https://nivaca.pythonanywhere.com/>: the page of `words_web.py`, on a
 public server (see below), where each visitor has their own settings and
-earlier searches.  The former site, `nicolasvaughan.org/py-words/` (first
-a version that ran in the browser, with Pyodide, and then a page that
-redirected to the server), is no longer published, and its code (`pages/`)
-is gone.
+earlier searches.
 
 The whole program can also run on a public web server (the searches are
 made by the server, and there is nothing to download).  Its WSGI
