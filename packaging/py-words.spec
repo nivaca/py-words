@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.22
+Version:        3.23
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -105,6 +105,9 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Wed Nov 18 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.23-1
+- Logeion's dictionary is the DMLBS until another one is chosen
+
 * Wed Nov 18 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.22-1
 - The web page can also search in Logeion
 
