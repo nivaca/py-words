@@ -360,8 +360,12 @@ class LogeionTests(unittest.TestCase):
         cls.app.logeion = logeion.Logeion(cls.client)
 
     def setUp(self):
+        import config
+        import logeion
         from test_logeion import forget_choices
         forget_choices(self)
+        #  (all the dictionaries: the fake pages have no DMLBS)
+        config.update(logeion.SECTION, {'dictionary': logeion.ALL})
 
     def choose(self, fields: str):
         return self.call('/source', method='POST',
@@ -372,7 +376,7 @@ class LogeionTests(unittest.TestCase):
         entries follow; what Logeion cannot do is greyed out."""
         import logeion
         page = self.call(query='q=arma')[2]
-        self.assertIn('<option value="local" selected>Local</option>', page)
+        self.assertIn('<option value="local" selected>py-words</option>', page)
         self.assertNotIn('name="dictionary"', page)
         self.assertNotIn(' disabled', page)
         status, headers, _ = self.choose('source=logeion')
@@ -495,6 +499,11 @@ class PublicLogeionTests(unittest.TestCase):
         page = self.call(b, query='q=arma')[1]
         self.assertNotIn('ustensiles', page)
         self.assertIn('<option value="local" selected>', page)
+        #  (in Logeion, the DMLBS until another dictionary is chosen)
+        self.post(b, '/source', 'source=logeion')
+        page = self.call(b, query='q=arma')[1]
+        self.assertIn('<option value="dmlbs" selected>', page)
+        self.assertIn('DMLBS has no entry for arma', page)
 
 
 if __name__ == '__main__':

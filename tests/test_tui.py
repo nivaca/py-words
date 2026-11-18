@@ -135,11 +135,12 @@ class TerminalDictionaryTests(unittest.TestCase):
                                      (DOWN + '\r', 0.8), (F10, 1)])
         self.assertEqual(status, 0)
         self.assertIn('Dictionary (Enter chooses)', out)
-        self.assertIn('Logeion: Lewis & Short.', out)
+        #  (the DMLBS at first; the one after it)
+        self.assertIn('Logeion: LaNe.', out)
         with open(os.path.join(self.config, 'config.toml'), 'rb') as f:
             data = tomllib.load(f)['logeion']
         self.assertEqual((data['source'], data['dictionary']),
-                         ('logeion', 'ls'))
+                         ('logeion', 'lane'))
 
     def test_language_of_the_meanings(self):
         import tomllib

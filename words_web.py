@@ -758,11 +758,14 @@ class WebApp:
 
     @staticmethod
     def source_options(current: str) -> str:
-        """The choices of "Search in": this dictionary, or Logeion."""
+        """The choices of "Search in": this dictionary (by the name of
+        the program), or Logeion."""
+        names = {logeion.LOCAL: NAME, logeion.LOGEION: tr(logeion.NAMES[
+            logeion.LOGEION])}
         return ''.join(
             f'<option value="{esc(source)}"'
             f'{" selected" if source == current else ""}>'
-            f'{esc(tr(logeion.NAMES[source]))}</option>'
+            f'{esc(names[source])}</option>'
             for source in logeion.SOURCES)
 
     @staticmethod

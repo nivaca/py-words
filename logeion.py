@@ -54,6 +54,9 @@ SECTION = 'logeion'
 #  Logeion, by their codes (those of py-logeion: -d ls), with their names
 ALL = 'all'
 LEWIS_SHORT = 'ls'
+#  The dictionary shown until another one is chosen: the DMLBS (the
+#  Dictionary of Medieval Latin from British Sources)
+DEFAULT_DICTIONARY = 'dmlbs'
 DICTIONARIES = {ALL: N_('All dictionaries')} | {
     code: name for code, name in (NAMES_OF[dname] for dname in (
         'LewisShort', 'Lewis', 'Georges', 'Gaffiot 2016', 'DMLBS', 'LaNe',
@@ -86,9 +89,10 @@ def saved_source() -> str:
 
 
 def saved_dictionary() -> str:
-    """The dictionary kept in the configuration file (all if none)."""
+    """The dictionary kept in the configuration file (the DMLBS if
+    none)."""
     code = config.section(SECTION).get('dictionary')
-    return code if code in DICTIONARIES else ALL
+    return code if code in DICTIONARIES else DEFAULT_DICTIONARY
 
 
 def save_source(source: str) -> str:

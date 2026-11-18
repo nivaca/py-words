@@ -363,20 +363,19 @@ prints it.  It comes in the language of the interface.
 
 The window, `words_tui.py`, the command line and the web page
 (`words_web.py`) can also show, instead of the entries of this dictionary,
-those of
-[Logeion](https://logeion.uchicago.edu), the Latin and Greek dictionaries
-of the University of Chicago: Lewis and Short, Lewis's Elementary,
-Georges, Gaffiot, the DMLBS, Du Cange and others, with the short
-definition, the frequency and examples from its corpus.  In the window it
-is "Search in" (Local or Logeion), above the direction; on the web page,
-"Search in", beside "Meanings in"; in `words_tui.py`, F8; in the
-interactive command line, `~G`.  The last choice made in any of
-them is kept the next time any of them starts (`source` in the section
-`[logeion]` of the configuration file), and so are Logeion's dictionary
-(see below) and the direction, Latin to English or back (`to_latin` in
-`[search]`): the programs start as they were left.  On the command line,
-`--logeion`, `--local` and `--dictionary` change them for one run, without
-keeping them.  It needs an internet connection.
+those of [Logeion](https://logeion.uchicago.edu), the Latin and Greek
+dictionaries of the University of Chicago: Lewis and Short, Lewis's
+Elementary, Georges, Gaffiot, the DMLBS, Du Cange and others, with the
+short definition, the frequency and examples from its corpus.  In the
+window it is "Search in" (Local or Logeion), above the direction; on the
+web page, "Search in" (py-words or Logeion), beside "Meanings in"; in
+`words_tui.py`, F8; in the interactive command line, `~G`.  The last
+choice made in any of them is kept the next time any of them starts
+(`source` in the section `[logeion]` of the configuration file), and so
+are Logeion's dictionary (see below) and the direction, Latin to English
+or back (`to_latin` in `[search]`): the programs start as they were left.
+On the command line, `--logeion`, `--local` and `--dictionary` change them
+for one run, without keeping them.  It needs an internet connection.
 
 Logeion does not analyse inflected forms, so the words are analysed here
 first, and Logeion is asked for their lemmas: the first of the principal
@@ -432,25 +431,26 @@ start of the session says which source is in use.  The lines `~E`, `~L`,
 read.
 
 The entries can be those of all the dictionaries of Logeion, or of only
-one: in the window, the list beside "Search in" (available when Logeion is
-chosen); in `words_tui.py`, F5 (which, with Logeion, chooses the
-dictionary instead of the language of the meanings); on the command line,
-`--dictionary` with its code or name (`--dictionary ls`, `--dictionary "Du
-Cange"`; it needs no `--logeion`, and `--dictionaries` lists them).  The
-choices are Lewis & Short (`ls`), Lewis's Elementary (`lewis`), Georges,
-Gaffiot 2016 (`gaffiot`), the DMLBS, LaNe, Du Cange (`ducange`),
-Lana-Michelone (`lana`), Frieze-Dennison for Vergil (`frieze`) and the
-Latino-Sinicum (`sinicum`).  The short definition, the frequency and the
-examples from the corpus are shown with any of them; a lemma that the
-dictionary does not have says which ones have it.  Changing the dictionary
-shows the results again at once, without asking Logeion, and it is kept
-for next time (`dictionary` in `[logeion]`).  Its entries are wrapped to
-the width of the window or the terminal; in the window, their links to
-other words look those words up, and the other links open in the browser.
-The pages are kept while the program runs, so a word asked for again is
-shown at once.  The part of the program that asks Logeion and shows its
-entries (`logeion_*.py`) comes from my program
-[py-logeion](https://github.com/nivaca/py-logeion).
+one; until another is chosen, it is the DMLBS (the Dictionary of Medieval
+Latin from British Sources).  To choose: in the window, the list beside
+"Search in" (available when Logeion is chosen); in `words_tui.py`, F5
+(which, with Logeion, chooses the dictionary instead of the language of
+the meanings); on the command line, `--dictionary` with its code or name
+(`--dictionary ls`, `--dictionary "Du Cange"`; it needs no `--logeion`,
+and `--dictionaries` lists them).  The choices are Lewis & Short (`ls`),
+Lewis's Elementary (`lewis`), Georges, Gaffiot 2016 (`gaffiot`), the DMLBS
+(`dmlbs`), LaNe, Du Cange (`ducange`), Lana-Michelone (`lana`),
+Frieze-Dennison for Vergil (`frieze`) and the Latino-Sinicum (`sinicum`).
+The short definition, the frequency and the examples from the corpus are
+shown with any of them; a lemma that the dictionary does not have says
+which ones have it.  Changing the dictionary shows the results again at
+once, without asking Logeion, and it is kept for next time (`dictionary`
+in `[logeion]`).  Its entries are wrapped to the width of the window or
+the terminal; in the window, their links to other words look those words
+up, and the other links open in the browser.  The pages are kept while the
+program runs, so a word asked for again is shown at once.  The part of the
+program that asks Logeion and shows its entries (`logeion_*.py`) comes
+from my program [py-logeion](https://github.com/nivaca/py-logeion).
 
 ### Online
 

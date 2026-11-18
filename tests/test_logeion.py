@@ -301,13 +301,14 @@ class DictionaryTests(unittest.TestCase):
     def test_kept(self):
         import config
         self.addCleanup(config.update, logeion.SECTION, {})
-        self.assertEqual(logeion.saved_dictionary(), logeion.ALL)
+        #  (the DMLBS, until another is chosen)
+        self.assertEqual(logeion.saved_dictionary(), 'dmlbs')
         logeion.save_source(logeion.LOGEION)
         self.assertEqual(logeion.save_dictionary('gaffiot'), '')
         self.assertEqual(logeion.saved_dictionary(), 'gaffiot')
         self.assertEqual(logeion.saved_source(), logeion.LOGEION)
         config.update(logeion.SECTION, {'dictionary': 'lsj'})
-        self.assertEqual(logeion.saved_dictionary(), logeion.ALL)
+        self.assertEqual(logeion.saved_dictionary(), 'dmlbs')
 
 
 class SourceTests(unittest.TestCase):
@@ -385,7 +386,10 @@ class InteractiveTests(unittest.TestCase):
     """~G and ~D in interactive mode and in files (words.py)."""
 
     def setUp(self):
+        import config
         forget_choices(self)
+        #  (all the dictionaries: the fake pages have no DMLBS)
+        config.update(logeion.SECTION, {'dictionary': logeion.ALL})
         self.session = Session(Lexicon.load(DATA), Settings())
         self.session.settings.pause_in_screen_output = False
         patch = mock.patch.object(api, 'Client', lambda: Client())
@@ -527,6 +531,8 @@ class WindowTests(unittest.TestCase):
         import words_gui
         self.root = tk.Tk()
         forget_choices(self)
+        #  (all the dictionaries: the fake pages have no DMLBS)
+        config.update(logeion.SECTION, {'dictionary': logeion.ALL})
         self.app = words_gui.App(self.root, DATA)
         self.app.logeion = logeion.Logeion(Client())
 

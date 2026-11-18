@@ -13,7 +13,7 @@
     [appearance]   dark_mode: whether the windows are dark
     [logeion]      source: where the programs look words up ("local" or
                    "logeion"; see logeion.py), and dictionary: Logeion's
-                   dictionary shown (or "all")
+                   dictionary shown (or "all"; the DMLBS if none)
     [search]       to_latin: whether the last search was to Latin
 
 Every setting may be left out, and then has its usual value.  The program
@@ -165,8 +165,8 @@ INTRO = {
                   'dictionary) or "logeion" (the entries of Logeion for the '
                   'lemmas of the words, which needs the internet); and '
                   'dictionary = "all" or the code of the only dictionary of '
-                  'Logeion shown (ls, gaffiot …; words.py --dictionaries '
-                  'lists them).  Kept when changed with "Search in" and the '
+                  'Logeion shown (dmlbs, as usual; ls, gaffiot …; words.py '
+                  '--dictionaries lists them).  Kept when changed with "Search in" and the '
                   'list beside it in the window and on the web page, F8 and '
                   'F5 in the terminal, '
                   'and ~G and ~D in interactive mode; --logeion, --local and '
