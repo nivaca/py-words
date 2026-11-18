@@ -361,14 +361,16 @@ prints it.  It comes in the language of the interface.
 
 ### Logeion
 
-The window, `words_tui.py` and the command line can also show, instead of
-the entries of this dictionary, those of
+The window, `words_tui.py`, the command line and the web page
+(`words_web.py`) can also show, instead of the entries of this dictionary,
+those of
 [Logeion](https://logeion.uchicago.edu), the Latin and Greek dictionaries
 of the University of Chicago: Lewis and Short, Lewis's Elementary,
 Georges, Gaffiot, the DMLBS, Du Cange and others, with the short
 definition, the frequency and examples from its corpus.  In the window it
-is "Search in" (Local or Logeion), above the direction; in `words_tui.py`,
-F8; in the interactive command line, `~G`.  The last choice made in any of
+is "Search in" (Local or Logeion), above the direction; on the web page,
+"Search in", beside "Meanings in"; in `words_tui.py`, F8; in the
+interactive command line, `~G`.  The last choice made in any of
 them is kept the next time any of them starts (`source` in the section
 `[logeion]` of the configuration file), and so are Logeion's dictionary
 (see below) and the direction, Latin to English or back (`to_latin` in
@@ -410,7 +412,16 @@ of its lemmas:
 Logeion searches in Latin only: while it is chosen, the other direction,
 the language of the meanings, the fuzzy search and "Edit dictionary…"
 (the editor edits this dictionary, not Logeion) are greyed out in the
-window, and F4 in `words_tui.py` says so.
+window and on the web page, and F4 in `words_tui.py` says so.
+
+On the web page, the list beside "Search in" chooses Logeion's
+dictionary.  The server asks Logeion for the first twelve words of a
+search only; the others are analysed, but not looked up there.  The
+entries are wrapped by the browser, and their links to other words look
+those words up on the page; the other links open in a new tab.  On a
+public server (`public_app()`), the source and the dictionary are each
+visitor's, kept in the cookies of their browser like the other settings,
+and the configuration file of the server is left alone.
 
 In the interactive command line, `~G` switches between Logeion and this
 dictionary, and `~D` chooses Logeion's dictionary: `~D gaffiot`, or `~D`

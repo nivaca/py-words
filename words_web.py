@@ -47,6 +47,10 @@ from wsgiref.simple_server import WSGIRequestHandler, WSGIServer, make_server
 import config
 import guide
 import interface
+import logeion
+from logeion_api import entry_target
+from logeion_render import Style
+from logeion_text import styled_segments
 from config import ConfigError
 from helptext import HELP
 from history import History
@@ -96,12 +100,30 @@ KEPT_SEARCH = 200                       # (longer searches are not kept)
 KEPT_SEARCHES = 2500                    # (characters of words_history)
 TOKEN_LENGTH = 32
 
+#  Logeion (see logeion.py): the words of a search it is asked for (the
+#  rest are only analysed), and how many of its pages are kept in memory
+#  (more, and they are all let go)
+LOGEION_WORDS = 12
+LOGEION_PAGES = 2000
+#  (where __call__ leaves the words it asked Logeion for, for page())
+ASKED = 'py_words.logeion'
+#  Logeion's entries are wrapped by the browser, not here
+WIDE = 10_000
+#  The classes of the ANSI codes of logeion_render.Style
+LOGEION_CLASSES = {1: 'lg-b', 2: 'lg-d', 3: 'lg-i', 4: 'lg-t', 32: 'lg-x',
+                   36: 'lg-s'}
+
 
 
 def from_language(params: dict) -> str:
     """The language a search is in, if not Latin: lang= in PARAMS."""
     lang = params.get('lang', [''])[0]
     return '' if lang == 'la' else lang
+
+
+def query_of(params: dict) -> str:
+    """The search in PARAMS (q=), its spaces tidied."""
+    return ' '.join(params.get('q', [''])[0][:MAX_QUERY].split())
 
 
 def cookies_of(environ) -> dict[str, str]:
@@ -210,6 +232,14 @@ class WebApp:
         #  (the explanations of the codes and analyses, by language)
         self._glosses: dict[str, dict[str, str]] = {}
         self._codes: dict[tuple, str] = {}
+        #  Logeion: its pages, kept; public, where a visitor with no
+        #  cookies searches (as the configuration file says), and where
+        #  the visitor of the request does (see _visit)
+        self.logeion = logeion.Logeion()
+        self.default_source = logeion.saved_source()
+        self.default_dictionary = logeion.saved_dictionary()
+        self.source = self.default_source
+        self.dictionary = self.default_dictionary
 
     def _mtime(self) -> float | None:
         try:
@@ -230,6 +260,7 @@ class WebApp:
     # Requests -------------------------------------------------------------
 
     def __call__(self, environ, start_response):
+        self._ask_logeion(environ)
         if not self.public:
             return self._answer(environ, start_response)
         with self.lock:
@@ -255,6 +286,7 @@ class WebApp:
                   '/interface': ('POST', self.choose_interface),
                   '/appearance': ('POST', self.choose_appearance),
                   '/fuzzy': ('POST', self.choose_fuzzy),
+                  '/source': ('POST', self.choose_source),
                   '/history/clear': ('POST', self.clear_history),
                   '/icon.png': ('GET', self.icon)}
         if path not in routes:
@@ -313,9 +345,54 @@ class WebApp:
             interface.use(wanted.interface)
         theme = jar.get(COOKIE + 'theme')
         self.theme = theme if theme in ('dark', 'light') else 'system'
+        source = jar.get(COOKIE + 'source')
+        self.source = source if source in logeion.SOURCES \
+            else self.default_source
+        code = jar.get(COOKIE + 'dictionary')
+        self.dictionary = code if code in logeion.DICTIONARIES \
+            else self.default_dictionary
         self.message = jar.get(COOKIE + 'message', '')[:1000]
         if self.message:
             self._keep('message', None)
+
+    def choices(self) -> tuple[str, str]:
+        """Where the words are looked up, and Logeion's dictionary: public,
+        as the visitor of the request chose (see _visit); if not, as the
+        configuration file says (shared with the other programs)."""
+        if self.public:
+            return self.source, self.dictionary
+        return logeion.saved_source(), logeion.saved_dictionary()
+
+    def _ask_logeion(self, environ):
+        """For a search in Logeion: its words analysed (as the visitor's
+        settings say) and Logeion asked for their lemmas, outside the lock,
+        so that other requests are not kept waiting for its answer; the
+        words are left in ENVIRON for page()."""
+        if (environ.get('PATH_INFO') or '/') != '/' or \
+                environ.get('REQUEST_METHOD', 'GET') not in ('GET', 'HEAD') \
+                or not self._host_allowed(environ.get('HTTP_HOST', '')):
+            return
+        params = parse_qs(environ.get('QUERY_STRING', ''))
+        query = query_of(params)
+        if not query or from_language(params):
+            return
+        with self.lock:
+            if self.public:
+                self._visit(environ)
+            if self.choices()[0] != logeion.LOGEION:
+                return
+            self._fresh()
+            self.session.reverse = False
+            try:
+                words = logeion.queries(self.session, query)
+            except Exception:           # (page() shows it)
+                return
+        #  (its pages are let go once there are too many: a new one, as
+        #  other requests may still be using the old one)
+        if len(getattr(self.logeion.client, '_cache', ())) > LOGEION_PAGES:
+            self.logeion = logeion.Logeion()
+        self.logeion.fetch(words[:LOGEION_WORDS])
+        environ[ASKED] = (query, words)
 
     def _keep(self, name: str, value: str | None):
         """Sends the cookie words_NAME with VALUE (None: removes it)."""
@@ -431,8 +508,13 @@ class WebApp:
 
     def page(self, environ, start_response):
         params = parse_qs(environ.get('QUERY_STRING', ''))
-        query = ' '.join(params.get('q', [''])[0][:MAX_QUERY].split())
+        query = query_of(params)
         reverse = bool(from_language(params))
+        source, dictionary = self.choices()
+        if reverse and source == logeion.LOGEION:
+            #  (Logeion searches in Latin only: as the window does)
+            self._keep_source({'source': logeion.LOCAL})
+            source = logeion.LOCAL
         language = self.session.language
         history = self._history()
         if query:
@@ -442,14 +524,24 @@ class WebApp:
             with self.lock:
                 self._fresh()
                 self.session.reverse = reverse
-                try:
-                    text = self.session.lookup(query)
-                except Exception as e:          # show it, keep going
-                    text = tr('(error: {error})', error=e)
-                results = self.results(text.rstrip('\n') or
-                                       tr('(no results)'))
+                results = None
+                if source == logeion.LOGEION:
+                    try:
+                        results = self.logeion_results(
+                            self._asked(environ, query), dictionary)
+                    except Exception as e:
+                        text = tr('(error: {error})', error=e)
+                else:
+                    try:
+                        text = self.session.lookup(query)
+                    except Exception as e:      # show it, keep going
+                        text = tr('(error: {error})', error=e)
+                if results is None:
+                    results = self.results(text.rstrip('\n') or
+                                           tr('(no results)'))
         else:
             results = self.welcome(language.code)
+        on = source == logeion.LOGEION
         with self.lock:
             help_html = self.help_html()
         message, self.message = self.message, ''
@@ -471,6 +563,12 @@ class WebApp:
             query=esc(query), token=esc(self._token()), nonce=nonce,
             la_checked='' if reverse else ' checked',
             en_checked=' checked' if reverse else '',
+            #  (what Logeion cannot do, greyed out)
+            reverse_off=' disabled' if on else '',
+            meanings_off=' disabled' if on else '',
+            fuzzy_off=' disabled' if on else '',
+            sources=self.source_options(source),
+            dictionaries=self.dictionary_select(dictionary) if on else '',
             lang=esc(language.code) if reverse else 'la',
             code=esc(language.code),
             to_language=esc(tr('Latin → {language}', language=name)),
@@ -515,22 +613,89 @@ class WebApp:
         if code not in self._glosses:
             self._glosses[code] = guide.gloss_table(self.session)
         table = self._glosses[code]
+        return '\n'.join(self._line(line, table) for line in text.split('\n'))
+
+    def _table(self) -> dict[str, str]:
+        """The explanations of the analyses, in the language in use."""
+        code = interface.code()
+        if code not in self._glosses:
+            self._glosses[code] = guide.gloss_table(self.session)
+        return self._glosses[code]
+
+    def _line(self, line: str, table: dict[str, str]) -> str:
+        """A line of the results, in an element of its kind."""
+        kind = kind_of(line)
+        if kind == 'blank':
+            return ''
+        if kind == 'word':
+            body = f'<strong>{esc(line)}</strong>'
+        elif kind == 'entry':
+            body = self._entry(line)
+        elif kind == 'form':
+            body = self._form_line(line, table)
+        else:
+            body = esc(line)
+        return f'<span class="k-{kind}">{body}</span>'
+
+    def _asked(self, environ, query: str) -> list:
+        """The words of QUERY with Logeion's pages: those __call__ asked
+        for (or, if it did not, asked for now)."""
+        asked = environ.get(ASKED)
+        if asked is not None and asked[0] == query:
+            return asked[1]
+        words = logeion.queries(self.session, query)
+        return self.logeion.fetch(words[:LOGEION_WORDS]) + \
+            words[LOGEION_WORDS:]
+
+    def logeion_results(self, words: list, dictionary: str) -> str:
+        """The results of Logeion (see logeion.render) as HTML: each line
+        a block that the browser wraps, its continuation two spaces further
+        in; the analysis as this program's results, the entries with
+        Logeion's bold, italics and links (to a word of Logeion: its
+        search here; others, in a new tab)."""
+        table = self._table()
+        lines = logeion.render(words, Style(True), WIDE, dictionary,
+                               wrap_analysis=False)
+        if len(words) > LOGEION_WORDS:
+            lines += [(logeion.PAGE, ''), (logeion.PAGE, Style(True).dim(
+                tr('(Logeion is asked only for the first {count} words.)',
+                   count=LOGEION_WORDS)))]
         out = []
-        for line in text.split('\n'):
-            kind = kind_of(line)
-            if kind == 'blank':
-                out.append('')
+        for kind, line in lines:
+            if not line.strip():
+                out.append('<span class="ln"> </span>')
                 continue
-            if kind == 'word':
-                body = f'<strong>{esc(line)}</strong>'
-            elif kind == 'entry':
-                body = self._entry(line)
-            elif kind == 'form':
-                body = self._form_line(line, table)
+            if kind == logeion.ANALYSIS:
+                body = self._line(line, table)
             else:
-                body = esc(line)
-            out.append(f'<span class="k-{kind}">{body}</span>')
-        return '\n'.join(out)
+                body = self._styled(line)
+            plain = len(line) - len(line.lstrip(' '))
+            hang = plain + 2
+            head = ' k-word' if kind == logeion.HEAD else ''
+            out.append(f'<span class="ln{head}" style="padding-left:{hang}ch;'
+                       f'text-indent:-{hang}ch">{body}</span>')
+        return ''.join(out)
+
+    @staticmethod
+    def _styled(line: str) -> str:
+        """A line of an entry of Logeion, its ANSI codes and links as
+        HTML."""
+        out = []
+        for piece, codes, url in styled_segments(line):
+            classes = ' '.join(LOGEION_CLASSES[c] for c in codes
+                               if c in LOGEION_CLASSES)
+            text = esc(piece)
+            if classes:
+                text = f'<span class="{classes}">{text}</span>'
+            if url:
+                target = entry_target(url)
+                if target is not None:
+                    text = f'<a href="{esc(link(target[0]))}">{text}</a>'
+                elif url.startswith(('https://', 'http://')):
+                    text = (f'<a href="{esc(url)}" target="_blank" '
+                            f'rel="noopener">{text}</a>')
+            out.append(text)
+        return ''.join(out)
 
     def _entry(self, line: str) -> str:
         """An entry: its first word a link, its codes explained."""
@@ -590,6 +755,27 @@ class WebApp:
             f'{" selected" if code == current else ""}>{esc(tr(name))}'
             '</option>'
             for code, name in self.session.lexicon.language_names().items())
+
+    @staticmethod
+    def source_options(current: str) -> str:
+        """The choices of "Search in": this dictionary, or Logeion."""
+        return ''.join(
+            f'<option value="{esc(source)}"'
+            f'{" selected" if source == current else ""}>'
+            f'{esc(tr(logeion.NAMES[source]))}</option>'
+            for source in logeion.SOURCES)
+
+    @staticmethod
+    def dictionary_select(current: str) -> str:
+        """The pull-down of Logeion's dictionaries (all, or one)."""
+        options = ''.join(
+            f'<option value="{esc(code)}"'
+            f'{" selected" if code == current else ""}>'
+            f'{esc(logeion.dictionary_name(code))}</option>'
+            for code in logeion.DICTIONARIES)
+        name = esc(tr("Logeion's dictionary"))
+        return (f'<select name="dictionary" aria-label="{name}">'
+                f'{options}</select>')
 
     @staticmethod
     def interface_options() -> str:
@@ -743,6 +929,41 @@ class WebApp:
             self.change({'fuzzy_search': fuzzy})
         return self._back(start_response, form)
 
+    def choose_source(self, environ, start_response):
+        """"Search in" and the list of Logeion's dictionaries beside it
+        (kept in the configuration file, shared with the other programs;
+        public, in the visitor's cookies).  Logeion searches in Latin
+        only."""
+        form = self._form(environ)
+        if form is None:
+            return self._plain(start_response, '403 Forbidden',
+                               tr('Reload the page and try again.'))
+        values = {}
+        source = form.get('source', [''])[0]
+        if source in logeion.SOURCES:
+            values['source'] = source
+        code = form.get('dictionary', [''])[0]
+        if code in logeion.DICTIONARIES:
+            values['dictionary'] = code
+        self._keep_source(values)
+        if source == logeion.LOGEION:
+            form['lang'] = ['la']
+        return self._back(start_response, form)
+
+    def _keep_source(self, values: dict[str, str]):
+        """Keeps VALUES ('source', 'dictionary'): public, in the visitor's
+        cookies; if not, in the configuration file."""
+        for name, value in values.items():
+            if self.public:
+                setattr(self, name, value)
+                self._keep(name, value)
+                continue
+            save = logeion.save_source if name == 'source' else \
+                logeion.save_dictionary
+            error = save(value)
+            if error:
+                self.message = error
+
     def change(self, values: dict[str, bool | str]):
         """Changes settings, applies them, and keeps them in the
         configuration file (as the window does; public, in the visitor's
@@ -790,7 +1011,7 @@ PAGE_TEXTS = {
                  'line and the window.'),
     't_interface': N_('Language of the interface'), 't_about': N_('About'),
     't_dark': N_('Dark mode'), 't_help': N_('Help'),
-    't_fuzzy': N_('Fuzzy search'),
+    't_fuzzy': N_('Fuzzy search'), 't_search_in': N_('Search in'),
 }
 APPEARANCE = 'appearance'               # (the section of config.toml)
 PUBLIC_TEXTS = {
@@ -817,21 +1038,21 @@ PAGE = Template("""<!doctype html>
 :root {
   --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #dcd9d2;
   --panel: #f1efe9; --accent: #8a2c1f; --focus: #c0573f;
-  --form: #55534d; --analysis: #245a8a;
+  --form: #55534d; --analysis: #245a8a; --example: #3d6b2e;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme=light]) {
     --bg: #1b1b1d; --fg: #e8e6e1; --muted: #9a9890; --line: #3a3a3e;
     --panel: #242428; --accent: #e8957f; --focus: #f0a58f;
-    --form: #b8b4aa; --analysis: #8fb8e0;
+    --form: #b8b4aa; --analysis: #8fb8e0; --example: #9cc98a;
     color-scheme: dark;
   }
 }
 :root[data-theme=dark] {
   --bg: #1b1b1d; --fg: #e8e6e1; --muted: #9a9890; --line: #3a3a3e;
   --panel: #242428; --accent: #e8957f; --focus: #f0a58f;
-  --form: #b8b4aa; --analysis: #8fb8e0;
+  --form: #b8b4aa; --analysis: #8fb8e0; --example: #9cc98a;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -899,6 +1120,16 @@ pre.results .k-form { color: var(--form); }
 pre.results abbr { text-decoration: none; cursor: help; }
 pre.results abbr.codes { color: var(--muted); font-weight: normal; }
 pre.results abbr.an { color: var(--analysis); }
+/* Logeion's entries: each line a block, wrapped by the browser */
+pre.results .ln { display: block; }
+pre.results .lg-b { font-weight: 600; }
+pre.results .k-word .lg-b { font-size: 1.12em; }
+pre.results .lg-i { font-style: italic; }
+pre.results .lg-d { color: var(--muted); }
+pre.results .lg-t { font-weight: 600; text-decoration: underline; }
+pre.results .lg-s { color: var(--analysis); font-weight: 600; }
+pre.results .lg-x { color: var(--example); }
+label:has(:disabled) { opacity: .5; }
 #tip { position: absolute; z-index: 10; max-width: 90vw;
   font: 13px/1.4 ui-monospace, "DejaVu Sans Mono", Menlo, Consolas,
     monospace; white-space: pre-wrap; color: var(--fg);
@@ -948,7 +1179,7 @@ footer p { margin: 0; }
 <div class="lang">
 <label><input type="radio" name="lang" value="la"$la_checked>
 $to_language</label>
-<label><input type="radio" name="lang" value="$code"$en_checked>
+<label><input type="radio" name="lang" value="$code"$en_checked$reverse_off>
 $from_language</label>
 </div>
 </form>
@@ -957,15 +1188,24 @@ $from_language</label>
 <input type="hidden" name="token" value="$token">
 <input type="hidden" name="q" value="$query">
 <input type="hidden" name="lang" value="$lang">
-<label>$t_meanings_in <select name="language">$languages</select></label>
+<label>$t_meanings_in
+<select name="language"$meanings_off>$languages</select></label>
 <noscript><button>$t_change</button></noscript>
 </form>
 <form class="meanings" id="fuzzy" method="post" action="/fuzzy">
 <input type="hidden" name="token" value="$token">
 <input type="hidden" name="q" value="$query">
 <input type="hidden" name="lang" value="$lang">
-<label><input type="checkbox" name="fuzzy" value="1"$fuzzy_checked>
+<label><input type="checkbox" name="fuzzy" value="1"$fuzzy_checked$fuzzy_off>
 $t_fuzzy</label>
+<noscript><button>$t_change</button></noscript>
+</form>
+<form class="meanings" id="source" method="post" action="/source">
+<input type="hidden" name="token" value="$token">
+<input type="hidden" name="q" value="$query">
+<input type="hidden" name="lang" value="$lang">
+<label>$t_search_in <select name="source">$sources</select></label>
+$dictionaries
 <noscript><button>$t_change</button></noscript>
 </form>
 <form class="meanings" id="dark" method="post" action="/appearance">

@@ -343,5 +343,159 @@ class PublicTests(unittest.TestCase):
                                    body='token=no')[0], '403 Forbidden')
 
 
+class LogeionTests(unittest.TestCase):
+    """"Search in": Logeion's entries for the lemmas of the words (asked of
+    a fake Logeion, see test_logeion.Client), kept in the configuration
+    file."""
+
+    call = WebTests.call
+
+    @classmethod
+    def setUpClass(cls):
+        import logeion
+        from test_logeion import Client
+        cls.app = words_web.WebApp(default_datadir(),
+                                   {'localhost', '127.0.0.1'})
+        cls.client = Client()
+        cls.app.logeion = logeion.Logeion(cls.client)
+
+    def setUp(self):
+        from test_logeion import forget_choices
+        forget_choices(self)
+
+    def choose(self, fields: str):
+        return self.call('/source', method='POST',
+                         body=f'token={self.app.token}&q=arma&{fields}')
+
+    def test_logeion(self):
+        """Chosen, it is kept; the words are analysed here and Logeion's
+        entries follow; what Logeion cannot do is greyed out."""
+        import logeion
+        page = self.call(query='q=arma')[2]
+        self.assertIn('<option value="local" selected>Local</option>', page)
+        self.assertNotIn('name="dictionary"', page)
+        self.assertNotIn(' disabled', page)
+        status, headers, _ = self.choose('source=logeion')
+        self.assertEqual(status, '303 See Other')
+        self.assertEqual(headers['Location'], '/?q=arma')
+        self.assertEqual(logeion.saved_source(), logeion.LOGEION)
+        page = self.call(query='q=arma')[2]
+        self.assertIn('<option value="logeion" selected>Logeion</option>',
+                      page)
+        self.assertIn('<select name="dictionary"', page)
+        self.assertIn('<select name="language" disabled>', page)
+        self.assertIn('name="fuzzy" value="1" checked disabled>', page)
+        self.assertIn('value="en" disabled>', page)
+        results = page[page.index('<pre class="results"'):
+                       page.index('</pre>')]
+        #  the analysis, as this program's results, then the entries
+        self.assertIn('<span class="lg-b">arma</span><span class="lg-d">  '
+                      '→  armum, armo</span>', results)
+        self.assertIn('<a href="/?q=armum">armum</a>, armi  noun', results)
+        self.assertIn('<span class="form" data-q="arma">arm-a</span>',
+                      results)
+        self.assertLess(results.index('NOM.PL'),
+                        results.index('Lewis &amp; Short'))
+        self.assertIn('<span class="lg-i">arms</span>', results)
+        #  a link to a word of Logeion looks it up here; others, a new tab
+        self.assertIn('see <a href="/?q=armo">armo</a>', results)
+        self.assertIn('<a href="https://example.org/arms" target="_blank" '
+                      'rel="noopener">more</a>', results)
+        self.assertIn('Logeion has no entry for armum (the nearest: armus).',
+                      results)
+        #  (each line a block, wrapped by the browser, hanging)
+        self.assertIn('<span class="ln" style="padding-left:4ch;'
+                      'text-indent:-4ch">  • arma, weapons</span>', results)
+
+    def test_dictionary(self):
+        """The list beside "Search in": only that dictionary of Logeion."""
+        import logeion
+        self.choose('source=logeion&dictionary=gaffiot')
+        self.assertEqual(logeion.saved_dictionary(), 'gaffiot')
+        page = self.call(query='q=arma')[2]
+        results = page[page.index('<pre class="results"'):
+                       page.index('</pre>')]
+        self.assertIn('ustensiles, armes', results)
+        self.assertNotIn('lg-s">Lewis &amp; Short', results)
+        self.assertIn('Gaffiot 2016 has no entry for armo (it is in: Lewis '
+                      '&amp; Short).', results)
+        self.assertIn('<option value="gaffiot" selected>', page)
+        self.choose('dictionary=nonsense')          # (left as it was)
+        self.assertEqual(logeion.saved_dictionary(), 'gaffiot')
+
+    def test_to_latin(self):
+        """Logeion searches in Latin only: a search to Latin is made in
+        this dictionary, which is then kept (as the window does); choosing
+        Logeion goes back to Latin."""
+        import logeion
+        self.choose('source=logeion')
+        page = self.call(query='q=friend&lang=en')[2]
+        self.assertIn('amicus', page)
+        self.assertEqual(logeion.saved_source(), logeion.LOCAL)
+        _, headers, _ = self.call(
+            '/source', method='POST',
+            body=f'token={self.app.token}&q=arma&lang=en&source=logeion')
+        self.assertEqual(headers['Location'], '/?q=arma')
+
+    def test_unreachable(self):
+        """If Logeion cannot be reached, the page says so."""
+        import logeion
+        from test_logeion import Client
+        self.choose('source=logeion')
+        self.app.logeion = logeion.Logeion(Client(down=True))
+        try:
+            page = self.call(query='q=arma')[2]
+        finally:
+            self.app.logeion = logeion.Logeion(self.client)
+        self.assertIn('Logeion could not be reached: no network', page)
+        self.assertIn('NOM.PL', page)           # (the analysis, still)
+
+    def test_only_some_words(self):
+        """Logeion is asked for the first LOGEION_WORDS words only."""
+        from unittest import mock
+        self.choose('source=logeion')
+        with mock.patch.object(words_web, 'LOGEION_WORDS', 1):
+            del self.client.asked[:]
+            page = self.call(query='q=arma+dixi')[2]
+        self.assertNotIn('dico', self.client.asked)
+        self.assertIn('(Logeion is asked only for the first 1 words.)', page)
+
+    def test_need_token(self):
+        self.assertEqual(self.call('/source', method='POST',
+                                   body='token=no&source=logeion')[0],
+                         '403 Forbidden')
+
+
+class PublicLogeionTests(unittest.TestCase):
+    """Public, "Search in" is each visitor's, in their cookies."""
+
+    call = PublicTests.call
+    post = PublicTests.post
+
+    @classmethod
+    def setUpClass(cls):
+        import logeion
+        from test_logeion import Client
+        cls.app = words_web.public_app()
+        cls.app.logeion = logeion.Logeion(Client())
+
+    @classmethod
+    def tearDownClass(cls):
+        import interface
+        interface.use('en')
+
+    def test_visitors_apart(self):
+        import logeion
+        a, b = {}, {}
+        self.post(a, '/source', 'source=logeion&dictionary=gaffiot')
+        self.assertEqual(a['words_source'], 'logeion')
+        self.assertEqual(a['words_dictionary'], 'gaffiot')
+        self.assertEqual(logeion.saved_source(), logeion.LOCAL)
+        self.assertIn('ustensiles, armes', self.call(a, query='q=arma')[1])
+        page = self.call(b, query='q=arma')[1]
+        self.assertNotIn('ustensiles', page)
+        self.assertIn('<option value="local" selected>', page)
+
+
 if __name__ == '__main__':
     unittest.main()

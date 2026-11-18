@@ -373,14 +373,16 @@ interfaz.
 
 ### Logeion
 
-La ventana, `words_tui.py` y la línea de órdenes también pueden mostrar,
-en lugar de las entradas de este diccionario, las de
+La ventana, `words_tui.py`, la línea de órdenes y la página web
+(`words_web.py`) también pueden mostrar, en lugar de las entradas de este
+diccionario, las de
 [Logeion](https://logeion.uchicago.edu), los diccionarios latinos y
 griegos de la Universidad de Chicago: Lewis y Short, el Elementary de
 Lewis, Georges, Gaffiot, el DMLBS, Du Cange y otros, con la definición
 breve, la frecuencia y ejemplos de su corpus.  En la ventana es "Buscar
-en" (Local o Logeion), encima de la dirección; en `words_tui.py`, F8; en
-la línea de órdenes interactiva, `~G`.  La última elección hecha en
+en" (Local o Logeion), encima de la dirección; en la página web, "Buscar
+en", junto a "Significados en"; en `words_tui.py`, F8; en la línea de
+órdenes interactiva, `~G`.  La última elección hecha en
 cualquiera de ellos se guarda para el próximo arranque de todos (`source`
 en la sección `[logeion]` del archivo de configuración), y también el
 diccionario de Logeion (véase más abajo) y la dirección, del latín al
@@ -424,7 +426,17 @@ sus lemas:
 Logeion solo busca en latín: mientras está elegido, la otra dirección, el
 idioma de los significados, la búsqueda aproximada y "Editar
 diccionario…" (el editor edita este diccionario, no Logeion) quedan en
-gris en la ventana, y F4 en `words_tui.py` lo dice.
+gris en la ventana y en la página web, y F4 en `words_tui.py` lo dice.
+
+En la página web, la lista junto a "Buscar en" elige el diccionario de
+Logeion.  El servidor le pregunta a Logeion solo por las primeras doce
+palabras de una búsqueda; las demás se analizan, pero no se buscan allí.
+El navegador ajusta las entradas al ancho de la página, y sus enlaces a
+otras palabras las buscan en la página; los demás enlaces se abren en una
+pestaña nueva.  En un servidor para todos (`public_app()`), la fuente y el
+diccionario son de cada visitante y se guardan en las cookies de su
+navegador, como los demás ajustes; el archivo de configuración del
+servidor no se toca.
 
 En la línea de órdenes interactiva, `~G` cambia entre Logeion y este
 diccionario, y `~D` elige el diccionario de Logeion: `~D gaffiot`, o `~D`

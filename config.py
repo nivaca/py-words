@@ -167,7 +167,8 @@ INTRO = {
                   'dictionary = "all" or the code of the only dictionary of '
                   'Logeion shown (ls, gaffiot …; words.py --dictionaries '
                   'lists them).  Kept when changed with "Search in" and the '
-                  'list beside it in the window, F8 and F5 in the terminal, '
+                  'list beside it in the window and on the web page, F8 and '
+                  'F5 in the terminal, '
                   'and ~G and ~D in interactive mode; --logeion, --local and '
                   '--dictionary change them for one run.'),
     'search': N_('The direction of the last search, for the next start: '

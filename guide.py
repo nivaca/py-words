@@ -124,6 +124,17 @@ WEB = (
        'meanings is looked up in Latin), and point at the codes in '
        'brackets or at an analysis (GEN.PL), or tap them, to see what they '
        'mean.'),
+    N_('"Search in" chooses where the words are looked up: Local, this '
+       'dictionary, or Logeion (logeion.uchicago.edu), the dictionaries of '
+       'the University of Chicago (Lewis and Short, Georges, Gaffiot, '
+       'DMLBS, Du Cange …).  Logeion does not analyse inflected forms, so '
+       'each word is analysed here first, and the analysis is shown, '
+       'without its meanings, before Logeion\'s entries for its lemmas.  '
+       'It searches in Latin only: the other direction, the language of '
+       'the meanings and the fuzzy search are greyed out meanwhile.  The '
+       'list beside "Search in" chooses Logeion\'s dictionary, or all of '
+       'them.  In the entries, a link to another word of Logeion looks it '
+       'up, and the other links open in a new tab.'),
 )
 
 RESULTS = N_('This is what {name} shows for {word}:')
