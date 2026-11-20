@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.23
+Version:        3.24
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -105,6 +105,10 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Fri Nov 20 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.24-1
+- The windows' text follows the scaling of a hi-res display even when fontconfig
+  fixes a DPI
+
 * Wed Nov 18 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.23-1
 - Logeion's dictionary is the DMLBS until another one is chosen
 

@@ -188,6 +188,16 @@ in the terminal, `--dictionary` on the command line) shows only one of
 Logeion's dictionaries, or all of them; changing it shows the results
 again without asking Logeion.
 
+The windows had to learn the scaling of hi-res displays twice.  The
+AppImage's Tk (8.6) ignores the scaling that the desktop gives to X11
+programs (`Xft.dpi`), so its windows came out very small; since 3.11
+they read that scaling themselves.  The RPM's Tk (9) reads it, but it
+leaves the sizes of the fonts to fontconfig, and on one of my laptops, at
+200%, a rule in my own fontconfig settings fixed its DPI at 96: the
+windows were scaled, and their text was not.  Since 3.24 the windows
+start fontconfig with the usual configuration plus one rule that sets the
+DPI of the desktop.
+
 5. Other languages of the meanings
 ----------------------------------
 

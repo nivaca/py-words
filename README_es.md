@@ -108,10 +108,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.23-x86_64.AppImage
-    $ ./py-words-v.3.23-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.23-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.23-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.24-x86_64.AppImage
+    $ ./py-words-v.3.24-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.24-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.24-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -143,7 +143,7 @@ O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
 paquete va firmado; importe su clave una vez) e instálelo:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.23-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.24-1.fc45.noarch.rpm
 
 Funciona en cualquier Fedora con Python 3.13 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
@@ -251,7 +251,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.23.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.24.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -267,7 +267,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.23-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.24-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -1427,6 +1427,11 @@ verlas.
 Versiones
 ---------
 
+- 3.24:
+  - En una pantalla de alta resolución escalada al 200 %, el texto de las
+    ventanas sigue la escala aunque fontconfig fije una resolución (una
+    regla de 96 DPI en la configuración de fontconfig del usuario lo
+    dejaba a la mitad de su tamaño con el Tk 9 del RPM).
 - 3.23:
   - El diccionario de Logeion es el DMLBS mientras no se elija otro, en
     todos los programas (antes, todos los diccionarios); una elección ya

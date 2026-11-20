@@ -1,4 +1,4 @@
-# py-words 3.23: descripción
+# py-words 3.24: descripción
 
 ## Análisis
 
@@ -53,6 +53,8 @@ La versión en línea se probó en un navegador manejado por un script (búsqued
 ## Plataforma
 
 Funciona en Linux (y en otros sistemas tipo Unix con menús freedesktop), Windows y macOS. Necesita Python 3.13 o superior con Tkinter, que viene en los instaladores de python.org; en algunas distribuciones de Linux es un paquete aparte, como `python3-tkinter` o `python3-tk`. En Windows, el editor de terminal pide además el paquete `windows-curses`.
+
+En pantallas de alta resolución, las ventanas siguen la escala del escritorio (`Xft.dpi`), también con el Tk 8.6 del AppImage, que no la lee, y, desde la 3.24, cuando la configuración de fontconfig fija otra resolución para las fuentes, que dejaba el texto del RPM a la mitad de su tamaño en una pantalla al 200 %.
 
 En el equipo es una aplicación de escritorio, de terminal y de navegador, y no necesita internet. La versión web levanta su propio servidor, que por omisión solo atiende al mismo equipo; con `--host` se puede abrir a la red local, por ejemplo para usarla desde el teléfono. No tiene contraseñas ni permite editar el diccionario, y rechaza las peticiones que llegan con otro nombre de equipo y los formularios enviados desde otros sitios.
 
