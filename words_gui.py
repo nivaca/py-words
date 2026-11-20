@@ -26,7 +26,7 @@ import interface
 import logeion
 from config import ConfigError
 from editor import read_only
-from gui_fonts import Fonts, scaled
+from gui_fonts import Fonts, scaled, start_tk
 from gui_results import Results
 from gui_settings import SettingsDialog
 from gui_theme import Theme
@@ -795,7 +795,7 @@ def main(argv: list[str] | None = None):
         except (AttributeError, OSError):
             pass
     interface.use_configured()
-    root = tk.Tk(className=WM_CLASS)
+    root = start_tk(className=WM_CLASS)
     interface.translate_tk(root)
     set_icon(root)
     datadir = default_datadir()

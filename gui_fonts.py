@@ -15,11 +15,13 @@ once.  There are three kinds of text:
 * the box where words are typed, in ENTRY, a little larger than the rest.
 """
 
+import os
 import re
 import subprocess
 import sys
 import tkinter as tk
 from tkinter import font, ttk
+from xml.sax.saxutils import escape
 
 import config
 from interface import tr
@@ -56,7 +58,9 @@ BASE_SCALING = 96 / 72
 
 def _x_resources(root) -> str:
     '''The X resources of ROOT's display (what xrdb -query shows), read
-    with libX11 or else xrdb; empty if neither works.'''
+    with libX11 or else xrdb; empty if neither works.  ROOT may also be
+    the name of the display, before Tk is started.'''
+    display_name = root if isinstance(root, str) else root.winfo_screen()
     try:
         import ctypes
         import ctypes.util
@@ -66,7 +70,7 @@ def _x_resources(root) -> str:
         x11.XResourceManagerString.argtypes = [ctypes.c_void_p]
         x11.XResourceManagerString.restype = ctypes.c_char_p
         x11.XCloseDisplay.argtypes = [ctypes.c_void_p]
-        display = x11.XOpenDisplay(root.winfo_screen().encode())
+        display = x11.XOpenDisplay(display_name.encode())
         if display:
             try:
                 return (x11.XResourceManagerString(display)
@@ -80,6 +84,81 @@ def _x_resources(root) -> str:
                               text=True, timeout=2).stdout
     except (OSError, subprocess.SubprocessError):
         return ''
+
+
+def _xft_dpi(resources: str) -> float | None:
+    '''The DPI the desktop asks for in the resource Xft.dpi (192 at
+    200%).'''
+    m = re.search(r'^Xft\.dpi:\s*([0-9]+(?:\.[0-9]+)?)\s*$', resources, re.M)
+    return float(m[1]) if m and 48 <= float(m[1]) <= 960 else None
+
+
+def fit_fontconfig():
+    '''Makes fontconfig draw the fonts at the desktop's DPI, before Tk is
+    started.  Tk 9 gives its sizes in points to fontconfig, which turns
+    them into pixels at its own DPI: that of Xft.dpi, unless a rule in the
+    configuration of fontconfig fixes one (as <edit name="dpi"> 96 in
+    ~/.config/fontconfig/fonts.conf, which some desktop settings write).
+    On a hi-res display at 200% the text was then drawn at 100%, half as
+    large as everything else.  So fontconfig is given a configuration that
+    loads the usual one, the user's rules included, and then sets the DPI
+    to Xft.dpi; without such a rule this changes nothing.  Returns a
+    function that undoes the change of the environment, to be called once
+    Tk has started (so that a browser started later gets the usual one).'''
+    def nothing():
+        pass
+    display = os.environ.get('DISPLAY')
+    if sys.platform in ('win32', 'darwin') or not display:
+        return nothing
+    dpi = _xft_dpi(_x_resources(display))
+    if dpi is None:
+        return nothing
+    old = os.environ.get('FONTCONFIG_FILE')
+    #  (a relative file is looked for where fontconfig keeps its own)
+    usual = escape(old or 'fonts.conf')
+    text = ('<?xml version="1.0"?>\n'
+            '<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">\n'
+            '<!-- Written by py-words: the usual configuration, with the DPI\n'
+            '     of the desktop (Xft.dpi). -->\n'
+            '<fontconfig>\n'
+            f'  <include ignore_missing="no">{usual}</include>\n'
+            '  <match target="pattern">\n'
+            f'    <edit name="dpi" mode="assign"><double>{dpi:g}</double></edit>\n'
+            '  </match>\n'
+            '</fontconfig>\n')
+    base = os.environ.get('XDG_CACHE_HOME') or os.path.expanduser('~/.cache')
+    path = os.path.join(base, 'py-words', 'fonts.conf')
+    try:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        try:
+            with open(path, encoding='utf-8') as f:
+                same = f.read() == text
+        except OSError:
+            same = False
+        if not same:
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(text)
+    except OSError:
+        return nothing
+    os.environ['FONTCONFIG_FILE'] = path
+
+    def undo():
+        if old is None:
+            os.environ.pop('FONTCONFIG_FILE', None)
+        else:
+            os.environ['FONTCONFIG_FILE'] = old
+    return undo
+
+
+def start_tk(**options) -> tk.Tk:
+    '''A new Tk, with fontconfig at the desktop's DPI (fit_fontconfig).'''
+    undo = fit_fontconfig()
+    try:
+        root = tk.Tk(**options)
+        font.nametofont('TkDefaultFont', root).metrics('linespace')  # (fontconfig is read)
+        return root
+    finally:
+        undo()
 
 
 def fit_scaling(root):
@@ -96,11 +175,10 @@ def fit_scaling(root):
     root._py_words_scaled = True
     if root.tk.call('tk', 'windowingsystem') != 'x11':
         return
-    m = re.search(r'^Xft\.dpi:\s*([0-9]+(?:\.[0-9]+)?)\s*$',
-                  _x_resources(root), re.M)
-    if not (m and 48 <= float(m[1]) <= 960):
+    dpi = _xft_dpi(_x_resources(root))
+    if dpi is None:
         return
-    scaling = float(m[1]) / 72
+    scaling = dpi / 72
     if abs(scaling - float(root.tk.call('tk', 'scaling'))) < 0.01:
         return
     root.tk.call('tk', 'scaling', scaling)

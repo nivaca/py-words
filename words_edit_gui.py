@@ -28,7 +28,7 @@ from settings import Settings, ensure_config
 from lexicon import default_datadir
 from editor import Editor, Editing, Fields, FIELD_LABELS, POS_CHOICES
 from editor import read_only, read_only_message
-from gui_fonts import Fonts, scaled
+from gui_fonts import Fonts, scaled, start_tk
 from gui_theme import Theme
 from lexicon import DICTIONARY
 from version import NAME, VERSION
@@ -53,7 +53,7 @@ class EditorWindow:
         self.editing = Editing(self.editor)
         self.on_save = on_save
         self.fields = Fields()
-        self.win = win = tk.Toplevel(master) if master else tk.Tk()
+        self.win = win = tk.Toplevel(master) if master else start_tk()
         win.title(tr('{name} {version}: dictionary editor', name=NAME,
                      version=VERSION))
         win.geometry(scaled(win, '1080x720'))
