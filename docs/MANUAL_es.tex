@@ -1,0 +1,1247 @@
+\newcommand*{\version}{3.25}
+
+\documentclass[12pt,
+              article,
+              oneside
+              ]{memoir}
+
+\usepackage{iftex}
+
+\ifluatex
+  \usepackage{fontspec}
+\fi
+
+\usepackage[
+  % latin,
+  % english,
+  spanish,% <- principal
+  es-minimal,
+  es-noshorthands,
+  es-tabla,
+]{babel}
+
+\ifluatex
+% LuaLaTeX --------------------
+\defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase}
+\usepackage[MainFeatures={medium,
+  Ligatures=Common,
+  Numbers=OldStyle,
+  SmallCapsFeatures = {LetterSpace=5.0}}]
+{junicodevf}
+%
+% \setsansfont{Libertinus Sans}
+% (without the ligatures of TeX, so that -- stays two hyphens)
+\setmonofont[Scale=MatchLowercase, Ligatures=TeXOff]{DejaVu Sans Mono}
+% \setmonofont[Scale=MatchLowercase]{Libertinus Mono}
+% \setmonofont[Scale=MatchLowercase}]{Fira Code}
+\else
+% PDFLaTeX ---------------------
+\usepackage[T1]{fontenc}
+\usepackage[osf]{libertinus}
+\usepackage[scaled=0.9]{FiraMono}
+% \usepackage[scaled=0.9]{cascadia-code}
+% \usepackage[scaled=0.9]{roboto}
+\input glyphtounicode
+\pdfgentounicode=1
+\fi
+
+\usepackage[babel=true, verbose=false, tracking=true, expansion=true, protrusion=true, final, draft=false]{microtype}
+\SetTracking{ encoding = *, shape = sc }{ 30 }
+\SetTracking[context = notracking, ]{encoding = *}{0}
+
+\usepackage[autostyle=false, style=british]{csquotes}
+\usepackage{latexcolors}
+
+\newcommand{\Rojo}{\color[HTML]{8B0000}}
+\newcommand*{\rojo}[1]{\textcolor[HTML]{8B0000}{#1}}
+\newcommand*{\rojoit}[1]{\textit{\textcolor[HTML]{8B0000}{#1}}}
+\newcommand{\Azul}{\color{bluenivaca}}
+\newcommand*{\azul}[1]{\textcolor{bluenivaca}{#1}}
+\newcommand{\Verde}{\color{darkgreen}}
+\newcommand*{\verde}[1]{\textcolor{darkgreen}{#1}}
+\newcommand{\Amarillo}{\color{goldenpoppy}}
+\newcommand*{\amarillo}[1]{\textcolor{goldenpoppy}{#1}}
+\newcommand{\Morado}{\color{byzantium}}
+\newcommand*{\morado}[1]{\textcolor{byzantium}{#1}}
+\newcommand{\Naranja}{\color{orange}}
+\newcommand*{\naranja}[1]{\textcolor{orange}{#1}}
+
+% \usepackage[margin=3cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\clubpenalty=9999
+\widowpenalty=9999
+\brokenpenalty=5000
+\frenchspacing
+\raggedbottom
+\midsloppy
+\parindent=14pt
+\fboxsep=2pt
+
+\renewcommand\thesection{\arabic{section}}
+\chapterstyle{reparticle}
+
+\usepackage{enumitem}
+\setlist{noitemsep, nosep}
+\setlist[description]{font=\itshape}
+
+\newcommand*{\elipsis}{\,.\,.\,.\,}
+\newcommand*{\elipsisb}{\textup{[\elipsis]}}
+
+\renewenvironment{quote}%
+ {\begin{list}{}%
+              {\setlength\rightmargin{0pt}%
+              \setlength\leftmargin{\parindent}}%
+  \item[]\small\ignorespaces}
+ {\unskip\end{list}}
+
+
+\definecolor{Link}{HTML}{408080}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=blue,
+  citecolor = black,
+  urlcolor=Link,
+}
+\urlstyle{tt}
+\usepackage{bookmark}
+
+\setlength{\droptitle}{-2cm}
+
+\title{\bfseries%
+  \texttt{py-words} v.\version{} \\
+  Manual de usuario}
+
+\author{%
+  Nicolás Vaughan\\
+  \begin{minipage}[t]{0.8\linewidth}
+    \centering\small%
+    \href{mailto:nicolasvaughan@proton.me}{\texttt{nicolasvaughan@proton.me}}\\
+    \url{https://nicolasvaughan.org}\\
+    \url{https://github.com/nivaca/py-words}\\
+    \url{https://codeberg.org/nivaca/py-words}\\
+  \end{minipage}}
+
+
+\date{2026-11-21}
+
+% The pictures, made by tools/screenshots.py
+\graphicspath{{img/}}
+\usepackage{longtable}
+
+% the title and the author in the PDF's own metadata
+\hypersetup{pdftitle={py-words: manual de usuario}, pdfauthor={Nicolás Vaughan}}
+
+% the index (makeindex, with the style manual.ist: see latexmkrc)
+\makeindex
+
+% menus, keys, and the pictures of the window
+\newcommand*{\menu}[1]{\textit{#1}}
+\newcommand*{\then}{\,>\,}
+\newcommand*{\key}[1]{\texttt{#1}}
+\newcommand*{\shot}[3]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=#2\textwidth,height=0.75\textheight,keepaspectratio]{#1}
+    \caption{#3}
+    \label{fig:#1}
+  \end{figure}}
+% the tilde of the interactive commands (~E, ~L ...)
+\newcommand*{\tl}{\textasciitilde}
+
+\begin{document}
+\maketitle
+
+\tableofcontents*
+
+\section{Introducción}
+\noindent
+\texttt{py-words} es un diccionario latino que sabe gramática latina.
+Analiza una palabra latina flexionada, o una línea entera de latín, en las
+entradas del diccionario y las formas que puede ser, con sus significados
+en español o en inglés, y encuentra el latín de una palabra española o
+inglesa. Se puede usar de cuatro maneras: en una ventana, en la línea de
+órdenes, en una terminal a pantalla completa y en un navegador web.
+También está en línea, sin nada que instalar, en
+\url{https://nivaca.pythonanywhere.com/}.
+
+\index{WORDS (Whitaker)}\index{Lewis y Short}\index{De Miguel}\index{Echave-Sustaeta}\index{Latham}\index{Collatinus}%
+Lo escribí en 2026. Su punto de partida fue WORDS, el programa de William
+Whitaker, pero el código y los datos se rediseñaron, y el diccionario
+creció: ahora tiene las palabras raras y las definiciones inglesas del
+\textit{A Latin Dictionary} de Lewis y Short, las palabras, los nombres
+propios y las definiciones españolas del \textit{Nuevo diccionario
+latino-español etimológico} de R.~de~Miguel, el vocabulario básico de
+J.~Echave-Sustaeta, la lista de palabras medievales de R.~E. Latham y las
+vocales largas de Collatinus. Cada entrada dice de dónde viene
+(sección~\ref{sec:codes}).
+
+\index{convenciones}\index{macos y windows@macOS y Windows}%
+Este manual explica primero cómo instalar y abrir el programa; luego, la
+ventana, cómo buscar y cómo leer los resultados, y después los otros tres
+programas, los ajustes y los editores del diccionario. Los menús van en
+cursiva, con sus opciones tras un \enquote{>}, así:
+\menu{Diccionario\then Ajustes\ldots}; las teclas, como \key{Ctrl+F}. En
+macOS, \key{Ctrl} es la tecla Comando. Las imágenes muestran los programas
+en español; con la interfaz en inglés, todos los menús, mensajes y textos
+de ayuda están en inglés (sección~\ref{sec:languages}).
+
+\index{licencia}%
+\texttt{py-words} es software libre, con la Licencia Pública General de
+GNU, versión 3 o posterior. Solo usa Python y su biblioteca estándar (con
+Tk para las ventanas y curses para la terminal), así que no necesita nada
+más; la lista completa del software que usa, con sus licencias, está en
+\texttt{docs/LICENCIAS\_es.md}. Whitaker cedió WORDS y sus datos
+\enquote{para cualquier uso}, y el texto de Lewis y Short viene de la
+Perseus Digital Library, con la licencia CC BY-SA 4.0.
+
+\section{Instalación}
+\label{sec:install}
+
+Cada versión se publica en GitHub y en Codeberg (las direcciones están en
+la primera página), con estos archivos:
+
+\index{appimage@AppImage}\index{fedora (copr, rpm)@Fedora (Copr, RPM)}\index{zip}%
+\begin{itemize}
+\item \texttt{py-words-v.VERSIÓN-x86\_64.AppImage}: la AppImage, para
+  cualquier Linux;
+\item \texttt{py-words-VERSIÓN-1.fc45.noarch.rpm}: el paquete de Fedora,
+  firmado, con la clave que lo firma, \texttt{RPM-GPG-KEY-py-words};
+\item \texttt{py-words-v.VERSIÓN.zip}: el programa mismo, para Linux,
+  macOS y Windows.
+\end{itemize}
+
+\subsection{Qué se necesita}
+
+\index{python@Python}\index{tk@Tk}%
+Solo Python 3.13 o posterior. Las ventanas (el diccionario y su editor)
+necesitan Tk, que viene con Python en Windows y con los instaladores de
+python.org en macOS. En Linux, y con el Python de Homebrew en macOS, puede
+ser un paquete aparte:
+
+\begin{verbatim}
+$ sudo dnf install python3-tkinter      (Fedora)
+$ sudo apt install python3-tk           (Debian, Ubuntu)
+$ brew install python-tk                (macOS, Homebrew)
+\end{verbatim}
+
+\noindent
+\texttt{python3 --version} dice qué Python hay; si es demasiado antiguo,
+el programa lo dice y se detiene. Las órdenes de este manual usan
+\texttt{python3}; en Windows se escribe \texttt{python}. La AppImage y el
+RPM traen o usan su propio Python, así que no necesitan nada de esto.
+
+\subsection{El ZIP, o una copia del repositorio}
+
+\index{zip}\index{git}%
+Se descomprime el ZIP en cualquier parte, o se clona el repositorio:
+
+\begin{verbatim}
+$ git clone https://github.com/nivaca/py-words.git
+\end{verbatim}
+
+\noindent
+La carpeta es el programa entero: no hay nada que compilar ni instalar, y
+funciona desde donde está.
+
+\begin{verbatim}
+$ cd py-words
+$ python3 words.py amicus          (una primera prueba)
+$ python3 words_gui.py             (la ventana)
+\end{verbatim}
+
+\subsection{La AppImage (Linux)}
+
+\index{appimage@AppImage}%
+La AppImage es un solo archivo que trae su propio Python, con Tk. Se hace
+ejecutable y se abre:
+
+\begin{verbatim}
+$ chmod +x py-words-v.3.25-x86_64.AppImage
+$ ./py-words-v.3.25-x86_64.AppImage              (la ventana)
+$ ./py-words-v.3.25-x86_64.AppImage cli amicus   (en la terminal)
+$ ./py-words-v.3.25-x86_64.AppImage help         (los demás)
+\end{verbatim}
+
+\noindent\index{editores del diccionario!datos de solo lectura}%
+El primer argumento elige el programa: \texttt{gui} (el de omisión),
+\texttt{cli}, \texttt{tui}, \texttt{web}, \texttt{edit},
+\texttt{edit-gui}, \texttt{check} o \texttt{convert}; lo que sigue va a
+ese programa. En la AppImage no se puede escribir, así que en ella no se
+puede editar el diccionario (la sección~\ref{sec:editing} explica cómo
+hacerlo de todos modos). Herramientas como AppImageLauncher o Gear Lever
+la añaden al menú del sistema.
+
+\subsection{Fedora}
+
+\index{fedora (copr, rpm)@Fedora (Copr, RPM)}%
+Lo más sencillo es el repositorio de Copr. El paquete usa el Python y el
+Tk del propio Fedora, y añade cuatro entradas al menú del sistema, con el
+icono:
+
+\begin{verbatim}
+$ sudo dnf copr enable nivaca/py-words
+$ sudo dnf install py-words
+\end{verbatim}
+
+\noindent
+Las actualizaciones llegan luego con \texttt{sudo dnf upgrade}. El RPM de
+cada versión también se puede instalar a mano, tras importar una vez su
+clave con \texttt{sudo rpm --import RPM-GPG-KEY-py-words}. Funciona en
+cualquier Fedora con Python 3.13 o posterior, sea cual sea el número
+\texttt{fc} de su nombre. La orden \texttt{py-words} abre entonces los
+programas, con el mismo primer argumento que la AppImage:
+
+\begin{verbatim}
+$ py-words                 (la ventana)
+$ py-words cli amicus      (la línea de órdenes)
+$ py-words help            (los demás programas)
+\end{verbatim}
+
+\noindent\index{editores del diccionario!datos de solo lectura}%
+El programa se instala en \texttt{/usr/share/py-words}, donde no se puede
+escribir, así que tampoco ahí se puede editar el diccionario, como en la
+AppImage.
+
+\subsection{Una entrada en el menú}
+
+\index{entradas del menu@entradas del menú}\index{macos y windows@macOS y Windows}%
+Con el ZIP o una copia del repositorio, basta ejecutar una vez
+
+\begin{verbatim}
+$ python3 words_install.py
+\end{verbatim}
+
+\noindent
+para añadir el programa al menú del sistema, con cuatro entradas: la
+ventana, la línea de órdenes y la versión de terminal a pantalla completa
+(estas dos se abren en una terminal), y la versión web (su servidor corre
+en una terminal, y se abre el navegador). En Linux van al menú de
+aplicaciones; en Windows, al menú Inicio, y en macOS, a
+\texttt{\textasciitilde/Applications}. \texttt{--only-gui} añade solo la
+ventana, y \texttt{--uninstall} las quita. No necesita permisos de
+administrador. Las entradas abren el programa en su carpeta, así que si la
+carpeta se mueve hay que ejecutarlo de nuevo.
+
+\subsection{Actualizar y desinstalar}
+
+\index{actualizar}\index{desinstalar}%
+Con git, \texttt{git pull} en la carpeta; si no, se descarga el ZIP de
+nuevo y se reemplaza la carpeta. Si se editó el diccionario, conviene
+guardar antes una copia de \texttt{data/dictionary.xml}. Para
+desinstalarlo, se quitan las entradas del menú con \texttt{python3
+words\_install.py --uninstall} y se borra la carpeta; los ajustes, el
+historial y la caché también pueden borrarse (sección~\ref{sec:files}).
+
+\section{Los cuatro programas}
+\label{sec:programs}
+
+\index{programas}\index{ventana}\index{linea de ordenes@línea de órdenes}\index{terminal a pantalla completa}\index{pagina web@página web}%
+El mismo diccionario tiene cuatro caras, que comparten los ajustes y el
+historial de búsquedas:
+
+\begin{longtable}{@{}lp{0.62\textwidth}@{}}
+\toprule
+Programa & Qué es\\
+\midrule
+\endhead
+\texttt{words\_gui.py} & la ventana (sección~\ref{sec:window})\\
+\texttt{words.py} & la línea de órdenes, con un modo interactivo (sección~\ref{sec:cli})\\
+\texttt{words\_tui.py} & la ventana, pero en una terminal, a pantalla completa (sección~\ref{sec:tui})\\
+\texttt{words\_web.py} & un pequeño servidor web, y el diccionario en el navegador (sección~\ref{sec:web})\\
+\texttt{meanings.py} & \texttt{words.py} solo con las formas de diccionario y los significados\\
+\texttt{words\_edit\_gui.py} & el editor del diccionario, en una ventana (sección~\ref{sec:editing})\\
+\texttt{words\_edit.py} & el editor del diccionario, en la terminal\\
+\texttt{words\_check.py} & revisa los archivos de datos tras editarlos a mano\\
+\texttt{words\_install.py} & añade el programa al menú del sistema\\
+\bottomrule
+\end{longtable}
+
+\noindent
+Desde la carpeta del programa se abren con \texttt{python3}:
+
+\begin{verbatim}
+$ python3 words_gui.py                     (una ventana)
+$ python3 words_gui.py perspicio           (que la busca)
+$ python3 words_gui.py -e mirar            (una ventana, al latín)
+$ python3 words.py rem acu tetigisti       (buscar una línea)
+$ python3 words.py                         (interactivo)
+$ python3 words_tui.py                     (en la terminal)
+$ python3 words_web.py                     (en el navegador)
+\end{verbatim}
+
+\noindent\index{version en linea@versión en línea}%
+La versión en línea, \url{https://nivaca.pythonanywhere.com/}, es la
+página de \texttt{words\_web.py} en un servidor público. Allí cada
+visitante tiene sus propios ajustes y búsquedas anteriores, guardados en
+las cookies de su navegador, y nada de eso se guarda en el servidor.
+
+\section{La ventana}
+\label{sec:window}
+
+\shot{gui_es}{1}{La ventana, en modo oscuro, tras buscar \textit{perspicio}.}
+
+\index{ventana}\index{cuadro de busqueda@cuadro de búsqueda}\index{buscar}%
+La figura~\ref{fig:gui_es} muestra la ventana. Arriba está el cuadro donde
+se escriben las palabras, y \menu{Buscar}, que las busca (\key{Intro} hace
+lo mismo). El cuadro guarda las búsquedas anteriores: \key{Abajo}, o su
+flecha, las lista, la más reciente primero, y elegir una la busca de
+nuevo.
+
+\index{buscar en}\index{direccion@dirección}\index{significados en}\index{busqueda aproximada@búsqueda aproximada}%
+Debajo están las opciones de la búsqueda:
+
+\begin{description}
+\item[Buscar en] \menu{Local}, este diccionario, o \menu{Logeion}, los
+  diccionarios de la Universidad de Chicago (sección~\ref{sec:logeion}),
+  con la lista de los diccionarios de Logeion al lado;
+\item[la dirección] \menu{Latín\,$\rightarrow$\,español} o
+  \menu{español\,$\rightarrow$\,latín} (con los significados en inglés,
+  \menu{inglés} en lugar de \menu{español});
+\item[Significados en] el idioma de los significados
+  (sección~\ref{sec:languages});
+\item[Búsqueda aproximada] cuando una palabra no encuentra nada, los
+  resultados de sus grafías cercanas (sección~\ref{sec:fuzzy}).
+\end{description}
+
+\noindent
+Estas opciones se guardan: la próxima vez, cualquiera de los programas
+empieza como se dejó.
+
+\index{resultados!enlaces}\index{resultados!explicaciones}\index{doble clic}\index{clic derecho}%
+Los resultados ocupan el resto de la ventana. Son el mismo texto que en la
+línea de órdenes, dispuesto para la vista: la palabra buscada va más
+grande, la forma de diccionario en negrita con su lema en color, los
+códigos y las notas en gris, y los análisis de las formas en azul. La
+primera palabra de una entrada es un enlace que la busca, y un doble clic
+en cualquier palabra también la busca (una palabra de los significados se
+busca en latín, en la otra dirección). Con el puntero sobre los códigos
+entre corchetes o sobre un análisis (\texttt{GEN.PL}), un recuadro explica
+qué significan. El clic derecho copia o busca una palabra.
+
+\index{linea de estado@línea de estado}\index{modo oscuro}%
+La línea de abajo dice qué está haciendo el programa. A su derecha, la
+luna oscurece las ventanas (el diccionario, sus diálogos y el editor), y
+luego el sol las vuelve a aclarar.
+
+\subsection{Los menús}
+
+\index{menus@menús}%
+\begin{description}
+\item[Diccionario] \menu{Editar diccionario\ldots} abre el editor
+  (sección~\ref{sec:editing}); \menu{Ajustes\ldots} muestra todos los
+  ajustes (sección~\ref{sec:settings}); \menu{Salir}.
+\item[Editar] \menu{Cortar}, \menu{Copiar} y \menu{Pegar}, en el cuadro de
+  búsqueda o en los resultados.
+\item[Ver] \menu{Buscar en los resultados\ldots}, el tamaño del texto, las
+  fuentes y el \menu{Modo oscuro}.
+\item[Ayuda] \menu{Ayuda}, la guía para buscar y para leer los
+  resultados; \menu{Sitio web}, la página del programa; \menu{Acerca de},
+  la versión y los créditos.
+\end{description}
+
+\subsection{Buscar un texto en los resultados}
+
+\index{buscar en los resultados}%
+\menu{Ver\then Buscar en los resultados\ldots} (\key{Ctrl+F}) abre una
+pequeña barra bajo los resultados. Lo que se escribe allí se resalta a
+medida que se escribe; \key{Intro} va al lugar siguiente,
+\key{Mayús+Intro} al anterior, y \key{Esc} cierra la barra.
+
+\subsection{Texto y fuentes}
+
+\index{fuentes}\index{tamano del texto@tamaño del texto}\index{pantallas de alta resolucion@pantallas de alta resolución}%
+\key{Ctrl++} y \key{Ctrl+-} agrandan y achican el texto, y \key{Ctrl+0}
+devuelve el tamaño habitual. \menu{Ver\then Fuente\ldots} elige las
+fuentes: una de ancho fijo para los resultados, porque sus columnas deben
+quedar alineadas, y otra para el resto de la ventana. Ambas se guardan.
+En una pantalla de alta resolución, las ventanas siguen el escalado del
+escritorio.
+
+\section{Buscar}
+\label{sec:searching}
+
+\subsection{Desde el latín}
+
+\index{buscar!desde el latin@desde el latín}\index{mayusculas@mayúsculas}\index{u y v, i y j}\index{marcas de cantidad}%
+Se escribe una palabra latina, o una línea entera de latín: cada palabra
+se analiza por turno. No importan las mayúsculas, ni la u y la v, ni la i
+y la j (\textit{iulius}, \textit{Julius} e \textit{IVLIVS} son la misma
+palabra), ni las marcas de cantidad y otros acentos: \textit{amīcus} es
+\textit{amicus}, y \textit{cælum} es \textit{caelum}.
+
+\index{trucos}\index{prefijos y sufijos}\index{encliticos@enclíticos}\index{grafias medievales@grafías medievales}%
+Una palabra se busca primero como una raíz y una desinencia del
+diccionario. Si así no se encuentra nada, el programa prueba prefijos,
+sufijos y enclíticos (\textit{-que}, \textit{-ne}, \textit{-ve}), y luego
+otras grafías: un perfecto sincopado, dos palabras escritas como una
+(\textit{rempublicam}), una \textit{-st} final por \textit{est}
+(\textit{factumst}) y las grafías del latín medieval (\textit{e} por
+\textit{ae}, \textit{y} por \textit{i}, \textit{michi} por
+\textit{mihi}). Siempre dice lo que hizo:
+
+\begin{verbatim}
+hystorie
+  ortografía: Grafía medieval hystorie -> historiae
+    'hystorie' puede ser una grafía medieval de historiae
+  historia, historiae
+      sustantivo, 1.ª declinación, femenino  [XXXAX]
+    Historia; Historieta, fábula, cuento; (De Miguel)
+    histori-ae     GEN.SG
+\end{verbatim}
+
+\noindent\index{nombres propios}%
+Una palabra desconocida con mayúscula inicial se toma como un nombre, y se
+deja como está.
+
+\subsection{Hacia el latín}
+
+\index{buscar!hacia el latin@hacia el latín}\index{categorias gramaticales@categorías gramaticales}%
+En la otra dirección (\menu{español\,$\rightarrow$\,latín} en la ventana,
+\texttt{-e} en la línea de órdenes), se escribe una palabra del idioma de
+los significados: se listan las entradas latinas cuyos significados la
+tienen, las mejores primero, seis como mucho, y luego cuántas más hay. Una
+categoría gramatical tras la palabra deja solo esa: \texttt{amigo ADJ}.
+Las categorías son \texttt{N}, \texttt{PRON}, \texttt{ADJ}, \texttt{NUM},
+\texttt{ADV}, \texttt{V}, \texttt{PREP}, \texttt{CONJ} e \texttt{INTERJ}.
+Las palabras muy comunes (\textit{el}, \textit{la}, \textit{de}) nunca se
+buscan, y los acentos no importan: \textit{corazon} encuentra
+\textit{corazón}.
+
+\subsection{La búsqueda aproximada}
+\label{sec:fuzzy}
+
+\index{busqueda aproximada@búsqueda aproximada}\index{erratas}%
+Por lo general, una palabra con una errata no encuentra nada. Con la
+búsqueda aproximada, a una palabra de tres letras o más que sigue sin
+encontrar nada le siguen los resultados de las palabras a un cambio de
+ella (una letra omitida, añadida o cambiada, o dos letras intercambiadas),
+tres como mucho, primero las de las entradas más frecuentes:
+
+\begin{verbatim}
+amicuss
+  (desconocida)
+  (grafías cercanas: amicus)
+
+amicus
+  amicus, amici  sustantivo, 2.ª declinación, masculino  [XXXBO]
+  ...
+\end{verbatim}
+
+\noindent
+La búsqueda hacia el latín hace lo mismo con las palabras de los
+significados: \textit{corazn} encuentra \textit{corazón}, y
+\textit{amgio}, \textit{amigo}. Está activada mientras no se desactive:
+\menu{Búsqueda aproximada} en la ventana y en la página web, \key{F3} en
+la terminal, o \texttt{--no-fuzzy} en la línea de órdenes, para una sola
+ejecución.
+
+\section{Leer los resultados}
+\label{sec:results}
+
+\index{resultados}%
+Esto es lo que \texttt{py-words} muestra para \textit{amicorum}:
+
+\begin{verbatim}
+amicorum
+  amicus, amici  sustantivo, 2.ª declinación, masculino  [XXXBO]
+    El amigo (en el sent. más general de la palabra); ...
+    amīc-ōrum      GEN.PL
+  amicus, amica -um, amicior -or -us, amicissimus -a -um
+      adjetivo, 1.ª/2.ª declinación  [XXXAO]
+    Amigo, amigable, amistoso, favorable, ... (De Miguel)
+    amīc-ōrum      GEN.PL.M
+    amīc-ōrum      GEN.PL.N
+\end{verbatim}
+
+\index{resultados!lineas de@líneas de}\index{partes principales}\index{vocales largas}%
+\begin{itemize}
+\item La primera línea es la palabra buscada. Detrás, con sangría, cada
+  entrada que puede ser.
+\item La primera línea de una entrada tiene su forma de diccionario (las
+  partes principales: \textit{amicus, amici}), su categoría y su gramática
+  en palabras (sustantivo, 2.ª declinación, masculino), y los códigos
+  entre corchetes (sección~\ref{sec:codes}); algunas entradas añaden su
+  época o su frecuencia en palabras (arcaico, menos frecuente\ldots).
+\item La línea siguiente es el significado. Sus acepciones van separadas
+  por punto y coma, la más común primero. Al final, el diccionario del que
+  viene, cuando no es WORDS: (De Miguel), (Echave-Sustaeta), (Lewis and
+  Short). \texttt{[en]} ante un significado indica que no tiene
+  traducción, y se da en inglés.
+\item Luego vienen las formas que puede ser la palabra: la raíz y la
+  desinencia, unidas por un guion, con las vocales largas marcadas donde
+  se conocen (\textit{amīc-ōrum}), y qué forma es, con las abreviaturas de
+  la sección~\ref{sec:glosses}. Una misma grafía puede ser varias formas:
+  el \textit{amīc-ōrum} del adjetivo es masculino y neutro.
+\item Una línea antes de una entrada puede decir cómo se halló la palabra:
+  un prefijo, un sufijo o un enclítico, con su significado, o un cambio de
+  grafía.
+\end{itemize}
+
+\noindent\index{tiempos compuestos}%
+Un participio seguido de una forma de \textit{esse} se lee como un tiempo
+compuesto:
+
+\begin{verbatim}
+laudatus
+  laudo, laudare, laudavi, laudatus
+      verbo, 1.ª conjugación  [XXXAX]
+    Alabar, bonos; ponderar la excelencia de (en medic.), ...
+    laudāt-us      PRF.PASS.PTCP.NOM.SG.M
+    participio + est  3SG.PRF.PASS.IND
+      participio perfecto pasivo + verbo «ser»
+        => sistema de perfecto pasivo
+\end{verbatim}
+
+\noindent\index{resultados!notas}%
+Algunas notas van entre paréntesis:
+
+\begin{longtable}{@{}>{\raggedright}p{0.4\textwidth}p{0.54\textwidth}@{}}
+\toprule
+Nota & Qué dice\\
+\midrule
+\endhead
+(desconocida) & la palabra no se encontró\\
+(grafías cercanas: \ldots) & siguen los resultados de la búsqueda aproximada\\
+(no se muestran las formas menos probables) & el ajuste \texttt{trim\_output} omitió algunas\\
+(sin resultados) & la búsqueda hacia el latín no encontró nada\\
+(palabras cercanas: \ldots) & la búsqueda aproximada hacia el latín\\
+(no se muestran \ldots\ más) & tras las seis mejores entradas, hacia el latín\\
+\bottomrule
+\end{longtable}
+
+\subsection{Los códigos entre corchetes}
+\label{sec:codes}
+
+\index{codigos entre corchetes@códigos entre corchetes}\index{epoca@época}\index{area@área}\index{region@región}\index{frecuencia}\index{fuentes de las entradas}%
+Las cinco letras entre corchetes que siguen a una entrada dicen cuándo,
+dónde, con qué frecuencia y según qué autoridad se usa la palabra, en este
+orden: su época, su área (el tema al que pertenece), su región, su
+frecuencia y su fuente. Una X solo dice que no hay nada particular que
+señalar. Así, el \texttt{[XXXBO]} de \textit{amicus} se lee: en uso en
+todas las épocas, general, de todas partes, frecuente, y tomada del Oxford
+Latin Dictionary. Una entrada puede tener más de una fuente: las demás
+siguen a las cinco letras, cada una tras un \texttt{+}
+(\texttt{[XXXBO+A]} viene también de Echave-Sustaeta). La época, si se
+conoce, y la frecuencia, si es menor o más rara, también se escriben en
+palabras tras los códigos. Las letras son estas:
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letra & Época\\
+\midrule
+\endhead
+X & en uso en todas las épocas\\
+A & arcaico\\
+B & antiguo (antes del periodo clásico)\\
+C & clásico\\
+D & tardío (después del 200)\\
+E & posterior (después del 600)\\
+F & medieval (después del 1000)\\
+G & erudito (Renacimiento y después)\\
+H & moderno\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letra & Área\\
+\midrule
+\endhead
+X & general\\
+A & agricultura, plantas, animales, la tierra\\
+B & biología, medicina, el cuerpo\\
+D & teatro, música, las artes\\
+E & la Iglesia, la Biblia\\
+G & gramática, retórica, lógica, literatura, escuela\\
+L & derecho, gobierno, dinero, títulos\\
+P & poesía\\
+S & ciencia, filosofía, matemáticas, medidas\\
+T & técnica, arquitectura, agrimensura\\
+W & guerra, el ejército, la marina\\
+Y & mitología\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letra & Región\\
+\midrule
+\endhead
+X & en todas partes\\
+A & África\\
+B & Britania\\
+C & China\\
+D & Escandinavia\\
+E & Egipto\\
+F & Francia, la Galia\\
+G & Alemania\\
+H & Grecia\\
+I & Italia, Roma\\
+J & India\\
+K & los Balcanes\\
+N & los Países Bajos\\
+P & Persia\\
+Q & el Oriente Próximo\\
+R & Rusia\\
+S & Hispania\\
+U & Europa oriental\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letra & Frecuencia\\
+\midrule
+\endhead
+X & desconocida\\
+A & muy frecuente\\
+B & frecuente\\
+C & común\\
+D & menos frecuente\\
+E & poco común\\
+F & muy rara\\
+I & solo en inscripciones\\
+M & solo en grafitos\\
+N & solo en Plinio\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letra & Fuente\\
+\midrule
+\endhead
+X & general o desconocida\\
+A & Echave-Sustaeta, \textit{Lengua latina. Vocabulario básico}\\
+B & Beeson, \textit{Medieval Latin}\\
+C & \textit{Cassell's Latin Dictionary}\\
+D & Adams, \textit{Latin Sexual Vocabulary}\\
+E & Stelten, \textit{Ecclesiastical Latin}\\
+F & Deferrari, santo Tomás de Aquino\\
+G & Gildersleeve y Lodge, \textit{Latin Grammar}\\
+H & Collatinus (Ouvrard)\\
+I & Leverett, \textit{Lexicon}\\
+J & Bracton, \textit{De Legibus}\\
+K & \textit{Calepinus Novus} (Licoppe)\\
+L & Lewis, \textit{Elementary Latin Dictionary}\\
+M & Latham, \textit{Medieval Word List}; DMLBS\\
+N & Nelson, lista de palabras\\
+O & \textit{Oxford Latin Dictionary}\\
+P & Souter, \textit{Later Latin}\\
+Q & otros diccionarios\\
+R & Plater y White, \textit{Vulgate grammar}\\
+S & Lewis y Short, \textit{A Latin Dictionary}\\
+T & hallada en una traducción\\
+U & Du Cange\\
+V & Blatt, Saxo\\
+W & conjetura de Whitaker\\
+Y & provisional\\
+Z & enviada por un usuario\\
+m & De Miguel, \textit{Nuevo diccionario latino-español etimológico}\\
+\bottomrule
+\end{longtable}
+
+\subsection{Las abreviaturas de los análisis}
+\label{sec:glosses}
+
+\index{abreviaturas de glosa}\index{Reglas de Glosado de Leipzig}%
+Las formas se analizan con las abreviaturas de las Reglas de Glosado de
+Leipzig, unidas por puntos; la persona y el número van juntos, así que
+\texttt{2SG.PRF.ACT.IND} es la 2.ª persona del singular del perfecto de
+indicativo activo. Las marcadas con * no están en la lista de Leipzig.
+Las abreviaturas son las mismas en los dos idiomas. Con el ajuste
+\texttt{use\_glosses} desactivado (\texttt{--no-glosses} en la línea de
+órdenes), los análisis se escriben en palabras: \enquote{acusativo
+singular}.
+
+\begin{longtable}{@{}lp{0.6\textwidth}@{}}
+\toprule
+Abreviatura & Significado\\
+\midrule
+\endhead
+\texttt{NOM}, \texttt{GEN}, \texttt{DAT} & nominativo, genitivo, dativo\\
+\texttt{ACC}, \texttt{ABL}, \texttt{VOC}, \texttt{LOC} & acusativo, ablativo, vocativo, locativo\\
+\texttt{SG}, \texttt{PL} & singular, plural\\
+\texttt{M}, \texttt{F}, \texttt{N}, \texttt{C}* & masculino, femenino, neutro, común\\
+\texttt{1}, \texttt{2}, \texttt{3} & primera, segunda, tercera persona\\
+\texttt{PRS}, \texttt{IMPF}*, \texttt{FUT} & presente, imperfecto, futuro\\
+\texttt{PRF}, \texttt{PLUP}*, \texttt{FUT.PRF}* & perfecto, pluscuamperfecto, futuro perfecto\\
+\texttt{ACT}*, \texttt{PASS} & activo, pasivo\\
+\texttt{IND}, \texttt{SBJV}, \texttt{IMP} & indicativo, subjuntivo, imperativo\\
+\texttt{INF}, \texttt{PTCP}, \texttt{SUP}* & infinitivo, participio, supino\\
+\texttt{POS}*, \texttt{CMPR}*, \texttt{SPRL}* & positivo, comparativo, superlativo\\
+\texttt{CARD}*, \texttt{ORD}* & numeral cardinal, ordinal\\
+\texttt{DISTR}, \texttt{MULT}* & numeral distributivo, multiplicativo (adverbio numeral)\\
+\bottomrule
+\end{longtable}
+
+\section{Los idiomas}
+\label{sec:languages}
+
+\subsection{El idioma de los significados}
+
+\index{significados en}\index{significados en espanol@significados en español}\index{De Miguel}\index{Echave-Sustaeta}%
+Los significados están en español o en inglés, y también el resto de los
+resultados (\enquote{sustantivo, 2.ª declinación, masculino}). Los
+significados en español vienen del diccionario de De Miguel siempre que
+este tiene la palabra, tal como él los escribió en 1867, con su ortografía
+(\textit{razon}, \textit{á}), y lo dicen al final, \enquote{(De Miguel)};
+unos pocos vienen de Echave-Sustaeta; los demás se tradujeron del inglés.
+Se elige con \menu{Significados en} en la ventana y en la página web, con
+\key{F5} en la terminal, o con \texttt{--language en} en la línea de
+órdenes, para una sola ejecución. La búsqueda hacia el latín parte del
+idioma elegido.
+
+\subsection{El idioma de la interfaz}
+
+\index{idioma de la interfaz}%
+Los programas hablan español, inglés o latín medieval: sus menús,
+botones, mensajes,
+ayuda y ajustes, los editores y el revisor. Se elige con \menu{Idioma de
+la interfaz} en los ajustes de la ventana y de la página web, con
+\key{F6} en la terminal, o al final del diálogo \texttt{\#} de la línea de
+órdenes (\texttt{--interface en} o \texttt{--interface la} para una sola
+ejecución). La ventana y la página web cambian en el acto. Cambiar la
+interfaz cambia también los significados al mismo idioma, si el
+diccionario lo tiene; no hay significados en latín, así que con la
+interfaz latina siguen como estaban, y también las notas de los
+resultados, como \enquote{(unknown)}; después, cada uno puede elegirse por
+separado, de modo que la interfaz puede estar en español y los
+significados en inglés.
+
+\section{Logeion}
+\label{sec:logeion}
+
+\index{Logeion}%
+En lugar de las entradas de este diccionario, los programas pueden
+mostrar las de Logeion (\url{https://logeion.uchicago.edu}), los
+diccionarios latinos y griegos de la Universidad de Chicago, con la
+definición breve, la frecuencia y ejemplos de su corpus. Necesita
+internet. Se elige con \menu{Buscar en} en la ventana y en la página web,
+\key{F8} en la terminal, \texttt{\tl G} en la línea de órdenes
+interactiva, o \texttt{--logeion} para una sola ejecución.
+
+\index{lemas}%
+Logeion no analiza las formas flexionadas. Por eso las palabras se
+analizan aquí primero, y a Logeion se le piden sus lemas: \textit{dixit}
+muestra \textit{dico}, y \textit{est} muestra \textit{edo} y \textit{sum}.
+Cada palabra muestra primero su análisis, sin los significados, y luego
+las páginas de Logeion de sus lemas. Mientras Logeion está elegido, la
+búsqueda parte solo del latín, y la otra dirección, el idioma de los
+significados, la búsqueda aproximada y el editor quedan en gris.
+
+\index{Logeion!diccionarios}\index{DMLBS}%
+Las entradas pueden ser las de un diccionario de Logeion, o las de todos;
+mientras no se elija otro, es el DMLBS. Se elige con la lista que está
+junto a \menu{Buscar en}, con \key{F5} en la terminal (mientras Logeion
+está elegido), con \texttt{\tl D} en la línea de órdenes interactiva, o
+con \texttt{--dictionary} y su código:
+
+\begin{longtable}{@{}lp{0.7\textwidth}@{}}
+\toprule
+Código & Diccionario\\
+\midrule
+\endhead
+\texttt{all} & todos los diccionarios\\
+\texttt{ls} & Lewis \& Short\\
+\texttt{lewis} & Lewis, \textit{Elementary Latin Dictionary}\\
+\texttt{georges} & Georges\\
+\texttt{gaffiot} & Gaffiot 2016\\
+\texttt{dmlbs} & DMLBS (\textit{Dictionary of Medieval Latin from British Sources})\\
+\texttt{lane} & LaNe\\
+\texttt{ducange} & Du Cange\\
+\texttt{lana} & Lana-Michelone\\
+\texttt{frieze} & Frieze-Dennison (Virgilio)\\
+\texttt{sinicum} & Latino-Sinicum\\
+\bottomrule
+\end{longtable}
+
+\noindent
+Al cambiar de diccionario, los resultados se muestran de nuevo en el
+acto, sin volver a preguntar a Logeion. En la ventana, los enlaces de una
+entrada a otras palabras buscan esas palabras, y los demás enlaces se
+abren en el navegador.
+
+\section{La línea de órdenes}
+\label{sec:cli}
+
+\shot{cli_es}{1}{La línea de órdenes, interactiva, con \textit{perspicio}.}
+
+\index{linea de ordenes@línea de órdenes}%
+\texttt{words.py} busca las palabras que se le dan, como una línea de
+latín, o, sin palabras, abre el modo interactivo
+(figura~\ref{fig:cli_es}). \texttt{meanings.py} es lo mismo que
+\texttt{words.py -m}.
+
+\begin{verbatim}
+$ python3 words.py rem acu tetigisti
+$ python3 words.py -e amigo --pos N
+$ python3 words.py -f texto.txt -o resultados.txt
+$ python3 words.py --language en amicorum
+$ python3 words.py --logeion arma
+$ python3 words.py --dictionary gaffiot arma
+\end{verbatim}
+
+\index{linea de ordenes@línea de órdenes!opciones}%
+\begin{longtable}{@{}>{\raggedright}p{0.36\textwidth}p{0.58\textwidth}@{}}
+\toprule
+Opción & Qué hace\\
+\midrule
+\endhead
+\texttt{-f ARCHIVO} & busca cada línea de ARCHIVO (\texttt{-} para la entrada estándar)\\
+\texttt{-o ARCHIVO} & escribe los resultados en ARCHIVO\\
+\texttt{-e} & del idioma de los significados al latín\\
+\texttt{--pos CAT} & con \texttt{-e}, solo esta categoría gramatical\\
+\texttt{-m} & solo las formas de diccionario y los significados\\
+\texttt{--no-glosses} & los análisis en palabras, no en abreviaturas\\
+\texttt{--no-fuzzy}, \texttt{--fuzzy} & sin o con la búsqueda aproximada\\
+\texttt{--logeion}, \texttt{--local} & Logeion, o este diccionario\\
+\texttt{--dictionary DIC} & el diccionario de Logeion (sección~\ref{sec:logeion})\\
+\texttt{--dictionaries} & lista los diccionarios de Logeion\\
+\texttt{--language CÓDIGO} & el idioma de los significados (\texttt{es}, \texttt{en})\\
+\texttt{--languages} & lista los idiomas de los significados\\
+\texttt{--interface CÓDIGO} & el idioma de la interfaz\\
+\texttt{--datadir CARPETA} & los archivos de datos de CARPETA\\
+\texttt{--guide} & imprime la ayuda: cómo leer los resultados\\
+\texttt{--config} & crea el archivo de configuración y dice dónde está\\
+\texttt{--clear-history} & olvida las búsquedas anteriores\\
+\texttt{--version} & la versión y los créditos\\
+\bottomrule
+\end{longtable}
+
+\noindent
+Las opciones que eligen algo (las glosas, la búsqueda aproximada, la
+fuente, los idiomas) lo hacen solo para esa ejecución; los ajustes
+conservan lo que tenían.
+
+\subsection{El modo interactivo}
+
+\index{linea de ordenes@línea de órdenes!interactiva}%
+En el modo interactivo se busca cada línea que se escribe tras el
+indicador \texttt{=>}, salvo si empieza con una de estas:
+
+\begin{longtable}{@{}>{\raggedright}p{0.36\textwidth}p{0.58\textwidth}@{}}
+\toprule
+Línea & Qué hace\\
+\midrule
+\endhead
+\texttt{\tl E}, \texttt{\tl L} & del español (o el inglés) al latín; del latín\\
+\texttt{\tl G} & Logeion o este diccionario\\
+\texttt{\tl D [DIC]} & el diccionario de Logeion (solo: una lista para elegir)\\
+\texttt{@ARCHIVO} & busca cada línea de ARCHIVO\\
+\texttt{\#} & cambia los parámetros (sección~\ref{sec:settings})\\
+\texttt{!} & cambia los modos de desarrollador\\
+\texttt{\tl H} & la ayuda: cómo buscar y leer los resultados\\
+\texttt{\tl A} & acerca de: la versión y los créditos\\
+\texttt{?} & la lista de estas líneas\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{historial de busquedas@historial de búsquedas}%
+\key{Arriba} y \key{Abajo} traen las búsquedas anteriores, también las de
+sesiones pasadas y las de los otros programas. En los diálogos de
+\texttt{\#} y \texttt{!}, \texttt{?} explica cada ajuste. Dos líneas
+vacías, o \key{Ctrl+D}, salen. \key{Ctrl+C} no sale: detiene lo que se
+está haciendo (una larga lista de resultados, un archivo), y el programa
+espera la línea siguiente.
+
+\subsection{El paginador y los colores}
+
+\index{paginador}\index{colores}%
+En una terminal, los resultados más largos que la pantalla se abren en el
+paginador del sistema, \texttt{less} (o el que nombre \texttt{\$PAGER}),
+como con \texttt{man}: \key{RePág} y \key{AvPág} los desplazan,
+\texttt{/} busca un texto, y \texttt{q} vuelve al indicador. Los
+resultados van en color, con los colores de la terminal, como en la
+ventana. Los resultados que se escriben en un archivo o en una tubería
+salen sin color, y \texttt{NO\_COLOR=1} quita los colores.
+
+\section{La terminal, a pantalla completa}
+\label{sec:tui}
+
+\shot{tui_es}{1}{\texttt{words\_tui.py}, en una terminal.}
+
+\index{terminal a pantalla completa}%
+\texttt{words\_tui.py} es la ventana en una terminal
+(figura~\ref{fig:tui_es}): una línea de búsqueda arriba, los resultados
+debajo y las teclas en la última línea. \key{Arriba} y \key{Abajo} traen
+las búsquedas anteriores, y \key{RePág} y \key{AvPág} desplazan los
+resultados. En Windows necesita el paquete \texttt{windows-curses}.
+
+\index{terminal a pantalla completa!teclas}%
+\begin{longtable}{@{}>{\raggedright}p{0.3\textwidth}p{0.64\textwidth}@{}}
+\toprule
+Tecla & Acción\\
+\midrule
+\endhead
+\key{F1} & la ayuda, y los créditos\\
+\key{F2}, \key{Ctrl+L} & del latín, o hacia el latín\\
+\key{F3}, \key{Ctrl+O} & los ajustes (\key{Espacio} cambia uno)\\
+\key{F4}, \key{Ctrl+E} & el editor del diccionario\\
+\key{F5}, \key{Ctrl+G} & el idioma de los significados (con Logeion, su diccionario)\\
+\key{F6} & el idioma de la interfaz\\
+\key{F7} & copia todos los resultados\\
+\key{F8} & este diccionario o Logeion\\
+\key{F9} & borra el historial\\
+\key{F10}, \key{Ctrl+Q} & sale\\
+\bottomrule
+\end{longtable}
+
+\section{La página web}
+\label{sec:web}
+
+\shot{web_es}{0.8}{\texttt{words\_web.py}, en el navegador.}
+
+\index{pagina web@página web}%
+\texttt{words\_web.py} arranca un pequeño servidor web y abre el navegador
+en \url{http://127.0.0.1:8000/}, o en otro puerto si ese está ocupado
+(figura~\ref{fig:web_es}). La página tiene el cuadro de búsqueda, la
+dirección, \menu{Significados en}, \menu{Búsqueda aproximada},
+\menu{Buscar en} y los resultados como en la ventana, con los mismos
+enlaces y explicaciones; debajo, las búsquedas anteriores, todos los
+ajustes, la ayuda y los créditos. La luna oscurece la página, y el sol la
+vuelve a aclarar; hasta que se usa por primera vez, la página sigue al
+sistema.
+
+\index{pagina web@página web!direcciones}%
+Cada búsqueda tiene su propia dirección, como
+\url{http://127.0.0.1:8000/?q=amicus+est} (\texttt{\&lang=en} para buscar
+hacia el latín), así que se puede guardar en marcadores. El servidor
+relee el diccionario cuando un editor lo cambia; el diccionario no puede
+editarse desde el navegador.
+
+\index{pagina web@página web!opciones}\index{red}%
+Solo este equipo puede abrir la página, a menos que \texttt{--host} diga
+otra cosa: con \texttt{--host 0.0.0.0} se puede usar desde un teléfono en
+la misma red. Como no hay contraseñas, conviene hacerlo solo en una red de
+confianza. \texttt{--port} elige el puerto, \texttt{--no-browser} no abre
+el navegador, y \key{Ctrl+C} detiene el servidor.
+
+\section{Ajustes}
+\label{sec:settings}
+
+\index{ajustes}\index{parametros@parámetros}%
+\menu{Diccionario\then Ajustes\ldots} muestra todos los ajustes de la
+ventana, con lo que hace cada uno (al poner el puntero sobre un ajuste,
+aparece su explicación); un cambio se aplica en el acto. Son los mismos
+que los parámetros (\texttt{\#}) y los modos de desarrollador
+(\texttt{!}) de la línea de órdenes, \key{F3} en la terminal y los ajustes
+de la página web. El diálogo tiene también \menu{Idioma de la interfaz},
+\menu{Fuente\ldots}, \menu{Borrar historial} y \menu{Ajustes por defecto}.
+Los ajustes conservan su nombre inglés, el mismo del archivo de
+configuración.
+
+\index{parametros@parámetros!lo que muestran los resultados}%
+\begin{longtable}{@{}>{\raggedright}p{0.36\textwidth}p{0.58\textwidth}@{}}
+\toprule
+Parámetro & Qué hace, si está activado\\
+\midrule
+\endhead
+\multicolumn{2}{@{}l}{\itshape Lo que muestran los resultados}\\
+\texttt{show\_dictionary\_forms} & cada entrada con sus partes principales y su gramática\\
+\texttt{show\_only\_meanings} & solo las entradas y sus significados, sin las formas\\
+\texttt{use\_glosses} & los análisis en abreviaturas de glosa, no en palabras\\
+\texttt{show\_long\_vowels} & las vocales largas marcadas en las formas (\textit{amīc-ōrum})\\
+\texttt{show\_codes} & los códigos entre corchetes (\texttt{[XXXBO]})\\
+\texttt{explain\_codes} & la época y la frecuencia siempre en palabras, no solo cuando son inusuales\\
+\texttt{trim\_output} & omite los resultados menos probables (y, hacia el latín, todos menos los seis mejores)\\
+\texttt{trim\_medieval} & con \texttt{trim\_output}, también las formas medievales si se hallaron otras\\
+\addlinespace
+\multicolumn{2}{@{}l}{\itshape Cómo se buscan las palabras}\\
+\texttt{fuzzy\_search} & las grafías cercanas de una palabra que no encuentra nada\\
+\texttt{use\_affixes} & una palabra desconocida leída como una conocida con un prefijo o un sufijo\\
+\texttt{use\_tricks} & otras grafías, y dos palabras escritas como una\\
+\texttt{medieval\_spellings} & con \texttt{use\_tricks}, también las grafías medievales\\
+\texttt{read\_compounds} & un participio y una forma de \textit{esse} como tiempo compuesto\\
+\texttt{ignore\_unknown\_names} & ningún truco con una palabra desconocida con mayúscula\\
+\texttt{near\_entries} & para una palabra desconocida, las entradas cercanas a donde estaría\\
+\addlinespace
+\multicolumn{2}{@{}l}{\itshape Modos de desarrollador}\\
+\texttt{show\_entry\_source} & de qué diccionario es cada entrada, y su número en él\\
+\texttt{pearse\_codes} & cada línea de los resultados empieza con un código (para otros programas)\\
+\texttt{pause\_in\_screen\_output} & los resultados largos en el paginador, en la línea de órdenes\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{trim\_output}%
+Los poetas usan palabras y formas inusuales, de modo que
+\texttt{trim\_output} puede omitir la correcta; con un verso que da
+resultados extraños, conviene desactivarlo.
+
+\section{Editar el diccionario}
+\label{sec:editing}
+
+\index{editores del diccionario}%
+Dos editores añaden, corrigen y borran las entradas del diccionario,
+\texttt{data/dictionary.xml}: uno en una ventana,
+\texttt{words\_edit\_gui.py}, que también abre \menu{Diccionario\then
+Editar diccionario\ldots}, y otro en la terminal, \texttt{words\_edit.py}.
+En los dos:
+
+\begin{itemize}
+\item una entrada se busca por una forma latina (\textit{amicorum}), una
+  raíz o una palabra de su significado;
+\item se corrige o se borra, o se hace una nueva, vacía o como la que se
+  muestra (\menu{Nueva como esta}); los campos dependen de la categoría
+  gramatical, y los códigos se eligen en listas que los explican;
+\item la vista previa muestra la entrada como la mostrarán los
+  resultados, y cualquier problema que tenga; \menu{Probar una palabra}
+  muestra lo que el programa hace con una palabra con el diccionario tal
+  como está ahora;
+\item también pueden editarse los significados en español, junto a los
+  ingleses, tras elegir el idioma con \menu{Significados en} (\key{F7} en
+  la terminal).
+\end{itemize}
+
+\index{editores del diccionario!guardar}\index{archivos .bak}%
+Un cambio entra en el diccionario con \menu{Aplicar cambios} (\key{F3} en
+la terminal), y el archivo solo se escribe con \menu{Guardar} (\key{F2}).
+Al dejar una entrada con cambios sin aplicar, el editor pregunta qué hacer
+con ellos. La primera vez que se guarda en una sesión, los archivos
+originales se conservan como archivos \texttt{.bak}.
+
+\index{editores del diccionario!teclas}%
+\begin{longtable}{@{}>{\raggedright}p{0.3\textwidth}p{0.64\textwidth}@{}}
+\toprule
+Tecla (terminal) & Acción\\
+\midrule
+\endhead
+\key{F3}, \key{Ctrl+A} & aplica los cambios (o añade la entrada nueva)\\
+\key{F4}, \key{Ctrl+N} & una entrada nueva\\
+\key{F5}, \key{Ctrl+D} & una entrada nueva como esta\\
+\key{F6}, \key{Ctrl+T} & prueba una palabra\\
+\key{F7}, \key{Ctrl+L} & el idioma de los significados editado además del inglés\\
+\key{F8}, \key{Ctrl+K} & borra la entrada\\
+\key{F2}, \key{Ctrl+S} & guarda el archivo (aplicando antes los cambios)\\
+\key{F10}, \key{Ctrl+Q} & sale\\
+\key{Tab} & el área siguiente: la búsqueda, la lista, el formulario\\
+\key{Ctrl+F} & buscar\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{editores del diccionario!datos de solo lectura}\index{carpeta de datos}%
+En la AppImage y en el RPM los datos no se pueden escribir, así que los
+editores están desactivados. Para editar ahí el diccionario, se copia la
+carpeta \texttt{data} a otro lugar, y se da la copia como carpeta de
+datos: en el archivo de configuración (\texttt{folder} en
+\texttt{[data]}), con \texttt{--datadir} o con
+\texttt{\$PY\_WORDS\_DATADIR}.
+
+\index{words\_check.py}%
+Los archivos también pueden editarse a mano, en cualquier editor de
+texto: se copia la entrada de una palabra parecida y se cambia. Luego,
+\texttt{python3 words\_check.py} informa, con los números de línea, de lo
+que el programa no puede leer y de las entradas que probablemente no hacen
+lo que se quería.
+
+\section{Teclas de la ventana}
+\label{sec:keys}
+
+\index{teclas}%
+\begin{longtable}{@{}>{\raggedright}p{0.4\textwidth}p{0.54\textwidth}@{}}
+\toprule
+Tecla & Acción\\
+\midrule
+\endhead
+\key{Intro} & buscar\\
+\key{Abajo} (en el cuadro de búsqueda) & las búsquedas anteriores\\
+\key{Ctrl+F} & buscar en los resultados\\
+\key{Intro}, \key{Mayús+Intro} (al buscar en los resultados) & el lugar siguiente y el anterior\\
+\key{Esc} (al buscar en los resultados) & cerrar la barra de búsqueda\\
+\key{Ctrl++}, \key{Ctrl+-} & texto más grande y más pequeño\\
+\key{Ctrl+0} & el tamaño habitual\\
+\key{Ctrl+X}, \key{Ctrl+C}, \key{Ctrl+V} & cortar, copiar, pegar\\
+\key{F1} & ayuda\\
+\key{Ctrl+Q} & salir\\
+\key{Esc} (en un diálogo) & cerrarlo\\
+\bottomrule
+\end{longtable}
+
+\section{Dónde se guarda cada cosa}
+\label{sec:files}
+
+\index{archivos de configuracion@archivos de configuración}\index{config.toml}\index{historial de busquedas@historial de búsquedas}\index{cache@caché}%
+Los ajustes, las fuentes, el modo oscuro y las opciones de la ventana se
+guardan en un solo archivo de configuración, \texttt{config.toml}. Es
+texto plano, con un comentario para cada ajuste, y puede editarse a mano;
+\texttt{python3 words.py --config} lo crea y dice dónde está. El programa
+guarda además las últimas 1000 búsquedas, y una caché del diccionario con
+la que arranca en un cuarto de segundo. Todo ello está en las carpetas
+del usuario:
+
+\begin{longtable}{@{}llp{0.6\textwidth}@{}}
+\toprule
+Qué & Sistema & Dónde\\
+\midrule
+\endhead
+Ajustes & Linux & \texttt{\textasciitilde/.config/py-words/config.toml}\\
+ & macOS & \texttt{\textasciitilde/Library/Application Support/py-words}\\
+ & Windows & \texttt{\%APPDATA\%\textbackslash py-words}\\
+\addlinespace
+Historial & Linux & \texttt{\textasciitilde/.local/state/py-words/history}\\
+ & macOS & \texttt{\textasciitilde/Library/Application Support/py-words}\\
+ & Windows & \texttt{\%LOCALAPPDATA\%\textbackslash py-words}\\
+\addlinespace
+Caché & Linux & \texttt{\textasciitilde/.cache/py-words}\\
+ & macOS & \texttt{\textasciitilde/Library/Caches/py-words}\\
+ & Windows & \texttt{\%LOCALAPPDATA\%\textbackslash py-words}\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{variables de entorno}%
+\texttt{\$PY\_WORDS\_CONFIG}, \texttt{\$PY\_WORDS\_HISTORY} y
+\texttt{\$PY\_WORDS\_CACHE} dan otros lugares; con
+\texttt{\$PY\_WORDS\_HISTORY} vacía no se guarda historial, y con
+\texttt{\$PY\_WORDS\_CACHE} vacía no hay caché. La caché siempre puede
+borrarse. Los archivos de datos se buscan primero con
+\texttt{--datadir}, luego en \texttt{\$PY\_WORDS\_DATADIR}, luego en la
+carpeta que nombre el archivo de configuración y por último en la carpeta
+\texttt{data} junto al programa.
+
+\section{Cuando algo falla}
+
+\index{problemas}%
+\begin{description}
+\item[El programa dice que Python es demasiado antiguo] instale Python
+  3.13 o posterior, o use la AppImage.
+\item[La ventana no se abre: no module named tkinter] instale Tk
+  (sección~\ref{sec:install}).
+\item[Una palabra no se encuentra] compruebe \menu{Búsqueda aproximada}
+  y los ajustes \texttt{use\_tricks} y \texttt{medieval\_spellings}; una
+  palabra desconocida con mayúscula se toma como un nombre, salvo que
+  \texttt{ignore\_unknown\_names} esté desactivado.
+\item[Un verso da resultados extraños] desactive \texttt{trim\_output},
+  que omite las formas inusuales.
+\item[Logeion no responde] necesita internet; \menu{Buscar en\then Local}
+  vuelve a este diccionario.
+\item[\menu{Editar diccionario\ldots} está en gris] los datos no se pueden
+  escribir (AppImage, RPM), o está elegido Logeion
+  (sección~\ref{sec:editing}).
+\item[El texto de la ventana es muy pequeño o muy grande] \key{Ctrl++} y
+  \key{Ctrl+-}, o \menu{Ver\then Fuente\ldots}.
+\item[Un ajuste quedó mal] borre \texttt{config.toml}
+  (sección~\ref{sec:files}); el programa arranca con sus valores por
+  defecto.
+\end{description}
+
+\noindent
+Los problemas y los deseos pueden escribirse como \textit{issues} en
+GitHub o en Codeberg (las direcciones están en la primera página), o
+enviarse a
+\href{mailto:nicolasvaughan@proton.me}{\texttt{nicolasvaughan@proton.me}}.
+
+\printindex
+
+\end{document}
+
+% ===============================================
+%%% Local Variables:
+%%% mode: latex
+%%% lsp-ltex-plus-language: "es-CO"
+%%% TeX-master: t
+%%% End:

@@ -617,7 +617,7 @@ def _main(argv: list[str] | None, meanings_only: bool):
                         help=tr('list the languages of the meanings, and '
                                 'exit'))
     parser.add_argument('--interface', metavar=tr('CODE'),
-                        help=tr('the language of the interface (en, es); '
+                        help=tr('the language of the interface (en, es, la); '
                                 'this time only (the setting is interface)'))
     parser.add_argument('--datadir', default=None, metavar=tr('DATADIR'),
                         help=tr('the folder with the data files (default: '

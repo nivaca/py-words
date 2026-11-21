@@ -74,7 +74,7 @@ HELP = {
            '(en, es ...).  The search to Latin is from this language.'),
     'interface':
         N_('The language of the menus, buttons, messages and help of the '
-           'programs (en, es).'),
+           'programs (en, es, la).'),
     'save':
         N_('Save these settings in the configuration file, config.toml (on '
            'Linux in ~/.config/py-words), to be used at the next start.  '

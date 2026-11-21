@@ -1,0 +1,3 @@
+# The manuals (MANUAL_en.tex, MANUAL_es.tex): LuaLaTeX, and makeindex with the style manual.ist
+$pdf_mode = 4;
+$makeindex = 'makeindex -s manual.ist %O -o %D %S';

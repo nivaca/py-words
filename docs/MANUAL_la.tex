@@ -1,0 +1,1229 @@
+\newcommand*{\version}{3.25}
+
+\documentclass[12pt,
+              article,
+              oneside
+              ]{memoir}
+
+\usepackage{iftex}
+
+\ifluatex
+  \usepackage{fontspec}
+\fi
+
+\usepackage[
+  medievallatin,% <- principal
+  % english,
+  % spanish,% <- principal
+  % es-minimal,
+  % es-noshorthands,
+  % es-tabla,
+]{babel}
+
+\ifluatex
+% LuaLaTeX --------------------
+\defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase}
+\usepackage[MainFeatures={medium,
+  Ligatures=Common,
+  Numbers=OldStyle,
+  SmallCapsFeatures = {LetterSpace=5.0}}]
+{junicodevf}
+%
+% \setsansfont{Libertinus Sans}
+% (without the ligatures of TeX, so that -- stays two hyphens)
+\setmonofont[Scale=MatchLowercase, Ligatures=TeXOff]{DejaVu Sans Mono}
+% \setmonofont[Scale=MatchLowercase]{Libertinus Mono}
+% \setmonofont[Scale=MatchLowercase}]{Fira Code}
+\else
+% PDFLaTeX ---------------------
+\usepackage[T1]{fontenc}
+\usepackage[osf]{libertinus}
+\usepackage[scaled=0.9]{FiraMono}
+% \usepackage[scaled=0.9]{cascadia-code}
+% \usepackage[scaled=0.9]{roboto}
+\input glyphtounicode
+\pdfgentounicode=1
+\fi
+
+\usepackage[babel=true, verbose=false, tracking=true, expansion=true, protrusion=true, final, draft=false]{microtype}
+\SetTracking{ encoding = *, shape = sc }{ 30 }
+\SetTracking[context = notracking, ]{encoding = *}{0}
+
+\usepackage[autostyle=false, style=british]{csquotes}
+\usepackage{latexcolors}
+
+\newcommand{\Rojo}{\color[HTML]{8B0000}}
+\newcommand*{\rojo}[1]{\textcolor[HTML]{8B0000}{#1}}
+\newcommand*{\rojoit}[1]{\textit{\textcolor[HTML]{8B0000}{#1}}}
+\newcommand{\Azul}{\color{bluenivaca}}
+\newcommand*{\azul}[1]{\textcolor{bluenivaca}{#1}}
+\newcommand{\Verde}{\color{darkgreen}}
+\newcommand*{\verde}[1]{\textcolor{darkgreen}{#1}}
+\newcommand{\Amarillo}{\color{goldenpoppy}}
+\newcommand*{\amarillo}[1]{\textcolor{goldenpoppy}{#1}}
+\newcommand{\Morado}{\color{byzantium}}
+\newcommand*{\morado}[1]{\textcolor{byzantium}{#1}}
+\newcommand{\Naranja}{\color{orange}}
+\newcommand*{\naranja}[1]{\textcolor{orange}{#1}}
+
+% \usepackage[margin=3cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\clubpenalty=9999
+\widowpenalty=9999
+\brokenpenalty=5000
+\frenchspacing
+\raggedbottom
+\midsloppy
+\parindent=14pt
+\fboxsep=2pt
+
+\renewcommand\thesection{\arabic{section}}
+\chapterstyle{reparticle}
+
+\usepackage{enumitem}
+\setlist{noitemsep, nosep}
+\setlist[description]{font=\itshape}
+
+\newcommand*{\elipsis}{\,.\,.\,.\,}
+\newcommand*{\elipsisb}{\textup{[\elipsis]}}
+
+\renewenvironment{quote}%
+ {\begin{list}{}%
+              {\setlength\rightmargin{0pt}%
+              \setlength\leftmargin{\parindent}}%
+  \item[]\small\ignorespaces}
+ {\unskip\end{list}}
+
+
+\definecolor{Link}{HTML}{408080}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=blue,
+  citecolor = black,
+  urlcolor=Link,
+}
+\urlstyle{tt}
+\usepackage{bookmark}
+
+\setlength{\droptitle}{-2cm}
+
+\title{\bfseries%
+  \texttt{py-words} v.\version{} \\
+  Manuale usuarii}
+
+\author{%
+  Nicolás Vaughan\\
+  \begin{minipage}[t]{0.8\linewidth}
+    \centering\small%
+    \href{mailto:nicolasvaughan@proton.me}{\texttt{nicolasvaughan@proton.me}}\\
+    \url{https://nicolasvaughan.org}\\
+    \url{https://github.com/nivaca/py-words}\\
+    \url{https://codeberg.org/nivaca/py-words}\\
+  \end{minipage}}
+
+
+\date{2026-11-21}
+
+% The pictures, made by tools/screenshots.py
+\graphicspath{{img/}}
+\usepackage{longtable}
+
+% the title and the author in the PDF's own metadata
+\hypersetup{pdftitle={py-words: manuale usuarii}, pdfauthor={Nicolás Vaughan}}
+
+% the index (makeindex, with the style manual.ist: see latexmkrc)
+\makeindex
+
+% menus, keys, and the pictures of the window
+\newcommand*{\menu}[1]{\textit{#1}}
+\newcommand*{\then}{\,>\,}
+\newcommand*{\key}[1]{\texttt{#1}}
+\newcommand*{\shot}[3]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=#2\textwidth,height=0.75\textheight,keepaspectratio]{#1}
+    \caption{#3}
+    \label{fig:#1}
+  \end{figure}}
+% the tilde of the interactive commands (~E, ~L ...)
+\newcommand*{\tl}{\textasciitilde}
+
+\begin{document}
+\maketitle
+
+\tableofcontents*
+
+\section{Prohemium}
+\noindent
+\texttt{py-words} est dictionarium Latinum quod grammaticam Latinam novit.
+Verbum Latinum flexum, vel totam lineam Latinam, resolvit in articulos
+dictionarii et in formas quas esse potest, cum significationibus suis
+Anglice vel Hispanice; et invenit quid Latine dicatur verbum Anglicum vel
+Hispanicum. Quattuor modis adhiberi potest: in fenestra, in linea
+mandatorum, in terminali per totam aream visualem, et in navigatro
+interretiali. Est etiam in interreti, nullo instituto, ad
+\url{https://nivaca.pythonanywhere.com/}.
+
+\index{WORDS (Whitaker)}\index{Lewis et Short}\index{De Miguel}\index{Echave-Sustaeta}\index{Latham}\index{Collatinus}%
+Ipsum scripsi anno 2026. Initium eius fuit WORDS, programma Guillelmi
+Whitaker; sed codex et data denuo sunt composita, et dictionarium crevit:
+nunc habet verba rara et definitiones Anglicas libri Lewis et Short
+\textit{A Latin Dictionary}, verba, nomina propria et definitiones
+Hispanicas libri R.~de~Miguel \textit{Nuevo diccionario latino-español
+etimológico}, vocabularium fundamentale J.~Echave-Sustaeta, indicem
+verborum mediei evi R.~E. Latham, et vocales longas Collatini. Quilibet
+articulus dicit unde veniat (capitulum~\ref{sec:codes}).
+
+\index{consuetudines huius libri}\index{macos et windows@macOS et Windows}%
+Hoc manuale primo docet quomodo programma instituatur et aperiatur;
+deinde fenestram, quomodo queratur et quomodo inventa legantur; postea
+cetera tria programmata, optiones et editores dictionarii. Programma
+loquitur Latine, Anglice vel Hispanice; hic ponuntur nomina tabellarum
+et bullarum interfaciei Latine, litteris obliquis, et tituli tabelle post
+signum \enquote{>}, ut \menu{Dictionarium\then Optiones\ldots}; claves
+autem, sicut in claviatura scripte sunt: \key{Ctrl+F}. In macOS,
+\key{Ctrl} est clavis Command. Imagines ostendunt programmata cum
+interfacie Latina et significationibus Anglicis; si interfacies est
+Anglica vel Hispanica, omnes tabelle, nuntii et auxilia sunt in illa
+lingua (capitulum~\ref{sec:languages}).
+
+\index{licentia}%
+\texttt{py-words} est programma liberum, sub licentia GNU General Public
+License, versione 3 vel posteriore. Non utitur nisi Python et eius
+bibliotheca communi (cum Tk pro fenestris et curses pro terminali), unde
+nichil aliud requirit; integer catalogus programmatum quibus utitur, cum
+licentiis suis, est in \texttt{docs/LICENCES.md}. WORDS et eius data
+Whitaker concessit \enquote{ad omnem usum}, et textus Lewis et Short venit
+ex Perseus Digital Library, sub licentia CC BY-SA 4.0.
+
+\section{De institutione}
+\label{sec:install}
+
+Quelibet versio publicatur in GitHub et in Codeberg (loca sunt in prima
+pagina), cum his fasciculis:
+
+\index{appimage@AppImage}\index{fedora (copr, rpm)@Fedora (Copr, RPM)}\index{zip}%
+\begin{itemize}
+\item \texttt{py-words-v.VERSIO-x86\_64.AppImage}: AppImage, pro
+  quolibet Linux;
+\item \texttt{py-words-VERSIO-1.fc45.noarch.rpm}: fasciculus Fedore,
+  signatus, cum clave que ipsum signat, \texttt{RPM-GPG-KEY-py-words};
+\item \texttt{py-words-v.VERSIO.zip}: ipsum programma, pro Linux, macOS
+  et Windows.
+\end{itemize}
+
+\subsection{Quid requiratur}
+
+\index{python@Python}\index{tk@Tk}%
+Solum Python 3.13 vel posterius. Fenestre (dictionarium et eius editor)
+requirunt Tk, quod venit cum Python in Windows et cum institutoribus
+python.org in macOS. In Linux autem, et cum Python ipsius Homebrew in
+macOS, potest esse fasciculus separatus:
+
+\begin{verbatim}
+$ sudo dnf install python3-tkinter      (Fedora)
+$ sudo apt install python3-tk           (Debian, Ubuntu)
+$ brew install python-tk                (macOS, Homebrew)
+\end{verbatim}
+
+\noindent
+\texttt{python3 --version} dicit quod Python habeatur; si nimis antiquum
+est, programma hoc dicit et cessat. Mandata huius libri utuntur
+\texttt{python3}; in Windows scribitur \texttt{python}. AppImage et RPM
+suum proprium Python ferunt vel adhibent, et ideo nullo istorum egent.
+
+\subsection{ZIP, vel exemplar repositorii}
+
+\index{zip}\index{git}%
+ZIP explicatur ubicumque placet, vel repositorium clonatur:
+
+\begin{verbatim}
+$ git clone https://github.com/nivaca/py-words.git
+\end{verbatim}
+
+\noindent
+Capsula est totum programma: nichil est construendum vel instituendum,
+et operatur ubi est.
+
+\begin{verbatim}
+$ cd py-words
+$ python3 words.py amicus          (prima probatio)
+$ python3 words_gui.py             (fenestra)
+\end{verbatim}
+
+\subsection{De AppImage (Linux)}
+
+\index{appimage@AppImage}%
+AppImage est unus fasciculus qui suum proprium Python fert, cum Tk. Fit
+exsecutabilis et aperitur:
+
+\begin{verbatim}
+$ chmod +x py-words-v.3.25-x86_64.AppImage
+$ ./py-words-v.3.25-x86_64.AppImage              (fenestra)
+$ ./py-words-v.3.25-x86_64.AppImage cli amicus   (in terminali)
+$ ./py-words-v.3.25-x86_64.AppImage help         (cetera)
+\end{verbatim}
+
+\noindent\index{editores dictionarii!data que scribi non possunt}%
+Primum argumentum eligit programma: \texttt{gui} (nisi aliud dicatur),
+\texttt{cli}, \texttt{tui}, \texttt{web}, \texttt{edit},
+\texttt{edit-gui}, \texttt{check} vel \texttt{convert}; quod sequitur
+datur illi programmati. In AppImage scribi non potest, et ideo in ea
+dictionarium emendari non potest (capitulum~\ref{sec:editing} docet
+quomodo nichilominus fiat). Instrumenta ut AppImageLauncher vel Gear
+Lever eam addunt tabelle systematis.
+
+\subsection{Fedora}
+
+\index{fedora (copr, rpm)@Fedora (Copr, RPM)}%
+Via facillima est repositorium Copr. Fasciculus utitur Python et Tk
+ipsius Fedore, et addit quattuor titulos tabelle systematis, cum icone:
+
+\begin{verbatim}
+$ sudo dnf copr enable nivaca/py-words
+$ sudo dnf install py-words
+\end{verbatim}
+
+\noindent
+Renovationes postea veniunt cum \texttt{sudo dnf upgrade}. RPM cuiuslibet
+editionis etiam manu institui potest, clave eius semel importata per
+\texttt{sudo rpm --import RPM-GPG-KEY-py-words}. Operatur in qualibet
+Fedora cum Python 3.13 vel posteriore, quicumque sit numerus
+\texttt{fc} in nomine eius. Mandatum \texttt{py-words} deinde aperit
+programmata, cum eodem primo argumento sicut AppImage:
+
+\begin{verbatim}
+$ py-words                 (fenestra)
+$ py-words cli amicus      (linea mandatorum)
+$ py-words help            (cetera programmata)
+\end{verbatim}
+
+\noindent\index{editores dictionarii!data que scribi non possunt}%
+Programma instituitur in \texttt{/usr/share/py-words}, ubi scribi non
+potest; unde nec ibi dictionarium emendari potest, sicut in AppImage.
+
+\subsection{De loco in tabella applicationum}
+
+\index{tituli tabelle systematis}\index{macos et windows@macOS et Windows}%
+Cum ZIP vel exemplari repositorii, semel exsequere
+
+\begin{verbatim}
+$ python3 words_install.py
+\end{verbatim}
+
+\noindent
+ut programma addatur tabelle systematis, cum quattuor titulis: fenestra,
+linea mandatorum et versio terminalis per totam aream visualem (he due
+aperiuntur in terminali), et versio interretialis (eius servitrum currit
+in terminali, et navigatrum aperitur). In Linux eunt in tabellam
+applicationum, in Windows in tabellam Start, in macOS in
+\texttt{\textasciitilde/Applications}. \texttt{--only-gui} addit solam
+fenestram, et \texttt{--uninstall} eos removet. Iura administratoris non
+requirit. Tituli aperiunt programma in sua capsula; si ergo capsula
+movetur, iterum exsequendum est.
+
+\subsection{De renovatione et remotione}
+
+\index{renovatio}\index{remotio}%
+Cum git, \texttt{git pull} in capsula; sin autem, ZIP iterum ex
+interreti trahitur et capsula substituitur. Si dictionarium emendatum
+est, prius servetur exemplar \texttt{data/dictionary.xml}. Ut removeatur,
+tolluntur tituli tabelle per \texttt{python3 words\_install.py
+--uninstall} et capsula deletur; optiones, historia et cella etiam deleri
+possunt (capitulum~\ref{sec:files}).
+
+\section{De quattuor programmatibus}
+\label{sec:programs}
+
+\index{programmata}\index{fenestra}\index{linea mandatorum}\index{terminale per totam aream}\index{pagina interretialis}%
+Idem dictionarium quattuor facies habet, que optiones et historiam
+inquisitionum communes habent:
+
+\begin{longtable}{@{}lp{0.62\textwidth}@{}}
+\toprule
+Programma & Quid sit\\
+\midrule
+\endhead
+\texttt{words\_gui.py} & fenestra (capitulum~\ref{sec:window})\\
+\texttt{words.py} & linea mandatorum, cum modo interlocutorio (capitulum~\ref{sec:cli})\\
+\texttt{words\_tui.py} & fenestra, sed in terminali, per totam aream (capitulum~\ref{sec:tui})\\
+\texttt{words\_web.py} & parvum servitrum, et dictionarium in navigatro (capitulum~\ref{sec:web})\\
+\texttt{meanings.py} & \texttt{words.py} cum solis formis dictionarii et significationibus\\
+\texttt{words\_edit\_gui.py} & editor dictionarii, in fenestra (capitulum~\ref{sec:editing})\\
+\texttt{words\_edit.py} & editor dictionarii, in terminali\\
+\texttt{words\_check.py} & examinat fasciculos datorum postquam manu emendati sunt\\
+\texttt{words\_install.py} & addit programma tabelle systematis\\
+\bottomrule
+\end{longtable}
+
+\noindent
+Ex capsula programmatis aperiuntur per \texttt{python3}:
+
+\begin{verbatim}
+$ python3 words_gui.py                     (fenestra)
+$ python3 words_gui.py perspicio           (que ipsum querit)
+$ python3 words_gui.py -e look             (fenestra, in Latinum)
+$ python3 words.py rem acu tetigisti       (querere lineam)
+$ python3 words.py                         (interlocutorie)
+$ python3 words_tui.py                     (in terminali)
+$ python3 words_web.py                     (in navigatro)
+\end{verbatim}
+
+\noindent\index{versio in interreti}%
+Versio in interreti, \url{https://nivaca.pythonanywhere.com/}, est pagina
+\texttt{words\_web.py} in servitro publico. Ibi quilibet visitator suas
+proprias optiones et inquisitiones priores habet, servatas in crustulis
+(\textit{cookies}) sui navigatri, et nichil horum in servitro servatur.
+
+\section{De fenestra}
+\label{sec:window}
+
+\shot{gui_la}{1}{Fenestra, in modo obscuro, \textit{perspicio} quesito.}
+
+\index{fenestra}\index{area inquisitionis}\index{quere (bulla)}%
+Descriptio~\ref{fig:gui_la} ostendit fenestram. Superius est area ubi
+verba scribuntur, et bulla \menu{Quere}, que ea querit (\key{Return}
+idem facit). Area servat inquisitiones priores: \key{Down}, vel eius
+sagitta, eas enumerat, recentissimam primo, et una electa iterum
+queritur.
+
+\index{quere in}\index{directio inquisitionis}\index{significationes (electio)}\index{inquisitio approximata}%
+Infra sunt electiones inquisitionis:
+
+\begin{description}
+\item[Quere in] \menu{Hic}, hoc dictionarium, vel \menu{Logeion},
+  dictionaria Universitatis Chicagiensis (capitulum~\ref{sec:logeion}),
+  cum indice dictionariorum Logeion iuxta;
+\item[directio] \menu{Latine\,$\rightarrow$\,Anglice} vel
+  \menu{Anglice\,$\rightarrow$\,Latine} (cum significationibus Hispanicis,
+  \menu{Hispanice} loco \menu{Anglice});
+\item[Significationes] lingua significationum (capitulum~\ref{sec:languages});
+\item[Inquisitio approximata] cum verbum nichil invenit, inventa orthographiarum
+  vicinarum (capitulum~\ref{sec:fuzzy}).
+\end{description}
+
+\noindent
+He electiones servantur: proxima vice quodlibet programma incipit sicut
+relictum est.
+
+\index{inventa!nexus}\index{inventa!explanationes}\index{duplex pressus}\index{pressus dexter}%
+Inventa occupant reliquam fenestram. Sunt idem textus sicut in linea
+mandatorum, sed oculis dispositus: verbum quesitum maius est, forma
+dictionarii in litteris crassis cum lemmate colorato, note et
+annotationes in colore cinereo, et analyses formarum in ceruleo. Primum
+verbum articuli est nexus qui ipsum querit, et duplex pressus in
+quolibet verbo etiam ipsum querit (verbum significationum queritur in
+Latino, in altera directione). Murino super notas inter uncos vel super
+analysim posito (\texttt{GEN.PL}), parva capsa explicat quid significent.
+Pressus dexter verbum transcribit vel querit.
+
+\index{linea status}\index{modus obscurus}%
+Linea infima dicit quid programma faciat. Ad dexteram eius, luna fenestras
+obscurat (dictionarium, eius dialogos et editorem), et deinde sol eas
+iterum illuminat.
+
+\subsection{De tabellis}
+
+\index{tabelle}%
+\begin{description}
+\item[Dictionarium] \menu{Emenda dictionarium\ldots} aperit editorem
+  (capitulum~\ref{sec:editing}); \menu{Optiones\ldots} ostendit omnes
+  optiones (capitulum~\ref{sec:settings}); \menu{Exi} programma claudit.
+\item[Emendatio] \menu{Excide}, \menu{Transcribe} et \menu{Insere}, in area
+  inquisitionis vel in inventis.
+\item[Aspectus] \menu{Quere in inventis\ldots}, magnitudo textus, typi
+  litterarum, et \menu{Modus obscurus}.
+\item[Auxilium] \menu{Auxilium}, ductus ad querendum et ad inventa legenda;
+  \menu{Pagina interretialis}, pagina programmatis; \menu{De programmate}, versio et nomina
+  auctorum.
+\end{description}
+
+\subsection{Quomodo textus in inventis queratur}
+
+\index{querere in inventis}%
+\menu{Aspectus\then Quere in inventis\ldots} (\key{Ctrl+F}) aperit parvam
+virgam sub inventis. Quod ibi scribitur, dum scribitur, illuminatur;
+\key{Return} ad locum sequentem it, \key{Shift+Return} ad priorem, et
+\key{Esc} virgam claudit.
+
+\subsection{De textu et typis litterarum}
+
+\index{typi litterarum}\index{magnitudo textus}\index{monitoria subtilia}%
+\key{Ctrl++} et \key{Ctrl+-} textum maiorem et minorem faciunt, et
+\key{Ctrl+0} magnitudinem consuetam reddit. \menu{Aspectus\then Typi litterarum\ldots}
+eligit typos litterarum: unum latitudinis fixe pro inventis, quia
+columne eorum ordinate manere debent, et alterum pro reliqua fenestra.
+Ambo servantur. In monitorio subtili fenestre sequuntur scalam
+desktopii.
+
+\section{De inquisitione}
+\label{sec:searching}
+
+\subsection{A Latino}
+
+\index{inquisitio!a Latino}\index{littere maiuscule}\index{u et v, i et j}\index{signa quantitatis}%
+Scribitur verbum Latinum, vel tota linea Latina: quodlibet verbum suo
+ordine resolvitur. Nichil refert de litteris maiusculis, nec de u et v,
+nec de i et j (\textit{iulius}, \textit{Julius} et \textit{IVLIVS} sunt
+idem verbum), nec de signis quantitatis et aliis accentibus:
+\textit{amīcus} est \textit{amicus}, et \textit{cælum} est
+\textit{caelum}.
+
+\index{artificia}\index{prefixa et suffixa}\index{enclitica}\index{orthographie mediei evi}%
+Verbum primo queritur tamquam radix et terminatio dictionarii. Si sic
+nichil invenitur, programma temptat prefixa, suffixa et enclitica
+(\textit{-que}, \textit{-ne}, \textit{-ve}), et deinde alias
+orthographias: perfectum syncopatum, duo verba tamquam unum scripta
+(\textit{rempublicam}), \textit{-st} finale pro \textit{est}
+(\textit{factumst}), et orthographias Latinitatis mediei evi (\textit{e}
+pro \textit{ae}, \textit{y} pro \textit{i}, \textit{michi} pro
+\textit{mihi}). Semper dicit quid fecerit:
+
+\begin{verbatim}
+hystorie
+  spelling: Medieval hystorie -> historiae
+    'hystorie' may be a medieval spelling of historiae
+  historia, historiae  noun, 1st declension, feminine  [XXXAX]
+    a narrative of past events, history; ...
+    histori-ae     GEN.SG
+\end{verbatim}
+
+\noindent\index{nomina propria}%
+Verbum ignotum cum littera maiuscula habetur pro nomine proprio, et
+relinquitur.
+
+\subsection{In Latinum}
+
+\index{inquisitio!in Latinum}\index{partes orationis}%
+In altera directione (\menu{Anglice\,$\rightarrow$\,Latine} in fenestra,
+\texttt{-e} in linea mandatorum), scribitur unum verbum lingue
+significationum: enumerantur articuli Latini quorum significationes ipsum
+habent, optimi primo, sex ad summum, et deinde quot alii sint. Pars
+orationis post verbum solam illam relinquit: \texttt{friend ADJ}. Partes
+orationis sunt \texttt{N}, \texttt{PRON}, \texttt{ADJ}, \texttt{NUM},
+\texttt{ADV}, \texttt{V}, \texttt{PREP}, \texttt{CONJ} et
+\texttt{INTERJ}. Verba valde communia (\textit{the}, \textit{a}) numquam
+queruntur, et Hispanice accentus nichil referunt: \textit{corazon}
+invenit \textit{corazón}.
+
+\subsection{De inquisitione approximata}
+\label{sec:fuzzy}
+
+\index{inquisitio approximata}\index{errores scribendi}%
+Communiter verbum cum errore scribendi nichil invenit. Cum inquisitione
+approximata, verbum trium litterarum vel plurium quod adhuc nichil
+invenit sequuntur inventa verborum que una mutatione ab ipso distant
+(una littera omissa, addita vel mutata, vel due littere permutate), tria
+ad summum, primo ea articulorum frequentiorum:
+
+\begin{verbatim}
+amicuss
+  (unknown)
+  (near spellings: amicus)
+
+amicus
+  amicus, amici  noun, 2nd declension, masculine  [XXXBO]
+  ...
+\end{verbatim}
+
+\noindent
+Inquisitio in Latinum idem facit cum verbis significationum:
+\textit{freind} invenit \textit{friend}, et \textit{wolfs} invenit
+\textit{wolf}. Agit nisi auferatur: \menu{Inquisitio approximata} in fenestra et in
+pagina interretiali, \key{F3} in terminali, vel \texttt{--no-fuzzy} in
+linea mandatorum, pro una vice.
+
+\section{Quomodo inventa legantur}
+\label{sec:results}
+
+\index{inventa}%
+Hoc est quod \texttt{py-words} ostendit pro \textit{amicorum}:
+
+\begin{verbatim}
+amicorum
+  amicus, amici  noun, 2nd declension, masculine  [XXXBO]
+    A friend, patron, protector, companion; ... (Lewis and Short)
+    amīc-ōrum      GEN.PL
+  amicus, amica -um, amicior -or -us, amicissimus -a -um
+      adjective, 1st/2nd declension  [XXXAO]
+    friendly, kind, amicable, favorable, ... (Lewis and Short)
+    amīc-ōrum      GEN.PL.M
+    amīc-ōrum      GEN.PL.N
+\end{verbatim}
+
+\index{inventa!linee}\index{partes principales}\index{vocales longe}%
+\begin{itemize}
+\item Prima linea est verbum quesitum. Sequitur, cum indentatione,
+  quilibet articulus quem esse potest.
+\item Prima linea articuli habet formam dictionarii (partes principales:
+  \textit{amicus, amici}), partem orationis et grammaticam verbis
+  expressam (\textit{noun, 2nd declension, masculine}, id est nomen
+  secunde declinationis, masculinum), et notas inter uncos
+  (capitulum~\ref{sec:codes}); quidam articuli addunt etatem vel
+  frequentiam verbis expressam (\textit{archaic}, \textit{lesser}\ldots).
+\item Linea sequens est significatio. Eius sensus per punctum et virgulam
+  separantur, communissimo primo. In fine, dictionarium unde venit, si non
+  est WORDS: (Lewis and Short), (De Miguel), (Echave-Sustaeta).
+  \texttt{[en]} ante significationem dicit quod non est translata, sed
+  Anglice datur.
+\item Deinde veniunt forme quas verbum esse potest: radix et terminatio,
+  per lineolam iuncte, cum vocalibus longis notatis ubi noscuntur
+  (\textit{amīc-ōrum}), et que forma sit, per abbreviationes capituli~\ref{sec:glosses}.
+  Eadem scriptura potest esse plures forme: \textit{amīc-ōrum} adiectivi
+  est masculinum et neutrum.
+\item Linea ante articulum potest dicere quomodo verbum inventum sit:
+  prefixum, suffixum vel encliticum, cum significatione sua, vel
+  mutatio orthographie.
+\end{itemize}
+
+\noindent\index{tempora composita}%
+Participium quod sequitur forma verbi \textit{esse} legitur tamquam
+tempus compositum:
+
+\begin{verbatim}
+laudatus
+  laudo, laudare, laudavi, laudatus  verb, 1st conjugation  [XXXAX]
+    to praise, laud, commend, extol, ... (Lewis and Short)
+    laudāt-us      PRF.PASS.PTCP.NOM.SG.M
+    participle + est  3SG.PRF.PASS.IND
+      PERF PASSIVE PPL + verb TO_BE => PASSIVE perfect system
+\end{verbatim}
+
+\noindent\index{inventa!annotationes}%
+Quedam annotationes inter parentheses ponuntur:
+
+\begin{longtable}{@{}>{\raggedright}p{0.4\textwidth}p{0.54\textwidth}@{}}
+\toprule
+Annotatio & Quid dicat\\
+\midrule
+\endhead
+(unknown) & verbum non est inventum\\
+(near spellings: \ldots) & sequuntur inventa inquisitionis approximate\\
+(less likely forms are not shown) & optio \texttt{trim\_output} quasdam omisit\\
+(no match) & inquisitio in Latinum nichil invenit\\
+(near words: \ldots) & inquisitio approximata in Latinum\\
+(\ldots\ more not shown) & post sex optimos articulos, in Latinum\\
+\bottomrule
+\end{longtable}
+
+\subsection{De notis inter uncos}
+\label{sec:codes}
+
+\index{note inter uncos}\index{etas}\index{materia}\index{regio}\index{frequentia}\index{fontes articulorum}%
+Quinque littere inter uncos post articulum dicunt quando, ubi, quam sepe
+et qua auctoritate verbum adhibeatur, hoc ordine: etas eius, materia (res
+ad quam pertinet), regio, frequentia et fons. X tantum dicit quod nichil
+singulare est dicendum. Sic \texttt{[XXXBO]} vocabuli \textit{amicus}
+legitur: in usu per omnes etates, generale, ubique, frequens, et sumptum
+ex Oxford Latin Dictionary. Articulus potest plures fontes habere: ceteri
+sequuntur quinque litteras, quilibet post signum \texttt{+}
+(\texttt{[XXXBO+A]} etiam ex Echave-Sustaeta venit). Etas, si noscitur,
+et frequentia, si minor vel rarior est, etiam verbis Anglicis post notas
+scribuntur. Littere sunt he:
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Littera & Etas\\
+\midrule
+\endhead
+X & in usu per omnes etates\\
+A & archaica\\
+B & antiqua (ante tempus classicum)\\
+C & classica\\
+D & sera (post annum 200)\\
+E & posterior (post annum 600)\\
+F & mediei evi (post annum 1000)\\
+G & doctorum (a renovatione litterarum et postea)\\
+H & moderna\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Littera & Materia\\
+\midrule
+\endhead
+X & generalis\\
+A & agricultura, plante, animalia, terra\\
+B & biologia, medicina, corpus\\
+D & drama, musica, artes\\
+E & Ecclesia, Biblia\\
+G & grammatica, rhetorica, logica, litterature, schola\\
+L & ius, regimen, pecunia, tituli\\
+P & poesis\\
+S & scientia, philosophia, mathematica, mensure\\
+T & artes mechanice, architectura, agrimensura\\
+W & bellum, exercitus, classis\\
+Y & mythologia\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Littera & Regio\\
+\midrule
+\endhead
+X & ubique\\
+A & Africa\\
+B & Britannia\\
+C & Sina\\
+D & Scandinavia\\
+E & Egyptus\\
+F & Francia, Gallia\\
+G & Germania\\
+H & Grecia\\
+I & Italia, Roma\\
+J & India\\
+K & Balcani\\
+N & Belgium (Terre Basse)\\
+P & Persia\\
+Q & Oriens Propinquus\\
+R & Russia\\
+S & Hispania\\
+U & Europa orientalis\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Littera & Frequentia\\
+\midrule
+\endhead
+X & ignota\\
+A & frequentissima\\
+B & frequens\\
+C & communis\\
+D & minor\\
+E & non communis\\
+F & rarissima\\
+I & in inscriptionibus tantum\\
+M & in graphitis tantum\\
+N & apud Plinium tantum\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Littera & Fons\\
+\midrule
+\endhead
+X & generalis vel ignotus\\
+A & Echave-Sustaeta, \textit{Lengua latina. Vocabulario básico}\\
+B & Beeson, \textit{Medieval Latin}\\
+C & \textit{Cassell's Latin Dictionary}\\
+D & Adams, \textit{Latin Sexual Vocabulary}\\
+E & Stelten, \textit{Ecclesiastical Latin}\\
+F & Deferrari, de sancto Thoma de Aquino\\
+G & Gildersleeve et Lodge, \textit{Latin Grammar}\\
+H & Collatinus (Ouvrard)\\
+I & Leverett, \textit{Lexicon}\\
+J & Bracton, \textit{De Legibus}\\
+K & \textit{Calepinus Novus} (Licoppe)\\
+L & Lewis, \textit{Elementary Latin Dictionary}\\
+M & Latham, \textit{Medieval Word List}; DMLBS\\
+N & Nelson, index verborum\\
+O & \textit{Oxford Latin Dictionary}\\
+P & Souter, \textit{Later Latin}\\
+Q & alia dictionaria\\
+R & Plater et White, \textit{Vulgate grammar}\\
+S & Lewis et Short, \textit{A Latin Dictionary}\\
+T & inventum in translatione\\
+U & Du Cange\\
+V & Blatt, Saxo\\
+W & coniectura Whitaker\\
+Y & ad tempus\\
+Z & ab usuario missum\\
+m & De Miguel, \textit{Nuevo diccionario latino-español etimológico}\\
+\bottomrule
+\end{longtable}
+
+\subsection{De abbreviationibus analysium}
+\label{sec:glosses}
+
+\index{abbreviationes glossarum}\index{Leipzig Glossing Rules}%
+Forme resolvuntur per abbreviationes regularum glossandi Lipsiensium
+(\textit{Leipzig Glossing Rules}), punctis iunctas; persona et numerus
+simul eunt, ita quod \texttt{2SG.PRF.ACT.IND} est secunda persona
+singularis perfecti activi indicativi. Que signo * notantur non sunt in
+catalogo Lipsiensi. Optione \texttt{use\_glosses} ablata
+(\texttt{--no-glosses} in linea mandatorum), analyses verbis Anglicis
+scribuntur: \enquote{accusative singular}.
+
+\begin{longtable}{@{}lp{0.6\textwidth}@{}}
+\toprule
+Abbreviatio & Significatio\\
+\midrule
+\endhead
+\texttt{NOM}, \texttt{GEN}, \texttt{DAT} & nominativus, genitivus, dativus\\
+\texttt{ACC}, \texttt{ABL}, \texttt{VOC}, \texttt{LOC} & accusativus, ablativus, vocativus, locativus\\
+\texttt{SG}, \texttt{PL} & singularis, pluralis\\
+\texttt{M}, \texttt{F}, \texttt{N}, \texttt{C}* & masculinum, femininum, neutrum, commune\\
+\texttt{1}, \texttt{2}, \texttt{3} & prima, secunda, tertia persona\\
+\texttt{PRS}, \texttt{IMPF}*, \texttt{FUT} & presens, imperfectum, futurum\\
+\texttt{PRF}, \texttt{PLUP}*, \texttt{FUT.PRF}* & perfectum, plusquamperfectum, futurum exactum\\
+\texttt{ACT}*, \texttt{PASS} & activum, passivum\\
+\texttt{IND}, \texttt{SBJV}, \texttt{IMP} & indicativus, subiunctivus, imperativus\\
+\texttt{INF}, \texttt{PTCP}, \texttt{SUP}* & infinitivus, participium, supinum\\
+\texttt{POS}*, \texttt{CMPR}*, \texttt{SPRL}* & positivus, comparativus, superlativus\\
+\texttt{CARD}*, \texttt{ORD}* & numerale cardinale, ordinale\\
+\texttt{DISTR}, \texttt{MULT}* & numerale distributivum, multiplicativum (adverbium numerale)\\
+\bottomrule
+\end{longtable}
+
+\section{De linguis}
+\label{sec:languages}
+
+\subsection{De lingua significationum}
+
+\index{significationes (electio)}\index{significationes Hispanice}\index{De Miguel}\index{Echave-Sustaeta}%
+Significationes sunt Anglice vel Hispanice, et similiter cetera inventa
+(\enquote{sustantivo, 2.ª declinación, masculino}); abbreviationes
+glossarum in utraque eedem sunt. Significationes Hispanice veniunt ex
+dictionario De Miguel ubicumque verbum habet, sicut ipse eas scripsit
+anno 1867, cum sua orthographia (\textit{razon}, \textit{á}), et hoc in
+fine dicunt, \enquote{(De Miguel)}; pauce ex Echave-Sustaeta veniunt;
+cetere ex Anglico translate sunt. Eligitur per \menu{Significationes} in
+fenestra et in pagina interretiali, per \key{F5} in terminali, vel per
+\texttt{--language es} in linea mandatorum, pro una vice. Inquisitio in
+Latinum incipit a lingua electa.
+
+\subsection{De lingua interfaciei}
+
+\index{lingua interfaciei}%
+Programmata loquuntur Latine, Anglice vel Hispanice: tabelle, bulle,
+nuntii, auxilium et optiones, editores et examinator. Lingua eligitur
+per \menu{Lingua interfaciei} in optionibus fenestre et pagine
+interretialis, per \key{F6} in terminali, vel in fine dialogi
+\texttt{\#} linee mandatorum (\texttt{--interface la} pro una vice; nota
+lingue Latine est \texttt{la}). Fenestra et pagina interretialis statim
+mutantur. Mutata interfacie, significationes quoque in eandem linguam
+mutantur, si dictionarium eam habet; significationes autem Latine non
+sunt, ita quod cum interfacie Latina manent Anglice vel Hispanice, sicut
+erant, et similiter annotationes inventorum, ut \enquote{(unknown)}.
+Postea utraque separatim eligi potest.
+
+\section{De Logeion}
+\label{sec:logeion}
+
+\index{Logeion}%
+Loco articulorum huius dictionarii, programmata possunt ostendere
+articulos Logeion (\url{https://logeion.uchicago.edu}), dictionaria
+Latina et Greca Universitatis Chicagiensis, cum definitione brevi,
+frequentia et exemplis ex corpore suo. Interrete requirit. Eligitur per
+\menu{Quere in} in fenestra et in pagina interretiali, per \key{F8} in
+terminali, per \texttt{\tl G} in linea mandatorum interlocutoria, vel per
+\texttt{--logeion} pro una vice.
+
+\index{lemmata}%
+Logeion formas flexas non resolvit. Ideo verba hic primo resolvuntur, et a
+Logeion petuntur lemmata eorum: \textit{dixit} ostendit \textit{dico}, et
+\textit{est} ostendit \textit{edo} et \textit{sum}. Quodlibet verbum
+primo ostendit analysim suam, sine significationibus, et deinde paginas
+Logeion lemmatum suorum. Dum Logeion electum est, inquisitio a solo
+Latino incipit, et altera directio, lingua significationum, inquisitio
+approximata et editor colore cinereo obducuntur.
+
+\index{Logeion!dictionaria}\index{DMLBS}%
+Articuli possunt esse unius dictionarii Logeion, vel omnium; donec aliud
+eligatur, est DMLBS. Eligitur per indicem iuxta \menu{Quere in}, per
+\key{F5} in terminali (dum Logeion electum est), per \texttt{\tl D} in
+linea mandatorum interlocutoria, vel per \texttt{--dictionary} cum nota
+sua:
+
+\begin{longtable}{@{}lp{0.7\textwidth}@{}}
+\toprule
+Nota & Dictionarium\\
+\midrule
+\endhead
+\texttt{all} & omnia dictionaria\\
+\texttt{ls} & Lewis \& Short\\
+\texttt{lewis} & Lewis, \textit{Elementary Latin Dictionary}\\
+\texttt{georges} & Georges\\
+\texttt{gaffiot} & Gaffiot 2016\\
+\texttt{dmlbs} & DMLBS (\textit{Dictionary of Medieval Latin from British Sources})\\
+\texttt{lane} & LaNe\\
+\texttt{ducange} & Du Cange\\
+\texttt{lana} & Lana-Michelone\\
+\texttt{frieze} & Frieze-Dennison (Vergilius)\\
+\texttt{sinicum} & Latino-Sinicum\\
+\bottomrule
+\end{longtable}
+
+\noindent
+Mutato dictionario, inventa statim iterum ostenduntur, Logeion non
+iterum interrogato. In fenestra, nexus articuli ad alia verba illa verba
+querunt, et ceteri nexus in navigatro aperiuntur.
+
+\section{De linea mandatorum}
+\label{sec:cli}
+
+\shot{cli_la}{1}{Linea mandatorum, interlocutorie, cum \textit{perspicio}.}
+
+\index{linea mandatorum}%
+\texttt{words.py} querit verba post ipsum data, tamquam unam lineam
+Latinam, vel, sine verbis, modum interlocutorium incipit
+(descriptio~\ref{fig:cli_la}). \texttt{meanings.py} idem est quod
+\texttt{words.py -m}.
+
+\begin{verbatim}
+$ python3 words.py rem acu tetigisti
+$ python3 words.py -e friend --pos N
+$ python3 words.py -f textus.txt -o inventa.txt
+$ python3 words.py --language es amicorum
+$ python3 words.py --logeion arma
+$ python3 words.py --dictionary gaffiot arma
+\end{verbatim}
+
+\index{linea mandatorum!optiones}%
+\begin{longtable}{@{}>{\raggedright}p{0.36\textwidth}p{0.58\textwidth}@{}}
+\toprule
+Optio & Quid faciat\\
+\midrule
+\endhead
+\texttt{-f FILE} & querit quamlibet lineam fasciculi FILE (\texttt{-} pro introitu communi)\\
+\texttt{-o FILE} & scribit inventa in FILE\\
+\texttt{-e} & a lingua significationum in Latinum\\
+\texttt{--pos POS} & cum \texttt{-e}, solam hanc partem orationis\\
+\texttt{-m} & solas formas dictionarii et significationes\\
+\texttt{--no-glosses} & analyses verbis, non abbreviationibus\\
+\texttt{--no-fuzzy}, \texttt{--fuzzy} & sine vel cum inquisitione approximata\\
+\texttt{--logeion}, \texttt{--local} & Logeion, vel hoc dictionarium\\
+\texttt{--dictionary DICT} & dictionarium Logeion (capitulum~\ref{sec:logeion})\\
+\texttt{--dictionaries} & enumerat dictionaria Logeion\\
+\texttt{--language CODE} & lingua significationum (\texttt{en}, \texttt{es})\\
+\texttt{--languages} & enumerat linguas significationum\\
+\texttt{--interface CODE} & lingua interfaciei\\
+\texttt{--datadir DIR} & fasciculi datorum in capsula DIR\\
+\texttt{--guide} & imprimit auxilium: quomodo inventa legantur\\
+\texttt{--config} & facit fasciculum configurationis et dicit ubi sit\\
+\texttt{--clear-history} & obliviscitur inquisitionum priorum\\
+\texttt{--version} & versio et nomina auctorum\\
+\bottomrule
+\end{longtable}
+
+\noindent
+Optiones que aliquid eligunt (glossas, inquisitionem approximatam, fontem,
+linguas) hoc faciunt pro illa sola vice; optiones servate retinent quod
+habebant.
+
+\subsection{De modo interlocutorio}
+
+\index{linea mandatorum!modus interlocutorius}%
+In modo interlocutorio queritur quelibet linea scripta post signum
+\texttt{=>}, nisi incipiat ab aliquo istorum:
+
+\begin{longtable}{@{}>{\raggedright}p{0.36\textwidth}p{0.58\textwidth}@{}}
+\toprule
+Linea & Quid faciat\\
+\midrule
+\endhead
+\texttt{\tl E}, \texttt{\tl L} & ab Anglico in Latinum; a Latino in Anglicum\\
+\texttt{\tl G} & Logeion vel hoc dictionarium\\
+\texttt{\tl D [DICT]} & dictionarium Logeion (solum: index ex quo eligatur)\\
+\texttt{@FILE} & querit quamlibet lineam fasciculi FILE\\
+\texttt{\#} & mutat parametra (capitulum~\ref{sec:settings})\\
+\texttt{!} & mutat modos elaboratoris\\
+\texttt{\tl H} & auxilium: quomodo queratur et inventa legantur\\
+\texttt{\tl A} & de programmate: versio et nomina auctorum\\
+\texttt{?} & index harum linearum\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{historia inquisitionum}%
+\key{Up} et \key{Down} reducunt inquisitiones priores, etiam sessionum
+preteritarum et aliorum programmatum. In dialogis \texttt{\#} et
+\texttt{!}, \texttt{?} quamlibet optionem explicat. Due linee vacue, vel
+\key{Ctrl+D}, programma claudunt. \key{Ctrl+C} non claudit: sistit quod
+fit (longum catalogum inventorum, fasciculum), et programma lineam
+sequentem expectat.
+
+\subsection{De paginatore et coloribus}
+
+\index{paginator}\index{colores}%
+In terminali, inventa longiora quam area visualis aperiuntur in
+paginatore systematis, \texttt{less} (vel eo quem \texttt{\$PAGER}
+nominat), sicut cum \texttt{man}: \key{PgUp} et \key{PgDn} ea movent,
+\texttt{/} textum querit, et \texttt{q} ad signum \texttt{=>} redit.
+Inventa sunt colorata, coloribus ipsius terminalis, sicut in fenestra.
+Inventa in fasciculum vel in tubulum scripta sunt simplicia, et
+\texttt{NO\_COLOR=1} colores aufert.
+
+\section{De terminali per totam aream}
+\label{sec:tui}
+
+\shot{tui_la}{1}{\texttt{words\_tui.py}, in terminali.}
+
+\index{terminale per totam aream}%
+\texttt{words\_tui.py} est fenestra in terminali
+(descriptio~\ref{fig:tui_la}): linea querendi superius, inventa infra, et
+claves in ultima linea. \key{Up} et \key{Down} reducunt inquisitiones
+priores, et \key{PgUp} et \key{PgDn} inventa movent. In Windows requirit
+fasciculum \texttt{windows-curses}.
+
+\index{terminale per totam aream!claves}%
+\begin{longtable}{@{}>{\raggedright}p{0.3\textwidth}p{0.64\textwidth}@{}}
+\toprule
+Clavis & Actio\\
+\midrule
+\endhead
+\key{F1} & auxilium, et nomina auctorum\\
+\key{F2}, \key{Ctrl+L} & a Latino, vel in Latinum\\
+\key{F3}, \key{Ctrl+O} & optiones (\key{Space} unam mutat)\\
+\key{F4}, \key{Ctrl+E} & editor dictionarii\\
+\key{F5}, \key{Ctrl+G} & lingua significationum (cum Logeion, eius dictionarium)\\
+\key{F6} & lingua interfaciei\\
+\key{F7} & omnia inventa transcribit\\
+\key{F8} & hoc dictionarium vel Logeion\\
+\key{F9} & historiam delet\\
+\key{F10}, \key{Ctrl+Q} & programma claudit\\
+\bottomrule
+\end{longtable}
+
+\section{De pagina interretiali}
+\label{sec:web}
+
+\shot{web_la}{0.8}{\texttt{words\_web.py}, in navigatro.}
+
+\index{pagina interretialis}%
+\texttt{words\_web.py} incipit parvum servitrum et aperit navigatrum ad
+\url{http://127.0.0.1:8000/}, vel ad aliam portam si hec occupata est
+(descriptio~\ref{fig:web_la}). Pagina habet aream inquisitionis,
+directionem, \menu{Significationes}, \menu{Inquisitio approximata}, \menu{Quere in}, et
+inventa sicut in fenestra, cum eisdem nexibus et explanationibus; infra,
+inquisitiones priores, omnes optiones, auxilium et nomina auctorum. Luna
+paginam obscurat, et sol iterum illuminat; donec primo adhibeantur,
+pagina sequitur systema.
+
+\index{pagina interretialis!loca}%
+Quelibet inquisitio suum proprium locum habet, ut
+\url{http://127.0.0.1:8000/?q=amicus+est} (\texttt{\&lang=en} ab Anglico
+in Latinum), ita quod tamquam signum libri servari potest. Servitrum
+dictionarium iterum legit cum editor ipsum mutat; dictionarium ex
+navigatro emendari non potest.
+
+\index{pagina interretialis!optiones}\index{rete}%
+Solum hoc computatrum paginam aperire potest, nisi \texttt{--host} aliud
+dicat: cum \texttt{--host 0.0.0.0} adhiberi potest ex telephono in eodem
+rete. Nulla sunt verba secreta; ideo hoc fiat tantum in rete fido.
+\texttt{--port} eligit portam, \texttt{--no-browser} navigatrum non
+aperit, et \key{Ctrl+C} servitrum sistit.
+
+\section{De optionibus}
+\label{sec:settings}
+
+\index{optiones}\index{parametra}%
+\menu{Dictionarium\then Optiones\ldots} ostendit omnes optiones fenestre,
+cum eo quod quelibet facit (murino super optionem posito, eius explanatio
+apparet); mutatio statim valet. Sunt eedem que parametra (\texttt{\#}) et
+modi elaboratoris (\texttt{!}) linee mandatorum, \key{F3} in terminali, et
+optiones pagine interretialis. Dialogus habet etiam \menu{Lingua
+interfaciei}, \menu{Typi litterarum\ldots}, \menu{Dele historiam} et \menu{Optiones
+primitive}. Optiones in linea mandatorum et in fasciculo configurationis
+nomina sua Anglica retinent.
+
+\index{parametra!quid inventa ostendant}%
+\begin{longtable}{@{}>{\raggedright}p{0.36\textwidth}p{0.58\textwidth}@{}}
+\toprule
+Parametrum & Quid faciat, cum agit\\
+\midrule
+\endhead
+\multicolumn{2}{@{}l}{\itshape Quid inventa ostendant}\\
+\texttt{show\_dictionary\_forms} & quemlibet articulum cum partibus principalibus et grammatica\\
+\texttt{show\_only\_meanings} & solos articulos et significationes, sine formis\\
+\texttt{use\_glosses} & analyses abbreviationibus glossarum, non verbis\\
+\texttt{show\_long\_vowels} & vocales longas notatas in formis (\textit{amīc-ōrum})\\
+\texttt{show\_codes} & notas inter uncos (\texttt{[XXXBO]})\\
+\texttt{explain\_codes} & etatem et frequentiam semper verbis, non solum cum insolite sunt\\
+\texttt{trim\_output} & omittit inventa minus probabilia (et, in Latinum, omnia preter sex optima)\\
+\texttt{trim\_medieval} & cum \texttt{trim\_output}, etiam formas mediei evi si alie invente sunt\\
+\addlinespace
+\multicolumn{2}{@{}l}{\itshape Quomodo verba querantur}\\
+\texttt{fuzzy\_search} & orthographias vicinas verbi quod nichil invenit\\
+\texttt{use\_affixes} & verbum ignotum legit tamquam notum cum prefixo vel suffixo\\
+\texttt{use\_tricks} & alias orthographias, et duo verba tamquam unum scripta\\
+\texttt{medieval\_spellings} & cum \texttt{use\_tricks}, etiam orthographias mediei evi\\
+\texttt{read\_compounds} & participium et formam verbi \textit{esse} tamquam tempus compositum\\
+\texttt{ignore\_unknown\_names} & nulla artificia in verbo ignoto cum littera maiuscula\\
+\texttt{near\_entries} & pro verbo ignoto, articulos vicinos loco ubi esset\\
+\addlinespace
+\multicolumn{2}{@{}l}{\itshape Modi elaboratoris}\\
+\texttt{show\_entry\_source} & ex quo dictionario quilibet articulus sit, et numerum eius ibi\\
+\texttt{pearse\_codes} & quelibet linea inventorum incipit a nota (pro aliis programmatibus)\\
+\texttt{pause\_in\_screen\_output} & inventa longa in paginatore, in linea mandatorum\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{trim\_output}%
+Poete verbis et formis insolitis utuntur, et ideo \texttt{trim\_output}
+potest rectam omittere; si versus inventa mira dat, auferatur.
+
+\section{De dictionario emendando}
+\label{sec:editing}
+
+\index{editores dictionarii}%
+Duo editores addunt, corrigunt et delent articulos dictionarii,
+\texttt{data/dictionary.xml}: unus in fenestra,
+\texttt{words\_edit\_gui.py}, quem etiam \menu{Dictionarium\then Emenda
+dictionarium\ldots} aperit, alter in terminali, \texttt{words\_edit.py}. In
+utroque:
+
+\begin{itemize}
+\item articulus queritur per formam Latinam (\textit{amicorum}), radicem,
+  vel verbum significationis sue;
+\item corrigitur vel deletur, vel novus fit, vacuus vel similis ei qui
+  ostenditur (\menu{Novus huic similis}); campi pendent ex parte orationis, et
+  note eliguntur ex indicibus qui eas explicant;
+\item prospectus ostendit articulum sicut inventa ipsum ostendent, et
+  quodlibet vitium quod habet; \menu{Proba verbum} ostendit quid programma
+  faciat de verbo cum dictionario sicut nunc est;
+\item significationes Hispanice etiam emendari possunt, iuxta Anglicas,
+  lingua electa per \menu{Significationes} (\key{F7} in terminali).
+\end{itemize}
+
+\index{editores dictionarii!servare}\index{fasciculi .bak}%
+Mutatio intrat dictionarium per \menu{Applica mutationes} (\key{F3} in
+terminali), et fasciculus scribitur tantum per \menu{Serva} (\key{F2}).
+Si relinquitur articulus cum mutationibus non applicatis, editor querit
+quid de eis fiat. Prima vice qua in sessione servatur, fasciculi
+originales retinentur tamquam fasciculi \texttt{.bak}.
+
+\index{editores dictionarii!claves}%
+\begin{longtable}{@{}>{\raggedright}p{0.3\textwidth}p{0.64\textwidth}@{}}
+\toprule
+Clavis (terminale) & Actio\\
+\midrule
+\endhead
+\key{F3}, \key{Ctrl+A} & applicat mutationes (vel addit articulum novum)\\
+\key{F4}, \key{Ctrl+N} & articulus novus\\
+\key{F5}, \key{Ctrl+D} & articulus novus similis huic\\
+\key{F6}, \key{Ctrl+T} & verbum probat\\
+\key{F7}, \key{Ctrl+L} & lingua significationum que preter Anglicam emendatur\\
+\key{F8}, \key{Ctrl+K} & articulum delet\\
+\key{F2}, \key{Ctrl+S} & fasciculum servat (mutationibus prius applicatis)\\
+\key{F10}, \key{Ctrl+Q} & programma claudit\\
+\key{Tab} & area sequens: inquisitio, index, forma articuli\\
+\key{Ctrl+F} & querere\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{editores dictionarii!data que scribi non possunt}\index{capsula datorum}%
+In AppImage et in RPM data scribi non possunt, et ideo editores non
+agunt. Ut ibi dictionarium emendetur, capsula \texttt{data} alio
+transcribitur, et exemplar datur tamquam capsula datorum: in fasciculo
+configurationis (\texttt{folder} in \texttt{[data]}), per
+\texttt{--datadir}, vel per \texttt{\$PY\_WORDS\_DATADIR}.
+
+\index{words\_check.py}%
+Fasciculi etiam manu emendari possunt, in quolibet editore textus:
+transcribitur articulus verbi similis et mutatur. Deinde \texttt{python3
+words\_check.py} indicat, cum numeris linearum, que programma legere non
+potest et articulos qui probabiliter non faciunt quod intendebatur.
+
+\section{De clavibus fenestre}
+\label{sec:keys}
+
+\index{claves}%
+\begin{longtable}{@{}>{\raggedright}p{0.4\textwidth}p{0.54\textwidth}@{}}
+\toprule
+Clavis & Actio\\
+\midrule
+\endhead
+\key{Return} & querere\\
+\key{Down} (in area inquisitionis) & inquisitiones priores\\
+\key{Ctrl+F} & querere in inventis\\
+\key{Return}, \key{Shift+Return} (in inventis querendo) & locus sequens et prior\\
+\key{Esc} (in inventis querendo) & claudere virgam inquisitionis\\
+\key{Ctrl++}, \key{Ctrl+-} & textus maior et minor\\
+\key{Ctrl+0} & magnitudo consueta\\
+\key{Ctrl+X}, \key{Ctrl+C}, \key{Ctrl+V} & excidere, transcribere, inserere\\
+\key{F1} & auxilium\\
+\key{Ctrl+Q} & claudere programma\\
+\key{Esc} (in dialogo) & ipsum claudere\\
+\bottomrule
+\end{longtable}
+
+\section{Ubi quelibet res servetur}
+\label{sec:files}
+
+\index{fasciculi configurationis}\index{config.toml}\index{historia inquisitionum}\index{cella}%
+Optiones, typi litterarum, modus obscurus et electiones fenestre in uno
+fasciculo configurationis servantur, \texttt{config.toml}. Est textus
+simplex, cum annotatione pro qualibet optione, et manu emendari potest;
+\texttt{python3 words.py --config} ipsum facit et dicit ubi sit.
+Programma etiam servat ultimas mille inquisitiones, et cellam dictionarii
+per quam in quarta parte secundi incipit. Omnia sunt in capsulis
+usuarii:
+
+\begin{longtable}{@{}llp{0.6\textwidth}@{}}
+\toprule
+Quid & Systema & Ubi\\
+\midrule
+\endhead
+Optiones & Linux & \texttt{\textasciitilde/.config/py-words/config.toml}\\
+ & macOS & \texttt{\textasciitilde/Library/Application Support/py-words}\\
+ & Windows & \texttt{\%APPDATA\%\textbackslash py-words}\\
+\addlinespace
+Historia & Linux & \texttt{\textasciitilde/.local/state/py-words/history}\\
+ & macOS & \texttt{\textasciitilde/Library/Application Support/py-words}\\
+ & Windows & \texttt{\%LOCALAPPDATA\%\textbackslash py-words}\\
+\addlinespace
+Cella & Linux & \texttt{\textasciitilde/.cache/py-words}\\
+ & macOS & \texttt{\textasciitilde/Library/Caches/py-words}\\
+ & Windows & \texttt{\%LOCALAPPDATA\%\textbackslash py-words}\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{variabiles ambitus}%
+\texttt{\$PY\_WORDS\_CONFIG}, \texttt{\$PY\_WORDS\_HISTORY} et
+\texttt{\$PY\_WORDS\_CACHE} alia loca dant; \texttt{\$PY\_WORDS\_HISTORY}
+vacua nullam historiam servat, et \texttt{\$PY\_WORDS\_CACHE} vacua nullam
+cellam. Cella semper deleri potest. Fasciculi datorum queruntur primo per
+\texttt{--datadir}, deinde in \texttt{\$PY\_WORDS\_DATADIR}, deinde in
+capsula quam fasciculus configurationis nominat, et ultimo in capsula
+\texttt{data} iuxta programma.
+
+\section{Cum aliquid deficit}
+
+\index{remedia}%
+\begin{description}
+\item[Programma dicit Python esse nimis antiquum] institue Python 3.13
+  vel posterius, vel utere AppImage.
+\item[Fenestra non aperitur: no module named tkinter] institue Tk
+  (capitulum~\ref{sec:install}).
+\item[Verbum non invenitur] inspice \menu{Inquisitio approximata}, et optiones
+  \texttt{use\_tricks} et \texttt{medieval\_spellings}; verbum ignotum
+  cum littera maiuscula habetur pro nomine proprio, nisi
+  \texttt{ignore\_unknown\_names} sit ablata.
+\item[Versus inventa mira dat] aufer \texttt{trim\_output}, que formas
+  insolitas omittit.
+\item[Logeion non respondet] interrete requirit; \menu{Quere in\then
+  Hic} ad hoc dictionarium redit.
+\item[\menu{Emenda dictionarium\ldots} est cinereum] data scribi non possunt
+  (AppImage, RPM), vel Logeion electum est (capitulum~\ref{sec:editing}).
+\item[Textus fenestre est nimis parvus vel magnus] \key{Ctrl++} et
+  \key{Ctrl+-}, vel \menu{Aspectus\then Typi litterarum\ldots}.
+\item[Optio male se habet] dele \texttt{config.toml}
+  (capitulum~\ref{sec:files}); programma incipit cum optionibus
+  primitivis.
+\end{description}
+
+\noindent
+Difficultates et vota scribi possunt tamquam \textit{issues} in GitHub vel
+in Codeberg (loca sunt in prima pagina), vel mitti ad
+\href{mailto:nicolasvaughan@proton.me}{\texttt{nicolasvaughan@proton.me}}.
+
+\printindex
+
+\end{document}
+
+% ===============================================
+%%% Local Variables:
+%%% mode: latex
+%%% lsp-ltex-plus-language: "la"
+%%% TeX-master: t
+%%% End:

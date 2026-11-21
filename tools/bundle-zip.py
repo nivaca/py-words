@@ -37,7 +37,10 @@ DIST = os.path.join(ROOT, 'dist')
 
 #  What is made while the program runs or is edited (as in .gitignore)
 LEFT_OUT = ('__pycache__', '*.pyc', '*.bak', '*.tmp', '*~', 'WORD.MOD',
-            'WORD.MDV', 'WORD.OUT', 'WORD.UNK', 'WORD.STA', 'py-words-v*.zip')
+            'WORD.MDV', 'WORD.OUT', 'WORD.UNK', 'WORD.STA', 'py-words-v*.zip',
+            #  lo que latexmk deja junto a los manuales, en docs/
+            '*.aux', '*.log', '*.out', '*.toc', '*.fls', '*.fdb_latexmk',
+            '*.synctex.gz', '*.idx', '*.ind', '*.ilg')
 #  Lo que está en la carpeta del programa sin ser parte de él: la carpeta
 #  de los paquetes, una carpeta que no va en git, los tags de un editor y
 #  las herramientas que hacen los paquetes, los íconos y las versiones

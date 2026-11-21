@@ -1,7 +1,7 @@
 py-words
 ========
 
-*(English: [README.md](README.md))*
+*(English: [README.md](README.md); Latine: [README_la.md](README_la.md))*
 
 py-words es un diccionario latín-inglés-latín y latín-español-latín con
 morfología flexiva.  WORDS, de William Whitaker, fue su punto de
@@ -58,7 +58,8 @@ y en un navegador web (`words_web.py`):
 
 ![La página web](docs/img/web_es.png)
 
-Estas ocho imágenes (cuatro programas, dos idiomas) se hacen con
+Estas doce imágenes (cuatro programas, tres idiomas: las latinas están
+en [README_la.md](README_la.md)) se hacen con
 `python3 tools/screenshots.py`, que ejecuta cada programa sin mostrarlo y
 las guarda en `docs/img/`. Necesita Linux con sesión gráfica,
 ImageMagick, tmux y Chrome; con `--help` verá las opciones.
@@ -371,6 +372,16 @@ al pie; en `words_tui.py`, F1; en la línea de órdenes interactiva, `~H`,
 y `python3 words.py --guide` la imprime.  Sale en el idioma de la
 interfaz.
 
+Hay además un manual de usuario, en PDF, con todo esto y más: cómo
+instalar el programa, la ventana y los otros tres programas, cómo leer los
+resultados (con tablas de los códigos y de las abreviaturas), Logeion, los
+ajustes y los editores del diccionario, las teclas y dónde se guarda cada
+cosa.  Es [docs/MANUAL_es.pdf](docs/MANUAL_es.pdf) (en inglés,
+[docs/MANUAL_en.pdf](docs/MANUAL_en.pdf); en latín medieval,
+[docs/MANUAL_la.pdf](docs/MANUAL_la.pdf)).  Su fuente es
+`docs/MANUAL_es.tex`, que `latexmk` compone con LuaLaTeX en `docs/`; sus
+imágenes son las de `docs/img/` (véase "Capturas de pantalla").
+
 ### Logeion
 
 La ventana, `words_tui.py`, la línea de órdenes y la página web
@@ -512,17 +523,19 @@ cuántos resultados mostrar.  Necesita las bibliotecas de D-Bus de Python
 
 ### El idioma de la interfaz
 
-Los programas hablan inglés o español: sus menús, botones,
+Los programas hablan inglés, español o latín medieval: sus menús, botones,
 etiquetas, mensajes y ayuda, los ajustes y lo que significan, los editores
 del diccionario, el verificador y los comentarios del archivo de
 configuración.  El idioma se elige con "Idioma de la interfaz" en los
 Ajustes de la ventana y en los ajustes de la página web, con F6 en
 `words_tui.py` o al final del diálogo `#` de `words.py` (`--interface es`
-usa otro solo para una ejecución).  La elección se guarda en el archivo de
+o `--interface la` usan otro solo para una ejecución).  La elección se guarda en el archivo de
 configuración (el ajuste `interface`, `en` salvo que diga otra cosa), así
 que todos los programas empiezan en ese idioma, también la próxima vez; un
 programa que guarda otro ajuste lo deja como está.  La ventana y la página
-web cambian al instante.
+web cambian al instante.  No hay significados en latín, así que con la
+interfaz latina los significados siguen en inglés o en español, como
+estaban, y también las notas de los resultados, como "(unknown)".
 
 Al cambiar el idioma de la interfaz cambia también el de los
 significados, si el diccionario lo tiene (español: los significados en

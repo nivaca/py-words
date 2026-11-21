@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Toma las capturas de pantalla del README: los cuatro programas (la línea
 de órdenes, la ventana, la terminal en pantalla completa y la página web),
-cada uno en inglés y en español, buscando la misma palabra.
+cada uno en inglés, en español y en latín, buscando la misma palabra.
 
     python3 tools/screenshots.py [-o FOLDER] [--only cli,gui,tui,web]
-                                 [--langs en,es] [--word perspicio]
+                                 [--langs en,es,la] [--word perspicio]
                                  [--scale 2]
 
 Escribe FOLDER/KIND_LANG.png (por omisión en docs/img/, de donde las toman
@@ -78,11 +78,16 @@ def say(text: str):
 
 def settings_folder(lang: str, dark: bool) -> str:
     """A temporary folder with a configuration file: the interface and the
-    meanings in LANG, dark or light."""
+    meanings in LANG (the meanings in English if there are none in LANG,
+    as in Latin), dark or light."""
     folder = tempfile.mkdtemp(prefix=f'py-words-shot-{lang}-')
+    #  los significados solo existen en los idiomas de data/languages/
+    meanings = lang if os.path.exists(os.path.join(
+        ROOT, 'data', 'languages', f'{lang}.xml')) else 'en'
     with open(os.path.join(folder, 'config.toml'), 'w',
               encoding='utf-8') as f:
-        f.write(f'[parameters]\nlanguage = "{lang}"\ninterface = "{lang}"\n'
+        f.write(f'[parameters]\nlanguage = "{meanings}"\n'
+                f'interface = "{lang}"\n'
                 f'\n[appearance]\ndark_mode = {str(dark).lower()}\n')
     return folder
 
@@ -479,15 +484,15 @@ TAKE = {'cli': cli, 'gui': gui, 'tui': tui, 'web': web}
 
 def main(argv=None):
     parser = argparse.ArgumentParser(
-        description='Take the screenshots of the four programs, in English '
-                    'and Spanish (for the READMEs).')
+        description='Take the screenshots of the four programs, in English, '
+                    'Spanish and Latin (for the READMEs).')
     parser.add_argument('-o', '--output',
                         default=os.path.join(ROOT, 'docs', 'img'),
                         help='the folder of the images (default: docs/img)')
     parser.add_argument('--only', default=','.join(KINDS),
                         help='which programs: cli,gui,tui,web')
-    parser.add_argument('--langs', default='en,es',
-                        help='which languages (default: en,es)')
+    parser.add_argument('--langs', default='en,es,la',
+                        help='which languages (default: en,es,la)')
     parser.add_argument('--word', default='perspicio',
                         help='the word looked up (default: perspicio)')
     parser.add_argument('--scale', type=float, default=SCALE,

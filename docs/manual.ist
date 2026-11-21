@@ -1,0 +1,4 @@
+% The style of the index of the manuals (MANUAL_en.tex, MANUAL_es.tex): a heading for each letter
+headings_flag 1
+heading_prefix "\\par\\penalty-50\\medskip{\\bfseries "
+heading_suffix "}\\par\\nopagebreak\n"

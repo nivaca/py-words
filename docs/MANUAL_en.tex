@@ -1,0 +1,1219 @@
+\newcommand*{\version}{3.25}
+
+\documentclass[12pt,
+              article,
+              oneside
+              ]{memoir}
+
+\usepackage{iftex}
+
+\ifluatex
+  \usepackage{fontspec}
+\fi
+
+\usepackage[
+  % latin,
+  english,
+  % spanish,% <- principal
+  % es-minimal,
+  % es-noshorthands,
+  % es-tabla,
+]{babel}
+
+\ifluatex
+% LuaLaTeX --------------------
+\defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase}
+\usepackage[MainFeatures={medium,
+  Ligatures=Common,
+  Numbers=OldStyle,
+  SmallCapsFeatures = {LetterSpace=5.0}}]
+{junicodevf}
+%
+% \setsansfont{Libertinus Sans}
+% (without the ligatures of TeX, so that -- stays two hyphens)
+\setmonofont[Scale=MatchLowercase, Ligatures=TeXOff]{DejaVu Sans Mono}
+% \setmonofont[Scale=MatchLowercase]{Libertinus Mono}
+% \setmonofont[Scale=MatchLowercase}]{Fira Code}
+\else
+% PDFLaTeX ---------------------
+\usepackage[T1]{fontenc}
+\usepackage[osf]{libertinus}
+\usepackage[scaled=0.9]{FiraMono}
+% \usepackage[scaled=0.9]{cascadia-code}
+% \usepackage[scaled=0.9]{roboto}
+\input glyphtounicode
+\pdfgentounicode=1
+\fi
+
+\usepackage[babel=true, verbose=false, tracking=true, expansion=true, protrusion=true, final, draft=false]{microtype}
+\SetTracking{ encoding = *, shape = sc }{ 30 }
+\SetTracking[context = notracking, ]{encoding = *}{0}
+
+\usepackage[autostyle=false, style=british]{csquotes}
+\usepackage{latexcolors}
+
+\newcommand{\Rojo}{\color[HTML]{8B0000}}
+\newcommand*{\rojo}[1]{\textcolor[HTML]{8B0000}{#1}}
+\newcommand*{\rojoit}[1]{\textit{\textcolor[HTML]{8B0000}{#1}}}
+\newcommand{\Azul}{\color{bluenivaca}}
+\newcommand*{\azul}[1]{\textcolor{bluenivaca}{#1}}
+\newcommand{\Verde}{\color{darkgreen}}
+\newcommand*{\verde}[1]{\textcolor{darkgreen}{#1}}
+\newcommand{\Amarillo}{\color{goldenpoppy}}
+\newcommand*{\amarillo}[1]{\textcolor{goldenpoppy}{#1}}
+\newcommand{\Morado}{\color{byzantium}}
+\newcommand*{\morado}[1]{\textcolor{byzantium}{#1}}
+\newcommand{\Naranja}{\color{orange}}
+\newcommand*{\naranja}[1]{\textcolor{orange}{#1}}
+
+% \usepackage[margin=3cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\clubpenalty=9999
+\widowpenalty=9999
+\brokenpenalty=5000
+\frenchspacing
+\raggedbottom
+\midsloppy
+\parindent=14pt
+\fboxsep=2pt
+
+\renewcommand\thesection{\arabic{section}}
+\chapterstyle{reparticle}
+
+\usepackage{enumitem}
+\setlist{noitemsep, nosep}
+\setlist[description]{font=\itshape}
+
+\newcommand*{\elipsis}{\,.\,.\,.\,}
+\newcommand*{\elipsisb}{\textup{[\elipsis]}}
+
+\renewenvironment{quote}%
+ {\begin{list}{}%
+              {\setlength\rightmargin{0pt}%
+              \setlength\leftmargin{\parindent}}%
+  \item[]\small\ignorespaces}
+ {\unskip\end{list}}
+
+
+\definecolor{Link}{HTML}{408080}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=blue,
+  citecolor = black,
+  urlcolor=Link,
+}
+\urlstyle{tt}
+\usepackage{bookmark}
+
+\setlength{\droptitle}{-2cm}
+
+\title{\bfseries%
+  \texttt{py-words} v.\version{} \\
+  User Manual}
+
+\author{%
+  Nicolás Vaughan\\
+  \begin{minipage}[t]{0.8\linewidth}
+    \centering\small%
+    \href{mailto:nicolasvaughan@proton.me}{\texttt{nicolasvaughan@proton.me}}\\
+    \url{https://nicolasvaughan.org}\\
+    \url{https://github.com/nivaca/py-words}\\
+    \url{https://codeberg.org/nivaca/py-words}\\
+  \end{minipage}}
+
+
+\date{2026-11-21}
+
+% The pictures, made by tools/screenshots.py
+\graphicspath{{img/}}
+\usepackage{longtable}
+
+% the title and the author in the PDF's own metadata
+\hypersetup{pdftitle={py-words User Manual}, pdfauthor={Nicolás Vaughan}}
+
+% the index (makeindex, with the style manual.ist: see latexmkrc)
+\makeindex
+
+% menus, keys, and the pictures of the window
+\newcommand*{\menu}[1]{\textit{#1}}
+\newcommand*{\then}{\,>\,}
+\newcommand*{\key}[1]{\texttt{#1}}
+\newcommand*{\shot}[3]{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=#2\textwidth,height=0.75\textheight,keepaspectratio]{#1}
+    \caption{#3}
+    \label{fig:#1}
+  \end{figure}}
+% the tilde of the interactive commands (~E, ~L ...)
+\newcommand*{\tl}{\textasciitilde}
+
+\begin{document}
+\maketitle
+
+\tableofcontents*
+
+\section{Introduction}
+\noindent
+\texttt{py-words} is a Latin dictionary that knows Latin grammar. It
+analyses an inflected Latin word, or a whole line of Latin, into the
+dictionary entries and the forms it can be, with their meanings in English
+or in Spanish, and it finds the Latin for an English or a Spanish word. It
+can be used in four ways: in a window, on the command line, in a terminal in
+full screen, and in a web browser. It is also online, with nothing to
+install, at \url{https://nivaca.pythonanywhere.com/}.
+
+\index{WORDS (Whitaker)}\index{Lewis and Short}\index{De Miguel}\index{Echave-Sustaeta}\index{Latham}\index{Collatinus}%
+I wrote it in 2026. Its starting point was WORDS, the program of William
+Whitaker, but the code and the data were redesigned, and the dictionary
+grew: it now has the rare words and the English definitions of Lewis and
+Short's \textit{A Latin Dictionary}, the words, names and Spanish
+definitions of R.~de~Miguel's \textit{Nuevo diccionario latino-español
+etimológico}, the basic vocabulary of J.~Echave-Sustaeta, R.~E. Latham's
+medieval word-list, and the long vowels of Collatinus. Each entry says
+where it comes from (section~\ref{sec:codes}).
+
+\index{conventions}\index{macos and windows@macOS and Windows}%
+This manual explains first how to install and start the program, then the
+window, how to search and how to read the results, and after that the
+other three programs, the settings and the dictionary editors. The menus
+are written in italics, with their items after a \enquote{>}, as
+\menu{Dictionary\then Settings\ldots}; keys are written as \key{Ctrl+F}.
+On macOS, \key{Ctrl} is the Command key. The pictures show the programs in
+English; with the interface in Spanish, every menu, message and help text
+is in Spanish too (section~\ref{sec:languages}).
+
+\index{licence}%
+\texttt{py-words} is free software, under the GNU General Public License,
+version 3 or later. It uses only Python and its standard library (with Tk
+for the windows and curses for the terminal), so it needs nothing else; the
+full list of the software it uses, with its licences, is in
+\texttt{docs/LICENCES.md}. WORDS and its data were given by Whitaker
+\enquote{for any and all use}, and the text of Lewis and Short comes from
+the Perseus Digital Library, under CC BY-SA 4.0.
+
+\section{Installing it}
+\label{sec:install}
+
+Every version is published on GitHub and on Codeberg (the addresses are on
+the first page), with these files:
+
+\index{appimage@AppImage}\index{fedora (copr, rpm)@Fedora (Copr, RPM)}\index{zip}%
+\begin{itemize}
+\item \texttt{py-words-v.VERSION-x86\_64.AppImage}: the AppImage, for any
+  Linux;
+\item \texttt{py-words-VERSION-1.fc45.noarch.rpm}: the Fedora package,
+  signed, with the key that signs it, \texttt{RPM-GPG-KEY-py-words};
+\item \texttt{py-words-v.VERSION.zip}: the program itself, for Linux,
+  macOS and Windows.
+\end{itemize}
+
+\subsection{What is needed}
+
+\index{python@Python}\index{tk@Tk}%
+Only Python 3.13 or later. The windows (the dictionary and its editor)
+need Tk, which comes with Python on Windows and with the installers of
+python.org on macOS. On Linux, and with Homebrew's Python on macOS, it may
+be a separate package:
+
+\begin{verbatim}
+$ sudo dnf install python3-tkinter      (Fedora)
+$ sudo apt install python3-tk           (Debian, Ubuntu)
+$ brew install python-tk                (macOS, Homebrew)
+\end{verbatim}
+
+\noindent
+\texttt{python3 --version} says which Python you have; if it is too old,
+the program says so and stops. The commands in this manual use
+\texttt{python3}; on Windows, write \texttt{python} instead. The AppImage
+and the RPM bring or use their own Python, so they need nothing of this.
+
+\subsection{The ZIP, or a copy of the repository}
+
+\index{zip}\index{git}%
+Unpack the ZIP anywhere, or clone the repository:
+
+\begin{verbatim}
+$ git clone https://github.com/nivaca/py-words.git
+\end{verbatim}
+
+\noindent
+The folder is the whole program: there is nothing to build or to install,
+and it runs from where it is.
+
+\begin{verbatim}
+$ cd py-words
+$ python3 words.py amicus          (a first test)
+$ python3 words_gui.py             (the window)
+\end{verbatim}
+
+\subsection{The AppImage (Linux)}
+
+\index{appimage@AppImage}%
+The AppImage is a single file that brings its own Python, with Tk. Make it
+executable and run it:
+
+\begin{verbatim}
+$ chmod +x py-words-v.3.25-x86_64.AppImage
+$ ./py-words-v.3.25-x86_64.AppImage              (the window)
+$ ./py-words-v.3.25-x86_64.AppImage cli amicus   (the command line)
+$ ./py-words-v.3.25-x86_64.AppImage help         (the others)
+\end{verbatim}
+
+\noindent\index{dictionary editors!read-only data}%
+The first argument chooses the program: \texttt{gui} (the default),
+\texttt{cli}, \texttt{tui}, \texttt{web}, \texttt{edit},
+\texttt{edit-gui}, \texttt{check} or \texttt{convert}; what follows goes to
+that program. The AppImage cannot be written to, so the dictionary cannot
+be edited in it (section~\ref{sec:editing} says how to do it anyway).
+Tools such as AppImageLauncher or Gear Lever add it to the menu of the
+system.
+
+\subsection{Fedora}
+
+\index{fedora (copr, rpm)@Fedora (Copr, RPM)}%
+The easiest way is the Copr repository. The package uses Fedora's own
+Python and Tk, and adds four entries to the menu of the system, with the
+icon:
+
+\begin{verbatim}
+$ sudo dnf copr enable nivaca/py-words
+$ sudo dnf install py-words
+\end{verbatim}
+
+\noindent
+Updates then come with \texttt{sudo dnf upgrade}. The RPM of each release
+can also be installed by hand, after importing its key once with
+\texttt{sudo rpm --import RPM-GPG-KEY-py-words}. It runs on any Fedora
+with Python 3.13 or later, whatever the \texttt{fc} number in its name.
+The command \texttt{py-words} then starts the programs, with the same
+first argument as the AppImage:
+
+\begin{verbatim}
+$ py-words                 (the window)
+$ py-words cli amicus      (the command line)
+$ py-words help            (the other programs)
+\end{verbatim}
+
+\noindent\index{dictionary editors!read-only data}%
+The program is installed in \texttt{/usr/share/py-words}, which cannot be
+written to, so the dictionary cannot be edited there either, as in the
+AppImage.
+
+\subsection{A menu entry}
+
+\index{menu entries}\index{macos and windows@macOS and Windows}%
+With the ZIP or a copy of the repository, run once
+
+\begin{verbatim}
+$ python3 words_install.py
+\end{verbatim}
+
+\noindent
+to add the program to the menu of the system, with four entries: the
+window, the command line and the full-screen terminal version (these two
+open in a terminal), and the web version (its server runs in a terminal,
+and the browser opens). On Linux they go to the applications menu, on
+Windows to the Start menu, and on macOS to \texttt{\textasciitilde/Applications}.
+\texttt{--only-gui} adds only the window, and \texttt{--uninstall} removes
+them. It needs no administrator rights. The entries start the program in
+its folder, so if the folder is moved, run it again.
+
+\subsection{Updating and uninstalling}
+
+\index{updating}\index{uninstalling}%
+With git, \texttt{git pull} in the folder; if not, download the ZIP again
+and replace the folder. If you edited the dictionary, keep a copy of
+\texttt{data/dictionary.xml} first. To uninstall, remove the menu entries
+with \texttt{python3 words\_install.py --uninstall} and delete the folder;
+the settings, the history and the cache can be deleted too
+(section~\ref{sec:files}).
+
+\section{The four programs}
+\label{sec:programs}
+
+\index{programs}\index{window}\index{command line}\index{terminal, full screen}\index{web page}%
+The same dictionary has four faces, which share the settings and the
+history of searches:
+
+\begin{longtable}{@{}lp{0.62\textwidth}@{}}
+\toprule
+Program & What it is\\
+\midrule
+\endhead
+\texttt{words\_gui.py} & the window (section~\ref{sec:window})\\
+\texttt{words.py} & the command line, with an interactive mode (section~\ref{sec:cli})\\
+\texttt{words\_tui.py} & the window, but in a terminal, in full screen (section~\ref{sec:tui})\\
+\texttt{words\_web.py} & a small web server, and the dictionary in the browser (section~\ref{sec:web})\\
+\texttt{meanings.py} & \texttt{words.py} with only the dictionary forms and the meanings\\
+\texttt{words\_edit\_gui.py} & the dictionary editor, in a window (section~\ref{sec:editing})\\
+\texttt{words\_edit.py} & the dictionary editor, in the terminal\\
+\texttt{words\_check.py} & checks the data files after they are edited by hand\\
+\texttt{words\_install.py} & adds the program to the menu of the system\\
+\bottomrule
+\end{longtable}
+
+\noindent
+From the folder of the program they are run with \texttt{python3}:
+
+\begin{verbatim}
+$ python3 words_gui.py                     (a window)
+$ python3 words_gui.py perspicio           (looking it up)
+$ python3 words_gui.py -e look             (a window, to Latin)
+$ python3 words.py rem acu tetigisti       (look up a line)
+$ python3 words.py                         (interactive)
+$ python3 words_tui.py                     (in the terminal)
+$ python3 words_web.py                     (in the browser)
+\end{verbatim}
+
+\noindent\index{online version}%
+The online version, \url{https://nivaca.pythonanywhere.com/}, is the page
+of \texttt{words\_web.py} on a public server. Each visitor has their own
+settings and earlier searches there, kept in the cookies of their browser,
+and nothing of this is saved on the server.
+
+\section{The window}
+\label{sec:window}
+
+\shot{gui_en}{1}{The window, in dark mode, with \textit{perspicio} looked up.}
+
+\index{window}\index{search box}\index{look up}%
+Figure~\ref{fig:gui_en} shows the window. At the top is the box where the
+words are typed, and \menu{Look up}, which looks them up (\key{Return}
+does the same). The box keeps the earlier searches: \key{Down}, or its
+arrow, lists them, the most recent first, and choosing one looks it up
+again.
+
+\index{search in}\index{direction}\index{meanings in}\index{fuzzy search}%
+Below it are the choices of the search:
+
+\begin{description}
+\item[Search in] \menu{Local}, this dictionary, or \menu{Logeion}, the
+  dictionaries of the University of Chicago (section~\ref{sec:logeion}),
+  with the list of Logeion's dictionaries beside it;
+\item[the direction] \menu{Latin\,$\rightarrow$\,English} or
+  \menu{English\,$\rightarrow$\,Latin} (with the Spanish meanings,
+  \menu{Spanish} instead of \menu{English});
+\item[Meanings in] the language of the meanings
+  (section~\ref{sec:languages});
+\item[Fuzzy search] when a word finds nothing, the results of its near
+  spellings (section~\ref{sec:fuzzy}).
+\end{description}
+
+\noindent
+These choices are kept: the next time, any of the programs starts as it
+was left.
+
+\index{results!links}\index{results!explanations}\index{double click}\index{right click}%
+The results take the rest of the window. They are the same text as on the
+command line, laid out for the eye: the word looked up is bigger, the
+dictionary form is in bold with its headword in colour, the codes and the
+notes are in grey, and the analyses of the forms in blue. The first word
+of an entry is a link that looks it up, and a double click on any word
+looks it up too (a word of the meanings is looked up in Latin, in the
+other direction). With the mouse over the codes in brackets or over an
+analysis (\texttt{GEN.PL}), a small box explains what they mean. The
+right click copies or looks up a word.
+
+\index{status line}\index{dark mode}%
+The line at the bottom says what the program is doing. At its right, the
+moon makes the windows dark (the dictionary, its dialogues and the
+editor), and then the sun makes them light again.
+
+\subsection{The menus}
+
+\index{menus}%
+\begin{description}
+\item[Dictionary] \menu{Edit dictionary\ldots} opens the editor
+  (section~\ref{sec:editing}); \menu{Settings\ldots} shows all the
+  settings (section~\ref{sec:settings}); \menu{Quit}.
+\item[Edit] \menu{Cut}, \menu{Copy} and \menu{Paste}, in the box of the
+  search or in the results.
+\item[View] \menu{Find in results\ldots}, the size of the text, the
+  fonts, and \menu{Dark mode}.
+\item[Help] \menu{Help}, the guide to searching and to the results;
+  \menu{Web page}, the page of the program; \menu{About}, the version and
+  the credits.
+\end{description}
+
+\subsection{Finding a text in the results}
+
+\index{find in results}%
+\menu{View\then Find in results\ldots} (\key{Ctrl+F}) opens a small bar
+under the results. What is typed there is highlighted as it is typed;
+\key{Return} goes to the next place, \key{Shift+Return} to the previous
+one, and \key{Esc} closes the bar.
+
+\subsection{Text and fonts}
+
+\index{fonts}\index{text size}\index{hi-res displays}%
+\key{Ctrl++} and \key{Ctrl+-} make the text bigger and smaller, and
+\key{Ctrl+0} brings back the usual size. \menu{View\then Font\ldots}
+chooses the fonts: a fixed-width one for the results, because their
+columns must stay aligned, and another for the rest of the window. Both
+are kept. On a hi-res display the windows follow the scaling of the
+desktop.
+
+\section{Searching}
+\label{sec:searching}
+
+\subsection{From Latin}
+
+\index{searching!from Latin}\index{capitals}\index{u and v, i and j}\index{long marks}%
+Type a Latin word, or a whole line of Latin: each word is analysed in
+turn. Capitals do not matter, nor do u and v, or i and j (\textit{iulius},
+\textit{Julius} and \textit{IVLIVS} are the same word), nor long marks and
+other accents: \textit{amīcus} is \textit{amicus}, and \textit{cælum} is
+\textit{caelum}.
+
+\index{tricks}\index{prefixes and suffixes}\index{enclitics}\index{medieval spellings}%
+A word is first looked for as a stem and an ending of the dictionary.
+When this finds nothing, the program tries prefixes, suffixes and
+enclitics (\textit{-que}, \textit{-ne}, \textit{-ve}), and then other
+spellings: a syncopated perfect, two words written as one
+(\textit{rempublicam}), a final \textit{-st} for \textit{est}
+(\textit{factumst}), and the spellings of medieval Latin (\textit{e} for
+\textit{ae}, \textit{y} for \textit{i}, \textit{michi} for \textit{mihi}).
+It always says what it did:
+
+\begin{verbatim}
+hystorie
+  spelling: Medieval hystorie -> historiae
+    'hystorie' may be a medieval spelling of historiae
+  historia, historiae  noun, 1st declension, feminine  [XXXAX]
+    a narrative of past events, history; ...
+    histori-ae     GEN.SG
+\end{verbatim}
+
+\noindent\index{names}%
+An unknown word with a capital is taken as a name, and left alone.
+
+\subsection{To Latin}
+
+\index{searching!to Latin}\index{parts of speech}%
+In the other direction (\menu{English\,$\rightarrow$\,Latin} in the
+window, \texttt{-e} on the command line), type one word of the language of
+the meanings: the Latin entries whose meanings have it are listed, the
+best first, six at most, and then how many more there are. A part of
+speech after the word keeps only that one: \texttt{friend ADJ}. The parts
+of speech are \texttt{N}, \texttt{PRON}, \texttt{ADJ}, \texttt{NUM},
+\texttt{ADV}, \texttt{V}, \texttt{PREP}, \texttt{CONJ} and
+\texttt{INTERJ}. Very common words (\textit{the}, \textit{a}) are never
+looked for, and in Spanish the accents do not matter: \textit{corazon}
+finds \textit{corazón}.
+
+\subsection{The fuzzy search}
+\label{sec:fuzzy}
+
+\index{fuzzy search}\index{typos}%
+Usually a word with a typo finds nothing. With the fuzzy search, a word of
+three letters or more that still finds nothing is followed by the results
+of the words one change away from it (a letter left out, added or
+changed, or two letters swapped), three of them at most, those of the
+most frequent entries first:
+
+\begin{verbatim}
+amicuss
+  (unknown)
+  (near spellings: amicus)
+
+amicus
+  amicus, amici  noun, 2nd declension, masculine  [XXXBO]
+  ...
+\end{verbatim}
+
+\noindent
+The search to Latin does the same with the words of the meanings:
+\textit{freind} finds \textit{friend}, and \textit{wolfs} finds
+\textit{wolf}. It is on unless it is turned off: \menu{Fuzzy search} in
+the window and on the web page, \key{F3} in the terminal, or
+\texttt{--no-fuzzy} on the command line, for one run.
+
+\section{Reading the results}
+\label{sec:results}
+
+\index{results}%
+This is what \texttt{py-words} shows for \textit{amicorum}:
+
+\begin{verbatim}
+amicorum
+  amicus, amici  noun, 2nd declension, masculine  [XXXBO]
+    A friend, patron, protector, companion; ... (Lewis and Short)
+    amīc-ōrum      GEN.PL
+  amicus, amica -um, amicior -or -us, amicissimus -a -um
+      adjective, 1st/2nd declension  [XXXAO]
+    friendly, kind, amicable, favorable, ... (Lewis and Short)
+    amīc-ōrum      GEN.PL.M
+    amīc-ōrum      GEN.PL.N
+\end{verbatim}
+
+\index{results!lines of}\index{principal parts}\index{long vowels}%
+\begin{itemize}
+\item The first line is the word looked up. Each entry it can be follows,
+  indented.
+\item The first line of an entry has its dictionary form (the principal
+  parts: \textit{amicus, amici}), its part of speech and grammar in words
+  (noun, 2nd declension, masculine), and the codes in brackets
+  (section~\ref{sec:codes}); some entries add their age or frequency in
+  words (archaic, lesser\ldots).
+\item The next line is the meaning. Its senses are separated by
+  semicolons, the commonest first. At its end, the dictionary it comes
+  from, when it is not WORDS: (Lewis and Short), (De Miguel),
+  (Echave-Sustaeta). \texttt{[en]} before a meaning says that it has no
+  translation, and is given in English.
+\item Then come the forms the word can be: the stem and the ending,
+  joined by a hyphen, with the long vowels marked where they are known
+  (\textit{amīc-ōrum}), and what the form is, in the abbreviations of
+  section~\ref{sec:glosses}. One spelling can be several forms: the
+  \textit{amīc-ōrum} of the adjective is masculine and neuter.
+\item A line before an entry may say how the word was found: a prefix, a
+  suffix or an enclitic, with its meaning, or a change of spelling.
+\end{itemize}
+
+\noindent\index{compound tenses}%
+A participle followed by a form of \textit{esse} is read as a compound
+tense:
+
+\begin{verbatim}
+laudatus
+  laudo, laudare, laudavi, laudatus  verb, 1st conjugation  [XXXAX]
+    to praise, laud, commend, extol, ... (Lewis and Short)
+    laudāt-us      PRF.PASS.PTCP.NOM.SG.M
+    participle + est  3SG.PRF.PASS.IND
+      PERF PASSIVE PPL + verb TO_BE => PASSIVE perfect system
+\end{verbatim}
+
+\noindent\index{results!notes}%
+Some notes go in parentheses:
+
+\begin{longtable}{@{}>{\raggedright}p{0.4\textwidth}p{0.54\textwidth}@{}}
+\toprule
+Note & What it says\\
+\midrule
+\endhead
+(unknown) & the word was not found\\
+(near spellings: \ldots) & the results of the fuzzy search follow\\
+(less likely forms are not shown) & the setting \texttt{trim\_output} left some out\\
+(no match) & the search to Latin found nothing\\
+(near words: \ldots) & the fuzzy search to Latin\\
+(\ldots\ more not shown) & after the best six entries, to Latin\\
+\bottomrule
+\end{longtable}
+
+\subsection{The codes in brackets}
+\label{sec:codes}
+
+\index{codes in brackets}\index{age}\index{area}\index{region}\index{frequency}\index{sources}%
+The five letters in brackets after an entry say when, where, how often and
+on whose authority the word is used, in this order: its age, its area (the
+subject it belongs to), its region, its frequency and its source. An X
+says only that there is nothing particular to say. So the
+\texttt{[XXXBO]} of \textit{amicus} is read: in use throughout, general,
+everywhere, frequent, and taken from the Oxford Latin Dictionary. An entry
+can have more than one source: the others follow the five letters, each
+after a \texttt{+} (\texttt{[XXXBO+A]} is also from Echave-Sustaeta). The
+age, when it is known, and the frequency, when it is lesser or rarer, are
+also written in words after the codes. The letters are these:
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letter & Age\\
+\midrule
+\endhead
+X & in use throughout\\
+A & archaic\\
+B & early (before the classical period)\\
+C & classical\\
+D & late (after 200)\\
+E & later (after 600)\\
+F & medieval (after 1000)\\
+G & scholarly (Renaissance and after)\\
+H & modern\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letter & Area\\
+\midrule
+\endhead
+X & general\\
+A & agriculture, plants, animals, the land\\
+B & biology, medicine, the body\\
+D & drama, music, the arts\\
+E & the Church, the Bible\\
+G & grammar, rhetoric, logic, literature, school\\
+L & law, government, money, titles\\
+P & poetry\\
+S & science, philosophy, mathematics, measures\\
+T & technical, architecture, surveying\\
+W & war, the army, the navy\\
+Y & mythology\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letter & Region\\
+\midrule
+\endhead
+X & everywhere\\
+A & Africa\\
+B & Britain\\
+C & China\\
+D & Scandinavia\\
+E & Egypt\\
+F & France, Gaul\\
+G & Germany\\
+H & Greece\\
+I & Italy, Rome\\
+J & India\\
+K & the Balkans\\
+N & the Netherlands\\
+P & Persia\\
+Q & the Near East\\
+R & Russia\\
+S & Spain\\
+U & Eastern Europe\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letter & Frequency\\
+\midrule
+\endhead
+X & unknown\\
+A & very frequent\\
+B & frequent\\
+C & common\\
+D & lesser\\
+E & uncommon\\
+F & very rare\\
+I & only in inscriptions\\
+M & only in graffiti\\
+N & only in Pliny\\
+\bottomrule
+\end{longtable}
+
+\begin{longtable}{@{}lp{0.8\textwidth}@{}}
+\toprule
+Letter & Source\\
+\midrule
+\endhead
+X & general or unknown\\
+A & Echave-Sustaeta, \textit{Lengua latina. Vocabulario básico}\\
+B & Beeson, \textit{Medieval Latin}\\
+C & \textit{Cassell's Latin Dictionary}\\
+D & Adams, \textit{Latin Sexual Vocabulary}\\
+E & Stelten, \textit{Ecclesiastical Latin}\\
+F & Deferrari, St.~Thomas Aquinas\\
+G & Gildersleeve and Lodge, \textit{Latin Grammar}\\
+H & Collatinus (Ouvrard)\\
+I & Leverett, \textit{Lexicon}\\
+J & Bracton, \textit{De Legibus}\\
+K & \textit{Calepinus Novus} (Licoppe)\\
+L & Lewis, \textit{Elementary Latin Dictionary}\\
+M & Latham, \textit{Medieval Word List}; DMLBS\\
+N & Nelson, word list\\
+O & \textit{Oxford Latin Dictionary}\\
+P & Souter, \textit{Later Latin}\\
+Q & other dictionaries\\
+R & Plater and White, \textit{Vulgate grammar}\\
+S & Lewis and Short, \textit{A Latin Dictionary}\\
+T & found in a translation\\
+U & Du Cange\\
+V & Blatt, Saxo\\
+W & Whitaker's guess\\
+Y & temporary\\
+Z & sent by a user\\
+m & De Miguel, \textit{Nuevo diccionario latino-español etimológico}\\
+\bottomrule
+\end{longtable}
+
+\subsection{The abbreviations of the analyses}
+\label{sec:glosses}
+
+\index{glossing abbreviations}\index{Leipzig Glossing Rules}%
+The forms are analysed with the abbreviations of the Leipzig Glossing
+Rules, joined by full stops; the person and the number go together, so
+\texttt{2SG.PRF.ACT.IND} is the 2nd person singular perfect active
+indicative. Those marked * are not in the Leipzig list. With the setting
+\texttt{use\_glosses} off (\texttt{--no-glosses} on the command line), the
+analyses are written in words instead: \enquote{accusative singular}.
+
+\begin{longtable}{@{}lp{0.6\textwidth}@{}}
+\toprule
+Abbreviation & Meaning\\
+\midrule
+\endhead
+\texttt{NOM}, \texttt{GEN}, \texttt{DAT} & nominative, genitive, dative\\
+\texttt{ACC}, \texttt{ABL}, \texttt{VOC}, \texttt{LOC} & accusative, ablative, vocative, locative\\
+\texttt{SG}, \texttt{PL} & singular, plural\\
+\texttt{M}, \texttt{F}, \texttt{N}, \texttt{C}* & masculine, feminine, neuter, common\\
+\texttt{1}, \texttt{2}, \texttt{3} & first, second, third person\\
+\texttt{PRS}, \texttt{IMPF}*, \texttt{FUT} & present, imperfect, future\\
+\texttt{PRF}, \texttt{PLUP}*, \texttt{FUT.PRF}* & perfect, pluperfect, future perfect\\
+\texttt{ACT}*, \texttt{PASS} & active, passive\\
+\texttt{IND}, \texttt{SBJV}, \texttt{IMP} & indicative, subjunctive, imperative\\
+\texttt{INF}, \texttt{PTCP}, \texttt{SUP}* & infinitive, participle, supine\\
+\texttt{POS}*, \texttt{CMPR}*, \texttt{SPRL}* & positive, comparative, superlative\\
+\texttt{CARD}*, \texttt{ORD}* & cardinal, ordinal numeral\\
+\texttt{DISTR}, \texttt{MULT}* & distributive, multiplicative numeral (numeral adverb)\\
+\bottomrule
+\end{longtable}
+
+\section{The languages}
+\label{sec:languages}
+
+\subsection{The language of the meanings}
+
+\index{meanings in}\index{Spanish meanings}\index{De Miguel}\index{Echave-Sustaeta}%
+The meanings are in English or in Spanish, and so is the rest of the
+results (\enquote{sustantivo, 2.ª declinación, masculino}); the glossing
+abbreviations are the same in both. The Spanish meanings come from De
+Miguel's dictionary wherever it has the word, as he wrote them in 1867,
+with his spelling (\textit{razon}, \textit{á}), and they say so at their
+end, \enquote{(De Miguel)}; a few come from Echave-Sustaeta; the others
+were translated from the English. It is chosen with \menu{Meanings in} in
+the window and on the web page, with \key{F5} in the terminal, or with
+\texttt{--language es} on the command line, for one run. The search to
+Latin goes from the language chosen.
+
+\subsection{The language of the interface}
+
+\index{language of the interface}%
+The programs speak English, Spanish or Medieval Latin: their menus,
+buttons, messages,
+help and settings, the editors and the checker. It is chosen with
+\menu{Language of the interface} in the settings of the window and of the
+web page, with \key{F6} in the terminal, or at the end of the \texttt{\#}
+dialogue of the command line (\texttt{--interface es} or
+\texttt{--interface la} for one run). The window and the web page change
+at once. Changing the interface changes the meanings too, to the same
+language, if the dictionary has it; there are no Latin meanings, so with
+the Latin interface they stay as they were, and so do the notes of the
+results, such as \enquote{(unknown)}; after that each can be chosen apart,
+so the interface can be in Spanish and the meanings in English.
+
+\section{Logeion}
+\label{sec:logeion}
+
+\index{Logeion}%
+Instead of the entries of this dictionary, the programs can show those of
+Logeion (\url{https://logeion.uchicago.edu}), the Latin and Greek dictionaries of
+the University of Chicago, with the short definition, the frequency and
+examples from its corpus. It needs the internet. It is chosen with
+\menu{Search in} in the window and on the web page, \key{F8} in the
+terminal, \texttt{\tl G} in the interactive command line, or
+\texttt{--logeion} for one run.
+
+\index{lemmas}%
+Logeion does not analyse inflected forms. So the words are analysed here
+first, and Logeion is asked for their lemmas: \textit{dixit} shows
+\textit{dico}, and \textit{est} shows \textit{edo} and \textit{sum}. Each
+word shows its analysis first, without the meanings, and then Logeion's
+pages of its lemmas. While Logeion is chosen, the search goes from Latin
+only, and the other direction, the language of the meanings, the fuzzy
+search and the editor are greyed out.
+
+\index{Logeion!dictionaries}\index{DMLBS}%
+The entries can be those of one dictionary of Logeion, or of all of them;
+until another is chosen, it is the DMLBS. It is chosen with the list
+beside \menu{Search in}, with \key{F5} in the terminal (while Logeion is
+chosen), with \texttt{\tl D} in the interactive command line, or with
+\texttt{--dictionary} and its code:
+
+\begin{longtable}{@{}lp{0.7\textwidth}@{}}
+\toprule
+Code & Dictionary\\
+\midrule
+\endhead
+\texttt{all} & all the dictionaries\\
+\texttt{ls} & Lewis \& Short\\
+\texttt{lewis} & Lewis, \textit{Elementary Latin Dictionary}\\
+\texttt{georges} & Georges\\
+\texttt{gaffiot} & Gaffiot 2016\\
+\texttt{dmlbs} & DMLBS (\textit{Dictionary of Medieval Latin from British Sources})\\
+\texttt{lane} & LaNe\\
+\texttt{ducange} & Du Cange\\
+\texttt{lana} & Lana-Michelone\\
+\texttt{frieze} & Frieze-Dennison (Vergil)\\
+\texttt{sinicum} & Latino-Sinicum\\
+\bottomrule
+\end{longtable}
+
+\noindent
+Changing the dictionary shows the results again at once, without asking
+Logeion again. In the window, the links of an entry to other words look
+those words up, and the other links open in the browser.
+
+\section{The command line}
+\label{sec:cli}
+
+\shot{cli_en}{1}{The command line, interactive, with \textit{perspicio}.}
+
+\index{command line}%
+\texttt{words.py} looks up the words given after it, as one line of Latin,
+or, without words, starts the interactive mode (figure~\ref{fig:cli_en}).
+\texttt{meanings.py} is the same as \texttt{words.py -m}.
+
+\begin{verbatim}
+$ python3 words.py rem acu tetigisti
+$ python3 words.py -e friend --pos N
+$ python3 words.py -f text.txt -o results.txt
+$ python3 words.py --language es amicorum
+$ python3 words.py --logeion arma
+$ python3 words.py --dictionary gaffiot arma
+\end{verbatim}
+
+\index{command line!options}%
+\begin{longtable}{@{}>{\raggedright}p{0.36\textwidth}p{0.58\textwidth}@{}}
+\toprule
+Option & What it does\\
+\midrule
+\endhead
+\texttt{-f FILE} & looks up each line of FILE (\texttt{-} for the standard input)\\
+\texttt{-o FILE} & writes the results to FILE\\
+\texttt{-e} & from the language of the meanings to Latin\\
+\texttt{--pos POS} & with \texttt{-e}, only this part of speech\\
+\texttt{-m} & only the dictionary forms and the meanings\\
+\texttt{--no-glosses} & the analyses in words, not abbreviations\\
+\texttt{--no-fuzzy}, \texttt{--fuzzy} & without or with the fuzzy search\\
+\texttt{--logeion}, \texttt{--local} & Logeion, or this dictionary\\
+\texttt{--dictionary DICT} & Logeion's dictionary (section~\ref{sec:logeion})\\
+\texttt{--dictionaries} & lists Logeion's dictionaries\\
+\texttt{--language CODE} & the language of the meanings (\texttt{en}, \texttt{es})\\
+\texttt{--languages} & lists the languages of the meanings\\
+\texttt{--interface CODE} & the language of the interface\\
+\texttt{--datadir DIR} & the data files in DIR\\
+\texttt{--guide} & prints the help: how to read the results\\
+\texttt{--config} & creates the configuration file and says where it is\\
+\texttt{--clear-history} & forgets the earlier searches\\
+\texttt{--version} & the version and the credits\\
+\bottomrule
+\end{longtable}
+
+\noindent
+The options that choose something (the glosses, the fuzzy search, the
+source, the languages) do so for that run only; the settings keep what
+they had.
+
+\subsection{The interactive mode}
+
+\index{command line!interactive}%
+In the interactive mode, each line typed after the prompt \texttt{=>} is
+looked up, unless it starts with one of these:
+
+\begin{longtable}{@{}>{\raggedright}p{0.36\textwidth}p{0.58\textwidth}@{}}
+\toprule
+Line & What it does\\
+\midrule
+\endhead
+\texttt{\tl E}, \texttt{\tl L} & English to Latin; Latin to English\\
+\texttt{\tl G} & Logeion or this dictionary\\
+\texttt{\tl D [DICT]} & Logeion's dictionary (alone: a list to choose from)\\
+\texttt{@FILE} & looks up each line of FILE\\
+\texttt{\#} & changes the parameters (section~\ref{sec:settings})\\
+\texttt{!} & changes the developer modes\\
+\texttt{\tl H} & the help: how to search and read the results\\
+\texttt{\tl A} & about: the version and the credits\\
+\texttt{?} & the list of these lines\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{history of searches}%
+\key{Up} and \key{Down} bring back the earlier searches, also those of
+earlier sessions and of the other programs. In the dialogues of
+\texttt{\#} and \texttt{!}, \texttt{?} explains each setting. Two empty
+lines, or \key{Ctrl+D}, quit. \key{Ctrl+C} does not quit: it stops what is
+being done (a long list of results, a file), and the program waits for
+the next line.
+
+\subsection{The pager and the colours}
+
+\index{pager}\index{colours}%
+In a terminal, results longer than the screen open in the pager of the
+system, \texttt{less} (or the one \texttt{\$PAGER} names), as with
+\texttt{man}: \key{PgUp} and \key{PgDn} scroll them, \texttt{/} finds a
+text, and \texttt{q} goes back to the prompt. The results are in colour,
+in the colours of the terminal, as in the window. Results written to a
+file or a pipe are plain, and \texttt{NO\_COLOR=1} turns the colours off.
+
+\section{The terminal, in full screen}
+\label{sec:tui}
+
+\shot{tui_en}{1}{\texttt{words\_tui.py}, in a terminal.}
+
+\index{terminal, full screen}%
+\texttt{words\_tui.py} is the window in a terminal (figure~\ref{fig:tui_en}):
+a line for searching at the top, the results below it, and the keys in
+the last line. \key{Up} and \key{Down} bring back the earlier searches, and
+\key{PgUp} and \key{PgDn} scroll the results. On Windows it needs the
+package \texttt{windows-curses}.
+
+\index{terminal, full screen!keys}%
+\begin{longtable}{@{}>{\raggedright}p{0.3\textwidth}p{0.64\textwidth}@{}}
+\toprule
+Key & Action\\
+\midrule
+\endhead
+\key{F1} & the help, and the credits\\
+\key{F2}, \key{Ctrl+L} & Latin to English, or English to Latin\\
+\key{F3}, \key{Ctrl+O} & the settings (\key{Space} changes one)\\
+\key{F4}, \key{Ctrl+E} & the dictionary editor\\
+\key{F5}, \key{Ctrl+G} & the language of the meanings (with Logeion, its dictionary)\\
+\key{F6} & the language of the interface\\
+\key{F7} & copies all the results\\
+\key{F8} & this dictionary or Logeion\\
+\key{F9} & clears the history\\
+\key{F10}, \key{Ctrl+Q} & quits\\
+\bottomrule
+\end{longtable}
+
+\section{The web page}
+\label{sec:web}
+
+\shot{web_en}{0.8}{\texttt{words\_web.py}, in the browser.}
+
+\index{web page}%
+\texttt{words\_web.py} starts a small web server and opens the browser at
+\url{http://127.0.0.1:8000/}, or at another port if this one is busy
+(figure~\ref{fig:web_en}). The page has the box of the search, the
+direction, \menu{Meanings in}, \menu{Fuzzy search}, \menu{Search in}, and
+the results as in the window, with the same links and explanations; below
+them, the earlier searches, all the settings, the help and the credits.
+The moon makes the page dark, and the sun light again; until it is first
+used, the page follows the system.
+
+\index{web page!addresses}%
+Each search has its own address, such as
+\url{http://127.0.0.1:8000/?q=amicus+est} (\texttt{\&lang=en} for English
+to Latin), so it can be kept as a bookmark. The server reads the
+dictionary again when an editor changes it; the dictionary cannot be
+edited from the browser.
+
+\index{web page!options}\index{network}%
+Only this computer can open the page, unless \texttt{--host} says
+otherwise: with \texttt{--host 0.0.0.0} it can be used from a phone on the
+same network. There are no passwords, so do this only on a network you
+trust. \texttt{--port} chooses the port, \texttt{--no-browser} does not
+open the browser, and \key{Ctrl+C} stops the server.
+
+\section{Settings}
+\label{sec:settings}
+
+\index{settings}\index{parameters}%
+\menu{Dictionary\then Settings\ldots} shows all the settings of the
+window, with what each one does (the mouse over a setting shows its
+explanation); a change is applied at once. They are the same as the
+parameters (\texttt{\#}) and the developer modes (\texttt{!}) of the
+command line, \key{F3} in the terminal, and the settings of the web page.
+The dialogue also has \menu{Language of the interface}, \menu{Font\ldots},
+\menu{Clear history} and \menu{Default settings}.
+
+\index{parameters!what the results show}%
+\begin{longtable}{@{}>{\raggedright}p{0.36\textwidth}p{0.58\textwidth}@{}}
+\toprule
+Parameter & What it does, when it is on\\
+\midrule
+\endhead
+\multicolumn{2}{@{}l}{\itshape What the results show}\\
+\texttt{show\_dictionary\_forms} & each entry with its principal parts and grammar\\
+\texttt{show\_only\_meanings} & only the entries and their meanings, without the forms\\
+\texttt{use\_glosses} & the analyses in glossing abbreviations, not in words\\
+\texttt{show\_long\_vowels} & the long vowels marked in the forms (\textit{amīc-ōrum})\\
+\texttt{show\_codes} & the codes in brackets (\texttt{[XXXBO]})\\
+\texttt{explain\_codes} & the age and the frequency always in words, not only when unusual\\
+\texttt{trim\_output} & leaves out the least likely results (and, to Latin, all but the best six)\\
+\texttt{trim\_medieval} & with \texttt{trim\_output}, also medieval forms when others were found\\
+\addlinespace
+\multicolumn{2}{@{}l}{\itshape How words are looked up}\\
+\texttt{fuzzy\_search} & the near spellings of a word that finds nothing\\
+\texttt{use\_affixes} & an unknown word read as a known one with a prefix or suffix\\
+\texttt{use\_tricks} & other spellings, and two words written as one\\
+\texttt{medieval\_spellings} & with \texttt{use\_tricks}, the medieval spellings too\\
+\texttt{read\_compounds} & a participle and a form of \textit{esse} as a compound tense\\
+\texttt{ignore\_unknown\_names} & no tricks on an unknown word with a capital\\
+\texttt{near\_entries} & for an unknown word, the entries near where it would be\\
+\addlinespace
+\multicolumn{2}{@{}l}{\itshape Developer modes}\\
+\texttt{show\_entry\_source} & which dictionary each entry is from, and its number there\\
+\texttt{pearse\_codes} & each line of the results starts with a code (for other programs)\\
+\texttt{pause\_in\_screen\_output} & long results in the pager, on the command line\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{trim\_output}%
+Poets use unusual words and forms, so \texttt{trim\_output} can leave out
+the right one; with a verse that gives strange results, turn it off.
+
+\section{Editing the dictionary}
+\label{sec:editing}
+
+\index{dictionary editors}%
+Two editors add, correct and delete the entries of the dictionary,
+\texttt{data/dictionary.xml}: one in a window, \texttt{words\_edit\_gui.py},
+which \menu{Dictionary\then Edit dictionary\ldots} also opens, and one in
+the terminal, \texttt{words\_edit.py}. In both of them:
+
+\begin{itemize}
+\item an entry is found by a Latin form (\textit{amicorum}), a stem or a
+  word of its meaning;
+\item it is corrected, or deleted, or a new one is made, empty or like
+  the one shown (\menu{New like this}); the fields depend on the part of
+  speech, and the codes are chosen from lists that explain them;
+\item the preview shows the entry as the results will show it, and any
+  problem it has; \menu{Try a word} shows what the program makes of a word
+  with the dictionary as it is now;
+\item the meanings in Spanish can be edited too, beside the English ones,
+  after choosing the language with \menu{Meanings in} (\key{F7} in the
+  terminal).
+\end{itemize}
+
+\index{dictionary editors!saving}\index{backup files}%
+A change goes into the dictionary with \menu{Apply changes} (\key{F3} in
+the terminal), and the file is written only with \menu{Save} (\key{F2}).
+Leaving an entry with changes not applied asks what to do with them. The
+first save of a session keeps the original files as \texttt{.bak} files.
+
+\index{dictionary editors!keys}%
+\begin{longtable}{@{}>{\raggedright}p{0.3\textwidth}p{0.64\textwidth}@{}}
+\toprule
+Key (terminal) & Action\\
+\midrule
+\endhead
+\key{F3}, \key{Ctrl+A} & applies the changes (or adds the new entry)\\
+\key{F4}, \key{Ctrl+N} & a new entry\\
+\key{F5}, \key{Ctrl+D} & a new entry like this one\\
+\key{F6}, \key{Ctrl+T} & tries a word\\
+\key{F7}, \key{Ctrl+L} & the language of the meanings edited besides English\\
+\key{F8}, \key{Ctrl+K} & deletes the entry\\
+\key{F2}, \key{Ctrl+S} & saves the file (applying the changes first)\\
+\key{F10}, \key{Ctrl+Q} & quits\\
+\key{Tab} & the next area: the search, the list, the form\\
+\key{Ctrl+F} & find\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{dictionary editors!read-only data}\index{data folder}%
+In the AppImage and the RPM the data cannot be written, so the editors are
+off. To edit the dictionary there, copy the folder \texttt{data} somewhere,
+and give the copy as the data folder: in the configuration file
+(\texttt{folder} in \texttt{[data]}), with \texttt{--datadir}, or with
+\texttt{\$PY\_WORDS\_DATADIR}.
+
+\index{words\_check.py}%
+The files can also be edited by hand, in any text editor: copy the entry
+of a similar word and change it. Then \texttt{python3 words\_check.py}
+reports, with the line numbers, what the program cannot read and the
+entries that probably do not do what was meant.
+
+\section{Keys of the window}
+\label{sec:keys}
+
+\index{keys}%
+\begin{longtable}{@{}>{\raggedright}p{0.4\textwidth}p{0.54\textwidth}@{}}
+\toprule
+Key & Action\\
+\midrule
+\endhead
+\key{Return} & look up\\
+\key{Down} (in the box of the search) & the earlier searches\\
+\key{Ctrl+F} & find in the results\\
+\key{Return}, \key{Shift+Return} (finding) & the next and the previous place\\
+\key{Esc} (finding) & close the bar of the search\\
+\key{Ctrl++}, \key{Ctrl+-} & larger and smaller text\\
+\key{Ctrl+0} & the usual size\\
+\key{Ctrl+X}, \key{Ctrl+C}, \key{Ctrl+V} & cut, copy, paste\\
+\key{F1} & help\\
+\key{Ctrl+Q} & quit\\
+\key{Esc} (in a dialogue) & close it\\
+\bottomrule
+\end{longtable}
+
+\section{Where things are kept}
+\label{sec:files}
+
+\index{configuration files}\index{config.toml}\index{history of searches}\index{cache}%
+The settings, the fonts, the dark mode and the choices of the window are
+kept in one configuration file, \texttt{config.toml}. It is plain text,
+with a comment for each setting, and it can be edited by hand;
+\texttt{python3 words.py --config} creates it and says where it is. The
+program also keeps the last 1,000 searches, and a cache of the dictionary
+that makes it start in a quarter of a second. All of them are in the
+user's folders:
+
+\begin{longtable}{@{}llp{0.6\textwidth}@{}}
+\toprule
+What & System & Where\\
+\midrule
+\endhead
+Settings & Linux & \texttt{\textasciitilde/.config/py-words/config.toml}\\
+ & macOS & \texttt{\textasciitilde/Library/Application Support/py-words}\\
+ & Windows & \texttt{\%APPDATA\%\textbackslash py-words}\\
+\addlinespace
+History & Linux & \texttt{\textasciitilde/.local/state/py-words/history}\\
+ & macOS & \texttt{\textasciitilde/Library/Application Support/py-words}\\
+ & Windows & \texttt{\%LOCALAPPDATA\%\textbackslash py-words}\\
+\addlinespace
+Cache & Linux & \texttt{\textasciitilde/.cache/py-words}\\
+ & macOS & \texttt{\textasciitilde/Library/Caches/py-words}\\
+ & Windows & \texttt{\%LOCALAPPDATA\%\textbackslash py-words}\\
+\bottomrule
+\end{longtable}
+
+\noindent\index{environment variables}%
+\texttt{\$PY\_WORDS\_CONFIG}, \texttt{\$PY\_WORDS\_HISTORY} and
+\texttt{\$PY\_WORDS\_CACHE} give other places; an empty
+\texttt{\$PY\_WORDS\_HISTORY} keeps no history, and an empty
+\texttt{\$PY\_WORDS\_CACHE} no cache. The cache can always be deleted.
+The data files are looked for first with \texttt{--datadir}, then in
+\texttt{\$PY\_WORDS\_DATADIR}, then in the folder the configuration file
+names, and last in the folder \texttt{data} next to the program.
+
+\section{When something goes wrong}
+
+\index{troubleshooting}%
+\begin{description}
+\item[The program says that Python is too old] install Python 3.13 or
+  later, or use the AppImage.
+\item[The window does not open: no module named tkinter] install Tk
+  (section~\ref{sec:install}).
+\item[A word is not found] check \menu{Fuzzy search}, and the settings
+  \texttt{use\_tricks} and \texttt{medieval\_spellings}; an unknown word
+  with a capital is taken as a name, unless
+  \texttt{ignore\_unknown\_names} is off.
+\item[A verse gives strange results] turn off \texttt{trim\_output}, which
+  leaves out unusual forms.
+\item[Logeion does not answer] it needs the internet; \menu{Search in\then
+  Local} goes back to this dictionary.
+\item[\menu{Edit dictionary\ldots} is greyed out] the data cannot be
+  written (AppImage, RPM), or Logeion is chosen
+  (section~\ref{sec:editing}).
+\item[The text of the window is too small or too big] \key{Ctrl++} and
+  \key{Ctrl+-}, or \menu{View\then Font\ldots}.
+\item[A setting is wrong] delete \texttt{config.toml}
+  (section~\ref{sec:files}); the program starts with its defaults.
+\end{description}
+
+\noindent
+Problems and wishes can be written as issues on GitHub or Codeberg (the
+addresses are on the first page), or sent to
+\href{mailto:nicolasvaughan@proton.me}{\texttt{nicolasvaughan@proton.me}}.
+
+\printindex
+
+\end{document}
+
+% ===============================================
+%%% Local Variables:
+%%% mode: latex
+%%% lsp-ltex-plus-language: "en-GB"
+%%% TeX-master: t
+%%% End:

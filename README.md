@@ -1,7 +1,7 @@
 py-words
 ========
 
-*(Español: [README_es.md](README_es.md))*
+*(Español: [README_es.md](README_es.md); Latine: [README_la.md](README_la.md))*
 
 py-words is a Latin-English-Latin and Latin-Spanish-Latin dictionary with
 inflectional morphology.  William Whitaker's WORDS was its starting
@@ -56,7 +56,8 @@ and in a web browser (`words_web.py`):
 
 ![The web page](docs/img/web_en.png)
 
-These eight pictures (four programs, two languages) are made by `python3
+These twelve pictures (four programs, three languages: the Latin ones
+are in [README_la.md](README_la.md)) are made by `python3
 tools/screenshots.py`, which runs each program out of sight and writes
 them to `docs/img/`.  It needs Linux with a graphical session,
 ImageMagick, tmux and Chrome; `--help` lists the options.
@@ -359,6 +360,16 @@ is "Help" (or F1); on the web page, "Help" at the foot; in `words_tui.py`,
 F1; in the interactive command line, `~H`; and `python3 words.py --guide`
 prints it.  It comes in the language of the interface.
 
+There is also a user manual, in PDF, with all of this and more: how to
+install the program, the window and the other three programs, how to read
+the results (with tables of the codes and the abbreviations), Logeion, the
+settings and the dictionary editors, the keys, and where everything is
+kept.  It is [docs/MANUAL_en.pdf](docs/MANUAL_en.pdf) (in Spanish,
+[docs/MANUAL_es.pdf](docs/MANUAL_es.pdf); in Medieval Latin,
+[docs/MANUAL_la.pdf](docs/MANUAL_la.pdf)).  Its source is
+`docs/MANUAL_en.tex`, which `latexmk` builds with LuaLaTeX in `docs/`;
+its pictures are those of `docs/img/` (see "Screenshots").
+
 ### Logeion
 
 The window, `words_tui.py`, the command line and the web page
@@ -493,17 +504,20 @@ how to install it.
 
 ### The language of the interface
 
-The programs can talk in English or in Spanish: their menus, buttons,
+The programs can talk in English, in Spanish or in Medieval Latin: their
+menus, buttons,
 labels, messages, help, the settings and what they mean, the dictionary
 editors, the checker and the comments of the configuration file.  You
 choose the language with "Language of the interface" in the Settings of
 the window and in the settings of the web page, with F6 in `words_tui.py`,
-or at the end of the `#` dialogue of `words.py` (`--interface es` uses
-another one for one run only).  The choice is kept in the configuration
+or at the end of the `#` dialogue of `words.py` (`--interface es` or
+`--interface la` uses another one for one run only).  The choice is kept in the configuration
 file (the setting `interface`, `en` unless it says otherwise), so all the
 programs start with it, including the next time; if a program saves
 another setting, it does not touch this one.  The window and the web page
-change immediately.
+change immediately.  There are no Latin meanings, so with the Latin
+interface the meanings stay in English or Spanish, as they were, and so
+do the notes of the results, such as "(unknown)".
 
 When you change the language of the interface, that of the meanings
 changes too, if the dictionary has it (Spanish: the Spanish meanings;

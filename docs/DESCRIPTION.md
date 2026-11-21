@@ -8,7 +8,7 @@ wrote, in the Ada version maintained at
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words); but
 both the code and the data have been redesigned, and it now includes a new
 English dictionary (Lewis and Short) and two new Spanish ones
-(Echave-Sustaeta and De Miguel).  Here I explain how it was made, in eight
+(Echave-Sustaeta and De Miguel).  Here I explain how it was made, in ten
 stages.
 
 The dictionary has six sources: WORDS, by William Whitaker, the starting
@@ -362,6 +362,56 @@ of the medieval spellings (michi, ecclesie, hystorie), the prodelision
 of est (amatust), two words declined together that must agree
 (rempublicam), six abbreviations and the form quaesumus.  The README
 tells all of it in detail.
+
+9. A user manual
+----------------
+
+The README had become long, and it mixes what a user needs with how the
+program is made and released.  So in November 2026, after 3.25, I wrote
+a user manual, in English and in Spanish (`docs/MANUAL_en.tex`,
+`docs/MANUAL_es.tex`, and their PDFs), in LaTeX, with the same layout as
+the manuals of my py-pdftools: the same preamble, the same tables, and an
+index.  It follows the order in which a user meets the program:
+installing it, the four programs, searching, reading the results, the
+languages, Logeion, the settings, the editors, the keys and the files it
+keeps.  The tables are the most useful part: the codes in brackets letter
+by letter, the abbreviations of the analyses, Logeion's dictionaries, the
+options of the command line and the keys of each program.  Its examples
+were made by running the program with an empty configuration, so they
+are what a new user sees; its pictures are the screenshots of `docs/img/`.
+One problem of the layout came up at once: the TeX ligatures, which the
+preamble gives to every font, turned the `--` of the options into a dash
+in the typewriter font, so the manuals turn them off for that font.
+
+Then the README and the manual were also written in Medieval Latin
+(`README_la.md`, `docs/MANUAL_la.tex`), in the plain prose of a
+scholastic treatise and with its spelling (*e* for *ae*, *michi*,
+*nichil*).  The vocabulary of computers had to be settled first, in a short
+glossary that all the parts followed: *fenestra* for a window, *linea
+mandatorum* for the command line, *fasciculus* for a file, *capsula* for
+a folder, *articulus* for an entry of the dictionary.  babel's
+`medievallatin` gives the manual its hyphenation and its captions.
+
+10. A Latin interface
+---------------------
+
+After the Latin documents, the program itself learnt Latin: a third
+language of the interface, `data/interface/la.xml`, beside English and
+Spanish.  Nothing in the code had to change for it, because `tr` reads
+whatever files are in `data/interface/`; but its 692 texts had to be
+written, with the same Medieval Latin as the documents.  The menus are
+*Dictionarium*, *Emendatio*, *Aspectus* and *Auxilium*, the button is
+*Quere*, and the directions read *Latine → Anglice*, with the names of
+the languages as adverbs.  A few things needed care.  The placeholders
+(`{word}`, `%(value)s`) had to stay as they were, which a script
+checked; the help screens of the terminal keep their columns; the bar of
+keys at the foot of `words_tui.py` could not grow longer than the English
+one, so *F7 exscribe* and *F5 sensus*; and the answer to a question is
+*i* (*ita*) or *n*, while *y* still works.  There are no Latin meanings,
+so with the Latin interface the meanings stay in English or Spanish, and
+`tools/screenshots.py`, which sets both languages, now takes English
+meanings for a language that has none.  The Latin README and manual were
+then changed to name the Latin menus and to show Latin screenshots.
 
 Testing
 -------

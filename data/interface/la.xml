@@ -1,0 +1,2919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The interface of the programs in Medieval Latin: each <text> gives an
+     English text of the programs (<en>) and its translation (<tr>).
+     See interface.py and words.xsd. -->
+<interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../words.xsd"
+  code="la" name="Latin" native="Latina">
+  <text>
+    <en>The settings of py-words.  Each setting can be left out (or the whole file deleted) to use its usual value.  The program rewrites this file when settings are saved: the values are kept, but not comments of your own.</en>
+    <tr>Optiones programmatis py-words.  Quelibet optio omitti potest (vel totus fasciculus deleri) ut valor eius consuetus adhibeatur.  Programma hunc fasciculum rescribit cum optiones servantur: valores retinentur, sed non annotationes tue.</tr>
+  </text>
+  <text>
+    <en>text_family and text_size: the results (a fixed-width font); ui_family and ui_size: the rest of the windows.</en>
+    <tr>text_family et text_size: inventa (typus litterarum latitudinis fixe); ui_family et ui_size: reliqua pars fenestrarum.</tr>
+  </text>
+  <text>
+    <en>Where dictionary.xml and the other data files are; empty: the data folder next to the program.  (--datadir and $PY_WORDS_DATADIR come first.)</en>
+    <tr>Ubi sint dictionary.xml et ceteri fasciculi datorum; vacuum: capsula data iuxta programma.  (--datadir et $PY_WORDS_DATADIR priora sunt.)</tr>
+  </text>
+  <text>
+    <en>The parameters (changed with # in interactive mode).</en>
+    <tr>Parametra (mutantur per # in modo interlocutorio).</tr>
+  </text>
+  <text>
+    <en>The developer modes and command characters (changed with ! in interactive mode).</en>
+    <tr>Modi elaboratoris et characteres mandatorum (mutantur per ! in modo interlocutorio).</tr>
+  </text>
+  <text>
+    <en>The fonts of the windows (also changed with "Font…" and Ctrl and + or -).  Sizes are in points.</en>
+    <tr>Typi litterarum fenestrarum (mutantur etiam per "Typi litterarum…" et Ctrl cum + vel -).  Magnitudines sunt in punctis.</tr>
+  </text>
+  <text>
+    <en>cannot read {path}: {error}</en>
+    <tr>non potest legi {path}: {error}</tr>
+  </text>
+  <text>
+    <en>the {field} is missing</en>
+    <tr>deest {field}</tr>
+  </text>
+  <text>
+    <en>the {field} "{value}" {problem}</en>
+    <tr>{field} "{value}" {problem}</tr>
+  </text>
+  <text>
+    <en>the entry is not in the dictionary</en>
+    <tr>articulus non est in dictionario</tr>
+  </text>
+  <text>
+    <en>the new entry</en>
+    <tr>articulus novus</tr>
+  </text>
+  <text>
+    <en>there is no meaning in {language}: the English one is shown</en>
+    <tr>nulla est significatio {language}: Anglica ostenditur</tr>
+  </text>
+  <text>
+    <en>there is no entry to delete</en>
+    <tr>nullus est articulus delendus</tr>
+  </text>
+  <text>
+    <en>there is no language {code}</en>
+    <tr>nulla est lingua {code}</tr>
+  </text>
+  <text>
+    <en>like {word}</en>
+    <tr>similis {word}</tr>
+  </text>
+  <text>
+    <en>Fonts</en>
+    <tr>Typi litterarum</tr>
+  </text>
+  <text>
+    <en>Results (fixed-width)</en>
+    <tr>Inventa (latitudinis fixe)</tr>
+  </text>
+  <text>
+    <en>Window</en>
+    <tr>Fenestra</tr>
+  </text>
+  <text>
+    <en>genitive plural</en>
+    <tr>genitivus pluralis</tr>
+  </text>
+  <text>
+    <en>Close</en>
+    <tr>Claude</tr>
+  </text>
+  <text>
+    <en>noun, 2nd declension</en>
+    <tr>nomen, secunde declinationis</tr>
+  </text>
+  <text>
+    <en>{key} and + or − change all the sizes; {key} and 0 brings back the usual fonts.</en>
+    <tr>{key} cum + vel − omnes magnitudines mutat; {key} cum 0 typos consuetos reddit.</tr>
+  </text>
+  <text>
+    <en>Usual fonts</en>
+    <tr>Typi consueti</tr>
+  </text>
+  <text>
+    <en>{name}: settings</en>
+    <tr>{name}: optiones</tr>
+  </text>
+  <text>
+    <en>Developer modes</en>
+    <tr>Modi elaboratoris</tr>
+  </text>
+  <text>
+    <en>The developer modes (! in the command line), for special purposes.</en>
+    <tr>Modi elaboratoris (! in linea mandatorum), ad usus speciales.</tr>
+  </text>
+  <text>
+    <en>Point at a setting to read more about it.  Changes apply at once and are kept for next time.</en>
+    <tr>Murinum super optionem pone ut plura de ea legas.  Mutationes statim valent et in posterum servantur.</tr>
+  </text>
+  <text>
+    <en>“{value}” cannot be {setting}: it must be one punctuation character, different from the others and from ~.</en>
+    <tr>“{value}” non potest esse {setting}: debet esse unus character interpunctionis, diversus ab aliis et a ~.</tr>
+  </text>
+  <text>
+    <en>Go back to the default value of every setting?</en>
+    <tr>Reddere valorem primitivum cuilibet optioni?</tr>
+  </text>
+  <text>
+    <en>Forget the earlier searches (in the window and the command line)?</en>
+    <tr>Oblivisci inquisitionum priorum (in fenestra et in linea mandatorum)?</tr>
+  </text>
+  <text>
+    <en>Default settings</en>
+    <tr>Optiones primitive</tr>
+  </text>
+  <text>
+    <en>Language of the interface:</en>
+    <tr>Lingua interfaciei:</tr>
+  </text>
+  <text>
+    <en>Only in the interactive command line</en>
+    <tr>Solum in linea mandatorum interlocutoria</tr>
+  </text>
+  <text>
+    <en>Clear history</en>
+    <tr>Dele historiam</tr>
+  </text>
+  <text>
+    <en>Do not try spelling tricks on an unknown word that is capitalized: it is probably a name.</en>
+    <tr>Noli artificia orthographie temptare in verbo ignoto quod a littera maiuscula incipit: probabiliter est nomen proprium.</tr>
+  </text>
+  <text>
+    <en>Read a participle followed by a form of esse as a compound tense (laudatus est: perfect passive).</en>
+    <tr>Lege participium quod sequitur forma verbi esse tamquam tempus compositum (laudatus est: perfectum passivum).</tr>
+  </text>
+  <text>
+    <en>When a word is not in the dictionary, try it as a known word with a prefix or suffix.  The results may be less reliable than those found directly.</en>
+    <tr>Cum verbum non est in dictionario, tempta ipsum tamquam verbum notum cum prefixo vel suffixo.  Inventa possunt esse minus certa quam ea que directe inveniuntur.</tr>
+  </text>
+  <text>
+    <en>Show each entry with its principal parts and grammar (amicus, amici  noun, 2nd declension, masculine).</en>
+    <tr>Ostende quemlibet articulum cum partibus principalibus et grammatica sua (amicus, amici  noun, 2nd declension, masculine).</tr>
+  </text>
+  <text>
+    <en>Write the analyses of the forms in glossing abbreviations, as in the Leipzig Glossing Rules (GEN.PL, 2SG.PRF.ACT.IND); if not, in words (genitive plural, 2nd person singular perfect active indicative).  The abbreviations are those of data/gloss.xml.</en>
+    <tr>Scribe analyses formarum abbreviationibus glossarum, sicut in Leipzig Glossing Rules (GEN.PL, 2SG.PRF.ACT.IND); sin autem, verbis (genitive plural, 2nd person singular perfect active indicative).  Abbreviationes sunt ille fasciculi data/gloss.xml.</tr>
+  </text>
+  <text>
+    <en>Show only the entries and their meanings, without the forms.</en>
+    <tr>Ostende solos articulos et significationes eorum, sine formis.</tr>
+  </text>
+  <text>
+    <en>For an unknown word, list the dictionary entries near where it would be.  This can catch a word whose stem is in the dictionary under another part of speech.</en>
+    <tr>Pro verbo ignoto, enumera articulos dictionarii vicinos loco ubi esset.  Sic inveniri potest verbum cuius radix est in dictionario sub alia parte orationis.</tr>
+  </text>
+  <text>
+    <en>When a word finds nothing as it is typed, look for the words one change away from it (a letter left out, added or changed, or two letters swapped), and show the nearest three: amicuss finds amicus, and, in the search to Latin, freind finds friend and wolfs finds wolf.  Exact results are shown as before.</en>
+    <tr>Cum verbum nichil invenit sicut scriptum est, quere verba que una mutatione ab ipso distant (una littera omissa, addita vel mutata, vel due littere permutate), et ostende tria proxima: amicuss invenit amicus, et, in inquisitione in Latinum, freind invenit friend et wolfs invenit wolf.  Inventa exacta ostenduntur ut prius.</tr>
+  </text>
+  <text>
+    <en>The language of the meanings, and of the rest of the results (en, es ...).  The search to Latin is from this language.</en>
+    <tr>Lingua significationum, et ceterorum inventorum (en, es ...).  Inquisitio in Latinum ab hac lingua incipit.</tr>
+  </text>
+  <text>
+    <en>The language of the menus, buttons, messages and help of the programs (en, es, la).</en>
+    <tr>Lingua tabellarum, bullarum, nuntiorum et auxilii programmatum (en, es, la).</tr>
+  </text>
+  <text>
+    <en>Save these settings in the configuration file, config.toml (on Linux in ~/.config/py-words), to be used at the next start.  It is plain text and can also be edited; words.py --config shows where it is.</en>
+    <tr>Serva has optiones in fasciculo configurationis, config.toml (in Linux in ~/.config/py-words), ut proximo initio adhibeantur.  Est textus simplex et etiam emendari potest; words.py --config ostendit ubi sit.</tr>
+  </text>
+  <text>
+    <en>Show the codes of each entry: age, area, geography, frequency and source, as in [XXXBO].</en>
+    <tr>Ostende notas cuiuslibet articuli: etatem, materiam, regionem, frequentiam et fontem, sicut in [XXXBO].</tr>
+  </text>
+  <text>
+    <en>Start each line of the results with a code saying what it is (01 a form, 02 an entry, 03 a meaning, 05 an affix, 06 a trick, 00 an unknown word), for programs that read the output.</en>
+    <tr>Incipe quamlibet lineam inventorum a nota que dicit quid sit (01 forma, 02 articulus, 03 significatio, 05 affixum, 06 artificium, 00 verbum ignotum), pro programmatibus que exitum legunt.</tr>
+  </text>
+  <text>
+    <en>On the command line, in a terminal, show results longer than the screen in the pager (less, or $PAGER: PgUp and PgDn scroll, / finds, q goes back); where there is none, pause after each screenful in interactive use.</en>
+    <tr>In linea mandatorum, in terminali, ostende inventa longiora quam visus in paginatore (less, vel $PAGER: PgUp et PgDn movent, / querit, q redit); ubi nullus est, siste post quemlibet visum plenum in usu interlocutorio.</tr>
+  </text>
+  <text>
+    <en>The characters that start a command at the beginning of a line: reading a file (@), the parameters (#) and the developer modes (!).  They must be punctuation, and different from each other and from ~.</en>
+    <tr>Characteres qui mandatum incipiunt in principio linee: lectionem fasciculi (@), parametra (#) et modos elaboratoris (!).  Debent esse signa interpunctionis, diversa inter se et a ~.</tr>
+  </text>
+  <text>
+    <en>y</en>
+    <tr>i</tr>
+  </text>
+  <text>
+    <en>there is no {file} in {folder}</en>
+    <tr>nullus est {file} in {folder}</tr>
+  </text>
+  <text>
+    <en>Use ~E for {language} to Latin, ~L for Latin to {language}</en>
+    <tr>~E pro {language} → Latine, ~L pro Latine → {language}</tr>
+  </text>
+  <text>
+    <en>{language} to Latin: type a word in {language}, and optionally a part of speech (N, ADJ, V, PREP ...)</en>
+    <tr>{language} → Latine: scribe verbum {language}, et, si placet, partem orationis (N, ADJ, V, PREP ...)</tr>
+  </text>
+  <text>
+    <en>Latin to {language}</en>
+    <tr>Latine → {language}</tr>
+  </text>
+  <text>
+    <en>The meanings are in English: {error}.</en>
+    <tr>Significationes sunt Anglice: {error}.</tr>
+  </text>
+  <text>
+    <en>parameters</en>
+    <tr>parametra</tr>
+  </text>
+  <text>
+    <en>developer modes</en>
+    <tr>modi elaboratoris</tr>
+  </text>
+  <text>
+    <en>{path} has errors ({problems}); the defaults are used for those lines</en>
+    <tr>{path} habet errores ({problems}); pro illis lineis valores primitivi adhibentur</tr>
+  </text>
+  <text>
+    <en>Using the {kind} in {path}</en>
+    <tr>Adhibentur {kind} ex {path}</tr>
+  </text>
+  <text>
+    <en>{error}; its settings are not used</en>
+    <tr>{error}; optiones eius non adhibentur</tr>
+  </text>
+  <text>
+    <en>Completed the configuration file {path}, with the settings in use</en>
+    <tr>Completus est fasciculus configurationis {path}, cum optionibus que in usu sunt</tr>
+  </text>
+  <text>
+    <en>Created the configuration file {path}, with the settings in use</en>
+    <tr>Factus est fasciculus configurationis {path}, cum optionibus que in usu sunt</tr>
+  </text>
+  <text>
+    <en>{path} has errors ({problems}); the usual values are used for those settings</en>
+    <tr>{path} habet errores ({problems}); pro illis optionibus valores consueti adhibentur</tr>
+  </text>
+  <text>
+    <en>Using the settings in {path}</en>
+    <tr>Adhibentur optiones ex {path}</tr>
+  </text>
+  <text>
+    <en>Cannot read {path}: {error}</en>
+    <tr>Non potest legi {path}: {error}</tr>
+  </text>
+  <text>
+    <en>[{section}] {key}: unknown setting</en>
+    <tr>[{section}] {key}: optio ignota</tr>
+  </text>
+  <text>
+    <en>line {number}: bad character</en>
+    <tr>linea {number}: character malus</tr>
+  </text>
+  <text>
+    <en>{key}: must be a language code, like "en" or "es"</en>
+    <tr>{key}: debet esse nota lingue, ut "en" vel "es"</tr>
+  </text>
+  <text>
+    <en>line {number}: expected Y or N</en>
+    <tr>linea {number}: expectabatur Y vel N</tr>
+  </text>
+  <text>
+    <en>line {number}: unexpected text</en>
+    <tr>linea {number}: textus inexpectatus</tr>
+  </text>
+  <text>
+    <en>{key}: must be one punctuation character</en>
+    <tr>{key}: debet esse unus character interpunctionis</tr>
+  </text>
+  <text>
+    <en>{key}: must be true or false</en>
+    <tr>{key}: debet esse true vel false</tr>
+  </text>
+  <text>
+    <en>(y/n)</en>
+    <tr>(i/n)</tr>
+  </text>
+  <text>
+    <en>Answer Y or N; Enter keeps the current value, ? gives help, a space skips the rest.</en>
+    <tr>Responde I (ita) vel N (non); Enter valorem presentem retinet, ? auxilium dat, spatium reliqua transit.</tr>
+  </text>
+  <text>
+    <en>Answer Y or N; Enter keeps the current value, ? gives help, a space skips the rest.  Developer modes are for special purposes.</en>
+    <tr>Responde I (ita) vel N (non); Enter valorem presentem retinet, ? auxilium dat, spatium reliqua transit.  Modi elaboratoris sunt ad usus speciales.</tr>
+  </text>
+  <text>
+    <en>The configuration file is {path}</en>
+    <tr>Fasciculus configurationis est {path}</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line and Enter.  ~E: {language} to Latin, ~L: back to Latin.</en>
+    <tr>Scribe verbum vel lineam Latinam et Enter.  ~E: {language} → Latine, ~L: rursus a Latino.</tr>
+  </text>
+  <text>
+    <en>{file}FILE: look up a file   {parameters}: parameters   {developer}: developer modes   ?: commands   ~H: help   ~A: about</en>
+    <tr>{file}FASCICULUS: querere fasciculum   {parameters}: parametra   {developer}: modi elaboratoris   ?: mandata   ~H: auxilium   ~A: de programmate</tr>
+  </text>
+  <text>
+    <en>An empty line twice quits.</en>
+    <tr>Linea vacua bis scripta programma claudit.</tr>
+  </text>
+  <text>
+    <en>Type a word or a line of Latin (or, after ~E, a word in {language}).</en>
+    <tr>Scribe verbum vel lineam Latinam (vel, post ~E, verbum {language}).</tr>
+  </text>
+  <text>
+    <en>In the parameter dialogues, ? explains each setting.</en>
+    <tr>In dialogis parametrorum, ? quamlibet optionem explicat.</tr>
+  </text>
+  <text>
+    <en>Up and Down bring back earlier searches (also those of earlier sessions).</en>
+    <tr>Up et Down reducunt inquisitiones priores (etiam illas sessionum preteritarum).</tr>
+  </text>
+  <text>
+    <en>An empty line twice, or Ctrl-D, quits; Ctrl-C stops what is being done.</en>
+    <tr>Linea vacua bis scripta, vel Ctrl-D, programma claudit; Ctrl-C sistit quod fit.</tr>
+  </text>
+  <text>
+    <en>py-words: a Latin-English-Latin and Latin-Spanish-Latin dictionary that analyses inflected Latin words (its starting point was William Whitaker's WORDS).  With no arguments it is interactive.</en>
+    <tr>py-words: dictionarium Latino-Anglico-Latinum et Latino-Hispanico-Latinum quod verba Latina flexa resolvit (initium eius fuit WORDS Guillelmi Whitaker).  Sine argumentis est interlocutorium.</tr>
+  </text>
+  <text>
+    <en>In interactive mode, type ? for help.</en>
+    <tr>In modo interlocutorio, scribe ? pro auxilio.</tr>
+  </text>
+  <text>
+    <en>WORD</en>
+    <tr>VERBUM</tr>
+  </text>
+  <text>
+    <en>Latin words (or, with -e, a word in the language of the meanings)</en>
+    <tr>verba Latina (vel, cum -e, verbum lingue significationum)</tr>
+  </text>
+  <text>
+    <en>FILE</en>
+    <tr>FASCICULUS</tr>
+  </text>
+  <text>
+    <en>look up each line of FILE ('-' for standard input)</en>
+    <tr>querere quamlibet lineam FASCICULI ('-' pro introitu communi)</tr>
+  </text>
+  <text>
+    <en>OUTPUT</en>
+    <tr>EXITUS</tr>
+  </text>
+  <text>
+    <en>write the results to OUTPUT</en>
+    <tr>scribere inventa in EXITUM</tr>
+  </text>
+  <text>
+    <en>from the language of the meanings (English, unless --language says otherwise) to Latin</en>
+    <tr>a lingua significationum (Anglice, nisi --language aliud dicat) in Latinum</tr>
+  </text>
+  <text>
+    <en>with -e: only this part of speech (N, V, ADJ, PREP ...)</en>
+    <tr>cum -e: solam hanc partem orationis (N, V, ADJ, PREP ...)</tr>
+  </text>
+  <text>
+    <en>show only dictionary forms and meanings</en>
+    <tr>ostendere solas formas dictionarii et significationes</tr>
+  </text>
+  <text>
+    <en>write the analyses in Leipzig glossing abbreviations (GEN.PL), or with --no-glosses in words (genitive plural); this time only (the setting is use_glosses)</en>
+    <tr>scribere analyses abbreviationibus glossarum Lipsiensium (GEN.PL), vel cum --no-glosses verbis (genitive plural); hac vice tantum (optio est use_glosses)</tr>
+  </text>
+  <text>
+    <en>for a word that finds nothing, show the results of its near spellings (or not, with --no-fuzzy); this time only (the setting is fuzzy_search)</en>
+    <tr>pro verbo quod nichil invenit, ostendere inventa orthographiarum vicinarum (vel non, cum --no-fuzzy); hac vice tantum (optio est fuzzy_search)</tr>
+  </text>
+  <text>
+    <en>CODE</en>
+    <tr>NOTA</tr>
+  </text>
+  <text>
+    <en>the language of the meanings (en, es ...); this time only (the setting is language)</en>
+    <tr>lingua significationum (en, es ...); hac vice tantum (optio est language)</tr>
+  </text>
+  <text>
+    <en>list the languages of the meanings, and exit</en>
+    <tr>enumerare linguas significationum, et exire</tr>
+  </text>
+  <text>
+    <en>the language of the interface (en, es, la); this time only (the setting is interface)</en>
+    <tr>lingua interfaciei (en, es, la); hac vice tantum (optio est interface)</tr>
+  </text>
+  <text>
+    <en>DATADIR</en>
+    <tr>CAPSULA</tr>
+  </text>
+  <text>
+    <en>the folder with the data files (default: $PY_WORDS_DATADIR, the folder in the configuration file, or the data folder next to the program)</en>
+    <tr>capsula cum fasciculis datorum (nisi aliud dicatur: $PY_WORDS_DATADIR, capsula in fasciculo configurationis, vel capsula data iuxta programma)</tr>
+  </text>
+  <text>
+    <en>show where the configuration file is</en>
+    <tr>ostendere ubi sit fasciculus configurationis</tr>
+  </text>
+  <text>
+    <en>forget the earlier searches, and exit</en>
+    <tr>oblivisci inquisitionum priorum, et exire</tr>
+  </text>
+  <text>
+    <en>show the version and credits, and exit</en>
+    <tr>ostendere versionem et nomina auctorum, et exire</tr>
+  </text>
+  <text>
+    <en>The history of the searches is cleared.</en>
+    <tr>Historia inquisitionum deleta est.</tr>
+  </text>
+  <text>
+    <en>cannot create {path}</en>
+    <tr>non potest fieri {path}</tr>
+  </text>
+  <text>
+    <en>(another empty line quits)</en>
+    <tr>(altera linea vacua programma claudit)</tr>
+  </text>
+  <text>
+    <en>{language} to Latin / Latin to {language}</en>
+    <tr>{language} → Latine / Latine → {language}</tr>
+  </text>
+  <text>
+    <en>look up each line of FILE</en>
+    <tr>querere quamlibet lineam FASCICULI</tr>
+  </text>
+  <text>
+    <en>change the parameters</en>
+    <tr>mutare parametra</tr>
+  </text>
+  <text>
+    <en>change the developer modes</en>
+    <tr>mutare modos elaboratoris</tr>
+  </text>
+  <text>
+    <en>(no help)</en>
+    <tr>(nullum auxilium)</tr>
+  </text>
+  <text>
+    <en>Answer Y or N, ? for help, Enter to keep, a space to stop.</en>
+    <tr>Responde I vel N, ? pro auxilio, Enter ad retinendum, spatium ad sistendum.</tr>
+  </text>
+  <text>
+    <en>Not an acceptable character: it may conflict with another.</en>
+    <tr>Character non acceptabilis: potest cum alio confligere.</tr>
+  </text>
+  <text>
+    <en>Saved in {path}</en>
+    <tr>Servatum in {path}</tr>
+  </text>
+  <text>
+    <en>(in use)</en>
+    <tr>(in usu)</tr>
+  </text>
+  <text>
+    <en>Save these settings? (N)</en>
+    <tr>Servare has optiones? (N)</tr>
+  </text>
+  <text>
+    <en>Not saved: {error}</en>
+    <tr>Non servatum: {error}</tr>
+  </text>
+  <text>
+    <en>-- more (Enter) --</en>
+    <tr>-- plus (Enter) --</tr>
+  </text>
+  <text>
+    <en>cannot write {path}: {error}</en>
+    <tr>non potest scribi {path}: {error}</tr>
+  </text>
+  <text>
+    <en>Check the WORDS data files for mistakes.</en>
+    <tr>Examina fasciculos datorum WORDS, ut errores inveniantur.</tr>
+  </text>
+  <text>
+    <en>files to check (default: the data files in the data directory)</en>
+    <tr>fasciculi examinandi (nisi aliud dicatur: fasciculi datorum in capsula datorum)</tr>
+  </text>
+  <text>
+    <en>the inflections.xml to check declensions against (default: the one in the data directory)</en>
+    <tr>inflections.xml contra quod declinationes examinentur (nisi aliud dicatur: illud in capsula datorum)</tr>
+  </text>
+  <text>
+    <en>do not report warnings</en>
+    <tr>non indicare monitiones</tr>
+  </text>
+  <text>
+    <en>exit with status 1 on warnings too</en>
+    <tr>exire cum statu 1 etiam ob monitiones</tr>
+  </text>
+  <text>
+    <en>no data files in {folder} (set PY_WORDS_DATADIR)</en>
+    <tr>nulli fasciculi datorum in {folder} (pone PY_WORDS_DATADIR)</tr>
+  </text>
+  <text>
+    <en>cannot find {path} (use --inflections)</en>
+    <tr>non potest inveniri {path} (utere --inflections)</tr>
+  </text>
+  <text>
+    <en>the language {code} should be in {code}.xml, not {name}.xml</en>
+    <tr>lingua {code} debet esse in {code}.xml, non in {name}.xml</tr>
+  </text>
+  <text>
+    <en>the meaning is empty</en>
+    <tr>significatio est vacua</tr>
+  </text>
+  <text>
+    <en>the first stem is blank</en>
+    <tr>prima radix est vacua</tr>
+  </text>
+  <text>
+    <en>no usable stem: no form of this word can be found</en>
+    <tr>nulla radix utilis: nulla forma huius verbi inveniri potest</tr>
+  </text>
+  <text>
+    <en>the source code {code} is not listed in {file}</en>
+    <tr>nota fontis {code} non est in {file}</tr>
+  </text>
+  <text>
+    <en>cannot find {path}</en>
+    <tr>non potest inveniri {path}</tr>
+  </text>
+  <text>
+    <en>1 warning</en>
+    <tr>1 monitio</tr>
+  </text>
+  <text>
+    <en>{n} warnings</en>
+    <tr>{n} monitiones</tr>
+  </text>
+  <text>
+    <en>duplicate of the entry on line {line}</en>
+    <tr>duplicatum articuli in linea {line}</tr>
+  </text>
+  <text>
+    <en>the id {id} is already used on line {line}</en>
+    <tr>id {id} iam adhibetur in linea {line}</tr>
+  </text>
+  <text>
+    <en>there is no {kind} with the id {id}: this meaning is not used</en>
+    <tr>nullus est {kind} cum id {id}: hec significatio non adhibetur</tr>
+  </text>
+  <text>
+    <en>the meaning is {n} characters long; it may be cut after {shown}: ...{cut}</en>
+    <tr>significatio est {n} characterum; potest abscidi post {shown}: ...{cut}</tr>
+  </text>
+  <text>
+    <en>stem {k} {stem} is ignored for {pos}</en>
+    <tr>radix {k} {stem} negligitur pro {pos}</tr>
+  </text>
+  <text>
+    <en>stem {k} is blank (use zzz if the form does not exist)</en>
+    <tr>radix {k} est vacua (utere zzz si forma non est)</tr>
+  </text>
+  <text>
+    <en>{pos} {decl} has no endings in {file}, so no form of this word can be found</en>
+    <tr>{pos} {decl} nullas terminationes habet in {file}, unde nulla forma huius verbi inveniri potest</tr>
+  </text>
+  <text>
+    <en>1 error</en>
+    <tr>1 error</tr>
+  </text>
+  <text>
+    <en>{n} errors</en>
+    <tr>{n} errores</tr>
+  </text>
+  <text>
+    <en>&lt;{root}&gt; is not a WORDS data file (the root must be &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;quantities&gt;, &lt;language&gt; or &lt;interface&gt;)</en>
+    <tr>&lt;{root}&gt; non est fasciculus datorum WORDS (radix debet esse &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;quantities&gt;, &lt;language&gt; vel &lt;interface&gt;)</tr>
+  </text>
+  <text>
+    <en>{pos} is not a dictionary part of speech</en>
+    <tr>{pos} non est pars orationis dictionarii</tr>
+  </text>
+  <text>
+    <en>Convert WORDS data files in the original text format (DICTLINE.GEN, INFLECTS.LAT, UNIQUES.LAT, ADDONS.LAT) to XML.</en>
+    <tr>Converte fasciculos datorum WORDS in forma textus originali (DICTLINE.GEN, INFLECTS.LAT, UNIQUES.LAT, ADDONS.LAT) in XML.</tr>
+  </text>
+  <text>
+    <en>the folder with the original files</en>
+    <tr>capsula cum fasciculis originalibus</tr>
+  </text>
+  <text>
+    <en>the folder for the XML files (default: SRC)</en>
+    <tr>capsula pro fasciculis XML (nisi aliud dicatur: SRC)</tr>
+  </text>
+  <text>
+    <en>the line ends too early</en>
+    <tr>linea nimis cito finitur</tr>
+  </text>
+  <text>
+    <en>{word} is not a number from {lo} to {hi}</en>
+    <tr>{word} non est numerus a {lo} ad {hi}</tr>
+  </text>
+  <text>
+    <en>the number of lines is not a multiple of 3</en>
+    <tr>numerus linearum non est multiplex ternarii</tr>
+  </text>
+  <text>
+    <en>wrote {path}</en>
+    <tr>scriptum est {path}</tr>
+  </text>
+  <text>
+    <en>{word} is not a {kind}</en>
+    <tr>{word} non est {kind}</tr>
+  </text>
+  <text>
+    <en>the ending {ending} is not {n} letters long</en>
+    <tr>terminatio {ending} non habet {n} litteras</tr>
+  </text>
+  <text>
+    <en>expected PREFIX, SUFFIX or TACKON</en>
+    <tr>expectabatur PREFIX, SUFFIX vel TACKON</tr>
+  </text>
+  <text>
+    <en>F3 apply  F4 new  F5 like this  F6 try  F7 language  F8 delete  F2 save  F10 quit  Tab next  ^F find</en>
+    <tr>F3 applica  F4 novus  F5 talis  F6 proba  F7 lingua  F8 dele  F2 serva  F10 exi  Tab alia  ^F quere</tr>
+  </text>
+  <text>
+    <en>Type a Latin form, a stem or a word of the meanings, and Enter.</en>
+    <tr>Scribe formam Latinam, radicem vel verbum significationum, et Enter.</tr>
+  </text>
+  <text>
+    <en>Editing.  F3 applies the changes (F2 also saves).</en>
+    <tr>Emendatur.  F3 mutationes applicat (F2 etiam servat).</tr>
+  </text>
+  <text>
+    <en>New entry.  F3 adds it to the dictionary.</en>
+    <tr>Articulus novus.  F3 ipsum dictionario addit.</tr>
+  </text>
+  <text>
+    <en>{done}: {entry}.  F2 saves the file.</en>
+    <tr>{done}: {entry}.  F2 fasciculum servat.</tr>
+  </text>
+  <text>
+    <en>Deleted.  F2 saves the file.</en>
+    <tr>Deletus.  F2 fasciculum servat.</tr>
+  </text>
+  <text>
+    <en>Find</en>
+    <tr>Quere</tr>
+  </text>
+  <text>
+    <en>Find:</en>
+    <tr>Quere:</tr>
+  </text>
+  <text>
+    <en>Up/Down to choose, Enter to edit.</en>
+    <tr>Up/Down ad eligendum, Enter ad emendandum.</tr>
+  </text>
+  <text>
+    <en>Nothing found.</en>
+    <tr>Nichil inventum.</tr>
+  </text>
+  <text>
+    <en>Choose an entry to delete first.</en>
+    <tr>Prius elige articulum delendum.</tr>
+  </text>
+  <text>
+    <en>The meanings in</en>
+    <tr>Significationes</tr>
+  </text>
+  <text>
+    <en>The meanings are now edited in English and {language}.</en>
+    <tr>Significationes nunc emendantur Anglice et {language}.</tr>
+  </text>
+  <text>
+    <en>The meanings are now edited in English only.</en>
+    <tr>Significationes nunc emendantur Anglice tantum.</tr>
+  </text>
+  <text>
+    <en>Try the word:</en>
+    <tr>Proba verbum:</tr>
+  </text>
+  <text>
+    <en>Saved {path} and the meanings in {language} (the originals are kept as .bak files).</en>
+    <tr>Servatum est {path} et significationes {language} (originalia retinentur tamquam fasciculi .bak).</tr>
+  </text>
+  <text>
+    <en>Saved {path} (the originals are kept as .bak files).</en>
+    <tr>Servatum est {path} (originalia retinentur tamquam fasciculi .bak).</tr>
+  </text>
+  <text>
+    <en>Edit the WORDS dictionary in the terminal.</en>
+    <tr>Dictionarium WORDS in terminali emendare.</tr>
+  </text>
+  <text>
+    <en>the folder with dictionary.xml (default: as for words)</en>
+    <tr>capsula cum dictionary.xml (nisi aliud dicatur: sicut pro words)</tr>
+  </text>
+  <text>
+    <en>also edit the meanings in this language (es ...; default: the language of the configuration file, en for English only)</en>
+    <tr>etiam significationes in hac lingua emendare (es ...; nisi aliud dicatur: lingua fasciculi configurationis, en pro sola lingua Anglica)</tr>
+  </text>
+  <text>
+    <en>part of speech</en>
+    <tr>pars orationis</tr>
+  </text>
+  <text>
+    <en>{what} has changes that are not applied.  Apply them? (y/n, Esc to stay)</en>
+    <tr>{what} habet mutationes non applicatas.  Applicare eas? (i/n, Esc ut maneas)</tr>
+  </text>
+  <text>
+    <en>Not applied: {error}</en>
+    <tr>Non applicatum: {error}</tr>
+  </text>
+  <text>
+    <en>[unsaved changes]</en>
+    <tr>[mutationes non servate]</tr>
+  </text>
+  <text>
+    <en>meanings in {language}</en>
+    <tr>significationes {language}</tr>
+  </text>
+  <text>
+    <en>{name} {version}: dictionary editor</en>
+    <tr>{name} {version}: editor dictionarii</tr>
+  </text>
+  <text>
+    <en>{n} found</en>
+    <tr>{n} inventi</tr>
+  </text>
+  <text>
+    <en>NEW ENTRY</en>
+    <tr>ARTICULUS NOVUS</tr>
+  </text>
+  <text>
+    <en>ENTRY</en>
+    <tr>ARTICULUS</tr>
+  </text>
+  <text>
+    <en>Delete {entry}?</en>
+    <tr>Delere {entry}?</tr>
+  </text>
+  <text>
+    <en>Cannot use that language: {error}</en>
+    <tr>Lingua illa adhiberi non potest: {error}</tr>
+  </text>
+  <text>
+    <en>(nothing)</en>
+    <tr>(nichil)</tr>
+  </text>
+  <text>
+    <en>WORDS with the dictionary as edited</en>
+    <tr>WORDS cum dictionario emendato</tr>
+  </text>
+  <text>
+    <en>Cannot save: {error}</en>
+    <tr>Servari non potest: {error}</tr>
+  </text>
+  <text>
+    <en>Save the changes before quitting? (y/n, Esc to stay)</en>
+    <tr>Servare mutationes antequam exeas? (i/n, Esc ut maneas)</tr>
+  </text>
+  <text>
+    <en>this is a full-screen program; run it in a terminal (or use words_edit_gui.py)</en>
+    <tr>hoc est programma totius aree visualis; exsequere ipsum in terminali (vel utere words_edit_gui.py)</tr>
+  </text>
+  <text>
+    <en>meaning</en>
+    <tr>significatio</tr>
+  </text>
+  <text>
+    <en>meaning in English</en>
+    <tr>significatio Anglice</tr>
+  </text>
+  <text>
+    <en>meaning in {language}</en>
+    <tr>significatio {language}</tr>
+  </text>
+  <text>
+    <en>Deleted</en>
+    <tr>Deletus</tr>
+  </text>
+  <text>
+    <en>There is no {file} in {folder}</en>
+    <tr>Nullus est {file} in {folder}</tr>
+  </text>
+  <text>
+    <en>Apply changes</en>
+    <tr>Applica mutationes</tr>
+  </text>
+  <text>
+    <en>Saved {path} and the meanings in {language}</en>
+    <tr>Servatum est {path} et significationes {language}</tr>
+  </text>
+  <text>
+    <en>Saved {path}</en>
+    <tr>Servatum est {path}</tr>
+  </text>
+  <text>
+    <en>(unsaved changes)</en>
+    <tr>(mutationes non servate)</tr>
+  </text>
+  <text>
+    <en>Save the changes to the dictionary?</en>
+    <tr>Servare mutationes dictionarii?</tr>
+  </text>
+  <text>
+    <en>Add to the dictionary</en>
+    <tr>Adde dictionario</tr>
+  </text>
+  <text>
+    <en>Nothing found</en>
+    <tr>Nichil inventum est</tr>
+  </text>
+  <text>
+    <en>No leaves them out; Cancel stays on the entry.</en>
+    <tr>"No" eas omittit; "Cancel" in articulo manet.</tr>
+  </text>
+  <text>
+    <en>Not saved: the entry shown has an error</en>
+    <tr>Non servatum: articulus ostensus habet errorem</tr>
+  </text>
+  <text>
+    <en>Meanings in:</en>
+    <tr>Significationes:</tr>
+  </text>
+  <text>
+    <en>New</en>
+    <tr>Novus</tr>
+  </text>
+  <text>
+    <en>New like this</en>
+    <tr>Novus huic similis</tr>
+  </text>
+  <text>
+    <en>Delete</en>
+    <tr>Dele</tr>
+  </text>
+  <text>
+    <en>Revert</en>
+    <tr>Restitue</tr>
+  </text>
+  <text>
+    <en>Try a word:</en>
+    <tr>Proba verbum:</tr>
+  </text>
+  <text>
+    <en>Try</en>
+    <tr>Proba</tr>
+  </text>
+  <text>
+    <en>Save</en>
+    <tr>Serva</tr>
+  </text>
+  <text>
+    <en>Font…</en>
+    <tr>Typi litterarum…</tr>
+  </text>
+  <text>
+    <en>Apply the changes to {what} first?</en>
+    <tr>Prius applicare mutationes ipsius {what}?</tr>
+  </text>
+  <text>
+    <en>Delete this entry?</en>
+    <tr>Delere hunc articulum?</tr>
+  </text>
+  <text>
+    <en>a Latin form, a stem or a word of the meanings</en>
+    <tr>forma Latina, radix vel verbum significationum</tr>
+  </text>
+  <text>
+    <en>English</en>
+    <tr>Anglice</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line, and press Enter.  "Help" explains the results, and "About" shows the credits.</en>
+    <tr>Scribe verbum vel lineam Latinam, et preme Enter.  "Auxilium" inventa explicat, et "De programmate" nomina auctorum ostendit.</tr>
+  </text>
+  <text>
+    <en>{name}: A Latin Dictionary</en>
+    <tr>{name}: Dictionarium Latinum</tr>
+  </text>
+  <text>
+    <en>About {name}</en>
+    <tr>De programmate {name}</tr>
+  </text>
+  <text>
+    <en>Loading the dictionary…</en>
+    <tr>Dictionarium oneratur…</tr>
+  </text>
+  <text>
+    <en>Look up</en>
+    <tr>Quere</tr>
+  </text>
+  <text>
+    <en>Latin → {language}</en>
+    <tr>Latine → {language}</tr>
+  </text>
+  <text>
+    <en>{language} → Latin</en>
+    <tr>{language} → Latine</tr>
+  </text>
+  <text>
+    <en>Looking up…</en>
+    <tr>Queritur…</tr>
+  </text>
+  <text>
+    <en>(no results)</en>
+    <tr>(nulla inventa)</tr>
+  </text>
+  <text>
+    <en>Ready.</en>
+    <tr>Paratum.</tr>
+  </text>
+  <text>
+    <en>Loading the dictionary again…</en>
+    <tr>Dictionarium iterum oneratur…</tr>
+  </text>
+  <text>
+    <en>Choose the folder containing {file}</en>
+    <tr>Elige capsulam que continet {file}</tr>
+  </text>
+  <text>
+    <en>Could not load the dictionary:</en>
+    <tr>Dictionarium onerari non potuit:</tr>
+  </text>
+  <text>
+    <en>Meanings in</en>
+    <tr>Significationes</tr>
+  </text>
+  <text>
+    <en>About</en>
+    <tr>De programmate</tr>
+  </text>
+  <text>
+    <en>Web page</en>
+    <tr>Pagina interretialis</tr>
+  </text>
+  <text>
+    <en>Settings…</en>
+    <tr>Optiones…</tr>
+  </text>
+  <text>
+    <en>Edit dictionary…</en>
+    <tr>Emenda dictionarium…</tr>
+  </text>
+  <text>
+    <en>(error: {error})</en>
+    <tr>(error: {error})</tr>
+  </text>
+  <text>
+    <en>Cannot open the editor:</en>
+    <tr>Editor aperiri non potest:</tr>
+  </text>
+  <text>
+    <en>The dictionary cannot be edited: its folder {folder} cannot be written to (as in the AppImage).  Copy the folder somewhere and give the copy as the data folder (in the settings, with --datadir or with $PY_WORDS_DATADIR).</en>
+    <tr>Dictionarium emendari non potest: in eius capsula {folder} scribi non potest (sicut in AppImage).  Transcribe capsulam alio et da exemplar tamquam capsulam datorum (in optionibus, per --datadir vel per $PY_WORDS_DATADIR).</tr>
+  </text>
+  <text>
+    <en>Open the {name} project page</en>
+    <tr>Aperi paginam incepti {name}</tr>
+  </text>
+  <text>
+    <en>The language of the interface could not be changed: {error}</en>
+    <tr>Lingua interfaciei mutari non potuit: {error}</tr>
+  </text>
+  <text>
+    <en>The settings were not saved: {error}</en>
+    <tr>Optiones non sunt servate: {error}</tr>
+  </text>
+  <text>
+    <en>the applications menu</en>
+    <tr>tabella applicationum</tr>
+  </text>
+  <text>
+    <en>the Start menu</en>
+    <tr>tabella Start</tr>
+  </text>
+  <text>
+    <en>Applications (in your home folder)</en>
+    <tr>Applications (in capsula tua domestica)</tr>
+  </text>
+  <text>
+    <en>Added py-words to {where}:</en>
+    <tr>py-words additum est in {where}:</tr>
+  </text>
+  <text>
+    <en>If you move this folder, run this again.</en>
+    <tr>Si hanc capsulam moves, hoc iterum exsequere.</tr>
+  </text>
+  <text>
+    <en>Add py-words to the applications menu, or remove it.</en>
+    <tr>Addere py-words tabelle applicationum, vel ipsum removere.</tr>
+  </text>
+  <text>
+    <en>add only the entry of the window (and remove the others, if they are there)</en>
+    <tr>addere solum titulum fenestre (et removere ceteros, si adsunt)</tr>
+  </text>
+  <text>
+    <en>remove what was added</en>
+    <tr>removere quod additum est</tr>
+  </text>
+  <text>
+    <en>Removed py-words from {where}.</en>
+    <tr>py-words remotum est ex {where}.</tr>
+  </text>
+  <text>
+    <en>There was nothing to remove.</en>
+    <tr>Nichil erat removendum.</tr>
+  </text>
+  <text>
+    <en>F1 help  F2 direction  F3 settings  F4 edit  F5 meanings  F6 interface  F7 copy  F8 source  F9 clear  F10 quit</en>
+    <tr>F1 auxilium  F2 directio  F3 optiones  F4 emenda  F5 sensus  F6 lingua  F7 exscribe  F8 fons  F9 dele  F10 exi</tr>
+  </text>
+  <text>
+    <en>The interface is in {language}.</en>
+    <tr>Interfacies loquitur {language}.</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line and Enter.  F1: help and credits.</en>
+    <tr>Scribe verbum vel lineam Latinam et Enter.  F1: auxilium et nomina auctorum.</tr>
+  </text>
+  <text>
+    <en>{name} {version}: A Latin Dictionary</en>
+    <tr>{name} {version}: Dictionarium Latinum</tr>
+  </text>
+  <text>
+    <en>{language} to Latin: type a word in {language}.</en>
+    <tr>{language} → Latine: scribe verbum {language}.</tr>
+  </text>
+  <text>
+    <en>Latin to {language}.</en>
+    <tr>Latine → {language}.</tr>
+  </text>
+  <text>
+    <en>Meanings in (Enter chooses)</en>
+    <tr>Significationes (Enter eligit)</tr>
+  </text>
+  <text>
+    <en>The meanings are in {language}.</en>
+    <tr>Significationes sunt {language}.</tr>
+  </text>
+  <text>
+    <en>Interface in (Enter chooses)</en>
+    <tr>Interfacies (Enter eligit)</tr>
+  </text>
+  <text>
+    <en>Forget the earlier searches (also those of the window and the command line)?</en>
+    <tr>Oblivisci inquisitiones priores (etiam fenestre et linee mandatorum)?</tr>
+  </text>
+  <text>
+    <en>Help</en>
+    <tr>Auxilium</tr>
+  </text>
+  <text>
+    <en>The dictionary was saved and read again.</en>
+    <tr>Dictionarium servatum est et iterum lectum.</tr>
+  </text>
+  <text>
+    <en>The WORDS dictionary in the terminal, full screen.</en>
+    <tr>Dictionarium WORDS in terminali, per totam aream visualem.</tr>
+  </text>
+  <text>
+    <en>the folder with the data files (default: as for words.py)</en>
+    <tr>capsula cum fasciculis datorum (nisi aliud dicatur: sicut pro words.py)</tr>
+  </text>
+  <text>
+    <en>this is a full-screen program; run it in a terminal (or use words.py)</en>
+    <tr>hoc est programma totius aree visualis; exsequere ipsum in terminali (vel utere words.py)</tr>
+  </text>
+  <text>
+    <en>Settings (Space switches, Esc closes)</en>
+    <tr>Optiones (Space mutat, Esc claudit)</tr>
+  </text>
+  <text>
+    <en>(developer)</en>
+    <tr>(elaboratoris)</tr>
+  </text>
+  <text>
+    <en>{n} more</en>
+    <tr>{n} plura</tr>
+  </text>
+  <text>
+    <en>A Latin Dictionary</en>
+    <tr>Dictionarium Latinum</tr>
+  </text>
+  <text>
+    <en>Search</en>
+    <tr>Quere</tr>
+  </text>
+  <text>
+    <en>Change</en>
+    <tr>Muta</tr>
+  </text>
+  <text>
+    <en>Earlier searches</en>
+    <tr>Inquisitiones priores</tr>
+  </text>
+  <text>
+    <en>Settings</en>
+    <tr>Optiones</tr>
+  </text>
+  <text>
+    <en>Apply</en>
+    <tr>Applica</tr>
+  </text>
+  <text>
+    <en>Changes are kept for next time, also for the command line and the window.</en>
+    <tr>Mutationes servantur in posterum, etiam pro linea mandatorum et fenestra.</tr>
+  </text>
+  <text>
+    <en>Language of the interface</en>
+    <tr>Lingua interfaciei</tr>
+  </text>
+  <text>
+    <en>The dictionary was changed, and read again.</en>
+    <tr>Dictionarium mutatum est, et iterum lectum.</tr>
+  </text>
+  <text>
+    <en>{name} {version} is at {url}  (Ctrl-C stops it)</en>
+    <tr>{name} {version} est apud {url}  (Ctrl-C ipsum sistit)</tr>
+  </text>
+  <text>
+    <en>The WORDS dictionary in a web browser.</en>
+    <tr>Dictionarium WORDS in navigatro interretiali.</tr>
+  </text>
+  <text>
+    <en>HOST</en>
+    <tr>HOST</tr>
+  </text>
+  <text>
+    <en>the address to listen on (default: {host}, only this computer)</en>
+    <tr>inscriptio in qua auscultetur (nisi aliud dicatur: {host}, solum hoc computatrum)</tr>
+  </text>
+  <text>
+    <en>PORT</en>
+    <tr>PORTA</tr>
+  </text>
+  <text>
+    <en>the port (default: {port}, or a free one)</en>
+    <tr>porta (nisi aliud dicatur: {port}, vel aliqua libera)</tr>
+  </text>
+  <text>
+    <en>do not open the browser</en>
+    <tr>navigatrum non aperire</tr>
+  </text>
+  <text>
+    <en>Other computers can reach it too (at this computer's address); there are no passwords.</en>
+    <tr>Alia quoque computatra ad ipsum pervenire possunt (per inscriptionem huius computatri); nulla sunt verba secreta.</tr>
+  </text>
+  <text>
+    <en>Unknown host name.</en>
+    <tr>Nomen computatri ignotum.</tr>
+  </text>
+  <text>
+    <en>There is no such page.</en>
+    <tr>Nulla est talis pagina.</tr>
+  </text>
+  <text>
+    <en>Use {method}.</en>
+    <tr>Utere {method}.</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line, and press Enter.  "Help" and "About", below, explain the results and show the credits.</en>
+    <tr>Scribe verbum vel lineam Latinam, et preme Enter.  "Auxilium" et "De programmate", infra, inventa explicant et nomina auctorum ostendunt.</tr>
+  </text>
+  <text>
+    <en>Reload the page and try again.</en>
+    <tr>Paginam iterum onera et rursus tempta.</tr>
+  </text>
+  <text>
+    <en>No icon.</en>
+    <tr>Sine icone.</tr>
+  </text>
+  <text>
+    <en>cannot listen on {host} port {port}: {error}</en>
+    <tr>non potest auscultari in {host}, porta {port}: {error}</tr>
+  </text>
+  <text>
+    <en>a word in {language} (and N, V, ADJ …)</en>
+    <tr>verbum {language} (et N, V, ADJ …)</tr>
+  </text>
+  <text>
+    <en>Latin words or a line of Latin</en>
+    <tr>verba Latina vel linea Latina</tr>
+  </text>
+  <text>
+    <en>None yet.</en>
+    <tr>Nondum ulle.</tr>
+  </text>
+  <text>
+    <en>the file has no root element</en>
+    <tr>fasciculus non habet elementum radicale</tr>
+  </text>
+  <text>
+    <en>this file can only contain {names} elements, not &lt;{tag}&gt;</en>
+    <tr>hic fasciculus solum elementa {names} continere potest, non &lt;{tag}&gt;</tr>
+  </text>
+  <text>
+    <en>must be a language code, like en or es</en>
+    <tr>debet esse nota lingue, ut en vel es</tr>
+  </text>
+  <text>
+    <en>must be yes or no</en>
+    <tr>debet esse yes vel no</tr>
+  </text>
+  <text>
+    <en>the language has no name</en>
+    <tr>lingua non habet nomen</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; has no content</en>
+    <tr>&lt;{tag}&gt; nichil continet</tr>
+  </text>
+  <text>
+    <en>the root element must be &lt;{root}&gt;, not &lt;{tag}&gt;</en>
+    <tr>elementum radicale debet esse &lt;{root}&gt;, non &lt;{tag}&gt;</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; is nested too deeply</en>
+    <tr>&lt;{tag}&gt; nimis profunde inclusum est</tr>
+  </text>
+  <text>
+    <en>malformed XML: {error}</en>
+    <tr>XML male formatum: {error}</tr>
+  </text>
+  <text>
+    <en>must be a number from {lo} to {hi}</en>
+    <tr>debet esse numerus a {lo} ad {hi}</tr>
+  </text>
+  <text>
+    <en>must be two digits, like "2 1"</en>
+    <tr>debent esse due cifre, ut "2 1"</tr>
+  </text>
+  <text>
+    <en>is not allowed in &lt;{tag}&gt;; use one of: {names}</en>
+    <tr>non admittitur in &lt;{tag}&gt;; utere aliquo istorum: {names}</tr>
+  </text>
+  <text>
+    <en>the {what} "{text}" may only contain the letters a-z and A-Z</en>
+    <tr>{what} "{text}" solas litteras a-z et A-Z continere potest</tr>
+  </text>
+  <text>
+    <en>the {what} "{text}" is longer than {n} letters</en>
+    <tr>{what} "{text}" longior est quam {n} littere</tr>
+  </text>
+  <text>
+    <en>must be a whole number above 0</en>
+    <tr>debet esse numerus integer maior quam 0</tr>
+  </text>
+  <text>
+    <en>a &lt;meaning&gt; must be on one line</en>
+    <tr>&lt;meaning&gt; debet esse in una linea</tr>
+  </text>
+  <text>
+    <en>may only contain letters</en>
+    <tr>solas litteras continere potest</tr>
+  </text>
+  <text>
+    <en>is not the ending with long marks</en>
+    <tr>non est terminatio cum signis vocalium longarum</tr>
+  </text>
+  <text>
+    <en>is longer than {n} letters</en>
+    <tr>longior est quam {n} littere</tr>
+  </text>
+  <text>
+    <en>must be a single character</en>
+    <tr>debet esse unus character</tr>
+  </text>
+  <text>
+    <en>the source {code} has no name</en>
+    <tr>fons {code} non habet nomen</tr>
+  </text>
+  <text>
+    <en>the source {code} is already on line {line}</en>
+    <tr>fons {code} iam est in linea {line}</tr>
+  </text>
+  <text>
+    <en>repeats the source {code}</en>
+    <tr>fontem {code} repetit</tr>
+  </text>
+  <text>
+    <en>has X (general or unknown) with other sources</en>
+    <tr>habet X (generalem vel ignotum) cum aliis fontibus</tr>
+  </text>
+  <text>
+    <en>other sources</en>
+    <tr>alii fontes</tr>
+  </text>
+  <text>
+    <en>other source</en>
+    <tr>alius fons</tr>
+  </text>
+  <text>
+    <en>is not one of: {names}</en>
+    <tr>non est aliquid istorum: {names}</tr>
+  </text>
+  <text>
+    <en>must be capital letters and digits, parts joined by dots (FUT.PRF)</en>
+    <tr>debet constare ex litteris maiusculis et cifris, partibus per puncta iunctis (FUT.PRF)</tr>
+  </text>
+  <text>
+    <en>{what} is already on line {line}</en>
+    <tr>{what} iam est in linea {line}</tr>
+  </text>
+  <text>
+    <en>the text is empty</en>
+    <tr>textus vacuus est</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; needs a {name} attribute</en>
+    <tr>&lt;{tag}&gt; requirit attributum {name}</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; does not take the attributes {names} here</en>
+    <tr>&lt;{tag}&gt; hic non admittit attributa {names}</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; does not take the attribute {names} here</en>
+    <tr>&lt;{tag}&gt; hic non admittit attributum {names}</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; cannot contain &lt;{child}&gt;</en>
+    <tr>&lt;{tag}&gt; non potest continere &lt;{child}&gt;</tr>
+  </text>
+  <text>
+    <en>exactly {n}</en>
+    <tr>exacte {n}</tr>
+  </text>
+  <text>
+    <en>{lo} to {hi}</en>
+    <tr>a {lo} ad {hi}</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; must contain {need} &lt;{child}&gt; element</en>
+    <tr>&lt;{tag}&gt; debet continere {need} elementum &lt;{child}&gt;</tr>
+  </text>
+  <text>
+    <en>&lt;{tag}&gt; must contain {need} &lt;{child}&gt; elements</en>
+    <tr>&lt;{tag}&gt; debet continere {need} elementa &lt;{child}&gt;</tr>
+  </text>
+  <text>
+    <en>must be parts of speech (N V ...)</en>
+    <tr>debent esse partes orationis (N V ...)</tr>
+  </text>
+  <text>
+    <en>en="" is empty</en>
+    <tr>en="" vacuum est</tr>
+  </text>
+  <text>
+    <en>the text must have the {1}, {2} ... of en="..."</en>
+    <tr>textus debet habere {1}, {2} ... ipsius en="..."</tr>
+  </text>
+  <text>
+    <en>a &lt;meaning&gt; needs one of the attributes {names}</en>
+    <tr>&lt;meaning&gt; requirit unum ex attributis {names}</tr>
+  </text>
+  <text>
+    <en>must be the id of one</en>
+    <tr>debet esse id alicuius</tr>
+  </text>
+  <text>
+    <en>declension</en>
+    <tr>declinatio</tr>
+  </text>
+  <text>
+    <en>conjugation</en>
+    <tr>coniugatio</tr>
+  </text>
+  <text>
+    <en>gender</en>
+    <tr>genus</tr>
+  </text>
+  <text>
+    <en>kind</en>
+    <tr>species</tr>
+  </text>
+  <text>
+    <en>degree</en>
+    <tr>gradus</tr>
+  </text>
+  <text>
+    <en>sort</en>
+    <tr>modus</tr>
+  </text>
+  <text>
+    <en>value</en>
+    <tr>valor</tr>
+  </text>
+  <text>
+    <en>takes the case</en>
+    <tr>regit casum</tr>
+  </text>
+  <text>
+    <en>age</en>
+    <tr>etas</tr>
+  </text>
+  <text>
+    <en>area</en>
+    <tr>materia</tr>
+  </text>
+  <text>
+    <en>region</en>
+    <tr>regio</tr>
+  </text>
+  <text>
+    <en>frequency</en>
+    <tr>frequentia</tr>
+  </text>
+  <text>
+    <en>source</en>
+    <tr>fons</tr>
+  </text>
+  <text>
+    <en>noun</en>
+    <tr>nomen</tr>
+  </text>
+  <text>
+    <en>verb</en>
+    <tr>verbum</tr>
+  </text>
+  <text>
+    <en>adjective</en>
+    <tr>adiectivum</tr>
+  </text>
+  <text>
+    <en>adverb</en>
+    <tr>adverbium</tr>
+  </text>
+  <text>
+    <en>preposition</en>
+    <tr>prepositio</tr>
+  </text>
+  <text>
+    <en>conjunction</en>
+    <tr>coniunctio</tr>
+  </text>
+  <text>
+    <en>interjection</en>
+    <tr>interiectio</tr>
+  </text>
+  <text>
+    <en>pronoun</en>
+    <tr>pronomen</tr>
+  </text>
+  <text>
+    <en>pronoun with an enclitic (quicumque)</en>
+    <tr>pronomen cum enclitico (quicumque)</tr>
+  </text>
+  <text>
+    <en>numeral</en>
+    <tr>numerale</tr>
+  </text>
+  <text>
+    <en>nominative stem</en>
+    <tr>radix nominativi</tr>
+  </text>
+  <text>
+    <en>genitive stem</en>
+    <tr>radix genitivi</tr>
+  </text>
+  <text>
+    <en>stem 1</en>
+    <tr>radix 1</tr>
+  </text>
+  <text>
+    <en>stem 2</en>
+    <tr>radix 2</tr>
+  </text>
+  <text>
+    <en>positive stem</en>
+    <tr>radix positivi</tr>
+  </text>
+  <text>
+    <en>oblique stem</en>
+    <tr>radix obliqua</tr>
+  </text>
+  <text>
+    <en>comparative stem</en>
+    <tr>radix comparativi</tr>
+  </text>
+  <text>
+    <en>superlative stem</en>
+    <tr>radix superlativi</tr>
+  </text>
+  <text>
+    <en>cardinal stem</en>
+    <tr>radix cardinalis</tr>
+  </text>
+  <text>
+    <en>ordinal stem</en>
+    <tr>radix ordinalis</tr>
+  </text>
+  <text>
+    <en>distributive stem</en>
+    <tr>radix distributivi</tr>
+  </text>
+  <text>
+    <en>numeral adverb stem</en>
+    <tr>radix adverbii numeralis</tr>
+  </text>
+  <text>
+    <en>positive</en>
+    <tr>positivus</tr>
+  </text>
+  <text>
+    <en>comparative</en>
+    <tr>comparativus</tr>
+  </text>
+  <text>
+    <en>superlative</en>
+    <tr>superlativus</tr>
+  </text>
+  <text>
+    <en>present stem</en>
+    <tr>radix presentis</tr>
+  </text>
+  <text>
+    <en>infinitive stem</en>
+    <tr>radix infinitivi</tr>
+  </text>
+  <text>
+    <en>perfect stem</en>
+    <tr>radix perfecti</tr>
+  </text>
+  <text>
+    <en>participle stem</en>
+    <tr>radix participii</tr>
+  </text>
+  <text>
+    <en>word</en>
+    <tr>verbum</tr>
+  </text>
+  <text>
+    <en>masculine</en>
+    <tr>masculinum</tr>
+  </text>
+  <text>
+    <en>feminine</en>
+    <tr>femininum</tr>
+  </text>
+  <text>
+    <en>neuter</en>
+    <tr>neutrum</tr>
+  </text>
+  <text>
+    <en>common (masculine or feminine)</en>
+    <tr>commune (masculinum vel femininum)</tr>
+  </text>
+  <text>
+    <en>unknown</en>
+    <tr>ignotum</tr>
+  </text>
+  <text>
+    <en>nominative</en>
+    <tr>nominativus</tr>
+  </text>
+  <text>
+    <en>genitive</en>
+    <tr>genitivus</tr>
+  </text>
+  <text>
+    <en>dative</en>
+    <tr>dativus</tr>
+  </text>
+  <text>
+    <en>accusative</en>
+    <tr>accusativus</tr>
+  </text>
+  <text>
+    <en>ablative</en>
+    <tr>ablativus</tr>
+  </text>
+  <text>
+    <en>vocative</en>
+    <tr>vocativus</tr>
+  </text>
+  <text>
+    <en>locative</en>
+    <tr>locativus</tr>
+  </text>
+  <text>
+    <en>all degrees (positive, comparative, superlative)</en>
+    <tr>omnes gradus (positivus, comparativus, superlativus)</tr>
+  </text>
+  <text>
+    <en>positive only</en>
+    <tr>solus positivus</tr>
+  </text>
+  <text>
+    <en>comparative only</en>
+    <tr>solus comparativus</tr>
+  </text>
+  <text>
+    <en>superlative only</en>
+    <tr>solus superlativus</tr>
+  </text>
+  <text>
+    <en>all sorts (cardinal, ordinal ...)</en>
+    <tr>omnes modi (cardinale, ordinale ...)</tr>
+  </text>
+  <text>
+    <en>cardinal</en>
+    <tr>cardinale</tr>
+  </text>
+  <text>
+    <en>ordinal</en>
+    <tr>ordinale</tr>
+  </text>
+  <text>
+    <en>distributive</en>
+    <tr>distributivum</tr>
+  </text>
+  <text>
+    <en>numeral adverb</en>
+    <tr>adverbium numerale</tr>
+  </text>
+  <text>
+    <en>singular only</en>
+    <tr>solum singulare</tr>
+  </text>
+  <text>
+    <en>plural only</en>
+    <tr>solum plurale</tr>
+  </text>
+  <text>
+    <en>abstract idea</en>
+    <tr>res abstracta</tr>
+  </text>
+  <text>
+    <en>group, collective</en>
+    <tr>multitudo, collectivum</tr>
+  </text>
+  <text>
+    <en>proper name</en>
+    <tr>nomen proprium</tr>
+  </text>
+  <text>
+    <en>a person</en>
+    <tr>persona</tr>
+  </text>
+  <text>
+    <en>a thing</en>
+    <tr>res</tr>
+  </text>
+  <text>
+    <en>a place</en>
+    <tr>locus</tr>
+  </text>
+  <text>
+    <en>where (a place name)</en>
+    <tr>ubi (nomen loci)</tr>
+  </text>
+  <text>
+    <en>personal</en>
+    <tr>personale</tr>
+  </text>
+  <text>
+    <en>relative</en>
+    <tr>relativum</tr>
+  </text>
+  <text>
+    <en>reflexive</en>
+    <tr>reflexivum</tr>
+  </text>
+  <text>
+    <en>demonstrative</en>
+    <tr>demonstrativum</tr>
+  </text>
+  <text>
+    <en>interrogative</en>
+    <tr>interrogativum</tr>
+  </text>
+  <text>
+    <en>indefinite</en>
+    <tr>indefinitum</tr>
+  </text>
+  <text>
+    <en>adjectival</en>
+    <tr>adiectivale</tr>
+  </text>
+  <text>
+    <en>transitive</en>
+    <tr>transitivum</tr>
+  </text>
+  <text>
+    <en>intransitive</en>
+    <tr>intransitivum</tr>
+  </text>
+  <text>
+    <en>deponent</en>
+    <tr>deponens</tr>
+  </text>
+  <text>
+    <en>semi-deponent</en>
+    <tr>semideponens</tr>
+  </text>
+  <text>
+    <en>impersonal</en>
+    <tr>impersonale</tr>
+  </text>
+  <text>
+    <en>perfect with present meaning</en>
+    <tr>perfectum cum significatione presentis</tr>
+  </text>
+  <text>
+    <en>takes the genitive</en>
+    <tr>regit genitivum</tr>
+  </text>
+  <text>
+    <en>takes the dative</en>
+    <tr>regit dativum</tr>
+  </text>
+  <text>
+    <en>takes the ablative</en>
+    <tr>regit ablativum</tr>
+  </text>
+  <text>
+    <en>the verb "to be"</en>
+    <tr>verbum "esse"</tr>
+  </text>
+  <text>
+    <en>compound of "to be"</en>
+    <tr>compositum verbi "esse"</tr>
+  </text>
+  <text>
+    <en>in use throughout</en>
+    <tr>in usu per omnes etates</tr>
+  </text>
+  <text>
+    <en>archaic</en>
+    <tr>archaica</tr>
+  </text>
+  <text>
+    <en>early (before the classical period)</en>
+    <tr>antiqua (ante tempus classicum)</tr>
+  </text>
+  <text>
+    <en>classical</en>
+    <tr>classica</tr>
+  </text>
+  <text>
+    <en>late (after 200)</en>
+    <tr>sera (post annum 200)</tr>
+  </text>
+  <text>
+    <en>later (after 600)</en>
+    <tr>posterior (post annum 600)</tr>
+  </text>
+  <text>
+    <en>medieval (after 1000)</en>
+    <tr>mediei evi (post annum 1000)</tr>
+  </text>
+  <text>
+    <en>scholarly (Renaissance and after)</en>
+    <tr>doctorum (a renovatione litterarum et postea)</tr>
+  </text>
+  <text>
+    <en>modern</en>
+    <tr>moderna</tr>
+  </text>
+  <text>
+    <en>general</en>
+    <tr>generalis</tr>
+  </text>
+  <text>
+    <en>agriculture, plants, animals, the land</en>
+    <tr>agricultura, plante, animalia, terra</tr>
+  </text>
+  <text>
+    <en>biology, medicine, the body</en>
+    <tr>biologia, medicina, corpus</tr>
+  </text>
+  <text>
+    <en>drama, music, the arts</en>
+    <tr>drama, musica, artes</tr>
+  </text>
+  <text>
+    <en>the Church, the Bible</en>
+    <tr>Ecclesia, Biblia</tr>
+  </text>
+  <text>
+    <en>grammar, rhetoric, logic, literature, school</en>
+    <tr>grammatica, rhetorica, logica, litterature, schola</tr>
+  </text>
+  <text>
+    <en>law, government, money, titles</en>
+    <tr>ius, regimen, pecunia, tituli</tr>
+  </text>
+  <text>
+    <en>poetry</en>
+    <tr>poesis</tr>
+  </text>
+  <text>
+    <en>science, philosophy, mathematics, measures</en>
+    <tr>scientia, philosophia, mathematica, mensure</tr>
+  </text>
+  <text>
+    <en>technical, architecture, surveying</en>
+    <tr>artes mechanice, architectura, agrimensura</tr>
+  </text>
+  <text>
+    <en>war, the army, the navy</en>
+    <tr>bellum, exercitus, classis</tr>
+  </text>
+  <text>
+    <en>mythology</en>
+    <tr>mythologia</tr>
+  </text>
+  <text>
+    <en>everywhere</en>
+    <tr>ubique</tr>
+  </text>
+  <text>
+    <en>Africa</en>
+    <tr>Africa</tr>
+  </text>
+  <text>
+    <en>Britain</en>
+    <tr>Britannia</tr>
+  </text>
+  <text>
+    <en>China</en>
+    <tr>Sina</tr>
+  </text>
+  <text>
+    <en>Scandinavia</en>
+    <tr>Scandinavia</tr>
+  </text>
+  <text>
+    <en>Egypt</en>
+    <tr>Egyptus</tr>
+  </text>
+  <text>
+    <en>France, Gaul</en>
+    <tr>Francia, Gallia</tr>
+  </text>
+  <text>
+    <en>Germany</en>
+    <tr>Germania</tr>
+  </text>
+  <text>
+    <en>Greece</en>
+    <tr>Grecia</tr>
+  </text>
+  <text>
+    <en>Italy, Rome</en>
+    <tr>Italia, Roma</tr>
+  </text>
+  <text>
+    <en>India</en>
+    <tr>India</tr>
+  </text>
+  <text>
+    <en>the Balkans</en>
+    <tr>Balcani</tr>
+  </text>
+  <text>
+    <en>the Netherlands</en>
+    <tr>Terre Basse</tr>
+  </text>
+  <text>
+    <en>Persia</en>
+    <tr>Persia</tr>
+  </text>
+  <text>
+    <en>the Near East</en>
+    <tr>Oriens Propinquus</tr>
+  </text>
+  <text>
+    <en>Russia</en>
+    <tr>Russia</tr>
+  </text>
+  <text>
+    <en>Spain</en>
+    <tr>Hispania</tr>
+  </text>
+  <text>
+    <en>Eastern Europe</en>
+    <tr>Europa orientalis</tr>
+  </text>
+  <text>
+    <en>very frequent</en>
+    <tr>frequentissima</tr>
+  </text>
+  <text>
+    <en>frequent</en>
+    <tr>frequens</tr>
+  </text>
+  <text>
+    <en>common</en>
+    <tr>communis</tr>
+  </text>
+  <text>
+    <en>lesser</en>
+    <tr>minor</tr>
+  </text>
+  <text>
+    <en>uncommon</en>
+    <tr>non communis</tr>
+  </text>
+  <text>
+    <en>very rare</en>
+    <tr>rarissima</tr>
+  </text>
+  <text>
+    <en>only in inscriptions</en>
+    <tr>in inscriptionibus tantum</tr>
+  </text>
+  <text>
+    <en>only in graffiti</en>
+    <tr>in graphitis tantum</tr>
+  </text>
+  <text>
+    <en>only in Pliny</en>
+    <tr>apud Plinium tantum</tr>
+  </text>
+  <text>
+    <en>Trim output</en>
+    <tr>Resecare inventa</tr>
+  </text>
+  <text>
+    <en>Ignore unknown names</en>
+    <tr>Nomina ignota omittere</tr>
+  </text>
+  <text>
+    <en>Use glosses</en>
+    <tr>Glossis uti</tr>
+  </text>
+  <text>
+    <en>Fuzzy search</en>
+    <tr>Inquisitio approximata</tr>
+  </text>
+  <text>
+    <en>Pause in screen output</en>
+    <tr>Intermittere inventa longa</tr>
+  </text>
+  <text>
+    <en>Start file character</en>
+    <tr>Signum ad fasciculum legendum</tr>
+  </text>
+  <text>
+    <en>Change parameters character</en>
+    <tr>Signum parametrorum</tr>
+  </text>
+  <text>
+    <en>Change developer modes character</en>
+    <tr>Signum modorum elaboratoris</tr>
+  </text>
+  <text>
+    <en>Spanish</en>
+    <tr>Hispanice</tr>
+  </text>
+  <text>
+    <en>error</en>
+    <tr>error</tr>
+  </text>
+  <text>
+    <en>warning</en>
+    <tr>monitio</tr>
+  </text>
+  <text>
+    <en>Added</en>
+    <tr>Additus</tr>
+  </text>
+  <text>
+    <en>Changed</en>
+    <tr>Mutatus</tr>
+  </text>
+  <text>
+    <en>stem</en>
+    <tr>radix</tr>
+  </text>
+  <text>
+    <en>form</en>
+    <tr>forma</tr>
+  </text>
+  <text>
+    <en>fix</en>
+    <tr>affixum</tr>
+  </text>
+  <text>
+    <en>Type a Latin word or line (or, after F2, a word in the language of
+the meanings) and Enter.
+
+Up / Down       earlier searches (also of earlier sessions)
+PgUp / PgDn     scroll the results (Ctrl-Up / Ctrl-Down: a line)
+F2 / Ctrl-L     Latin to English (or the language of the meanings),
+                or back
+F3 / Ctrl-O     settings: every parameter and developer mode
+F4 / Ctrl-E     edit the dictionary
+F5 / Ctrl-G     the language of the meanings (with Logeion: its
+                dictionary, or all)
+F6              the language of the interface
+F7              copy all the results
+F8              search in this dictionary or in Logeion
+F9              clear the history of the searches
+F1              this help
+F10 / Ctrl-Q    quit</en>
+    <tr>Scribe verbum vel lineam Latinam (vel, post F2, verbum lingue
+significationum) et preme Enter.
+
+Up / Down       inquisitiones priores (etiam sessionum priorum)
+PgUp / PgDn     inventa movere (Ctrl-Up / Ctrl-Down: unam lineam)
+F2 / Ctrl-L     a Latino in Anglicum (vel in linguam significationum),
+                vel retro
+F3 / Ctrl-O     optiones: omnia parametra et modi elaboratoris
+F4 / Ctrl-E     dictionarium emendare
+F5 / Ctrl-G     lingua significationum (cum Logeion: eius
+                dictionarium, vel omnia)
+F6              lingua interfaciei
+F7              omnia inventa transcribere
+F8              querere in hoc dictionario vel in Logeion
+F9              historiam inquisitionum delere
+F1              hoc auxilium
+F10 / Ctrl-Q    exire</tr>
+  </text>
+  <text>
+    <en>The results are those of words.py (in colour, if the terminal has
+colours and $NO_COLOR is not set), or with F8 the entries of Logeion
+for the lemmas of the words (it needs the internet); the settings, the
+configuration file and the history of the searches are shared with it
+and the window.  (On Windows, curses needs the windows-curses package.)
+</en>
+    <tr>Inventa sunt ea ipsius words.py (colorata, si terminale colores habet
+et $NO_COLOR non est posita), vel per F8 articuli Logeion pro lemmatibus
+verborum (interrete requirit); optiones, fasciculus configurationis et
+historia inquisitionum cum ipso et cum fenestra communia sunt.  (In
+Windows, curses requirit fasciculum windows-curses.)
+</tr>
+  </text>
+  <text>
+    <en>    Find   type a Latin form, a stem or a word of the meanings and Enter
+    List   Up/Down to choose an entry, Enter to edit it
+    Form   Up/Down between fields; type in text fields; in a field with
+           choices, Left/Right change it and Enter lists them all
+
+    F3 / Ctrl-A  apply the changes (or add the new entry)
+    F4 / Ctrl-N  new entry           F5 / Ctrl-D  new entry like this one
+    F6 / Ctrl-T  try a word          F8 / Ctrl-K  delete the entry
+    F7 / Ctrl-L  the language of the meanings edited besides English
+    F2 / Ctrl-S  save the file (applying the changes first)
+    F10 / Ctrl-Q quit
+    Tab          next area           Ctrl-F       find
+
+Nothing is written until the file is saved; the first save keeps the
+original as dictionary.xml.bak (and so for the file of the language of
+the meanings, in languages/, if one is chosen).  Leaving an entry whose
+changes were not applied asks what to do with them.  (On Windows, curses
+needs the windows-curses package; the window editor, words_edit_gui.py,
+needs nothing.)
+</en>
+    <tr>    Quere  scribe formam Latinam, radicem vel verbum significationum,
+           et Enter
+    Index  Up/Down ad articulum eligendum, Enter ad ipsum emendandum
+    Forma  Up/Down inter campos; scribe in campis textus; in campo cum
+           electionibus, Left/Right ipsum mutant et Enter omnes enumerat
+
+    F3 / Ctrl-A  applicare mutationes (vel addere articulum novum)
+    F4 / Ctrl-N  articulus novus     F5 / Ctrl-D  articulus novus huic similis
+    F6 / Ctrl-T  probare verbum      F8 / Ctrl-K  delere articulum
+    F7 / Ctrl-L  lingua significationum que preter Anglicam emendatur
+    F2 / Ctrl-S  servare fasciculum (mutationibus prius applicatis)
+    F10 / Ctrl-Q exire
+    Tab          area sequens        Ctrl-F       querere
+
+Nichil scribitur donec fasciculus servetur; prima servatio retinet
+originale tamquam dictionary.xml.bak (et similiter fasciculum lingue
+significationum, in languages/, si aliqua electa est).  Si relinquitur
+articulus cuius mutationes non sunt applicate, queritur quid de eis
+fiat.  (In Windows, curses requirit fasciculum windows-curses; editor
+in fenestra, words_edit_gui.py, nullo eget.)
+</tr>
+  </text>
+  <text>
+    <en>Starts a small web server on this computer and opens the browser at it:</en>
+    <tr>Incipit parvum servitrum in hoc computatro et navigatrum ad ipsum aperit:</tr>
+  </text>
+  <text>
+    <en>    http://127.0.0.1:8000/                  the search page
+    http://127.0.0.1:8000/?q=amicus+est     a search (Latin to English)
+    http://127.0.0.1:8000/?q=friend&amp;lang=en a search (English to Latin)</en>
+    <tr>    http://127.0.0.1:8000/                  pagina inquisitionis
+    http://127.0.0.1:8000/?q=amicus+est     inquisitio (Latine → Anglice)
+    http://127.0.0.1:8000/?q=friend&amp;lang=en inquisitio (Anglice → Latine)</tr>
+  </text>
+  <text>
+    <en>(lang= the language of the meanings, en or es ..., for a search from it
+to Latin.)</en>
+    <tr>(lang= lingua significationum, en vel es ..., pro inquisitione ab ea
+in Latinum.)</tr>
+  </text>
+  <text>
+    <en>The results are those of words.py; the settings, the configuration file
+and the history of the searches are shared with it, the window and the
+terminal.  The dictionary is read again when an editor changes it.</en>
+    <tr>Inventa sunt ea ipsius words.py; optiones, fasciculus configurationis
+et historia inquisitionum communia sunt cum eo, cum fenestra et cum
+terminali.  Dictionarium iterum legitur cum editor ipsum mutat.</tr>
+  </text>
+  <text>
+    <en>Only this computer can reach the server, unless --host says otherwise
+(--host 0.0.0.0: every computer that can reach this one, as a phone on
+the same network).  There are no passwords, so do that only on a network
+you trust; the dictionary cannot be edited from the browser.
+</en>
+    <tr>Solum hoc computatrum servitrum attingere potest, nisi --host aliud dicat
+(--host 0.0.0.0: omne computatrum quod hoc attingere potest, ut telephonum
+in eodem rete).  Nulla sunt verba secreta; ideo hoc fiat tantum in rete
+fido; dictionarium ex navigatro emendari non potest.
+</tr>
+  </text>
+  <text>
+    <en>usage: </en>
+    <tr>usus: </tr>
+  </text>
+  <text>
+    <en>positional arguments</en>
+    <tr>argumenta positionis</tr>
+  </text>
+  <text>
+    <en>options</en>
+    <tr>optiones</tr>
+  </text>
+  <text>
+    <en>show this help message and exit</en>
+    <tr>ostendere hoc auxilium et exire</tr>
+  </text>
+  <text>
+    <en> (default: %(default)s)</en>
+    <tr> (primitivum: %(default)s)</tr>
+  </text>
+  <text>
+    <en>argument %(argument_name)s: %(message)s</en>
+    <tr>argumentum %(argument_name)s: %(message)s</tr>
+  </text>
+  <text>
+    <en>unrecognized arguments: %s</en>
+    <tr>argumenta non agnita: %s</tr>
+  </text>
+  <text>
+    <en>the following arguments are required: %s</en>
+    <tr>hec argumenta requiruntur: %s</tr>
+  </text>
+  <text>
+    <en>expected one argument</en>
+    <tr>expectabatur unum argumentum</tr>
+  </text>
+  <text>
+    <en>expected at most one argument</en>
+    <tr>expectabatur ad summum unum argumentum</tr>
+  </text>
+  <text>
+    <en>expected at least one argument</en>
+    <tr>expectabatur saltem unum argumentum</tr>
+  </text>
+  <text>
+    <en>invalid choice: %(value)r (choose from %(choices)s)</en>
+    <tr>electio non valida: %(value)r (elige ex %(choices)s)</tr>
+  </text>
+  <text>
+    <en>invalid %(type)s value: %(value)r</en>
+    <tr>valor %(type)s non validus: %(value)r</tr>
+  </text>
+  <text>
+    <en>not allowed with argument %s</en>
+    <tr>non licet cum argumento %s</tr>
+  </text>
+  <text>
+    <en>ambiguous option: %(option)s could match %(matches)s</en>
+    <tr>optio ambigua: %(option)s convenire potest cum %(matches)s</tr>
+  </text>
+  <text>
+    <en>can't open '%(filename)s': %(error)s</en>
+    <tr>non potest aperiri '%(filename)s': %(error)s</tr>
+  </text>
+  <text>
+    <en>%(prog)s: error: %(message)s
+</en>
+    <tr>%(prog)s: error: %(message)s
+</tr>
+  </text>
+  <text>
+    <en>{name} {version}, a Latin dictionary by Nicolas Vaughan
+{url}
+Started from WORDS by William Whitaker (1936-2010), in the Ada version
+at https://github.com/mk270/whitakers-words; code and data redesigned,
+with a new English dictionary (Lewis and Short) and two new Spanish
+ones (Echave-Sustaeta and De Miguel).
+Sources of the dictionary: WORDS, by William Whitaker; R. E. Latham,
+Revised Medieval Latin Word-List (medieval words, senses and spellings);
+J. Echave-Sustaeta, Lengua latina. Vocabulario básico (Latin-Spanish);
+C. T. Lewis and C. Short, A Latin Dictionary (rare words and names,
+English definitions; text of the Perseus Digital Library, CC BY-SA 4.0);
+R. de Miguel and the Marqués de Morante, Nuevo diccionario latino-
+español etimológico, 1867 (rare words and proper names, Latin-Spanish);
+Collatinus, by Yves Ouvrard and Philippe Verkerk (long vowels).
+Code © 2026 Nicolas Vaughan (nicolasvaughan@proton.me), under the GNU General
+Public License, version 3 or later (see LICENCE.txt).  The data of WORDS,
+by William Whitaker, are free for any use.
+The Spanish meanings come from De Miguel and Echave-Sustaeta; for the
+words that neither has, they were translated from the English.  The
+English meanings of the words taken from De Miguel were translated
+from his Spanish.</en>
+    <tr>{name} {version}, dictionarium Latinum a Nicolao Vaughan factum
+{url}
+Initium sumpsit ex WORDS Guillelmi Whitaker (1936-2010), in versione Ada
+apud https://github.com/mk270/whitakers-words; codex et data denuo
+composita, cum novo dictionario Anglico (Lewis et Short) et duobus novis
+Hispanicis (Echave-Sustaeta et De Miguel).
+Fontes dictionarii: WORDS, Guillelmi Whitaker; R. E. Latham,
+Revised Medieval Latin Word-List (verba, sensus et orthographie mediei
+evi); J. Echave-Sustaeta, Lengua latina. Vocabulario básico (Latino-
+Hispanicum); C. T. Lewis et C. Short, A Latin Dictionary (verba rara et
+nomina, definitiones Anglice; textus Perseus Digital Library, CC BY-SA
+4.0); R. de Miguel et Marchio de Morante, Nuevo diccionario latino-
+español etimológico, 1867 (verba rara et nomina propria, Latino-
+Hispanicum); Collatinus, Yvonis Ouvrard et Philippi Verkerk (vocales longe).
+Codex © 2026 Nicolas Vaughan (nicolasvaughan@proton.me), sub licentia GNU
+General Public License, versione 3 vel posteriore (vide LICENCE.txt).
+Data ipsius WORDS, Guillelmi Whitaker, ad omnem usum libera sunt.
+Significationes Hispanice veniunt ex De Miguel et Echave-Sustaeta; pro
+verbis que neuter habet, ex Anglico translate sunt.  Significationes
+Anglice verborum ex De Miguel sumptorum ex Hispanico eius translate
+sunt.</tr>
+  </text>
+  <text>
+    <en>Sources and licence</en>
+    <tr>Fontes et licentia</tr>
+  </text>
+  <text>
+    <en>The program started from WORDS, by William Whitaker (1936-2010), but both its code and its data have been redesigned, and it now includes a new English dictionary (Lewis and Short) and two new Spanish ones (Echave-Sustaeta and De Miguel), besides other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Lewis and Short, A Latin Dictionary, in the text of the Perseus Digital Library (CC BY-SA 4.0), gave some 8,400 rare words and names that WORDS did not have (source code S, as other entries of WORDS taken from it), and the English definitions of some 31,000 entries.  R. de Miguel and the Marqués de Morante, Nuevo diccionario latino-español etimológico (1867), gave some 25,000 words and proper names that WORDS did not have, and the Spanish meanings of some 49,000 entries (source code m); Echave-Sustaeta gave those of the entries De Miguel does not have, and the other Spanish meanings are translations.  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, and some abbreviations (source code H).  Collatinus, in its turn, made its lexicon with the help of the dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; the README names all the sources and people it thanks.</en>
+    <tr>Programma initium sumpsit ex WORDS, Guillelmi Whitaker (1936-2010), sed et codex eius et data denuo composita sunt, et nunc continet novum dictionarium Anglicum (Lewis et Short) et duo nova Hispanica (Echave-Sustaeta et De Miguel), preter alia opera.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, dedit sensus, verba et orthographias mediei evi (nota fontis M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, dedit sensus et verba, Anglice et Hispanice (nota fontis A).  Lewis et Short, A Latin Dictionary, in textu Perseus Digital Library (CC BY-SA 4.0), dedit circiter 8.400 verba rara et nomina que WORDS non habebat (nota fontis S, sicut alii articuli ipsius WORDS ex eo sumpti), et definitiones Anglicas circiter 31.000 articulorum.  R. de Miguel et Marchio de Morante, Nuevo diccionario latino-español etimológico (1867), dedit circiter 25.000 verba et nomina propria que WORDS non habebat, et significationes Hispanicas circiter 49.000 articulorum (nota fontis m); Echave-Sustaeta dedit eas articulorum quos De Miguel non habet, et cetere significationes Hispanice sunt translationes.  Collatinus, Yvonis Ouvrard et Philippi Verkerk, dedit vocales longas radicum et terminationum, et quasdam abbreviationes (nota fontis H).  Collatinus autem lexicon suum fecit cum auxilio dictionariorum Gaffiot, Jeanneau, Du Cange et Lewis et Short, inter alia; README nominat omnes fontes et personas quibus gratias agit.</tr>
+  </text>
+  <text>
+    <en>{name} is free software, distributed under the GNU General Public License, version 3 or later (see LICENCE.txt): it can be used, copied, changed and shared, but a program that includes it must be shared under the same licence, with its source code.  The data of WORDS are free for any use, by permission of William Whitaker.  "About" gives the version and the credits.</en>
+    <tr>{name} est programma liberum, distributum sub licentia GNU General Public License, versione 3 vel posteriore (vide LICENCE.txt): adhiberi, transcribi, mutari et communicari potest, sed programma quod ipsum continet sub eadem licentia communicandum est, cum codice fontium suo.  Data ipsius WORDS ad omnem usum libera sunt, permissione Guillelmi Whitaker.  "De programmate" dat versionem et nomina auctorum.</tr>
+  </text>
+  <text>
+    <en>Nicolas Vaughan is Associate Professor of Literature at the School of
+Arts and Humanities of the Universidad de los Andes, Bogotá, Colombia.</en>
+    <tr>Nicolas Vaughan est Professor Associatus Litterarum in Facultate
+Artium et Humanitatum Universitatis de los Andes, Bogotá, Columbia.</tr>
+  </text>
+  <text>
+    <en>Answer one of: {codes}; Enter keeps the current one.</en>
+    <tr>Responde unum ex his: {codes}; Enter presentem retinet.</tr>
+  </text>
+  <text>
+    <en>(Ctrl-C does not quit: an empty line twice, or Ctrl-D, quits)</en>
+    <tr>(Ctrl-C non exit: linea vacua bis, vel Ctrl-D, exit)</tr>
+  </text>
+  <text>
+    <en>(interrupted)</en>
+    <tr>(interruptum)</tr>
+  </text>
+  <text>
+    <en>about: the version and the credits</en>
+    <tr>de programmate: versio et nomina auctorum</tr>
+  </text>
+  <text>
+    <en>Make a zip of the program, to distribute it: {name}.zip, without hidden files.</en>
+    <tr>Fac zip programmatis, ut distribuatur: {name}.zip, sine fasciculis occultis.</tr>
+  </text>
+  <text>
+    <en>FOLDER</en>
+    <tr>CAPSULA</tr>
+  </text>
+  <text>
+    <en>the folder to write it in (default: dist, in the program's folder)</en>
+    <tr>capsula in qua scribatur (primitiva: dist, in capsula programmatis)</tr>
+  </text>
+  <text>
+    <en>include the tests</en>
+    <tr>include probationes</tr>
+  </text>
+  <text>
+    <en>there is no folder {folder}</en>
+    <tr>non est capsula {folder}</tr>
+  </text>
+  <text>
+    <en>Wrote {path} ({n} files, {size:.1f} MB).</en>
+    <tr>Scriptum est {path} ({n} fasciculi, {size:.1f} MB).</tr>
+  </text>
+  <text>
+    <en>Make an AppImage of the program, for Linux: {name}, with a Python of its own.</en>
+    <tr>Fac AppImage programmatis, pro Linux: {name}, cum Python proprio.</tr>
+  </text>
+  <text>
+    <en>APPIMAGE</en>
+    <tr>APPIMAGE</tr>
+  </text>
+  <text>
+    <en>VERSION</en>
+    <tr>VERSIO</tr>
+  </text>
+  <text>
+    <en>the Python AppImage to use (default: one of python-appimage, downloaded)</en>
+    <tr>AppImage ipsius Python adhibenda (primitiva: una ex python-appimage, ex interreti tracta)</tr>
+  </text>
+  <text>
+    <en>the version of Python to download (default: {version})</en>
+    <tr>versio Python ex interreti trahenda (primitiva: {version})</tr>
+  </text>
+  <text>
+    <en>the appimagetool to use (default: downloaded)</en>
+    <tr>appimagetool adhibendum (primitivum: ex interreti tractum)</tr>
+  </text>
+  <text>
+    <en>AppImages are made on Linux</en>
+    <tr>AppImages fiunt in Linux</tr>
+  </text>
+  <text>
+    <en>Downloading {url} ...</en>
+    <tr>Ex interreti trahitur {url} ...</tr>
+  </text>
+  <text>
+    <en>there is no Python {version} AppImage at {url}</en>
+    <tr>non est AppImage Python {version} apud {url}</tr>
+  </text>
+  <text>
+    <en>there is no Python in {path}</en>
+    <tr>non est Python in {path}</tr>
+  </text>
+  <text>
+    <en>Wrote {path} ({size:.1f} MB).</en>
+    <tr>Scriptum est {path} ({size:.1f} MB).</tr>
+  </text>
+  <text>
+    <en>Dark mode</en>
+    <tr>Modus obscurus</tr>
+  </text>
+  <text>
+    <en>The look of the windows and the web page: dark_mode = true for dark, false for light (none: the web page follows the system).  Also changed with the moon (or sun) in the window and on the web page.</en>
+    <tr>Aspectus fenestrarum et pagine interretialis: dark_mode = true pro obscuro, false pro lucido (nullum: pagina interretialis sequitur systema).  Mutatur etiam per lunam (vel solem) in fenestra et in pagina interretiali.</tr>
+  </text>
+  <text>
+    <en>{name}: help</en>
+    <tr>{name}: auxilium</tr>
+  </text>
+  <text>
+    <en>show the help: how to search and read the results, and exit</en>
+    <tr>ostende auxilium: quomodo queratur et inventa legantur, et exi</tr>
+  </text>
+  <text>
+    <en>the help: how to search and read the results</en>
+    <tr>auxilium: quomodo queratur et inventa legantur</tr>
+  </text>
+  <text>
+    <en>words.py --help lists the options of the command line.</en>
+    <tr>words.py --help enumerat optiones linee mandatorum.</tr>
+  </text>
+  <text>
+    <en>{name} is a Latin dictionary that knows Latin grammar: it analyses a Latin word into the dictionary entries and the forms it can be, with their meanings, and finds the Latin for a word of the language of the meanings.</en>
+    <tr>{name} est dictionarium Latinum quod grammaticam Latinam novit: resolvit verbum Latinum in articulos dictionarii et formas quas esse potest, cum significationibus suis, et invenit quid Latine dicatur verbum lingue significationum.</tr>
+  </text>
+  <text>
+    <en>Searching</en>
+    <tr>De inquisitione</tr>
+  </text>
+  <text>
+    <en>Type a Latin word, or a whole line of Latin, and look it up: each word is analysed in turn.  Capitals do not matter, nor do u and v, or i and j (iulius, Julius and IVLIVS are the same word), nor long marks and other accents: amīcus is amicus, and cælum is caelum.</en>
+    <tr>Scribe verbum Latinum, vel totam lineam Latinam, et quere: quodlibet verbum suo ordine resolvitur.  Nichil refert de litteris maiusculis, nec de u et v, nec de i et j (iulius, Julius et IVLIVS sunt idem verbum), nec de signis quantitatis et aliis accentibus: amīcus est amicus, et cælum est caelum.</tr>
+  </text>
+  <text>
+    <en>In the other direction, from the language of the meanings to Latin, type one word and, if you like, a part of speech after it (friend N, friend ADJ; the parts of speech are N, PRON, ADJ, NUM, ADV, V, PREP, CONJ and INTERJ): the Latin entries whose meanings have that word are listed, the best first.</en>
+    <tr>In altera directione, a lingua significationum in Latinum, scribe unum verbum et, si placet, partem orationis post ipsum (friend N, friend ADJ; partes orationis sunt N, PRON, ADJ, NUM, ADV, V, PREP, CONJ et INTERJ): enumerantur articuli Latini quorum significationes illud verbum habent, optimi primo.</tr>
+  </text>
+  <text>
+    <en>When a word finds nothing as it is typed, the program tries other spellings (medieval ones, syncope, two words written as one ...) and says what it did.  With the fuzzy search (on as usual), a word that still finds nothing is followed by the results of its near spellings: amicuss finds amicus.  Unknown words with a capital are taken as names, and left alone.</en>
+    <tr>Cum verbum, sicut scriptum est, nichil invenit, programma temptat alias orthographias (mediei evi, syncopen, duo verba tamquam unum scripta ...) et dicit quid fecerit.  Cum inquisitione approximata (que communiter agit), verbum quod adhuc nichil invenit sequuntur inventa orthographiarum vicinarum: amicuss invenit amicus.  Verba ignota cum littera maiuscula habentur pro nominibus, et relinquuntur.</tr>
+  </text>
+  <text>
+    <en>Using this program</en>
+    <tr>De usu huius programmatis</tr>
+  </text>
+  <text>
+    <en>Type in the box at the top and press Enter, or "Look up"; the arrow at the right of the box lists the earlier searches.</en>
+    <tr>Scribe in area superiori et preme Enter, vel "Quere"; sagitta ad dexteram aree enumerat inquisitiones priores.</tr>
+  </text>
+  <text>
+    <en>"Latin → …" and "… → Latin" choose the direction of the search, "Meanings in" the language of the meanings, and "Fuzzy search", beside it, whether a word that finds nothing is followed by its near spellings.  The menus have the rest: Dictionary (the dictionary editor, greyed out where the dictionary cannot be written to, as in the AppImage; and the other settings, each with its help), Edit (cut, copy and paste), View (find in the results, the size of the text, the fonts, dark mode) and Help (this text, and the version and the credits).</en>
+    <tr>"Latine → …" et "… → Latine" eligunt directionem inquisitionis, "Significationes" linguam significationum, et "Inquisitio approximata", iuxta, utrum verbum quod nichil invenit sequantur orthographie vicine.  Tabelle habent cetera: Dictionarium (editor dictionarii, cinereus ubi dictionarium scribi non potest, ut in AppImage; et cetere optiones, queque cum auxilio suo), Emendatio (excidere, transcribere et inserere), Aspectus (querere in inventis, magnitudo textus, typi litterarum, modus obscurus) et Auxilium (hic textus, et versio et nomina auctorum).</tr>
+  </text>
+  <text>
+    <en>In the results, click the first word of an entry to look it up, or double-click any word (a word of the meanings is looked up in Latin).  Point at the codes in brackets or at an analysis (GEN.PL) to see what they mean.  A right click copies or looks up a word, and Ctrl and F finds a text in the results.</en>
+    <tr>In inventis, preme primum verbum articuli ut queratur, vel duplici pressu quodlibet verbum (verbum significationum queritur in Latino).  Indica notas inter uncos vel analysim (GEN.PL) ut videas quid significent.  Pressus dexter verbum transcribit vel querit, et Ctrl et F textum in inventis querit.</tr>
+  </text>
+  <text>
+    <en>Ctrl and + or − make the text larger or smaller (Ctrl and 0: as usual), and the moon at the bottom right makes the window dark (a sun, then, makes it light again).</en>
+    <tr>Ctrl et + vel − textum maiorem vel minorem faciunt (Ctrl et 0: ut consuetum), et luna in imo ad dexteram fenestram obscurat (sol deinde eam iterum illuminat).</tr>
+  </text>
+  <text>
+    <en>Type in the box at the top and press Enter, or "Look up"; the two choices below it give the direction of the search, "Meanings in" the language of the meanings, and "Fuzzy search" whether a word that finds nothing is followed by its near spellings.</en>
+    <tr>Scribe in area superiori et preme Enter, vel "Quere"; due electiones infra dant directionem inquisitionis, "Significationes" linguam significationum, et "Inquisitio approximata" utrum verbum quod nichil invenit sequantur orthographie vicine.</tr>
+  </text>
+  <text>
+    <en>The first word of each entry of the results is a link to its own search, and every search has its own address, which can be bookmarked.  The moon makes the page dark, and the sun light again.  At the foot, "Earlier searches" lists the recent ones, "Settings" has the other settings (each with its help), "Help" is this text and "About" shows the version and the credits.</en>
+    <tr>Primum verbum cuiuslibet articuli inventorum est nexus ad suam inquisitionem, et quelibet inquisitio suam inscriptionem habet, que inter signa libri servari potest.  Luna paginam obscurat, et sol iterum illuminat.  In imo, "Inquisitiones priores" enumerat recentes, "Optiones" habet ceteras optiones (quamque cum auxilio suo), "Auxilium" est hic textus et "De programmate" ostendit versionem et nomina auctorum.</tr>
+  </text>
+  <text>
+    <en>Reading the results</en>
+    <tr>Quomodo inventa legantur</tr>
+  </text>
+  <text>
+    <en>This is what {name} shows for {word}:</en>
+    <tr>Hoc est quod {name} ostendit pro {word}:</tr>
+  </text>
+  <text>
+    <en>The first line is the word looked up.  Each entry it can be follows, indented.</en>
+    <tr>Prima linea est verbum quesitum.  Sequitur, cum indentatione, quilibet articulus quem esse potest.</tr>
+  </text>
+  <text>
+    <en>The first line of an entry has its dictionary form (the principal parts: amicus, amici), its part of speech and its grammar in words (noun, 2nd declension, masculine), the codes in brackets ([XXXBO], see below) and, for some entries, their age or frequency in words (archaic, lesser ...).</en>
+    <tr>Prima linea articuli habet formam dictionarii (partes principales: amicus, amici), partem orationis et grammaticam verbis expressam (noun, 2nd declension, masculine), notas inter uncos ([XXXBO], vide infra) et, pro quibusdam articulis, etatem vel frequentiam verbis expressam (archaic, lesser ...).</tr>
+  </text>
+  <text>
+    <en>The next line is the meaning.  Its senses are separated by semicolons, the commonest first; a slash separates alternatives (counselor/courtier), and parentheses give the context.  [en] before a meaning says that it is not translated, and is given in English.</en>
+    <tr>Linea sequens est significatio.  Eius sensus per punctum et virgulam separantur, communissimo primo; virgula obliqua separat res alternas (counselor/courtier), et parentheses dant contextum.  [en] ante significationem dicit quod non est translata, sed Anglice datur.</tr>
+  </text>
+  <text>
+    <en>Then come the forms the word can be: the stem and the ending, separated by a hyphen (amīc-ōrum, with the long vowels marked), and what the form is, in the abbreviations listed below (GEN.PL: genitive plural) or, with the setting use_glosses off, in words.  One spelling can be several forms: the amīc-ōrum of the adjective is GEN.PL.M and GEN.PL.N.</en>
+    <tr>Deinde veniunt forme quas verbum esse potest: radix et terminatio, per lineolam separate (amīc-ōrum, cum vocalibus longis notatis), et que forma sit, per abbreviationes infra enumeratas (GEN.PL: genitivus pluralis) vel, optione use_glosses ablata, verbis.  Eadem scriptura potest esse plures forme: amīc-ōrum adiectivi est GEN.PL.M et GEN.PL.N.</tr>
+  </text>
+  <text>
+    <en>A line before an entry may say how the word was found: a prefix, a suffix or an enclitic (-que, -ne, -ve) that was taken off, with its meaning, or a spelling trick (spelling: ...), with a sentence on what was done.</en>
+    <tr>Linea ante articulum potest dicere quomodo verbum inventum sit: prefixum, suffixum vel encliticum (-que, -ne, -ve) quod ablatum est, cum significatione sua, vel artificium orthographie (spelling: ...), cum sententia de eo quod factum est.</tr>
+  </text>
+  <text>
+    <en>Notes in parentheses: (unknown), for a word that was not found; (near spellings: ...), before the results of its near spellings; (less likely forms are not shown), when the setting trim_output left some out.  From the language of the meanings: (no match), (near words: ...) and, after the best six entries, (... more not shown).</en>
+    <tr>Annotationes inter parentheses: (unknown), pro verbo quod non est inventum; (near spellings: ...), ante inventa orthographiarum vicinarum; (less likely forms are not shown), cum optio trim_output quedam omisit.  A lingua significationum: (no match), (near words: ...) et, post sex optimos articulos, (... more not shown).</tr>
+  </text>
+  <text>
+    <en>The codes in brackets</en>
+    <tr>De notis inter uncos</tr>
+  </text>
+  <text>
+    <en>The five letters in brackets after an entry say when, where, how often and on whose authority the word is used, in this order: its age, its area (the subject it belongs to), its region, its frequency and its source.  X says that there is nothing particular to say: in use throughout, general, everywhere, or not known.  So the [{codes}] of amicus is read:</en>
+    <tr>Quinque littere inter uncos post articulum dicunt quando, ubi, quam sepe et qua auctoritate verbum adhibeatur, hoc ordine: etas eius, materia (res ad quam pertinet), regio, frequentia et fons.  X dicit nichil singulare esse dicendum: in usu per omnes etates, generale, ubique, vel ignotum.  Sic [{codes}] vocabuli amicus legitur:</tr>
+  </text>
+  <text>
+    <en>Each letter can be:</en>
+    <tr>Quelibet littera esse potest:</tr>
+  </text>
+  <text>
+    <en>The abbreviations of the analyses</en>
+    <tr>De abbreviationibus analysium</tr>
+  </text>
+  <text>
+    <en>The forms are written with the abbreviations of the Leipzig Glossing Rules, joined by full stops (GEN.PL, 1SG.PRF.ACT.IND); those marked * are not in the Leipzig list.  They are kept in data/gloss.xml, where they can be changed.</en>
+    <tr>Forme scribuntur abbreviationibus regularum glossandi Lipsiensium (Leipzig Glossing Rules), punctis iunctis (GEN.PL, 1SG.PRF.ACT.IND); que signo * notantur non sunt in catalogo Lipsiensi.  Servantur in data/gloss.xml, ubi mutari possunt.</tr>
+  </text>
+  <text>
+    <en>case</en>
+    <tr>casus</tr>
+  </text>
+  <text>
+    <en>number</en>
+    <tr>numerus</tr>
+  </text>
+  <text>
+    <en>person</en>
+    <tr>persona</tr>
+  </text>
+  <text>
+    <en>tense</en>
+    <tr>tempus</tr>
+  </text>
+  <text>
+    <en>voice</en>
+    <tr>genus verbi</tr>
+  </text>
+  <text>
+    <en>mood</en>
+    <tr>modus</tr>
+  </text>
+  <text>
+    <en>other verb forms</en>
+    <tr>alie forme verbi</tr>
+  </text>
+  <text>
+    <en>numerals</en>
+    <tr>numeralia</tr>
+  </text>
+  <text>
+    <en>Each setting has its own help: in the Settings of the window and the web page, in F3 of the terminal, and with ? in the # and ! dialogues of the command line.  The parameters are for everyone, the developer modes for special purposes; the programs share them.</en>
+    <tr>Quelibet optio suum auxilium habet: in Optionibus fenestre et pagine interretialis, in F3 terminalis, et cum ? in dialogis # et ! linee mandatorum.  Parametra sunt pro omnibus, modi elaboratoris ad usus speciales; programmata ea communia habent.</tr>
+  </text>
+  <text>
+    <en>general or unknown</en>
+    <tr>generalis vel ignotus</tr>
+  </text>
+  <text>
+    <en>other dictionaries</en>
+    <tr>alia dictionaria</tr>
+  </text>
+  <text>
+    <en>found in a translation</en>
+    <tr>in translatione inventum</tr>
+  </text>
+  <text>
+    <en>Whitaker's guess</en>
+    <tr>coniectura Whitaker</tr>
+  </text>
+  <text>
+    <en>temporary</en>
+    <tr>ad tempus</tr>
+  </text>
+  <text>
+    <en>sent by a user</en>
+    <tr>ab usuario missum</tr>
+  </text>
+  <text>
+    <en>Dictionary</en>
+    <tr>Dictionarium</tr>
+  </text>
+  <text>
+    <en>View</en>
+    <tr>Aspectus</tr>
+  </text>
+  <text>
+    <en>Quit</en>
+    <tr>Exi</tr>
+  </text>
+  <text>
+    <en>Find in results…</en>
+    <tr>Quere in inventis…</tr>
+  </text>
+  <text>
+    <en>Larger text</en>
+    <tr>Textus maior</tr>
+  </text>
+  <text>
+    <en>Smaller text</en>
+    <tr>Textus minor</tr>
+  </text>
+  <text>
+    <en>Usual size</en>
+    <tr>Magnitudo consueta</tr>
+  </text>
+  <text>
+    <en>Copy</en>
+    <tr>Transcribe</tr>
+  </text>
+  <text>
+    <en>Select all</en>
+    <tr>Selige omnia</tr>
+  </text>
+  <text>
+    <en>Look up “{word}”</en>
+    <tr>Quere “{word}”</tr>
+  </text>
+  <text>
+    <en>Find “{word}” in Latin</en>
+    <tr>Quere “{word}” in Latinum</tr>
+  </text>
+  <text>
+    <en>Previous</en>
+    <tr>Prior</tr>
+  </text>
+  <text>
+    <en>Next</en>
+    <tr>Sequens</tr>
+  </text>
+  <text>
+    <en>{count} found</en>
+    <tr>Inventa: {count}</tr>
+  </text>
+  <text>
+    <en>Not found</en>
+    <tr>Non inventum</tr>
+  </text>
+  <text>
+    <en>Try, for example:</en>
+    <tr>Tempta, verbi gratia:</tr>
+  </text>
+  <text>
+    <en>{word} (to Latin)</en>
+    <tr>{word} (in Latinum)</tr>
+  </text>
+  <text>
+    <en>Double-click any word of the results to look it up (a word of the meanings is looked up in Latin), and point at the codes in brackets or at an analysis (GEN.PL), or tap them, to see what they mean.</en>
+    <tr>Preme bis quodlibet verbum inventorum ut queratur (verbum significationum in Latinum queritur), et murem pone super notas inter uncos vel super analysim (GEN.PL), vel eas tange, ut videas quid significent.</tr>
+  </text>
+  <text>
+    <en>Show long vowels</en>
+    <tr>Ostende vocales longas</tr>
+  </text>
+  <text>
+    <en>&lt;stems&gt; must have from one to four stems</en>
+    <tr>&lt;stems&gt; debet habere ab una ad quattuor radices</tr>
+  </text>
+  <text>
+    <en>the stem "{text}" may only contain letters, with long marks on vowels (ā), or be -</en>
+    <tr>radix "{text}" non potest continere nisi litteras, cum signis longitudinis in vocalibus (ā), vel esse -</tr>
+  </text>
+  <text>
+    <en>there is no entry with the id {id}: these stems are not used</en>
+    <tr>nullus est articulus cum id {id}: he radices non adhibentur</tr>
+  </text>
+  <text>
+    <en>"{marked}" is not the stem "{stem}" of the entry: it is not used</en>
+    <tr>"{marked}" non est radix "{stem}" articuli: non adhibetur</tr>
+  </text>
+  <text>
+    <en>What the results show</en>
+    <tr>Quid inventa ostendant</tr>
+  </text>
+  <text>
+    <en>How words are looked up</en>
+    <tr>Quomodo verba querantur</tr>
+  </text>
+  <text>
+    <en>Parameters (# in the command line).</en>
+    <tr>Parametra (# in linea mandatorum).</tr>
+  </text>
+  <text>
+    <en>Show dictionary forms</en>
+    <tr>Ostende formas dictionarii</tr>
+  </text>
+  <text>
+    <en>Show only meanings</en>
+    <tr>Ostende solas significationes</tr>
+  </text>
+  <text>
+    <en>Show codes</en>
+    <tr>Ostende notas</tr>
+  </text>
+  <text>
+    <en>Explain codes</en>
+    <tr>Explica notas</tr>
+  </text>
+  <text>
+    <en>Trim medieval</en>
+    <tr>Reseca medievalia</tr>
+  </text>
+  <text>
+    <en>Use affixes</en>
+    <tr>Utere affixis</tr>
+  </text>
+  <text>
+    <en>Use tricks</en>
+    <tr>Utere artificiis</tr>
+  </text>
+  <text>
+    <en>Medieval spellings</en>
+    <tr>Orthographie medievales</tr>
+  </text>
+  <text>
+    <en>Read compounds</en>
+    <tr>Lege composita</tr>
+  </text>
+  <text>
+    <en>Near entries</en>
+    <tr>Articuli vicini</tr>
+  </text>
+  <text>
+    <en>Show entry source</en>
+    <tr>Ostende fontem articuli</tr>
+  </text>
+  <text>
+    <en>Pearse codes</en>
+    <tr>Note Pearse</tr>
+  </text>
+  <text>
+    <en>Always say in words when a word or form was used (archaic, classical, medieval ...) and how frequent it is, not only when it is unusual.</en>
+    <tr>Semper verbis dic quando verbum vel forma adhibita sit (archaica, classica, mediei evi ...) et quam frequens sit, non solum cum insolita est.</tr>
+  </text>
+  <text>
+    <en>An entry can have more than one source: then the others follow the five letters, each after a + ([XXXCO+M] is also from source M).  The age, when it is known, and the frequency, when it is lesser or rarer, are also given in words after the codes (archaic, lesser ...).  The parameter show_codes hides the codes, and the dictionary editors explain each code of an entry as it is edited.</en>
+    <tr>Articulus potest habere plures fontes: tunc ceteri sequuntur quinque litteras, quilibet post + ([XXXCO+M] etiam ex fonte M est).  Etas, cum noscitur, et frequentia, cum minor vel rarior est, etiam verbis dantur post notas (archaic, lesser ...).  Parametrum show_codes notas occultat, et editores dictionarii quamlibet notam articuli explicant dum emendatur.</tr>
+  </text>
+  <text>
+    <en>Leave out the least likely results: forms that are only possible in theory, and archaic or uncommon ones when more common results were found.  A note says when something was left out.  In the search to Latin, show only the best six results.  Poets use unusual words and forms, so these can be trimmed wrongly.</en>
+    <tr>Omitte inventa minus probabilia: formas que solum in theoria possibiles sunt, et archaicas vel insolitas cum communiora inventa sunt.  Annotatio dicit cum aliquid omissum est.  In inquisitione in Latinum, ostende sola sex optima inventa.  Poete verbis et formis insolitis utuntur, et ideo he perperam resecari possunt.</tr>
+  </text>
+  <text>
+    <en>Mark the long vowels of the stems and endings in the forms (amīc-ōrum), where they are known.  Vowels long before two consonants are not marked, but for those before ns and nf.</en>
+    <tr>Nota vocales longas radicum et terminationum in formis (amīc-ōrum), ubi noscuntur.  Vocales longe ante duas consonantes non notantur, preter eas que sunt ante ns et nf.</tr>
+  </text>
+  <text>
+    <en>Show which dictionary (general or special) each entry is from, and its number in that file.</en>
+    <tr>Ostende ex quo dictionario (generali vel speciali) quilibet articulus sit, et numerum eius in illo fasciculo.</tr>
+  </text>
+  <text>
+    <en>When a word is still not found, try other spellings (ae for e, ph for f, assimilated prefixes ...) and two words written as one.  Such results are marked as such.</en>
+    <tr>Cum verbum adhuc non invenitur, tempta alias orthographias (ae pro e, ph pro f, prefixa assimilata ...) et duo verba tamquam unum scripta.  Talia inventa ut talia notantur.</tr>
+  </text>
+  <text>
+    <en>With trim_output, leave out also medieval forms when others were found.</en>
+    <tr>Cum trim_output, omitte etiam formas mediei evi cum alie invente sunt.</tr>
+  </text>
+  <text>
+    <en>With use_tricks, also try medieval spellings (e for ae, y for i, michi for mihi, single for doubled consonants ...), also for a word that is found: its e may be ae or oe (queruntur, of queror, is also quaeruntur, of quaero).</en>
+    <tr>Cum use_tricks, tempta etiam orthographias mediei evi (e pro ae, y pro i, michi pro mihi, consonantes simplices pro geminatis ...), etiam pro verbo quod invenitur: eius e potest esse ae vel oe (queruntur, a queror, est etiam quaeruntur, a quaero).</tr>
+  </text>
+  <text>
+    <en>Changes are kept in this browser (in its cookies).</en>
+    <tr>Mutationes in hoc navigatro servantur (in crustulis eius).</tr>
+  </text>
+  <text>
+    <en>Forget the earlier searches?</en>
+    <tr>Oblivisci inquisitionum priorum?</tr>
+  </text>
+  <text>
+    <en>as on a web server for everyone: each visitor with their own settings and history, in cookies</en>
+    <tr>sicut in servitro interretiali omnibus aperto: quilibet visitator cum suis optionibus et historia, in crustulis</tr>
+  </text>
+  <text>
+    <en>On a web server open to everyone (as PythonAnywhere), the application is public_app(): each visitor's settings, languages, look and earlier searches are kept in the cookies of their browser, and nothing is saved on the server (--public tries it here).</en>
+    <tr>In servitro interretiali omnibus aperto (ut PythonAnywhere), applicatio est public_app(): optiones, lingue, aspectus et inquisitiones priores cuiuslibet visitatoris servantur in crustulis navigatri sui, et nichil in servitro servatur (--public hic ipsum temptat).</tr>
+  </text>
+  <text>
+    <en>Edit</en>
+    <tr>Emendatio</tr>
+  </text>
+  <text>
+    <en>Cut</en>
+    <tr>Excide</tr>
+  </text>
+  <text>
+    <en>Paste</en>
+    <tr>Insere</tr>
+  </text>
+  <text>
+    <en>There are no results yet.</en>
+    <tr>Nondum sunt inventa.</tr>
+  </text>
+  <text>
+    <en>The results were copied.</en>
+    <tr>Inventa transcripta sunt.</tr>
+  </text>
+  <text>
+    <en>The results were copied, if the terminal lets programs use the clipboard.</en>
+    <tr>Inventa transcripta sunt, si terminale programmatibus tabulam communem adhibere permittit.</tr>
+  </text>
+  <text>
+    <en>"Search in" chooses where the words are looked up: Local, this dictionary, or Logeion (logeion.uchicago.edu), the dictionaries of the University of Chicago (Lewis and Short, Georges, Gaffiot, DMLBS, Du Cange …).  Logeion does not analyse inflected forms, so each word is analysed here first, and the analysis is shown, without its meanings, before Logeion's entries for its lemmas.  It searches in Latin only: the other direction, the language of the meanings and the fuzzy search are greyed out meanwhile.  The list beside "Search in" chooses Logeion's dictionary, or all of them.  In the entries, a link to another word of Logeion looks it up, and the other links open in a new tab.</en>
+    <tr>"Quere in" eligit ubi verba querantur: Hic, hoc dictionarium, vel Logeion (logeion.uchicago.edu), dictionaria Universitatis Chicagiensis (Lewis and Short, Georges, Gaffiot, DMLBS, Du Cange …).  Logeion formas flexas non resolvit; ideo quodlibet verbum hic primo resolvitur, et analysis ostenditur, sine significationibus suis, ante articulos Logeion pro lemmatibus eius.  In solo Latino querit: altera directio, lingua significationum et inquisitio approximata interim obscurantur.  Index iuxta "Quere in" eligit dictionarium Logeion, vel omnia.  In articulis, nexus ad aliud verbum Logeion ipsum querit, et ceteri nexus in nova pagina navigatri aperiuntur.</tr>
+  </text>
+  <text>
+    <en>Logeion's dictionary</en>
+    <tr>Dictionarium Logeion</tr>
+  </text>
+  <text>
+    <en>(Logeion is asked only for the first {count} words.)</en>
+    <tr>(A Logeion petuntur sola prima {count} verba.)</tr>
+  </text>
+  <text>
+    <en>"Search in" chooses where the words are looked up: Local, this dictionary, or Logeion (logeion.uchicago.edu), the dictionaries of the University of Chicago (Lewis and Short, Georges, Gaffiot, DMLBS, Du Cange …), which needs the internet.  Logeion does not analyse inflected forms, so each word is analysed here and Logeion is asked for its lemmas (arma: armum and armo; and arma itself, a headword of Lewis and Short's); the analysis is shown first, without its meanings (dixi: dix-ī 1SG.PRF.ACT.IND), and then Logeion's entries.  It searches in Latin only: the other direction, the language of the meanings, the fuzzy search and the dictionary editor (which edits this dictionary) are greyed out meanwhile.  The list beside "Search in" chooses Logeion's dictionary (Lewis and Short, Gaffiot …) or all of them; the short definition, the frequency and the examples are shown with any.  Its links to other words look them up; the others open in the browser.  In the terminal, F8 changes the source and F5 the dictionary; on the command line, --logeion and --dictionary, and in interactive mode ~G and ~D.  The source, the dictionary and the direction last chosen are kept for the next start.</en>
+    <tr>"Quere in" eligit ubi verba querantur: Hic, hoc dictionarium, vel Logeion (logeion.uchicago.edu), dictionaria Universitatis Chicagiensis (Lewis and Short, Georges, Gaffiot, DMLBS, Du Cange …), quod interrete requirit.  Logeion formas flexas non resolvit; ideo quodlibet verbum hic resolvitur et a Logeion petuntur lemmata eius (arma: armum et armo; et ipsum arma, lemma Lewis et Short); primo ostenditur analysis, sine significationibus suis (dixi: dix-ī 1SG.PRF.ACT.IND), et deinde articuli Logeion.  In solo Latino querit: altera directio, lingua significationum, inquisitio approximata et editor dictionarii (qui hoc dictionarium emendat) interim obscurantur.  Index iuxta "Quere in" eligit dictionarium Logeion (Lewis and Short, Gaffiot …) vel omnia; definitio brevis, frequentia et exempla cum quolibet ostenduntur.  Nexus eius ad alia verba ipsa querunt; ceteri in navigatro aperiuntur.  In terminali, F8 fontem mutat et F5 dictionarium; in linea mandatorum, --logeion et --dictionary, et in modo interlocutorio ~G et ~D.  Fons, dictionarium et directio ultimo electa pro proximo initio servantur.</tr>
+  </text>
+  <text>
+    <en>Where the programs look words up: source = "local" (this dictionary) or "logeion" (the entries of Logeion for the lemmas of the words, which needs the internet); and dictionary = "all" or the code of the only dictionary of Logeion shown (dmlbs, as usual; ls, gaffiot …; words.py --dictionaries lists them).  Kept when changed with "Search in" and the list beside it in the window and on the web page, F8 and F5 in the terminal, and ~G and ~D in interactive mode; --logeion, --local and --dictionary change them for one run.</en>
+    <tr>Ubi programmata verba querant: source = "local" (hoc dictionarium) vel "logeion" (articuli Logeion pro lemmatibus verborum, quod interrete requirit); et dictionary = "all" vel nota solius dictionarii Logeion quod ostenditur (dmlbs, ut solet; ls, gaffiot …; words.py --dictionaries ea enumerat).  Servantur cum mutantur per "Quere in" et indicem iuxta ipsum in fenestra et in pagina interretiali, per F8 et F5 in terminali, et per ~G et ~D in modo interlocutorio; --logeion, --local et --dictionary ea mutant pro una vice.</tr>
+  </text>
+  <text>
+    <en>The direction of the last search, for the next start: to_latin = true (from the language of the meanings to Latin) or false.  Kept when changed in the window, with F2 in the terminal and with ~E and ~L in interactive mode.</en>
+    <tr>Directio ultime inquisitionis, pro proximo initio: to_latin = true (a lingua significationum in Latinum) vel false.  Servatur cum mutatur in fenestra, per F2 in terminali et per ~E et ~L in modo interlocutorio.</tr>
+  </text>
+  <text>
+    <en>--local cannot go with --logeion or --dictionary</en>
+    <tr>--local non potest simul esse cum --logeion vel --dictionary</tr>
+  </text>
+  <text>
+    <en>this dictionary, also if Logeion was the source last chosen; this time only</en>
+    <tr>hoc dictionarium, etiam si Logeion fons ultimo electus fuit; hac vice tantum</tr>
+  </text>
+  <text>
+    <en>Asking Logeion…</en>
+    <tr>Logeion interrogatur…</tr>
+  </text>
+  <text>
+    <en>Latin → Logeion</en>
+    <tr>Latine → Logeion</tr>
+  </text>
+  <text>
+    <en>Local</en>
+    <tr>Hic</tr>
+  </text>
+  <text>
+    <en>Logeion</en>
+    <tr>Logeion</tr>
+  </text>
+  <text>
+    <en>Search in</en>
+    <tr>Quere in</tr>
+  </text>
+  <text>
+    <en>Logeion could not be reached: {error}</en>
+    <tr>Logeion attingi non potuit: {error}</tr>
+  </text>
+  <text>
+    <en>Logeion has no entry for {word} (the nearest: {closest}).</en>
+    <tr>Logeion nullum articulum habet pro {word} (proximus: {closest}).</tr>
+  </text>
+  <text>
+    <en>Logeion has no entry for {word}.</en>
+    <tr>Logeion nullum articulum habet pro {word}.</tr>
+  </text>
+  <text>
+    <en>Logeion is searched in Latin only (F8: this dictionary).</en>
+    <tr>In Logeion solum Latine queritur (F8: hoc dictionarium).</tr>
+  </text>
+  <text>
+    <en>Searching in Logeion: the entries of its dictionaries for the lemmas of the words (it needs the internet).</en>
+    <tr>Queritur in Logeion: articuli dictionariorum eius pro lemmatibus verborum (interrete requirit).</tr>
+  </text>
+  <text>
+    <en>Searching in this dictionary.</en>
+    <tr>Queritur in hoc dictionario.</tr>
+  </text>
+  <text>
+    <en>show the entries of Logeion (logeion.uchicago.edu) for the lemmas of the Latin words, instead of those of this dictionary (it needs the internet)</en>
+    <tr>ostende articulos Logeion (logeion.uchicago.edu) pro lemmatibus verborum Latinorum, loco articulorum huius dictionarii (interrete requirit)</tr>
+  </text>
+  <text>
+    <en>All dictionaries</en>
+    <tr>Omnia dictionaria</tr>
+  </text>
+  <text>
+    <en>DICTIONARY</en>
+    <tr>DICTIONARIUM</tr>
+  </text>
+  <text>
+    <en>Dictionary (Enter chooses)</en>
+    <tr>Dictionarium (Enter eligit)</tr>
+  </text>
+  <text>
+    <en>F1 help  F2 direction  F3 settings  F4 edit  F5 dictionary  F6 interface  F7 copy  F8 source  F9 clear  F10 quit</en>
+    <tr>F1 auxilium  F2 directio  F3 optiones  F4 emenda  F5 lexicon  F6 lingua  F7 exscribe  F8 fons  F9 dele  F10 exi</tr>
+  </text>
+  <text>
+    <en>Latin → {dictionary}</en>
+    <tr>Latine → {dictionary}</tr>
+  </text>
+  <text>
+    <en>Logeion: {dictionary}.</en>
+    <tr>Logeion: {dictionary}.</tr>
+  </text>
+  <text>
+    <en>list Logeion's dictionaries that --dictionary can choose, and exit</en>
+    <tr>enumera dictionaria Logeion que --dictionary eligere potest, et exi</tr>
+  </text>
+  <text>
+    <en>there is no dictionary {name} in Logeion (--dictionaries lists them)</en>
+    <tr>nullum est dictionarium {name} in Logeion (--dictionaries ea enumerat)</tr>
+  </text>
+  <text>
+    <en>with Logeion (and --logeion is then not needed): only the entries of this dictionary, by its code or name (ls, gaffiot, "Du Cange" ...)</en>
+    <tr>cum Logeion (et tunc --logeion non requiritur): soli articuli huius dictionarii, per notam vel nomen eius (ls, gaffiot, "Du Cange" ...)</tr>
+  </text>
+  <text>
+    <en>{dictionary} has no entry for {word} (it is in: {dictionaries}).</en>
+    <tr>{dictionary} nullum articulum habet pro {word} (est in: {dictionaries}).</tr>
+  </text>
+  <text>
+    <en>{dictionary} has no entry for {word}.</en>
+    <tr>{dictionary} nullum articulum habet pro {word}.</tr>
+  </text>
+  <text>
+    <en>The dictionary editor edits this dictionary, not Logeion: F8 goes back to it.</en>
+    <tr>Editor dictionarii hoc dictionarium emendat, non Logeion: F8 ad ipsum redit.</tr>
+  </text>
+  <text>
+    <en>DICT</en>
+    <tr>DICT</tr>
+  </text>
+  <text>
+    <en>Dictionary (its number, code or name; Enter keeps {dictionary}): </en>
+    <tr>Dictionarium (numerus, nota vel nomen eius; Enter servat {dictionary}): </tr>
+  </text>
+  <text>
+    <en>Logeion's dictionary (ls, gaffiot … or all; ~D alone lists them)</en>
+    <tr>Dictionarium Logeion (ls, gaffiot … vel all; ~D solum ea enumerat)</tr>
+  </text>
+  <text>
+    <en>Searching in Logeion ({dictionary}): the entries of its dictionaries for the lemmas of the words (it needs the internet).</en>
+    <tr>Queritur in Logeion ({dictionary}): articuli dictionariorum eius pro lemmatibus verborum (interrete requirit).</tr>
+  </text>
+  <text>
+    <en>Searching in Logeion: {dictionary}.</en>
+    <tr>Queritur in Logeion: {dictionary}.</tr>
+  </text>
+  <text>
+    <en>There is no dictionary {name} in Logeion (~D lists them).</en>
+    <tr>Nullum est dictionarium {name} in Logeion (~D ea enumerat).</tr>
+  </text>
+  <text>
+    <en>Results longer than the screen open in the pager: PgUp and PgDn scroll them, / finds a text, q comes back here.</en>
+    <tr>Inventa longiora quam area visualis in paginatore aperiuntur: PgUp et PgDn ea movent, / textum querit, q huc redit.</tr>
+  </text>
+  <text>
+    <en>~G: {source} → {other}</en>
+    <tr>~G: {source} → {other}</tr>
+  </text>
+  <text>
+    <en>~D: the dictionary ({dictionary})</en>
+    <tr>~D: dictionarium ({dictionary})</tr>
+  </text>
+  <text>
+    <en>Local ↔ Logeion (its entries for the lemmas of the words)</en>
+    <tr>Hic ↔ Logeion (articuli eius pro lemmatibus verborum)</tr>
+  </text>
+</interface>

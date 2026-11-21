@@ -178,8 +178,8 @@
     <tr>El idioma de los significados y del resto de los resultados (en, es ...).  La búsqueda hacia el latín se hace desde este idioma.</tr>
   </text>
   <text>
-    <en>The language of the menus, buttons, messages and help of the programs (en, es).</en>
-    <tr>El idioma de los menús, botones, mensajes y ayuda de los programas (en, es).</tr>
+    <en>The language of the menus, buttons, messages and help of the programs (en, es, la).</en>
+    <tr>El idioma de los menús, botones, mensajes y ayuda de los programas (en, es, la).</tr>
   </text>
   <text>
     <en>Save these settings in the configuration file, config.toml (on Linux in ~/.config/py-words), to be used at the next start.  It is plain text and can also be edited; words.py --config shows where it is.</en>
@@ -402,8 +402,8 @@
     <tr>listar los idiomas de los significados y terminar</tr>
   </text>
   <text>
-    <en>the language of the interface (en, es); this time only (the setting is interface)</en>
-    <tr>el idioma de la interfaz (en, es); solo esta vez (el ajuste es interface)</tr>
+    <en>the language of the interface (en, es, la); this time only (the setting is interface)</en>
+    <tr>el idioma de la interfaz (en, es, la); solo esta vez (el ajuste es interface)</tr>
   </text>
   <text>
     <en>DATADIR</en>
