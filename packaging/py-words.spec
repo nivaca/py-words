@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.27
+Version:        3.28
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -107,6 +107,10 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Sat Nov 21 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.28-1
+- The code of the language of the interface (EN, ES, LA) in the main window, the
+  web page and the terminal, which opens the list of the languages
+
 * Sat Nov 21 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.27-1
 - A .deb package for Debian and Ubuntu, signed, attached to the releases
 

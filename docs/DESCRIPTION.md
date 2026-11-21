@@ -413,6 +413,17 @@ so with the Latin interface the meanings stay in English or Spanish, and
 meanings for a language that has none.  The Latin README and manual were
 then changed to name the Latin menus and to show Latin screenshots.
 
+Later, in 3.28, the language of the interface also came into the main
+window of each program, as on my web page: its code (EN, ES or LA),
+which in the window and on the web page opens the list of the
+languages.  The web page has a round button before the moon, made of
+an HTML `details` element, so it needs no script; the window has a flat
+button beside the moon, with a menu; the terminal version shows the
+code at the end of its top line.  One problem came up on the web page:
+the page's rule for its `details` sections (a line above, and space
+around) also applied to the button, which then sat lower than the moon,
+under a short line.
+
 11. A package for Debian and Ubuntu
 ------------------------------------
 
@@ -439,7 +450,7 @@ description, and it now asks git for the names as they are.
 Testing
 -------
 
-The program has unit tests and regression tests (`tests/`), 383 in total,
+The program has unit tests and regression tests (`tests/`), 385 in total,
 that run with Python 3.13 (the oldest it supports) and with the latest
 Python; `tools/test.py` runs them all at once, each class of tests in a
 process of its own, in about a minute and a half.  The regression tests

@@ -1,4 +1,4 @@
-\newcommand*{\version}{3.27}
+\newcommand*{\version}{3.28}
 
 \documentclass[12pt,
               article,
@@ -264,10 +264,10 @@ La AppImage es un solo archivo que trae su propio Python, con Tk. Se hace
 ejecutable y se abre:
 
 \begin{verbatim}
-$ chmod +x py-words-v.3.27-x86_64.AppImage
-$ ./py-words-v.3.27-x86_64.AppImage              (la ventana)
-$ ./py-words-v.3.27-x86_64.AppImage cli amicus   (en la terminal)
-$ ./py-words-v.3.27-x86_64.AppImage help         (los demás)
+$ chmod +x py-words-v.3.28-x86_64.AppImage
+$ ./py-words-v.3.28-x86_64.AppImage              (la ventana)
+$ ./py-words-v.3.28-x86_64.AppImage cli amicus   (en la terminal)
+$ ./py-words-v.3.28-x86_64.AppImage help         (los demás)
 \end{verbatim}
 
 \noindent\index{editores del diccionario!datos de solo lectura}%
@@ -319,7 +319,7 @@ Ubuntu 25.04 o posteriores); \texttt{apt} instala con él
 \texttt{python3-tk}:
 
 \begin{verbatim}
-$ sudo apt install ./py-words_3.27-1_all.deb
+$ sudo apt install ./py-words_3.28-1_all.deb
 \end{verbatim}
 
 \noindent
@@ -448,7 +448,8 @@ qué significan. El clic derecho copia o busca una palabra.
 \index{linea de estado@línea de estado}\index{modo oscuro}%
 La línea de abajo dice qué está haciendo el programa. A su derecha, la
 luna oscurece las ventanas (el diccionario, sus diálogos y el editor), y
-luego el sol las vuelve a aclarar.
+luego el sol las vuelve a aclarar. A su lado, el código del idioma de la
+interfaz (EN, ES o LA) abre la lista de los idiomas.
 
 \subsection{Los menús}
 
@@ -824,9 +825,11 @@ idioma elegido.
 \index{idioma de la interfaz}%
 Los programas hablan español, inglés o latín medieval: sus menús,
 botones, mensajes,
-ayuda y ajustes, los editores y el revisor. Se elige con \menu{Idioma de
-la interfaz} en los ajustes de la ventana y de la página web, con
-\key{F6} en la terminal, o al final del diálogo \texttt{\#} de la línea de
+ayuda y ajustes, los editores y el revisor. Se elige con el botón de su
+código (EN, ES o LA), abajo a la derecha de la ventana y arriba en la
+página web, con \menu{Idioma de la interfaz} en los ajustes de la ventana
+y de la página web, con \key{F6} en la terminal (su código está a la
+derecha de la línea de arriba), o al final del diálogo \texttt{\#} de la línea de
 órdenes (\texttt{--interface en} o \texttt{--interface la} para una sola
 ejecución). La ventana y la página web cambian en el acto. Cambiar la
 interfaz cambia también los significados al mismo idioma, si el
@@ -1028,7 +1031,8 @@ dirección, \menu{Significados en}, \menu{Búsqueda aproximada},
 enlaces y explicaciones; debajo, las búsquedas anteriores, todos los
 ajustes, la ayuda y los créditos. La luna oscurece la página, y el sol la
 vuelve a aclarar; hasta que se usa por primera vez, la página sigue al
-sistema.
+sistema. Justo antes de la luna, un botón redondo con el código del idioma
+de la interfaz (EN, ES o LA) abre la lista de los idiomas.
 
 \index{pagina web@página web!direcciones}%
 Cada búsqueda tiene su propia dirección, como

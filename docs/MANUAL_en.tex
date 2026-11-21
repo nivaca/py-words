@@ -1,4 +1,4 @@
-\newcommand*{\version}{3.27}
+\newcommand*{\version}{3.28}
 
 \documentclass[12pt,
               article,
@@ -262,10 +262,10 @@ The AppImage is a single file that brings its own Python, with Tk. Make it
 executable and run it:
 
 \begin{verbatim}
-$ chmod +x py-words-v.3.27-x86_64.AppImage
-$ ./py-words-v.3.27-x86_64.AppImage              (the window)
-$ ./py-words-v.3.27-x86_64.AppImage cli amicus   (the command line)
-$ ./py-words-v.3.27-x86_64.AppImage help         (the others)
+$ chmod +x py-words-v.3.28-x86_64.AppImage
+$ ./py-words-v.3.28-x86_64.AppImage              (the window)
+$ ./py-words-v.3.28-x86_64.AppImage cli amicus   (the command line)
+$ ./py-words-v.3.28-x86_64.AppImage help         (the others)
 \end{verbatim}
 
 \noindent\index{dictionary editors!read-only data}%
@@ -316,7 +316,7 @@ system's Python and Tk. It needs Python 3.13 or later (Debian 13, Ubuntu
 25.04 or later); \texttt{apt} installs \texttt{python3-tk} with it:
 
 \begin{verbatim}
-$ sudo apt install ./py-words_3.27-1_all.deb
+$ sudo apt install ./py-words_3.28-1_all.deb
 \end{verbatim}
 
 \noindent
@@ -444,7 +444,9 @@ right click copies or looks up a word.
 \index{status line}\index{dark mode}%
 The line at the bottom says what the program is doing. At its right, the
 moon makes the windows dark (the dictionary, its dialogues and the
-editor), and then the sun makes them light again.
+editor), and then the sun makes them light again. Beside it, the code of
+the language of the interface (EN, ES or LA) opens the list of the
+languages.
 
 \subsection{The menus}
 
@@ -811,9 +813,11 @@ Latin goes from the language chosen.
 \index{language of the interface}%
 The programs speak English, Spanish or Medieval Latin: their menus,
 buttons, messages,
-help and settings, the editors and the checker. It is chosen with
-\menu{Language of the interface} in the settings of the window and of the
-web page, with \key{F6} in the terminal, or at the end of the \texttt{\#}
+help and settings, the editors and the checker. It is chosen with the
+button with its code (EN, ES or LA), at the bottom right of the window
+and at the top of the web page, with \menu{Language of the interface} in
+the settings of the window and of the web page, with \key{F6} in the
+terminal (its code is at the right of the top line), or at the end of the \texttt{\#}
 dialogue of the command line (\texttt{--interface es} or
 \texttt{--interface la} for one run). The window and the web page change
 at once. Changing the interface changes the meanings too, to the same
@@ -1010,7 +1014,9 @@ direction, \menu{Meanings in}, \menu{Fuzzy search}, \menu{Search in}, and
 the results as in the window, with the same links and explanations; below
 them, the earlier searches, all the settings, the help and the credits.
 The moon makes the page dark, and the sun light again; until it is first
-used, the page follows the system.
+used, the page follows the system. Just before the moon, a round button
+with the code of the language of the interface (EN, ES or LA) opens the
+list of the languages.
 
 \index{web page!addresses}%
 Each search has its own address, such as

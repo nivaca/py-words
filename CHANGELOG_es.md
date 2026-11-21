@@ -8,6 +8,18 @@ Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
 
+## 3.28 — 2026-11-21
+
+- **El idioma de la interfaz en la ventana principal** de cada programa,
+  como en la página web del autor: su código (EN, ES o LA), que abre la
+  lista de los idiomas (cada uno en sí mismo, marcado el actual).  En la
+  ventana está abajo a la derecha, junto a la luna, con su nombre en la
+  línea de estado bajo el ratón; en la página web es un botón redondo
+  justo antes de la luna, que funciona sin JavaScript y vuelve a la
+  búsqueda, no a los ajustes.  `words_tui.py` muestra el código a la
+  derecha de su línea de arriba; F6 lo cambia, como antes.
+- Pruebas del botón de la ventana y del de la página web.
+
 ## 3.27 — 2026-11-21
 
 - **Un paquete .deb para Debian, Ubuntu y sus derivados**

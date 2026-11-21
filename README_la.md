@@ -105,10 +105,10 @@ secum fert, ita quod nichil aliud requiritur.  Trahe ex interreti
 [Releases](https://github.com/nivaca/py-words/releases) in GitHub, fac
 ipsum exsecutabilem et curre:
 
-    $ chmod +x py-words-v.3.27-x86_64.AppImage
-    $ ./py-words-v.3.27-x86_64.AppImage                # fenestra
-    $ ./py-words-v.3.27-x86_64.AppImage cli amicus     # linea mandatorum
-    $ ./py-words-v.3.27-x86_64.AppImage help           # cetera programmata
+    $ chmod +x py-words-v.3.28-x86_64.AppImage
+    $ ./py-words-v.3.28-x86_64.AppImage                # fenestra
+    $ ./py-words-v.3.28-x86_64.AppImage cli amicus     # linea mandatorum
+    $ ./py-words-v.3.28-x86_64.AppImage help           # cetera programmata
 
 Primum argumentum eligit programma: `gui` (quod ponitur nisi aliud
 dicatur), `cli`, `tui`, `web`, `edit`, `edit-gui`, `check` vel `convert`;
@@ -139,7 +139,7 @@ Vel trahe ex interreti `py-words-VERSION-1.fc45.noarch.rpm` et
 (fasciculus est signatus; importa clavem eius semel) et institue ipsum:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.27-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.28-1.fc45.noarch.rpm
 
 Currit in quolibet Fedora cum Python 3.13 vel posteriore, quicumque sit
 numerus `fc` in nomine eius.  Vel construe ipsum ex capsula programmatis
@@ -183,7 +183,7 @@ tabella et iconem.  Trahe ex interreti `py-words_VERSION-1_all.deb` ex
 [Releases](https://github.com/nivaca/py-words/releases) in GitHub et
 institue ipsum:
 
-    $ sudo apt install ./py-words_3.27-1_all.deb
+    $ sudo apt install ./py-words_3.28-1_all.deb
 
 Requirit Python 3.13 vel posteriorem (Debian 13, Ubuntu 25.04 vel
 posteriores); `apt` simul instituit `python3-tk`.  Subscriptio est
@@ -191,7 +191,7 @@ seorsum: `py-words_VERSION-1_all.deb.asc` est subscriptio OpenPGP facta
 eadem clave qua RPM, et sic probatur:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words_3.27-1_all.deb.asc py-words_3.27-1_all.deb
+    $ gpg --verify py-words_3.28-1_all.deb.asc py-words_3.28-1_all.deb
 
 Deinde `py-words` ipsum incipit, sicut cum RPM, et `sudo apt remove
 py-words` ipsum removet.  Ad ipsum construendum ex capsula programmatis
@@ -271,7 +271,7 @@ distribuendum:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-Hoc scribit `dist/py-words-v.3.27.zip` (cum versione programmatis; `-o`
+Hoc scribit `dist/py-words-v.3.28.zip` (cum versione programmatis; `-o`
 dat aliam capsulam), cum programmate intra capsulam eiusdem nominis.
 Continet programmata, data, icones et documenta, et fasciculum `COMMIT`
 cum commissione ex qua factum est, quam "De programmate" ostendit.  Non continet
@@ -286,7 +286,7 @@ In Linux, AppImage (vide "De AppImage (Linux)") fit per
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-Scribit `dist/py-words-v.3.27-x86_64.AppImage` (`-o` dat aliam
+Scribit `dist/py-words-v.3.28-x86_64.AppImage` (`-o` dat aliam
 capsulam), cum eisdem fasciculis quibus zip (sed non `words_install.py`),
 proprio Python et loco in tabella et iconibus.  Python (Python 3.13 cum
 Tk, ex [python-appimage](https://github.com/niess/python-appimage)) et
@@ -341,7 +341,8 @@ infra (PgUp et PgDn ea volvunt), et claves in ultima linea ostenduntur.
 F2 mutat inter Latinum in Anglicum et Anglicum in Latinum, F3 optiones
 enumerat (Space unam mutat), F4 editorem dictionarii aperit, F5 linguam
 significationum eligit (cum Logeion, dictionarium eius), F6 linguam
-interfaciei, F7 omnia inventa transcribit, F8 querit in hoc dictionario vel
+interfaciei (nota eius, EN, ES vel LA, est ad dexteram linee superioris),
+F7 omnia inventa transcribit, F8 querit in hoc dictionario vel
 in Logeion (vide "De Logeion"), F9 historiam delet, F1 auxilium ostendit,
 et F10 exit.  Optiones et historiam communes habet cum `words.py` et cum
 fenestra.  (In Windows requirit fasciculum windows-curses.)
@@ -361,7 +362,8 @@ nisi aliter dicas per `--host` (`--host 0.0.0.0` sinit ut ea utaris ex
 telephono in eodem reti); nulla sunt verba secreta, unde hoc fac solum in
 reti cui confidis.  Luna eius (☾), iuxta "Significationes", paginam obscuram
 facit, et deinde sol (☀) iterum claram (donec primum ea utaris, pagina
-sequitur systema); est eadem optio que in fenestra.  Dictionarium ex
+sequitur systema); est eadem optio que in fenestra.  Ante lunam, bulla rotunda cum nota
+lingue interfaciei (EN, ES vel LA) indicem linguarum aperit.  Dictionarium ex
 navigatro emendari non potest.  `--port` portum eligit et `--no-browser`
 navigatrum non aperit; Ctrl-C servitrum sistit.
 
@@ -536,8 +538,10 @@ eius quomodo instituantur.
 Programmata possunt loqui Latine, Anglice vel Hispanice: tabelle eorum, bulle,
 tituli, nuntii, auxilium, optiones et quid significent, editores
 dictionarii, examinator et commentarii fasciculi configurationis.  Linguam
-eligis per "Lingua interfaciei" in optionibus fenestre ("Optiones")
-et in optionibus pagine interretialis, per F6 in `words_tui.py`, vel in
+eligis per bullam cum nota eius (EN, ES vel LA), in parte dextra
+inferiore fenestre et in summa pagina interretiali, per "Lingua
+interfaciei" in optionibus fenestre ("Optiones") et pagine interretialis,
+per F6 in `words_tui.py`, vel in
 fine dialogi `#` ipsius `words.py` (`--interface la` vel `--interface es` aliam
 adhibet pro una tantum executione).  Electio servatur in fasciculo configurationis (optio
 `interface`, `en` nisi aliud dicat), ita quod omnia programmata cum ea
@@ -567,7 +571,8 @@ editoris), typos litterarum eligit: unum latitudinis fixe pro inventis,
 quia columne eorum ordinate esse debent, et alium pro ceteris fenestre.
 Luna (☾) in parte dextra inferiore fenestre fenestras statim obscuras facit
 (dictionarium, dialogos eius et editorem), et deinde sol (☀) eas iterum
-claras facit.  Utraque electio in fasciculo configurationis memorie
+claras facit.  Iuxta eam, nota lingue interfaciei (EN, ES vel LA) indicem
+linguarum aperit.  Utraque electio in fasciculo configurationis memorie
 mandatur (vide "De optionibus et fasciculis").  Ad programma ex tabella
 applicationum incipiendum, vide "De institutione" supra.
 
@@ -1428,6 +1433,13 @@ spectes.
 Versiones
 ---------
 
+- 3.28:
+  - Nota lingue interfaciei (EN, ES vel LA) ostenditur in fenestra
+    principali cuiusque programmatis, sicut in pagina interretiali
+    auctoris: in parte dextra inferiore fenestre, iuxta lunam, et in
+    pagina interretiali ut bulla rotunda ante lunam; ictus indicem
+    linguarum aperit.  In `words_tui.py` nota est ad dexteram linee
+    superioris, et F6 eam mutat.
 - 3.27:
   - Fasciculus .deb pro Debian, Ubuntu et eis derivatis
     (`packaging/build-deb.py`), editionibus affixus cum subscriptione sua

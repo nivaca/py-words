@@ -109,10 +109,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.27-x86_64.AppImage
-    $ ./py-words-v.3.27-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.27-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.27-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.28-x86_64.AppImage
+    $ ./py-words-v.3.28-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.28-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.28-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -144,7 +144,7 @@ O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
 paquete va firmado; importe su clave una vez) e instálelo:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.27-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.28-1.fc45.noarch.rpm
 
 Funciona en cualquier Fedora con Python 3.13 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
@@ -192,7 +192,7 @@ cuatro accesos del menú y el icono.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub e
 instálelo:
 
-    $ sudo apt install ./py-words_3.27-1_all.deb
+    $ sudo apt install ./py-words_3.28-1_all.deb
 
 Necesita Python 3.13 o posterior (Debian 13, Ubuntu 25.04 o posteriores);
 `apt` instala con él `python3-tk`.  La firma va aparte:
@@ -200,7 +200,7 @@ Necesita Python 3.13 o posterior (Debian 13, Ubuntu 25.04 o posteriores);
 clave que el RPM, y se comprueba así:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words_3.27-1_all.deb.asc py-words_3.27-1_all.deb
+    $ gpg --verify py-words_3.28-1_all.deb.asc py-words_3.28-1_all.deb
 
 Después `py-words` lo inicia, como con el RPM, y `sudo apt remove
 py-words` lo quita.  Para hacerlo desde la carpeta del programa (un clon
@@ -281,7 +281,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.27.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.28.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -297,7 +297,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.27-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.28-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -353,7 +353,8 @@ debajo (RePág y AvPág los desplazan) y las teclas a la vista en la última
 línea: F2 alterna entre latín al inglés e inglés al latín, F3
 lista los ajustes (Espacio cambia uno), F4 abre el editor del diccionario,
 F5 elige el idioma de los significados (con Logeion, su diccionario), F6
-el de la interfaz, F7 copia
+el de la interfaz (su código, EN, ES o LA, está a la derecha de la línea
+de arriba), F7 copia
 todos los resultados, F8 busca en este diccionario o en Logeion (véase
 "Logeion"), F9 borra el historial, F1 muestra la ayuda y F10 sale.  Comparte los ajustes y el
 historial con `words.py` y la ventana.  (En Windows necesita el paquete
@@ -374,7 +375,9 @@ desde un teléfono en la misma red); como no hay contraseñas, hágalo solo en
 una red de confianza.  El diccionario no puede editarse desde el
 navegador.  Su luna (☾), junto a "Significados en", la oscurece, y
 luego el sol (☀) la vuelve a aclarar (hasta que se usa por primera vez,
-la página sigue al sistema); es el mismo ajuste que el de la ventana.  `--port` elige el puerto y `--no-browser` no abre el navegador;
+la página sigue al sistema); es el mismo ajuste que el de la ventana.
+Justo antes de la luna, un botón redondo con el código del idioma de la
+interfaz (EN, ES o LA) abre la lista de los idiomas.  `--port` elige el puerto y `--no-browser` no abre el navegador;
 Ctrl-C detiene el servidor.
 
 Los resultados de la página se ven como en la ventana: la forma de
@@ -556,8 +559,10 @@ cuántos resultados mostrar.  Necesita las bibliotecas de D-Bus de Python
 Los programas hablan inglés, español o latín medieval: sus menús, botones,
 etiquetas, mensajes y ayuda, los ajustes y lo que significan, los editores
 del diccionario, el verificador y los comentarios del archivo de
-configuración.  El idioma se elige con "Idioma de la interfaz" en los
-Ajustes de la ventana y en los ajustes de la página web, con F6 en
+configuración.  El idioma se elige con el botón de su código (EN, ES o
+LA), abajo a la derecha de la ventana y arriba en la página web, con
+"Idioma de la interfaz" en los Ajustes de la ventana y de la página web,
+con F6 en
 `words_tui.py` o al final del diálogo `#` de `words.py` (`--interface es`
 o `--interface la` usan otro solo para una ejecución).  La elección se guarda en el archivo de
 configuración (el ajuste `interface`, `en` salvo que diga otra cosa), así
@@ -588,7 +593,8 @@ del editor), elige las fuentes: una de ancho fijo para los resultados,
 cuyas columnas deben alinearse, y otra para el resto de la ventana.  La
 luna (☾) de abajo a la derecha de la ventana oscurece al instante las
 ventanas (el diccionario, sus diálogos y el editor), y luego el sol (☀)
-las vuelve a aclarar.  Ambas elecciones se recuerdan en el archivo de
+las vuelve a aclarar.  A su lado, el código del idioma de la interfaz
+(EN, ES o LA) abre la lista de los idiomas.  Ambas elecciones se recuerdan en el archivo de
 configuración (véase "Ajustes y archivos"). Para abrir el programa desde el menú de aplicaciones, véase
 "Instalación" más arriba.
 
@@ -1470,6 +1476,13 @@ verlas.
 Versiones
 ---------
 
+- 3.28:
+  - El código del idioma de la interfaz (EN, ES o LA) aparece en la
+    ventana principal de cada programa, como en la página web del autor:
+    abajo a la derecha de la ventana, junto a la luna, y en la página web
+    como un botón redondo antes de la luna; un clic abre la lista de los
+    idiomas.  En `words_tui.py` el código está a la derecha de la línea de
+    arriba, y F6 lo cambia.
 - 3.27:
   - Un paquete .deb para Debian, Ubuntu y sus derivados
     (`packaging/build-deb.py`), adjunto a las releases con su firma
