@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Publica una versión de py-words en GitHub (con gh) y en Codeberg (con
-tea): la etiqueta vVERSION (la versión de version.py), con el zip y el
-AppImage adjuntos y (--rpm) el RPM firmado, que se publica también en
-Copr.
+tea): la etiqueta vVERSION (la versión de version.py), con el zip, el
+AppImage y el .deb firmado adjuntos y (--rpm) el RPM firmado, que se
+publica también en Copr.
 
     python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-                             [--no-build] [--no-appimage] [--rpm [--no-copr]]
+                             [--no-build] [--no-appimage] [--no-deb]
+                             [--rpm [--no-copr]]
                              [--only github|codeberg] [--remote REMOTE]
                              [--tea-login LOGIN] [--dry-run] [--yes]
 
@@ -13,12 +14,14 @@ En orden, y cada paso solo si hace falta:
 
 1. comprueba que el repositorio esté en main, sin nada por confirmar, y
    que gh y tea estén instalados (con --rpm, también rpmbuild y, salvo
-   --no-copr, copr-cli, y que la clave de firma esté en el llavero de gpg
-   del computador);
+   --no-copr, copr-cli), y que la clave de firma (la del .deb y la del
+   RPM) esté en el llavero de gpg del computador;
 2. hace el zip y el AppImage en dist/ (tools/bundle-zip.py y
    tools/bundle-appimage.py), salvo con --no-build (entonces usa los que
-   hay en dist/); con --rpm, también el RPM firmado y su clave pública en
-   build/rpm/ (packaging/build-rpm.sh --sign; gpg pide la frase de paso);
+   hay en dist/); también el .deb, con su firma aparte (.deb.asc), en
+   dist/ (packaging/build-deb.py --sign), y con --rpm el RPM firmado y su
+   clave pública en build/rpm/ (packaging/build-rpm.sh --sign); gpg pide
+   la frase de paso;
 3. pone la etiqueta vVERSION en HEAD.  Si la etiqueta ya está en otro
    commit, se detiene, salvo que --redo la mueva;
 4. sube main y la etiqueta al remoto (origin, que sube tanto a GitHub como
@@ -63,6 +66,9 @@ from version import VERSION  # noqa: E402
 TAG = f'v{VERSION}'
 ZIP = os.path.join('dist', f'py-words-v.{VERSION}.zip')
 APPIMAGE = os.path.join('dist', f'py-words-v.{VERSION}-x86_64.AppImage')
+#  El .deb que hace packaging/build-deb.py (su REVISION es la 1) y su firma
+DEB = os.path.join('dist', f'py-words_{VERSION}-1_all.deb')
+DEB_SIGNATURE = DEB + '.asc'
 SPEC = os.path.join('packaging', 'py-words.spec')
 RPM_KEY = os.path.join('build', 'rpm', 'RPM-GPG-KEY-py-words')
 COPR_PROJECT = 'py-words'       # (del usuario de copr-cli, nivaca)
@@ -164,7 +170,7 @@ class Release:
         for tool in tools:
             if not shutil.which(tool):
                 sys.exit(f'release.py: {tool} is not installed')
-        if self.args.rpm:
+        if self.args.rpm or DEB in self.files:
             key = signing_key()
             if not key or subprocess.run(
                     ['gpg', '--batch', '--list-secret-keys', key],
@@ -211,6 +217,9 @@ class Release:
         if APPIMAGE in self.files:
             self.plan('Make the AppImage', sys.executable,
                       os.path.join('tools', 'bundle-appimage.py'))
+        if DEB in self.files:
+            self.plan('Make the signed .deb', sys.executable, os.path.join(
+                'packaging', 'build-deb.py'), '--sign')
         if RPM_KEY in self.files:
             self.plan('Make the signed RPM', os.path.join(
                 'packaging', 'build-rpm.sh'), '--sign')
@@ -320,6 +329,8 @@ class Release:
         args = self.args
         self.forges = [args.only] if args.only else ['github', 'codeberg']
         self.files = [ZIP] + ([] if args.no_appimage else [APPIMAGE])
+        if not args.no_deb:
+            self.files += [DEB, DEB_SIGNATURE]
         if args.rpm:
             self.files += [rpm(), RPM_KEY]
         self.check()
@@ -337,7 +348,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(
         prog='tools/release.py',
         description=f'Publish {TAG} on GitHub and Codeberg, with the zip, '
-                    'the AppImage and (--rpm) the RPM.')
+                    'the AppImage, the .deb and (--rpm) the RPM.')
     parser.add_argument('--redo', action='store_true',
                         help=f'move {TAG} to HEAD if it is on another commit '
                              '(here and on the remote), and replace the '
@@ -351,7 +362,10 @@ def main(argv=None):
                         help='use the zip and AppImage in dist/, without '
                              'making them again')
     parser.add_argument('--no-appimage', action='store_true',
-                        help='only the zip')
+                        help='without the AppImage')
+    parser.add_argument('--no-deb', action='store_true',
+                        help='without the .deb (packaging/build-deb.py '
+                             '--sign)')
     parser.add_argument('--rpm', action='store_true',
                         help='also the signed RPM and its public key '
                              '(packaging/build-rpm.sh --sign), and a Copr '
