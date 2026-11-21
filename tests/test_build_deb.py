@@ -167,6 +167,10 @@ class Package(unittest.TestCase):
         with open(os.path.join(root, "usr", "bin", "py-words"),
                   encoding="utf-8") as f:
             launcher = f.read().replace("/usr/share/py-words", program)
+        # El Python de las pruebas, no el del sistema: en el runner de
+        # GitHub (Ubuntu 24.04) /usr/bin/python3 es el 3.12
+        self.assertIn("/usr/bin/python3", launcher)
+        launcher = launcher.replace("/usr/bin/python3", sys.executable)
         home = os.path.join(self.tmp, "home")
         env = dict(os.environ, HOME=home, PY_WORDS_CACHE="",
                    PY_WORDS_CONFIG=os.path.join(home, "config"))
