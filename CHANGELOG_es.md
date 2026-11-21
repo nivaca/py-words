@@ -8,6 +8,17 @@ Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
 
+## 3.25 — 2026-11-21
+
+- `docs/LICENCES.md` y `docs/LICENCIAS_es.md` enumeran el software libre
+  que usa py-words, con la licencia de cada uno: con qué funciona
+  (Python, Tcl/Tk, ncurses), el código y los datos que incorporó (WORDS,
+  Collatinus, py-logeion), lo que llevan o necesitan la AppImage y el
+  RPM, y las herramientas con que se hace, se prueba y se publica.  Los
+  README y las descripciones remiten a ellos, y el RPM los instala.
+- `docs/DESCRIPCIÓN_es.md` ya no dice que el programa nunca necesita
+  internet: Logeion sí lo necesita.
+
 ## 3.24 — 2026-11-20
 
 - En una pantalla de alta resolución escalada al 200 %, el texto de las

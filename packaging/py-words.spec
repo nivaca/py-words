@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.24
+Version:        3.25
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -106,6 +106,9 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Sat Nov 21 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.25-1
+- The open-source software used, with its licences, in docs/LICENCES.md
+
 * Fri Nov 20 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.24-1
 - The windows' text follows the scaling of a hi-res display even when fontconfig
   fixes a DPI
