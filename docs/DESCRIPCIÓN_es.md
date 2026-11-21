@@ -56,9 +56,13 @@ Funciona en Linux (y en otros sistemas tipo Unix con menús freedesktop), Window
 
 En pantallas de alta resolución, las ventanas siguen la escala del escritorio (`Xft.dpi`), también con el Tk 8.6 del AppImage, que no la lee, y, desde la 3.24, cuando la configuración de fontconfig fija otra resolución para las fuentes, que dejaba el texto del RPM a la mitad de su tamaño en una pantalla al 200 %.
 
-En el equipo es una aplicación de escritorio, de terminal y de navegador, y no necesita internet. La versión web levanta su propio servidor, que por omisión solo atiende al mismo equipo; con `--host` se puede abrir a la red local, por ejemplo para usarla desde el teléfono. No tiene contraseñas ni permite editar el diccionario, y rechaza las peticiones que llegan con otro nombre de equipo y los formularios enviados desde otros sitios.
+En el equipo es una aplicación de escritorio, de terminal y de navegador, y no necesita internet, salvo para consultar Logeion. La versión web levanta su propio servidor, que por omisión solo atiende al mismo equipo; con `--host` se puede abrir a la red local, por ejemplo para usarla desde el teléfono. No tiene contraseñas ni permite editar el diccionario, y rechaza las peticiones que llegan con otro nombre de equipo y los formularios enviados desde otros sitios.
 
 En línea, en https://nivaca.pythonanywhere.com/, basta un navegador: las búsquedas las hace el servidor, y cada visitante guarda sus ajustes en las cookies de su navegador. Allí el diccionario no se puede editar.
+
+### Licencias
+
+py-words está bajo la GPL, versión 3 o posterior, y no usa más bibliotecas que la estándar de Python, bajo la licencia de la Python Software Foundation; las ventanas usan Tcl/Tk (con una licencia de tipo BSD) y la terminal, ncurses (de tipo MIT). `docs/LICENCIAS_es.md` enumera todo el software libre que usa, con su licencia: lo que necesita para funcionar, el código que incorporó (WORDS, Collatinus, py-logeion), lo que llevan la AppImage y el RPM, y las herramientas con que se hace.
 
 ## Ambiente
 

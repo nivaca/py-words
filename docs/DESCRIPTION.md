@@ -26,7 +26,11 @@ dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among
 others, and the README names all the sources and people it thanks).
 py-words is free software, under the GNU General Public License, version 3
 or later; the data of WORDS are free for any use, by permission of
-Whitaker.
+Whitaker.  It uses no libraries outside Python's standard library, which
+is under the Python Software Foundation License; the windows use Tcl/Tk
+(under a BSD-style licence) and the terminal ncurses (under an MIT-style
+one).  [LICENCES.md](LICENCES.md) lists all the software it uses, with
+its licences.
 
 Nicolas Vaughan is Associate Professor of Literature at the School of Arts
 and Humanities of the Universidad de los Andes, Bogotá, Colombia.

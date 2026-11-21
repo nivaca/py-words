@@ -2111,3 +2111,9 @@ would appreciate comments and suggestions.
 
 All parts of the WORDS system, source code and data files, are made freely
 available to anyone who wishes to use them, for whatever purpose.
+
+El resto del software libre que usa py-words, con la licencia de cada
+uno, está en [docs/LICENCIAS_es.md](docs/LICENCIAS_es.md): Python y su
+biblioteca estándar, Tcl/Tk y ncurses, lo que llevan o necesitan la
+AppImage y el RPM, y las herramientas con que se hace, se prueba y se
+publica py-words.

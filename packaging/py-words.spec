@@ -96,6 +96,7 @@ bash check-py-words cli --version | grep -q '%{version}'
 %files
 %license LICENCE.txt
 %doc README.md README_es.md docs/DESCRIPTION.md docs/DESCRIPCIÓN_es.md
+%doc docs/LICENCES.md docs/LICENCIAS_es.md
 %{_bindir}/py-words
 %{_datadir}/%{name}/
 %{_datadir}/applications/py-words.desktop
