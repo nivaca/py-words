@@ -109,6 +109,23 @@ class SettingsDialogTests(unittest.TestCase):
         self.assertEqual(self.app.dark_box.cget('text'), words_gui.SUN)
         self.app.dark.set(False)
 
+    def test_interface_button(self):
+        """Beside the moon, the code of the language of the interface;
+        choosing another language there changes the interface, and the
+        rebuilt window shows its code."""
+        import interface
+        app = self.app
+        self.assertEqual(app.interface_button.cget('text'), 'EN')
+        try:
+            app.choose_interface('es')
+            self.assertEqual(app.saved.interface, 'es')
+            self.assertEqual(app.interface_button.cget('text'), 'ES')
+            self.assertEqual(app.button.cget('text'), 'Buscar')
+        finally:
+            app.choose_interface('en')
+            interface.use('en')
+        self.assertEqual(app.interface_button.cget('text'), 'EN')
+
     def test_fuzzy_search(self):
         """The "Fuzzy search" box changes the setting, and keeps it."""
         import config

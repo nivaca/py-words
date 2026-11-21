@@ -186,8 +186,13 @@ class DictionaryTUI(Screen):
                    dictionary=logeion.dictionary_name(self.dictionary))
         title = ' ' + tr('{name} {version}: A Latin Dictionary', name=NAME,
                          version=VERSION)
-        self.put(0, 0, (title + language.rjust(w - len(title) - 1) + ' ')
-                 [:w].ljust(w), curses.A_REVERSE)
+        #  a la derecha, el código del idioma de la interfaz (EN, ES, LA),
+        #  como en la ventana y en la página web; F6 lo cambia
+        code = ' ' + interface.code().upper() + ' '
+        self.put(0, 0, (title + language.rjust(w - len(title) - 1 - len(code))
+                        + ' ')[:w].ljust(w), curses.A_REVERSE)
+        if w > len(title) + len(language) + len(code) + 2:
+            self.put(0, w - len(code), code, curses.A_BOLD)
         if hasattr(self, 'query'):
             self.put(1, 0, '=> ' + self.query.value[self.offset(w - 4):])
             for i, line in enumerate(self.shown(w)[self.top:

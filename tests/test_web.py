@@ -307,6 +307,27 @@ class PublicTests(unittest.TestCase):
         self.assertEqual(History().items, before)
         self.assertIn('<html lang="es" data-theme="dark">', self.call(a)[1])
 
+    def test_interface_switch(self):
+        """The round button with the code of the language of the
+        interface, beside the moon: its list marks the current language,
+        and choosing another changes the interface."""
+        jar = {}
+        page = self.call(jar)[1]
+        self.assertIn('aria-label="Language of the interface">EN</summary>',
+                      page)
+        self.assertIn('value="en" lang="en" aria-current="true">English'
+                      '</button>', page)
+        self.assertIn('value="la" lang="la">Latina</button>', page)
+        self.assertLess(page.index('id="interface"'), page.index('id="dark"'))
+        self.assertEqual(self.post(jar, '/interface',
+                                   'interface=es&switch=1')[0],
+                         '303 See Other')
+        page = self.call(jar)[1]
+        self.assertIn('>ES</summary>', page)
+        self.assertIn('value="es" lang="es" aria-current="true">Español'
+                      '</button>', page)
+        self.assertEqual(jar['words_interface'], 'es')
+
     def test_history(self):
         """The earlier searches, newest first, in a cookie; cleared, the
         cookie goes."""

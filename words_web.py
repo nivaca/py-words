@@ -608,6 +608,8 @@ class WebApp:
                                language.code if reverse else ''),
             languages=self.language_options(language.code),
             interfaces=self.interface_options(),
+            interface_code=esc(interface.code().upper()),
+            interface_switch=self.interface_switch(),
             theme=self.theme_attribute(),
             dark_checked=' checked' if self.appearance() == 'dark' else '',
             fuzzy_checked=' checked' if self.saved.fuzzy_search else '',
@@ -805,6 +807,19 @@ class WebApp:
                 f'{options}</select>')
 
     @staticmethod
+    def interface_switch() -> str:
+        """The buttons of the list under the round button with the code
+        of the language of the interface (EN, ES, LA): each language in
+        itself, the current one marked."""
+        current = interface.code()
+        mark = ' aria-current="true"'
+        return ''.join(
+            f'<li><button name="interface" value="{esc(code)}" '
+            f'lang="{esc(code)}"{mark if code == current else ""}>'
+            f'{esc(name)}</button></li>'
+            for code, name in interface.names().items())
+
+    @staticmethod
     def interface_options() -> str:
         """The choices of the pull-down of the languages of the
         interface."""
@@ -924,6 +939,10 @@ class WebApp:
             self.change(values)
             if from_language(form):     # (the search is in the language)
                 form['lang'] = [self.session.language.code]
+        #  (desde los ajustes, de vuelta con ellos abiertos; desde el botón
+        #  de arriba, no)
+        if 'switch' in form:
+            return self._back(start_response, form)
         return self._back(start_response, form, s='1')
 
     def choose_appearance(self, environ, start_response):
@@ -1126,6 +1145,28 @@ form.meanings { color: var(--muted); margin: 0 0 .5rem; }
 .unseen { position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip-path: inset(50%); white-space: nowrap; }
 .row { display: flex; flex-wrap: wrap; gap: 0 1.5rem; align-items: baseline; }
+/* the language of the interface: a round button with its code (EN, ES,
+   LA), that opens a short list of the languages, as on the author's
+   page; it goes just before the moon */
+.lang-menu { position: relative; margin: 0 -1rem .5rem 0;
+  align-self: center; border-top: 0; padding: 0; }
+.lang-menu summary { display: inline-flex; align-items: center;
+  justify-content: center; width: 2rem; height: 2rem;
+  border: 1px solid var(--line); border-radius: 50%; color: var(--muted);
+  font-size: .75rem; font-weight: 700; letter-spacing: .03em;
+  cursor: pointer; list-style: none; user-select: none; }
+.lang-menu summary::-webkit-details-marker { display: none; }
+.lang-menu summary:hover, .lang-menu[open] summary {
+  color: var(--accent); border-color: var(--accent); }
+.lang-menu ul { position: absolute; top: calc(100% + .4rem); left: 0;
+  z-index: 10; min-width: 7.5rem; margin: 0; padding: .3rem 0;
+  list-style: none; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 6px; box-shadow: 0 4px 14px rgba(0, 0, 0, .12); }
+.lang-menu button { display: block; width: 100%; text-align: left;
+  border: 0; border-radius: 0; background: none; color: var(--muted);
+  padding: .3rem .9rem; font-size: .9rem; }
+.lang-menu button:hover { color: var(--fg); background: var(--panel); }
+.lang-menu button[aria-current] { color: var(--fg); font-weight: 700; }
 select { font: inherit; color: var(--fg); background: var(--bg);
   border: 1px solid var(--line); border-radius: 6px; padding: .2rem .4rem; }
 .message { background: var(--panel); border-left: 3px solid var(--accent);
@@ -1235,6 +1276,16 @@ $t_fuzzy</label>
 $dictionaries
 <noscript><button>$t_change</button></noscript>
 </form>
+<details class="lang-menu" id="interface">
+<summary title="$t_interface" aria-label="$t_interface">$interface_code</summary>
+<form method="post" action="/interface">
+<input type="hidden" name="token" value="$token">
+<input type="hidden" name="q" value="$query">
+<input type="hidden" name="lang" value="$lang">
+<input type="hidden" name="switch" value="1">
+<ul>$interface_switch</ul>
+</form>
+</details>
 <form class="meanings" id="dark" method="post" action="/appearance">
 <input type="hidden" name="token" value="$token">
 <input type="hidden" name="q" value="$query">
@@ -1290,6 +1341,16 @@ for (const box of document.querySelectorAll('#settings input[name=on]'))
   box.addEventListener('change', () => box.form.submit());
 for (const select of document.querySelectorAll('select'))
   select.addEventListener('change', e => e.target.form.submit());
+const switcher = document.getElementById('interface');
+document.addEventListener('click', e => {   // (closed by a click outside)
+  if (switcher.open && !switcher.contains(e.target)) switcher.open = false;
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && switcher.open) {
+    switcher.open = false;
+    switcher.querySelector('summary').focus();
+  }
+});
 const dark = document.querySelector('#dark input[name=dark]');
 if (!document.documentElement.dataset.theme)  // (as the system, till chosen)
   dark.checked = matchMedia('(prefers-color-scheme: dark)').matches;

@@ -196,10 +196,22 @@ class App:
         self.dark_box.pack(side='right')
         self.dark.trace_add('write', lambda *a: self.show_dark())
         self.show_dark()
+        #  el idioma de la interfaz: su código (EN, ES, LA), a la izquierda
+        #  de la luna, que abre la lista de los idiomas, como en la página
+        #  web
+        self.interface_button = ttk.Button(
+            bottom, text=interface.code().upper(),
+            style='Lang.Flat.Toolbutton', command=self.interface_menu)
+        self.interface_button.pack(side='right', padx=(0, 4))
         self.status = ttk.Label(bottom)
         self.status.pack(side='left', fill='x', expand=True)
-        self.dark_box.bind('<Enter>', lambda e: self.name_dark(True))
-        self.dark_box.bind('<Leave>', lambda e: self.name_dark(False))
+        for button, name in ((self.dark_box, N_('Dark mode')),
+                             (self.interface_button,
+                              N_('Language of the interface'))):
+            button.bind('<Enter>', lambda e, n=name: self.name_button(n,
+                                                                      True))
+            button.bind('<Leave>', lambda e, n=name: self.name_button(n,
+                                                                      False))
         root.bind('<<FontsChanged>>', lambda e: self.fit())
         self.fit()
 
@@ -306,16 +318,45 @@ class App:
         size = tkfont.nametofont('TkDefaultFont').actual('size')
         ttk.Style().configure('Mode.Flat.Toolbutton', padding=(6, 0),
                               font=('TkDefaultFont', round(abs(size) * 1.5)))
+        #  el código del idioma, en negrita, de la altura de la luna
+        ttk.Style().configure('Lang.Flat.Toolbutton', padding=(6, 2),
+                              font=('TkDefaultFont', abs(size), 'bold'))
         self.dark_box.config(text=SUN if self.dark.get() else MOON)
 
-    def name_dark(self, shown: bool):
-        """The name of the dark mode button, in the status line while the
-        mouse is over it (and what was there, after)."""
+    def name_button(self, name: str, shown: bool):
+        """The name of a button of the bottom line (NAME, in English), in
+        the status line while the mouse is over it (and what was there,
+        after)."""
         if shown:
             self._status_before = self.status.cget('text')
-            self.status.config(text=tr('Dark mode'))
-        elif self.status.cget('text') == tr('Dark mode'):
+            self.status.config(text=tr(name))
+        elif self.status.cget('text') == tr(name):
             self.status.config(text=getattr(self, '_status_before', ''))
+
+    def interface_menu(self):
+        """The languages of the interface, each in itself, in a menu over
+        the button with the code of the current one; choosing another
+        changes the interface (and the window is built again)."""
+        if self.session is None:            # (still loading)
+            return
+        menu = tk.Menu(self.root, tearoff=False)
+        current = tk.StringVar(self.root, interface.code())
+        for code, name in interface.names().items():
+            menu.add_radiobutton(
+                label=name, value=code, variable=current,
+                command=lambda c=code: self.choose_interface(c))
+        menu.update_idletasks()
+        button = self.interface_button
+        #  (hacia arriba, porque el botón está al pie de la ventana; Tk la
+        #  mueve si no cabe)
+        menu.tk_popup(button.winfo_rootx(),
+                      button.winfo_rooty() - menu.winfo_reqheight())
+        menu.grab_release()
+        self._interface_var = current       # (Tk keeps only a name)
+
+    def choose_interface(self, code: str):
+        if code != interface.code():
+            self.change_setting('interface', code)
 
     def find(self):
         return self.results.show_find()
