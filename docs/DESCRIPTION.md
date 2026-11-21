@@ -8,8 +8,8 @@ wrote, in the Ada version maintained at
 [mk270/whitakers-words](https://github.com/mk270/whitakers-words); but
 both the code and the data have been redesigned, and it now includes a new
 English dictionary (Lewis and Short) and two new Spanish ones
-(Echave-Sustaeta and De Miguel).  Here I explain how it was made, in ten
-stages.
+(Echave-Sustaeta and De Miguel).  Here I explain how it was made, in
+eleven stages.
 
 The dictionary has six sources: WORDS, by William Whitaker, the starting
 point of the program and of the entries; R. E. Latham's *Revised Medieval
@@ -413,10 +413,33 @@ so with the Latin interface the meanings stay in English or Spanish, and
 meanings for a language that has none.  The Latin README and manual were
 then changed to name the Latin menus and to show Latin screenshots.
 
+11. A package for Debian and Ubuntu
+------------------------------------
+
+Since 3.10 there was a signed RPM for Fedora, but nothing for Debian,
+Ubuntu and the systems derived from them, where the AppImage was the only
+choice.  So in 3.27 I added a `.deb` package that installs the same as the
+RPM: the program in `/usr/share/py-words`, the `py-words` command, the
+four menu entries, the icons and the documentation.  The difficulty was
+that I build the releases on Fedora, where `dpkg-deb` is not at hand.
+But a `.deb` is a simple thing: an `ar` archive with a version line and
+two tar files, one for the control data and one for the files.  So
+`packaging/build-deb.py` makes it with Python's standard library alone,
+with every file owned by root and dated to the commit, so that the same
+commit gives the same package.  It compiles the modules at installation,
+as the RPM does at build time, and removes the compiled files when the
+package is removed.  The package is not signed inside, as Debian does not
+use that; instead it goes with a detached OpenPGP signature, made with the
+same key as the RPM, and `tools/release.py` builds it, signs it and
+attaches both files to each release.  One problem came up in the first
+build: git writes the names with letters outside ASCII in quoted form
+(`DESCRIPCI\303\223N_es.md`), so the script could not find the Spanish
+description, and it now asks git for the names as they are.
+
 Testing
 -------
 
-The program has unit tests and regression tests (`tests/`), 366 in total,
+The program has unit tests and regression tests (`tests/`), 383 in total,
 that run with Python 3.13 (the oldest it supports) and with the latest
 Python; `tools/test.py` runs them all at once, each class of tests in a
 process of its own, in about a minute and a half.  The regression tests

@@ -1,4 +1,4 @@
-\newcommand*{\version}{3.26}
+\newcommand*{\version}{3.27}
 
 \documentclass[12pt,
               article,
@@ -205,12 +205,14 @@ Perseus Digital Library, con la licencia CC BY-SA 4.0.
 Cada versión se publica en GitHub y en Codeberg (las direcciones están en
 la primera página), con estos archivos:
 
-\index{appimage@AppImage}\index{fedora (copr, rpm)@Fedora (Copr, RPM)}\index{zip}%
+\index{appimage@AppImage}\index{fedora (copr, rpm)@Fedora (Copr, RPM)}\index{debian y ubuntu (deb)@Debian y Ubuntu (.deb)}\index{zip}%
 \begin{itemize}
 \item \texttt{py-words-v.VERSIÓN-x86\_64.AppImage}: la AppImage, para
   cualquier Linux;
 \item \texttt{py-words-VERSIÓN-1.fc45.noarch.rpm}: el paquete de Fedora,
   firmado, con la clave que lo firma, \texttt{RPM-GPG-KEY-py-words};
+\item \texttt{py-words\_VERSIÓN-1\_all.deb}: el paquete para Debian y
+  Ubuntu, con su firma, \texttt{py-words\_VERSIÓN-1\_all.deb.asc};
 \item \texttt{py-words-v.VERSIÓN.zip}: el programa mismo, para Linux,
   macOS y Windows.
 \end{itemize}
@@ -232,8 +234,9 @@ $ brew install python-tk                (macOS, Homebrew)
 \noindent
 \texttt{python3 --version} dice qué Python hay; si es demasiado antiguo,
 el programa lo dice y se detiene. Las órdenes de este manual usan
-\texttt{python3}; en Windows se escribe \texttt{python}. La AppImage y el
-RPM traen o usan su propio Python, así que no necesitan nada de esto.
+\texttt{python3}; en Windows se escribe \texttt{python}. La AppImage y los
+paquetes traen o usan su propio Python, así que no necesitan nada de
+esto.
 
 \subsection{El ZIP, o una copia del repositorio}
 
@@ -261,10 +264,10 @@ La AppImage es un solo archivo que trae su propio Python, con Tk. Se hace
 ejecutable y se abre:
 
 \begin{verbatim}
-$ chmod +x py-words-v.3.26-x86_64.AppImage
-$ ./py-words-v.3.26-x86_64.AppImage              (la ventana)
-$ ./py-words-v.3.26-x86_64.AppImage cli amicus   (en la terminal)
-$ ./py-words-v.3.26-x86_64.AppImage help         (los demás)
+$ chmod +x py-words-v.3.27-x86_64.AppImage
+$ ./py-words-v.3.27-x86_64.AppImage              (la ventana)
+$ ./py-words-v.3.27-x86_64.AppImage cli amicus   (en la terminal)
+$ ./py-words-v.3.27-x86_64.AppImage help         (los demás)
 \end{verbatim}
 
 \noindent\index{editores del diccionario!datos de solo lectura}%
@@ -306,6 +309,25 @@ $ py-words help            (los demás programas)
 El programa se instala en \texttt{/usr/share/py-words}, donde no se puede
 escribir, así que tampoco ahí se puede editar el diccionario, como en la
 AppImage.
+
+\subsection{Debian y Ubuntu}
+
+\index{debian y ubuntu (deb)@Debian y Ubuntu (.deb)}%
+El paquete \texttt{.deb} instala lo mismo que el RPM, y también usa el
+Python y el Tk del sistema. Necesita Python 3.13 o posterior (Debian 13,
+Ubuntu 25.04 o posteriores); \texttt{apt} instala con él
+\texttt{python3-tk}:
+
+\begin{verbatim}
+$ sudo apt install ./py-words_3.27-1_all.deb
+\end{verbatim}
+
+\noindent
+Su firma viene aparte, en el archivo \texttt{.deb.asc}, hecha con la misma
+clave que el RPM; \texttt{gpg --verify} la comprueba una vez importada la
+clave. La orden \texttt{py-words} abre entonces los programas, como con el
+RPM, y \texttt{sudo apt remove py-words} lo quita. No hay repositorio:
+cada versión nueva se instala a mano de la misma manera.
 
 \subsection{Una entrada en el menú}
 

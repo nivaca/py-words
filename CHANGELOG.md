@@ -1,12 +1,28 @@
 # Changelog
 
 All notable changes to py-words. The releases, with the zip, the
-AppImage and the signed RPM, are on
+AppImage, the signed .deb and the signed RPM, are on
 [Codeberg](https://codeberg.org/nivaca/py-words/releases) and
 [GitHub](https://github.com/nivaca/py-words/releases); the RPM for
 Fedora is also on Copr, in `nivaca/py-words`. The repository starts at
 2.13 (2026-10-22); the versions before it are summed up at the end,
 without dates, from the list "Version" of the README.
+
+## 3.27 — 2026-11-21
+
+- **A .deb package for Debian, Ubuntu and their derivatives**
+  (`packaging/build-deb.py`), attached to the releases with a detached
+  OpenPGP signature (`.deb.asc`) made with the RPM's key.  It installs
+  the same as the RPM (the program in `/usr/share/py-words`, the
+  `py-words` command, the four menu entries, the icons and the
+  documentation) and depends on `python3 (>= 3.13)` and `python3-tk`.
+  It is assembled with Python's standard library alone (an ar archive
+  with two tar.xz), so it is built on Fedora, without dpkg; like the RPM,
+  the newest one is also copied into `dist/`.
+- `tools/release.py` makes, signs and attaches the .deb (`--no-deb`
+  leaves it out).
+- `tests/test_build_deb.py` builds the package in a temporary folder,
+  checks its format and contents, and runs the program it installs.
 
 ## 3.26 — 2026-11-21
 

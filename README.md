@@ -106,10 +106,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) on GitHub, make it
 executable and run it:
 
-    $ chmod +x py-words-v.3.26-x86_64.AppImage
-    $ ./py-words-v.3.26-x86_64.AppImage                # the window
-    $ ./py-words-v.3.26-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.26-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.27-x86_64.AppImage
+    $ ./py-words-v.3.27-x86_64.AppImage                # the window
+    $ ./py-words-v.3.27-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.27-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`, `tui`,
 `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments after it go
@@ -139,7 +139,7 @@ Or download `py-words-VERSION-1.fc45.noarch.rpm` and
 package is signed; import its key once) and install it:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.26-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.27-1.fc45.noarch.rpm
 
 It runs on any Fedora with Python 3.13 or later, whatever the `fc`
 number in its name.  Or build it from the program's folder (a git
@@ -174,6 +174,33 @@ signed with the author's key, fingerprint `8187 0643 CA22 1AF9 0C30
 C029 6282 8A87 315E E750 A4F9 6998 9DA6`); a copy is in
 `packaging/RPM-GPG-KEY-py-words`.
 `packaging/COPR.org` tells how to publish it on Fedora's Copr.
+
+### A .deb package (Debian, Ubuntu)
+
+On Debian, Ubuntu and the systems derived from them there is also a
+package, which, like the RPM, uses the system's Python and Tk and adds the
+four menu entries and the icon.  Download `py-words_VERSION-1_all.deb`
+from the [Releases](https://github.com/nivaca/py-words/releases) on
+GitHub and install it:
+
+    $ sudo apt install ./py-words_3.27-1_all.deb
+
+It needs Python 3.13 or later (Debian 13, Ubuntu 25.04 or later); `apt`
+installs `python3-tk` with it.  The signature is apart:
+`py-words_VERSION-1_all.deb.asc` is an OpenPGP signature made with the
+same key as the RPM, which is checked like this:
+
+    $ gpg --import RPM-GPG-KEY-py-words
+    $ gpg --verify py-words_3.27-1_all.deb.asc py-words_3.27-1_all.deb
+
+Then `py-words` starts it, as with the RPM, and `sudo apt remove
+py-words` removes it.  To build it from the program's folder (a git
+clone), on any system and with nothing but Python:
+
+    $ python3 packaging/build-deb.py [--sign[=KEY]]
+
+This writes `build/deb/py-words_VERSION-1_all.deb` and copies it to
+`dist/`.
 
 ### A menu entry
 
@@ -232,8 +259,9 @@ What is where
     *.py                the rest of the program, used by the above
     data/               the dictionary and the other data files
     icons/              the program's icons
-    packaging/          the RPM package: its spec, build-rpm.sh, the menu
-                        entries and the py-words command (not in the zip)
+    packaging/          the RPM and .deb packages: the spec, build-rpm.sh,
+                        build-deb.py, the menu entries and the py-words
+                        command (not in the zip)
     tests/              the tests (not needed to use the program)
     tools/              scripts to make the zip, the AppImage, the icons,
                         the screenshots and the releases (not in the zip)
@@ -243,7 +271,7 @@ distribute it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.26.zip` (with the version of the program;
+This writes `dist/py-words-v.3.27.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the same
 name.  It contains the programs, the data, the icons and the documents,
 and a file `COMMIT` with the commit it was made from, which "About" shows.
@@ -258,7 +286,7 @@ On Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.26-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.27-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a
 Python of its own and the menu entry and icons.  The Python (Python 3.13
 with Tk, from [python-appimage](https://github.com/niess/python-appimage))
@@ -276,15 +304,16 @@ which draws each size with Inkscape (the Flatpak, if there is one) and
 puts together the `.ico` with Pillow and the `.icns` as
 `words_install.py` does.
 
-A release on GitHub and Codeberg, with both files, is made with
+A release on GitHub and Codeberg, with its files, is made with
 
     $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-          [--no-build] [--no-appimage] [--rpm [--no-copr]]
+          [--no-build] [--no-appimage] [--no-deb] [--rpm [--no-copr]]
           [--only github|codeberg]
           [--dry-run] [--yes]
 
 It needs `gh` (GitHub) and `tea` (Codeberg), and a clean `main`.  It makes
-the zip and the AppImage, tags the commit `vVERSION`, pushes `main` and
+the zip, the AppImage and the signed .deb (with `packaging/build-deb.py
+--sign`; `--no-deb` leaves it out), tags the commit `vVERSION`, pushes `main` and
 the tag, and makes the release on each forge (or keeps the existing one),
 attaching the files and replacing those of the same name.  It shows the
 commands and asks before running them; `--dry-run` only shows them.  If
@@ -1391,6 +1420,14 @@ them.
 Version
 -------
 
+- 3.27:
+  - A .deb package for Debian, Ubuntu and their derivatives
+    (`packaging/build-deb.py`), attached to the releases with its OpenPGP
+    signature (`.deb.asc`, with the RPM's key).  It installs the same as
+    the RPM, and it is made with Python's standard library alone, so it
+    can be built on Fedora.  See "A .deb package (Debian, Ubuntu)".
+  - `tools/release.py` makes it, signs it and attaches it (`--no-deb`
+    does not).
 - 3.26:
   - A user manual in PDF, in English, Spanish and Medieval Latin
     (`docs/MANUAL_en.pdf`, `MANUAL_es.pdf`, `MANUAL_la.pdf`, with their

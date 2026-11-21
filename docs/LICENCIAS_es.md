@@ -17,7 +17,7 @@ licencia, lo que vale es lo que digan sus propios archivos.
 1.  Lo que el programa necesita para funcionar
 ---------------------------------------------
 
-Sin esto py-words no funciona, se use el zip, el RPM o una copia del
+Sin esto py-words no funciona, se use el zip, el RPM, el .deb o una copia del
 repositorio. py-words no lo incluye: viene con Python o con el sistema.
 
 | Software | Para qué lo usa py-words | Licencia |
@@ -54,10 +54,12 @@ siguiente.
 | [appimagetool](https://github.com/AppImage/appimagetool) y el [runtime de AppImage](https://github.com/AppImage/type2-runtime) | la herramienta que hace la AppImage, y el pequeño programa del comienzo que la monta y la ejecuta | licencia MIT (`MIT`) |
 
 
-4.  El RPM
----------
+4.  El RPM y el .deb
+-------------------
 
-El RPM instala solo py-words; lo que necesita lo pone Fedora.
+El RPM y el .deb instalan solo py-words; lo que necesitan lo ponen Fedora,
+Debian o Ubuntu.  El .deb se arma solo con la biblioteca estándar de
+Python, así que no necesita herramientas de Debian.
 
 | Software | Para qué | Licencia |
 |---|---|---|
@@ -67,6 +69,9 @@ El RPM instala solo py-words; lo que necesita lo pone Fedora.
 | [desktop-file-utils](https://www.freedesktop.org/wiki/Software/desktop-file-utils/) | instalar y comprobar las entradas del menú al hacer el RPM | `GPL-2.0-or-later` |
 | [GnuPG](https://gnupg.org) | la clave que firma el RPM | GNU GPL, versión 3 o posterior (`GPL-3.0-or-later`), con partes bajo la LGPL y otras licencias libres |
 | [copr-cli](https://github.com/fedora-copr/copr) | enviar el RPM a compilar en Copr, de Fedora | `GPL-2.0-or-later` |
+| python3 y python3-tk (Debian, Ubuntu) | los necesita el .deb, como en la sección 1 | `Python-2.0.1`; Tcl/Tk: `TCL` |
+| hicolor-icon-theme (Debian, Ubuntu) | lo recomienda el .deb: las carpetas de los iconos | `GPL-2.0-or-later` |
+| GnuPG | la firma aparte del .deb, con la misma clave | `GPL-3.0-or-later` |
 
 
 5.  Herramientas con las que se hace py-words

@@ -1,4 +1,4 @@
-\newcommand*{\version}{3.26}
+\newcommand*{\version}{3.27}
 
 \documentclass[12pt,
               article,
@@ -207,12 +207,14 @@ ex Perseus Digital Library, sub licentia CC BY-SA 4.0.
 Quelibet versio publicatur in GitHub et in Codeberg (loca sunt in prima
 pagina), cum his fasciculis:
 
-\index{appimage@AppImage}\index{fedora (copr, rpm)@Fedora (Copr, RPM)}\index{zip}%
+\index{appimage@AppImage}\index{fedora (copr, rpm)@Fedora (Copr, RPM)}\index{debian et ubuntu (deb)@Debian et Ubuntu (.deb)}\index{zip}%
 \begin{itemize}
 \item \texttt{py-words-v.VERSIO-x86\_64.AppImage}: AppImage, pro
   quolibet Linux;
 \item \texttt{py-words-VERSIO-1.fc45.noarch.rpm}: fasciculus Fedore,
   signatus, cum clave que ipsum signat, \texttt{RPM-GPG-KEY-py-words};
+\item \texttt{py-words\_VERSIO-1\_all.deb}: fasciculus pro Debian et
+  Ubuntu, cum subscriptione sua, \texttt{py-words\_VERSIO-1\_all.deb.asc};
 \item \texttt{py-words-v.VERSIO.zip}: ipsum programma, pro Linux, macOS
   et Windows.
 \end{itemize}
@@ -234,8 +236,9 @@ $ brew install python-tk                (macOS, Homebrew)
 \noindent
 \texttt{python3 --version} dicit quod Python habeatur; si nimis antiquum
 est, programma hoc dicit et cessat. Mandata huius libri utuntur
-\texttt{python3}; in Windows scribitur \texttt{python}. AppImage et RPM
-suum proprium Python ferunt vel adhibent, et ideo nullo istorum egent.
+\texttt{python3}; in Windows scribitur \texttt{python}. AppImage et
+fasciculi suum proprium Python ferunt vel adhibent, et ideo nullo istorum
+egent.
 
 \subsection{ZIP, vel exemplar repositorii}
 
@@ -263,10 +266,10 @@ AppImage est unus fasciculus qui suum proprium Python fert, cum Tk. Fit
 exsecutabilis et aperitur:
 
 \begin{verbatim}
-$ chmod +x py-words-v.3.26-x86_64.AppImage
-$ ./py-words-v.3.26-x86_64.AppImage              (fenestra)
-$ ./py-words-v.3.26-x86_64.AppImage cli amicus   (in terminali)
-$ ./py-words-v.3.26-x86_64.AppImage help         (cetera)
+$ chmod +x py-words-v.3.27-x86_64.AppImage
+$ ./py-words-v.3.27-x86_64.AppImage              (fenestra)
+$ ./py-words-v.3.27-x86_64.AppImage cli amicus   (in terminali)
+$ ./py-words-v.3.27-x86_64.AppImage help         (cetera)
 \end{verbatim}
 
 \noindent\index{editores dictionarii!data que scribi non possunt}%
@@ -306,6 +309,24 @@ $ py-words help            (cetera programmata)
 \noindent\index{editores dictionarii!data que scribi non possunt}%
 Programma instituitur in \texttt{/usr/share/py-words}, ubi scribi non
 potest; unde nec ibi dictionarium emendari potest, sicut in AppImage.
+
+\subsection{Debian et Ubuntu}
+
+\index{debian et ubuntu (deb)@Debian et Ubuntu (.deb)}%
+Fasciculus \texttt{.deb} eadem instituit que RPM, et etiam utitur Python
+et Tk systematis. Requirit Python 3.13 vel posteriorem (Debian 13, Ubuntu
+25.04 vel posteriores); \texttt{apt} simul instituit \texttt{python3-tk}:
+
+\begin{verbatim}
+$ sudo apt install ./py-words_3.27-1_all.deb
+\end{verbatim}
+
+\noindent
+Subscriptio eius seorsum venit, in fasciculo \texttt{.deb.asc}, facta
+eadem clave qua RPM; \texttt{gpg --verify} eam probat clave importata.
+Mandatum \texttt{py-words} deinde aperit programmata, sicut cum RPM, et
+\texttt{sudo apt remove py-words} ipsum removet. Nullum est repositorium:
+quelibet nova versio eodem modo manu instituitur.
 
 \subsection{De loco in tabella applicationum}
 

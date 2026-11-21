@@ -105,10 +105,10 @@ secum fert, ita quod nichil aliud requiritur.  Trahe ex interreti
 [Releases](https://github.com/nivaca/py-words/releases) in GitHub, fac
 ipsum exsecutabilem et curre:
 
-    $ chmod +x py-words-v.3.26-x86_64.AppImage
-    $ ./py-words-v.3.26-x86_64.AppImage                # fenestra
-    $ ./py-words-v.3.26-x86_64.AppImage cli amicus     # linea mandatorum
-    $ ./py-words-v.3.26-x86_64.AppImage help           # cetera programmata
+    $ chmod +x py-words-v.3.27-x86_64.AppImage
+    $ ./py-words-v.3.27-x86_64.AppImage                # fenestra
+    $ ./py-words-v.3.27-x86_64.AppImage cli amicus     # linea mandatorum
+    $ ./py-words-v.3.27-x86_64.AppImage help           # cetera programmata
 
 Primum argumentum eligit programma: `gui` (quod ponitur nisi aliud
 dicatur), `cli`, `tui`, `web`, `edit`, `edit-gui`, `check` vel `convert`;
@@ -139,7 +139,7 @@ Vel trahe ex interreti `py-words-VERSION-1.fc45.noarch.rpm` et
 (fasciculus est signatus; importa clavem eius semel) et institue ipsum:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.26-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.27-1.fc45.noarch.rpm
 
 Currit in quolibet Fedora cum Python 3.13 vel posteriore, quicumque sit
 numerus `fc` in nomine eius.  Vel construe ipsum ex capsula programmatis
@@ -174,6 +174,33 @@ clave auctoris, cuius dactylogramma est `8187 0643 CA22 1AF9 0C30
 C029 6282 8A87 315E E750 A4F9 6998 9DA6`); exemplar est in
 `packaging/RPM-GPG-KEY-py-words`.
 `packaging/COPR.org` dicit quomodo publicetur in Copr Fedore.
+
+### De fasciculo .deb (Debian, Ubuntu)
+
+In Debian, Ubuntu et systematibus ab eis derivatis est etiam fasciculus,
+qui, sicut RPM, utitur Python et Tk systematis et addit quattuor locos in
+tabella et iconem.  Trahe ex interreti `py-words_VERSION-1_all.deb` ex
+[Releases](https://github.com/nivaca/py-words/releases) in GitHub et
+institue ipsum:
+
+    $ sudo apt install ./py-words_3.27-1_all.deb
+
+Requirit Python 3.13 vel posteriorem (Debian 13, Ubuntu 25.04 vel
+posteriores); `apt` simul instituit `python3-tk`.  Subscriptio est
+seorsum: `py-words_VERSION-1_all.deb.asc` est subscriptio OpenPGP facta
+eadem clave qua RPM, et sic probatur:
+
+    $ gpg --import RPM-GPG-KEY-py-words
+    $ gpg --verify py-words_3.27-1_all.deb.asc py-words_3.27-1_all.deb
+
+Deinde `py-words` ipsum incipit, sicut cum RPM, et `sudo apt remove
+py-words` ipsum removet.  Ad ipsum construendum ex capsula programmatis
+(clone git), in quolibet systemate et nullo alio quam Python:
+
+    $ python3 packaging/build-deb.py [--sign[=KEY]]
+
+Hoc scribit `build/deb/py-words_VERSION-1_all.deb` et copiat ipsum in
+`dist/`.
 
 ### De loco in tabella applicationum
 
@@ -232,8 +259,9 @@ Quid ubi sit
     *.py                the rest of the program, used by the above
     data/               the dictionary and the other data files
     icons/              the program's icons
-    packaging/          the RPM package: its spec, build-rpm.sh, the menu
-                        entries and the py-words command (not in the zip)
+    packaging/          the RPM and .deb packages: the spec, build-rpm.sh,
+                        build-deb.py, the menu entries and the py-words
+                        command (not in the zip)
     tests/              the tests (not needed to use the program)
     tools/              scripts to make the zip, the AppImage, the icons,
                         the screenshots and the releases (not in the zip)
@@ -243,7 +271,7 @@ distribuendum:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-Hoc scribit `dist/py-words-v.3.26.zip` (cum versione programmatis; `-o`
+Hoc scribit `dist/py-words-v.3.27.zip` (cum versione programmatis; `-o`
 dat aliam capsulam), cum programmate intra capsulam eiusdem nominis.
 Continet programmata, data, icones et documenta, et fasciculum `COMMIT`
 cum commissione ex qua factum est, quam "De programmate" ostendit.  Non continet
@@ -258,7 +286,7 @@ In Linux, AppImage (vide "De AppImage (Linux)") fit per
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-Scribit `dist/py-words-v.3.26-x86_64.AppImage` (`-o` dat aliam
+Scribit `dist/py-words-v.3.27-x86_64.AppImage` (`-o` dat aliam
 capsulam), cum eisdem fasciculis quibus zip (sed non `words_install.py`),
 proprio Python et loco in tabella et iconibus.  Python (Python 3.13 cum
 Tk, ex [python-appimage](https://github.com/niess/python-appimage)) et
@@ -275,15 +303,16 @@ Icones in `icons/` omnes fiunt ex `icons/py-words.svg` per
 quod unamquamque magnitudinem pingit per Inkscape (Flatpak, si adest) et
 componit `.ico` per Pillow et `.icns` sicut `words_install.py` facit.
 
-Editio in GitHub et Codeberg, cum utroque fasciculo, fit per
+Editio in GitHub et Codeberg, cum fasciculis suis, fit per
 
     $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-          [--no-build] [--no-appimage] [--rpm [--no-copr]]
+          [--no-build] [--no-appimage] [--no-deb] [--rpm [--no-copr]]
           [--only github|codeberg]
           [--dry-run] [--yes]
 
-Requirit `gh` (GitHub) et `tea` (Codeberg), et `main` mundum.  Facit zip
-et AppImage, signat commissionem ut `vVERSION`, impellit `main` et
+Requirit `gh` (GitHub) et `tea` (Codeberg), et `main` mundum.  Facit zip,
+AppImage et fasciculum .deb signatum (per `packaging/build-deb.py
+--sign`; `--no-deb` ipsum omittit), signat commissionem ut `vVERSION`, impellit `main` et
 signum, et facit editionem in unaquaque officina (vel servat eam que iam
 est), fasciculos affigens et substituens eos eiusdem nominis.  Ostendit
 mandata et interrogat antequam ea currat; `--dry-run` solum ea ostendit.
@@ -1399,6 +1428,13 @@ spectes.
 Versiones
 ---------
 
+- 3.27:
+  - Fasciculus .deb pro Debian, Ubuntu et eis derivatis
+    (`packaging/build-deb.py`), editionibus affixus cum subscriptione sua
+    OpenPGP (`.deb.asc`, clave ipsius RPM).  Eadem instituit que RPM, et
+    fit sola bibliotheca communi Python, ita ut fieri possit in Fedora.
+    Vide "De fasciculo .deb (Debian, Ubuntu)".
+  - `tools/release.py` ipsum facit, signat et affigit (`--no-deb` non).
 - 3.26:
   - Manuale usuarii in PDF, Latine, Anglice et Hispanice
     (`docs/MANUAL_la.pdf`, `MANUAL_en.pdf`, `MANUAL_es.pdf`, cum fontibus
