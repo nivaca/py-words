@@ -105,10 +105,10 @@ secum fert, ita quod nichil aliud requiritur.  Trahe ex interreti
 [Releases](https://github.com/nivaca/py-words/releases) in GitHub, fac
 ipsum exsecutabilem et curre:
 
-    $ chmod +x py-words-v.3.25-x86_64.AppImage
-    $ ./py-words-v.3.25-x86_64.AppImage                # fenestra
-    $ ./py-words-v.3.25-x86_64.AppImage cli amicus     # linea mandatorum
-    $ ./py-words-v.3.25-x86_64.AppImage help           # cetera programmata
+    $ chmod +x py-words-v.3.26-x86_64.AppImage
+    $ ./py-words-v.3.26-x86_64.AppImage                # fenestra
+    $ ./py-words-v.3.26-x86_64.AppImage cli amicus     # linea mandatorum
+    $ ./py-words-v.3.26-x86_64.AppImage help           # cetera programmata
 
 Primum argumentum eligit programma: `gui` (quod ponitur nisi aliud
 dicatur), `cli`, `tui`, `web`, `edit`, `edit-gui`, `check` vel `convert`;
@@ -139,7 +139,7 @@ Vel trahe ex interreti `py-words-VERSION-1.fc45.noarch.rpm` et
 (fasciculus est signatus; importa clavem eius semel) et institue ipsum:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.25-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.26-1.fc45.noarch.rpm
 
 Currit in quolibet Fedora cum Python 3.13 vel posteriore, quicumque sit
 numerus `fc` in nomine eius.  Vel construe ipsum ex capsula programmatis
@@ -243,7 +243,7 @@ distribuendum:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-Hoc scribit `dist/py-words-v.3.25.zip` (cum versione programmatis; `-o`
+Hoc scribit `dist/py-words-v.3.26.zip` (cum versione programmatis; `-o`
 dat aliam capsulam), cum programmate intra capsulam eiusdem nominis.
 Continet programmata, data, icones et documenta, et fasciculum `COMMIT`
 cum commissione ex qua factum est, quam "De programmate" ostendit.  Non continet
@@ -258,7 +258,7 @@ In Linux, AppImage (vide "De AppImage (Linux)") fit per
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-Scribit `dist/py-words-v.3.25-x86_64.AppImage` (`-o` dat aliam
+Scribit `dist/py-words-v.3.26-x86_64.AppImage` (`-o` dat aliam
 capsulam), cum eisdem fasciculis quibus zip (sed non `words_install.py`),
 proprio Python et loco in tabella et iconibus.  Python (Python 3.13 cum
 Tk, ex [python-appimage](https://github.com/niess/python-appimage)) et
@@ -1399,6 +1399,16 @@ spectes.
 Versiones
 ---------
 
+- 3.26:
+  - Manuale usuarii in PDF, Latine, Anglice et Hispanice
+    (`docs/MANUAL_la.pdf`, `MANUAL_en.pdf`, `MANUAL_es.pdf`, cum fontibus
+    suis LaTeX): institutio, quattuor programmata, quomodo inventa
+    legantur, Logeion, optiones, editores et claves, cum tabulis notarum,
+    abbreviationum, optionum et clavium.  RPM ea instituit.
+  - Interfacies etiam Latina mediei evi esse potest ("Latina" in "Lingua
+    interfaciei", `--interface la`): tabelle, bulle, nuntii et auxilium.
+    Significationes manent Anglice vel Hispanice.
+  - Hic liber Latine, `README_la.md`, cum imaginibus Latinis.
 - 3.25:
   - `docs/LICENCES.md` (et `docs/LICENCIAS_es.md`, Hispanice) enumerat
     programmata libera quibus py-words utitur, cum licentia uniuscuiusque:

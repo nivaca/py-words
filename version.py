@@ -15,7 +15,7 @@ NAME = 'py-words'
 #  README, el título de docs/DESCRIPCIÓN_es.md, las notas de
 #  "Version"/"Versiones", y Version: y %changelog de
 #  packaging/py-words.spec (rpmdev-bumpspec).
-VERSION = '3.25'
+VERSION = '3.26'
 URL = 'https://github.com/nivaca/py-words'
 
 HERE = os.path.dirname(os.path.abspath(__file__))

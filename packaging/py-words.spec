@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.25
+Version:        3.26
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -107,6 +107,10 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Sat Nov 21 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.26-1
+- User manuals in English, Spanish and Medieval Latin (docs/MANUAL_*.pdf)
+- The interface in Medieval Latin, and the README in Latin
+
 * Sat Nov 21 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.25-1
 - The open-source software used, with its licences, in docs/LICENCES.md
 

@@ -109,10 +109,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.25-x86_64.AppImage
-    $ ./py-words-v.3.25-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.25-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.25-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.26-x86_64.AppImage
+    $ ./py-words-v.3.26-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.26-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.26-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -144,7 +144,7 @@ O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
 paquete va firmado; importe su clave una vez) e instálelo:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.25-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.26-1.fc45.noarch.rpm
 
 Funciona en cualquier Fedora con Python 3.13 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
@@ -252,7 +252,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.25.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.26.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -268,7 +268,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.25-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.26-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -1440,6 +1440,17 @@ verlas.
 Versiones
 ---------
 
+- 3.26:
+  - Un manual de usuario en PDF, en español, inglés y latín medieval
+    (`docs/MANUAL_es.pdf`, `MANUAL_en.pdf`, `MANUAL_la.pdf`, con sus
+    fuentes en LaTeX): la instalación, los cuatro programas, cómo leer los
+    resultados, Logeion, los ajustes, los editores y las teclas, con
+    tablas de los códigos, las abreviaturas, las opciones y las teclas.
+    El RPM los instala.
+  - La interfaz puede estar también en latín medieval ("Latina" en
+    "Idioma de la interfaz", `--interface la`): los menús, botones,
+    mensajes y ayuda.  Los significados siguen en inglés o en español.
+  - El README en latín medieval, `README_la.md`, con capturas en latín.
 - 3.25:
   - `docs/LICENCIAS_es.md` (y `docs/LICENCES.md`, en inglés) enumera el
     software libre que usa py-words, con la licencia de cada uno: con qué

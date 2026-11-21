@@ -8,6 +8,21 @@ Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
 
+## 3.26 — 2026-11-21
+
+- Un manual de usuario en PDF, en español, inglés y latín medieval
+  (`docs/MANUAL_es.pdf`, `docs/MANUAL_en.pdf`, `docs/MANUAL_la.pdf`, con
+  sus fuentes en LaTeX, que compone `latexmk`): la instalación, los cuatro
+  programas, cómo leer los resultados, Logeion, los ajustes, los editores
+  y las teclas, con tablas de los códigos, las abreviaturas, las opciones
+  y las teclas, y un índice.  El RPM los instala.
+- La interfaz puede estar también en latín medieval
+  (`data/interface/la.xml`; "Latina" en "Idioma de la interfaz",
+  `--interface la`): los menús, botones, mensajes y ayuda.  Los
+  significados siguen en inglés o en español.
+- `README_la.md`: el README en latín medieval, con capturas en latín
+  (`tools/screenshots.py` ahora también las toma).
+
 ## 3.25 — 2026-11-21
 
 - `docs/LICENCES.md` y `docs/LICENCIAS_es.md` enumeran el software libre
