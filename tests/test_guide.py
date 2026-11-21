@@ -1,4 +1,5 @@
-"""Tests of the help (guide.py) and of where the programs show it."""
+"""Pruebas de la ayuda (guide.py) y de dónde la muestran los
+programas."""
 
 import io
 import os
@@ -7,7 +8,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import guide  # noqa: E402
@@ -56,7 +57,7 @@ class GuideTests(unittest.TestCase):
         self.assertIn('amicus, amici  noun, 2nd declension, masculine  '
                       '[XXXBO]', text)
         self.assertIn('amīc-ōrum      GEN.PL', text)
-        #  (in words, if the glosses are off)
+        #  (en palabras, si las glosas están desactivadas)
         self.assertIn('genitive plural', self.text(use_glosses=False))
 
     def test_codes(self):

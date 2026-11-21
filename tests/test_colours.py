@@ -1,6 +1,6 @@
-"""Tests of the colours of the results in a terminal (colours.py), and of
-where they are used: the command line's results in a terminal, and
-Logeion's analysis lines."""
+"""Pruebas de los colores de los resultados en una terminal (colours.py)
+y de dónde se usan: los resultados de la línea de órdenes en una terminal
+y las líneas de análisis de Logeion."""
 
 import io
 import os
@@ -9,7 +9,7 @@ import unittest
 from unittest import mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import colours  # noqa: E402

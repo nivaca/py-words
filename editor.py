@@ -1,22 +1,24 @@
-"""Editing the dictionary: what the terminal and window editors share.
+"""La edición del diccionario: lo que comparten los editores de la terminal
+y de la ventana.
 
-An `Editor` holds the entries of dictionary.xml in the data directory.  It
-finds entries (by a Latin form, a stem, or a word of their meanings),
-builds new or corrected ones from the values of their fields (checked as
-the data files are checked), describes them as WORDS will show them, lets
-a word be tried against the edited dictionary, and saves the file (keeping
-a backup of the original as dictionary.xml.bak).  `Editing` is what the
-two editors do with it: the entry in the form, applying changes, and
-asking before they are lost.
+Un `Editor` tiene las entradas de dictionary.xml de la carpeta de datos.
+Encuentra entradas (por una forma latina, una raíz o una palabra de sus
+significados), construye entradas nuevas o corregidas a partir de los
+valores de sus campos (revisados como se revisan los archivos de datos),
+las describe como las mostrará WORDS, permite probar una palabra con el
+diccionario editado y guarda el archivo (con una copia de respaldo del
+original, dictionary.xml.bak).  `Editing` es lo que los dos editores
+hacen con él: la entrada en el formulario, la aplicación de los cambios y
+la pregunta antes de perderlos.
 
-The meanings are edited in English and, if a language of the meanings is
-chosen (set_language), in that language too: its translations are written
-to its file in languages/ when the dictionary is saved (keeping a backup
-there too).  Deleting an entry takes its translations out of every
-language file.
+Los significados se editan en inglés y, si se elige un idioma de los
+significados (set_language), también en ese idioma: sus traducciones se
+escriben en su archivo de languages/ cuando se guarda el diccionario
+(también con una copia de respaldo).  Borrar una entrada quita sus
+traducciones de todos los archivos de idiomas.
 
-The labels and descriptions of the tables below are English; they are
-translated (interface.tr) where they are shown.
+Las etiquetas y descripciones de las tablas de abajo están en inglés; se
+traducen (interface.tr) donde se muestran.
 """
 
 from __future__ import annotations
@@ -39,7 +41,7 @@ from model import (Pos, Gender, Case, Comparison, NumeralSort, NounKind,
                     Entry, fold, stems_used)
 from session import Session
 
-#  Why the dictionary cannot be edited (see read_only)
+#  Por qué no se puede editar el diccionario (véase read_only)
 READ_ONLY = N_('The dictionary cannot be edited: its folder {folder} '
                'cannot be written to (as in the AppImage).  Copy the folder '
                'somewhere and give the copy as the data folder (in the '
@@ -60,7 +62,8 @@ def read_only(datadir: str) -> bool:
                 (not os.path.exists(path) or os.access(path, os.W_OK)))
 from settings import Settings
 
-#  The parts of speech of dictionary entries, with their names
+#  Las categorías gramaticales de las entradas del diccionario, con sus
+#  nombres
 POS_CHOICES = [
     ('N', 'noun'), ('V', 'verb'), ('ADJ', 'adjective'), ('ADV', 'adverb'),
     ('PREP', 'preposition'), ('CONJ', 'conjunction'),
@@ -89,7 +92,7 @@ FIELD_LABELS = {
 
 CODE_FIELDS = ('age', 'area', 'geo', 'freq', 'source')
 
-#  What the codes mean (those of the sources are in sources.xml)
+#  Lo que significan los códigos (los de las fuentes están en sources.xml)
 DESCRIPTIONS: dict[str, dict[str, str]] = {
     'gender': {'M': 'masculine', 'F': 'feminine', 'N': 'neuter',
                'C': 'common (masculine or feminine)', 'X': 'unknown'},
@@ -166,7 +169,7 @@ class Fields:
         attrs = dict(xmldata.part_attrs(entry.part) +
                      xmldata.codes_attrs(entry.codes))
         pos = attrs.pop('pos')
-        #  (the main source is chosen from a list; the others are typed)
+        #  (la fuente principal se elige de una lista; las demás se escriben)
         attrs['source'], _, attrs['more'] = attrs['source'].partition(' ')
         return cls(pos, attrs, entry.stems, entry.meaning, translation)
 
@@ -247,7 +250,7 @@ class Editor:
         self.path = os.path.join(datadir, DICTIONARY)
         self.base = Lexicon.load(datadir)
         self.entries: list[Entry] = self.base.entries[:-1]     # (not esse)
-        #  the descriptions of the codes; the sources come from sources.xml
+        #  las descripciones de los códigos; las fuentes vienen de sources.xml
         self.descriptions = dict(DESCRIPTIONS)
         self.descriptions['source'] = source_names(datadir)
         self.checker = Checker(inflection_decls(
@@ -261,9 +264,9 @@ class Editor:
         #  the languages of the meanings: {code: name}
         self.language_names = languages.names(datadir)
         self.language = REFERENCE
-        #  the meanings of the entries in the languages chosen, by code and
-        #  uid, as edited; the uids whose meaning changed, by code; the
-        #  uids of the entries deleted
+        #  los significados de las entradas en los idiomas elegidos, por código
+        #  y uid, tal como se editaron; los uid cuyo significado cambió, por
+        #  código; los uid de las entradas borradas
         self._translations: dict[str, dict[int, str]] = {}
         self._retranslated: dict[str, set[int]] = {}
         self._deleted: set[int] = set()
@@ -271,7 +274,7 @@ class Editor:
         if language in self.language_names:
             self.set_language(language)
 
-    # The language of the meanings --------------------------------------------
+    # El idioma de los significados -------------------------------------------
 
     def set_language(self, code: str):
         """Edits the meanings in CODE besides English (REFERENCE: in English
@@ -366,7 +369,7 @@ class Editor:
                                  word=self._decl_examples[key])))
         return out
 
-    # Finding ---------------------------------------------------------------
+    # La búsqueda -----------------------------------------------------------
 
     def search(self, query: str, limit: int = 200) -> list[Entry]:
         """Entries for QUERY: those it is a form of, those with a stem
@@ -470,7 +473,7 @@ class Editor:
         if not self._backed_up and os.path.exists(self.path):
             shutil.copy2(self.path, self.path + '.bak')
             self._backed_up = True
-        # (the entries themselves are kept: the editors hold on to them)
+        # (las entradas mismas se conservan: los editores las retienen)
         xmldata.write_dictionary(self.path, self.numbered())
         self._save_languages()
         self.dirty = False
@@ -570,7 +573,7 @@ class Editing:
         self.editor = editor
         self.results: list[Entry] = []
         self.current: Entry | None = None
-        self._shown: tuple | None = None    # the form as it was shown
+        self._shown: tuple | None = None    # el formulario tal como se mostró
 
     def find(self, query: str) -> list[Entry]:
         self.results = self.editor.search(query)

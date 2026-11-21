@@ -1,32 +1,28 @@
 #!/usr/bin/env python3
-"""The dictionary in a web browser: python3 words_web.py
+"""El diccionario en un navegador web: python3 words_web.py
 
-Starts a small web server on this computer and opens the browser at it:
+Arranca un pequeño servidor web en este computador y abre el navegador en
+él.  La página de búsqueda está en http://127.0.0.1:8000/; una búsqueda es
+?q=amicus+est (del latín) o ?q=friend&lang=en (hacia el latín, desde el
+idioma de los significados que dice lang=).
 
-    http://127.0.0.1:8000/                  the search page
-    http://127.0.0.1:8000/?q=amicus+est     a search (Latin to English)
-    http://127.0.0.1:8000/?q=friend&lang=en a search (English to Latin)
+Los resultados son los de words.py; los ajustes, el archivo de configuración
+y el historial de búsquedas se comparten con él, con la ventana y con la
+terminal.  El diccionario se vuelve a leer cuando un editor lo cambia.
 
-(lang= the language of the meanings, en or es ..., for a search from it
-to Latin.)
+Solo este computador llega al servidor, salvo que --host diga otra cosa
+(--host 0.0.0.0: cualquier computador que llegue a este).  No hay
+contraseñas, y el diccionario no se puede editar desde el navegador.  En un
+servidor abierto a todos (como PythonAnywhere), la aplicación es
+public_app(): los ajustes, los idiomas, el aspecto y las búsquedas de cada
+visitante se guardan en las cookies de su navegador, y nada en el servidor
+(--public lo prueba aquí).
 
-The results are those of words.py; the settings, the configuration file
-and the history of the searches are shared with it, the window and the
-terminal.  The dictionary is read again when an editor changes it.
-
-Only this computer can reach the server, unless --host says otherwise
-(--host 0.0.0.0: every computer that can reach this one, as a phone on
-the same network).  There are no passwords, so do that only on a network
-you trust; the dictionary cannot be edited from the browser.
-
-On a web server open to everyone (as PythonAnywhere), the application is
-public_app(): each visitor's settings, languages, look and earlier
-searches are kept in the cookies of their browser, and nothing is saved
-on the server (--public tries it here).
+La ayuda de --help está en USAGE, en inglés, y se traduce donde se muestra.
 """
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 import argparse
 import errno
@@ -64,16 +60,43 @@ from settings import (COMMAND_LINE, DEPENDS, DEV_MODES, GROUPS, MODES,
 from version import NAME, VERSION, about
 from xmldata import DataError
 
+#  La ayuda de --help, en inglés: cada párrafo es la clave de su traducción
+#  en data/interface/, así que un cambio aquí pide el mismo cambio allí
+USAGE = """\
+Starts a small web server on this computer and opens the browser at it:
+
+    http://127.0.0.1:8000/                  the search page
+    http://127.0.0.1:8000/?q=amicus+est     a search (Latin to English)
+    http://127.0.0.1:8000/?q=friend&lang=en a search (English to Latin)
+
+(lang= the language of the meanings, en or es ..., for a search from it
+to Latin.)
+
+The results are those of words.py; the settings, the configuration file
+and the history of the searches are shared with it, the window and the
+terminal.  The dictionary is read again when an editor changes it.
+
+Only this computer can reach the server, unless --host says otherwise
+(--host 0.0.0.0: every computer that can reach this one, as a phone on
+the same network).  There are no passwords, so do that only on a network
+you trust; the dictionary cannot be edited from the browser.
+
+On a web server open to everyone (as PythonAnywhere), the application is
+public_app(): each visitor's settings, languages, look and earlier
+searches are kept in the cookies of their browser, and nothing is saved
+on the server (--public tries it here).
+"""
+
 HOST = '127.0.0.1'
 PORT = 8000
 MAX_QUERY = 2000                # (characters of a search)
-MAX_FORM = 100_000              # (bytes of a form sent)
-RECENT = 20                     # earlier searches listed
+MAX_FORM = 100_000              # (bytes de un formulario enviado)
+RECENT = 20                     # búsquedas anteriores listadas
 ICON = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons',
                     'linux', 'icons', 'hicolor', '48x48', 'apps',
                     'py-words.png')
-#  The footer the Universidad de los Andes asks for: its logo (an SVG drawn
-#  in currentColor, so that it follows the theme) and its legal notice
+#  El pie de página que pide la Universidad de los Andes: su logo (un SVG
+#  dibujado en currentColor, para que siga el tema) y su aviso legal
 LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons',
                     'uniandes.svg')
 LOGO_LABEL = 'Universidad de los Andes · Facultad de Artes y Humanidades'
@@ -83,31 +106,32 @@ LEGAL = ('Universidad de los Andes | Vigilada Mineducación. Reconocimiento '
          'febrero de 1949, Minjusticia. Acreditación institucional de alta '
          'calidad, 10 años: Resolución 000194 del 16 de enero del 2025.')
 
-#  The author's web page, linked at the top right of the page
+#  La página web del autor, enlazada arriba a la derecha de la página
 HOME_PAGE = 'https://nicolasvaughan.org'
 
-#  The settings the page offers: those of the window (the pause and the
-#  command characters only matter in the interactive command line)
+#  Los ajustes que ofrece la página: los de la ventana (la pausa y los
+#  caracteres de las órdenes solo importan en la línea de órdenes
+#  interactiva)
 SHOWN = tuple(n for n in MODES + DEV_MODES
               if n not in COMMAND_LINE + ON_SCREEN)
 
-#  Public mode (see public_app): what a visitor chooses is kept in cookies
-#  (words_settings, words_language ...), for a year
+#  El modo público (véase public_app): lo que elige un visitante se
+#  guarda en cookies (words_settings, words_language ...), por un año
 COOKIE = 'words_'
 COOKIE_AGE = 365 * 24 * 3600
 VISITOR = SHOWN + ON_SCREEN             # (the settings in words_settings)
-KEPT_SEARCH = 200                       # (longer searches are not kept)
+KEPT_SEARCH = 200                       # (no se guardan búsquedas más largas)
 KEPT_SEARCHES = 2500                    # (characters of words_history)
 TOKEN_LENGTH = 32
 
-#  Logeion (see logeion.py): the words of a search it is asked for (the
-#  rest are only analysed), and how many of its pages are kept in memory
-#  (more, and they are all let go)
+#  Logeion (véase logeion.py): las palabras de una búsqueda por las que
+#  se le pregunta (las demás solo se analizan), y cuántas de sus páginas
+#  se guardan en memoria (si son más, se sueltan todas)
 LOGEION_WORDS = 12
 LOGEION_PAGES = 2000
 #  (where __call__ leaves the words it asked Logeion for, for page())
 ASKED = 'py_words.logeion'
-#  Logeion's entries are wrapped by the browser, not here
+#  Las entradas de Logeion las ajusta el navegador, no este programa
 WIDE = 10_000
 #  The classes of the ANSI codes of logeion_render.Style
 LOGEION_CLASSES = {1: 'lg-b', 2: 'lg-d', 3: 'lg-i', 4: 'lg-t', 32: 'lg-x',
@@ -209,8 +233,8 @@ class WebApp:
         self.public = public
         settings = Settings()
         settings.load(datadir)
-        #  the settings as saved (kept for the command line), and those
-        #  used here, which do not pause
+        #  los ajustes tal como se guardaron (se conservan para la línea de
+        #  órdenes), y los que se usan aquí, sin pausa
         self.saved = settings.copy()
         settings.pause_in_screen_output = False
         self.mtime = self._mtime()
@@ -218,8 +242,8 @@ class WebApp:
         #  (public: a whole request at a time, as the settings and the
         #  language of the interface are those of its visitor)
         self.lock = threading.RLock()
-        #  public: the settings of a visitor with no cookies, and those
-        #  of the request (see _visit)
+        #  público: los ajustes de un visitante sin cookies, y los de la
+        #  solicitud (véase _visit)
         self.defaults = self.saved.copy()
         self.jar: dict[str, str] = {}
         self.outgoing: dict[str, str] = {}
@@ -228,13 +252,13 @@ class WebApp:
         #  sent with every form, so that only this page can change things
         self.token = secrets.token_urlsafe(24)
         self.message = self.session.notice
-        self._help: dict[tuple, str] = {}   # (the help, as HTML)
+        self._help: dict[tuple, str] = {}   # (la ayuda, en HTML)
         #  (the explanations of the codes and analyses, by language)
         self._glosses: dict[str, dict[str, str]] = {}
         self._codes: dict[tuple, str] = {}
-        #  Logeion: its pages, kept; public, where a visitor with no
-        #  cookies searches (as the configuration file says), and where
-        #  the visitor of the request does (see _visit)
+        #  Logeion: sus páginas, guardadas; en modo público, dónde busca un
+        #  visitante sin cookies (según el archivo de configuración) y dónde
+        #  busca el visitante de la solicitud (véase _visit)
         self.logeion = logeion.Logeion()
         self.default_source = logeion.saved_source()
         self.default_dictionary = logeion.saved_dictionary()
@@ -257,7 +281,7 @@ class WebApp:
         self.mtime = mtime
         self.message = tr('The dictionary was changed, and read again.')
 
-    # Requests -------------------------------------------------------------
+    # Las solicitudes ------------------------------------------------------
 
     def __call__(self, environ, start_response):
         self._ask_logeion(environ)
@@ -302,7 +326,7 @@ class WebApp:
                                [('Allow', allowed)])
         return handler(environ, start_response)
 
-    # Visitors (public) ------------------------------------------------------
+    # Los visitantes (público) -----------------------------------------------
 
     def _visit(self, environ):
         """Takes the settings, languages, look and message of the visitor
@@ -387,8 +411,8 @@ class WebApp:
                 words = logeion.queries(self.session, query)
             except Exception:           # (page() shows it)
                 return
-        #  (its pages are let go once there are too many: a new one, as
-        #  other requests may still be using the old one)
+        #  (sus páginas se sueltan cuando son demasiadas: un Logeion
+        #  nuevo, pues otras solicitudes pueden estar usando aún el viejo)
         if len(getattr(self.logeion.client, '_cache', ())) > LOGEION_PAGES:
             self.logeion = logeion.Logeion()
         self.logeion.fetch(words[:LOGEION_WORDS])
@@ -504,7 +528,7 @@ class WebApp:
                 self.session, guide.paragraphs(guide.WEB)))
         return self._help[key]
 
-    # Pages ----------------------------------------------------------------
+    # Las páginas ----------------------------------------------------------
 
     def page(self, environ, start_response):
         params = parse_qs(environ.get('QUERY_STRING', ''))
@@ -512,7 +536,7 @@ class WebApp:
         reverse = bool(from_language(params))
         source, dictionary = self.choices()
         if reverse and source == logeion.LOGEION:
-            #  (Logeion searches in Latin only: as the window does)
+            #  (Logeion solo busca en latín: como en la ventana)
             self._keep_source({'source': logeion.LOCAL})
             source = logeion.LOCAL
         language = self.session.language
@@ -563,7 +587,7 @@ class WebApp:
             query=esc(query), token=esc(self._token()), nonce=nonce,
             la_checked='' if reverse else ' checked',
             en_checked=' checked' if reverse else '',
-            #  (what Logeion cannot do, greyed out)
+            #  (lo que Logeion no puede hacer, en gris)
             reverse_off=' disabled' if on else '',
             meanings_off=' disabled' if on else '',
             fuzzy_off=' disabled' if on else '',
@@ -1002,8 +1026,8 @@ class WebApp:
         return self._back(start_response, {'lang': form.get('lang', [''])})
 
 
-#  The texts of the page, by their places in it ($t_look_up ...), and those
-#  of its script (as JavaScript strings)
+#  Los textos de la página, por su lugar en ella ($t_look_up ...), y los
+#  de su script (como cadenas de JavaScript)
 PAGE_TEXTS = {
     't_tagline': N_('A Latin Dictionary'), 't_search': N_('Search'),
     't_look_up': N_('Look up'), 't_meanings_in': N_('Meanings in'),
@@ -1322,7 +1346,7 @@ document.querySelector('[name=usual]').addEventListener('click', e => {
 """)
 
 
-# The server ---------------------------------------------------------------
+# El servidor --------------------------------------------------------------
 
 class Server(ThreadingMixIn, WSGIServer):
     """Answers each request in its own thread (a browser may keep idle
@@ -1394,13 +1418,13 @@ def public_app(datadir: str | None = None,
 
 
 def main(argv=None):
-    ensure_config()                 # (made at the first start)
+    ensure_config()                 # (se crea en el primer inicio)
     interface.use_configured()
     interface.translate_argparse()
     parser = argparse.ArgumentParser(
         prog='words_web.py', description=tr('The WORDS dictionary in a web '
                                             'browser.'),
-        epilog='\n\n'.join(tr(p) for p in __doc__.split('\n\n')[1:]),
+        epilog='\n\n'.join(tr(p) for p in USAGE.split('\n\n')),
         formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--host', default=HOST, metavar=tr('HOST'),
                         help=tr('the address to listen on (default: {host}, '

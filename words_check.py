@@ -1,27 +1,30 @@
 #!/usr/bin/env python3
-"""Check the WORDS data files for mistakes.
+"""Busca errores en los archivos de datos de WORDS.
 
-    python3 words_check.py [FILE ...]
+    python3 words_check.py [-q] [--strict] [--inflections FILE] [FILE ...]
 
-With no FILE, checks the data files in the data directory: dictionary.xml
-(and special.xml, if there is one), inflections.xml, uniques.xml,
-addons.xml, sources.xml, gloss.xml, quantities.xml and the language files
-in languages/, and the files of the languages of the interface
-(data/interface/ next to the program).  Each problem is reported as
-FILE:LINE: error|warning: message.
+Sin FILE, revisa los archivos de datos de la carpeta de datos:
+dictionary.xml (y special.xml, si lo hay), inflections.xml, uniques.xml,
+addons.xml, sources.xml, gloss.xml, quantities.xml y los archivos de
+idiomas de languages/, y los archivos de los idiomas de la interfaz
+(data/interface/, junto al programa).  Cada problema se informa como
+FILE:LINE: error|warning: mensaje.
 
-Errors are elements WORDS cannot read: malformed XML, unknown or missing
-codes, stems with characters other than letters, an id used twice, and so
-on.  WORDS stops at the first of them.  Warnings are dictionary entries
-that load but probably do not do what was meant, such as a declension
-with no endings in inflections.xml, a missing stem, or a source code not
-listed in sources.xml, and translations of entries that do not exist.
+Los errores son elementos que WORDS no puede leer: XML mal formado,
+códigos desconocidos o que faltan, raíces con caracteres que no son
+letras, un id usado dos veces, etc.  WORDS se detiene en el primero de
+ellos.  Las advertencias son entradas del diccionario que se cargan pero
+probablemente no hacen lo que se quería, como una declinación sin
+desinencias en inflections.xml, una raíz que falta o un código de fuente
+que no está en sources.xml, y traducciones de entradas que no existen.
+-q (--errors-only) calla las advertencias; --inflections da otro
+inflections.xml contra el cual revisar las declinaciones.
 
-The exit status is 1 if there are errors (or warnings, with --strict).
+El estado de salida es 1 si hay errores (o advertencias, con --strict).
 """
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 import argparse
 import os
@@ -34,9 +37,10 @@ from settings import ensure_config
 from lexicon import default_datadir
 from model import Pos, stems_used, fold, unmarked
 
-MEANING_SHOWN = 80          # a longer meaning is cut in some places
+MEANING_SHOWN = 80          # uno más largo se corta en algunos lugares
 
-#  The inflection parts of speech that can serve each dictionary part.
+#  Las categorías de flexión que pueden servir a cada categoría del
+#  diccionario.
 INFLECTED_AS = {Pos.N: (Pos.N,), Pos.PRON: (Pos.PRON,),
                 Pos.PACK: (Pos.PRON,), Pos.ADJ: (Pos.ADJ,),
                 Pos.NUM: (Pos.NUM,), Pos.V: (Pos.V, Pos.VPAR, Pos.SUPINE)}
@@ -114,7 +118,7 @@ class Checker:
                                 '<quantities>, <language> or <interface>)',
                                 root=root)))
         except xmldata.DataError as e:
-            errors.append(e)            # the file could not be parsed
+            errors.append(e)            # el archivo no se pudo analizar
         for e in errors:
             self.report(e.path, e.line, 'error', e.message)
 
@@ -278,7 +282,7 @@ def data_files(datadir, own: bool = True):
 
 
 def main(argv=None):
-    ensure_config()                 # (made at the first start)
+    ensure_config()                 # (se crea en el primer inicio)
     interface.use_configured()
     interface.translate_argparse()
     parser = argparse.ArgumentParser(

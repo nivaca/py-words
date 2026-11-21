@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Runs the tests of py-words at once: python3 tools/test.py [-j N] [-v]
+"""Corre a la vez las pruebas de py-words: python3 tools/test.py [-j N] [-v]
 [NAME ...]
 
-Each class of tests (tests/test_*.py) runs in a process of its own, as
-many at a time as the computer has processors (-j changes it), the
-slowest files first; so the whole suite takes about as long as its
-slowest class instead of the sum of all.  Each process has its own
-settings folder and virtual display (tests/isolate.py), and all of them
-share one cache of the dictionary, made once before they start.
+Cada clase de pruebas (tests/test_*.py) corre en un proceso propio, tantos
+a la vez como procesadores tenga el computador (-j lo cambia), primero los
+archivos más lentos; así, la suite entera tarda más o menos lo que su
+clase más lenta y no la suma de todas.  Cada proceso tiene su propia
+carpeta de ajustes y su pantalla virtual (tests/isolate.py), y todos
+comparten una caché del diccionario, hecha una sola vez antes de empezar.
 
-NAMEs choose what to run: a file (test_cli), a class
-(test_editor.TranslationTests) or a pattern of them (test_gui_*).  At the
-end come the classes that failed, with their output, and the counts;
--v also shows each class as it ends.  The exit status is 1 if a test
-failed.  (python3 -m unittest discover -s tests runs them one after the
-other, as before.)
+Los NAME eligen qué correr: un archivo (test_cli), una clase
+(test_editor.TranslationTests) o un patrón de ellos (test_gui_*).  Al final
+aparecen las clases que fallaron, con su salida, y los totales; -v muestra
+además cada clase a medida que termina.  El código de salida es 1 si falló
+alguna prueba.  (python3 -m unittest discover -s tests las corre una tras
+otra, como antes.)
 """
 
 import argparse
@@ -32,8 +32,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TESTS = os.path.join(ROOT, 'tests')
-#  The files that take longest, started first (the others follow in
-#  alphabetical order)
+#  Los archivos que más tardan, que arrancan primero (los demás siguen en
+#  orden alfabético)
 SLOW = ('test_editor', 'test_tui', 'test_lexicon', 'test_logeion',
         'test_history', 'test_fonts', 'test_languages', 'test_fuzzy',
         'test_cli', 'test_regression')

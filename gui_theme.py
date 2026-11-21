@@ -1,35 +1,21 @@
-"""The light or dark look of the windows (the dictionary, its settings and
-fonts dialogues, the editor).
+"""El aspecto claro u oscuro de las ventanas (el diccionario, sus diálogos
+de ajustes y de fuentes, el editor).
 
-Dark mode uses Tk's "clam" theme with dark colours; light mode is the
-system's usual theme.  The choice is kept for next time in the section
-[appearance] of the configuration file (dark_mode = true or false; the
-web page, which shares it, follows the system if there is none), and
-changes all the open windows at once: the ttk widgets through their
-style, the others (texts, lists) through Tk's option database for those
-made later and one by one for those already there.
+Los dos aspectos se dibujan con el tema "clam" de Tk en los colores de la
+página web, salvo el modo claro en Windows y macOS, que conserva el tema
+propio del sistema (Linux no tiene ninguno que valga la pena conservar:
+el "default" de Tk es el de los noventa).  La elección se guarda para la
+próxima vez en la sección [appearance] del archivo de configuración
+(dark_mode = true o false; la página web, que la comparte, sigue al
+sistema si no la hay), y cambia a la vez todas las ventanas abiertas: los
+widgets de ttk por medio de su estilo, los demás (textos, listas) por
+medio de la base de datos de opciones de Tk para los que se creen
+después, y uno por uno para los que ya existen.
 
-Labels that are not plain text use a style of their own, which follows
-the theme: Muted.TLabel (hints, in grey) and Error.TLabel (problems).
-"""
-
-"""The light or dark look of the windows (the dictionary, its settings and
-fonts dialogues, the editor).
-
-Both looks are drawn with Tk's "clam" theme in the colours of the web
-page, except light mode on Windows and macOS, which keeps the system's
-own theme (Linux has none worth keeping: Tk's "default" is that of the
-nineties).  The choice is kept for next time in the section [appearance]
-of the configuration file (dark_mode = true or false; the web page,
-which shares it, follows the system if there is none), and changes all
-the open windows at once: the ttk widgets through their style, the
-others (texts, lists) through Tk's option database for those made later
-and one by one for those already there.
-
-Some widgets use a style of their own, which follows the theme:
-Muted.TLabel (hints, in grey), Error.TLabel (problems), Link.TLabel,
-Accent.TButton (the main button of a window, in the colour of the
-accent) and Flat.Toolbutton (a button with no border).
+Algunos widgets usan un estilo propio, que sigue el tema: Muted.TLabel
+(indicaciones, en gris), Error.TLabel (problemas), Link.TLabel,
+Accent.TButton (el botón principal de una ventana, en el color de
+acento) y Flat.Toolbutton (un botón sin borde).
 """
 
 import sys
@@ -42,8 +28,9 @@ SECTION = 'appearance'
 OWN_THEME = 'clam'
 DARK_THEME = OWN_THEME
 
-#  The colours of the two looks (like those of the web page: the window is
-#  its panels, and what is typed or shown is on its page)
+#  Los colores de los dos aspectos (como los de la página web: la
+#  ventana es sus paneles, y lo que se escribe o se muestra está en su
+#  página)
 DARK = {
     'background': '#242428', 'foreground': '#e8e6e1',
     'field': '#1b1b1d', 'select': '#8a2c1f', 'select_fg': '#ffffff',
@@ -82,11 +69,11 @@ class Theme:
         self.root = root
         self.style = ttk.Style(root)
         self.usual_theme = self.style.theme_use()
-        #  (the systems with a theme of their own keep it in light mode)
+        #  (los sistemas con un tema propio lo conservan en el modo claro)
         self.native = sys.platform in ('win32', 'darwin') and \
             self.usual_theme not in ('default', 'classic', 'alt', 'clam')
         self.usual = self._usual_colours()
-        self.ticks = None               # (the images of the check boxes)
+        self.ticks = None               # (las imágenes de las casillas)
         self.dark = config.section(SECTION).get('dark_mode') is True
         self.apply()
 
@@ -110,7 +97,7 @@ class Theme:
             text.destroy()
             listbox.destroy()
 
-    # Choosing ---------------------------------------------------------------
+    # La elección ------------------------------------------------------------
 
     def set(self, dark: bool):
         """Changes the look, and keeps the choice."""
@@ -119,9 +106,9 @@ class Theme:
         try:
             config.update(SECTION, {'dark_mode': self.dark})
         except (OSError, config.ConfigError):
-            pass                        # (then it lasts for this session)
+            pass                        # (entonces dura esta sesión)
 
-    # Applying ---------------------------------------------------------------
+    # La aplicación ----------------------------------------------------------
 
     @property
     def palette(self) -> dict:
@@ -142,7 +129,7 @@ class Theme:
         self.colours = colours
         self._options(colours)
         self._recolour(self.root, colours)
-        #  (for what has colours of its own, such as the styled results)
+        #  (para lo que tiene colores propios, como los resultados con estilo)
         self.root.event_generate('<<ThemeChanged>>', when='tail')
 
     def _styles(self, d: dict):
@@ -179,8 +166,8 @@ class Theme:
               bordercolor=[('disabled', d['border']),
                            ('focus', d['focus'])],
               foreground=[('disabled', d['disabled'])])
-        #  a button with no border (like the dark mode one), only a shade
-        #  under the mouse
+        #  un botón sin borde (como el del modo oscuro), solo con una sombra
+        #  bajo el ratón
         s.configure('Flat.Toolbutton', background=d['background'],
                     relief='flat', borderwidth=0)
         s.map('Flat.Toolbutton', relief=[('selected', 'flat'),
@@ -273,9 +260,9 @@ class Theme:
             add(f'*{cls}.foreground', fg, 'interactive')
             add(f'*{cls}.selectBackground', c['select'], 'interactive')
             add(f'*{cls}.selectForeground', c['select_fg'], 'interactive')
-        #  (a selection where the text is not focused, such as the results,
-        #  which cannot be typed in, would be light grey under the white
-        #  text)
+        #  (una selección donde el texto no tiene el foco, como en los
+        #  resultados, en los que no se puede escribir, sería gris claro bajo
+        #  el texto blanco)
         add('*Text.inactiveSelectBackground', c['select'], 'interactive')
         add('*Text.insertBackground', c['insert'], 'interactive')
         add('*Text.highlightBackground', c['border'], 'interactive')

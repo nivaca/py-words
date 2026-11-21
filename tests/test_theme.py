@@ -1,4 +1,4 @@
-"""Tests of the light and dark look of the windows (gui_theme.py)."""
+"""Pruebas del aspecto claro y oscuro de las ventanas (gui_theme.py)."""
 
 import gc
 import os
@@ -7,7 +7,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: E402  (before anything that reads settings)
 
 
@@ -27,7 +27,7 @@ class ThemeTests(unittest.TestCase):
     def tearDown(self):
         self.root.destroy()
         del self.root
-        gc.collect()        # (Tk must be freed here, not by another thread)
+        gc.collect()        # (Tk debe liberarse aquí, no en otro hilo)
         if self.old is None:
             os.environ.pop('PY_WORDS_CONFIG', None)
         else:
@@ -56,7 +56,7 @@ class ThemeTests(unittest.TestCase):
         self.assertEqual(theme.style.theme_use(), usual)
         self.assertEqual(before.cget('background'), light_bg)
         self.assertEqual(self.config.section('appearance'),
-                         {'dark_mode': False})      # (the web page too)
+                         {'dark_mode': False})      # (también la página web)
 
     def test_menus(self):
         """The menu bar and the menus follow the look too (made before and

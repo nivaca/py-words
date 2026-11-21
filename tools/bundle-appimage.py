@@ -1,35 +1,37 @@
 #!/usr/bin/env python3
-"""Makes an AppImage of the program, for Linux:
+"""Hace un AppImage del programa, para Linux:
 python3 tools/bundle-appimage.py
 
-The AppImage is dist/py-words-v.VERSION-x86_64.AppImage (the version of
-version.py; dist is made in the program's folder if need be, and --output
-gives another folder).  It holds a Python of its own, with Tk (a relocatable Python
-of the python-appimage project, https://github.com/niess/python-appimage),
-and the program as bundle-zip.py puts it in the zip, so it runs on any
-Linux of the last ten years or so, without installing anything.
+El AppImage es dist/py-words-v.VERSION-x86_64.AppImage (la versión de
+version.py; dist se crea en la carpeta del programa si hace falta, y
+--output da otra carpeta).  Lleva un Python propio, con Tk (un Python
+reubicable del proyecto python-appimage,
+https://github.com/niess/python-appimage), y el programa tal como
+bundle-zip.py lo pone en el zip, así que corre en cualquier Linux de los
+últimos diez años, más o menos, sin instalar nada.
 
-It starts the window (words_gui.py); a first argument chooses another of
-the programs:
+Abre la ventana (words_gui.py); un primer argumento elige otro de los
+programas:
 
     py-words.AppImage [gui|cli|tui|web|edit|edit-gui|check|convert] ...
 
-and so does the name it is called by, if it is a link named words,
-words_tui, words_web ... (like the programs, without .py).  "help" lists
-them.  The AppImage cannot be written to: to edit the dictionary, copy the
-data folder somewhere and give it as the data folder (in the settings, or
-with --datadir or $PY_WORDS_DATADIR).
+y lo mismo hace el nombre con que se le llama, si es un enlace llamado
+words, words_tui, words_web ... (como los programas, sin .py).  "help" los
+lista.  En el AppImage no se puede escribir: para editar el diccionario,
+hay que copiar la carpeta de datos a otro lugar y darla como carpeta de
+datos (en los ajustes, o con --datadir o $PY_WORDS_DATADIR).
 
-What it needs is downloaded the first time, and kept in the user's cache
-folder (~/.cache/py-words-build): the Python and appimagetool
-(https://github.com/AppImage/appimagetool).  --python and --appimagetool
-give them instead.
+Lo que necesita se descarga la primera vez y se guarda en la carpeta de
+caché del usuario (~/.cache/py-words-build): el Python y appimagetool
+(https://github.com/AppImage/appimagetool).  --python y --appimagetool
+los dan en su lugar, y --python-version elige otra versión de Python para
+descargar.
 """
 
 import os
 import sys
 
-#  The program's folder (this script is in its tools/)
+#  La carpeta del programa (este script está en su tools/)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
@@ -51,14 +53,14 @@ import interface
 from interface import tr
 from version import COMMIT_FILE, NAME, VERSION
 
-#  Where the AppImage goes, unless --output says otherwise
+#  Adónde va el AppImage, salvo que --output diga otra cosa
 DIST = os.path.join(ROOT, 'dist')
 APP_ID = 'py-words'
 ARCH = 'x86_64'
 
-#  The Python put in the AppImage (python-appimage has one release per
-#  version, with an AppImage per manylinux; the older the manylinux, the
-#  older the systems it runs on)
+#  El Python que se pone en el AppImage (python-appimage tiene una
+#  publicación por versión, con un AppImage por manylinux; cuanto más
+#  viejo el manylinux, más viejos los sistemas en que corre)
 PYTHON = '3.13'
 PYTHON_RELEASES = 'https://api.github.com/repos/niess/python-appimage/' \
     'releases/tags/python{version}'
@@ -66,12 +68,13 @@ MANYLINUX = ('manylinux2014', 'manylinux_2_28')
 APPIMAGETOOL = 'https://github.com/AppImage/appimagetool/releases/' \
     f'download/continuous/appimagetool-{ARCH}.AppImage'
 
-#  The terminals whose descriptions go in the AppImage.  Its Python has the
-#  ncurses 5 of manylinux, which cannot read the descriptions that newer
-#  systems (Fedora, Debian 12...) compile in the format of ncurses 6.1 for
-#  every terminal with 256 colours, and then curses does not start.  So the
-#  AppImage carries them in the old format, made from those of the system
-#  that builds it (those it does not know are left out).
+#  Las terminales cuyas descripciones van en el AppImage.  Su Python tiene
+#  el ncurses 5 de manylinux, que no puede leer las descripciones que los
+#  sistemas más nuevos (Fedora, Debian 12...) compilan en el formato de
+#  ncurses 6.1 para toda terminal de 256 colores, y entonces curses no
+#  arranca.  Por eso el AppImage las lleva en el formato viejo, hechas a
+#  partir de las del sistema que lo construye (las que este no conoce
+#  quedan fuera).
 TERMINALS = (
     'xterm', 'xterm-color', 'xterm-256color', 'xterm-direct', 'xterm-kitty',
     'screen', 'screen-256color', 'tmux', 'tmux-256color', 'linux', 'vt100',
@@ -84,9 +87,9 @@ TERMINALS = (
 #  (the biggest number the old format holds)
 SHORT_MAX = 32767
 
-#  What is not for the AppImage: the installer of menu entries (they would
-#  point inside the AppImage, which is mounted somewhere else each time).
-#  (What makes the bundles, in tools/, is not in the zip either.)
+#  Lo que no es para el AppImage: el instalador de entradas de menú (estas
+#  apuntarían dentro del AppImage, que se monta cada vez en otro lugar).
+#  (Lo que hace los paquetes, en tools/, tampoco está en el zip.)
 NOT_IN_IMAGE = ('words_install.py',)
 
 #  The programs: (command, program)
@@ -223,7 +226,7 @@ def python_url(version: str) -> str:
         assets = json.load(r)['assets']
     tag = 'cp' + version.replace('.', '')
     for manylinux in MANYLINUX:
-        #  (not those of the Python without the GIL, cp313t)
+        #  (no los del Python sin GIL, cp313t)
         end = f'-{tag}-{tag}-{manylinux}_{ARCH}.AppImage'
         found = [a['browser_download_url'] for a in assets
                  if a['name'].endswith(end)]
@@ -254,7 +257,7 @@ def make_appdir(appdir: str, commit: str | None):
     if not pythons:
         raise OSError(tr('there is no Python in {path}', path=appdir))
     python = os.path.relpath(pythons[0], appdir)
-    #  Out with what makes it the Python's AppImage
+    #  Fuera lo que lo hace el AppImage de Python
     for pattern in ('AppRun', '*.desktop', '*.png', '*.svg', '.DirIcon',
                     'usr/share/applications', 'usr/share/metainfo'):
         for path in glob.glob(os.path.join(appdir, pattern)):
@@ -262,7 +265,7 @@ def make_appdir(appdir: str, commit: str | None):
                 shutil.rmtree(path)
             else:
                 os.remove(path)
-    #  The program
+    #  El programa
     program = os.path.join(appdir, 'opt', APP_ID)
     for f in files():
         target = os.path.join(program, f)
@@ -366,7 +369,7 @@ def bundle(output: str, python: str | None = None,
         appdir = extract(python, tmp)
         make_appdir(appdir, bundle_zip().built_from())
         open_to_all(appdir)
-        #  (without FUSE, as in a container, the tool runs extracted)
+        #  (sin FUSE, como en un contenedor, la herramienta corre extraída)
         env = dict(os.environ, ARCH=ARCH, APPIMAGE_EXTRACT_AND_RUN='1')
         subprocess.run([os.path.abspath(appimagetool), '--no-appstream',
                         appdir, path + '.tmp'], check=True, env=env)

@@ -1,18 +1,19 @@
-"""The text WORDS shows for its results.
+"""El texto que WORDS muestra en sus resultados.
 
     amicus
       amicus, amici  noun, 2nd declension, masculine  [XXXBO]
         friend, ally, disciple; loved one; patron; ...
         amic-us   nominative singular
 
-Each word is followed by its readings: a dictionary entry (its principal
-parts and grammar, its meaning, then the forms the word can be; entries
-that would show the same forms, such as a word of WORDS and its medieval
-sense from Latham, show them once, after the last of them, as WORDS did), an
-irregular form, an affix or enclitic found on the word, or a note on a
-trick that was needed to find it.  The meanings are in the language given
-(see languages.py), and so is the rest, if the language translates it
-(Language.text).
+Cada palabra va seguida de sus lecturas: una entrada del diccionario (sus
+partes principales y su gramática, su significado y luego las formas que
+la palabra puede ser; las entradas que mostrarían las mismas formas, como
+una palabra de WORDS y su sentido medieval tomado de Latham, las muestran
+una sola vez, tras la última de ellas, como hacía WORDS), una forma
+irregular, un afijo o enclítico hallado en la palabra, o una nota sobre
+un truco que hizo falta para encontrarla.  Los significados están en el
+idioma dado (véase languages.py), y lo demás también, si el idioma lo
+traduce (Language.text).
 """
 
 from __future__ import annotations
@@ -27,8 +28,8 @@ from results import Origin, Parse, Reading, WordResult
 from reverse import Hit
 from settings import Settings
 
-#  Pearse codes (the pearse_codes developer mode): each line starts with
-#  a number saying what it is.
+#  Códigos de Pearse (el modo de desarrollador pearse_codes): cada línea
+#  empieza con un número que dice lo que es.
 UNKNOWN_CODE, FORM_CODE, ENTRY_CODE, MEANING_CODE, UNKNOWN_FILE_CODE, \
     AFFIX_CODE, TRICK_CODE = range(7)
 
@@ -115,7 +116,7 @@ class Renderer:
         self.lines = []
         return out + '\n' if out else ''
 
-    # Latin to the language of the meanings ---------------------------------
+    # Del latín al idioma de los significados -----------------------------
 
     def word(self, result: WordResult, show_unknown_list=None,
              near: list[str] = ()) -> str:
@@ -250,7 +251,7 @@ class Renderer:
             if entry is not None and p.form.pos not in (
                     entry.part.pos, Pos.VPAR, Pos.SUPINE) and not (
                     entry.part.pos == Pos.PACK and p.form.pos == Pos.PRON):
-                # made by a suffix: ludus -> ludic-a, an adjective
+                # hecha con un sufijo: ludus -> ludic-a, un adjetivo
                 pos = POS_NAME.get(p.form.pos)
                 description = ', '.join(
                     x for x in (pos and self.t(pos), description) if x)

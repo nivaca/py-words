@@ -1,13 +1,14 @@
-"""The history of the searches, shared by the command line and the window
-and kept between sessions in a file:
+"""El historial de las búsquedas, que comparten la línea de órdenes y la
+ventana y que se guarda de una sesión a otra en un archivo:
 
-    Linux     $XDG_STATE_HOME/py-words/history (usually ~/.local/state)
+    Linux     $XDG_STATE_HOME/py-words/history (normalmente ~/.local/state)
     macOS     ~/Library/Application Support/py-words/history
     Windows   %LOCALAPPDATA%\\py-words\\history
 
-($PY_WORDS_HISTORY names another file; set to nothing, no history
-is kept.)  The file has one search per line, the oldest first; the last
-MAX are kept, and a search the same as the one before is not added again.
+($PY_WORDS_HISTORY nombra otro archivo; vacía, no se guarda historial.)
+El archivo tiene una búsqueda por línea, la más antigua primero; se
+guardan las últimas MAX, y una búsqueda igual a la anterior no se vuelve
+a añadir.
 """
 
 from __future__ import annotations
@@ -71,7 +72,7 @@ class History:
             os.makedirs(os.path.dirname(self.path) or '.', exist_ok=True)
             with open(self.path, 'a', encoding='utf-8') as f:
                 f.write(line + '\n')
-            if os.path.getsize(self.path) > 200 * MAX:     # (trim it)
+            if os.path.getsize(self.path) > 200 * MAX:     # (se recorta)
                 self._write()
         except OSError:
             pass                        # (it lasts for this session)

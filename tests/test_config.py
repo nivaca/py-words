@@ -1,4 +1,4 @@
-"""Tests of the configuration file (config.py)."""
+"""Pruebas del archivo de configuración (config.py)."""
 
 import os
 import sys
@@ -7,7 +7,7 @@ import tomllib
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import config  # noqa: E402
@@ -49,7 +49,7 @@ class ConfigTests(unittest.TestCase):
                                 'text_family': 'A "quoted" \\ name'})
         config.update('parameters', {'trim_output': False})
         with open(config.config_path(), 'rb') as f:
-            data = tomllib.load(f)          # (valid TOML)
+            data = tomllib.load(f)          # (TOML válido)
         self.assertEqual(data['fonts'], {'text_size': 14,
                                          'text_family': 'A "quoted" \\ name'})
         self.assertEqual(data['parameters'], {'trim_output': False})

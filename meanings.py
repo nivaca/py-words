@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""py-words showing only dictionary forms and meanings:
+"""py-words con solo las formas de diccionario y los significados:
 python3 meanings.py"""
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 from words import meanings
 

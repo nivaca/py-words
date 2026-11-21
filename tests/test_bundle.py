@@ -1,4 +1,5 @@
-"""Tests of tools/bundle-zip.py, which makes the zip of the distribution."""
+"""Pruebas de tools/bundle-zip.py, que hace el zip de la distribución, y
+del commit que muestra «Acerca de» (version.commit())."""
 
 import os
 import subprocess
@@ -8,7 +9,7 @@ import unittest
 import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 import importlib.util  # noqa: E402
 
@@ -46,7 +47,7 @@ class BundleTests(unittest.TestCase):
             self.assertNotEqual(parts[0], 'tests', n)
 
     def test_what_is_not_part_of_it(self):
-        #  (in a folder of its own, made for the test)
+        #  (en una carpeta propia, hecha para la prueba)
         spec = importlib.util.spec_from_file_location(
             'bundle_zip', os.path.join(ROOT, 'tools', 'bundle-zip.py'))
         bundle = importlib.util.module_from_spec(spec)

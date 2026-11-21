@@ -1,6 +1,7 @@
-"""A data folder for the tests of the choice of language: the program's
-data files (linked, or copied where links cannot be made), with a small
-Spanish language file."""
+"""Una carpeta de datos para las pruebas de la elección de idioma: los
+archivos de datos del programa (enlazados, o copiados donde no se pueden
+hacer enlaces), con un archivo pequeño de significados en español
+(languages/es.xml)."""
 
 import os
 import shutil

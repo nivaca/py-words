@@ -1,8 +1,9 @@
-"""The grammatical vocabulary of WORDS and the records built from it.
+"""El vocabulario gramatical de WORDS y los registros que se construyen
+con él.
 
-The codes (N, ADJ, NOM, PRES, ...) are those used in the data files.  Every
-enumeration has an X member meaning "unknown" or "any", which is also the
-default.
+Los códigos (N, ADJ, NOM, PRES, ...) son los que usan los archivos de
+datos.  Toda enumeración tiene un miembro X que significa "desconocido" o
+"cualquiera", y que es también el valor por omisión.
 """
 
 from __future__ import annotations
@@ -16,14 +17,14 @@ from typing import NamedTuple
 class Pos(IntEnum):
     """Part of speech."""
     X = 0
-    N = 1          # noun
-    PRON = 2       # pronoun
-    PACK = 3       # pronoun that takes a tackon (qui -> quicumque)
+    N = 1          # el sustantivo
+    PRON = 2       # el pronombre
+    PACK = 3       # el pronombre que toma un tackon (qui -> quicumque)
     ADJ = 4
     NUM = 5
     ADV = 6
     V = 7
-    VPAR = 8       # participle
+    VPAR = 8       # el participio
     SUPINE = 9
     PREP = 10
     CONJ = 11
@@ -38,7 +39,7 @@ class Gender(IntEnum):
     M = 1
     F = 2
     N = 3
-    C = 4          # common: masculine or feminine
+    C = 4          # común: masculino o femenino
 
 
 class Case(IntEnum):
@@ -100,15 +101,15 @@ class Mood(IntEnum):
 
 class NounKind(IntEnum):
     X = 0
-    S = 1          # singular only
-    M = 2          # plural or multiple
-    A = 3          # abstract idea
-    G = 4          # group or collective
-    N = 5          # proper name
-    P = 6          # a person
-    T = 7          # a thing
-    L = 8          # a place
-    W = 9          # where (a locative-like place)
+    S = 1          # solo en singular
+    M = 2          # plural o múltiple
+    A = 3          # una idea abstracta
+    G = 4          # un grupo o colectivo
+    N = 5          # un nombre propio
+    P = 6          # una persona
+    T = 7          # una cosa
+    L = 8          # un lugar
+    W = 9          # dónde (un lugar en locativo)
 
 
 class PronounKind(IntEnum):
@@ -225,7 +226,8 @@ class Source(IntEnum):
     W = 23
     Y = 24
     Z = 25
-    #  Codes added to WORDS's (all its capitals are taken): lowercase
+    #  Los códigos añadidos a los de WORDS (sus mayúsculas están todas
+    #  ocupadas): en minúscula
     m = 26          # De Miguel, Latin-Spanish dictionary (1867)
 
 
@@ -378,8 +380,8 @@ NO_INFLECTION = Inflection(NO_FORM)
 
 
 # ---------------------------------------------------------------------------
-#  Dictionary entries, irregular forms and affixes.  These are compared by
-#  identity: two entries with the same text are still two entries.
+#  Entradas del diccionario, formas irregulares y afijos.  Se comparan por
+#  identidad: dos entradas con el mismo texto siguen siendo dos entradas.
 
 @dataclass(frozen=True, eq=False, slots=True)
 class Entry:
@@ -407,7 +409,7 @@ class Unique:
     id: int
     word: str
     form: Form
-    kind: Kind | int          # a numeral's value for NUM
+    kind: Kind | int          # el valor de un numeral, para NUM
     codes: Codes
     meaning: str
     uid: int = 0                    # (as for Entry)
@@ -420,9 +422,9 @@ class Unique:
 class Prefix:
     id: int
     fix: str
-    connect: str                    # the letter that must follow, or ''
-    root: Pos                       # it attaches to words of this part
-    target: Pos                     # making words of this part
+    connect: str                    # la letra que debe seguir, o ''
+    root: Pos                       # se une a palabras de esta clase
+    target: Pos                     # y forma palabras de esta clase
     meaning: str
     uid: int = 0                    # (as for Entry)
 
@@ -431,11 +433,11 @@ class Prefix:
 class Suffix:
     id: int
     fix: str
-    connect: str                    # the letter that must precede, or ''
+    connect: str                    # la letra que debe preceder, o ''
     root: Pos
-    root_key: int                   # attached to this stem of the root
-    target: Part                    # making a word with this grammar
-    target_key: int                 # of which it is this stem
+    root_key: int                   # unido a este tema de la raíz
+    target: Part                    # y forma una palabra con esta gramática
+    target_key: int                 # de la que es este tema
     meaning: str
     uid: int = 0                    # (as for Entry)
 
@@ -446,7 +448,7 @@ class Tackon:
     only to qu- pronouns (qui -> quicumque)."""
     id: int
     fix: str
-    base: Part                      # what it attaches to (pos X: anything)
+    base: Part                      # a lo que se une (pos X: a cualquier cosa)
     meaning: str
     uid: int = 0                    # (as for Entry)
 
@@ -475,7 +477,8 @@ def fold(s: str) -> str:
     return s.lower().translate(_FOLD)
 
 
-#  The long vowels, as data/quantities.xml marks them (see `unmarked`)
+#  Las vocales largas, como las marca data/quantities.xml (véase
+#  `unmarked`)
 LONG_VOWELS = 'āēīōūȳĀĒĪŌŪȲ'
 _UNMARK = str.maketrans(LONG_VOWELS, 'aeiouyAEIOUY')
 

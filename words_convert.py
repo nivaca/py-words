@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
-"""Convert data files in the original WORDS text format to XML.
+"""Convierte a XML los archivos de datos en el formato de texto original de
+WORDS.
 
     python3 words_convert.py SRC [DEST]
 
-reads DICTLINE.GEN, INFLECTS.LAT, UNIQUES.LAT and ADDONS.LAT (and
-DICTLINE.SPE, if there is one) from SRC and writes dictionary.xml,
-inflections.xml, uniques.xml and addons.xml (and special.xml) to DEST (by
-default SRC).  The comments of INFLECTS.LAT and ADDONS.LAT are kept as XML
-comments.  This brings in data from other versions of WORDS.
+lee DICTLINE.GEN, INFLECTS.LAT, UNIQUES.LAT y ADDONS.LAT (y DICTLINE.SPE,
+si lo hay) de SRC y escribe dictionary.xml, inflections.xml, uniques.xml
+y addons.xml (y special.xml) en DEST (por omisión, SRC).  Los comentarios
+de INFLECTS.LAT y ADDONS.LAT se conservan como comentarios XML.  Así se
+pueden traer datos de otras versiones de WORDS.
 
-The original files are read as the original program read them, including
-a quirk: in ADDONS.LAT a short line after a comment can pick up the end of
-the comment.  A tackon that this makes unusable is written as a comment.
+Los archivos originales se leen como los leía el programa original,
+incluida una rareza: en ADDONS.LAT, una línea corta después de un
+comentario puede tomar el final del comentario.  Un tackon que quede
+inservible por esto se escribe como comentario.
 """
 
 from __future__ import annotations
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 import argparse
 import os
@@ -32,7 +34,7 @@ from model import (Pos, Gender, Case, Number, Comparison, NumeralSort,
                     Freq, Area, Geo, Source, Decl, Codes, Part, Form,
                     Inflection, Entry, Unique, Prefix, Suffix, Tackon)
 
-#  Columns of DICTLINE.GEN: four stems of 18 letters, then the rest
+#  Columnas de DICTLINE.GEN: cuatro raíces de 18 letras y luego el resto
 STEM_STARTS = (0, 19, 38, 57)
 STEM_WIDTH = 18
 PART_START = 76
@@ -251,9 +253,9 @@ def convert_uniques(path: str) -> list[Unique]:
 def convert_addons(path: str) -> list[str]:
     lines = read_lines(path)
     body = []
-    #  The header of an entry is read into a buffer that still holds the
-    #  comment lines just before it: it ends at the first "--" in the line
-    #  laid over them, or, if there is none, at the end of the line.
+    #  La cabecera de una entrada se lee en un búfer que aún tiene las líneas
+    #  de comentario que la preceden: termina en el primer "--" de la línea
+    #  puesta sobre ellas o, si no lo hay, al final de la línea.
     stale = ''
     number = 0
     pos = 0

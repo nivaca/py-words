@@ -1,28 +1,30 @@
-"""The entries of Logeion (https://logeion.uchicago.edu), the Latin and
-Greek dictionaries of the University of Chicago, for the words looked up:
-the second source of the window, the terminal interface and the command
-line, beside this program's own dictionary ("local").
+"""Las entradas de Logeion (https://logeion.uchicago.edu), los diccionarios
+de latín y griego de la Universidad de Chicago, para las palabras
+buscadas: la segunda fuente de la ventana, la interfaz de terminal, la
+línea de órdenes y la página web, junto al diccionario propio del programa
+("local").
 
-Logeion has the entries of many dictionaries (Lewis and Short, Georges,
-Gaffiot, DMLBS, Du Cange …) but does not analyse an inflected form, so the
-words are analysed here first, and Logeion is asked for their lemmas: the
-first of the principal parts of each entry found (arma: armum and armo;
-dixit: dico).  The analysis is shown before Logeion's entries, as this
-program shows it but without its meanings: the entries and the forms
-(dixi: dico, dicere, dixi, dictus; dix-ī  1SG.PRF.ACT.IND).  A word
-with no lemma here (one that is not found, an irregular form or pronoun)
-is asked for as it is written, and Logeion finds what it can for it.
+Logeion tiene las entradas de muchos diccionarios (Lewis and Short,
+Georges, Gaffiot, DMLBS, Du Cange …), pero no analiza una forma
+flexionada; por eso las palabras se analizan primero aquí y a Logeion se
+le piden sus lemas: la primera de las partes principales de cada entrada
+hallada (arma: armum y armo; dixit: dico).  El análisis se muestra antes
+de las entradas de Logeion, como lo muestra este programa pero sin sus
+significados: las entradas y las formas (dixi: dico, dicere, dixi, dictus;
+dix-ī  1SG.PRF.ACT.IND).  Una palabra sin lema aquí (una que no se
+encuentra, una forma irregular o un pronombre) se pide tal como está
+escrita, y Logeion encuentra lo que puede para ella.
 
-The entries can be those of all the dictionaries of Logeion, or of one
-(DICTIONARIES): the others are left out, but not the short definition,
-the frequency and the examples from the corpus.  The source and the
-dictionary chosen are kept in the section [logeion] of the configuration
-file (source = "local" or "logeion", dictionary = "all" or a code of
-DICTIONARIES), for the next start of any of the programs.  Asking
-Logeion needs the internet; its pages are kept in memory while the
-program runs.  The engine that asks Logeion and renders its entries
-(logeion_api.py, logeion_entry.py, logeion_render.py, logeion_dom.py,
-logeion_text.py) is that of py-logeion.
+Las entradas pueden ser las de todos los diccionarios de Logeion o las de
+uno solo (DICTIONARIES; por omisión, el DMLBS): los demás quedan fuera,
+pero no la definición breve, la frecuencia ni los ejemplos del corpus.  La
+fuente y el diccionario elegidos se guardan en la sección [logeion] del
+archivo de configuración (source = "local" o "logeion", dictionary =
+"all" o un código de DICTIONARIES), para el próximo arranque de cualquiera
+de los programas.  Consultar Logeion requiere internet; sus páginas se
+guardan en memoria mientras el programa corre.  El motor que consulta
+Logeion y presenta sus entradas (logeion_api.py, logeion_entry.py,
+logeion_render.py, logeion_dom.py, logeion_text.py) es el de py-logeion.
 """
 
 from __future__ import annotations
@@ -46,12 +48,12 @@ from results import Origin, WordResult
 
 LOCAL, LOGEION = 'local', 'logeion'
 SOURCES = (LOCAL, LOGEION)
-#  The names of the sources, in the selectors
+#  Los nombres de las fuentes, en los selectores
 NAMES = {LOCAL: N_('Local'), LOGEION: N_('Logeion')}
 SECTION = 'logeion'
 
-#  The dictionaries to choose from: all, or one of the Latin ones of
-#  Logeion, by their codes (those of py-logeion: -d ls), with their names
+#  Los diccionarios entre los que se elige: todos, o uno de los latinos de
+#  Logeion, por sus códigos (los de py-logeion: -d ls), con sus nombres
 ALL = 'all'
 LEWIS_SHORT = 'ls'
 #  The dictionary shown until another one is chosen: the DMLBS (the
@@ -116,9 +118,9 @@ def _save(key: str, value: str) -> str:
 
 # Lemmas -------------------------------------------------------------------
 
-#  The lemmas of the pronouns whose principal parts are not given: the
-#  personal ones by their first stem, those of qui and aliqui by their
-#  kind (the substantive ones are quis and aliquis)
+#  Los lemas de los pronombres que no tienen partes principales: los
+#  personales por su primera raíz, los de qui y aliqui por su clase (los
+#  sustantivos son quis y aliquis)
 PERSONAL = {'ego': 'ego', 'tu': 'tu', 'n': 'nos', 'v': 'vos', 'zzz': 'sui'}
 SUBSTANTIVE = (PronounKind.INTERR, PronounKind.INDEF)
 
@@ -146,8 +148,8 @@ def lemmas(result: WordResult) -> list[str]:
         entries = [p.entry for p in reading.forms if p.entry is not None]
         if not entries and reading.forms and \
                 reading.forms[0].origin != Origin.UNIQUE:
-            continue                    # (a prefix or a trick: its word
-                                        # has a reading of its own)
+            continue                    # (un prefijo o un truco: su palabra
+                                        # tiene su propia lectura)
         name = lemma(entries[0]) if entries else ''
         name = name or result.word
         if name not in out:
@@ -207,8 +209,8 @@ def analysis(session, result: WordResult) -> list[str]:
     if session.settings.pearse_codes:   # (no indentation to go by)
         return [line for n, line in enumerate(lines)
                 if n == 0 or line != lines[n - 1]]
-    #  an entry (two spaces in), and its forms below: those of the same
-    #  entry line together, each form once, in the order they come
+    #  una entrada (dos espacios adentro) y sus formas debajo: las de una
+    #  misma línea de entrada juntas, cada forma una vez, en su orden
     blocks: dict[str, list[str]] = {}
     current: list[str] = []
     for line in lines:
@@ -240,7 +242,7 @@ class Logeion:
         other dictionaries have only to refer to dico and sum).  If Logeion
         cannot be reached, a page says why, and the rest are not asked
         for."""
-        shown: set[str] = set()         # (two lemmas, one page: volo)
+        shown: set[str] = set()         # (dos lemas, una página: volo)
         for word in words:
             if word.word not in word.lemmas:
                 try:
@@ -273,8 +275,8 @@ class Logeion:
         if page['word'] in shown:
             return
         shown.add(page['word'])
-        #  (Logeion's analysis of the lemma, a form of itself, is not what
-        #  was looked up)
+        #  (el análisis que Logeion hace del lema, como forma de sí mismo, no
+        #  es lo que se buscó)
         page = {**page, 'parses': [], 'lemmas': []}
         word.pages.append(Page(name, page_entry(page)))
 
@@ -301,9 +303,9 @@ def reason(e: BaseException) -> str:
 
 # Showing ------------------------------------------------------------------
 
-#  The kinds of the lines of render(): the line of a word looked up, those
-#  of its analysis (as this program shows its results), and those of the
-#  pages (and of the problems) after it
+#  Las clases de líneas de render(): la línea de una palabra buscada, las
+#  de su análisis (como este programa muestra sus resultados) y, después,
+#  las de las páginas (y de los problemas)
 HEAD, ANALYSIS, PAGE = 'head', 'analysis', 'page'
 
 
@@ -342,7 +344,7 @@ def render(words: list[Word], style: Style, width: int,
             missing = missing_from(page.entry, dictionary)
             rendered = render_entry(page.entry, dictionary, style, width,
                                     Options()).lines
-            if missing:                 # (the title, then why)
+            if missing:                 # (el título, y luego por qué)
                 rendered[1:1] = [''] + [style.dim(line) for line in
                                         textwrap.wrap(missing, width)]
             lines += [(PAGE, line) for line in rendered]

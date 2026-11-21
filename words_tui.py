@@ -1,34 +1,20 @@
 #!/usr/bin/env python3
-"""The dictionary in the terminal, full screen: python3 words_tui.py
+"""El diccionario en la terminal, a pantalla completa: python3 words_tui.py
 
-    Type a Latin word or line (or, after F2, a word in the language of
-    the meanings) and Enter.
+Se escribe una palabra o una línea en latín (o, tras F2, una palabra en el
+idioma de los significados) y Enter.  Las teclas y la ayuda que muestran F1 y
+--help están en USAGE, en inglés: se traducen (interface.tr) donde se
+muestran, con el resto de la interfaz.
 
-    Up / Down       earlier searches (also of earlier sessions)
-    PgUp / PgDn     scroll the results (Ctrl-Up / Ctrl-Down: a line)
-    F2 / Ctrl-L     Latin to English (or the language of the meanings),
-                    or back
-    F3 / Ctrl-O     settings: every parameter and developer mode
-    F4 / Ctrl-E     edit the dictionary
-    F5 / Ctrl-G     the language of the meanings (with Logeion: its
-                    dictionary, or all)
-    F6              the language of the interface
-    F7              copy all the results
-    F8              search in this dictionary or in Logeion
-    F9              clear the history of the searches
-    F1              this help
-    F10 / Ctrl-Q    quit
-
-The results are those of words.py (in colour, if the terminal has
-colours and $NO_COLOR is not set), or with F8 the entries of Logeion
-for the lemmas of the words (it needs the internet); the settings, the
-configuration file and the history of the searches are shared with it
-and the window.  (On
-Windows, curses needs the windows-curses package.)
+Los resultados son los de words.py (en colores, si la terminal los tiene y
+$NO_COLOR no está definida) o, con F8, las entradas de Logeion para los lemas
+de las palabras (necesita internet).  Los ajustes, el archivo de
+configuración y el historial de búsquedas se comparten con words.py y con la
+ventana.  En Windows, curses necesita el paquete windows-curses.
 """
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 import argparse
 import curses
@@ -67,24 +53,56 @@ KEYS = {
 }
 BAR = N_('F1 help  F2 direction  F3 settings  F4 edit  F5 meanings  '
          'F6 interface  F7 copy  F8 source  F9 clear  F10 quit')
-#  (with Logeion, F5 chooses its dictionary)
+#  (con Logeion, F5 elige su diccionario)
 BAR_LOGEION = N_('F1 help  F2 direction  F3 settings  F4 edit  '
                  'F5 dictionary  F6 interface  F7 copy  F8 source  '
                  'F9 clear  F10 quit')
 
-#  The help (F1, --help): the second and third paragraphs of the
-#  docstring, without their indentation
-#  What the screen shows until the first search
+#  Lo que muestra la pantalla hasta la primera búsqueda
 WELCOME = N_('Type a Latin word or line and Enter.  F1: help and credits.')
 
-HELP_TEXT = textwrap.dedent('\n\n'.join(__doc__.split('\n\n')[1:3]))
+#  La ayuda (F1, --help), en inglés como el resto de la interfaz: sus dos
+#  primeros párrafos, sin la sangría, son las teclas (HELP_TEXT); el
+#  tercero, la nota de --help (HELP_NOTE).  Los textos son las claves de
+#  sus traducciones en data/interface/, así que un cambio aquí pide el
+#  mismo cambio allí.
+USAGE = """\
+    Type a Latin word or line (or, after F2, a word in the language of
+    the meanings) and Enter.
 
-#  Ctrl-Up and Ctrl-Down, which curses has no names for
+    Up / Down       earlier searches (also of earlier sessions)
+    PgUp / PgDn     scroll the results (Ctrl-Up / Ctrl-Down: a line)
+    F2 / Ctrl-L     Latin to English (or the language of the meanings),
+                    or back
+    F3 / Ctrl-O     settings: every parameter and developer mode
+    F4 / Ctrl-E     edit the dictionary
+    F5 / Ctrl-G     the language of the meanings (with Logeion: its
+                    dictionary, or all)
+    F6              the language of the interface
+    F7              copy all the results
+    F8              search in this dictionary or in Logeion
+    F9              clear the history of the searches
+    F1              this help
+    F10 / Ctrl-Q    quit
+
+The results are those of words.py (in colour, if the terminal has
+colours and $NO_COLOR is not set), or with F8 the entries of Logeion
+for the lemmas of the words (it needs the internet); the settings, the
+configuration file and the history of the searches are shared with it
+and the window.  (On
+Windows, curses needs the windows-curses package.)
+"""
+
+HELP_TEXT = textwrap.dedent('\n\n'.join(USAGE.split('\n\n')[:2]))
+HELP_NOTE = USAGE.split('\n\n')[2]
+
+#  Ctrl-Up y Ctrl-Down, que no tienen nombre en curses
 CTRL_UP = ('kUP5', 'kUP')
 CTRL_DOWN = ('kDN5', 'kDN')
 
-#  The curses attributes of the ANSI codes of the results (colours.py) and
-#  of the entries of Logeion; the colours are added by use_colours()
+#  Los atributos de curses de los códigos ANSI de los resultados
+#  (colours.py) y de las entradas de Logeion; los colores los añade
+#  use_colours()
 ATTRIBUTES = {1: curses.A_BOLD, 2: curses.A_DIM, 4: curses.A_UNDERLINE,
               3: getattr(curses, 'A_ITALIC', 0), 36: curses.A_BOLD}
 #  The ANSI colours used, and those of curses
@@ -124,8 +142,9 @@ class DictionaryTUI(Screen):
         self.datadir = datadir
         settings = Settings()
         settings.load(datadir)
-        #  the settings as saved (kept for the command line), and those
-        #  used here, which do not pause: the results scroll instead
+        #  los ajustes tal como se guardaron (se conservan para la línea de
+        #  órdenes), y los que se usan aquí, sin pausa: los resultados se
+        #  desplazan
         self.saved = settings.copy()
         settings.pause_in_screen_output = False
         self.message = tr('Loading the dictionary…')
@@ -136,20 +155,20 @@ class DictionaryTUI(Screen):
         self.query = Field('query', '', '')
         self.welcome = True             # (until the first search)
         self.lines: list[str] = [tr(WELCOME)]
-        self.top = 0                    # the first line of results shown
+        self.top = 0                    # primera línea de resultados mostrada
         self.message = self.session.notice
-        #  where and how words are looked up, as last chosen (and kept at
-        #  each change)
+        #  dónde y cómo se buscan las palabras, según la última elección (que
+        #  se guarda con cada cambio)
         self.source = logeion.saved_source()
         self.dictionary = logeion.saved_dictionary()    # (its code)
         self.session.reverse = self.source == logeion.LOCAL and \
             saved_to_latin()
-        self.logeion = logeion.Logeion()    # (its pages, kept)
+        self.logeion = logeion.Logeion()    # (sus páginas, guardadas)
         self.words = None               # (the results of Logeion shown)
-        self.colour = False             # (run() says if there are colours)
+        self.colour = False             # (run() dice si hay colores)
         self.wrapped: tuple[int, list[str]] = (0, [])
 
-    # Drawing --------------------------------------------------------------
+    # El dibujo ------------------------------------------------------------
 
     def draw(self):
         scr = self.scr
@@ -210,7 +229,7 @@ class DictionaryTUI(Screen):
 
     def shown(self, width: int) -> list[str]:
         """The results, long lines wrapped to WIDTH."""
-        if self.words is not None:      # (wrapped as Logeion's are)
+        if self.words is not None:      # (ajustado como los de Logeion)
             if self.wrapped[0] != width:
                 self.wrapped = (width, [line for _, line in logeion.render(
                     self.words, Style(True), width - 1, self.dictionary,
@@ -277,7 +296,7 @@ class DictionaryTUI(Screen):
         if back == self.back:
             return
         if self.back == 0:
-            self.draft = self.query.value       # (what was being typed)
+            self.draft = self.query.value       # (lo que se escribía)
         self.back = back
         value = items[-back] if back else getattr(self, 'draft', '')
         self.query = Field('query', '', value)
@@ -365,7 +384,7 @@ class DictionaryTUI(Screen):
         self.change('interface', codes[pos])
         if codes[pos] in self.session.lexicon.language_names():
             self.change('language', codes[pos])     # (the meanings too)
-        if self.welcome:                # (in the language chosen)
+        if self.welcome:                # (en el idioma elegido)
             self.lines = [tr(WELCOME)]
         self.message = tr('The interface is in {language}.',
                           language=names[codes[pos]])
@@ -426,7 +445,7 @@ class DictionaryTUI(Screen):
             self.session.reverse = old.reverse
             self.message = tr('The dictionary was saved and read again.')
 
-    # Settings -------------------------------------------------------------
+    # Los ajustes ----------------------------------------------------------
 
     def change(self, name: str, value):
         """Changes a setting, applies it, and keeps it in the
@@ -495,7 +514,7 @@ class DictionaryTUI(Screen):
             elif ch == ' ' or code in ENTER:
                 parent = DEPENDS.get(name)
                 if parent is not None and not getattr(self.saved, parent):
-                    continue                    # (greyed out)
+                    continue                    # (en gris)
                 value = not getattr(self.saved, name)
                 self.change(name, value)
                 for child, of in DEPENDS.items():
@@ -561,13 +580,13 @@ def run(screen, datadir):
 
 
 def main(argv=None):
-    ensure_config()                 # (made at the first start)
+    ensure_config()                 # (se crea en el primer inicio)
     interface.use_configured()
     interface.translate_argparse()
     parser = argparse.ArgumentParser(
         prog='words_tui.py', description=tr('The WORDS dictionary in the '
                                             'terminal, full screen.'),
-        epilog=tr(HELP_TEXT) + '\n\n' + tr(__doc__.split('\n\n')[3]),
+        epilog=tr(HELP_TEXT) + '\n\n' + tr(HELP_NOTE),
         formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--datadir', metavar=tr('DATADIR'),
                         help=tr('the folder with the data files (default: '

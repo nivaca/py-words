@@ -1,16 +1,17 @@
-"""The search from a language to Latin (~E): an index of the words in the
-meanings of the entries, in that language.
+"""La búsqueda desde un idioma hacia el latín (~E): un índice de las
+palabras de los significados de las entradas, en ese idioma.
 
-Each meaning is read sense by sense (senses are separated by ';').  A
-phrase (separated by ',') with no spaces ("friend", "wild/stormy") gives
-its words a high rank; words taken from longer phrases rank lower, and
-common words that say little about the entry ("thing", "make", "of" ...)
-are not indexed from them.  Text in parentheses is skipped; in
-"[idiom => translation]" only the translation is used.  Which words are
-never indexed ("the", "abb" ...) and which are common, the language file
-says (see languages.py).  Words are compared without capitals and
-accents: "corazon" finds "corazón".  With the fuzzy search, a word that
-finds nothing is looked up in its near spellings (see fuzzy.py).
+Cada significado se lee sentido por sentido (los sentidos se separan con
+';').  Una frase (separada por ',') sin espacios ("friend", "wild/stormy")
+da a sus palabras un rango alto; las palabras tomadas de frases más largas
+quedan más abajo, y de estas no se indexan las palabras comunes que dicen
+poco de la entrada ("thing", "make", "of" ...).  El texto entre paréntesis
+se salta; en "[idiom => translation]" solo se usa la traducción.  Qué
+palabras no se indexan nunca ("the", "abb" ...) y cuáles son comunes lo
+dice el archivo del idioma (véase languages.py).  Las palabras se
+comparan sin mayúsculas ni tildes: "corazon" encuentra "corazón".  Con la
+búsqueda aproximada, una palabra que no encuentra nada se busca en sus
+grafías cercanas (véase fuzzy.py).
 """
 
 from __future__ import annotations
@@ -37,7 +38,7 @@ class Hit(NamedTuple):
     """A word found in the meaning of ENTRY."""
     entry: Entry
     sense: int          # 1 for the first sense
-    kind: int           # SINGLE_WORD..., or 0 for a word of a phrase
+    kind: int           # SINGLE_WORD..., o 0 si es de una frase
     rank: int
 
 
@@ -52,8 +53,8 @@ class Words:
 
     def __init__(self, language: Language):
         self.noise = language.data.noise
-        #  word -> the parts of speech whose entries index it from a
-        #  phrase (an empty tuple: none)
+        #  palabra -> las clases de palabra cuyas entradas la indexan desde
+        #  una frase (una tupla vacía: ninguna)
         keep = {}
         for words, parts in language.data.common:
             for w in words:
@@ -82,7 +83,7 @@ def words_of(meaning: str, pos: Pos, words: Words):
             single = bool(matches) and len(plain) == 1
             if single:
                 kind = SINGLE_WORD_FIRST_SENSE if sense == 1 else SINGLE_WORD
-                kind += place == 0          # (the first word of its sense)
+                kind += place == 0          # (la primera de su sentido)
             else:
                 kind = 0
             for m in matches:
@@ -131,7 +132,7 @@ class ReverseIndex:
         for entry in entries:
             p = entry.part
             if p.pos == Pos.V and p.decl.which == 8:
-                continue                    # abbreviations of verb forms
+                continue                    # las abreviaturas de verbos
             meaning = language.translated(entry)
             if meaning is None:
                 continue

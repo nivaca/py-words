@@ -1,11 +1,13 @@
-"""Turning the entries of Logeion into wrapped, styled lines of text (or JSON).
+"""La conversión de las entradas de Logeion en líneas de texto ajustadas al
+ancho y con estilos (o en JSON).
 
-The dictionaries send their entries as HTML, or as XML of their own (TEI and
-the like: <entry>, <sense>, <orth>...).  Elements the renderer does not know
-are taken as inline text, so any dictionary can be shown.
+Los diccionarios mandan sus entradas en HTML o en un XML propio (TEI y
+similares: <entry>, <sense>, <orth>...).  Los elementos que el renderer no
+conoce se toman como texto en línea, así que cualquier diccionario puede
+mostrarse.
 
-From py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), whose
-engine py-words uses to show the entries of Logeion (see logeion.py).
+Tomado de py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), cuyo
+motor usa py-words para mostrar las entradas de Logeion (véase logeion.py).
 """
 
 from __future__ import annotations
@@ -53,11 +55,11 @@ class Style:
         return f"\033]8;;{url}\033\\{s}\033]8;;\033\\" if self.links and s else s
 
 
-#  While an entry is rendered, a link is "\x02URL\x03text\x04" in the text
-#  (control characters, which entries never have), so that it survives the
-#  cleanup of the text; it becomes a Style.link when the text is wrapped.
-#  Bold and italic text is marked the same way, with "\x01" and the codes
-#  ('1', '3' or '1;3') in place of the URL.
+#  Mientras se presenta una entrada, un enlace es "\x02URL\x03text\x04" en
+#  el texto (caracteres de control, que las entradas nunca tienen), para
+#  que sobreviva a la limpieza del texto; se vuelve un Style.link cuando el
+#  texto se ajusta al ancho.  La negrita y la cursiva se marcan del mismo
+#  modo, con "\x01" y los códigos ('1', '3' o '1;3') en lugar de la URL.
 MARK_OPEN, MARK_MID, MARK_CLOSE = "\x02", "\x03", "\x04"
 STYLE = "\x01"
 MARK_RE = re.compile("\x02([^\x02-\x04]*)\x03([^\x02-\x04]*)\x04")
@@ -119,7 +121,7 @@ class Renderer:
         self.s = style
         self.width = max(width, 40)
         self.lines: list[str] = []
-        self.heading_end = 0    # (no blank line right under a heading)
+        self.heading_end = 0    # (sin línea en blanco bajo un encabezado)
 
     # ---- helpers ---------------------------------------------------------- #
     def skip(self, n: Node) -> bool:
@@ -262,8 +264,8 @@ class Renderer:
             pos = 0
             for j, line in enumerate(wrapped):
                 if spans:
-                    # each line is a piece of the text (only the spaces where it
-                    # was broken are left out): find it, to put its marks in
+                    # cada línea es un trozo del texto (sin los espacios donde
+                    # se cortó): se busca, para ponerle sus marcas
                     pre = prefix if j == 0 else hang
                     body = line[len(pre):]
                     at = plain.find(body, pos)
@@ -305,7 +307,7 @@ class Renderer:
             self.blank()
             self.block(n, indent + ("  " if tag == "blockquote" else ""), fmt)
             self.blank()
-        elif tag == "li":                       # (one alone: an example of the corpus)
+        elif tag == "li":                       # (suelto: ejemplo del corpus)
             self.blank()
             self.block(n, indent, fmt)
             self.blank()
@@ -333,7 +335,7 @@ class Renderer:
         for li in n.children:
             if not isinstance(li, Node) or self.skip(li):
                 continue
-            if li.tag in ("ul", "ol"):          # (a list right in a list: LSJ, L&S)
+            if li.tag in ("ul", "ol"):          # (lista en lista: LSJ, L&S)
                 self.element(li, indent, fmt)
                 continue
             if li.tag != "li":
@@ -346,7 +348,7 @@ class Renderer:
                 marker = f"{mark} " if mark else "• "
             elif not any(isinstance(c, str) and c.strip() or isinstance(c, Node) and
                          not self.skip(c) and c.tag not in ("ul", "ol") for c in li.children):
-                # an item holding only lists: one level further in, no marker
+                # un ítem con solo listas: un nivel más adentro, sin marca
                 for c in li.children:
                     if isinstance(c, Node) and not self.skip(c):
                         self.element(c, indent + "  ", fmt)
@@ -356,8 +358,8 @@ class Renderer:
             else:
                 marker = f"{i}. " if ordered else "• "
             hang = indent + " " * len(marker)
-            # inline lead text of the item, then nested blocks; the marker
-            # goes on the first line of whichever comes first
+            # primero el texto en línea del ítem, luego los bloques anidados;
+            # la marca va en la primera línea de lo que venga antes
             first = True
             for kind, run in self.runs(li, leave=bullet):
                 if kind == "text":
@@ -386,7 +388,7 @@ class Renderer:
         for tr in n.iter():
             if tr.tag != "tr" or self.skip(tr):
                 continue
-            # ignore rows of nested tables
+            # se ignoran las filas de tablas anidadas
             p = tr.parent
             while p is not None and p.tag != "table":
                 p = p.parent
@@ -413,7 +415,7 @@ class Renderer:
                     cells.append(self.linked(text, spans).rstrip() if i == ncol - 1 else
                                  self.linked(text, spans) + " " * (widths[i] - display_width(text)))
                 self.lines.append((indent + "  ".join(cells)).rstrip())
-        else:  # too wide: one row per line
+        else:  # demasiado ancha: una fila por línea
             for r in rows:
                 self.emit(" | ".join(c for c in r if c), indent, indent + "    ")
         self.blank()
@@ -425,7 +427,7 @@ class Renderer:
 
 
 # --------------------------------------------------------------------------- #
-# Whole entries
+# Las entradas completas
 # --------------------------------------------------------------------------- #
 @dataclass
 class Rendered:
@@ -489,7 +491,8 @@ def render_sections(title: str, sections: list[Section], style: Style,
         r.section_body(sec, "  ")
         r.blank()
 
-    # strip trailing spaces and collapse runs of blank lines, remapping positions
+    # quita los espacios finales y reduce a una las líneas en blanco seguidas,
+    # y ajusta las posiciones
     keep: list[str] = []
     remap: dict[int, int] = {}
     for i, line in enumerate(r.lines):

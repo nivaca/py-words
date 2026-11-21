@@ -1,13 +1,13 @@
-"""A WORDS session: the data, the settings and the current language.
+"""Una sesión de WORDS: los datos, los ajustes y el idioma en uso.
 
-The meanings are in the language of the settings (see languages.py); in
-reverse (~E), words of that language are looked up in Latin.  With the
-parameter fuzzy_search, a word that finds nothing is followed by the
-results of its near spellings (see fuzzy.py).
+Los significados están en el idioma de los ajustes (véase languages.py);
+a la inversa (~E), las palabras de ese idioma se buscan en latín.  Con el
+parámetro fuzzy_search, a una palabra que no encuentra nada le siguen los
+resultados de sus grafías cercanas (véase fuzzy.py).
 
-The direction last chosen (Latin to the language, or back) is kept in the
-section [search] of the configuration file, for the next start of any of
-the programs (saved_to_latin, save_to_latin).
+La última dirección elegida (del latín al idioma, o al revés) se guarda
+en la sección [search] del archivo de configuración, para el siguiente
+arranque de cualquiera de los programas (saved_to_latin, save_to_latin).
 """
 
 from __future__ import annotations
@@ -26,7 +26,8 @@ from render import Renderer
 from settings import Settings
 from xmldata import DataError
 
-#  The section of the configuration file with the direction last chosen
+#  La sección del archivo de configuración con la última dirección
+#  elegida
 SEARCH = 'search'
 
 
@@ -55,16 +56,18 @@ class Session:
         self.lexicon = lexicon
         self.settings = settings
         self.meanings_only = meanings_only
-        self.reverse = False            # (from the language to Latin)
+        self.reverse = False            # (del idioma al latín)
         self.language: Language | None = None
         self.notice = ''                # (why the language is not used)
         self.write = write or (lambda text: print(text, end=''))
-        #  Another source for the Latin words (see logeion.py and words.py
-        #  --logeion): a line -> the text to show; None for this dictionary
+        #  Otra fuente para las palabras latinas (véase logeion.py y
+        #  words.py --logeion): una línea -> el texto que se muestra; None
+        #  para este diccionario
         self.other_source: Callable[[str], str] | None = None
-        #  (words.py: its lookup in Logeion, kept while ~G switches it off)
+        #  (words.py: su búsqueda en Logeion, que se conserva mientras ~G
+        #  la desactiva)
         self.logeion = None
-        #  whether the results are coloured for a terminal (colours.py)
+        #  si los resultados se colorean para una terminal (colours.py)
         self.colour = False
         self.analyzer = Analyzer(lexicon, settings)
         self.settings_changed()

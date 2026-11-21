@@ -1,5 +1,5 @@
-"""Tests of the history of the searches (history.py), in the command line
-and the window."""
+"""Pruebas del historial de búsquedas (history.py), en la línea de
+órdenes y en la ventana."""
 
 import os
 import select
@@ -9,7 +9,7 @@ import time
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import history  # noqa: E402
@@ -55,7 +55,7 @@ class HistoryTests(unittest.TestCase):
         h.clear()
         self.assertEqual(h.items, [])
         self.assertFalse(os.path.exists(self.path))
-        h.clear()                               # (nothing to clear)
+        h.clear()                               # (nada que borrar)
 
     def test_no_file(self):
         h = History(None)
@@ -84,7 +84,7 @@ class HistoryTests(unittest.TestCase):
 
     def test_unwritable(self):
         with open(os.path.join(self.tmp.name, 'state'), 'w'):
-            pass                                # (a file, not a folder)
+            pass                                # (un archivo, no una carpeta)
         h = History(self.path)
         h.add('amicorum')                       # (no error)
         self.assertEqual(h.items, ['amicorum'])
@@ -150,7 +150,7 @@ class CommandLineHistoryTests(unittest.TestCase):
     def test_up(self):
         up = '\x1b[A'
         self.session(['amicorum\r', '#\r', 'n\r', ' \r', 'laudatus\r'])
-        # the answers to the # dialogue are not searches
+        # las respuestas al diálogo de # no son búsquedas
         self.assertEqual(History(self.path).items,
                          ['amicorum', '#', 'laudatus'])
         out = self.session([up + up + up + '\r'], until='amīc-ōrum')

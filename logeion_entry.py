@@ -1,8 +1,8 @@
-"""The structure of a page: its sections (the dictionaries, and what Logeion
-shows beside them), the dictionary filter and the options.
+"""La estructura de una página: sus secciones (los diccionarios y lo que
+Logeion muestra junto a ellos), el filtro de diccionarios y las opciones.
 
-From py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), whose
-engine py-words uses to show the entries of Logeion (see logeion.py).
+Tomado de py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), cuyo
+motor usa py-words para mostrar las entradas de Logeion (véase logeion.py).
 """
 
 from __future__ import annotations
@@ -14,11 +14,11 @@ from dataclasses import dataclass, field
 from logeion_api import corpus_url, normal_word, page_url
 
 # --------------------------------------------------------------------------- #
-# The dictionaries
+# Los diccionarios
 # --------------------------------------------------------------------------- #
-#  Logeion's name of a dictionary (its "dname") -> (code, name shown).  The
-#  code is short, for the filter (-d ls,lsj); dictionaries not listed here
-#  get one made from their name.
+#  El nombre que Logeion da a un diccionario (su "dname") -> (código,
+#  nombre mostrado).  El código es corto, para el filtro (-d ls,lsj); los
+#  diccionarios que no están aquí reciben uno hecho a partir de su nombre.
 DICTIONARIES = {
     # Latin
     "LewisShort": ("ls", "Lewis & Short"),
@@ -45,21 +45,21 @@ DICTIONARIES = {
     "Slater Pindar": ("slater", "Slater (Pindar)"),
     "Abbott-Smith NT": ("as", "Abbott-Smith (New Testament)"),
     "LMPG": ("lmpg", "LMPG"),
-    # reference works
+    # obras de consulta
     "Harpers": ("harpers", "Harper's Dictionary of Classical Antiquities"),
     "Antiquities": ("antiquities", "Smith's Dictionary of Antiquities"),
     "Biography": ("biography", "Smith's Dictionary of Biography"),
     "Perseus Encyclopedia": ("encyclopedia", "Perseus Encyclopedia"),
 }
 
-#  Logeion's name of the examples taken from its corpus (a "dictionary" in
-#  its answers)
+#  El nombre que da Logeion a los ejemplos tomados de su corpus (un
+#  "diccionario" en sus respuestas)
 EXAMPLES_DNAME = "Examples from the corpus"
 
-# Kinds of sections.
-SUMMARY = "summary"          # the short definition, the forms
-DICTIONARY = "dictionary"    # a dictionary's entry
-EXAMPLES = "examples"        # examples from the corpus
+# Las clases de secciones.
+SUMMARY = "summary"          # la definición breve, las formas
+DICTIONARY = "dictionary"    # la entrada de un diccionario
+EXAMPLES = "examples"        # ejemplos del corpus
 INFO = "info"                # frequency, collocations, BWL, textbooks, links
 
 
@@ -80,9 +80,9 @@ class Section:
     panels.  HTML is its content (the renderer makes text of it)."""
     name: str               # "Lewis & Short", "Short definition"
     code: str               # "ls", "short"
-    kind: str               # SUMMARY, DICTIONARY, EXAMPLES or INFO
+    kind: str               # SUMMARY, DICTIONARY, EXAMPLES o INFO
     html: str
-    aliases: tuple = ()     # other names it answers to (Logeion's dname...)
+    aliases: tuple = ()     # otros nombres suyos (el dname de Logeion...)
 
     def label(self) -> str:
         return f"{self.name} ({self.code})" if self.kind == DICTIONARY else self.name
@@ -96,8 +96,8 @@ class Section:
 @dataclass
 class Entry:
     """What is shown of a word."""
-    query: str                       # what was looked up ('rosae')
-    word: str                        # the headword shown ('rosa')
+    query: str                       # lo que se buscó ('rosae')
+    word: str                        # el lema que se muestra ('rosa')
     sections: list[Section]
 
     @property
@@ -113,7 +113,7 @@ class Entry:
 
 
 # --------------------------------------------------------------------------- #
-# From Logeion's answers to sections
+# De las respuestas de Logeion a las secciones
 # --------------------------------------------------------------------------- #
 def esc(s) -> str:
     return html.escape(str(s), quote=True)
@@ -242,7 +242,7 @@ def page_entry(page: dict) -> Entry:
 
 
 # --------------------------------------------------------------------------- #
-# Choosing what to show
+# La elección de lo que se muestra
 # --------------------------------------------------------------------------- #
 def parse_spec(spec: str) -> list[str] | None:
     """'ls, LSJ' -> ['ls', 'LSJ']; 'all' -> None (no filter)."""
@@ -265,7 +265,7 @@ def select_dictionaries(sections: list[Section], spec: str,
 
         def rank(s: Section) -> int:
             return next((i for i, p in enumerate(pref) if s.matches(p)), len(pref))
-        dicts.sort(key=rank)          # stable: the page's order within a rank
+        dicts.sort(key=rank)          # estable: en cada rango, el de la página
     out: list[Section] = []
     placed = False
     for s in sections:
@@ -292,9 +292,9 @@ class Options:
     """What to show of an entry."""
     include: list[str] | None = None   # only these sections, by name or code (None = all)
     exclude: list[str] = field(default_factory=list)
-    show_examples: bool = True         # the examples from the corpus
+    show_examples: bool = True         # los ejemplos del corpus
     show_info: bool = True             # frequency, collocations, BWL, textbooks, links
-    brief: bool = False                # the short definition and the forms only
+    brief: bool = False                # solo la definición breve y las formas
 
     @classmethod
     def build(cls, only: str | None = None, exclude: str | None = None,

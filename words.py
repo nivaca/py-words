@@ -1,55 +1,60 @@
 #!/usr/bin/env python3
-"""py-words, a Latin dictionary: python3 words.py
+"""py-words, un diccionario de latín: python3 words.py
 
-    words                          interactive
-    words amicus est               look up words (a line of Latin)
-    words -f in.txt [-o out.txt]   a file of lines ('-': standard input);
-                                   a line ~E or ~L changes the language
-    words -e friend [--pos N]      English to Latin
-    words -m ...                   only dictionary forms and meanings
-    words --language es ...        the meanings in another language
-                                   (--languages lists them)
-    words --logeion arma           the entries of Logeion for the lemmas
-                                   of the words (armum, armo), from the
+    words                          interactivo
+    words amicus est               busca palabras (una línea de latín)
+    words -f in.txt [-o out.txt]   un archivo de líneas ('-': la entrada
+                                   estándar); una línea ~E o ~L cambia el
+                                   idioma
+    words -e friend [--pos N]      del inglés al latín
+    words -m ...                   solo formas de diccionario y
+                                   significados
+    words --language es ...        los significados en otro idioma
+                                   (--languages las enumera)
+    words --logeion arma           las entradas de Logeion para los lemas
+                                   de las palabras (armum, armo), desde
                                    internet
-    words --dictionary ls arma     the same, of one of its dictionaries
-                                   (--dictionaries lists them)
-    words --guide                  the help: how to search and read the
-                                   results
+    words --dictionary ls arma     lo mismo, en uno de sus diccionarios
+                                   (--dictionaries los enumera)
+    words --guide                  la ayuda: cómo buscar y leer los
+                                   resultados
 
-In interactive mode a line is looked up, unless it starts with one of
-these:
+En el modo interactivo se busca cada línea, salvo que empiece por una de
+estas:
 
-    ~E / ~L     English (the language of the meanings) to Latin / Latin
-                to English
-    ~G          Logeion or this dictionary (as --logeion)
-    ~D [DICT]   Logeion's dictionary (as --dictionary; alone, a list)
+    ~E / ~L     del inglés (el idioma de los significados) al latín / del
+                latín al inglés
+    ~G          Logeion o este diccionario (como --logeion)
+    ~D [DICT]   el diccionario de Logeion (como --dictionary; solo, una
+                lista)
+    ~H          la ayuda: cómo buscar y leer los resultados
+    ~A          acerca de: la versión y los créditos
+    @FILE       busca las líneas de FILE
+    #           cambia los parámetros
+    !           cambia los modos de desarrollador
+    ?           esta ayuda
 
-The direction (~E, ~L), the source (~G) and the dictionary (~D) last
-chosen are kept for the next start, also of the other programs; words
-looked up from the command line use the source and dictionary kept
-(--local, --logeion and --dictionary change them for one run).
-    ~H          the help: how to search and read the results
-    ~A          about: the version and the credits
-    @FILE       look up the lines of FILE
-    #           change the parameters
-    !           change the developer modes
-    ?           this help
+La dirección (~E, ~L), la fuente (~G) y el diccionario (~D) elegidos por
+última vez se guardan para el próximo inicio, también el de los otros
+programas; las palabras buscadas desde la línea de órdenes usan la fuente
+y el diccionario guardados (--local, --logeion y --dictionary los cambian
+para una sola ejecución).
 
-An empty line twice, or end of input, quits.  Ctrl-C stops what is being
-done (a long list of results, a file, a dialogue), but does not quit.
+Dos líneas vacías seguidas, o el fin de la entrada, cierran el programa.
+Ctrl-C detiene lo que se está haciendo (una lista larga de resultados, un
+archivo, un diálogo), pero no lo cierra.
 
-In a terminal, results longer than the screen open in the system's pager
-(less, or $PAGER): PgUp, PgDn and the arrows scroll them, / finds a text
-and q goes back.  The setting pause_in_screen_output turns this off.  In
-a terminal the results are also in colour (colours.py), unless $NO_COLOR
-is set.
+En una terminal, los resultados más largos que la pantalla se abren en el
+paginador del sistema (less, o $PAGER): PgUp, PgDn y las flechas los
+desplazan, / busca un texto y q vuelve.  El ajuste pause_in_screen_output
+lo desactiva.  En una terminal los resultados salen también en color
+(colours.py), salvo que $NO_COLOR esté definida.
 """
 
 from __future__ import annotations
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 import argparse
 import contextlib
@@ -92,7 +97,7 @@ def load(datadir: str) -> Lexicon:
 
 
 # ---------------------------------------------------------------------------
-#  The settings dialogues
+#  Los diálogos de los parámetros
 
 class _Skip(Exception):
     """A reply of spaces skips the rest of a dialogue."""
@@ -220,7 +225,7 @@ def change_developer_modes(session: Session, ask: Ask, say) -> None:
 
 
 # ---------------------------------------------------------------------------
-#  Interactive use
+#  El modo interactivo
 
 def banner(session: Session) -> str:
     s = session.settings
@@ -239,11 +244,12 @@ def banner(session: Session) -> str:
         tr('An empty line twice quits.')])
 
 
-#  less as git runs it, unless $LESS says otherwise: it quits at once if
-#  the text fits the screen (F), keeps the colours and links (R) and
-#  leaves what was shown on the screen (X)
+#  less como lo usa git, salvo que $LESS diga otra cosa: sale enseguida
+#  si el texto cabe en la pantalla (F), conserva los colores y los enlaces
+#  (R) y deja en la pantalla lo que se mostró (X)
 LESS = 'FRX'
-#  The ANSI codes of styled text (Logeion's), which take no room
+#  Los códigos ANSI del texto con estilo (el de Logeion), que no ocupan
+#  espacio
 ANSI = re.compile(r'\033\[[0-9;]*m|\033\]8;[^\033\a]*(?:\033\\|\a)')
 
 
@@ -339,7 +345,7 @@ class Pager:
         env.setdefault('LESSCHARSET', 'utf-8')
         try:
             interrupt = signal.signal(signal.SIGINT, signal.SIG_IGN)
-        except ValueError:              # (not the main thread)
+        except ValueError:              # (no es el hilo principal)
             interrupt = None
         try:
             subprocess.run(self.pager, input=text.encode('utf-8', 'replace'),
@@ -396,7 +402,7 @@ def repl(session: Session, ask: Ask = input,
         blank = 0
         try:
             command(session, line, ask, say)
-        except KeyboardInterrupt:       # (what was being done stops)
+        except KeyboardInterrupt:       # (se detiene lo que se hacía)
             write('\n')
             say(tr('(interrupted)'))
             session.settings_changed()  # (after a dialogue cut short)
@@ -418,7 +424,7 @@ def command(session: Session, line: str, ask: Ask, say) -> None:
                               keep=True))
     elif first == '~':
         say(session.set_language(line.lstrip()[1:2]))
-        if word in ('~E', '~L'):        # (kept for the next start)
+        if word in ('~E', '~L'):        # (se guarda para el próximo inicio)
             error = save_to_latin(session.reverse)
             if error:
                 say(error)
@@ -522,7 +528,7 @@ def run_file(session: Session, name: str, say) -> None:
     try:
         with open(name, encoding='utf-8', errors='replace') as f, \
                 holding(session):
-            #  (its messages in their place among the results held)
+            #  (sus mensajes, en su lugar entre los resultados retenidos)
             feed(session, f, lambda text: session.write(text + '\n'))
     except OSError as e:
         say(tr('Cannot read {path}: {error}', path=name, error=e.strerror))
@@ -682,7 +688,8 @@ def _main(argv: list[str] | None, meanings_only: bool):
         settings.language = args.language
     session = Session(lexicon, settings, args.meanings_only, out.write)
     if out is sys.stdout and sys.stdout.isatty() and not interactive:
-        #  (long results in the pager; interactive mode makes its own)
+        #  (los resultados largos, en el paginador; el modo interactivo
+        #  tiene el suyo)
         session.write = Pager(session, None, out.write, True).write
     #  (in colour in a terminal: colours.py)
     session.colour = out is sys.stdout and colours.enabled(out)

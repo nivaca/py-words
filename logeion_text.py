@@ -1,7 +1,7 @@
-"""Text cleanup and terminal display width.
+"""Limpieza del texto y ancho de presentación en la terminal.
 
-From py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), whose
-engine py-words uses to show the entries of Logeion (see logeion.py).
+Tomado de py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), cuyo
+motor usa py-words para mostrar las entradas de Logeion (véase logeion.py).
 """
 
 from __future__ import annotations
@@ -12,8 +12,8 @@ import unicodedata
 #  SGR codes and OSC 8 hyperlinks ("\033]8;;URL\033\\" opens one, an empty
 #  URL closes it): group 1 is the SGR codes, group 2 the URL
 ESC_RE = re.compile(r"\033\[([0-9;]*)m|\033\]8;[^;\033\a]*;([^\033\a]*)(?:\033\\|\a)")
-#  The SGR codes that turn others off: 22 bold and dim, 23 italic, 24
-#  underline, 39 the colour
+#  Los códigos SGR que apagan otros: 22 la negrita y el tenue, 23 la
+#  cursiva, 24 el subrayado, 39 el color
 OFF = {22: {1, 2}, 23: {3}, 24: {4}, 39: set(range(30, 38)) | set(range(90, 98))}
 _ZERO_WIDTH = "​‌‍‎‏"
 

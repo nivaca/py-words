@@ -1,30 +1,23 @@
 #!/usr/bin/env python3
-"""A full-screen terminal editor for the dictionary:
+"""Un editor del diccionario a pantalla completa, en la terminal:
 python3 words_edit.py
 
-    Find   type a Latin form, a stem or a word of the meanings and Enter
-    List   Up/Down to choose an entry, Enter to edit it
-    Form   Up/Down between fields; type in text fields; in a field with
-           choices, Left/Right change it and Enter lists them all
+Se busca una entrada (por una forma latina, un tema o una palabra de los
+significados), se elige de la lista y se corrige en el formulario; también
+se pueden añadir entradas nuevas, probar una palabra y borrar la entrada.
+Las teclas están en HELP_TEXT, en inglés, que se traduce donde se muestra
+(--help).
 
-    F3 / Ctrl-A  apply the changes (or add the new entry)
-    F4 / Ctrl-N  new entry           F5 / Ctrl-D  new entry like this one
-    F6 / Ctrl-T  try a word          F8 / Ctrl-K  delete the entry
-    F7 / Ctrl-L  the language of the meanings edited besides English
-    F2 / Ctrl-S  save the file (applying the changes first)
-    F10 / Ctrl-Q quit
-    Tab          next area           Ctrl-F       find
-
-Nothing is written until the file is saved; the first save keeps the
-original as dictionary.xml.bak (and so for the file of the language of
-the meanings, in languages/, if one is chosen).  Leaving an entry whose
-changes were not applied asks what to do with them.  (On Windows, curses
-needs the windows-curses package; the window editor, words_edit_gui.py,
-needs nothing.)
+Nada se escribe hasta que se guarda el archivo; el primer guardado conserva
+el original como dictionary.xml.bak (y lo mismo el archivo del idioma de
+los significados, en languages/, si se eligió una).  Al dejar una entrada
+con cambios sin aplicar, el editor pregunta qué hacer con ellos.  En
+Windows, curses necesita el paquete windows-curses; el editor en ventana,
+words_edit_gui.py, no necesita nada.
 """
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 import curses
 import os
@@ -52,8 +45,29 @@ KEYS = {
 HELP = N_('F3 apply  F4 new  F5 like this  F6 try  F7 language  '
           'F8 delete  F2 save  F10 quit  Tab next  ^F find')
 
-#  The help (--help): the docstring after its first paragraph
-HELP_TEXT = __doc__.split('\n\n', 1)[1]
+#  La ayuda (--help), en inglés: es la clave de su traducción en
+#  data/interface/, así que un cambio aquí pide el mismo cambio allí
+HELP_TEXT = """\
+    Find   type a Latin form, a stem or a word of the meanings and Enter
+    List   Up/Down to choose an entry, Enter to edit it
+    Form   Up/Down between fields; type in text fields; in a field with
+           choices, Left/Right change it and Enter lists them all
+
+    F3 / Ctrl-A  apply the changes (or add the new entry)
+    F4 / Ctrl-N  new entry           F5 / Ctrl-D  new entry like this one
+    F6 / Ctrl-T  try a word          F8 / Ctrl-K  delete the entry
+    F7 / Ctrl-L  the language of the meanings edited besides English
+    F2 / Ctrl-S  save the file (applying the changes first)
+    F10 / Ctrl-Q quit
+    Tab          next area           Ctrl-F       find
+
+Nothing is written until the file is saved; the first save keeps the
+original as dictionary.xml.bak (and so for the file of the language of
+the meanings, in languages/, if one is chosen).  Leaving an entry whose
+changes were not applied asks what to do with them.  (On Windows, curses
+needs the windows-curses package; the window editor, words_edit_gui.py,
+needs nothing.)
+"""
 
 
 class TUI(Screen):
@@ -65,7 +79,7 @@ class TUI(Screen):
         self.selected = 0
         self.list_top = 0
         self.focus = 'find'             # 'find', 'list' or 'form'
-        self.row = 0                    # the field with the focus
+        self.row = 0                    # el campo con el foco
         self.fields = []
         self.message = tr('Type a Latin form, a stem or a word of the '
                           'meanings, and Enter.')
@@ -81,7 +95,7 @@ class TUI(Screen):
     def results(self):
         return self.editing.results
 
-    # The form --------------------------------------------------------------
+    # El formulario ---------------------------------------------------------
 
     def empty(self) -> Fields:
         """The values of a new entry."""
@@ -150,7 +164,7 @@ class TUI(Screen):
         except DataError as e:
             return None, e.message
 
-    # Drawing ---------------------------------------------------------------
+    # El dibujo -------------------------------------------------------------
 
     def draw(self):
         scr = self.scr
@@ -173,7 +187,7 @@ class TUI(Screen):
         top, bottom = 3, h - 4
         self.put(2, 0, tr('{n} found', n=len(self.results)) if self.results
                  else '', curses.A_DIM)
-        # the list
+        # la lista
         rows = bottom - top
         if self.selected < self.list_top:
             self.list_top = self.selected
@@ -189,7 +203,7 @@ class TUI(Screen):
                      attr)
         for y in range(2, bottom):
             self.put(y, left - 1, '│')
-        # the form
+        # el formulario
         x = left + 1
         label_w = max(len(f.label) for f in self.fields) + 2
         self.put(2, x, tr('NEW ENTRY') if self.current is None
@@ -219,7 +233,7 @@ class TUI(Screen):
                 self.put(y + 1 + k, x, '! ' + warning)
         else:
             self.put(y, x, 'x ' + error, curses.A_BOLD)
-        # the message and the keys
+        # el mensaje y las teclas
         self.put(h - 2, 0, self.message[:w - 1])
         self.put(h - 1, 0, tr(HELP).ljust(w - 1), curses.A_REVERSE)
         # the cursor
@@ -422,7 +436,7 @@ class TUI(Screen):
             self.edit(self.results[self.selected])
         elif code == curses.KEY_DC:
             entry = self.results[self.selected]
-            self.edit(entry)            # (asks about changes not applied)
+            self.edit(entry)            # (pregunta por cambios sin aplicar)
             if self.current is entry:
                 self.delete()
 
@@ -483,7 +497,7 @@ def run(screen, datadir, language='en'):
 
 
 def main(argv=None):
-    ensure_config()                 # (made at the first start)
+    ensure_config()                 # (se crea en el primer inicio)
     interface.use_configured()
     interface.translate_argparse()
     import argparse

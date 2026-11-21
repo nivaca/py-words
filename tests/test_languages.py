@@ -1,5 +1,6 @@
-"""Tests of the languages of the meanings (languages.py, the language
-files, the stable ids they refer to, and the search to Latin)."""
+"""Pruebas de los idiomas de los significados (languages.py, los
+archivos de idioma, los identificadores estables a los que remiten y la
+búsqueda hacia el latín)."""
 
 import os
 import shutil
@@ -9,7 +10,7 @@ import unittest
 from dataclasses import replace
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import languages  # noqa: E402
@@ -43,7 +44,7 @@ class LanguageTests(unittest.TestCase):
         cls.heart = next(e for e in entries if e.stems[:2] == ('cor', 'cord')
                          and e.part.pos == Pos.N)
         cls.tackon = next(a for a in cls.lexicon.tackons if a.fix == 'que')
-        # a Spanish file, in a data folder of its own
+        # un archivo en español, en una carpeta de datos propia
         cls.tmp = tempfile.TemporaryDirectory()
         folder = os.path.join(cls.tmp.name, languages.FOLDER)
         os.mkdir(folder)
@@ -90,12 +91,13 @@ class LanguageTests(unittest.TestCase):
         en = self.lexicon.language()
         self.assertTrue(en.is_reference)
         self.assertEqual(en.name, 'English')
-        # amicus has the definition of Lewis and Short (en.xml), marked
+        # amicus tiene la definición de Lewis and Short (en.xml), marcada
         from_ls = en.translated(self.friend)
         self.assertNotEqual(from_ls, self.friend.meaning)
         self.assertEqual(en.meaning(self.friend),
                          f'{from_ls} (Lewis and Short)')
-        # an entry he does not have keeps the meaning of the data files
+        # una entrada que él no tiene conserva el significado de los
+        # archivos de datos
         other = next(e for e in self.lexicon.entries
                      if ('entry', e.uid) not in en.data.meanings)
         self.assertEqual(en.meaning(other), other.meaning)
@@ -213,7 +215,7 @@ class IdTests(unittest.TestCase):
               entry.format('') + '</dictionary>')
         (first, _), (second, _) = xmldata.read_dictionary(path)
         self.assertEqual((first.id, first.uid), (1, 7))
-        self.assertEqual((second.id, second.uid), (2, 2))  # (its position)
+        self.assertEqual((second.id, second.uid), (2, 2))  # (su posición)
         self.assertIn(' id="7" ', xmldata.entry_xml(first))
         self.assertTrue(xmldata.entry_lines(second)[0].startswith(
             '<entry id="2" '))

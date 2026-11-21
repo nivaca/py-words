@@ -1,4 +1,4 @@
-"""Tests of the fonts of the windows (gui_fonts.py)."""
+"""Pruebas de las fuentes de las ventanas (gui_fonts.py)."""
 
 import gc
 import os
@@ -7,7 +7,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: E402  (before anything that reads settings)
 
 
@@ -28,7 +28,7 @@ class FontTests(unittest.TestCase):
     def tearDown(self):
         self.root.destroy()
         del self.root
-        gc.collect()        # (Tk must be freed here, not by another thread)
+        gc.collect()        # (Tk debe liberarse aquí, no en otro hilo)
         if self.old is None:
             os.environ.pop('PY_WORDS_CONFIG', None)
         else:
@@ -76,7 +76,7 @@ class FontTests(unittest.TestCase):
         family = self.font.nametofont('TkFixedFont').actual()['family']
         with open(self.path, 'w') as f:
             f.write(f'[fonts]\ntext_family = "{family}"\ntext_size = 17\n'
-                    'ui_size = "big"\n')       # (a bad value is ignored)
+                    'ui_size = "big"\n')       # (un valor malo se ignora)
         fonts = self.gui_fonts.Fonts.of(self.root)
         self.assertEqual(fonts.text.cget('size'), 17)
         self.assertEqual(fonts.text.cget('family'), family)
@@ -110,14 +110,14 @@ class FontTests(unittest.TestCase):
                 break
             self.root.after(20)
         win = fonts.dialog(self.root)
-        for _ in range(200):            # (until the window manager shows it)
+        for _ in range(200):            # (hasta que el gestor la muestre)
             self.root.update()
             if win.winfo_ismapped() and \
                     win.winfo_height() >= win.winfo_reqheight() - 2:
                 break
             self.root.after(20)
-        # it opens big enough for its contents (if the window manager shows
-        # it: some open new windows minimised)
+        # se abre con tamaño suficiente para su contenido (si el gestor de
+        # ventanas la muestra: algunos abren minimizadas las ventanas nuevas)
         if win.winfo_ismapped():
             self.assertGreaterEqual(win.winfo_height(),
                                     win.winfo_reqheight() - 2)

@@ -1,12 +1,13 @@
-"""What the full-screen terminal programs (words_tui.py, words_edit.py)
-share: keys, a line of text to edit, and a screen with boxes and prompts.
-Built on curses (on Windows, it needs the windows-curses package)."""
+"""Lo que comparten los programas de pantalla completa en la terminal
+(words_tui.py, words_edit.py): teclas, una línea de texto para editar y
+una pantalla con cuadros y preguntas.  Está construido sobre curses (en
+Windows necesita el paquete windows-curses)."""
 
 import curses
 
 from interface import tr, yes
 
-SEP = ' — '                     # between a value and its description
+SEP = ' — '                     # entre un valor y su descripción
 
 
 def ctrl(c):
@@ -24,7 +25,7 @@ class Field:
         self.key = key              # 'pos', 'stem0', 'decl', 'meaning' ...
         self.label = label
         self.value = value
-        self.options = options or []    # [(value, description)]
+        self.options = options or []    # [(valor, descripción)]
         self.cursor = len(value)
 
     @property

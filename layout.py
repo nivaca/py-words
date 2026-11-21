@@ -1,11 +1,13 @@
-"""The layout of the results (see render.py): what each line is, as the
-window (gui_results.py) and the web page (words_web.py) need to know to
-lay it out.  No Tk here: the web page has none.
+"""La disposición de los resultados (véase render.py): qué es cada línea,
+cosa que la ventana (gui_results.py) y la página web (words_web.py)
+necesitan saber para disponerla.  Aquí no hay Tk: la página web no lo
+tiene.
 
-The kinds, by the indentation of the line: the word looked up (no
-indentation), an entry or a note (two spaces), a meaning or a form (four)
-and the details below (more).  With the Pearse codes (a developer mode)
-the lines have no indentation, and the programs show them as they are.
+Las clases de línea, según su sangría: la palabra buscada (sin sangría),
+una entrada o una nota (dos espacios), un significado o una forma (cuatro)
+y los detalles de debajo (más).  Con los códigos de Pearse (un modo de
+desarrollador) las líneas no tienen sangría, y los programas las muestran
+tal como vienen.
 """
 
 from __future__ import annotations
@@ -29,8 +31,8 @@ def kind_of(line: str) -> str:
     if indent == 0:
         return 'word'
     if indent == 2:
-        #  (an entry has two spaces between its parts; a note or the label
-        #  of a trick, such as "spelling: Word mod l -> ll", has not)
+        #  (una entrada tiene dos espacios entre sus partes; una nota o la
+        #  etiqueta de un truco, como "spelling: Word mod l -> ll", no)
         if '  ' in stripped and not stripped.startswith('('):
             return 'entry'
         return 'note'

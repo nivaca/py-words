@@ -1,14 +1,15 @@
-"""Runs a full-screen program of py-words (words_tui.py, words_edit.py)
-in a terminal of its own (a pty) for the tests, types keys into it, and
-keeps what it writes.
+"""Corre un programa de pantalla completa de py-words (words_tui.py,
+words_edit.py) en una terminal propia (una pty) para las pruebas, teclea
+en ella y guarda lo que el programa escribe.
 
-The waits are as short as the program allows: at the start, until READY
-is on the screen (or, without READY, until the program has drawn it and
-stopped writing); after each key, until the program has answered and
-stopped writing for QUIET seconds, at most the time given with the key
-(as long as it may take to answer).  What is typed meanwhile waits in the
-terminal, and the program reads it in order.  The program must then
-quit by itself (the last key is usually its quit key).
+Las esperas son tan cortas como el programa lo permite: al principio,
+hasta que READY aparece en la pantalla (o, sin READY, hasta que el
+programa la ha dibujado y ha dejado de escribir); tras cada tecla, hasta
+que el programa ha respondido y lleva QUIET segundos sin escribir, como
+mucho el tiempo dado con la tecla (lo que pueda tardar en responder).  Lo
+que se teclea mientras tanto espera en la terminal, y el programa lo lee
+en orden.  Al final el programa tiene que salir por sí solo (la última
+tecla suele ser la de salir).
 """
 
 import fcntl
@@ -19,8 +20,8 @@ import struct
 import termios
 import time
 
-#  Seconds without output after which a program is taken to be waiting
-#  for the next key
+#  Segundos sin salida tras los cuales se da por hecho que el programa
+#  espera la siguiente tecla
 QUIET = 0.15
 
 
@@ -32,7 +33,7 @@ def run(test, argv: list[str], keys, env: dict, size=(30, 100),
     what it wrote).  TEST fails if it does not quit within QUIT seconds
     of the last key."""
     pid, fd = pty.fork()
-    if pid == 0:                        # (the program)
+    if pid == 0:                        # (el programa)
         os.environ.update(env)
         os.execvp(argv[0], argv)
     fcntl.ioctl(fd, termios.TIOCSWINSZ, struct.pack('HHHH', *size, 0, 0))

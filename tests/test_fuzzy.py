@@ -1,5 +1,6 @@
-"""Tests of the fuzzy search: near spellings of unknown Latin words, and
-near words in the search to Latin."""
+"""Pruebas de la búsqueda aproximada: grafías cercanas de palabras
+latinas desconocidas, y palabras cercanas en la búsqueda hacia el
+latín."""
 
 import os
 import subprocess
@@ -7,7 +8,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import fuzzy  # noqa: E402
@@ -48,9 +49,9 @@ class EditTests(unittest.TestCase):
         self.assertIn('v', fuzzy.latin_letters('dominvs'))
 
     def test_likely(self):
-        self.assertEqual(fuzzy.likely('amcius', 'amicus'), 0)   # swapped
+        self.assertEqual(fuzzy.likely('amcius', 'amicus'), 0)   # transpuestas
         self.assertEqual(fuzzy.likely('magnifcus', 'magnificus'), 1)
-        self.assertEqual(fuzzy.likely('freind', 'friend'), 0)   # swapped
+        self.assertEqual(fuzzy.likely('freind', 'friend'), 0)   # transpuestas
         self.assertEqual(fuzzy.likely('amicuss', 'amicus'), 0)  # doubled
         self.assertEqual(fuzzy.likely('puela', 'puella'), 0)    # undoubled
         self.assertEqual(fuzzy.likely('puela', 'puera'), 1)
@@ -65,8 +66,8 @@ class LatinTests(unittest.TestCase):
         near = az.near_spellings('amcius')
         self.assertEqual(near[0], 'amicus')
         self.assertLessEqual(len(near), 3)
-        self.assertEqual(az.near_spellings('xq'), [])   # (too short)
-        #  (the hundreds of spellings tried are not kept)
+        self.assertEqual(az.near_spellings('xq'), [])   # (muy corta)
+        #  (no se guardan los cientos de grafías probadas)
         self.assertLess(len(az._cache), 20)
 
     def test_on_by_default(self):
@@ -108,7 +109,7 @@ class ReverseTests(unittest.TestCase):
         self.assertEqual(index.near('freind'), ['friend'])
         self.assertEqual(index.near('wolfs')[0], 'wolf')
         self.assertEqual(index.near('xyzzy'), [])
-        self.assertEqual(index.near('is'), [])          # (too short)
+        self.assertEqual(index.near('is'), [])          # (muy corta)
         self.assertTrue(index.near('wolfs', Pos.ADJ))
         self.assertEqual(index.near('wolfs', Pos.PREP), [])
 

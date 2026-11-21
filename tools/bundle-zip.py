@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
-"""Makes a zip of the program, to distribute it:
+"""Hace un zip del programa, para distribuirlo:
 python3 tools/bundle-zip.py
 
-The zip is dist/py-words-v.VERSION.zip (the version of version.py; dist is
-made in the program's folder if need be, and --output gives another
-folder), with the program in a folder of the same name.  It has the programs, the data, the
-icons and the documents, but no hidden files or folders (.git ...), and
-none of what is made while the program runs or is edited (__pycache__,
-.bak and .tmp files, WORD.OUT ...), nor what is in its folder but not
-part of it (the built site, local-only/, tools/, packaging/ and
-build/, an editor's TAGS).  The tests
-are left out, unless --tests says otherwise.  It also has COMMIT, the
-commit it was made from (for "About").
+El zip es dist/py-words-v.VERSION.zip (la versión de version.py; dist se
+crea en la carpeta del programa si hace falta, y --output da otra
+carpeta), con el programa en una carpeta del mismo nombre.  Lleva los
+programas, los datos, los íconos y los documentos, pero no los archivos ni
+las carpetas ocultos (.git ...), ni lo que se produce mientras el programa
+corre o se edita (__pycache__, archivos .bak y .tmp, WORD.OUT ...), ni lo
+que está en su carpeta sin ser parte de él (local-only/, tools/,
+packaging/, build/, dist/, los TAGS de un editor).  Las pruebas quedan
+fuera, salvo que --tests diga otra cosa.  Lleva también COMMIT, el commit
+del que se hizo (para "About").
 """
 
 import os
 import sys
 
-#  The program's folder (this script is in its tools/)
+#  La carpeta del programa (este script está en su tools/)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
@@ -32,15 +32,15 @@ import interface
 from interface import tr
 from version import COMMIT_FILE, VERSION, commit
 
-#  Where the zip goes, unless --output says otherwise
+#  Adónde va el zip, salvo que --output diga otra cosa
 DIST = os.path.join(ROOT, 'dist')
 
 #  What is made while the program runs or is edited (as in .gitignore)
 LEFT_OUT = ('__pycache__', '*.pyc', '*.bak', '*.tmp', '*~', 'WORD.MOD',
             'WORD.MDV', 'WORD.OUT', 'WORD.UNK', 'WORD.STA', 'py-words-v*.zip')
-#  What is in the program's folder but not part of it: the folder of the
-#  bundles, a folder kept out of git, an editor's tags, and the tools that
-#  make the bundles, the icons and the releases
+#  Lo que está en la carpeta del programa sin ser parte de él: la carpeta
+#  de los paquetes, una carpeta que no va en git, los tags de un editor y
+#  las herramientas que hacen los paquetes, los íconos y las versiones
 #  TODO: no lee .gitignore.  Una carpeta nueva que no deba ir en el zip
 #  hay que añadirla aquí a mano.
 NOT_PART = ('dist', 'local-only', 'TAGS', 'tools', 'packaging', 'build')

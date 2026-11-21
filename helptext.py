@@ -1,10 +1,11 @@
-"""Help for the settings, shown when '?' is answered in the # and ! menus
-(and in the window's Settings); it is translated where it is shown."""
+"""La ayuda de los ajustes, que se muestra al responder '?' en los menús
+# y ! (y en los Ajustes de la ventana); se traduce donde se muestra."""
 
 from interface import N_
 
 HELP = {
-    # Parameters (#, [parameters] in config.toml): what the results show
+    # Parámetros (#, [parameters] en config.toml): lo que muestran los
+    # resultados
     'show_dictionary_forms':
         N_('Show each entry with its principal parts and grammar (amicus, '
            'amici  noun, 2nd declension, masculine).'),
@@ -37,7 +38,7 @@ HELP = {
     'trim_medieval':
         N_('With trim_output, leave out also medieval forms when others '
            'were found.'),
-    # ... and how words are looked up
+    # ... y cómo se buscan las palabras
     'fuzzy_search':
         N_('When a word finds nothing as it is typed, look for the words '
            'one change away from it (a letter left out, added or changed, '

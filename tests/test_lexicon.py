@@ -1,4 +1,4 @@
-"""Tests of the lexicon cache."""
+"""Pruebas de la caché del léxico."""
 
 import os
 import sys
@@ -7,7 +7,7 @@ import time
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the package, when run from anywhere
+    __file__))))                        # el paquete, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import lexicon, xmldata
@@ -66,7 +66,7 @@ class CacheTests(unittest.TestCase):
 
     def test_cached_lexicon_is_the_same(self):
         fresh = Lexicon.load(self.data, cache=False)
-        Lexicon.load(self.data)                         # fills the cache
+        Lexicon.load(self.data)                         # llena la caché
         self.assertEqual(len(self.cached('lexicon')), 1)
         cached = Lexicon.load(self.data)
         self.assertEqual(summary(cached), summary(fresh))
@@ -76,7 +76,7 @@ class CacheTests(unittest.TestCase):
 
     def test_cached_english_is_the_same(self):
         fresh = Lexicon.load(self.data, cache=False).reverse()
-        Lexicon.load(self.data).reverse()               # fills the cache
+        Lexicon.load(self.data).reverse()               # llena la caché
         self.assertEqual(len(self.cached('reverse-en')), 1)
         self.assertEqual(len(self.cached('language-en')), 1)
         lex = Lexicon.load(self.data)

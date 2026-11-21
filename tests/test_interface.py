@@ -1,6 +1,6 @@
-"""Tests of the language of the interface (interface.py and the files in
-data/interface/): the translations, and that every text of the programs
-is translated."""
+"""Pruebas del idioma de la interfaz (interface.py y los archivos de
+data/interface/): las traducciones, y que todo texto de los programas
+esté traducido."""
 
 import ast
 import glob
@@ -13,7 +13,7 @@ import unittest
 from contextlib import redirect_stdout
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: E402  (before anything that reads settings)
 
 import interface  # noqa: E402
@@ -21,7 +21,7 @@ from interface import tr, yes  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#  argparse's own texts (see interface.translate_argparse)
+#  los textos propios de argparse (ver interface.translate_argparse)
 ARGPARSE = ['usage: ', 'positional arguments', 'options',
             'show this help message and exit', ' (default: %(default)s)',
             'argument %(argument_name)s: %(message)s',
@@ -74,8 +74,8 @@ def program_texts() -> set[str]:
         texts.append(read_language(path).name)
     texts += ['word', 'error', 'warning', 'Added', 'Changed', 'stem',
               'form', 'fix', 'y', words_tui.HELP_TEXT,
-              words_tui.__doc__.split('\n\n')[3], words_edit.HELP_TEXT]
-    texts += words_web.__doc__.split('\n\n')[1:]
+              words_tui.HELP_NOTE, words_edit.HELP_TEXT]
+    texts += words_web.USAGE.split('\n\n')
     texts += ARGPARSE
     texts += [version.CREDITS_TEXT, version.AUTHOR]
     return {interface.key_of(t) for t in texts if t.strip()}
@@ -100,7 +100,7 @@ class TranslationTests(unittest.TestCase):
         self.assertEqual(interface.code(), 'es')
         self.assertEqual(tr('Look up'), 'Buscar')
         self.assertEqual(tr('Saved in {path}', path='/x'), 'Guardado en /x')
-        self.assertEqual(tr('usage: '), 'uso: ')      # (the spaces kept)
+        self.assertEqual(tr('usage: '), 'uso: ')      # (con los espacios)
         self.assertEqual(tr('Not a text of the program'),
                          'Not a text of the program')
         self.assertEqual(tr('Not a text {x}', x=1), 'Not a text 1')
@@ -199,7 +199,7 @@ class KeptTests(unittest.TestCase):
         """A program that saves another setting does not put back the
         language it started with."""
         from settings import Settings
-        older = Settings()                      # (started in English)
+        older = Settings()                      # (empezó en inglés)
         self.config.update('parameters', {'interface': 'es'})
         older.trim_output = False
         older.save('parameters', only=['trim_output'])

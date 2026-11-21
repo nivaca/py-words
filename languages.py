@@ -1,35 +1,39 @@
-"""The languages of the meanings.
+"""Los idiomas de los significados.
 
-The meanings in the data files are in English.  Each language has a file,
-languages/CODE.xml in the data folder (see words.xsd):
+Los significados de los archivos de datos están en inglés.  Cada idioma
+tiene un archivo, languages/CODE.xml en la carpeta de datos (véase
+words.xsd):
 
     <language code="es" name="Spanish" native="Español">
-      <noise>el la los las ...</noise>          words never looked for
-      <common pos="PREP">de a en ...</common>   (see reverse.py)
-      <numeral sort="CARD">{n} - ...</numeral>  what a numeral's form means
-      <meaning entry="12">...</meaning>         the meaning of the entry
-      <meaning unique="3">...</meaning>         of dictionary.xml with id
-      <meaning addon="40">...</meaning>         12, of an irregular form,
-      <meaning builtin="esse">...</meaning>     of an affix, of esse
-      <meaning entry="13" source="m">...</meaning>  taken from a dictionary
+      <noise>el la los las ...</noise>          palabras que nunca se buscan
+      <common pos="PREP">de a en ...</common>   (véase reverse.py)
+      <numeral sort="CARD">{n} - ...</numeral>  el significado de un numeral
+      <meaning entry="12">...</meaning>         el significado de la entrada
+      <meaning unique="3">...</meaning>         de dictionary.xml con id 12,
+      <meaning addon="40">...</meaning>         de una forma irregular, de
+      <meaning builtin="esse">...</meaning>     un afijo, de esse
+      <meaning entry="13" source="m">...</meaning>  tomado de un diccionario
     </language>
 
-English (en.xml, reference="yes") has the meanings of the data files,
-except those its <meaning>s give, taken from a dictionary (source="S").  Another language gives the meanings it
-translates (source="...": the dictionary a meaning was taken from, by its
-code in sources.xml, when it was not translated from the English); the
-others are shown in English, marked [en], as are the
-numerals it does not say.  The search from a language to Latin (~E) looks
-in its meanings.
+Las entradas del diccionario especial se nombran con special="..." en
+lugar de entry="...".  El inglés (en.xml, reference="yes") tiene los
+significados de los archivos de datos, salvo los que dan sus <meaning>,
+tomados de un diccionario (source="S").  Otro idioma da los significados
+que traduce (source="...": el diccionario del que se tomó un significado,
+por su código en sources.xml, cuando no se tradujo del inglés); los demás
+se muestran en inglés, marcados [en], igual que los numerales que el
+archivo no dice.  La búsqueda desde un idioma hacia el latín (~E) busca en
+sus significados.
 
-The <text>s translate what the results say besides the meanings: the
-grammar in words (noun, 2nd declension), the labels and the notes on
-tricks.  A text may be a pattern, with {1}, {2} ... for its parts:
+Los <text> traducen lo que dicen los resultados aparte de los
+significados: la gramática en palabras (noun, 2nd declension), las
+etiquetas y las notas sobre los trucos.  Un texto puede ser un patrón, con
+{1}, {2} ... en lugar de sus partes:
 
     <text en="Word mod {1}/{2}">Modificador de palabra {1}/{2}</text>
 
-The parts are translated too, if they are texts.  What is not translated
-is shown in English.
+Las partes también se traducen, si son textos.  Lo que no se traduce se
+muestra en inglés.
 """
 
 from __future__ import annotations
@@ -43,11 +47,11 @@ from model import Entry, NumeralSort, Unique
 from xmldata import DataError, LanguageData
 
 FOLDER = 'languages'
-REFERENCE = 'en'                # the language of the data files
+REFERENCE = 'en'                # el idioma de los archivos de datos
 #  Lo que el archivo de un idioma no traduce sale en inglés, con esta marca
 ENGLISH_MARK = '[en] '          # before a meaning that is not translated
 
-#  The entries built into the program, by their uid
+#  Las entradas que trae el propio programa, por su uid
 BUILTIN = {-1: 'esse'}
 
 HERE = os.path.dirname(os.path.abspath(__file__))

@@ -1,9 +1,9 @@
-"""The language of the interface: the menus, buttons, labels, messages and
-help of the programs.  (The results are in the language of the meanings:
-see languages.py.)
+"""El idioma de la interfaz: los menús, botones, etiquetas, mensajes y
+ayuda de los programas.  (Los resultados están en el idioma de los
+significados: véase languages.py.)
 
-The interface is written in English.  Another language has a file next
-to the program, data/interface/CODE.xml (see words.xsd):
+La interfaz está escrita en inglés.  Cada uno de los otros idiomas tiene
+un archivo junto al programa, data/interface/CODE.xml (véase words.xsd):
 
     <interface code="es" name="Spanish" native="Español">
       <text>
@@ -13,15 +13,15 @@ to the program, data/interface/CODE.xml (see words.xsd):
       ...
     </interface>
 
-A text is found by its English, with its spaces made single (so a text
-may be laid out on several lines); the translation is shown as it is
-written.  A text may have named parts, such as "Saved in {path}", which tr()
-fills in; the translation has the same parts.  What the file does not
-translate is shown in English.
+Un texto se encuentra por su inglés, con los espacios reducidos a uno
+(así que un texto puede repartirse en varias líneas); la traducción se
+muestra tal como está escrita.  Un texto puede tener partes con nombre,
+como "Saved in {path}", que tr() rellena; la traducción tiene las mismas
+partes.  Lo que el archivo no traduce se muestra en inglés.
 
-The language is the setting `interface` of the configuration file
-([parameters]; en unless it says otherwise).  The programs call use()
-when they start, and again when it is changed.
+El idioma es el ajuste `interface` del archivo de configuración
+([parameters]; en, salvo que diga otra cosa).  Los programas llaman a
+use() al arrancar, y otra vez cuando se cambia.
 """
 
 from __future__ import annotations
@@ -37,7 +37,7 @@ PART = re.compile(r'\{(\w+)\}')
 
 _code = REFERENCE
 _texts: dict[str, str] = {}
-_error = ''                     # why the last language asked for was not used
+_error = ''                     # por qué no se usó el último idioma pedido
 
 
 class InterfaceError(Exception):

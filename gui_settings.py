@@ -1,13 +1,14 @@
-"""The Settings dialogue of the window: every parameter (the # dialogue of
-the command line) and developer mode (!), with what each one does.
+"""El diálogo de Ajustes de la ventana: cada parámetro (el diálogo # de la
+línea de órdenes) y cada modo de desarrollador (!), con lo que hace.
 
-Changes apply at once and are kept in the configuration file, as those of
-the # and ! dialogues are when saved.  A setting that only makes sense
-with another (trim_medieval needs trim_output ...) is greyed out while
-that one is off, as the command line skips it.  The pause and
-the command characters only matter in the interactive command line; they
-are offered under their own heading.  At the top are the language of the
-interface and the fonts of the windows.
+Los cambios se aplican enseguida y se guardan en el archivo de
+configuración, como los de los diálogos # y ! cuando se guardan.  Un
+ajuste que solo tiene sentido con otro (trim_medieval necesita
+trim_output ...) aparece en gris mientras ese otro está desactivado, así
+como la línea de órdenes lo salta.  La pausa y los caracteres de las
+órdenes solo importan en la línea de órdenes interactiva; se ofrecen bajo
+su propio título.  Arriba están el idioma de la interfaz y las fuentes de
+las ventanas.
 """
 
 import tkinter as tk
@@ -83,7 +84,7 @@ class SettingsDialog:
         close.focus_set()
         self.refresh()
 
-    # Building -------------------------------------------------------------
+    # La construcción ------------------------------------------------------
 
     def interface_row(self, win, fonts=None):
         """The language of the interface (the window is built again in

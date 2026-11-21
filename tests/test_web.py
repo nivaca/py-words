@@ -1,5 +1,5 @@
-"""Tests of the dictionary in the browser (words_web.py), through its WSGI
-application."""
+"""Pruebas de la página web (words_web.py), mediante su aplicación
+WSGI."""
 
 import io
 import json
@@ -9,7 +9,7 @@ import unittest
 from wsgiref.util import setup_testing_defaults
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import words_web  # noqa: E402
@@ -71,7 +71,7 @@ class WebTests(unittest.TestCase):
         box = '<input type="checkbox" name="dark" value="1"'
         try:
             page = self.call()[2]
-            self.assertIn('<html lang="en">', page)    # (following the system)
+            self.assertIn('<html lang="en">', page)    # (según el sistema)
             self.assertIn(box + '>', page)
             self.assertIn('<label title="Dark mode">\n', page)  # (a moon)
             for body, saved, attribute, checked in (
@@ -113,7 +113,7 @@ class WebTests(unittest.TestCase):
             page = self.call(query='q=amicuss')[2]
             self.assertIn(box + '>', page)
             self.assertNotIn('(near spellings: amicus)', page)
-            #  (the settings below leave it as it is)
+            #  (los ajustes de abajo lo dejan como está)
             self.call('/settings', method='POST',
                       body=f'token={token}&on=trim_output')
             self.assertFalse(self.app.saved.fuzzy_search)
@@ -277,7 +277,7 @@ class PublicTests(unittest.TestCase):
         return got['status'], out
 
     def post(self, jar, path, fields=''):
-        self.call(jar)                          # (the page: its token)
+        self.call(jar)                          # (la página: su token)
         body = f'token={jar["words_token"]}' + (f'&{fields}' if fields
                                                 else '')
         return self.call(jar, path, method='POST', body=body)
@@ -320,7 +320,7 @@ class PublicTests(unittest.TestCase):
                         page.index('href="/?q=amicus"'))
         self.post(jar, '/history/clear')
         self.assertNotIn('words_history', jar)
-        #  the message, once, to this visitor only
+        #  el mensaje, una vez, solo a este visitante
         self.assertIn('The history of the searches is cleared.',
                       self.call(jar)[1])
         self.assertNotIn('is cleared', self.call(jar)[1])
@@ -364,7 +364,7 @@ class LogeionTests(unittest.TestCase):
         import logeion
         from test_logeion import forget_choices
         forget_choices(self)
-        #  (all the dictionaries: the fake pages have no DMLBS)
+        #  (todos los diccionarios: las páginas falsas no tienen DMLBS)
         config.update(logeion.SECTION, {'dictionary': logeion.ALL})
 
     def choose(self, fields: str):
@@ -392,7 +392,8 @@ class LogeionTests(unittest.TestCase):
         self.assertIn('value="en" disabled>', page)
         results = page[page.index('<pre class="results"'):
                        page.index('</pre>')]
-        #  the analysis, as this program's results, then the entries
+        #  el análisis, como los resultados de este programa, luego las
+        #  entradas
         self.assertIn('<span class="lg-b">arma</span><span class="lg-d">  '
                       '→  armum, armo</span>', results)
         self.assertIn('<a href="/?q=armum">armum</a>, armi  noun', results)
@@ -401,7 +402,8 @@ class LogeionTests(unittest.TestCase):
         self.assertLess(results.index('NOM.PL'),
                         results.index('Lewis &amp; Short'))
         self.assertIn('<span class="lg-i">arms</span>', results)
-        #  a link to a word of Logeion looks it up here; others, a new tab
+        #  un enlace a una palabra de Logeion la busca aquí; otros, una
+        #  pestaña nueva
         self.assertIn('see <a href="/?q=armo">armo</a>', results)
         self.assertIn('<a href="https://example.org/arms" target="_blank" '
                       'rel="noopener">more</a>', results)
@@ -499,7 +501,7 @@ class PublicLogeionTests(unittest.TestCase):
         page = self.call(b, query='q=arma')[1]
         self.assertNotIn('ustensiles', page)
         self.assertIn('<option value="local" selected>', page)
-        #  (in Logeion, the DMLBS until another dictionary is chosen)
+        #  (en Logeion, el DMLBS hasta que se elija otro diccionario)
         self.post(b, '/source', 'source=logeion')
         page = self.call(b, query='q=arma')[1]
         self.assertIn('<option value="dmlbs" selected>', page)

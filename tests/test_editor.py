@@ -1,6 +1,7 @@
-"""Tests of the dictionary editors (editor.py, edit_tui.py, edit_gui.py).
+"""Pruebas de los editores del diccionario (editor.py, words_edit.py,
+words_edit_gui.py).
 
-They work on a copy of the data files in a temporary directory.
+Trabajan sobre una copia de los archivos de datos en una carpeta temporal.
 """
 
 import os
@@ -13,7 +14,7 @@ import time
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the package, when run from anywhere
+    __file__))))                        # el paquete, desde cualquier carpeta
 import isolate  # noqa: E402  (before anything that reads settings)
 
 import xmldata
@@ -67,7 +68,7 @@ class EditorTests(WithData):
 
     def test_fields_round_trip(self):
         entry = self.ed.search('amicorum')[0]
-        #  (its uid, which the file keeps; the position, id, may differ)
+        #  (su uid, que el archivo conserva; la posición, id, puede cambiar)
         again = Fields.of(entry).entry(entry.uid)
         self.assertEqual(xmldata.entry_xml(again), xmldata.entry_xml(entry))
 
@@ -96,8 +97,8 @@ class EditorTests(WithData):
         names = dict(Editor(self.dir).options('source', 'N'))
         self.assertEqual(names['A'], 'A new source')
         self.assertEqual(names['O'], 'Oxford Latin Dictionary')
-        self.assertEqual(names['U'], '')     # (not in the file: code only)
-        os.remove(path)                 # without the file: codes only
+        self.assertEqual(names['U'], '')     # (no está en el archivo: código)
+        os.remove(path)                 # sin el archivo: solo códigos
         names = dict(Editor(self.dir).options('source', 'N'))
         self.assertEqual(names['O'], '')
 
@@ -125,7 +126,7 @@ class EditorTests(WithData):
         self.assertFalse(self.ed.dirty)
         self.assertTrue(os.path.exists(self.path + '.bak'))
         self.assertIn('<stem>blogg</stem>', self.read())
-        # the saved file is read back as it was written
+        # el archivo guardado se lee tal como se escribió
         self.assertIn('bloggus', Editor(self.dir).describe(
             Editor(self.dir).search('blogg')[0]))
 
@@ -205,7 +206,7 @@ class EditingTests(WithData):
         self.assertEqual(done, 'Changed')
         self.assertIs(self.editing.current, entry)
         self.assertIs(self.editing.results[0], entry)
-        self.assertNotIn(self.amicus, self.editing.results)   # (not twice)
+        self.assertNotIn(self.amicus, self.editing.results)   # (no dos veces)
         self.assertEqual(len(self.editing.results), n)
         self.assertFalse(self.editing.pending(self.fields))
 
@@ -218,7 +219,7 @@ class EditingTests(WithData):
                 return reply
             return ask
         self.assertTrue(self.editing.leave(self.fields, answer(None)))
-        self.assertEqual(asked, [])                 # nothing to apply
+        self.assertEqual(asked, [])                 # nada que aplicar
         self.fields.meaning = 'friend (changed);'
         self.assertFalse(self.editing.leave(self.fields, answer(None)))
         self.assertTrue(self.editing.leave(self.fields, answer(False)))
@@ -226,7 +227,7 @@ class EditingTests(WithData):
         self.assertTrue(self.editing.leave(self.fields, answer(True)))
         self.assertTrue(self.ed.dirty)              # applied
         self.assertEqual(asked, ['“amicus, amici”'] * 3)
-        self.fields.attrs['decl'] = '2'             # cannot be applied
+        self.fields.attrs['decl'] = '2'             # no se puede aplicar
         with self.assertRaises(xmldata.DataError):
             self.editing.leave(self.fields, answer(True))
 
@@ -246,11 +247,11 @@ class EditingTests(WithData):
         entry, done = self.editing.save(self.fields)
         self.assertEqual(done, 'Changed')
         self.assertIn('<meaning>friend (saved);</meaning>', self.read())
-        self.assertIsNone(self.editing.save(self.fields))   # nothing new
+        self.assertIsNone(self.editing.save(self.fields))   # nada nuevo
         self.fields.attrs['decl'] = '2'
         with self.assertRaises(xmldata.DataError):
             self.editing.save(self.fields)
-        self.assertNotIn('decl="2"', self.read())         # not written
+        self.assertNotIn('decl="2"', self.read())         # no se escribe
 
 
 def _pty_available():
@@ -357,7 +358,7 @@ class TranslationTests(WithData):
                    ('entry', 1): 'a, ab (abr.);'}
         before = self.es_text()
         xmldata.update_language(self.es, {('entry', 1): 'a, ab (abr.);'})
-        self.assertEqual(self.es_text(), before)       # (no change)
+        self.assertEqual(self.es_text(), before)       # (sin cambios)
         self.assertTrue(xmldata.update_language(self.es, changes))
         text = self.es_text()
         self.assertTrue(text.index('entry="1"') < text.index('entry="2"') <
@@ -392,9 +393,9 @@ class TranslationTests(WithData):
         English."""
         down = '\x1bOB'
         keys = [('amigo', 0.3), ('\r', 1.5), ('\r', 0.5)]
-        keys += [(down, 0.1)] * 12                      # to the Spanish
+        keys += [(down, 0.1)] * 12                      # hasta el español
         keys += [('\x1bOF', 0.2), (' (terminal)', 0.5),
-                 ('\x13', 2),                           # Ctrl-S: save
+                 ('\x13', 2),                           # Ctrl-S: guardar
                  ('\x1b[18~', 1), ('\x1bOA', 0.3),      # F7, up: English
                  ('\r', 1), ('\x11', 1)]                # quit
         status, output = TerminalEditorTests.run_keys(
@@ -426,8 +427,8 @@ class TerminalEditorTests(WithData):
         keys += [(down, 0.1)] * 7
         keys += [('blog, online journal;', 0.5),
                  ('\x01', 1.5),                         # Ctrl-A: add
-                 ('\x13', 2),                           # Ctrl-S: save
-                 ('\x11', 1)]                           # Ctrl-Q: quit
+                 ('\x13', 2),                           # Ctrl-S: guardar
+                 ('\x11', 1)]                           # Ctrl-Q: salir
         status, output = self.run_keys(keys)
         self.assertEqual(status, 0, output[-500:])
         self.assertIn('    <stem>blogg</stem>\n    <stem>blogg</stem>\n'
@@ -439,13 +440,13 @@ class TerminalEditorTests(WithData):
         """Find an entry of the dictionary, change its meaning, save."""
         down = '\x1bOB'
         keys = [('amicorum', 0.3), ('\r', 1.5),        # find
-                ('\r', 0.5)]                            # edit the first
-        keys += [(down, 0.1)] * 11                      # to the meaning
+                ('\r', 0.5)]                            # editar el primero
+        keys += [(down, 0.1)] * 11                      # hasta el significado
         keys += [('\x1bOF', 0.2),                       # End
                  (' (changed)', 0.5),
                  ('\x01', 1.5),                         # Ctrl-A: apply
-                 ('\x13', 2),                           # Ctrl-S: save
-                 ('\x11', 1)]                           # Ctrl-Q: quit
+                 ('\x13', 2),                           # Ctrl-S: guardar
+                 ('\x11', 1)]                           # Ctrl-Q: salir
         status, output = self.run_keys(keys)
         self.assertEqual(status, 0, output[-500:])
         self.assertIn('counselor/courtier (to a prince); (changed)'
@@ -457,8 +458,8 @@ class TerminalEditorTests(WithData):
         keys = [('amicorum', 0.3), ('\r', 1.5), ('\r', 0.5)]
         keys += [(down, 0.1)] * 11
         keys += [('\x1bOF', 0.2), (' (saved directly)', 0.5),
-                 ('\x13', 2),                           # Ctrl-S: save
-                 ('\x11', 1)]                           # Ctrl-Q: quit
+                 ('\x13', 2),                           # Ctrl-S: guardar
+                 ('\x11', 1)]                           # Ctrl-Q: salir
         status, output = self.run_keys(keys)
         self.assertEqual(status, 0, output[-500:])
         self.assertIn('(to a prince); (saved directly)</meaning>',
@@ -472,8 +473,8 @@ class TerminalEditorTests(WithData):
         keys += [(down, 0.1)] * 11
         keys += [('\x1bOF', 0.2), (' (on quitting)', 0.5),
                  ('\x11', 1),                           # Ctrl-Q
-                 ('y\r', 1),                            # apply them
-                 ('y\r', 2)]                            # and save
+                 ('y\r', 1),                            # aplicarlos
+                 ('y\r', 2)]                            # y guardar
         status, output = self.run_keys(keys)
         self.assertEqual(status, 0, output[-500:])
         self.assertIn(b'not applied', output)
@@ -484,7 +485,7 @@ class TerminalEditorTests(WithData):
         n leaves it out."""
         status, output = self.run_keys([('\x0e', 0.5), ('blogg', 0.3),
                                         ('\x11', 1),       # Ctrl-Q
-                                        ('n\r', 1)])       # don't apply
+                                        ('n\r', 1)])       # no aplicar
         self.assertEqual(status, 0)
         self.assertIn(b'not applied', output)
         self.assertNotIn('blogg', self.read())
@@ -576,7 +577,7 @@ class WindowEditorTests(WithData):
             w.find()
             amicus = w.current
             w.vars['meaning'].set('friend (kept);')
-            # another entry, cancelled: the form stays as it is
+            # otra entrada, cancelada: el formulario queda como está
             answers.append(None)
             w.listbox.selection_clear(0, 'end')
             w.listbox.selection_set(1)
@@ -591,7 +592,7 @@ class WindowEditorTests(WithData):
             self.assertIsNone(w.current)
             self.assertTrue(any(e.meaning == 'friend (kept);'
                                 for e in w.editor.entries))
-            # a new entry left unfinished, answered no: nothing added
+            # una entrada nueva sin terminar, respuesta no: no se añade nada
             n = len(w.editor.entries)
             w.vars['meaning'].set('something;')
             answers.append(False)

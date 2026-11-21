@@ -1,6 +1,6 @@
-"""Copying to the system clipboard, for the terminal (words_tui.py):
-curses cannot reach it, so the text goes through the program of each
-system for it, or else through the terminal itself (OSC 52)."""
+"""Copia al portapapeles del sistema, para la terminal (words_tui.py):
+curses no llega a él, así que el texto pasa por el programa que cada
+sistema tiene para eso o, si no, por la terminal misma (OSC 52)."""
 
 import base64
 import os

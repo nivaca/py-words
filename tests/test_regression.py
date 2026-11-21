@@ -1,16 +1,19 @@
-"""Runs the regression tests in regression/ against the program.
+"""Corre contra el programa las pruebas de regresión de regression/.
 
-Each test feeds regression/NN_name/input.txt to `words -f`, with the developer
-modes of regression/WORD.MDV_template, and compares the output with
-regression/NN_name/expected.txt.  A test can change the settings with its
-own regression/NN_name/config.toml (the configuration file, see config.py),
-which comes first.  Each run has a configuration folder of its own, so no
-test's settings reach another.  After an intended change to the output,
-regenerate the expected files with
+Cada prueba le pasa regression/NN_name/input.txt a `words -f`, con los
+modos de desarrollador de regression/WORD.MDV_template, y compara la
+salida con regression/NN_name/expected.txt.  Una prueba puede cambiar los
+ajustes con su propio regression/NN_name/config.toml (el archivo de
+configuración, ver config.py), que prevalece.  Cada corrida tiene su
+propia carpeta de configuración, así que los ajustes de una prueba no
+llegan a otra.  Otra prueba corre `words rem acu tetigisti` y compara la
+salida con regression/expected.txt.  Tras un cambio intencional en la
+salida, los archivos esperados se regeneran con
 
     UPDATE_GOLDEN=1 python3 -m unittest discover -s tests
 
-and review the differences (git diff tests/regression/) before committing them.
+y las diferencias se revisan (git diff tests/regression/) antes de hacer
+commit.
 """
 
 import os

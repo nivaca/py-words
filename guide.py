@@ -1,17 +1,18 @@
-"""The help ("Help"): how to search, how to read the results (what the
-codes in brackets like [XXXBO] and the abbreviations of the analyses
-mean), and where the settings are.
+"""La ayuda ("Ayuda", "Help"): cómo buscar, cómo leer los resultados (qué
+significan los códigos entre corchetes como [XXXBO] y las abreviaturas de
+los análisis) y dónde están los ajustes.
 
-Every program shows it, in the language of the interface: "Help" (and F1)
-in the window, the "Help" section of the web page, F1 in words_tui.py,
-~H in the interactive command line, and words.py --guide.  Each program
-passes its own paragraphs on how to use it (USING); the rest is shared.
-The example, the code tables and the abbreviations are built from the
-program and its data, so the help can't go stale.
+Todos los programas la muestran, en el idioma de la interfaz: "Ayuda" (y
+F1) en la ventana, la sección "Ayuda" de la página web, F1 en
+words_tui.py, ~H en la línea de órdenes interactiva y words.py --guide.
+Cada programa pasa sus propios párrafos sobre cómo usarlo (USING); el
+resto es común.  El ejemplo, las tablas de códigos y las abreviaturas se
+construyen a partir del programa y de sus datos, así que la ayuda no
+puede quedar desactualizada.
 
-It's a list of blocks, (kind, text): 'h' a heading, 'p' a paragraph,
-'li' a list item and 'pre' preformatted text; text() and html() write it
-out.
+Es una lista de bloques, (kind, text): 'h' un título, 'p' un párrafo,
+'li' un elemento de lista y 'pre' texto preformateado; text() y html() la
+escriben.
 """
 
 from __future__ import annotations
@@ -34,9 +35,10 @@ Block = tuple[str, str]
 EXAMPLE = 'amicorum'
 EXAMPLE_CODES = 'XXXBO'         # (those of amicus, amici)
 
-#  The examples to click before the first search (in the window and on the
-#  web page): Latin ones, and a word of the meanings to look up in Latin,
-#  by the language of the meanings
+#  Los ejemplos en los que se puede hacer clic antes de la primera
+#  búsqueda (en la ventana y en la página web): unos latinos, y una
+#  palabra de los significados para buscar en latín, según el idioma de
+#  los significados
 LATIN_EXAMPLES = ('amicorum', 'arma virumque cano')
 TO_LATIN_EXAMPLE = {'en': 'friend', 'es': 'amigo'}
 #  Ojo: el ejemplo se busca en vivo, pero estos códigos están escritos a
@@ -65,8 +67,8 @@ SEARCHING = (
        'taken as names, and left alone.'),
 )
 
-#  How each program is used (the terminal and the command line give their
-#  own lists of keys and commands)
+#  Cómo se usa cada programa (la terminal y la línea de órdenes dan sus
+#  propias listas de teclas y de órdenes)
 WINDOW = (
     N_('Type in the box at the top and press Enter, or "Look up"; the '
        'arrow at the right of the box lists the earlier searches.'),
@@ -297,8 +299,8 @@ def codes(datadir: str) -> list[Block]:
     return out
 
 
-#  The sources in sources.xml that aren't books.  Estas sí se traducen; los
-#  títulos de los libros se dejan como están.
+#  Las fuentes de sources.xml que no son libros.  Estas sí se traducen;
+#  los títulos de los libros se dejan como están.
 GENERAL_SOURCES = (N_('general or unknown'), N_('other dictionaries'),
                    N_('found in a translation'), N_("Whitaker's guess"),
                    N_('temporary'), N_('sent by a user'))
@@ -350,8 +352,8 @@ def glosses(session) -> list[Block]:
 
 
 # ---------------------------------------------------------------------------
-#  Short explanations, for the window's tooltips (the same words as the
-#  help)
+#  Explicaciones breves, para los mensajes emergentes de la ventana (con
+#  las mismas palabras de la ayuda)
 
 def explain_codes(codes: str, datadir: str) -> str:
     """What the codes in brackets of an entry mean, one letter a line:
@@ -419,7 +421,7 @@ def configuration() -> Block:
 
 
 # ---------------------------------------------------------------------------
-#  Writing it out
+#  Cómo se escribe
 
 def text(help_blocks: list[Block], width: int = 76) -> str:
     """The help as plain text, lines at most WIDTH long."""

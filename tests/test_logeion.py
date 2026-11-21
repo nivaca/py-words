@@ -1,7 +1,8 @@
-"""Tests of the second source, Logeion (logeion.py): the lemmas asked for,
-the pages fetched and shown, the source kept, and the command line, the
-window and the terminal interface with it.  Logeion itself is not asked:
-a client of its pages here stands for it."""
+"""Pruebas de la segunda fuente, Logeion (logeion.py): los lemas que se
+piden, las páginas que se traen y se muestran, la fuente que se guarda, y
+la línea de órdenes, la ventana y la interfaz de terminal con ella.  A
+Logeion no se le pregunta nada: aquí lo reemplaza un cliente de sus
+páginas."""
 
 import contextlib
 import io
@@ -12,7 +13,7 @@ import urllib.error
 from unittest import mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: E402  (before anything that reads settings)
 
 import logeion  # noqa: E402
@@ -121,15 +122,15 @@ class AnalysisTests(unittest.TestCase):
         self.assertIn('  dico, dicere, dixi, dictus  verb, 3rd conjugation',
                       text)
         self.assertRegex(text, r'\n    dix-ī +1SG\.PRF\.ACT\.IND')
-        self.assertNotIn('to say', text)        # (Logeion's, not ours)
-        #  (the entries of dico that only the meanings tell apart: once)
+        self.assertNotIn('to say', text)        # (de Logeion, no nuestro)
+        #  (entradas de dico que solo distinguen los significados: una vez)
         self.assertEqual(len(word.analysis), len(set(word.analysis)))
         self.assertNotIn('dixi', word.analysis[0].split()[:1])
 
     def test_alike_entries_together(self):
-        #  (quae: eight entries of qui and quis, four kinds of pronoun;
-        #  some of them without forms of their own in this program's
-        #  results, which leaves them to the next one that has the same)
+        #  (quae: ocho entradas de qui y quis, cuatro clases de pronombre;
+        #  algunas sin formas propias en los resultados de este programa,
+        #  así que quedan con la siguiente que tenga las mismas)
         [word] = logeion.queries(session(), 'quae')
         heads = [line for line in word.analysis if line.startswith('  p')]
         self.assertEqual(heads, ['  pronoun, relative',
@@ -142,7 +143,7 @@ class AnalysisTests(unittest.TestCase):
         self.assertTrue(any('ACC.PL.N' in f for f in indefinite))
 
     def test_no_codes_or_flags(self):
-        #  (dico: four entries, one of them medieval, one line)
+        #  (dico: cuatro entradas, una de ellas medieval, una línea)
         settings = Settings(show_codes=True, show_entry_source=True)
         [word] = logeion.queries(Session(Lexicon.load(DATA), settings),
                                  'dixi')
@@ -179,8 +180,8 @@ class FetchTests(unittest.TestCase):
     def test_the_form_its_lemmas_and_what_is_missing(self):
         client = Client()
         [word] = logeion.Logeion(client).look_up(session(), 'arma')
-        #  arma is a headword of Logeion's: its page first, then those of
-        #  the lemmas (armum has none)
+        #  arma es una entrada de Logeion: primero su página, luego las de
+        #  los lemas (armum no tiene)
         self.assertEqual(client.asked, ['arma', 'armum', 'armo'])
         self.assertEqual([p.lemma for p in word.pages],
                          ['arma', 'armum', 'armo'])
@@ -193,7 +194,7 @@ class FetchTests(unittest.TestCase):
                          ['short', 'ls'])
 
     def test_a_form_without_lewis_and_short_is_left_out(self):
-        #  (dixi: Gaffiot has it, only to refer to dico)
+        #  (dixi: Gaffiot la tiene, solo para remitir a dico)
         pages = {'dixi': {**page('dixi', ''), 'detail': {'dicos': [{
                      'dname': 'Gaffiot 2016',
                      'es': ['dīxī, parf. de dico.']}]}},
@@ -242,7 +243,7 @@ class RenderTests(unittest.TestCase):
         lines = logeion.render(self.words, Style(True), 60)
         kinds = [kind for kind, _ in lines]
         self.assertEqual(kinds[0], logeion.HEAD)
-        #  (the analysis, then the pages)
+        #  (el análisis, luego las páginas)
         n = kinds.index(logeion.PAGE)
         self.assertGreater(n, 1)
         self.assertEqual(set(kinds[1:n]), {logeion.ANALYSIS})
@@ -283,7 +284,7 @@ class DictionaryTests(unittest.TestCase):
         self.assertIn('Gaffiot 2016', text)
         self.assertIn('ustensiles', text)
         self.assertNotIn('\nLewis & Short\n', text)    # (its section)
-        self.assertIn('arma, weapons', text)    # (the short definition)
+        self.assertIn('arma, weapons', text)    # (la definición corta)
         self.assertIn('Gaffiot 2016 has no entry for armo (it is in: Lewis '
                       '& Short).', text)
         everything = logeion.text(self.words)
@@ -301,7 +302,7 @@ class DictionaryTests(unittest.TestCase):
     def test_kept(self):
         import config
         self.addCleanup(config.update, logeion.SECTION, {})
-        #  (the DMLBS, until another is chosen)
+        #  (el DMLBS, hasta que se elija otro)
         self.assertEqual(logeion.saved_dictionary(), 'dmlbs')
         logeion.save_source(logeion.LOGEION)
         self.assertEqual(logeion.save_dictionary('gaffiot'), '')
@@ -354,7 +355,7 @@ class CommandLineTests(unittest.TestCase):
         out = self.run_words('--logeion', 'arma')
         self.assertTrue(out.startswith('arma  →  armum, armo\n'), out)
         self.assertIn('Lewis & Short', out)
-        self.assertNotIn('\033', out)           # (not a terminal)
+        self.assertNotIn('\033', out)           # (no es una terminal)
 
     def test_local_still(self):
         out = self.run_words('arma')
@@ -388,7 +389,7 @@ class InteractiveTests(unittest.TestCase):
     def setUp(self):
         import config
         forget_choices(self)
-        #  (all the dictionaries: the fake pages have no DMLBS)
+        #  (todos los diccionarios: las páginas falsas no tienen DMLBS)
         config.update(logeion.SECTION, {'dictionary': logeion.ALL})
         self.session = Session(Lexicon.load(DATA), Settings())
         self.session.settings.pause_in_screen_output = False
@@ -426,7 +427,7 @@ class InteractiveTests(unittest.TestCase):
         self.assertIn('\nLewis & Short\n', rest)
         self.assertNotIn('\nGaffiot 2016\n', rest)
         self.assertIn('There is no dictionary lsj in Logeion', rest)
-        #  (Enter keeps the current one: marked in the list)
+        #  (Enter conserva el actual: marcado en la lista)
         self.assertIn('*  2  ls', rest)
         self.assertIn('Logeion: Lewis & Short.', rest.rsplit('*  2', 1)[1])
 
@@ -531,7 +532,7 @@ class WindowTests(unittest.TestCase):
         import words_gui
         self.root = tk.Tk()
         forget_choices(self)
-        #  (all the dictionaries: the fake pages have no DMLBS)
+        #  (todos los diccionarios: las páginas falsas no tienen DMLBS)
         config.update(logeion.SECTION, {'dictionary': logeion.ALL})
         self.app = words_gui.App(self.root, DATA)
         self.app.logeion = logeion.Logeion(Client())
@@ -539,7 +540,7 @@ class WindowTests(unittest.TestCase):
         def close():
             self.root.destroy()
             del self.root, self.app
-            gc.collect()        # (Tk must be freed here)
+            gc.collect()        # (Tk debe liberarse aquí)
         self.addCleanup(close)
         self.wait(lambda: self.app.session is not None)
 
@@ -564,7 +565,7 @@ class WindowTests(unittest.TestCase):
         self.assertFalse(app.reverse.get())
         for widget in (app.to_latin, app.fuzzy_box, app.language):
             self.assertEqual(str(widget['state']), 'disabled')
-        #  (the editor edits this dictionary, not Logeion's)
+        #  (el editor edita este diccionario, no el de Logeion)
         edit = app.dictionary_menu
         self.assertEqual(edit.entrycget(0, 'label'), 'Edit dictionary…')
         self.assertEqual(str(edit.entrycget(0, 'state')), 'disabled')
@@ -595,13 +596,13 @@ class WindowTests(unittest.TestCase):
         self.assertIn('Logeion has no entry for armum', text)
         self.assertIn('• arma, weapons', text)
         self.assertNotIn('\033', text)
-        #  a link to a word of Logeion looks it up; another, the browser
+        #  un enlace a una palabra de Logeion la busca; otro, el navegador
         self.assertIn(('armo', False), app.results.links.values())
         self.assertEqual(list(app.results.urls.values()),
                          ['https://example.org/arms'])
         self.assertTrue(t.tag_ranges('lg_section'))
         self.assertTrue(t.tag_ranges('lg_italic'))
-        #  a double click on a word looks it up, in Latin
+        #  un doble clic en una palabra la busca, en latín
         index = t.search('weapons', '1.0')
         self.assertEqual(app.results._word_at(f'{index}+2c'),
                          ('weapons', False))

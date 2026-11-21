@@ -1,17 +1,19 @@
-"""Near spellings for the fuzzy search (the parameter fuzzy_search): what
-gets tried when a word finds nothing as typed.
+"""Grafías cercanas para la búsqueda aproximada (el parámetro
+fuzzy_search): lo que se prueba cuando una palabra no encuentra nada tal
+como se escribió.
 
-A near spelling is one change away from the word: a letter dropped,
-added or changed, or two neighbouring letters swapped.  That covers most
-typos (amicuss, amcius, puela; freind, recieve) and, going to Latin, other
-forms of the same word too (tests, wolfs).  Words shorter than SHORTEST
-are left alone, since almost every two-letter word is one change away
-from another ("is": as, if, in).
+Una grafía cercana está a un cambio de la palabra: una letra que falta,
+sobra o cambia, o dos letras vecinas intercambiadas.  Eso cubre la mayoría
+de las erratas (amicuss, amcius, puela; freind, recieve) y, en la búsqueda
+hacia el latín, también otras formas de la misma palabra (tests, wolfs).
+Las palabras de menos de SHORTEST letras se dejan como están, porque casi
+toda palabra de dos letras está a un cambio de otra.
 """
 
 from __future__ import annotations
 
-#  The letters of Latin words, without j and v unless the word has them.
+#  Las letras de las palabras latinas, sin j ni v salvo que la palabra las
+#  tenga.
 #  (Ni j ni v: el léxico ya las busca como i y u, así que probarlas solo
 #  daría resultados repetidos.)
 LATIN = 'abcdefghiklmnopqrstuxyz'

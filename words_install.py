@@ -1,26 +1,28 @@
 #!/usr/bin/env python3
-"""Add py-words to the applications menu: python3 words_install.py
+"""Añade py-words al menú de aplicaciones: python3 words_install.py
 [--only-gui | --uninstall]
 
-Adds four entries that start the program from this folder, with the
-program's icon: the window (words_gui.py), the command line (words.py, in a
-terminal), the full-screen terminal version (words_tui.py) and the web
-version (words_web.py, whose server runs in a terminal and opens the
-browser).  With --only-gui, only the window's (and the others, if they
-were there from before, are removed):
+Añade cuatro entradas que inician el programa desde esta carpeta, con el
+icono del programa: la ventana (words_gui.py), la línea de órdenes
+(words.py, en una terminal), la versión de pantalla completa en la
+terminal (words_tui.py) y la versión web (words_web.py, cuyo servidor
+corre en una terminal y abre el navegador).  Con --only-gui, solo la de
+la ventana (y las otras, si ya estaban de antes, se quitan):
 
-* Linux and other freedesktop systems: .desktop files and the icons in the
-  user's data folder ($XDG_DATA_HOME, usually ~/.local/share);
-* Windows: shortcuts in the user's Start menu (made with PowerShell);
-* macOS: four small applications in ~/Applications.
+* Linux y otros sistemas freedesktop: archivos .desktop y los iconos en la
+  carpeta de datos del usuario ($XDG_DATA_HOME, por lo general
+  ~/.local/share);
+* Windows: accesos directos en el menú Inicio del usuario (creados con
+  PowerShell);
+* macOS: cuatro aplicaciones pequeñas en ~/Applications.
 
-Everything goes in the user's own folders, so no administrator rights are
-needed.  Run it again after moving this folder; --uninstall removes
-everything it added.
+Todo va en las carpetas propias del usuario, así que no hacen falta
+permisos de administrador.  Hay que ejecutarlo de nuevo tras mover esta
+carpeta; --uninstall quita todo lo que añadió.
 """
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 import argparse
 import os
@@ -39,7 +41,7 @@ from version import NAME, VERSION
 APP_ID = 'py-words'                      # the names of the entries and icons
 BUNDLE_ID = 'io.github.nivaca.py-words'
 
-#  The names used before (whatever was installed under them is removed)
+#  Los nombres que se usaron antes (se quita lo que se instaló con ellos)
 OLD_APP_IDS = ('py-whitaker-words',)
 OLD_BUNDLE_IDS = ('io.github.nivaca.py-whitaker-words',)
 OLD_NAME = 'Py-Whitaker-Words'
@@ -52,7 +54,7 @@ def display_name(kind):
     return f'{NAME} ({kind})'
 
 
-#  (kind, program, whether it runs in a terminal)
+#  (tipo, programa, si corre en una terminal)
 PROGRAMS = (('GUI', 'words_gui.py', False),
             ('CLI', 'words.py', True),
             ('TUI', 'words_tui.py', True),
@@ -72,7 +74,7 @@ def left_out(only_gui: bool = False):
 
 
 # ---------------------------------------------------------------------------
-#  Linux and other freedesktop systems
+#  Linux y otros sistemas freedesktop
 
 HICOLOR = os.path.join(ICON_DIR, 'linux', 'icons', 'hicolor')
 
@@ -87,7 +89,7 @@ Icon={app_id}
 Exec={exec}
 """
 
-#  The lines that differ, by kind
+#  Las líneas que cambian, según el tipo
 ENTRY_REST = {
     'GUI': f'Terminal=false\nStartupNotify=true\nStartupWMClass={APP_ID}\n',
     'CLI': 'Terminal=true\n',
@@ -187,7 +189,7 @@ def install_linux(only_gui: bool = False) -> list[str]:
         dest = os.path.join(theme, rel)
         os.makedirs(os.path.dirname(dest), exist_ok=True)
         if os.path.lexists(dest):
-            os.remove(dest)             # (it may be read-only)
+            os.remove(dest)             # (puede ser de solo lectura)
         shutil.copyfile(source, dest)
     paths = []
     for kind, program, _ in programs(only_gui):
@@ -220,8 +222,8 @@ def uninstall_linux() -> list[str]:
 
 ICO = os.path.join(ICON_DIR, 'windows', APP_ID + '.ico')
 
-#  Makes a shortcut with the Windows Script Host, from the values in the
-#  environment (which saves quoting them in the script).
+#  Crea un acceso directo con Windows Script Host, a partir de los
+#  valores del entorno (así no hay que entrecomillarlos en el script).
 SHORTCUT_SCRIPT = (
     '$s = (New-Object -ComObject WScript.Shell).CreateShortcut($env:PYW_LNK);'
     ' $s.TargetPath = $env:PYW_TARGET;'
@@ -234,9 +236,9 @@ SHORTCUT_SCRIPT = (
 
 class Shortcut(NamedTuple):
     path: str               # the .lnk file
-    target: str             # the Python that runs the program
+    target: str             # el Python que ejecuta el programa
     arguments: str
-    folder: str             # where it runs
+    folder: str             # dónde se ejecuta
     icon: str               # "file,index", or ''
 
 
@@ -306,7 +308,8 @@ def uninstall_windows() -> list[str]:
 
 ICONSET = os.path.join(ICON_DIR, 'macos', APP_ID + '.iconset')
 
-#  The icon types of an .icns file, by the name of the iconset image
+#  Los tipos de icono de un archivo .icns, por el nombre de la imagen
+#  del iconset
 ICNS_TYPES = (('icp4', '16x16'), ('ic11', '16x16@2x'),
               ('icp5', '32x32'), ('ic12', '32x32@2x'),
               ('ic07', '128x128'), ('ic13', '128x128@2x'),
@@ -421,7 +424,7 @@ def install_macos(only_gui: bool = False) -> list[str]:
     apps = [make_app(kind, program, terminal, icns)
             for kind, program, terminal in programs(only_gui)]
     for app in apps:
-        os.utime(app)                   # (so that Finder shows the icon)
+        os.utime(app)                   # (para que Finder muestre el icono)
     return apps
 
 

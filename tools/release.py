@@ -1,44 +1,49 @@
 #!/usr/bin/env python3
-"""Publishes a release of py-words on GitHub (with gh) and on Codeberg
-(with tea): the tag vVERSION (the version of version.py), with the zip and
-the AppImage attached, and (--rpm) the signed RPM, also published on
+"""Publica una versión de py-words en GitHub (con gh) y en Codeberg (con
+tea): la etiqueta vVERSION (la versión de version.py), con el zip y el
+AppImage adjuntos y (--rpm) el RPM firmado, que se publica también en
 Copr.
 
     python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
                              [--no-build] [--no-appimage] [--rpm [--no-copr]]
-                             [--only github|codeberg] [--dry-run] [--yes]
+                             [--only github|codeberg] [--remote REMOTE]
+                             [--tea-login LOGIN] [--dry-run] [--yes]
 
-In order, each step only if it is needed:
+En orden, y cada paso solo si hace falta:
 
-1. checks that the repository is on main, with nothing left to commit,
-   and that gh and tea are installed;
-2. makes the zip and the AppImage in dist/ (tools/bundle-zip.py and
-   tools/bundle-appimage.py), unless --no-build (then those in dist/ are used);
-   with --rpm, also the signed RPM and its public key in build/rpm/
-   (packaging/build-rpm.sh --sign; gpg asks for the passphrase);
-3. tags HEAD as vVERSION.  If the tag is there already on another commit,
-   it stops, unless --redo moves it;
-4. pushes main and the tag to the remote (origin, which pushes to both
-   GitHub and Codeberg; --redo pushes the tag with --force);
-5. on each forge, makes the release of the tag, or keeps the existing
-   one, and attaches the files to it, replacing those of the same name;
-6. with --rpm, sends the (signed) source RPM to Copr (copr-cli build,
-   project nivaca/py-words), unless --no-copr.  Copr builds it for each
-   Fedora of the project and signs it with its own key; each build needs
-   a higher version-release than the last, so the spec must have been
-   bumped (rpmdev-bumpspec, see packaging/COPR.org).
+1. comprueba que el repositorio esté en main, sin nada por confirmar, y
+   que gh y tea estén instalados (con --rpm, también rpmbuild y, salvo
+   --no-copr, copr-cli, y que la clave de firma esté en el llavero de gpg
+   del computador);
+2. hace el zip y el AppImage en dist/ (tools/bundle-zip.py y
+   tools/bundle-appimage.py), salvo con --no-build (entonces usa los que
+   hay en dist/); con --rpm, también el RPM firmado y su clave pública en
+   build/rpm/ (packaging/build-rpm.sh --sign; gpg pide la frase de paso);
+3. pone la etiqueta vVERSION en HEAD.  Si la etiqueta ya está en otro
+   commit, se detiene, salvo que --redo la mueva;
+4. sube main y la etiqueta al remoto (origin, que sube tanto a GitHub como
+   a Codeberg; --redo sube la etiqueta con --force);
+5. en cada forja, crea la versión de la etiqueta, o conserva la que
+   exista, y le adjunta los archivos, reemplazando los del mismo nombre;
+6. con --rpm, manda el RPM fuente (firmado) a Copr (copr-cli build,
+   proyecto nivaca/py-words), salvo con --no-copr.  Copr lo construye para
+   cada Fedora del proyecto y lo firma con su propia clave; cada
+   construcción necesita una versión-release mayor que la anterior, así
+   que el spec debe haberse subido de versión (rpmdev-bumpspec, véase
+   packaging/COPR.org).
 
-Before doing anything, it shows the commands it will run and asks; --yes
-does not ask, --dry-run only shows them.  The notes of a new release are
---notes, --notes-file, or else made by GitHub from the commits (on
-Codeberg, none); an existing release keeps its notes.
+Antes de hacer nada, muestra las órdenes que va a correr y pregunta; con
+--yes no pregunta, y con --dry-run solo las muestra.  Las notas de una
+versión nueva son las de --notes o --notes-file, o si no las que GitHub
+hace a partir de los commits (en Codeberg, ninguna); una versión que ya
+existe conserva sus notas.
 
-The repositories are found from the push addresses of the remote; tea
-uses the login named codeberg unless --tea-login names another.
+Los repositorios se deducen de las direcciones de subida del remoto; tea
+usa el login llamado codeberg, salvo que --tea-login nombre otro.
 
-When the tag is pushed, GitHub runs .github/workflows/appimage.yml, which
-makes the AppImage again and replaces the one attached here (same
-commit, same file name).
+Cuando se sube la etiqueta, GitHub corre .github/workflows/appimage.yml,
+que vuelve a hacer el AppImage y reemplaza el que se adjuntó aquí (mismo
+commit, mismo nombre de archivo).
 """
 
 import argparse
@@ -60,7 +65,7 @@ ZIP = os.path.join('dist', f'py-words-v.{VERSION}.zip')
 APPIMAGE = os.path.join('dist', f'py-words-v.{VERSION}-x86_64.AppImage')
 SPEC = os.path.join('packaging', 'py-words.spec')
 RPM_KEY = os.path.join('build', 'rpm', 'RPM-GPG-KEY-py-words')
-COPR_PROJECT = 'py-words'       # (of the copr-cli user, nivaca)
+COPR_PROJECT = 'py-words'       # (del usuario de copr-cli, nivaca)
 
 
 def signing_key() -> str:
@@ -109,7 +114,7 @@ class Release:
         self.args = args
         self.planned = []           # (description, command)
 
-    # Running ----------------------------------------------------------
+    # Ejecución --------------------------------------------------------
 
     def read(self, *command, check=True) -> str:
         """The output of COMMAND (which only reads, so it runs even with
@@ -147,7 +152,7 @@ class Release:
                          'if the tag was already moved).')
         print(f'\nReleased {TAG}.')
 
-    # Checks -----------------------------------------------------------
+    # Las comprobaciones -----------------------------------------------
 
     def check(self):
         tools = ('git',) + tuple(
@@ -226,8 +231,8 @@ class Release:
                       '--message', TAG)
         self.plan(f'Push {BRANCH}', 'git', 'push', self.args.remote,
                   BRANCH)
-        #  With --redo the tag is always pushed with --force: the remote
-        #  may push to several forges, and only the first is seen here
+        #  Con --redo la etiqueta se sube siempre con --force: el remoto
+        #  puede subir a varias forjas, y aquí solo se ve la primera
         if self.args.redo:
             self.plan('Push the tag (replacing it on the forges)', 'git',
                       'push', '--force', self.args.remote,

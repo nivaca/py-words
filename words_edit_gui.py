@@ -1,22 +1,25 @@
 #!/usr/bin/env python3
-"""A window for editing the dictionary: python3 words_edit_gui.py
+"""Una ventana para editar el diccionario: python3 words_edit_gui.py
 
-Find an entry (by a Latin form such as "amicorum", a stem, or a word of
-its meaning), correct it, add a new one (from scratch, or as a copy of the one
-shown), or delete it.  The preview shows how WORDS will show the entry and
-any problems; "Try" shows what WORDS makes of a word with the dictionary as
-edited.  A change counts once it is applied ("Apply changes"); "Save"
-applies the entry shown and writes the file, and leaving an entry with
-changes not applied asks what to do with them.  Nothing is written until
-"Save"; the first save keeps the original file as dictionary.xml.bak.
+Se busca una entrada (por una forma latina como "amicorum", una raíz o
+una palabra de su significado), se corrige, se añade una nueva (desde
+cero o como copia de la mostrada) o se borra.  La vista previa muestra
+cómo mostrará WORDS la entrada y los problemas que tenga; "Probar" ("Try")
+muestra qué hace WORDS con una palabra usando el diccionario tal como se
+editó.  Un cambio cuenta una vez aplicado ("Aplicar cambios", "Apply
+changes"); "Guardar" ("Save") aplica la entrada mostrada y escribe el
+archivo, y al dejar una entrada con cambios sin aplicar se pregunta qué
+hacer con ellos.  Nada se escribe hasta "Guardar"; el primer guardado
+conserva el archivo original como dictionary.xml.bak (y el de cada idioma
+de los significados, también con .bak).
 
-"Meanings in" chooses a language of the meanings besides English: the form
-then has the meaning in that language too, which "Save" writes to its file
-in languages/.
+"Significados en" ("Meanings in") elige un idioma de los significados
+además del inglés: el formulario tiene entonces también el significado en
+ese idioma, que "Guardar" escribe en su archivo de languages/.
 """
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 import os
 import tkinter as tk
@@ -58,7 +61,7 @@ class EditorWindow:
                      version=VERSION))
         win.geometry(scaled(win, '1080x720'))
         self.fonts = Fonts.of(win)
-        Theme.of(win)                   # (light or dark, as saved)
+        Theme.of(win)                   # (claro u oscuro, como se guardó)
         win.protocol('WM_DELETE_WINDOW', self.close)
 
         top = ttk.Frame(win, padding=(8, 8, 8, 4))
@@ -154,7 +157,7 @@ class EditorWindow:
         self.update_status()
         self.query.focus_set()
 
-    # The form ----------------------------------------------------------------
+    # El formulario -----------------------------------------------------------
 
     def build_form(self):
         """(Re)builds the fields for the current part of speech."""
@@ -206,7 +209,7 @@ class EditorWindow:
             self.vars[name] = var
             row += 1
         meanings = [('meaning', tr('meaning'), f.meaning)]
-        if f.translation is not None:       # (and in the language chosen)
+        if f.translation is not None:       # (y en el idioma elegido)
             meanings = [('meaning', tr('meaning in English'), f.meaning),
                         ('translation',
                          tr('meaning in {language}',
@@ -290,7 +293,7 @@ class EditorWindow:
         if not sel or self.results[sel[0]] is self.current:
             return
         entry = self.results[sel[0]]
-        if not self.leave():                # stay on the entry shown
+        if not self.leave():                # se queda en la entrada mostrada
             self.refresh_list()
             return
         self.show(entry)

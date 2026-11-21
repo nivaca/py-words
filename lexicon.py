@@ -1,23 +1,25 @@
-"""The dictionary data, indexed for analysis.
+"""Los datos del diccionario, indexados para el análisis.
 
-`Lexicon.load(datadir)` reads the XML files and builds:
+`Lexicon.load(datadir)` lee los archivos XML y construye:
 
-* `stems`: every stem of every entry, under its spelling folded by
-  `model.fold` (lower case, v as u, j as i), with the stem's number (its
-  "key", which says which endings it takes);
-* `endings` and `blank_endings`: the inflections, by folded ending;
-* `qu_endings`: the endings of the qu- pronouns (qui, quis, ...), which are
-  only tried on words beginning with qu or cu;
-* `uniques`, by folded form; and the prefixes, suffixes and tackons;
-* `long_stems`: the long vowels of the stems (quantities.xml).
+* `stems`: cada tema de cada entrada, bajo su grafía normalizada por
+  `model.fold` (minúsculas, v como u, j como i), con el número del tema
+  (su "key", que dice qué terminaciones toma);
+* `endings` y `blank_endings`: las flexiones, por terminación normalizada;
+* `qu_endings`: las terminaciones de los pronombres en qu- (qui, quis,
+  ...), que solo se prueban en palabras que empiezan por qu o cu;
+* `uniques`, por forma normalizada; y los prefijos, sufijos y tackons;
+* `glosses`: las abreviaturas de los análisis (gloss.xml);
+* `long_stems`: las vocales largas de los temas (quantities.xml).
 
-The languages of the meanings (`language(code)`) and their indexes for
-the search to Latin (`reverse(code)`) are read when first needed.
+Los idiomas de los significados (`language(code)`) y sus índices para la
+búsqueda hacia el latín (`reverse(code)`) se leen la primera vez que hacen
+falta.
 
-Reading the XML takes about half a second, so the lexicon (and, once
-read or built, the languages and indexes) is cached in the user's cache
-folder (see `cache_dir`) and read from there while the data files are
-unchanged.
+Leer el XML toma alrededor de medio segundo, así que el léxico (y, una vez
+leídos o construidos, los idiomas y los índices) se guarda en la carpeta
+de caché del usuario (véase `cache_dir`) y se lee de ahí mientras los
+archivos de datos no cambien.
 """
 
 from __future__ import annotations
@@ -53,7 +55,7 @@ QUANTITIES = 'quantities.xml'
 DATA_FILES = (DICTIONARY, SPECIAL, INFLECTIONS, UNIQUES, ADDONS, SOURCES,
               GLOSSES, QUANTITIES)
 
-#  The program's folder, and the data folder in it
+#  La carpeta del programa, y la carpeta de datos que hay en ella
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(HERE, 'data')
 
@@ -73,8 +75,9 @@ def default_datadir() -> str:
     return config.env('DATADIR') or \
         config.data_folder() or DATA_DIR
 
-#  The forms of esse are built in: its second stem is blank (es, est, esse
-#  are the bare endings), which a dictionary entry cannot express.
+#  Las formas de esse vienen en el programa: su segundo tema está vacío
+#  (es, est, esse son las terminaciones solas), y eso no lo puede expresar
+#  una entrada del diccionario.
 ESSE_MEANING = ('be; exist; (also used to form verb perfect passive tenses) '
                 'with NOM PERF PPL')
 
@@ -143,15 +146,16 @@ class Lexicon:
     suffixes: list[Suffix] = field(default_factory=list)
     tackons: list[Tackon] = field(default_factory=list)
     packons: list[Tackon] = field(default_factory=list)
-    #  the abbreviations of the analyses, from gloss.xml: {(category,
-    #  code): abbreviation}, such as ('case', 'GEN'): 'GEN' ({}: none, and
-    #  the analyses are in words)
+    #  las abreviaturas de los análisis, de gloss.xml: {(category, code):
+    #  abreviatura}, como ('case', 'GEN'): 'GEN' ({}: ninguna, y los
+    #  análisis van en palabras)
     glosses: dict[tuple[str, str], str] = field(default_factory=dict)
-    #  the long vowels of the stems, from quantities.xml: {entry id: its
-    #  stems with the long vowels marked, '-' where they are not known}
+    #  las vocales largas de los temas, de quantities.xml: {id de la
+    #  entrada: sus temas con las vocales largas marcadas, '-' donde no se
+    #  conocen}
     long_stems: dict[int, tuple[str, ...]] = field(default_factory=dict)
     datadir: str = ''
-    #  the languages read, and their indexes for the search to Latin
+    #  los idiomas leídos, y sus índices para la búsqueda hacia el latín
     _languages: dict[str, Language] = field(default_factory=dict)
     _reverse: dict[str, reverse.ReverseIndex] = field(default_factory=dict)
     _cache: _Cache | None = None
@@ -333,7 +337,8 @@ class Lexicon:
         return self.entries[max(0, n - 1 - before):n + after]
 
 
-#  Only words ending in one of these letters can have a (non-blank) ending.
+#  Solo las palabras que terminan en una de estas letras pueden tener una
+#  terminación (no vacía).
 ENDING_LETTERS = frozenset('acdeimnorstu')
 
 
@@ -346,7 +351,7 @@ def _grouped(keys, key) -> dict[str, list[str]]:
 
 
 # ---------------------------------------------------------------------------
-#  The cache
+#  La caché
 
 def cache_dir() -> str | None:
     """Where the cache is kept: $PY_WORDS_CACHE (if empty, there is

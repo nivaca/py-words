@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
-"""A window for WORDS: python3 words_gui.py [-e] [WORD ...]
+"""Una ventana para py-words: python3 words_gui.py [-e] [WORD ...]
 
-Type Latin words (or, in the other direction, a word in the language of
-the meanings) and press Enter; the results are those the command line
-shows.  WORDs given are looked up at once (with -e, to Latin).
+Se escriben palabras latinas (o, en la otra dirección, una palabra en el
+idioma de los significados) y se pulsa Enter; los resultados son los que
+muestra la línea de órdenes.  Las palabras WORD dadas se buscan enseguida
+(con -e, hacia el latín).
 
-"Search in" chooses where: Local (this program's dictionary) or Logeion
-(its entries for the lemmas of the words, see logeion.py), which needs
-the internet; then the list beside it chooses its dictionary (or all).
+"Buscar en" ("Search in") elige dónde: Local (el diccionario de este
+programa) o Logeion (sus entradas para los lemas de las palabras, véase
+logeion.py), que necesita internet; la lista de al lado elige entonces su
+diccionario (o todos).
 """
 
 from version import check_python
-check_python()          # (before the modules that need it)
+check_python()          # (antes de los módulos que lo necesitan)
 
 import os
 import sys
@@ -38,12 +40,12 @@ from session import Session, save_to_latin, saved_to_latin
 from settings import COMMAND_LINE, Settings, section_of
 from version import NAME, URL, VERSION, about
 
-#  The dark mode button: what a click does (no images, only letters that
-#  the usual fonts have)
+#  El botón del modo oscuro: lo que hace un clic (sin imágenes, solo
+#  letras que tienen las fuentes habituales)
 MOON = '\u263e'                 # ☾  (make it dark)
 SUN = '\u2600'                  # ☀  (make it light)
 
-#  What the window shows until the first search
+#  Lo que muestra la ventana hasta la primera búsqueda
 WELCOME = N_('Type a Latin word or line, and press Enter.  "Help" explains '
              'the results, and "About" shows the credits.')
 
@@ -74,7 +76,7 @@ class App:
     def __init__(self, root, datadir, query: str = '', to_latin=False):
         self.root = root
         self.datadir = datadir
-        self.query = (query, to_latin)  # (looked up when ready)
+        self.query = (query, to_latin)  # (se busca cuando esté lista)
         self.session = None
         self.saved = None               # (see ready)
         self.settings_window = None
@@ -83,21 +85,21 @@ class App:
         root.geometry(scaled(root, '1000x620'))
         self.fonts = Fonts.of(root)
         self.theme = Theme.of(root)
-        #  the searches (of this and earlier sessions, and of the command
-        #  line), in the list of the box where words are typed
+        #  las búsquedas (de esta sesión y de las anteriores, y de la línea
+        #  de órdenes), en la lista del cuadro donde se escriben las palabras
         self.history = History()
         self.languages: dict[str, str] = {}         # name -> code
-        #  the direction: that of the words given, or else the one last
-        #  chosen (kept when chosen with its buttons)
+        #  la dirección: la de las palabras dadas o, si no, la última elegida
+        #  (se guarda cuando se elige con sus botones)
         self.reverse = tk.BooleanVar(
             value=to_latin if query.strip() else saved_to_latin())
         self.fuzzy = tk.BooleanVar(value=Settings().fuzzy_search)
         self.source = tk.StringVar(value=logeion.saved_source())
         self.dictionary = logeion.saved_dictionary()    # (its code)
-        self.logeion = logeion.Logeion()    # (its pages, kept)
+        self.logeion = logeion.Logeion()    # (sus páginas, guardadas)
         self.shown_words = None         # (the results of Logeion shown)
         self.dark = tk.BooleanVar(value=self.theme.dark)
-        self.shown = None               # (the results, and their direction)
+        self.shown = None               # (los resultados, y su dirección)
         self.gloss_table: dict[str, str] = {}
         self.build()
         self.show_source()
@@ -105,7 +107,7 @@ class App:
         self.show_welcome()
         self.status.config(text=tr('Loading the dictionary…'))
 
-        self.done = queue.Queue()       # (function, arguments) to call
+        self.done = queue.Queue()       # (función, argumentos) por llamar
         self.poll()
         self.set_busy(True)
         threading.Thread(target=self.load, daemon=True).start()
@@ -128,11 +130,11 @@ class App:
 
         lang = ttk.Frame(root, padding=(12, 0, 12, 10))
         lang.pack(fill='x')
-        #  on the left, the direction, and below it the language of the
-        #  meanings; on the right, the buttons
+        #  a la izquierda, la dirección y, debajo, el idioma de los
+        #  significados; a la derecha, los botones
         choices = ttk.Frame(lang)
         choices.pack(side='left')
-        #  where to search: this dictionary, or Logeion
+        #  dónde buscar: este diccionario o Logeion
         sources = ttk.Frame(choices)
         sources.pack(anchor='w', pady=(0, 6))
         ttk.Label(sources, text=tr('Search in')).pack(side='left',
@@ -162,8 +164,8 @@ class App:
             direction, text=tr('{language} → Latin', language=english),
             value=True, variable=self.reverse, command=self.keep_direction)
         self.to_latin.pack(side='left', padx=(16, 0))
-        #  (the choices of the language are known once the dictionary is
-        #  loaded)
+        #  (las opciones del idioma se conocen una vez cargado el
+        #  diccionario)
         meanings = ttk.Frame(choices)
         meanings.pack(anchor='w', pady=(6, 0))
         ttk.Label(meanings, text=tr('Meanings in')).pack(side='left',
@@ -177,17 +179,17 @@ class App:
             command=self.choose_fuzzy)
         self.fuzzy_box.pack(side='left', padx=(16, 0))
         self.menus()
-        #  the status line and the dark mode box, at the bottom (packed
-        #  before the results, so that they stay when the window is small
-        #  for its fonts)
+        #  la línea de estado y la casilla del modo oscuro, abajo (con pack
+        #  antes que los resultados, para que sigan ahí cuando la ventana es
+        #  pequeña para sus fuentes)
         bottom = ttk.Frame(root, padding=(12, 4, 12, 6))
         bottom.pack(side='bottom', fill='x')
         self.results = Results(root, self.fonts, self.theme, self.look_up,
                                self.explain_codes, self.explain_analysis)
         self.results.pack(fill='both', expand=True, padx=12)
         self.text = self.results.text
-        #  dark mode: a moon to make the window dark, a sun to make it
-        #  light again (its name in the status line, under the mouse)
+        #  el modo oscuro: una luna para oscurecer la ventana, un sol para
+        #  aclararla de nuevo (su nombre, en la línea de estado, bajo el ratón)
         self.dark_box = ttk.Checkbutton(bottom, variable=self.dark,
                                         style='Mode.Flat.Toolbutton',
                                         command=self.choose_dark)
@@ -207,8 +209,8 @@ class App:
         bar = tk.Menu(root, tearoff=False)
         key = 'Command' if sys.platform == 'darwin' else 'Ctrl'
         dictionary = tk.Menu(bar, tearoff=False)
-        #  (greyed out where the data cannot be written, as in the
-        #  AppImage, and while Logeion is chosen: see show_source)
+        #  (en gris donde los datos no se pueden escribir, como en la
+        #  AppImage, y mientras está elegido Logeion: véase show_source)
         dictionary.add_command(
             label=tr('Edit dictionary…'), command=self.edit_dictionary,
             state='disabled' if read_only(self.datadir) else 'normal')
@@ -267,7 +269,7 @@ class App:
         on, or None if it cannot now."""
         try:
             focus = self.root.focus_get()
-        except (KeyError, tk.TclError):     # (in a combobox's list)
+        except (KeyError, tk.TclError):     # (en la lista de un combobox)
             focus = None
         if event == '<<Copy>>':
             for widget in (focus, self.text):
@@ -359,9 +361,9 @@ class App:
             self.show_language()
         self.show_source()
 
-    # The dictionary is loaded, and words looked up, on a worker thread,
-    # which hands the results to the window through a queue (Tk may only
-    # be used from its own thread).
+    # El diccionario se carga, y las palabras se buscan, en un hilo de
+    # trabajo, que pasa los resultados a la ventana por una cola (Tk solo
+    # se puede usar desde su propio hilo).
 
     def poll(self):
         try:
@@ -381,7 +383,7 @@ class App:
             settings = Settings()
             settings.load(self.datadir)
             saved = settings.copy()
-            settings.pause_in_screen_output = False     # (no paging here)
+            settings.pause_in_screen_output = False     # (aquí no se pagina)
             session = Session(Lexicon.load(self.datadir), settings)
             error = None
         except Exception as e:              # keep the window alive
@@ -395,8 +397,9 @@ class App:
             self.root.destroy()
             return
         self.session = session
-        #  the settings as saved, which the window keeps for the command
-        #  line (session.settings differ in what the window cannot use)
+        #  los ajustes tal como se guardaron, que la ventana conserva para la
+        #  línea de órdenes (session.settings difiere en lo que la ventana no
+        #  puede usar)
         self.saved = saved or session.settings.copy()
         self.languages = {tr(name): code for code, name in
                           session.lexicon.language_names().items()}
@@ -419,7 +422,7 @@ class App:
 
     def choose_fuzzy(self):
         """The "Fuzzy search" box (the setting fuzzy_search)."""
-        if self.session is None:            # (still loading: as it was)
+        if self.session is None:            # (aún cargando: como estaba)
             self.fuzzy.set(not self.fuzzy.get())
             return
         self.change_setting('fuzzy_search', self.fuzzy.get())
@@ -430,7 +433,7 @@ class App:
         configuration file.  The meanings follow the language of the
         interface, if the dictionary has it."""
         if name == 'interface' and not interface.use(value):
-            #  (its file is wrong: as it was, and saying why)
+            #  (su archivo está mal: como estaba, y diciendo por qué)
             error = interface.error() or value
             interface.use(self.saved.interface)
             self.status.config(text=tr(
@@ -494,7 +497,7 @@ class App:
         on = self.source.get() == logeion.LOGEION
         if on:
             self.reverse.set(False)
-        #  (the editor edits this dictionary, not Logeion's)
+        #  (el editor edita este diccionario, no el de Logeion)
         self.dictionary_menu.entryconfig(
             0, state='disabled' if on or read_only(self.datadir)
             else 'normal')
@@ -560,7 +563,7 @@ class App:
         if self.session is None or str(self.button['state']) == 'disabled':
             return
         if to_latin and self.source.get() == logeion.LOGEION:
-            #  (an example to Latin, which only this dictionary does)
+            #  (un ejemplo hacia el latín, que solo hace este diccionario)
             self.source.set(logeion.LOCAL)
             logeion.save_source(logeion.LOCAL)
             self.show_source()
@@ -633,7 +636,7 @@ class App:
     def show_results(self, text: str, to_latin: bool):
         self.shown, self.shown_words = (text, to_latin), None
         plain = self.session is None or \
-            self.session.settings.pearse_codes   # (another layout)
+            self.session.settings.pearse_codes   # (otra disposición)
         self.results.show(text, to_latin, styled=not plain)
 
     def show(self, result, to_latin=False):
@@ -668,10 +671,10 @@ class App:
         """A window with the help (see guide.py): how to search, and how
         to read the results."""
         if self.session is None:
-            return                      # (the dictionary is loading)
+            return                      # (el diccionario se está cargando)
         if self.help_window is not None and self.help_window.winfo_exists():
-            self.help_window.destroy()  # (made again: the languages may
-                                        # have changed)
+            self.help_window.destroy()  # (se hace de nuevo: los idiomas
+                                        # pueden haber cambiado)
         win = self.help_window = tk.Toplevel(self.root)
         win.title(tr('{name}: help', name=NAME))
         win.geometry(scaled(win, '820x640'))
@@ -750,7 +753,7 @@ class App:
         link = ttk.Label(row, text=url.rsplit('/', 1)[1][:7],
                          style='Link.TLabel', cursor='hand2', font=underlined)
         link.pack(side='left')
-        link.font = underlined          # (kept while the label lives)
+        link.font = underlined          # (se guarda mientras viva la etiqueta)
         link.bind('<Button-1>', lambda e: webbrowser.open(url))
         ttk.Label(frame, text='\n'.join(lines[at + 1:]),
                   justify='left').pack(anchor='w')
@@ -760,8 +763,8 @@ class App:
         self.root.config(cursor='watch' if busy else '')
 
 
-#  The window's class, which desktop files name in StartupWMClass, and its
-#  icon
+#  La clase de la ventana, que los archivos .desktop nombran en
+#  StartupWMClass, y su icono
 WM_CLASS = 'py-words'
 ICON_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons',
                         'linux', 'icons', 'hicolor')
@@ -779,7 +782,7 @@ def set_icon(root):
             pass
     if images:
         root.iconphoto(True, *images)
-        root._icons = images            # (Tk does not keep them alive)
+        root._icons = images            # (Tk no las mantiene vivas)
 
 
 def main(argv: list[str] | None = None):
@@ -787,7 +790,8 @@ def main(argv: list[str] | None = None):
     to_latin = argv[:1] in (['-e'], ['--english'])
     query = ' '.join(argv[1:] if to_latin else argv)
     if sys.platform == 'win32':
-        #  So that the taskbar shows the window's icon, not Python's
+        #  Para que la barra de tareas muestre el icono de la ventana, no el
+        #  de Python
         try:
             import ctypes
             ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(

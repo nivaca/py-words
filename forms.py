@@ -1,9 +1,10 @@
-"""Words about words: the principal parts of an entry (amicus, amici), its
-grammar in plain English (noun, 2nd declension, masculine), the grammar of
-a form (genitive singular), and English example glosses.
+"""Palabras sobre palabras: las partes principales de una entrada (amicus,
+amici), su gramática en inglés llano (noun, 2nd declension, masculine), la
+gramática de una forma (genitive singular) y la misma gramática en
+abreviaturas de glosa (GEN.SG).
 
-The words are English; the functions that make them take TR, which puts a
-text into the language of the results (see Language.text).
+Las palabras están en inglés; las funciones que las producen reciben TR,
+que pasa un texto al idioma de los resultados (véase Language.text).
 """
 
 from __future__ import annotations
@@ -66,9 +67,10 @@ PRONOUN_KIND_NAME = {PronounKind.PERS: 'personal', PronounKind.REL: 'relative',
 
 
 # ---------------------------------------------------------------------------
-#  Principal parts
+#  Las partes principales
 
-#  Each part is (stem number, ending): stem None means just the ending.
+#  Cada parte es (número de tema, terminación): tema None quiere decir
+#  solo la terminación.
 NOUN_PARTS = {
     (1, 1): ((0, 'a'), (1, 'ae')), (1, 6): ((0, 'e'), (1, 'es')),
     (1, 7): ((0, 'es'), (1, 'ae')), (1, 8): ((0, 'as'), (1, 'ae')),
@@ -174,7 +176,7 @@ def _verb_parts(stems, part: Part, tr: Translate = _same) -> list[str]:
         return _make(st, ((0, '.'), (None, 'abb.')), tr)
     if (which, var) == (9, 9):
         return _make(st, ((0, ''), (None, 'undeclined')), tr)
-    # First principal part
+    # La primera parte principal
     if kind == VerbKind.IMPERS:
         if which == 3 and var != 2:
             first = 't' if st[0].endswith('i') else 'it'
@@ -194,7 +196,7 @@ def _verb_parts(stems, part: Part, tr: Translate = _same) -> list[str]:
         parts.append((1, INFINITIVE[which, var]))
     elif which in INFINITIVE and which not in (5, 6, 7):
         parts.append((1, INFINITIVE[which]))
-    # Perfect and participle
+    # El perfecto y el participio
     if kind == VerbKind.IMPERS:
         parts += [(2, 'it'), (3, 'us est')]
     elif kind == VerbKind.SEMIDEP:
@@ -240,7 +242,7 @@ def principal_parts(entry: Entry, tr: Translate = _same) -> str:
             parts = _make(st, NOUN_PARTS[which, var], tr)
     elif p.pos == Pos.PRON:
         if (which, var) not in PRONOUN_PARTS:
-            return ''           # qui, ego ...: too irregular for a summary
+            return ''           # qui, ego ...: muy irregulares para resumir
         parts = _make(st, PRONOUN_PARTS[which, var], tr)
     elif p.pos == Pos.ADJ:
         if p.comparison == Comparison.COMP:

@@ -1,11 +1,11 @@
-"""What analysis finds for a word, and how the findings are ordered,
-trimmed and grouped for display.
+"""Lo que el análisis encuentra para una palabra, y cómo se ordenan,
+recortan y agrupan los hallazgos para mostrarlos.
 
-A `Parse` is one form of a word: a stem, an ending and what they make.
-The analyzer returns `Found`s: forms found together, with the *marks* of
-how they were found (a prefix, suffix or enclitic on the word, or a trick
-such as a spelling change or a syncopated form), which are shown before
-them.
+Un `Parse` es una forma de una palabra: un tema, una terminación y lo que
+forman.  El analizador devuelve objetos `Found`: formas halladas juntas,
+con las *marcas* de cómo se hallaron (un prefijo, sufijo o enclítico en
+la palabra, o un truco como un cambio de grafía o una forma sincopada),
+que se muestran antes de ellas.
 """
 
 from __future__ import annotations
@@ -24,13 +24,13 @@ class Origin(IntEnum):
     """Where a parse comes from (in this order: findings are listed by
     origin, the last first)."""
     NONE = auto()
-    ADDON = auto()      # a prefix, suffix or tackon (a mark)
-    TRICK = auto()      # a spelling change, two words ... (a mark)
+    ADDON = auto()      # un prefijo, sufijo o tackon (una marca)
+    TRICK = auto()      # un cambio de grafía, dos palabras ... (una marca)
     SYNCOPE = auto()    # a syncopated form (a mark)
-    ROMAN = auto()      # a Roman numeral
+    ROMAN = auto()      # un numeral romano
     COMPOUND = auto()   # a compound with esse, or an adverb made from an ADJ
-    GENERAL = auto()    # the general dictionary
-    SPECIAL = auto()    # the special dictionary
+    GENERAL = auto()    # el diccionario general
+    SPECIAL = auto()    # el diccionario especial
     UNIQUE = auto()     # an irregular form
 
 
@@ -42,7 +42,7 @@ Source = Entry | Unique | Prefix | Suffix | Tackon | None
 
 @dataclass(frozen=True, slots=True)
 class Parse:
-    stem: str                       # or, for the mark of a trick, its label
+    stem: str                       # o, en la marca de un truco, su etiqueta
     infl: Inflection
     origin: Origin
     source: Source = None
@@ -149,8 +149,9 @@ class Reading:
 class WordResult:
     word: str
     readings: list[Reading] = field(default_factory=list)
-    #  The explanations of tricks, by origin (several tricks of the same
-    #  kind share the last explanation, as in the original program)
+    #  Las explicaciones de los trucos, por origen (varios trucos de la
+    #  misma clase comparten la última explicación, como en el programa
+    #  original)
     notes: dict[Origin, str] = field(default_factory=dict)
     trimmed: bool = False
 
@@ -160,7 +161,7 @@ class WordResult:
 
 
 # ---------------------------------------------------------------------------
-#  Ordering and trimming
+#  Orden y recorte
 
 _DIC_STEMS = ('dic', 'duc', 'fac', 'fer')
 
@@ -320,7 +321,7 @@ def _entry_key(p: Parse) -> tuple | None:
     that the results do not show; and an irregular form, once for each
     form it can be.  None for anything else."""
     if p.origin == Origin.UNIQUE and isinstance(p.source, Unique):
-        u = p.source            # (eadem: one for each case it can be)
+        u = p.source            # (eadem: una por cada caso que puede ser)
         return (p.origin, u.word, u.form.pos, str(u.codes), u.meaning)
     e = p.entry
     if e is None or not from_dictionary(p.origin):
@@ -338,7 +339,8 @@ def group(findings: list[Found]) -> list[Reading]:
     (quae: qui and quis, in the feminine singular and in the plural)."""
     readings: list[Reading] = []
     current: Reading | None = None
-    #  The readings of dictionary entries in this finding, by entry
+    #  Las lecturas de entradas del diccionario en este hallazgo, por
+    #  entrada
     by_entry: dict[tuple, Reading] = {}
     finding = -1
     for n, p in ((n, p) for n, f in enumerate(findings)

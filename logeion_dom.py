@@ -1,7 +1,8 @@
-"""A minimal DOM, enough to walk the HTML (and XML) of Logeion's entries.
+"""Un DOM mínimo, suficiente para recorrer el HTML (y el XML) de las
+entradas de Logeion.
 
-From py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), whose
-engine py-words uses to show the entries of Logeion (see logeion.py).
+Tomado de py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), cuyo
+motor usa py-words para mostrar las entradas de Logeion (véase logeion.py).
 """
 
 from __future__ import annotations
@@ -18,7 +19,7 @@ class Node:
     def __init__(self, tag, attrs=None, parent=None):
         self.tag = tag
         self.attrs = attrs or {}
-        self.children: list = []  # Node or str
+        self.children: list = []  # Node o str
         self.parent = parent
 
     @property

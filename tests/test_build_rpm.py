@@ -1,9 +1,10 @@
-"""packaging/build-rpm.sh's options, short of building anything, and the
-spec's version.
+"""Pruebas de las opciones de packaging/build-rpm.sh, sin llegar a
+construir nada, y de la versión del spec.
 
-Every case of the options stops in the checks before the build — so they
-run in a second, need no rpm-sign, and never touch build/ or the user's
-keys: gpg looks in an empty, temporary GNUPGHOME.
+Cada caso de las opciones se detiene en las comprobaciones previas a la
+construcción, así que corren en un segundo, no necesitan rpm-sign y nunca
+tocan build/ ni las claves del usuario: gpg busca en un GNUPGHOME vacío y
+temporal.
 """
 
 import os
@@ -62,9 +63,9 @@ class Options(unittest.TestCase):
         self.assertIn("dnf install rpm-sign", out)
 
     def test_without_the_signing_key_says_how_to_import_it(self):
-        # An rpmsign that exists, so the key check is what fails; it would
-        # never run, as nothing gets that far.  --sign uses only the
-        # project's key, which the empty keyring doesn't have.
+        # Un rpmsign que existe, para que lo que falle sea la comprobación de
+        # la clave; nunca se ejecutaría, porque nada llega tan lejos.  --sign
+        # usa solo la clave del proyecto, que el llavero vacío no tiene.
         code, out = self.run_script("--sign", RPMSIGN="/bin/true")
         self.assertEqual(code, 1)
         self.assertIn("no secret key matching " + pinned_key(), out)

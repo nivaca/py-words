@@ -1,16 +1,18 @@
-"""Talking to Logeion (logeion.uchicago.edu), through the API its web
-page uses (anastrophe.uchicago.edu/logeion-api):
+"""La comunicación con Logeion (logeion.uchicago.edu), mediante la API que
+usa su página web (anastrophe.uchicago.edu/logeion-api):
 
-    /detail?w=WORD&type=normal   the entries of the dictionaries, the short
-                                 definitions and the information on the word
-                                 (frequency, collocations, textbooks, links)
-    /find?w=FORM                 the parses of an inflected form, with their
-                                 lemmas
-    /search?q=PREFIX             headwords beginning so (Greek may be typed
-                                 in Latin letters: 'logo' finds λόγος)
+    /detail?w=WORD&type=normal   las entradas de los diccionarios, las
+                                 definiciones breves y la información sobre
+                                 la palabra (frecuencia, colocaciones,
+                                 manuales, enlaces)
+    /find?w=FORM                 los análisis de una forma flexionada, con
+                                 sus lemas
+    /search?q=PREFIX             los lemas que empiezan así (el griego puede
+                                 escribirse en letras latinas: 'logo'
+                                 encuentra λόγος)
 
-From py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), whose
-engine py-words uses to show the entries of Logeion (see logeion.py).
+Tomado de py-logeion 0.2.1 (https://github.com/nivaca/py-logeion), cuyo
+motor usa py-words para mostrar las entradas de Logeion (véase logeion.py).
 """
 
 from __future__ import annotations
@@ -35,7 +37,7 @@ API = "https://anastrophe.uchicago.edu/logeion-api"
 USER_AGENT = f"{NAME}/{VERSION} (a Latin dictionary, with Logeion's entries; Python urllib)"
 TIMEOUT = 20
 
-# Errors callers should treat as "could not reach Logeion".
+# Los errores que quien llama debe tomar como "no se pudo llegar a Logeion".
 NetworkError = (urllib.error.URLError, OSError)
 
 
@@ -130,7 +132,7 @@ def entry_target(url: str) -> tuple[str, str | None] | None:
 
 
 # --------------------------------------------------------------------------- #
-# The three requests
+# Las tres peticiones
 # --------------------------------------------------------------------------- #
 def get_detail(word: str) -> dict:
     return _get("detail", {"w": word, "type": "normal"})
@@ -198,7 +200,7 @@ def best_lemma(form: str, lemmas: list[str]) -> str | None:
 
 
 # --------------------------------------------------------------------------- #
-# Pages: what is shown of a word, cached
+# Las páginas: lo que se muestra de una palabra, con caché
 # --------------------------------------------------------------------------- #
 def fetch_page(word: str) -> dict:
     """Everything shown for WORD: {"query", "word" (the headword shown: WORD,
@@ -234,7 +236,7 @@ class Client:
     def __init__(self, on_fetch: Callable[[str], None] | None = None,
                  cache_dir: Path | None = None, max_age_days: float = 0):
         self._cache: dict[str, dict | NotFound] = {}
-        self.on_fetch = on_fetch  # called with the word before a network fetch
+        self.on_fetch = on_fetch  # se llama con la palabra antes de pedirla
         self.cache_dir = Path(cache_dir) / "pages" if cache_dir and max_age_days > 0 else None
         self.max_age = max_age_days * 86400
 
@@ -264,7 +266,7 @@ class Client:
             tmp.write_bytes(gzip.compress(json.dumps(data, ensure_ascii=False).encode("utf-8")))
             os.replace(tmp, path)
         except OSError:
-            pass  # the disk cache is only an optimisation
+            pass  # la caché en disco es solo una optimización
 
     # ---- pages ------------------------------------------------------------ #
     def page(self, word: str) -> dict:

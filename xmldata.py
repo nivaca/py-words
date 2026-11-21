@@ -1,25 +1,29 @@
-"""Reading and writing the data files.
+"""La lectura y la escritura de los archivos de datos.
 
-    dictionary.xml   <dictionary> of <entry>
-    inflections.xml  <inflections> of <inflection>
-    uniques.xml      <uniques> of <unique>
-    addons.xml       <addons> of <prefix>, <suffix> and <tackon>
-    sources.xml      <sources> of <source>: the names of the source codes
-    gloss.xml        <glosses> of <gloss>: the abbreviations of the analyses
-    languages/*.xml  <language>: a language of the meanings (see
+    dictionary.xml   <dictionary> de <entry>
+    inflections.xml  <inflections> de <inflection>
+    uniques.xml      <uniques> de <unique>
+    addons.xml       <addons> de <prefix>, <suffix> y <tackon>
+    sources.xml      <sources> de <source>: los nombres de los códigos de
+                     las fuentes
+    gloss.xml        <glosses> de <gloss>: las abreviaturas de los análisis
+    quantities.xml   <quantities> de <stems>: las vocales largas de los
+                     temas de cada entrada
+    languages/*.xml  <language>: un idioma de los significados (véase
                      languages.py)
 
-words.xsd describes them.  The entries, irregular forms and affixes have
-an id attribute, a number that stays the same when others are added or
-moved, which the translations of their meanings refer to (if it is
-missing, their position in the file is used).  Grammatical codes are
-written as in the original WORDS files (N, V, NOM, PRES, ...),
-declensions and conjugations as two digits ("2 1").  The order of the
-elements matters.
+words.xsd los describe.  Las entradas, las formas irregulares y los afijos
+tienen un atributo id, un número que no cambia cuando se añaden o mueven
+otros, y al que se refieren las traducciones de sus significados (si
+falta, se usa su posición en el archivo).  Los códigos gramaticales se
+escriben como en los archivos originales de WORDS (N, V, NOM, PRES, ...),
+y las declinaciones y conjugaciones con dos cifras ("2 1").  El orden de
+los elementos importa.
 
-The readers return (record, line number) pairs in file order and check the
-files as they go.  A problem raises DataError, or, if the caller passes a
-list as ERRORS, is appended to it and the element skipped.
+Los lectores devuelven pares (registro, número de línea) en el orden del
+archivo y revisan los archivos a medida que los leen.  Un problema lanza
+DataError o, si quien llama pasa una lista como ERRORS, se añade a ella y
+el elemento se salta.
 """
 
 from __future__ import annotations
@@ -40,7 +44,7 @@ from model import (
     unmarked)
 
 SCHEMA = 'words.xsd'
-MAX_STEM = 18                   # letters in a stem, form or affix
+MAX_STEM = 18                   # letras de un tema, forma o afijo
 MAX_ENDING = 7
 
 MAX_UID = 10 ** 9
@@ -66,9 +70,9 @@ class DataError(Exception):
 
 
 # ---------------------------------------------------------------------------
-#  Which attributes each part of speech uses
+#  Los atributos que usa cada clase de palabra
 
-#  Of an entry, and of the <target>/<base> of suffixes and tackons
+#  De una entrada, y del <target>/<base> de los sufijos y los tackons
 PART_ATTRS = {
     Pos.N: ('decl', 'gender', 'kind'),
     Pos.PRON: ('decl', 'kind'),
@@ -117,7 +121,7 @@ FORM_POS = tuple(p for p in Pos if p != Pos.X)
 
 
 # ---------------------------------------------------------------------------
-#  Parsing
+#  La lectura del XML
 
 class _Element:
     __slots__ = ('tag', 'attrs', 'line', 'children', 'text')
@@ -215,8 +219,9 @@ def root_element(path: str) -> tuple[str, dict[str, str]]:
     raise DataError(path, 1, tr('the file has no root element'))
 
 
-#  Many elements have the same grammar or codes: equal attribute values
-#  give the same (immutable) record, which saves reading them again.
+#  Muchos elementos tienen la misma gramática o los mismos códigos: los
+#  mismos valores de atributos dan el mismo registro (inmutable), y así no
+#  hay que volver a leerlos.
 _SHARED: dict = {}
 
 
@@ -556,7 +561,7 @@ def read_addons(path: str, errors=None):
     return _read(path, 'addons', errors, addon)
 
 
-#  A stem with its long vowels marked (data/quantities.xml), or '-'
+#  Un tema con sus vocales largas marcadas (data/quantities.xml), o '-'
 _LONG_STEM = re.compile(r'-|[a-zA-ZāēīōūȳĀĒĪŌŪȲ]{1,' + str(MAX_STEM) + '}')
 
 
@@ -612,7 +617,7 @@ def read_sources(path: str, errors=None) -> list[tuple[tuple[str, str],
     return _read(path, 'sources', errors, source)
 
 
-#  The categories of gloss.xml, and the codes each one glosses
+#  Las categorías de gloss.xml, y los códigos que glosa cada una
 GLOSS_CODES = {
     'case': [m.name for m in Case if m != Case.X],
     'number': [m.name for m in Number if m != Number.X],
@@ -670,10 +675,11 @@ def read_glosses(path: str, errors=None) -> list[tuple[Gloss, int]]:
     return _read(path, 'glosses', errors, gloss)
 
 
-#  What a <meaning> of a language file can translate: the attribute that
-#  names it (entry="12": the entry of dictionary.xml whose id is 12)
+#  Lo que puede traducir un <meaning> del archivo de un idioma: el
+#  atributo que lo nombra (entry="12": la entrada de dictionary.xml cuyo
+#  id es 12)
 TRANSLATED = ('entry', 'special', 'unique', 'addon', 'builtin')
-BUILTIN = ('esse',)                     # the entries built into the program
+BUILTIN = ('esse',)                     # las entradas propias del programa
 _LANGUAGE_CODE = re.compile(r'[a-z]{2,3}(-[A-Za-z0-9]{1,8})*')
 
 
@@ -682,16 +688,16 @@ class LanguageData(NamedTuple):
     code: str
     name: str                   # in English ("Spanish")
     native: str                 # in the language itself ("Español")
-    reference: bool             # its meanings are those of the data files
+    reference: bool             # sus significados son los de los datos
     noise: frozenset[str]
     common: tuple[tuple[frozenset[str], tuple[Pos, ...] | None], ...]
     numerals: dict[NumeralSort, str]
     meanings: dict[tuple[str, int | str], str]
-    #  the texts of the results it translates, by their English (with its
-    #  spaces made single)
+    #  los textos de los resultados que traduce, por su inglés (con los
+    #  espacios reducidos a uno)
     texts: dict[str, str] = {}
-    #  the dictionary a meaning was taken from (source="m"), by its key,
-    #  for the meanings that were not translated from the English
+    #  el diccionario del que se tomó un significado (source="m"), por su
+    #  clave, para los significados que no se tradujeron del inglés
     sources: dict[tuple[str, int | str], Source] = {}
 
 
@@ -772,7 +778,7 @@ def read_language(path: str, errors=None) -> LanguageData:
         if not text.strip():
             r.fail(tr('the text is empty'))
         if tag == 'numeral':
-            numerals[sort] = text           # (as it is: spaces matter)
+            numerals[sort] = text           # (tal cual: los espacios importan)
         elif tag == 'text':
             texts[key[1]] = text.strip()
         else:
@@ -898,7 +904,7 @@ def _target(path: str, el: _Element) -> Part:
 
 
 # ---------------------------------------------------------------------------
-#  Writing
+#  La escritura
 
 def _value(v) -> str:
     return v.name if hasattr(v, 'name') else str(v)

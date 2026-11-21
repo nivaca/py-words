@@ -1,29 +1,30 @@
 #!/usr/bin/env python3
-"""Makes all the icons afresh from icons/py-words.svg:
+"""Hace de nuevo todos los íconos a partir de icons/py-words.svg:
 
     python3 tools/icons.py [--svg FILE] [-o FOLDER] [--dry-run]
 
-In FOLDER (icons/ by default) it writes:
+En FOLDER (icons/ por omisión) escribe:
 
-* linux/icons/hicolor/NxN/apps/py-words.png, for each N in HICOLOR_SIZES,
-  and linux/icons/hicolor/scalable/apps/py-words.svg (a copy of the SVG),
-  for words_install.py, the window and the AppImage;
-* macos/py-words.iconset/icon_NxN[@2x].png, macos/py-words.icns and
+* linux/icons/hicolor/NxN/apps/py-words.png, para cada N de HICOLOR_SIZES,
+  y linux/icons/hicolor/scalable/apps/py-words.svg (una copia del SVG),
+  para words_install.py, la ventana y el AppImage;
+* macos/py-words.iconset/icon_NxN[@2x].png, macos/py-words.icns y
   macos/py-words-macos-1024.png;
-* windows/py-words-N.png, for each N in WINDOWS_SIZES, and
+* windows/py-words-N.png, para cada N de WINDOWS_SIZES, y
   windows/py-words.ico.
 
-Each size is drawn by Inkscape from the SVG (never scaled down from a
-bigger PNG), all of them in a single run of Inkscape.  The .ico is put
-together with Pillow from those same PNGs, and the .icns from the iconset
-as words_install.py does it (as iconutil would, with all ten sizes).
+Inkscape dibuja cada tamaño a partir del SVG (nunca se reduce un PNG más
+grande), todos en una sola ejecución.  El .ico se arma con Pillow a partir
+de esos mismos PNG, y el .icns a partir del iconset, como lo hace
+words_install.py (como lo haría iconutil, con los diez tamaños).
 
-Inkscape may be a Flatpak (org.inkscape.Inkscape), and then it is run with
-"flatpak run" (a wrapper called inkscape on the PATH may not pass on the
-arguments), with absolute paths, and writing only inside FOLDER: a Flatpak
-does not see the host's /tmp.  So the PNGs are first drawn in a hidden
-folder inside FOLDER, and only moved to their places once all are there.
-If there is no Flatpak, the inkscape on the PATH is used.
+Se usa el inkscape que esté en el PATH (en el computador de desarrollo, un
+script que llama al AppImage de Inkscape).  Solo si hay instalado un
+Flatpak de Inkscape (org.inkscape.Inkscape) se prefiere este, y entonces
+se corre con "flatpak run", con rutas absolutas y escribiendo solo dentro
+de FOLDER, porque un Flatpak no ve el /tmp del sistema.  Por eso los PNG
+se dibujan primero en una carpeta oculta dentro de FOLDER y solo se
+mueven a su lugar cuando están todos.
 """
 
 import argparse
@@ -39,10 +40,10 @@ FLATPAK_ID = "org.inkscape.Inkscape"
 HICOLOR_SIZES = [16, 22, 24, 32, 48, 64, 96, 128, 192, 256, 512]
 ICONSET_SIZES = [16, 32, 128, 256, 512]   # each also @2x
 MACOS_BIG = 1024
-WINDOWS_SIZES = [44, 50, 150, 256, 310]   # (tiles and the Start menu)
+WINDOWS_SIZES = [44, 50, 150, 256, 310]   # (mosaicos y menú Inicio)
 ICO_SIZES = [16, 20, 24, 32, 40, 48, 64, 96, 128, 256]
 
-#  Every size that is drawn
+#  Todos los tamaños que se dibujan
 SIZES = sorted(set(HICOLOR_SIZES) | set(ICONSET_SIZES) |
                {2 * n for n in ICONSET_SIZES} | {MACOS_BIG} |
                set(WINDOWS_SIZES) | set(ICO_SIZES))

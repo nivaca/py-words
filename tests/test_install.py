@@ -1,4 +1,5 @@
-"""Tests of words_install.py (the applications menu entry)."""
+"""Pruebas de words_install.py (la entrada en el menú de
+aplicaciones)."""
 
 import os
 import plistlib
@@ -10,7 +11,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import words_install
@@ -18,7 +19,7 @@ import words_install
 
 class InstallTests(unittest.TestCase):
 
-    #  Each test works in a temporary home folder
+    #  Cada prueba trabaja en una carpeta personal temporal
     ENV = ('XDG_DATA_HOME', 'HOME', 'APPDATA', 'PATH')
 
     def setUp(self):
@@ -88,7 +89,7 @@ class InstallTests(unittest.TestCase):
                               stdout=subprocess.DEVNULL,
                               stderr=subprocess.DEVNULL)):
             words_install.install_linux()
-            # an icon of a size the program does not have (any more)
+            # un icono de un tamaño que el programa no tiene (o ya no tiene)
             extra = os.path.join(theme, '20x20', 'apps', 'py-words.png')
             os.makedirs(os.path.dirname(extra), exist_ok=True)
             open(extra, 'w').close()
@@ -127,7 +128,7 @@ class InstallTests(unittest.TestCase):
         removed = words_install.uninstall()
         self.assertIn(paths[0], removed)
         self.assertFalse(os.path.exists(paths[0]))
-        # the same on macOS and Windows
+        # lo mismo en macOS y Windows
         words_install.install_macos()
         apps = words_install.install_macos(only_gui=True)
         self.assertEqual([os.path.basename(a) for a in apps],
@@ -176,7 +177,7 @@ class InstallTests(unittest.TestCase):
         words_install.install_linux()
         for path in old:
             self.assertFalse(os.path.exists(path), path)
-        # and on uninstalling
+        # y al desinstalar
         for path in old:
             open(path, 'w').close()
         removed = words_install.uninstall_linux()
@@ -249,10 +250,10 @@ class InstallTests(unittest.TestCase):
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
             env=dict(os.environ, TERM='dumb'))
         self.assertIn('amīc-ōrum'.encode(), result.stdout)
-        # it is replaced when installed again, and removed
+        # se reemplaza al instalar de nuevo, y se elimina
         words_install.install_macos()
         self.assertEqual(words_install.uninstall_macos(), apps)
-        # an application of the same name made by someone else is kept
+        # se conserva una aplicación del mismo nombre hecha por otro
         os.makedirs(os.path.join(apps[0], 'Contents'))
         with self.assertRaises(OSError):
             words_install.install_macos()

@@ -1,11 +1,12 @@
-"""Tests of the analysis of Latin words and of English lookups."""
+"""Pruebas del análisis de palabras latinas y de la búsqueda hacia el
+latín."""
 
 import os
 import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the package, when run from anywhere
+    __file__))))                        # el paquete, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 from analyzer import Analyzer, split_line, form_of_sum
@@ -116,7 +117,7 @@ class AnalyzerTests(unittest.TestCase):
         self.assertIn(Origin.TRICK, r.notes)
 
     def test_medieval_spellings(self):
-        # several changes at once: y, h, ae, ph, ch for h
+        # varios cambios a la vez: y, h, ae, ph, ch por h
         for word, stem in (('hystorie', 'histori'),
                            ('phylosophia', 'philosophi'),
                            ('dyabolus', 'diabol'), ('michi', 'ego'),
@@ -145,7 +146,7 @@ class AnalyzerTests(unittest.TestCase):
         self.assertIn('quaeruntur', r.notes[Origin.TRICK])
 
     def test_e_for_ae_or_oe_leaves_common_words_alone(self):
-        # a final e (essae, benae), rare entries and names (eum: Aea)
+        # una e final (essae, benae), entradas raras y nombres (eum: Aea)
         for word in ('esse', 'bene', 'ille', 'eum', 'tres', 'ea'):
             r = self.analyze(word)
             self.assertNotIn(Origin.TRICK, r.notes, word)
@@ -263,11 +264,11 @@ class FindingsTests(unittest.TestCase):
         from results import Found, chain, found, marked, shown, parses_of
         a, b, c = self.p
         x, y = self.m
-        # forms without marks join the finding before them
+        # las formas sin marcas se unen al hallazgo anterior
         self.assertEqual(chain(found([a]), found([b])), [Found((a, b))])
         self.assertEqual(chain(marked(x, found([a])), found([b])),
                          [Found((a, b), (x,))])
-        # marks without forms go with the finding after them
+        # las marcas sin formas van con el hallazgo siguiente
         self.assertEqual(chain([Found((), (x,))], marked(y, found([c]))),
                          [Found((c,), (x, y))])
         # a marked finding stays apart
@@ -284,7 +285,7 @@ class FindingsTests(unittest.TestCase):
         x, y = self.m
         self.assertEqual(marked(x, marked(y, found([a]))),
                          [Found((a,), (x, y))])
-        # only the first finding gets the mark (the others have their own)
+        # solo el primer hallazgo lleva la marca (los otros tienen la suya)
         self.assertEqual(marked(x, [Found((a,)), Found((b,), (y,))]),
                          [Found((a,), (x,)), Found((b,), (y,))])
 
@@ -410,7 +411,7 @@ class LongVowelTests(unittest.TestCase):
                   if e.uid in lexicon().long_stems}
         self.assertEqual(marked[('amic', 'amic')][:2], ('amīc', 'amīc'))
         self.assertEqual(marked[('am', 'am')][2:], ('amāv', 'amāt'))
-        #  not by position: cor, cordis
+        #  no por la posición: cor, cordis
         self.assertNotIn(('cor', 'cord'), marked)
 
     def test_in_the_forms(self):

@@ -1,33 +1,33 @@
 #!/usr/bin/env python3
-"""Takes the screenshots of the README: the four programs (the command
-line, the window, the terminal in full screen and the web page), each in
-English and in Spanish, looking up the same word.
+"""Toma las capturas de pantalla del README: los cuatro programas (la línea
+de órdenes, la ventana, la terminal en pantalla completa y la página web),
+cada uno en inglés y en español, buscando la misma palabra.
 
     python3 tools/screenshots.py [-o FOLDER] [--only cli,gui,tui,web]
                                  [--langs en,es] [--word perspicio]
                                  [--scale 2]
 
-It writes FOLDER/KIND_LANG.png (by default in docs/img/, where the
-READMEs take them from), at SCALE times the size of the screen (2 by
-default, sharp on screens of high resolution).  Each program runs with
-settings of its own, in a temporary folder, so the user's settings and
-history are not touched:
+Escribe FOLDER/KIND_LANG.png (por omisión en docs/img/, de donde las toman
+los README), a SCALE veces el tamaño de la pantalla (2 por omisión, nítidas
+en pantallas de alta resolución).  Cada programa corre con ajustes propios,
+en una carpeta temporal, para no tocar los ajustes ni el historial del
+usuario:
 
-* the window (words_gui.py) in dark mode, as in the README; only its own
-  window is captured, with ImageMagick's import, never the screen.  If
-  Xvfb is installed the window is opened there, out of sight and with
-  room for any scale; if not, on the screen, and the scale is made
-  smaller when the window would not fit;
-* the web page (words_web.py) from its server, in light mode, taken by
-  Chrome without a window (--headless --screenshot);
-* the command line (words.py, interactive) and the terminal in full screen
-  (words_tui.py) in a hidden tmux terminal of a fixed size; what it shows,
-  with its colours, is written as a web page like a terminal, and Chrome
-  takes it like the other.
+* la ventana (words_gui.py) en modo oscuro, como en el README; solo se
+  captura su propia ventana, con import de ImageMagick, nunca la pantalla.
+  Si Xvfb está instalado, la ventana se abre allí, fuera de la vista y con
+  espacio para cualquier escala; si no, en la pantalla, y la escala se
+  reduce cuando la ventana no cabría;
+* la página web (words_web.py) desde su servidor, en modo claro, tomada
+  por Chrome sin ventana (--headless --screenshot);
+* la línea de órdenes (words.py, interactiva) y la terminal en pantalla
+  completa (words_tui.py) en una terminal tmux oculta de tamaño fijo; lo
+  que muestra, con sus colores, se escribe como una página web con aspecto
+  de terminal, y Chrome la toma como la otra.
 
-It needs Linux with an X display (XWayland is enough) or Xvfb,
-ImageMagick, tmux and Google Chrome (or Chromium); the program itself
-needs none of them.
+Requiere Linux con una pantalla X (basta XWayland) o Xvfb, ImageMagick,
+tmux y Google Chrome (o Chromium); el programa mismo no necesita ninguno
+de ellos.
 """
 
 import argparse
@@ -49,22 +49,23 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'data')
 KINDS = ('cli', 'gui', 'tui', 'web')
 
-#  The size of the hidden terminals (columns, lines), of the window and of
-#  the web page (pixels, before the scale)
+#  El tamaño de las terminales ocultas (columnas, líneas), de la ventana y
+#  de la página web (píxeles, antes de la escala)
 TERMINAL = {'cli': (110, 22), 'tui': (100, 30)}
 WINDOW = (1000, 620)
 PAGE = (1000, 840)                      # (down to the footer)
 SCALE = 2
 
-#  The colours of the terminal drawn: those of Konsole's Breeze, its usual
-#  scheme (background, text, then the 16 colours of the ANSI codes)
+#  Los colores de la terminal dibujada: los de Breeze de Konsole, su
+#  esquema habitual (fondo, texto y luego los 16 colores de los códigos
+#  ANSI)
 BACKGROUND, FOREGROUND = '#232627', '#fcfcfc'
 ANSI = ['#232627', '#ed1515', '#11d116', '#f67400', '#1d99f3', '#9b59b6',
         '#1abc9c', '#fcfcfc', '#7f8c8d', '#c0392b', '#1cdc9a', '#fdbc4b',
         '#3daee9', '#8e44ad', '#16a085', '#ffffff']
 FONTS = ('Hack', 'DejaVu Sans Mono', 'Liberation Mono', 'monospace')
-#  The terminal's letters (pixels, before the scale), the width of one
-#  (that of these fonts, a little more) and the space around the text
+#  Las letras de la terminal (píxeles, antes de la escala), el ancho de
+#  una (el de estas fuentes, un poco más) y el espacio alrededor del texto
 FONT_SIZE, CHAR_WIDTH, LINE_HEIGHT, MARGIN = 15, 0.61, 1.3, 12
 
 
@@ -73,7 +74,7 @@ def say(text: str):
 
 
 # ---------------------------------------------------------------------------
-#  Settings of their own for each program
+#  Ajustes propios para cada programa
 
 def settings_folder(lang: str, dark: bool) -> str:
     """A temporary folder with a configuration file: the interface and the
@@ -95,7 +96,7 @@ def environment(folder: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-#  The window
+#  La ventana
 
 class Display:
     """Where the window is opened: an Xvfb of its own if there is one (out
@@ -133,8 +134,8 @@ def gui(lang: str, word: str, out: str, scale: float, display: Display):
     env['DISPLAY'] = display.name
     env.pop('WAYLAND_DISPLAY', None)
     scale = fit(scale, display.name)
-    #  (Tk's letters are drawn by Xft, which does not follow Tk's scaling
-    #  but the dpi of fontconfig: this one, for this window only)
+    #  (las letras de Tk las dibuja Xft, que no sigue la escala de Tk sino
+    #  el dpi de fontconfig: este, solo para esta ventana)
     env['FONTCONFIG_FILE'] = os.path.join(folder, 'fonts.conf')
     with open(env['FONTCONFIG_FILE'], 'w', encoding='utf-8') as f:
         f.write(f'''<?xml version="1.0"?>
@@ -185,9 +186,10 @@ def gui_child(word: str, out: str, scale: str):
     for _ in range(20):                 # (all drawn)
         root.update()
         time.sleep(0.03)
-    #  The menu bar is a window of its own (Tk keeps it outside the window,
-    #  and import does not take it with it): both are taken, and put one
-    #  over the other.  Only the program's windows, never the screen.
+    #  La barra de menús es una ventana aparte (Tk la mantiene fuera de la
+    #  ventana, e import no la toma con ella): se toman las dos y se pone
+    #  una sobre la otra.  Solo las ventanas del programa, nunca la
+    #  pantalla.
     clones = [str(w) for w in root.tk.call('winfo', 'children', '.')
               if str(w).startswith('.#')]      # (the menu bar on screen)
     menu_bar = root.tk.call('winfo', 'id', clones[0]) if clones else None
@@ -230,7 +232,7 @@ def capture(window_id, out: str):
 
 
 # ---------------------------------------------------------------------------
-#  The web page
+#  La página web
 
 def free_port() -> int:
     with socket.socket() as s:
@@ -286,7 +288,7 @@ def web(lang: str, word: str, out: str, scale: float, _display=None):
 
 
 # ---------------------------------------------------------------------------
-#  The terminals: tmux, then the screen as a web page
+#  Las terminales: tmux, y luego la pantalla como página web
 
 class Tmux:
     """A hidden terminal of a size of its own, on a server of its own."""
@@ -339,7 +341,7 @@ def cli(lang: str, word: str, out: str, scale: float, _display=None):
                                  os.path.join(ROOT, 'words.py')],
                 environment(folder))
     try:
-        term.wait_for('=>')             # (tmux leaves out the last space)
+        term.wait_for('=>')             # (tmux omite el último espacio)
         term.keys(word, 'Enter')
         end = time.time() + 60
         while not (term.screen().rstrip().endswith('\n=>') and
@@ -364,7 +366,7 @@ def tui(lang: str, word: str, out: str, scale: float, _display=None):
                                  os.path.join(ROOT, 'words_tui.py')],
                 environment(folder))
     try:
-        term.wait_for('F10')            # (the keys, on the last line)
+        term.wait_for('F10')            # (las teclas, en la última línea)
         term.keys(word, 'Enter')
         term.wait_for('-')              # (stem-ending, in the results)
         time.sleep(1)
@@ -463,8 +465,8 @@ pre {{ margin: 0; padding: {MARGIN}px; color: {FOREGROUND};
     size = (math.ceil(columns * FONT_SIZE * CHAR_WIDTH) + 2 * MARGIN,
             math.ceil(len(lines) * FONT_SIZE * LINE_HEIGHT) + 2 * MARGIN)
     shoot('file://' + page, size, out, scale, folder)
-    #  (the width of the letters is only approximate: the space left over
-    #  is cut, and the same margin put all round)
+    #  (el ancho de las letras es solo aproximado: se recorta el espacio que
+    #  sobra y se pone el mismo margen alrededor)
     subprocess.run([magick(), out, '-trim', '+repage', '-bordercolor',
                     BACKGROUND, '-border', str(round(MARGIN * scale)), out],
                    check=True)

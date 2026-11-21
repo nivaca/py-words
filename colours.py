@@ -1,15 +1,16 @@
-"""The colours of the results in a terminal (words.py and words_tui.py), as
-the window shows them (see gui_results.py): the word looked up in bold;
-an entry in bold, its first word (the headword) also in red, and its
-codes in brackets dimmed; the analysis of a form in blue; the notes and
-details dimmed.  Each line is styled by what it is, which the layout of
-the results tells (layout.py).
+"""Los colores de los resultados en una terminal (words.py y words_tui.py),
+como los muestra la ventana (véase gui_results.py): la palabra buscada en
+negrita; una entrada en negrita, con su primera palabra (el lema) también
+en rojo y sus códigos entre corchetes atenuados; el análisis de una forma
+en azul; las notas y los detalles atenuados.  Cada línea recibe el estilo
+de lo que es, y eso lo dice la disposición de los resultados (layout.py).
 
-The colours are the terminal's own sixteen (ANSI), so they follow its
-light or dark theme.  They are used only where the output is a terminal,
-and not if $NO_COLOR is set (https://no-color.org) or $TERM is "dumb";
-nor with the Pearse codes (a developer mode), whose lines have another
-layout.  words_tui.py turns these ANSI codes into its own attributes.
+Los colores son los dieciséis de la propia terminal (ANSI), así que siguen
+su tema claro u oscuro.  Solo se usan cuando la salida es una terminal, y
+no si $NO_COLOR está definida (https://no-color.org) o $TERM es "dumb";
+tampoco con los códigos de Pearse (un modo de desarrollador), cuyas líneas
+tienen otra disposición.  words_tui.py convierte estos códigos ANSI en sus
+propios atributos.
 """
 
 from __future__ import annotations
@@ -18,14 +19,15 @@ import os
 
 from layout import CODES, FORM_LINE, HEADWORD, kind_of
 
-#  The ANSI codes (SGR) of each kind of line, and of what is marked in them
-WORD = '1'                      # bold
+#  Los códigos ANSI (SGR) de cada clase de línea y de lo que se marca en
+#  ella
+WORD = '1'                      # en negrita
 ENTRY = '1'
-HEADWORD_STYLE = '1;31'         # bold red
+HEADWORD_STYLE = '1;31'         # en negrita y rojo
 CODES_STYLE = '2'               # dim
 ANALYSIS = '34'                 # blue
 NOTE = '2'
-#  (the rest of a long line wrapped, by kind: words_tui.py)
+#  (el resto de una línea larga que se parte, por clase: words_tui.py)
 KINDS = {'word': WORD, 'entry': ENTRY, 'note': NOTE, 'detail': NOTE,
          'meaning': '', 'form': ANALYSIS, 'blank': ''}
 

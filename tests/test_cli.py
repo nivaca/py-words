@@ -1,5 +1,5 @@
-"""Tests of the settings files, the command line, the interactive mode and
-the converter."""
+"""Pruebas de los archivos de ajustes, la línea de órdenes, el modo
+interactivo, el convertidor y el paginador."""
 
 import contextlib
 import io
@@ -11,7 +11,7 @@ import unittest
 from unittest import mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the package, when run from anywhere
+    __file__))))                        # el paquete, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import config
@@ -75,7 +75,7 @@ class SettingsTests(InTempDir):
                  explain_codes=True).save('parameters')
         s = Settings()
         messages = s.load('/nonexistent')
-        # both were read, and [developer] was added to the file
+        # se leyeron los dos, y se añadió [developer] al archivo
         self.assertEqual(len(messages), 3)
         self.assertTrue(any(m.startswith('Completed the configuration')
                             for m in messages))
@@ -149,8 +149,8 @@ class SettingsTests(InTempDir):
         self.assertFalse(s.use_affixes)
         self.assertTrue(s.explain_codes)
         self.assertTrue(s.use_tricks)
-        self.assertFalse(s.show_codes)      # (now a parameter)
-        saved = config.read()               # (written with the new names)
+        self.assertFalse(s.show_codes)      # (ahora es un parámetro)
+        saved = config.read()               # (escrito con los nombres nuevos)
         self.assertEqual(saved['parameters'], {
             'use_tricks': True, 'use_affixes': False, 'explain_codes': True,
             'show_codes': False})
@@ -196,12 +196,12 @@ class CommandLineTests(InTempDir):
         result = subprocess.run(command + ['amo'], env=env,
                                 capture_output=True)
         self.assertEqual(result.returncode, 0)
-        self.assertTrue(os.path.isfile(path))       # (folder made too)
+        self.assertTrue(os.path.isfile(path))       # (y su carpeta)
         with open(path) as f:
             text = f.read()
         self.assertIn('[parameters]\n', text)
         self.assertIn('trim_output = true', text)
-        # --config shows it; a second start leaves it as it is
+        # --config lo muestra; un segundo arranque lo deja como está
         result = subprocess.run(command + ['--config'], env=env,
                                 capture_output=True)
         self.assertEqual(result.stdout.decode(),
@@ -209,7 +209,7 @@ class CommandLineTests(InTempDir):
         os.utime(path, (0, 0))
         subprocess.run(command + ['amo'], env=env, capture_output=True)
         self.assertEqual(os.path.getmtime(path), 0)
-        # the data folder can be given there
+        # ahí se puede dar la carpeta de datos
         os.environ['PY_WORDS_CONFIG'], old = os.path.dirname(path), \
             os.environ['PY_WORDS_CONFIG']
         try:
@@ -324,7 +324,7 @@ class InteractiveTests(InTempDir):
                       out.getvalue())
 
     def repl(self, *lines):
-        #  (~E and ~L keep the direction: forgotten after the test)
+        #  (~E y ~L conservan la dirección: se olvida tras la prueba)
         self.addCleanup(config.update, 'search', {})
         session, out = self.session()
         replies = iter(lines)
@@ -359,7 +359,7 @@ class InteractiveTests(InTempDir):
         self.assertIn('A friend, patron', out)      # (without dictionary forms)
         self.assertFalse(session.settings.show_dictionary_forms)  # (done)
         self.assertNotEqual(config.section('parameters').get(
-            'show_dictionary_forms'), False)        # (not saved)
+            'show_dictionary_forms'), False)        # (no se guarda)
 
     def test_ctrl_c_outside_interactive_mode(self):
         """Ctrl-C ends the program quietly (no traceback)."""
@@ -372,7 +372,7 @@ class InteractiveTests(InTempDir):
 
     def test_lookup_and_quit(self):
         _, out = self.repl('amicus', '', '', 'never read')
-        #  (the name and version, but not the credits)
+        #  (el nombre y la versión, pero no los créditos)
         from version import VERSION
         self.assertTrue(out.startswith(
             f'py-words {VERSION}: A Latin Dictionary\nType a Latin word'))
@@ -397,7 +397,7 @@ class InteractiveTests(InTempDir):
         session, out = self.repl('#', 'n', '', ' ')
         self.assertIn('What the results show:', out)
         self.assertFalse(session.settings.show_dictionary_forms)
-        # (not saved: skipping the rest skips the question too)
+        # (no se guarda: saltarse el resto se salta también la pregunta)
         self.assertNotEqual(config.section('parameters').get(
             'show_dictionary_forms'), False)
 
@@ -462,8 +462,8 @@ class ConvertTests(InTempDir):
 
 
 
-#  A pager for the tests: it appends what it is given, and $LESS, to the
-#  file $FAKE_PAGER_OUT
+#  Un paginador para las pruebas: añade lo que recibe, y $LESS, al
+#  archivo $FAKE_PAGER_OUT
 FAKE_PAGER = """import os, sys
 data = sys.stdin.buffer.read()
 with open(os.environ['FAKE_PAGER_OUT'], 'ab') as f:
@@ -509,7 +509,7 @@ class PagerTests(InTempDir):
         self.assertEqual(self.shown(), '')
 
     def test_wrapped_and_styled_lines(self):
-        #  (a line of 100 letters takes three of 40; the codes take none)
+        #  (una línea de 100 letras ocupa tres de 40; los códigos, ninguna)
         self.assertEqual(cli.screen_lines('x' * 100 + '\nab', 40), 4)
         self.assertEqual(cli.screen_lines('\033[1mab\033[0m', 2), 1)
         self.assertEqual(cli.screen_lines(

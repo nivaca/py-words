@@ -1,25 +1,27 @@
-"""The configuration file, config.toml, in the user's settings folder.
+"""El archivo de configuración, config.toml, en la carpeta de ajustes del
+usuario.
 
-    Linux     $XDG_CONFIG_HOME/py-words/config.toml (usually ~/.config)
+    Linux     $XDG_CONFIG_HOME/py-words/config.toml (normalmente ~/.config)
     macOS     ~/Library/Application Support/py-words/config.toml
     Windows   %APPDATA%\\py-words\\config.toml
 
-($PY_WORDS_CONFIG names another folder.)  Its sections:
+($PY_WORDS_CONFIG nombra otra carpeta.)  Sus secciones:
 
-    [data]         folder: where the data files are
-    [parameters]   the parameters (changed with # in interactive mode)
-    [developer]    the developer modes and command characters (!)
-    [fonts]        the fonts of the windows
-    [appearance]   dark_mode: whether the windows are dark
-    [logeion]      source: where the programs look words up ("local" or
-                   "logeion"; see logeion.py), and dictionary: Logeion's
-                   dictionary shown (or "all"; the DMLBS if none)
-    [search]       to_latin: whether the last search was to Latin
+    [data]         folder: dónde están los archivos de datos
+    [parameters]   los parámetros (se cambian con # en el modo interactivo)
+    [developer]    los modos de desarrollador y los caracteres de órdenes (!)
+    [fonts]        las fuentes de las ventanas
+    [appearance]   dark_mode: si las ventanas son oscuras
+    [logeion]      source: dónde buscan las palabras los programas ("local"
+                   o "logeion"; véase logeion.py), y dictionary: el
+                   diccionario de Logeion que se muestra (o "all"; el
+                   DMLBS si no hay ninguno)
+    [search]       to_latin: si la última búsqueda fue hacia el latín
 
-Every setting may be left out, and then has its usual value.  The program
-writes the file when settings are saved (with all the comments, but not
-comments of one's own); it can also be edited by hand.  Its comments are
-in the language of the interface.
+Cualquier ajuste puede omitirse, y entonces tiene su valor habitual.  El
+programa escribe el archivo cuando se guardan los ajustes (con todos los
+comentarios, pero no los que haya añadido el usuario); también puede
+editarse a mano.  Sus comentarios están en el idioma de la interfaz.
 """
 
 from __future__ import annotations
@@ -129,7 +131,7 @@ def write(data: dict[str, dict]) -> None:
 
 
 # ---------------------------------------------------------------------------
-#  Writing TOML: the values are only booleans, integers and strings
+#  Escritura del TOML: los valores son solo booleanos, enteros y cadenas
 
 def toml_value(value) -> str:
     if isinstance(value, bool):

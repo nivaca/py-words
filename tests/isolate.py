@@ -1,17 +1,19 @@
-"""Imported first by every test module: the tests (and the programs they
-run) use a cache and a settings folder of their own, empty at first, so
-that neither the user's cache nor their config.toml changes the results,
-and the tests change neither.  With the cache, the dictionary is read
-from its XML once (around a second) and from the cache after that (a
-quarter of one); tools/test.py, which runs the test files at once, gives
-them all the same one ($PY_WORDS_TEST_CACHE).
+"""Lo importa primero cada módulo de pruebas: las pruebas (y los
+programas que corren) usan una caché, una carpeta de ajustes y un
+historial de búsquedas propios, vacíos al principio, para que ni la caché
+del usuario ni su config.toml cambien los resultados, y para que las
+pruebas no cambien ninguno de los dos.  Con la caché, el diccionario se
+lee de su XML una vez (cerca de un segundo) y de la caché de ahí en
+adelante (un cuarto de segundo); tools/test.py, que corre a la vez los
+archivos de pruebas, les da a todos la misma ($PY_WORDS_TEST_CACHE).
 
-Their windows are opened, like those of tools/screenshots.py, on an Xvfb
-of their own if there is one (out of sight, and the same on every
-computer: no scaling or fonts of the desktop), started here once for the
-whole run and stopped at its end; the programs the tests run use it too.
-Without Xvfb they use the current display, or are skipped (display()).
-$PY_WORDS_TEST_DISPLAY=screen keeps the current display, to watch them.
+Sus ventanas se abren, como las de tools/screenshots.py, en un Xvfb
+propio si lo hay (fuera de la vista, e iguales en todos los computadores:
+sin el escalado ni las fuentes del escritorio), que se arranca aquí una
+vez para toda la corrida y se detiene al final; los programas que corren
+las pruebas también lo usan.  Sin Xvfb usan la pantalla actual, o se
+omiten (display()).  $PY_WORDS_TEST_DISPLAY=screen deja la pantalla
+actual, para verlas.
 """
 
 import atexit
@@ -29,10 +31,10 @@ os.environ['PY_WORDS_CACHE'] = CACHE
 CONFIG = tempfile.mkdtemp(prefix='py-words-config-')
 os.environ['PY_WORDS_CONFIG'] = CONFIG
 atexit.register(shutil.rmtree, CONFIG, ignore_errors=True)
-#  (and the history of the searches is the tests' own)
+#  (y el historial de búsquedas también es el de las pruebas)
 os.environ['PY_WORDS_HISTORY'] = os.path.join(CONFIG, 'history')
 
-#  The screen of the Xvfb: room for the largest window of the tests
+#  La pantalla del Xvfb: cabe la ventana más grande de las pruebas
 SCREEN = '1600x1200x24'
 
 
@@ -56,7 +58,7 @@ def _xvfb():
     os.close(write)
     with os.fdopen(read) as f:
         number = f.readline().strip()
-    if not number:                      # (it did not start: as without it)
+    if not number:                      # (no arrancó: como si no lo hubiera)
         server.kill()
         server.wait()
         return

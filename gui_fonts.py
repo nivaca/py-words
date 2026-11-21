@@ -1,18 +1,22 @@
-"""The fonts of the windows, which the user can change.
+"""Las fuentes de las ventanas, que el usuario puede cambiar.
 
-Ctrl and + or - make all the text larger or smaller, Ctrl and 0 brings
-back the usual fonts (Command instead of Ctrl on macOS), and the "Font…"
-dialogue chooses the fonts and their sizes.  The choice is kept for next
-time in the section [fonts] of the configuration file (see config.py).
+Ctrl y + o - agrandan o achican todo el texto, Ctrl y 0 vuelve a las
+fuentes habituales (Command en lugar de Ctrl en macOS), y el diálogo
+"Fuente…" ("Font…") elige las fuentes y sus tamaños.  La elección se
+guarda para la próxima vez en la sección [fonts] del archivo de
+configuración (véase config.py).
 
-Every widget uses a named Tk font, so a change reaches all open windows at
-once.  There are three kinds of text:
+Cada widget usa una fuente con nombre de Tk, así que un cambio llega a la
+vez a todas las ventanas abiertas.  Hay tres clases de texto:
 
-* the results (and the editor's "try a word" output), in TEXT, which must
-  be a fixed-width font, as the forms are laid out in columns;
-* the windows' own text (labels, buttons, lists, boxes), in Tk's standard
-  fonts (TkDefaultFont ...), whose family and size are changed together;
-* the box where words are typed, in ENTRY, a little larger than the rest.
+* los resultados (y la salida de "probar una palabra" del editor), en
+  TEXT, que debe ser una fuente de ancho fijo, pues las formas se
+  disponen en columnas;
+* el texto propio de las ventanas (etiquetas, botones, listas, cuadros),
+  en las fuentes estándar de Tk (TkDefaultFont ...), cuya familia y
+  tamaño cambian juntos;
+* el cuadro donde se escriben las palabras, en ENTRY, un poco más grande
+  que el resto.
 """
 
 import os
@@ -26,11 +30,12 @@ from xml.sax.saxutils import escape
 import config
 from interface import tr
 
-#  The usual fixed-width font: the first of these that is installed
+#  La fuente de ancho fijo habitual: la primera de estas que esté
+#  instalada
 MONOSPACE = ('DejaVu Sans Mono', 'Liberation Mono', 'Noto Sans Mono',
              'Menlo', 'Consolas', 'Courier New', 'Courier')
 TEXT_SIZE = 11
-ENTRY_EXTRA = 2         # the typing box is this many points larger
+ENTRY_EXTRA = 2         # el cuadro de escritura, tantos puntos más grande
 MIN_SIZE, MAX_SIZE = 6, 40
 
 #  Tk's standard fonts, which ttk widgets, lists and menus use
@@ -51,8 +56,8 @@ def _clamp(size: int) -> int:
     return max(MIN_SIZE, min(MAX_SIZE, size))
 
 
-#  Tk's scaling (pixels per point) at 96 DPI, which the default sizes of
-#  windows, in pixels, are made for
+#  La escala de Tk (píxeles por punto) a 96 DPI, para la que están
+#  hechos los tamaños por omisión de las ventanas, en píxeles
 BASE_SCALING = 96 / 72
 
 
@@ -114,7 +119,7 @@ def fit_fontconfig():
     if dpi is None:
         return nothing
     old = os.environ.get('FONTCONFIG_FILE')
-    #  (a relative file is looked for where fontconfig keeps its own)
+    #  (un archivo relativo se busca donde fontconfig guarda los suyos)
     usual = escape(old or 'fonts.conf')
     text = ('<?xml version="1.0"?>\n'
             '<!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">\n'
@@ -169,7 +174,7 @@ def fit_scaling(root):
     display, with scaling, everything came out very small (the AppImage's
     Tk is 8.6; Tk 9 reads Xft.dpi itself, and this changes nothing).  Done
     once for each Tk (ROOT may be any of its widgets).'''
-    root = root._root()             # (one scaling for each Tk)
+    root = root._root()             # (una escala por cada Tk)
     if getattr(root, '_py_words_scaled', False):
         return
     root._py_words_scaled = True
@@ -182,8 +187,8 @@ def fit_scaling(root):
     if abs(scaling - float(root.tk.call('tk', 'scaling'))) < 0.01:
         return
     root.tk.call('tk', 'scaling', scaling)
-    #  Tk 8.6 gives its standard fonts in pixels (-12), which do not follow
-    #  the scaling: they are given again in points, as at 96 DPI (9)
+    #  Tk 8.6 da sus fuentes estándar en píxeles (-12), que no siguen la
+    #  escala: se dan de nuevo en puntos, como a 96 DPI (9)
     for name in font.names(root):
         if name.startswith('Tk'):
             f = font.nametofont(name, root)
@@ -223,8 +228,8 @@ class Fonts:
             'text_family': text_family, 'text_size': TEXT_SIZE,
             'ui_family': font.nametofont('TkDefaultFont').actual()['family'],
             'ui_size': ui_size}
-        #  how much larger or smaller than TkDefaultFont each standard
-        #  font is, which is kept when the size changes
+        #  cuánto más grande o más pequeña que TkDefaultFont es cada fuente
+        #  estándar, lo que se conserva cuando cambia el tamaño
         self.ui_offsets = {name: _size(name) - ui_size for name in UI_FONTS}
         self.values = dict(self.defaults)
         self.values.update(self.load())
@@ -242,7 +247,7 @@ class Fonts:
                 root.bind_all(f'<{mod}-{key}>',
                               lambda e, step=step: self.key(step))
 
-    # Settings -----------------------------------------------------------
+    # Ajustes ------------------------------------------------------------
 
     def load(self) -> dict:
         """The saved choices that are still usable."""
@@ -266,9 +271,9 @@ class Fonts:
         try:
             config.update('fonts', changed)
         except (OSError, config.ConfigError):
-            pass                        # (then they last for this session)
+            pass                        # (entonces duran esta sesión)
 
-    # Changes --------------------------------------------------------------
+    # Cambios --------------------------------------------------------------
 
     def apply(self):
         v = self.values
@@ -280,7 +285,7 @@ class Fonts:
         for name, offset in self.ui_offsets.items():
             font.nametofont(name).configure(
                 family=v['ui_family'], size=_clamp(v['ui_size'] + offset))
-        #  (for the windows that fit themselves to their text)
+        #  (para las ventanas que se ajustan a su texto)
         self.root.event_generate('<<FontsChanged>>', when='tail')
 
     def set(self, **values):
@@ -324,7 +329,7 @@ class Fonts:
         return sorted({f for f in font.families(self.root)
                        if not f.startswith('@')}, key=str.casefold)
 
-    # The dialogue ---------------------------------------------------------
+    # El diálogo -----------------------------------------------------------
 
     def dialog(self, parent):
         """A window to choose the fonts; changes show at once."""
@@ -406,6 +411,6 @@ class Fonts:
         win.bind('<Escape>', lambda e: win.destroy())
         close.focus_set()
         win.resizable(False, False)     # (once its contents are in)
-        win.refresh = refresh           # (for the tests)
+        win.refresh = refresh           # (para las pruebas)
         win.variables = variables
         return win

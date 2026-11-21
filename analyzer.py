@@ -1,14 +1,16 @@
-"""Analysis of Latin words: finding the dictionary entries and forms that a
-word can be.
+"""Análisis de palabras latinas: encontrar las entradas del diccionario y
+las formas que una palabra puede ser.
 
-A word is tried as, in order: an irregular form (uniques.xml); a qu-
-pronoun (qui, quisquam, ...); a stem from the dictionary plus an ending;
-the same with a prefix and/or suffix ("fixes"); a word with an enclitic
-(-que, -ne, ...).  If all that fails, spelling tricks are tried (see
-tricks.py).  Finally participles followed by a form of esse are read as
-compound tenses, and the results are ordered and grouped (results.py).
-For a word that is still unknown, the fuzzy search finds the near
-spellings that are words (see fuzzy.py).
+Una palabra se prueba, en este orden, como: una forma irregular
+(uniques.xml); un pronombre en qu- (qui, quisquam, ...); un tema del
+diccionario más una terminación; lo mismo con un prefijo, un sufijo o
+ambos ("fixes"); una palabra con un enclítico (-que, -ne, ...).  Si todo
+eso falla, se prueban los trucos de grafía (véase tricks.py).  Al final,
+los participios seguidos de una forma de esse se leen como tiempos
+compuestos, se añaden los adverbios hechos de adjetivos (longe de longus)
+y los resultados se ordenan y agrupan (results.py).  Para una palabra que
+sigue sin conocerse, la búsqueda aproximada encuentra las grafías
+cercanas que son palabras (véase fuzzy.py).
 """
 
 from __future__ import annotations
@@ -28,11 +30,12 @@ from results import (Origin, Parse, Found, WordResult, mark, marked, found,
 from settings import Settings
 
 MAX_STEM = 18
-ENCLITICS = 4       # the first tackons of addons.xml (que, ne, ve, est) are
-                    # tried on every word; the others only on unknown ones
+ENCLITICS = 4       # los primeros tackons de addons.xml (que, ne, ve, est)
+                    # se prueban en toda palabra; los otros, solo en las
+                    # desconocidas
 #  Ojo: depende del orden de addons.xml.  Si alguien lo reordena, revisar.
 
-#  Which entries a dictionary search may return
+#  Las entradas que puede devolver una búsqueda en el diccionario
 REGULAR, QU_PRONOUNS, PACKONS = 'regular', 'qu-pronouns', 'packons'
 
 
@@ -148,7 +151,7 @@ class Analyzer:
         return Opts(s.use_affixes)
 
     # -----------------------------------------------------------------
-    #  Affixes
+    #  Los afijos
 
     def strip_prefix(self, word: str, prefix: Prefix, opts: Opts) -> str:
         fix = prefix.fix
@@ -174,7 +177,7 @@ class Analyzer:
         return word
 
     # -----------------------------------------------------------------
-    #  Dictionary search
+    #  La búsqueda en el diccionario
 
     def search(self, stems, restriction=REGULAR) -> list[StemRef]:
         """The dictionary stems equal to one of STEMS; general dictionary
@@ -326,14 +329,16 @@ class Analyzer:
                earlier: bool) -> list[Found]:
         refs = [] if opts.only_fixes else self.search(stems)
         if opts.do_fixes and not earlier and not refs:
-            # No stem of the word is in the dictionary: a prefix first
+            # Ningún tema de la palabra está en el diccionario: primero un
+            # prefijo
             return self._prefixed(stems, candidates, opts) or \
                 self._suffixed(stems, candidates, opts)
         parses = self.match(candidates, refs, opts=opts)
         if parses:
             return found(self.arrange(parses))
         if opts.do_fixes and not earlier:
-            # Its stems are, but with other endings: a suffix first
+            # Sus temas están, pero con otras terminaciones: primero un
+            # sufijo
             return self._suffixed(stems, candidates, opts) or \
                 self._prefixed(stems, candidates, opts)
         return []
@@ -377,7 +382,7 @@ class Analyzer:
         return out
 
     # -----------------------------------------------------------------
-    #  qu- pronouns and packons
+    #  Los pronombres en qu- y los packons
 
     def _qu_words(self, w: str, opts: Opts) -> list[Found]:
         """qui, quis, aliquis ...; with a tickon (a prefix that goes on qu-
@@ -467,8 +472,8 @@ class Analyzer:
                 return pos == base.pos and (
                     pos == Pos.ADJ or (pos in (Pos.N, Pos.PRON) and
                                        p.form.decl.fits(base.decl)))
-            #  The forms the enclitic fits, each with the prefix or
-            #  suffix nearest to it
+            #  Las formas con que encaja el enclítico, cada una con el
+            #  prefijo o sufijo más cercano a él
             kept = []
             for f in findings:
                 parses = tuple(p for p in f.parses if fits(p))
@@ -510,7 +515,7 @@ class Analyzer:
         s = self.settings
         notes: dict[Origin, str] = {}
         out = self._passes(word, notes)
-        est = False         # est written in the word (amatust)
+        est = False         # est escrito en la palabra (amatust)
         if out and s.use_tricks and s.medieval_spellings:
             #  (e for ae or oe: queruntur is also quaeruntur)
             out = chain(out, tricks.diphthongs(self, word, notes, out,
@@ -525,7 +530,7 @@ class Analyzer:
         used_next = False
         if out and s.read_compounds and not meanings_only:
             if est:
-                #  (a compound keeps only the affixes: the mark goes back)
+                #  (un compuesto conserva solo los afijos: la marca vuelve)
                 prodelision = out[0].marks[0]
                 out, _ = compounds(out, 'est', notes)
                 if out[0].marks[:1] != (prodelision,):
@@ -565,7 +570,7 @@ class Analyzer:
         est = self.lex.tackons[ENCLITICS - 1]
         if len(w) < 4 or not w.endswith('st') or _uv(est.fix) != 'est':
             return []
-        #  -ust, -ist: the s is that of -us, -is (amatust, omnist)
+        #  -ust, -ist: la s es la de -us, -is (amatust, omnist)
         tries = [w[:-1]] if w[-3] in 'ui' else []
         if w[-3] in 'aeioum':
             tries.append(w[:-2])
@@ -673,7 +678,7 @@ def _is_esse(findings: list[Found]) -> bool:
 
 
 # ---------------------------------------------------------------------------
-#  Compound tenses: participle + esse
+#  Los tiempos compuestos: participio + esse
 
 PERF_PASSIVE = (Tense.PERF, Voice.PASSIVE, Mood.PPL)
 FUT_ACTIVE = (Tense.FUT, Voice.ACTIVE, Mood.PPL)
@@ -877,8 +882,8 @@ def adverbs(findings: list[Found], notes: dict) -> list[Found]:
                     '-ly  Converting ADJ to ADV'
             else:
                 continue
-            #  The affixes found on the adjective apply to the adverb too,
-            #  if only adjectives come between them
+            #  Los afijos hallados en el adjetivo valen también para el
+            #  adverbio, si entre ellos solo hay adjetivos
             affixes = _affixes_before(found_.marks) \
                 if all(q.form.pos == Pos.ADJ for q in parses[:i]) else ()
             adverb = Parse(p.stem, Inflection(

@@ -1,4 +1,4 @@
-"""Tests for the data checker (words_check.py)."""
+"""Pruebas del verificador de datos (words_check.py)."""
 
 import os
 import sys
@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the package, when run from anywhere
+    __file__))))                        # el paquete, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 import words_check as check, xmldata

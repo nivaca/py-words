@@ -1,5 +1,6 @@
-"""Tests of the full-screen terminal dictionary (words_tui.py), run in a
-pseudo-terminal as a person would."""
+"""Pruebas del diccionario a pantalla completa en la terminal
+(words_tui.py), corrido en una pseudoterminal como lo usaría una
+persona."""
 
 import os
 import sys
@@ -8,7 +9,7 @@ import time
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: F401,E402  (before anything that reads settings)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -60,7 +61,7 @@ class TerminalDictionaryTests(unittest.TestCase):
         self.assertEqual(status, 0)
         self.assertIn('amīc-ōrum', out)
         self.assertIn('GEN.PL', out)
-        self.assertIn('more ↓', out)            # (a long result scrolls)
+        self.assertIn('more ↓', out)            # (si es largo, se desplaza)
 
     def test_colours(self):
         """The results in colour (the headword red: SGR 31), unless
@@ -79,7 +80,7 @@ class TerminalDictionaryTests(unittest.TestCase):
         status, out = self.run_keys([
             ('amicorum\r', 1.5), (UP + UP + '\r', 1.5), (F10, 1)])
         self.assertEqual(status, 0)
-        self.assertIn('laudāt-us', out)         # (from an earlier session)
+        self.assertIn('laudāt-us', out)         # (de una sesión anterior)
         with open(self.history) as f:
             self.assertEqual(f.read().split(),
                              ['laudatus', 'amicorum', 'laudatus'])
@@ -135,7 +136,7 @@ class TerminalDictionaryTests(unittest.TestCase):
                                      (DOWN + '\r', 0.8), (F10, 1)])
         self.assertEqual(status, 0)
         self.assertIn('Dictionary (Enter chooses)', out)
-        #  (the DMLBS at first; the one after it)
+        #  (primero el DMLBS; luego el siguiente)
         self.assertIn('Logeion: LaNe.', out)
         with open(os.path.join(self.config, 'config.toml'), 'rb') as f:
             data = tomllib.load(f)['logeion']

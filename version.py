@@ -1,7 +1,8 @@
-"""The name, version and credits of this program, and the Python it needs.
+"""El nombre, la versión y los créditos de este programa, y el Python que
+necesita.
 
-This file is read before the rest of the program, so it must stay readable
-by old versions of Python.
+Este archivo se lee antes que el resto del programa, así que debe poder
+leerse con versiones antiguas de Python.
 """
 
 import os
@@ -18,11 +19,11 @@ VERSION = '3.25'
 URL = 'https://github.com/nivaca/py-words'
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-#  The commit the program was made from, written into the zip by
-#  tools/bundle-zip.py (a clone asks git instead)
+#  El commit del que se hizo el programa, que tools/bundle-zip.py escribe
+#  en el zip (un clon se lo pregunta a git)
 COMMIT_FILE = 'COMMIT'
 
-#  The credits, with {name}, {version} and {url} for those above
+#  Los créditos, con {name}, {version} y {url} por los de arriba
 CREDITS_TEXT = (
     '{name} {version}, a Latin dictionary by Nicolas Vaughan\n'
     '{url}\n'
@@ -104,7 +105,7 @@ def about():
     return '\n'.join(lines) + '\n\n' + tr(AUTHOR)
 
 
-#  The oldest Python the program runs on
+#  El Python más antiguo en que corre el programa
 MIN_PYTHON = (3, 13)
 
 

@@ -1,4 +1,4 @@
-"""Tests of the window's Settings dialogue (gui_settings.py)."""
+"""Pruebas del diálogo de ajustes de la ventana (gui_settings.py)."""
 
 import gc
 import os
@@ -7,7 +7,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: E402  (before anything that reads settings)
 
 DATA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
@@ -25,7 +25,7 @@ class SettingsDialogTests(unittest.TestCase):
         os.environ['PY_WORDS_CONFIG'] = self.tmp.name
         self.root = tk.Tk()
         self.app = words_gui.App(self.root, DATA)
-        for _ in range(800):            # (the dictionary loads in a thread)
+        for _ in range(800):            # (el diccionario se carga en un hilo)
             if self.app.session is not None:
                 break
             self.root.update()
@@ -37,7 +37,7 @@ class SettingsDialogTests(unittest.TestCase):
     def tearDown(self):
         self.root.destroy()
         del self.root, self.app, self.dialog
-        gc.collect()        # (Tk must be freed here, not by another thread)
+        gc.collect()        # (Tk debe liberarse aquí, no en otro hilo)
         os.environ['PY_WORDS_CONFIG'] = self.old
         self.tmp.cleanup()
 
@@ -45,7 +45,7 @@ class SettingsDialogTests(unittest.TestCase):
         import spanish
         data = spanish.datadir(tempfile.mkdtemp(dir=self.tmp.name))
         self.app.datadir = data
-        self.app.reload()                   # (the folder with Spanish)
+        self.app.reload()                   # (la carpeta con español)
         for _ in range(800):
             self.root.update()
             self.root.after(25)
@@ -73,7 +73,7 @@ class SettingsDialogTests(unittest.TestCase):
         self.toggle('explain_codes')
         self.assertTrue(self.app.session.settings.explain_codes)
         self.assertIs(config.section('parameters')['explain_codes'], True)
-        # a change made otherwise shows in the dialogue
+        # un cambio hecho por otra vía aparece en el diálogo
         self.app.change_setting('explain_codes', False)
         self.assertFalse(self.dialog.vars['explain_codes'].get())
         self.toggle('show_entry_source')
@@ -156,7 +156,7 @@ class SettingsDialogTests(unittest.TestCase):
             var.set('%')
             self.dialog.character('start_file_character')
             self.assertEqual(self.app.setting('start_file_character'), '%')
-            var.set('#')                        # (the parameters' one)
+            var.set('#')                        # (el de los parámetros)
             self.dialog.character('start_file_character')
             self.assertEqual(self.app.setting('start_file_character'), '%')
             self.assertEqual(var.get(), '%')

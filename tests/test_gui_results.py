@@ -1,4 +1,5 @@
-"""Tests of the results in the window (gui_results.py) and of its menus."""
+"""Pruebas de los resultados en la ventana (gui_results.py) y de sus
+menús."""
 
 import gc
 import os
@@ -7,7 +8,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(
-    __file__))))                        # the program, when run from anywhere
+    __file__))))                        # el programa, desde cualquier carpeta
 import isolate  # noqa: E402  (before anything that reads settings)
 
 from gui_results import kind_of  # noqa: E402
@@ -50,7 +51,7 @@ class WindowTests(unittest.TestCase):
     def tearDown(self):
         self.root.destroy()
         del self.root, self.app
-        gc.collect()        # (Tk must be freed here, not by another thread)
+        gc.collect()        # (Tk debe liberarse aquí, no en otro hilo)
         os.environ['PY_WORDS_CONFIG'] = self.old
         self.tmp.cleanup()
 
@@ -82,13 +83,13 @@ class WindowTests(unittest.TestCase):
         self.assertEqual(t.get(codes[0], codes[1]), '[XWXAO]')
         analysis = t.tag_ranges('analysis')
         self.assertEqual(t.get(analysis[0], analysis[1]), 'NOM.PL')
-        #  (the text is that of the command line)
+        #  (el texto es el de la línea de órdenes)
         self.assertEqual(t.get('1.0', 'end-1c'),
                          self.app.shown[0])
 
     def test_selection_is_over_the_colours(self):
-        #  (else selected text keeps its colour, and a headword, in the
-        #  selection's own colour in light mode, cannot be seen)
+        #  (si no, el texto seleccionado conserva su color, y un lema, en el
+        #  color propio de la selección en modo claro, no se ve)
         self.look_up('arma')
         t = self.app.text
         t.tag_add('sel', '1.0', 'end')

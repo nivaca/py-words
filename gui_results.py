@@ -1,25 +1,28 @@
-"""The results in the window: the same text that words.py prints, laid
-out for the eye, and with things to click.
+"""Los resultados en la ventana: el mismo texto que imprime words.py,
+dispuesto para la vista y con cosas en las que hacer clic.
 
-* Each line is styled by what it is, which the layout of the results
-  tells (see render.py): the word looked up (bold, larger), the line of an
-  entry (its dictionary form bold, its codes in brackets grey), the
-  meaning, the forms (stem-ending and the analysis, in another colour),
-  and the notes in parentheses (grey).  With the Pearse codes (a developer
-  mode) the layout is different, and the text is shown as it is.
-* The first word of an entry is a link to its own search; a double click
-  on any word looks it up (to Latin, if it is a word of the meanings).
-* Pointing at the codes ([XXXBO]) or at an analysis (GEN.PL) shows what
-  they mean, with the words of the help (guide.py).
-* A right click gives Copy, Look up and Find; Ctrl-F opens a bar to find
-  a text in the results.
-* The entries of Logeion (see logeion.py) are shown in their own styles,
-  wrapped to the width of the results (and again when it changes); their
-  links to other words of Logeion look them up, and the others open in
-  the browser.
+* Cada línea lleva el estilo de lo que es, que la disposición de los
+  resultados indica (véase render.py): la palabra buscada (en negrita,
+  más grande), la línea de una entrada (su forma de diccionario en
+  negrita, sus códigos entre corchetes en gris), el significado, las
+  formas (raíz-desinencia y el análisis, en otro color) y las notas entre
+  paréntesis (en gris).  Con los códigos de Pearse (un modo de
+  desarrollador) la disposición es otra, y el texto se muestra tal cual.
+* La primera palabra de una entrada es un enlace a su propia búsqueda; un
+  doble clic en cualquier palabra la busca (hacia el latín, si es una
+  palabra de los significados).
+* Al señalar los códigos ([XXXBO]) o un análisis (GEN.PL) se muestra qué
+  significan, con las palabras de la ayuda (guide.py).
+* Un clic derecho ofrece Copiar, Buscar la palabra (o buscarla en latín),
+  Seleccionar todo y Buscar en los resultados; Ctrl-F abre una barra para
+  buscar un texto en los resultados.
+* Las entradas de Logeion (véase logeion.py) se muestran con sus propios
+  estilos, ajustadas al ancho de los resultados (y de nuevo cuando este
+  cambia); sus enlaces a otras palabras de Logeion las buscan, y los
+  demás se abren en el navegador.
 
-The colours follow the light or dark look (<<ThemeChanged>>), and the
-fonts the size chosen (<<FontsChanged>>).
+Los colores siguen el aspecto claro u oscuro (<<ThemeChanged>>), y las
+fuentes el tamaño elegido (<<FontsChanged>>).
 """
 
 from __future__ import annotations
@@ -37,7 +40,7 @@ from logeion_text import styled_segments
 from layout import (FORM_LINE, CODES, HEADWORD, WORD,  # noqa: F401
                     analysis_of, kind_of)
 
-#  The colours of what is styled, in the light and dark looks
+#  Los colores de lo que lleva estilo, en el aspecto claro y en el oscuro
 COLOURS = {
     False: {'headword': '#8a2c1f', 'form': '#55534d', 'analysis': '#245a8a',
             'muted': '#77756e', 'found': '#ffe58a', 'found_now': '#ffb84d',
@@ -79,11 +82,11 @@ class Results(ttk.Frame):
         self.explain_analysis = explain_analysis
         self.links: dict[str, tuple[str, bool]] = {}
         self.urls: dict[str, str] = {}  # (links to open in the browser)
-        self.logeion_words = None       # (the Logeion results shown)
+        self.logeion_words = None       # (los resultados de Logeion mostrados)
         self.logeion_width = 0
         self.logeion_dictionary = logeion.ALL
         self.rewrap_after = None
-        self.to_latin_words = False     # (the words looked up are not Latin)
+        self.to_latin_words = False     # (lo buscado no es latín)
         self.tip = None
         self.tip_after = None
         self.matches: list[str] = []
@@ -106,8 +109,8 @@ class Results(ttk.Frame):
         self.note_font = tkfont.Font(self)
         self.bold_italic_font = tkfont.Font(self)
         self.restyle()
-        #  On the window, so they are taken off when this is destroyed (the
-        #  window builds a new one when the interface changes)
+        #  En la ventana, para que se quiten cuando esto se destruya (la
+        #  ventana construye uno nuevo cuando cambia la interfaz)
         top = self.winfo_toplevel()
         bound = [(event, top.bind(event, lambda e: self.restyle(), add='+'))
                  for event in ('<<ThemeChanged>>', '<<FontsChanged>>')]
@@ -129,7 +132,7 @@ class Results(ttk.Frame):
         t.bind(menu_button, self._menu)
         t.bind('<Control-f>', lambda e: self.show_find())
 
-    # Styles ----------------------------------------------------------------
+    # Estilos ---------------------------------------------------------------
 
     def restyle(self):
         """The fonts and colours of the styled parts (after a change of the
@@ -152,7 +155,7 @@ class Results(ttk.Frame):
         t.tag_config('form', foreground=c['form'])
         t.tag_config('analysis', foreground=c['analysis'])
         t.tag_config('link', underline=False)
-        #  (the entries of Logeion)
+        #  (las entradas de Logeion)
         t.tag_config('lg_title', font=self.word_font, spacing1=6,
                      spacing3=2)
         t.tag_config('lg_section', font=self.bold_font,
@@ -166,15 +169,16 @@ class Results(ttk.Frame):
         t.tag_config('found', background=c['found'])
         t.tag_config('found_now', background=c['found_now'])
         t.tag_raise('found_now')
-        #  (selected text in the selection's colours, over those of the
-        #  tags: the headword's is the selection's own in light mode)
+        #  (el texto seleccionado, en los colores de la selección, por encima
+        #  de los de las etiquetas: el de la forma de diccionario es el de la
+        #  propia selección en el modo claro)
         t.tag_raise('sel')
         if self.tip is not None:
             self._tip_hide()
-        if self.logeion_words is not None:      # (the fonts' width)
+        if self.logeion_words is not None:      # (el ancho de las fuentes)
             self._rewrap_later()
 
-    # Showing ---------------------------------------------------------------
+    # La presentación -------------------------------------------------------
 
     def _start(self):
         t = self.text
@@ -275,7 +279,7 @@ class Results(ttk.Frame):
         font = tkfont.Font(font=t.cget('font'))
         pixels = t.winfo_width() - 2 * (int(t.cget('padx')) +
                                         int(t.cget('highlightthickness')))
-        if pixels < 50:                 # (not drawn yet)
+        if pixels < 50:                 # (aún no dibujado)
             pixels = t.winfo_reqwidth()
         return max(30, pixels // max(1, font.measure('0')) - 1)
 
@@ -288,7 +292,7 @@ class Results(ttk.Frame):
                                self.logeion_dictionary, wrap_analysis=False)
         for n, (kind, line) in enumerate(lines):
             if kind == logeion.ANALYSIS:
-                self._line(line)        # (like this program's results)
+                self._line(line)        # (como los de este programa)
                 continue
             line_start = t.index('end-1c')
             for piece, codes, url in styled_segments(line):
@@ -352,10 +356,10 @@ class Results(ttk.Frame):
                 self._width() != self.logeion_width:
             self._show_logeion(self.logeion_words, self._width())
 
-    # Clicking --------------------------------------------------------------
+    # Los clics -------------------------------------------------------------
 
     def _follow(self, event):
-        if self.text.tag_ranges('sel'):         # (a selection, not a click)
+        if self.text.tag_ranges('sel'):         # (una selección, no un clic)
             return
         for tag in self.text.tag_names('current'):
             if tag in self.links:
@@ -452,7 +456,7 @@ class Results(ttk.Frame):
             self.tip.destroy()
             self.tip = None
 
-    # Finding ---------------------------------------------------------------
+    # La búsqueda -----------------------------------------------------------
 
     def _find_bar(self) -> ttk.Frame:
         bar = ttk.Frame(self, padding=(0, 4, 0, 0))

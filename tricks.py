@@ -1,14 +1,17 @@
-"""Tricks: ways of finding words that are not spelled as in the dictionary.
+"""Trucos: maneras de encontrar palabras que no se escriben como en el
+diccionario.
 
-* Roman numerals;
-* syncopated perfects (amasti for amavisti);
-* "slurs": assimilated prefixes (adp- written app-, conl- written coll-);
-* spelling variants, by the first letter of the word, anywhere in it, and
-  (with the medieval tricks) late and medieval spellings;
-* two words written as one.
+* los numerales romanos;
+* los perfectos sincopados (amasti por amavisti);
+* los "slurs": prefijos asimilados (adp- escrito app-, conl- escrito
+  coll-);
+* las variantes de grafía, según la primera letra de la palabra, en
+  cualquier parte de ella y (con el parámetro medieval_spellings) las
+  grafías tardías y medievales;
+* dos palabras escritas como una.
 
-What a trick finds is marked with what was done (see results.Found), and
-the trick's explanation goes in NOTES.
+Lo que encuentra un truco se marca con lo que se hizo (véase
+results.Found), y la explicación del truco va en NOTES.
 """
 
 from __future__ import annotations
@@ -27,10 +30,10 @@ if TYPE_CHECKING:
     from analyzer import Analyzer, Opts
 
 # ---------------------------------------------------------------------------
-#  The spelling tables: (kind, from, to).  A FLIP replaces an initial FROM
-#  with TO; a FLIP_FLOP also tries the reverse; an INTERNAL replaces FROM
-#  anywhere in the word; a SLUR tries an assimilated prefix.  A table stops
-#  at the first rule that finds something.
+#  Las tablas de grafías: (clase, FROM, TO).  Un FLIP cambia un FROM
+#  inicial por TO; un FLIP_FLOP prueba también lo contrario; un INTERNAL
+#  cambia FROM en cualquier parte de la palabra; un SLUR prueba un prefijo
+#  asimilado.  Una tabla se detiene en la primera regla que encuentra algo.
 
 FLIP_FLOP, FLIP, INTERNAL, SLUR = 'flip_flop', 'flip', 'internal', 'slur'
 
@@ -112,7 +115,7 @@ SLUR_TRICKS = {
     's': [(FLIP, 'se', 'ce'), (SLUR, 'sub', None)],
 }
 
-#  Not tried as the first of two words
+#  No se prueban como la primera de dos palabras
 COMMON_PREFIXES = ('dis', 'ex', 'in', 'per', 'prae', 'pro', 're', 'si',
                    'sub', 'super', 'trans')
 
@@ -252,7 +255,7 @@ def syncope(az: Analyzer, word: str, opts: Opts,
 
 
 # ---------------------------------------------------------------------------
-#  Spelling tricks
+#  Los trucos de grafía
 
 def _places(s: str, sub: str):
     """Where SUB is in S (overlapping places too), first to last."""
@@ -271,7 +274,7 @@ class _Tricks:
         self.word = word
         self.s = word.lower()
         self.notes = notes
-        self.lookup = lookup            # word -> findings
+        self.lookup = lookup            # palabra -> hallazgos
         self.slurs = slurs              # (the slur rules)
         self.out: list[Found] = []
 
@@ -302,8 +305,9 @@ class _Tricks:
                                 f"An initial '{a}' may be rendered by '{b}'"):
                     return True
                 if self.slurs:
-                    return False        # slurs only try the reverse if
-                                        # the word does not start with X1
+                    return False        # los slurs solo prueban lo
+                                        # contrario si la palabra no
+                                        # empieza por X1
         return False
 
     def internal(self, x1, x2) -> bool:
@@ -380,7 +384,8 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
     if not w:
         return []
     if w.startswith('is'):
-        # Some forms of eo: its stem i- merges with endings in is- (iis).
+        # Algunas formas de eo: su tema i- se funde con las terminaciones
+        # en is- (iis).
         findings = lookup('i' + w)
         last = parses_of(findings)[-1:]
         if last and not _ends_with_tackon(findings) and \
@@ -419,7 +424,7 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
     return t.out
 
 
-#  At most this many respellings are tried for one word
+#  Como mucho se prueban tantas grafías nuevas para una palabra
 MOST_RESPELLINGS = 40
 
 
@@ -449,7 +454,8 @@ def _medieval_spellings(t: _Tricks) -> bool:
     return False
 
 
-#  The entries that `diphthongs` keeps: those at least this frequent
+#  Las entradas que `diphthongs` conserva: las que tienen al menos esta
+#  frecuencia
 DIPHTHONG_FREQ = Freq.C
 
 

@@ -1,11 +1,11 @@
-"""The settings of WORDS and the files that keep them.
+"""Los ajustes de WORDS y los archivos que los guardan.
 
-The parameters (changed with # in interactive mode: what the results show,
-and how words are looked up) and the developer modes and command
-characters (changed with !) are kept in the configuration file, in its
-sections [parameters] and [developer] (see config.py), with the language of
-the meanings (see languages.py) and that of the interface (see
-interface.py):
+Los parámetros (que se cambian con # en el modo interactivo: lo que
+muestran los resultados y cómo se buscan las palabras) y los modos de
+desarrollador y caracteres de órdenes (que se cambian con !) se guardan en
+el archivo de configuración, en sus secciones [parameters] y [developer]
+(véase config.py), junto con el idioma de los significados (véase
+languages.py) y el de la interfaz (véase interface.py):
 
     [parameters]
     trim_output = true
@@ -13,17 +13,19 @@ interface.py):
     language = "en"
     interface = "en"
 
-The settings files of the original program are still read, if there are
-any, but the configuration file comes first: WORD.MOD (the parameters) and
-WORD.MDV (the developer modes and characters), one setting per line,
+Los archivos de ajustes del programa original todavía se leen, si los
+hay, pero el archivo de configuración prevalece: WORD.MOD (los parámetros)
+y WORD.MDV (los modos de desarrollador y los caracteres), un ajuste por
+línea,
 
     TRIM_OUTPUT                      Y
     START_FILE_CHARACTER             '@'
 
-looked for in the current folder, the program's folder and the data
-folder.  Names the program does not know (some older ones did nothing) are
-ignored.  The names of earlier versions (do_fixes, show_age ...) are read
-as their new ones (RENAMED), in both kinds of files.
+que se buscan en la carpeta actual, en la del programa y en la de datos.
+Los nombres que el programa no conoce (algunos antiguos no hacían nada) se
+ignoran.  Los nombres de versiones anteriores (do_fixes, show_age ...) se
+leen como sus nombres nuevos (RENAMED), en las dos clases de archivos, y
+el archivo de configuración que los tenga se reescribe con los nuevos.
 """
 
 from __future__ import annotations
@@ -38,8 +40,8 @@ from interface import N_, tr
 MODE_FILE = 'WORD.MOD'
 DEV_MODE_FILE = 'WORD.MDV'
 
-#  The parameters, in the order they are asked about: what the results
-#  show, and how words are looked up
+#  Los parámetros, en el orden en que se preguntan: lo que muestran los
+#  resultados y cómo se buscan las palabras
 SHOWN = (
     'show_dictionary_forms', 'show_only_meanings', 'use_glosses',
     'show_long_vowels', 'show_codes', 'explain_codes', 'trim_output',
@@ -52,7 +54,7 @@ MODES = SHOWN + LOOKUP
 DEV_MODES = (
     'show_entry_source', 'pearse_codes', 'pause_in_screen_output')
 
-#  The settings in groups, with their headings, for the dialogues
+#  Los ajustes en grupos, con sus títulos, para los diálogos
 GROUPS = ((N_('What the results show'), SHOWN),
           (N_('How words are looked up'), LOOKUP),
           (N_('Developer modes'), DEV_MODES))
@@ -67,19 +69,20 @@ CHARACTERS = (('START_FILE_CHARACTER', 'start_file_character'),
 #  es ...), kept in [parameters]
 LANGUAGE_CODE = re.compile(r'[a-z]{2,3}(-[A-Za-z0-9]{1,8})*')
 
-#  The settings of the languages, kept with the parameters
+#  Los ajustes de los idiomas, que se guardan con los parámetros
 LANGUAGES = ('language', 'interface')
 
-#  A setting that only makes sense with another one on (the dialogues
-#  skip it, or grey it out, while that one is off)
+#  Un ajuste que solo tiene sentido con otro activado (los diálogos lo
+#  saltan, o lo ponen en gris, mientras ese otro esté desactivado)
 DEPENDS = {
     'trim_medieval': 'trim_output',
     'medieval_spellings': 'use_tricks',
 }
 
-#  The names of earlier versions (until 3.1) and the settings that took
-#  their place.  Two old ones that became one (show_age and
-#  show_frequency) make it on if either is.
+#  Los nombres de versiones anteriores (hasta la 3.1) y los ajustes que
+#  ocuparon su lugar.  Dos antiguos que se volvieron uno (show_age y
+#  show_frequency; show_dictionary y show_dictionary_line, en MERGED) lo
+#  activan si cualquiera de los dos lo está.
 RENAMED = {
     'do_dictionary_forms': 'show_dictionary_forms',
     'do_only_meanings': 'show_only_meanings',
@@ -112,11 +115,11 @@ REMOVED = ('have_output_file', 'write_output_to_file',
            'show_examples', 'do_examples', 'unknowns_only',
            'do_unknowns_only', 'word_list_check', 'do_only_initial_word')
 
-#  Settings that only the interactive command line uses
+#  Ajustes que solo usa la línea de órdenes interactiva
 COMMAND_LINE = ('pause_in_screen_output',)
 
-#  Settings that the window and the web page show on their main screen,
-#  with a box of their own, and not in their Settings
+#  Ajustes que la ventana y la página web muestran en su pantalla
+#  principal, con su propia casilla, y no en sus Ajustes
 #  Si se añade algo aquí, hay que ponerle su casilla en words_gui.py y en
 #  words_web.py; si no, no aparece en ninguna parte de esos dos.
 ON_SCREEN = ('fuzzy_search',)
@@ -141,7 +144,7 @@ def first_sentence(text: str) -> str:
 
 @dataclass
 class Settings:
-    # Parameters (WORD.MOD): what the results show ...
+    # Parámetros (WORD.MOD): lo que muestran los resultados ...
     show_dictionary_forms: bool = True
     show_only_meanings: bool = False
     use_glosses: bool = True
@@ -150,7 +153,7 @@ class Settings:
     explain_codes: bool = False
     trim_output: bool = True
     trim_medieval: bool = False
-    # ... and how words are looked up
+    # ... y cómo se buscan las palabras
     fuzzy_search: bool = True
     use_affixes: bool = True
     use_tricks: bool = True
@@ -240,7 +243,7 @@ class Settings:
                     continue
                 if key in RENAMED:
                     if RENAMED[key] not in given and isinstance(value, bool):
-                        old.append((key, value))  # (if not, the new wins)
+                        old.append((key, value))  # (si no, gana el nuevo)
                 elif key not in allowed:
                     problems.append(tr('[{section}] {key}: unknown setting',
                                        section=name, key=key))
