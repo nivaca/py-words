@@ -207,6 +207,11 @@ la primera página), con estos archivos:
 
 \index{appimage@AppImage}\index{fedora (copr, rpm)@Fedora (Copr, RPM)}\index{debian y ubuntu (deb)@Debian y Ubuntu (.deb)}\index{zip}%
 \begin{itemize}
+\item \texttt{py-words-v.VERSIÓN-windows-x64-setup.exe},
+  \texttt{py-words-v.VERSIÓN-macos-arm64.pkg} (Apple silicon),
+  \texttt{py-words-v.VERSIÓN-macos-x86\_64.pkg} (Intel) y
+  \texttt{py-words-v.VERSIÓN-linux-x86\_64.run}: los instaladores, para
+  Windows, macOS y Linux;
 \item \texttt{py-words-v.VERSIÓN-x86\_64.AppImage}: la AppImage, para
   cualquier Linux;
 \item \texttt{py-words-VERSIÓN-1.fc45.noarch.rpm}: el paquete de Fedora,
@@ -234,9 +239,52 @@ $ brew install python-tk                (macOS, Homebrew)
 \noindent
 \texttt{python3 --version} dice qué Python hay; si es demasiado antiguo,
 el programa lo dice y se detiene. Las órdenes de este manual usan
-\texttt{python3}; en Windows se escribe \texttt{python}. La AppImage y los
-paquetes traen o usan su propio Python, así que no necesitan nada de
-esto.
+\texttt{python3}; en Windows se escribe \texttt{python}. Los
+instaladores, la AppImage y los paquetes traen o usan su propio Python,
+así que no necesitan nada de esto.
+
+\subsection{Los instaladores (Windows, macOS, Linux)}
+\label{sec:installers}
+
+\index{instaladores}\index{macos y windows@macOS y Windows}%
+La manera más sencilla. Cada instalador trae su propio Python 3.13, con
+Tk, e instala el programa, las entradas del menú, la orden
+\texttt{py-words} (con el mismo primer argumento que la AppImage, más
+abajo) y una manera de quitarlo todo. Una versión más nueva reemplaza a
+la anterior; los ajustes, el historial y la caché se conservan. Como en
+los paquetes, el diccionario instalado no se puede editar (la
+sección~\ref{sec:editing} dice cómo hacerlo de todos modos).
+
+\begin{description}
+\item[Windows] (10 o posterior, 64 bits). Ejecute el \texttt{.exe}.
+  Instala solo para usted, sin permisos de administrador, a menos que en
+  su primera página elija instalar para todos los usuarios. Habla inglés
+  o español. Añade la ventana al menú Inicio y, si quiere, la línea de
+  órdenes, la versión de pantalla completa en la terminal y la página
+  web, un acceso directo en el escritorio y la orden \texttt{py-words} en
+  el PATH. Se quita desde «Aplicaciones instaladas» en la Configuración,
+  y entonces pregunta si quitar también sus ajustes. No está firmado, así
+  que SmartScreen puede advertir de él: «Más información» y luego
+  «Ejecutar de todas formas».
+\item[macOS] (11 o posterior). Abra el \texttt{.pkg} de su Mac (arm64
+  para Apple silicon, x86\_64 para Intel). Pone \texttt{py-words.app} en
+  Aplicaciones y, a menos que las deje fuera en «Personalizar»,
+  \texttt{py-words (CLI)}, \texttt{(TUI)} y \texttt{(Web)}, que se abren
+  en Terminal, y la orden \texttt{py-words}. No está firmado por Apple,
+  así que macOS lo rechaza la primera vez: en Configuración del Sistema,
+  «Privacidad y seguridad», elija «Abrir de todas formas».
+  \texttt{sudo py-words uninstall} lo quita (\texttt{--purge}: también
+  sus ajustes, su historial y la caché).
+\item[Linux] (x86-64). Ejecute \texttt{sh py-words-v.VERSIÓN-linux-x86\_64.run}.
+  Como usuario normal instala solo para usted, en
+  \texttt{\textasciitilde/.local/share/py-words}, con la orden en
+  \texttt{\textasciitilde/.local/bin}; con \texttt{sudo}, para todos, en
+  \texttt{/opt/py-words} y \texttt{/usr/local/bin}. Añade las cuatro
+  entradas del menú y los iconos. Primero dice qué va a hacer y
+  pregunta: \texttt{--yes} no pregunta nada, \texttt{--only-gui} añade
+  solo la entrada de la ventana, \texttt{--help} muestra las demás
+  opciones. \texttt{py-words uninstall} lo quita.
+\end{description}
 
 \subsection{El ZIP, o una copia del repositorio}
 

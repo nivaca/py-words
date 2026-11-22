@@ -1,0 +1,9 @@
+/* Los textos del instalador de macOS en español (las claves son los
+   textos en inglés de distribution.xml, que hace tools/bundle-installer.py) */
+"py-words" = "py-words";
+"The dictionary" = "El diccionario";
+"py-words.app, the dictionary in a window, with a Python of its own." = "py-words.app, el diccionario en una ventana, con un Python propio.";
+"Terminal programs" = "Programas de Terminal";
+"py-words (CLI), (TUI) and (Web): the command line, the full-screen terminal version and the web page, opened in Terminal." = "py-words (CLI), (TUI) y (Web): la línea de órdenes, la versión de pantalla completa y la página web, abiertas en Terminal.";
+"The py-words command" = "La orden py-words";
+"The py-words command in /usr/local/bin, to use the programs in Terminal (py-words cli amicus)." = "La orden py-words en /usr/local/bin, para usar los programas en Terminal (py-words cli amicus).";

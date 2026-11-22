@@ -1,0 +1,152 @@
+# Makes the installers of py-words (tools/bundle-installer.py), each on
+# its own system, installs each one, tries it and removes it:
+#
+#   Windows   py-words-v.VERSION-windows-x64-setup.exe   (Inno Setup)
+#   macOS     py-words-v.VERSION-macos-arm64.pkg, -macos-x86_64.pkg
+#   Linux     py-words-v.VERSION-linux-x86_64.run
+#
+# With each tag that is pushed, they are added to the release of the tag
+# (made if there is none); run by hand ("Run workflow"), they are only
+# kept as artifacts of the run.
+
+name: Installers
+
+on:
+  push:
+    tags: ['*']
+  workflow_dispatch:
+
+permissions:
+  contents: write             # (to add them to the release)
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Build the installer
+        run: python3 tools/bundle-installer.py --system linux --arch x86_64
+      - name: Install it, try it and remove it
+        run: |
+          run=$(ls dist/*-linux-x86_64.run)
+          sh "$run" --check
+          sh "$run" --yes
+          root="$HOME/.local/share/py-words"
+          "$root/python/bin/python3" packaging/installer/check.py "$root"
+          ~/.local/bin/py-words cli --language en amicus | grep -i friend
+          test -f ~/.local/share/applications/py-words.desktop
+          ~/.local/bin/py-words uninstall --yes
+          test ! -e "$root" && test ! -e ~/.local/bin/py-words
+          # (and for everyone, as root)
+          sudo sh "$run" --yes
+          /usr/local/bin/py-words cli --language en amicus | grep -i friend
+          sudo /opt/py-words/uninstall.sh --yes
+          test ! -e /opt/py-words
+      - uses: actions/upload-artifact@v5
+        with:
+          name: installer-linux
+          path: dist/*.run
+
+  windows:
+    runs-on: windows-latest
+    env:
+      PYTHONUTF8: '1'         # (the output of the tests goes to a pipe)
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Inno Setup
+        shell: pwsh
+        run: |
+          $found = Get-ChildItem "${env:ProgramFiles(x86)}\Inno Setup *\ISCC.exe", "$env:ProgramFiles\Inno Setup *\ISCC.exe" -ErrorAction SilentlyContinue
+          if (-not $found) { choco install innosetup -y --no-progress }
+      - name: Build the installer
+        run: python tools/bundle-installer.py --system windows
+      - name: Install it, try it and remove it
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $setup = (Get-ChildItem dist\*-windows-x64-setup.exe).FullName
+          Start-Process -Wait -FilePath $setup -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/CURRENTUSER', '/TASKS=terminal,path', '/LOG=install.log'
+          $app = "$env:LOCALAPPDATA\Programs\py-words"
+          & "$app\python\python.exe" packaging\installer\check.py $app
+          if ($LASTEXITCODE) { throw 'check.py failed' }
+          $out = & "$app\bin\py-words.cmd" cli --language en amicus | Out-String
+          if ($out -notmatch 'friend') { throw "no friend in: $out" }
+          $menu = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\py-words"
+          foreach ($kind in 'GUI', 'CLI', 'TUI', 'Web') {
+            if (-not (Test-Path "$menu\py-words ($kind).lnk")) { throw "no shortcut $kind" }
+          }
+          if ((Get-ItemProperty HKCU:\Environment).Path -notlike "*$app\bin*") { throw 'not in the PATH' }
+          if (-not ((Get-ItemProperty "$app\program\data\dictionary.xml").Attributes -band [IO.FileAttributes]::ReadOnly)) { throw 'the dictionary is not read-only' }
+          Start-Process -Wait -FilePath "$app\unins000.exe" -ArgumentList '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART'
+          # (the uninstaller goes on in a copy of itself)
+          for ($i = 0; $i -lt 60 -and (Test-Path "$app\program"); $i++) { Start-Sleep 1 }
+          if (Test-Path "$app\program") { throw 'not uninstalled' }
+          if ((Get-ItemProperty HKCU:\Environment).Path -like "*$app\bin*") { throw 'still in the PATH' }
+      - name: The log of the installation
+        if: always()
+        shell: pwsh
+        run: if (Test-Path install.log) { Get-Content install.log -Tail 60 }
+      - uses: actions/upload-artifact@v5
+        with:
+          name: installer-windows
+          path: dist/*.exe
+
+  macos:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x86_64
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Build the installer
+        run: python3 tools/bundle-installer.py --system macos --arch ${{ matrix.arch }}
+      - name: Install it, try it and remove it
+        run: |
+          set -e
+          sudo installer -pkg dist/*-macos-${{ matrix.arch }}.pkg -target /
+          res=/Applications/py-words.app/Contents/Resources
+          "$res/python/bin/python3" packaging/installer/check.py "$res"
+          /usr/local/bin/py-words cli --language en amicus | grep -i friend
+          test -x "/Applications/py-words (CLI).app/Contents/MacOS/py-words"
+          pkgutil --pkgs | grep io.github.nivaca.py-words
+          sudo /usr/local/bin/py-words uninstall --yes
+          test ! -e /Applications/py-words.app && test ! -e /usr/local/bin/py-words
+          ! pkgutil --pkgs | grep io.github.nivaca.py-words
+      - uses: actions/upload-artifact@v5
+        with:
+          name: installer-macos-${{ matrix.arch }}
+          path: dist/*.pkg
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [linux, windows, macos]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v5
+        with:
+          pattern: installer-*
+          path: installers
+          merge-multiple: true
+      - name: Add them to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view "$TAG" >/dev/null 2>&1 ||
+            gh release create "$TAG" --title "$TAG" --generate-notes
+          gh release upload "$TAG" installers/* --clobber

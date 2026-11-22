@@ -67,7 +67,10 @@ Installation
 
 ### What is needed
 
-Only Python 3.13 or later: the program uses just the standard library of
+The installers (see "Installers" below), the AppImage and the packages
+need nothing else: the first two bring their own Python, and the packages
+install what they need.  To run the program from its folder, you need
+only Python 3.13 or later: the program uses just the standard library of
 Python, nothing more.  The windows (the dictionary and the editor) need
 Tk, which comes with Python on Windows, and with the installers of
 [python.org](https://www.python.org/downloads/) on macOS.  On Linux, and
@@ -97,6 +100,76 @@ to build or to install, and you can run it from where it is:
     $ cd py-words                              # (or the unpacked folder)
     $ python3 words.py amicus                  # a first test
     $ python3 words_gui.py                     # the window
+
+### Installers (Windows, macOS, Linux)
+
+The simplest way to install the program is with the installer for your
+system.  It brings its own Python 3.13 (with Tk), so nothing else is
+needed.  Download it from the
+[Releases](https://github.com/nivaca/py-words/releases) on GitHub:
+
+| System                                | File                                       |
+|---------------------------------------|--------------------------------------------|
+| Windows 10 or later (64-bit)          | `py-words-v.VERSION-windows-x64-setup.exe` |
+| macOS 11 or later, Apple silicon      | `py-words-v.VERSION-macos-arm64.pkg`       |
+| macOS 11 or later, Intel              | `py-words-v.VERSION-macos-x86_64.pkg`      |
+| Linux on x86-64 (glibc 2.17 or later) | `py-words-v.VERSION-linux-x86_64.run`      |
+
+Each one installs the program, the menu entries and the `py-words`
+command, which has the same commands as the AppImage (`py-words` opens
+the window, `py-words cli amicus` looks up a word, `py-words help` lists
+the other programs), and a way to remove all of it.  A newer version
+replaces the older one.  The settings, the history and the cache are in
+your own folders, so they are kept.  As in the packages, the dictionary
+of an installed program cannot be edited, because an update would replace
+it; to edit it, copy the `data` folder and give the copy as the data
+folder.  If you used `words_install.py` before, remove its entries with
+`python3 words_install.py --uninstall`, or they appear beside the
+installer's.
+
+**Windows.**  Run the `.exe`.  It installs for you alone, without
+administrator rights (in `%LOCALAPPDATA%\Programs\py-words`), unless you
+choose on its first page to install for all users (in `C:\Program
+Files\py-words`).  It speaks English or Spanish.  It adds the window to the
+Start menu and, if you want, the command line, the full-screen terminal
+version and the web page, a shortcut on the desktop, and the `py-words`
+command to the PATH.  To remove it, use "Installed apps" in the Settings
+(or "Programs and Features"); it asks then whether to remove your settings
+too.  The installer is not signed, so SmartScreen may warn about it:
+choose "More info" and then "Run anyway".  It can also be run without
+questions:
+
+    > py-words-v.3.28-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
+
+**macOS.**  Open the `.pkg`.  It puts `py-words.app` (the window) in
+Applications and, unless you leave them out under "Customize",
+`py-words (CLI)`, `py-words (TUI)` and `py-words (Web)`, which open in
+Terminal, and the `py-words` command in `/usr/local/bin`.  The package is
+not signed by Apple, so macOS refuses it the first time: in System
+Settings, "Privacy & Security", choose "Open Anyway" (on older versions,
+Control-click the package in Finder and choose "Open").  To remove it:
+
+    $ sudo py-words uninstall [--purge]
+
+(or `sudo /Applications/py-words.app/Contents/Resources/uninstall.sh`;
+`--purge` removes your settings, history and cache as well).
+
+**Linux.**  The `.run` file is a shell script with the program inside:
+
+    $ sh py-words-v.3.28-linux-x86_64.run
+
+Run as a normal user, it installs for you alone, in
+`~/.local/share/py-words`, with the command in `~/.local/bin`; run with
+`sudo`, it installs for everyone, in `/opt/py-words`, with the command in
+`/usr/local/bin`.  It adds the four menu entries and the icons.  It says
+first what it will do and asks; `--yes` asks nothing, `--prefix` and
+`--bindir` choose other folders, `--only-gui` adds only the entry of the
+window, and `--help` lists the other options.  It checks itself before
+installing (`--check` only does that).  `py-words uninstall` removes it
+(with `sudo` if it was installed for everyone), and asks whether to
+remove your settings too.  It needs only `sh`, `tar` and `gzip`, which
+every Linux system has.  The installer speaks English or Spanish, after
+the language of the environment.
 
 ### An AppImage (Linux)
 
@@ -261,10 +334,12 @@ What is where
     icons/              the program's icons
     packaging/          the RPM and .deb packages: the spec, build-rpm.sh,
                         build-deb.py, the menu entries and the py-words
-                        command (not in the zip)
+                        command; installer/, the parts of the installers
+                        (not in the zip)
     tests/              the tests (not needed to use the program)
-    tools/              scripts to make the zip, the AppImage, the icons,
-                        the screenshots and the releases (not in the zip)
+    tools/              scripts to make the zip, the AppImage, the
+                        installers, the icons, the screenshots and the
+                        releases (not in the zip)
 
 To use it elsewhere, copy the folder, or make a zip of the program to
 distribute it:
@@ -296,6 +371,39 @@ downloaded the first time and kept in `~/.cache/py-words-build`;
 `.github/workflows/appimage.yml` makes it on GitHub, and adds it to the
 release of each pushed tag.
 
+The installers (see "Installers") are made with
+
+    $ python3 tools/bundle-installer.py [--system linux|windows|macos]
+          [--arch ARCH] [-o FOLDER] [--python TARBALL] [--no-extras]
+          [--stage-only]
+
+It writes, for this system unless `--system` and `--arch` say otherwise,
+`dist/py-words-v.3.28-linux-x86_64.run` or its Windows or macOS
+counterpart (`-o` gives another folder; in `dist/`, the installers of
+older versions for the same system are removed).  Each one has the files
+of the zip (but not `words_install.py`), a Python of its own and
+`packaging/installer/launcher.py`, which is the `py-words` command.  The
+Python is Python 3.13 with Tk, from
+[python-build-standalone](https://github.com/astral-sh/python-build-standalone),
+of a fixed version whose checksums are in the script; tests, IDLE, pip
+and the files for building extensions are left out.  It also gets
+[certifi](https://pypi.org/project/certifi/) (the certificates for
+Logeion, when the system's are not where that Python looks for them)
+and, for Windows, [windows-curses](https://pypi.org/project/windows-curses/).
+All of them are downloaded the first time, checked, and kept in
+`~/.cache/py-words-build`; `--python` gives another Python, and
+`--no-extras` leaves out the other two.
+
+The installer for Linux (`packaging/installer/install.sh` followed by a
+tar.gz) can be made on any system.  The one for Windows needs
+[Inno Setup](https://jrsoftware.org/isinfo.php)
+(`packaging/installer/py-words.iss`), and the one for macOS needs
+`pkgbuild` and `productbuild` (`packaging/installer/macos/`), so they are
+made on those systems; `--stage-only` only lays out the folder of an
+installer, to look at it.  The workflow `.github/workflows/installers.yml`
+makes the four on GitHub, each on its own system, installs each one,
+tries it and removes it, and adds them to the release of each pushed tag.
+
 The icons in `icons/` are all made from `icons/py-words.svg` with
 
     $ python3 tools/icons.py [--svg FILE] [-o FOLDER] [--dry-run]
@@ -307,13 +415,14 @@ puts together the `.ico` with Pillow and the `.icns` as
 A release on GitHub and Codeberg, with its files, is made with
 
     $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-          [--no-build] [--no-appimage] [--no-deb] [--rpm [--no-copr]]
-          [--only github|codeberg]
+          [--no-build] [--no-appimage] [--no-installer] [--no-deb]
+          [--rpm [--no-copr]] [--only github|codeberg]
           [--dry-run] [--yes]
 
 It needs `gh` (GitHub) and `tea` (Codeberg), and a clean `main`.  It makes
-the zip, the AppImage and the signed .deb (with `packaging/build-deb.py
---sign`; `--no-deb` leaves it out), tags the commit `vVERSION`, pushes `main` and
+the zip, the AppImage, the installer for Linux (`--no-installer` leaves
+it out) and the signed .deb (with `packaging/build-deb.py --sign`;
+`--no-deb` leaves it out), tags the commit `vVERSION`, pushes `main` and
 the tag, and makes the release on each forge (or keeps the existing one),
 attaching the files and replacing those of the same name.  It shows the
 commands and asks before running them; `--dry-run` only shows them.  If
@@ -321,7 +430,9 @@ the tag is on another commit it stops, unless `--redo` moves it, which
 remakes a release.  `--rpm` also attaches the signed RPM and its public
 key (see "An RPM package (Fedora)"), made with `packaging/build-rpm.sh
 --sign`, and sends the RPM to Copr (`copr-cli build py-words`; `--no-copr`
-skips this).
+skips this).  The installers for Windows and macOS cannot be made here:
+when the tag is pushed, `installers.yml` makes them and adds them to the
+release on GitHub only.
 
 Usage
 -----

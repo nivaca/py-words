@@ -1,0 +1,10 @@
+#!/bin/sh
+# Antes de instalar py-words.app, quita la versión anterior, para que no
+# queden archivos que ya no son del programa.  $2 is the install location
+# (/Applications).  Only an app of py-words is removed.
+app="${2:-/Applications}/py-words.app"
+if [ -f "$app/Contents/Info.plist" ] &&
+        grep -q 'io.github.nivaca.py-words' "$app/Contents/Info.plist"; then
+    rm -rf "$app"
+fi
+exit 0

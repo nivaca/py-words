@@ -19,6 +19,7 @@ licencia, lo que vale es lo que digan sus propios archivos.
 
 Sin esto py-words no funciona, se use el zip, el RPM, el .deb o una copia del
 repositorio. py-words no lo incluye: viene con Python o con el sistema.
+(La AppImage y los instaladores sí lo incluyen; véanse las secciones 3 y 4.)
 
 | Software | Para qué lo usa py-words | Licencia |
 |---|---|---|
@@ -54,7 +55,28 @@ siguiente.
 | [appimagetool](https://github.com/AppImage/appimagetool) y el [runtime de AppImage](https://github.com/AppImage/type2-runtime) | la herramienta que hace la AppImage, y el pequeño programa del comienzo que la monta y la ejecuta | licencia MIT (`MIT`) |
 
 
-4.  El RPM y el .deb
+4.  Dentro de los instaladores
+------------------------------
+
+Los instaladores para Windows, macOS y Linux (`tools/bundle-installer.py`)
+también llevan su propio Python, así que contienen copias de lo
+siguiente.
+
+| Software | Qué es en los instaladores | Licencia |
+|---|---|---|
+| Python, compilado por [python-build-standalone](https://github.com/astral-sh/python-build-standalone) | el Python 3.13 de los instaladores, con Tcl/Tk (y ncurses, salvo en Windows) | Python, bajo la licencia de la Python Software Foundation (`Python-2.0.1`); los scripts de compilación de python-build-standalone, bajo la Mozilla Public License 2.0 (`MPL-2.0`) |
+| las bibliotecas dentro de ese Python: Tcl/Tk, ncurses y sus descripciones de terminales, OpenSSL, SQLite, zlib, libffi, expat, bzip2, xz, mpdecimal... | lo que necesita la biblioteca estándar de Python | cada una la suya: `TCL`; `MIT-open-group`; OpenSSL, bajo la licencia Apache 2.0 (`Apache-2.0`); SQLite, en el dominio público; las demás, bajo licencias permisivas (`Zlib`, `MIT`, `bzip2-1.0.6`, `0BSD`, `BSD-2-Clause`...) |
+| [certifi](https://github.com/certifi/python-certifi) | los certificados raíz para las conexiones con Logeion, cuando no se encuentran los del sistema | Mozilla Public License 2.0 (`MPL-2.0`) |
+| [windows-curses](https://github.com/zephyrproject-rtos/windows-curses) (solo Windows) | `curses` en Windows, como en la sección 1 | como en la sección 1 |
+| [Inno Setup](https://jrsoftware.org/isinfo.php) (solo Windows) | la herramienta que hace el instalador para Windows, y los programas de instalación y desinstalación que pone en él | Inno Setup License, una licencia permisiva propia (cualquier uso, conservando sus avisos de copyright) |
+
+`pkgbuild` y `productbuild`, que hacen el `.pkg` para macOS, son parte de
+las herramientas de línea de órdenes de Xcode, de Apple, y no van en el
+paquete; el instalador para Linux es un script de shell y un tar.gz,
+hechos con la biblioteca estándar de Python.
+
+
+5.  El RPM y el .deb
 -------------------
 
 El RPM y el .deb instalan solo py-words; lo que necesitan lo ponen Fedora,
@@ -74,7 +96,7 @@ Python, así que no necesita herramientas de Debian.
 | GnuPG | la firma aparte del .deb, con la misma clave | `GPL-3.0-or-later` |
 
 
-5.  Herramientas con las que se hace py-words
+6.  Herramientas con las que se hace py-words
 --------------------------------------------
 
 Se usan solo para desarrollar, probar y publicar py-words; ninguna va en

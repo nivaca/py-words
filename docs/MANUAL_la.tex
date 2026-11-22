@@ -209,6 +209,11 @@ pagina), cum his fasciculis:
 
 \index{appimage@AppImage}\index{fedora (copr, rpm)@Fedora (Copr, RPM)}\index{debian et ubuntu (deb)@Debian et Ubuntu (.deb)}\index{zip}%
 \begin{itemize}
+\item \texttt{py-words-v.VERSIO-windows-x64-setup.exe},
+  \texttt{py-words-v.VERSIO-macos-arm64.pkg} (Apple silicon),
+  \texttt{py-words-v.VERSIO-macos-x86\_64.pkg} (Intel) et
+  \texttt{py-words-v.VERSIO-linux-x86\_64.run}: institutores, pro
+  Windows, macOS et Linux;
 \item \texttt{py-words-v.VERSIO-x86\_64.AppImage}: AppImage, pro
   quolibet Linux;
 \item \texttt{py-words-VERSIO-1.fc45.noarch.rpm}: fasciculus Fedore,
@@ -236,9 +241,50 @@ $ brew install python-tk                (macOS, Homebrew)
 \noindent
 \texttt{python3 --version} dicit quod Python habeatur; si nimis antiquum
 est, programma hoc dicit et cessat. Mandata huius libri utuntur
-\texttt{python3}; in Windows scribitur \texttt{python}. AppImage et
-fasciculi suum proprium Python ferunt vel adhibent, et ideo nullo istorum
-egent.
+\texttt{python3}; in Windows scribitur \texttt{python}. Institutores,
+AppImage et fasciculi suum proprium Python ferunt vel adhibent, et ideo
+nullo istorum egent.
+
+\subsection{De institutoribus (Windows, macOS, Linux)}
+\label{sec:installers}
+
+\index{institutores}\index{macos et windows@macOS et Windows}%
+Via simplicissima. Quilibet institutor proprium Python 3.13, cum Tk, secum
+fert, et instituit programma, locos in tabella, mandatum
+\texttt{py-words} (cum eodem primo argumento quo AppImage, infra) et modum
+omnia removendi. Versio recentior priori substituitur; optiones, historia
+et cella servantur. Sicut in fasciculis, dictionarium institutum emendari
+non potest (sectio~\ref{sec:editing} dicit quomodo tamen fiat).
+
+\begin{description}
+\item[Windows] (10 vel posterius, 64 bit). Curre \texttt{.exe}.
+  Instituit pro te solo, sine iuribus administratoris, nisi in prima
+  pagina eius eligas instituere pro omnibus usoribus. Loquitur Anglice vel
+  Hispanice. Addit fenestram tabelle Initii et, si vis, lineam mandatorum,
+  versionem terminalis in pleno visu et paginam interretialem, nexum in
+  mensa et mandatum \texttt{py-words} in PATH. Removetur per ``Installed
+  apps'' in Optionibus, et tunc interrogat utrum etiam optiones tuas
+  removeat. Non est signatus, ideo SmartScreen de eo monere potest:
+  ``More info'', deinde ``Run anyway''.
+\item[macOS] (11 vel posterius). Aperi \texttt{.pkg} computatri tui
+  (arm64 pro Apple silicon, x86\_64 pro Intel). Ponit
+  \texttt{py-words.app} in Applications et, nisi ea omittas sub
+  ``Customize'', \texttt{py-words (CLI)}, \texttt{(TUI)} et
+  \texttt{(Web)}, que in Terminal aperiuntur, et mandatum
+  \texttt{py-words}. Non est signatus ab Apple, ideo macOS ipsum prima
+  vice recusat: in System Settings, ``Privacy \& Security'', elige ``Open
+  Anyway''. \texttt{sudo py-words uninstall} ipsum removet
+  (\texttt{--purge}: etiam optiones, historiam et cellam tuam).
+\item[Linux] (x86-64). Curre \texttt{sh py-words-v.VERSIO-linux-x86\_64.run}.
+  Ab usore communi cursus, instituit pro te solo, in
+  \texttt{\textasciitilde/.local/share/py-words}, cum mandato in
+  \texttt{\textasciitilde/.local/bin}; cum \texttt{sudo}, pro omnibus, in
+  \texttt{/opt/py-words} et \texttt{/usr/local/bin}. Addit quattuor locos
+  in tabella et icones. Primo dicit quid facturus sit et interrogat:
+  \texttt{--yes} nichil interrogat, \texttt{--only-gui} addit solum locum
+  fenestre, \texttt{--help} ceteras optiones ostendit. \texttt{py-words
+  uninstall} ipsum removet.
+\end{description}
 
 \subsection{ZIP, vel exemplar repositorii}
 

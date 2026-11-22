@@ -65,8 +65,11 @@ De institutione
 
 ### Quid requiratur
 
-Solum Python 3.13 vel posterior: programma utitur sola bibliotheca
-communi Python, nichil amplius.  Fenestre (dictionarium et editor) requirunt
+Institutores (vide "De institutoribus" infra), AppImage et fasciculi
+nichil aliud requirunt: duo priores proprium Python secum ferunt, et
+fasciculi instituunt quod eis opus est.  Ut programma ex capsula sua
+curras, solum Python 3.13 vel posterius requiritur: programma utitur sola
+bibliotheca communi Python, nichil amplius.  Fenestre (dictionarium et editor) requirunt
 Tk, quod cum Python venit in Windows, et cum institutoribus
 [python.org](https://www.python.org/downloads/) in macOS.  In Linux, et
 cum Python Homebrew in macOS, potest esse fasciculus separatus:
@@ -96,6 +99,77 @@ construendum vel instituendum, et ipsum currere potes ubi est:
     $ cd py-words                              # (or the unpacked folder)
     $ python3 words.py amicus                  # a first test
     $ python3 words_gui.py                     # the window
+
+### De institutoribus (Windows, macOS, Linux)
+
+Via simplicissima programma instituendi est per institutorem systematis
+tui.  Proprium Python 3.13 (cum Tk) secum fert, ita quod nichil aliud
+requiritur.  Trahe ipsum ex interreti ex
+[Releases](https://github.com/nivaca/py-words/releases) in GitHub:
+
+| Systema                                    | Fasciculus                                 |
+|--------------------------------------------|--------------------------------------------|
+| Windows 10 vel posterius (64 bit)          | `py-words-v.VERSION-windows-x64-setup.exe` |
+| macOS 11 vel posterius, Apple silicon      | `py-words-v.VERSION-macos-arm64.pkg`       |
+| macOS 11 vel posterius, Intel              | `py-words-v.VERSION-macos-x86_64.pkg`      |
+| Linux in x86-64 (glibc 2.17 vel posterior) | `py-words-v.VERSION-linux-x86_64.run`      |
+
+Quilibet instituit programma, locos in tabella et mandatum `py-words`,
+quod eadem mandata habet que AppImage (`py-words` aperit fenestram,
+`py-words cli amicus` querit verbum, `py-words help` ostendit cetera
+programmata), et modum omnia removendi.  Versio recentior substituitur
+priori.  Optiones, historia et cella sunt in capsulis usoris, ideo
+servantur.  Sicut in fasciculis, dictionarium programmatis instituti
+emendari non potest, quia renovatio ipsum substitueret; ad ipsum
+emendandum, copia capsulam `data` et da copiam ut capsulam datorum.  Si
+prius usus es `words_install.py`, remove locos eius per `python3
+words_install.py --uninstall`, alioquin iuxta locos institutoris
+apparebunt.
+
+**Windows.**  Curre `.exe`.  Instituit pro te solo, sine iuribus
+administratoris (in `%LOCALAPPDATA%\Programs\py-words`), nisi in prima
+pagina eius eligas instituere pro omnibus usoribus (in `C:\Program
+Files\py-words`).  Loquitur Anglice vel Hispanice.  Addit fenestram
+tabelle Initii et, si vis, lineam mandatorum, versionem terminalis in
+pleno visu et paginam interretialem, nexum in mensa (desktop) et mandatum
+`py-words` in PATH.  Removetur per "Installed apps" in Optionibus (vel
+"Programs and Features"), et tunc interrogat utrum etiam optiones tuas
+removeat.  Institutor non est signatus, ideo SmartScreen de eo monere
+potest: elige "More info" et deinde "Run anyway".  Potest etiam curri sine
+interrogationibus:
+
+    > py-words-v.3.28-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
+
+**macOS.**  Aperi `.pkg`.  Ponit `py-words.app` (fenestram) in
+Applications et, nisi ea omittas sub "Customize", `py-words (CLI)`,
+`py-words (TUI)` et `py-words (Web)`, que in Terminal aperiuntur, et
+mandatum `py-words` in `/usr/local/bin`.  Fasciculus non est signatus ab
+Apple, ideo macOS ipsum prima vice recusat: in System Settings, "Privacy
+& Security", elige "Open Anyway" (in versionibus antiquioribus, preme
+fasciculum in Finder cum Control et elige "Open").  Ad ipsum removendum:
+
+    $ sudo py-words uninstall [--purge]
+
+(vel `sudo /Applications/py-words.app/Contents/Resources/uninstall.sh`;
+`--purge` removet etiam optiones, historiam et cellam tuam).
+
+**Linux.**  Fasciculus `.run` est scriptum testae (shell) cum programmate
+intus:
+
+    $ sh py-words-v.3.28-linux-x86_64.run
+
+Cursum ab usore communi, instituit pro te solo, in
+`~/.local/share/py-words`, cum mandato in `~/.local/bin`; cursum cum
+`sudo`, instituit pro omnibus, in `/opt/py-words`, cum mandato in
+`/usr/local/bin`.  Addit quattuor locos in tabella et icones.  Primo
+dicit quid facturum sit et interrogat; `--yes` nichil interrogat,
+`--prefix` et `--bindir` alias capsulas eligunt, `--only-gui` addit solum
+locum fenestre, et `--help` ceteras optiones ostendit.  Antequam
+instituat, se ipsum probat (`--check` solum hoc facit).  `py-words
+uninstall` ipsum removet (cum `sudo` si pro omnibus institutum est), et
+interrogat utrum etiam optiones tuas removeat.  Solum requirit `sh`, `tar`
+et `gzip`, que omne systema Linux habet.  Institutor loquitur Anglice vel
+Hispanice, secundum linguam ambitus.
 
 ### De AppImage (Linux)
 
@@ -261,10 +335,12 @@ Quid ubi sit
     icons/              the program's icons
     packaging/          the RPM and .deb packages: the spec, build-rpm.sh,
                         build-deb.py, the menu entries and the py-words
-                        command (not in the zip)
+                        command; installer/, the parts of the installers
+                        (not in the zip)
     tests/              the tests (not needed to use the program)
-    tools/              scripts to make the zip, the AppImage, the icons,
-                        the screenshots and the releases (not in the zip)
+    tools/              scripts to make the zip, the AppImage, the
+                        installers, the icons, the screenshots and the
+                        releases (not in the zip)
 
 Ut ipsum alibi adhibeas, copia capsulam, vel fac zip programmatis ad ipsum
 distribuendum:
@@ -296,6 +372,39 @@ trahuntur prima vice et servantur in `~/.cache/py-words-build`;
 `.github/workflows/appimage.yml` ipsum facit in GitHub, et addit ipsum
 editioni cuiuslibet signi (tag) impulsi.
 
+Institutores (vide "De institutoribus") fiunt per
+
+    $ python3 tools/bundle-installer.py [--system linux|windows|macos]
+          [--arch ARCH] [-o FOLDER] [--python TARBALL] [--no-extras]
+          [--stage-only]
+
+Pro hoc systemate, nisi `--system` et `--arch` aliud dicant, scribit
+`dist/py-words-v.3.28-linux-x86_64.run` vel parem eius pro Windows vel
+macOS (`-o` dat aliam capsulam; in `dist/` delentur institutores
+versionum priorum pro eodem systemate).  Quilibet continet fasciculos zip
+(sed non `words_install.py`), proprium Python et
+`packaging/installer/launcher.py`, quod est mandatum `py-words`.  Python
+est Python 3.13 cum Tk, ex
+[python-build-standalone](https://github.com/astral-sh/python-build-standalone),
+versionis fixe cuius summe probationis in scripto sunt; sine
+probationibus, IDLE, pip et fasciculis ad extensiones construendas.
+Continet etiam [certifi](https://pypi.org/project/certifi/) (certificata
+pro Logeion, quando ea systematis non sunt ubi illud Python ea querit) et,
+pro Windows, [windows-curses](https://pypi.org/project/windows-curses/).
+Omnia ex interreti trahuntur prima vice, probantur et servantur in
+`~/.cache/py-words-build`; `--python` dat aliud Python, et `--no-extras`
+alia duo omittit.
+
+Institutor pro Linux (`packaging/installer/install.sh` cum tar.gz
+sequente) fieri potest in quolibet systemate.  Ille pro Windows requirit
+[Inno Setup](https://jrsoftware.org/isinfo.php)
+(`packaging/installer/py-words.iss`), et ille pro macOS `pkgbuild` et
+`productbuild` (`packaging/installer/macos/`), ideo in illis systematibus
+fiunt; `--stage-only` solum capsulam institutoris componit, ut
+inspiciatur.  Processus `.github/workflows/installers.yml` facit quattuor
+in GitHub, unumquemque in systemate suo, unumquemque instituit, probat et
+removet, et addit eos editioni cuiuslibet signi (tag) impulsi.
+
 Icones in `icons/` omnes fiunt ex `icons/py-words.svg` per
 
     $ python3 tools/icons.py [--svg FILE] [-o FOLDER] [--dry-run]
@@ -306,13 +415,14 @@ componit `.ico` per Pillow et `.icns` sicut `words_install.py` facit.
 Editio in GitHub et Codeberg, cum fasciculis suis, fit per
 
     $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-          [--no-build] [--no-appimage] [--no-deb] [--rpm [--no-copr]]
-          [--only github|codeberg]
+          [--no-build] [--no-appimage] [--no-installer] [--no-deb]
+          [--rpm [--no-copr]] [--only github|codeberg]
           [--dry-run] [--yes]
 
 Requirit `gh` (GitHub) et `tea` (Codeberg), et `main` mundum.  Facit zip,
-AppImage et fasciculum .deb signatum (per `packaging/build-deb.py
---sign`; `--no-deb` ipsum omittit), signat commissionem ut `vVERSION`, impellit `main` et
+AppImage, institutorem pro Linux (`--no-installer` ipsum omittit) et
+fasciculum .deb signatum (per `packaging/build-deb.py --sign`;
+`--no-deb` ipsum omittit), signat commissionem ut `vVERSION`, impellit `main` et
 signum, et facit editionem in unaquaque officina (vel servat eam que iam
 est), fasciculos affigens et substituens eos eiusdem nominis.  Ostendit
 mandata et interrogat antequam ea currat; `--dry-run` solum ea ostendit.
@@ -320,7 +430,9 @@ Si signum est in alia commissione, cessat, nisi `--redo` ipsum moveat,
 quod editionem denuo facit.  `--rpm` affigit etiam RPM signatum et clavem
 eius publicam (vide "De fasciculo RPM (Fedora)"), factum per
 `packaging/build-rpm.sh --sign`, et mittit RPM ad Copr (`copr-cli build
-py-words`; `--no-copr` hoc omittit).
+py-words`; `--no-copr` hoc omittit).  Institutores pro Windows et macOS
+hic fieri non possunt: cum signum impellitur, `installers.yml` eos facit
+et addit editioni, in GitHub tantum.
 
 De usu
 ------

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Publica una versión de py-words en GitHub (con gh) y en Codeberg (con
 tea): la etiqueta vVERSION (la versión de version.py), con el zip, el
-AppImage y el .deb firmado adjuntos y (--rpm) el RPM firmado, que se
-publica también en Copr.
+AppImage, el instalador de Linux (.run) y el .deb firmado adjuntos y
+(--rpm) el RPM firmado, que se publica también en Copr.
 
     python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
-                             [--no-build] [--no-appimage] [--no-deb]
+                             [--no-build] [--no-appimage] [--no-installer]
+                             [--no-deb]
                              [--rpm [--no-copr]]
                              [--only github|codeberg] [--remote REMOTE]
                              [--tea-login LOGIN] [--dry-run] [--yes]
@@ -16,9 +17,10 @@ En orden, y cada paso solo si hace falta:
    que gh y tea estén instalados (con --rpm, también rpmbuild y, salvo
    --no-copr, copr-cli), y que la clave de firma (la del .deb y la del
    RPM) esté en el llavero de gpg del computador;
-2. hace el zip y el AppImage en dist/ (tools/bundle-zip.py y
-   tools/bundle-appimage.py), salvo con --no-build (entonces usa los que
-   hay en dist/); también el .deb, con su firma aparte (.deb.asc), en
+2. hace el zip, el AppImage y el instalador de Linux en dist/
+   (tools/bundle-zip.py, tools/bundle-appimage.py y
+   tools/bundle-installer.py --system linux), salvo con --no-build
+   (entonces usa los que hay en dist/); también el .deb, con su firma aparte (.deb.asc), en
    dist/ (packaging/build-deb.py --sign), y con --rpm el RPM firmado y su
    clave pública en build/rpm/ (packaging/build-rpm.sh --sign); gpg pide
    la frase de paso;
@@ -46,7 +48,11 @@ usa el login llamado codeberg, salvo que --tea-login nombre otro.
 
 Cuando se sube la etiqueta, GitHub corre .github/workflows/appimage.yml,
 que vuelve a hacer el AppImage y reemplaza el que se adjuntó aquí (mismo
-commit, mismo nombre de archivo).
+commit, mismo nombre de archivo), y .github/workflows/installers.yml,
+que hace los instaladores de Windows y de macOS (que solo se pueden hacer
+en esos sistemas), los prueba y los adjunta a la versión de GitHub, junto
+con otra copia del de Linux.  En Codeberg quedan sin ellos; se pueden
+bajar de GitHub y subir con tea.
 """
 
 import argparse
@@ -66,6 +72,9 @@ from version import VERSION  # noqa: E402
 TAG = f'v{VERSION}'
 ZIP = os.path.join('dist', f'py-words-v.{VERSION}.zip')
 APPIMAGE = os.path.join('dist', f'py-words-v.{VERSION}-x86_64.AppImage')
+#  El instalador de Linux (tools/bundle-installer.py); los de Windows y
+#  macOS los hace GitHub (installers.yml)
+INSTALLER = os.path.join('dist', f'py-words-v.{VERSION}-linux-x86_64.run')
 #  El .deb que hace packaging/build-deb.py (su REVISION es la 1) y su firma
 DEB = os.path.join('dist', f'py-words_{VERSION}-1_all.deb')
 DEB_SIGNATURE = DEB + '.asc'
@@ -217,6 +226,10 @@ class Release:
         if APPIMAGE in self.files:
             self.plan('Make the AppImage', sys.executable,
                       os.path.join('tools', 'bundle-appimage.py'))
+        if INSTALLER in self.files:
+            self.plan('Make the installer for Linux', sys.executable,
+                      os.path.join('tools', 'bundle-installer.py'),
+                      '--system', 'linux', '--arch', 'x86_64')
         if DEB in self.files:
             self.plan('Make the signed .deb', sys.executable, os.path.join(
                 'packaging', 'build-deb.py'), '--sign')
@@ -329,6 +342,8 @@ class Release:
         args = self.args
         self.forges = [args.only] if args.only else ['github', 'codeberg']
         self.files = [ZIP] + ([] if args.no_appimage else [APPIMAGE])
+        if not args.no_installer:
+            self.files.append(INSTALLER)
         if not args.no_deb:
             self.files += [DEB, DEB_SIGNATURE]
         if args.rpm:
@@ -348,7 +363,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(
         prog='tools/release.py',
         description=f'Publish {TAG} on GitHub and Codeberg, with the zip, '
-                    'the AppImage, the .deb and (--rpm) the RPM.')
+                    'the AppImage, the installer for Linux, the .deb and '
+                    '(--rpm) the RPM.')
     parser.add_argument('--redo', action='store_true',
                         help=f'move {TAG} to HEAD if it is on another commit '
                              '(here and on the remote), and replace the '
@@ -359,10 +375,13 @@ def main(argv=None):
     notes.add_argument('--notes-file', metavar='FILE',
                        help='the notes of a new release, from FILE')
     parser.add_argument('--no-build', action='store_true',
-                        help='use the zip and AppImage in dist/, without '
-                             'making them again')
+                        help='use the zip, the AppImage and the installer in '
+                             'dist/, without making them again')
     parser.add_argument('--no-appimage', action='store_true',
                         help='without the AppImage')
+    parser.add_argument('--no-installer', action='store_true',
+                        help='without the installer for Linux '
+                             '(tools/bundle-installer.py)')
     parser.add_argument('--no-deb', action='store_true',
                         help='without the .deb (packaging/build-deb.py '
                              '--sign)')
