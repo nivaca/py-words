@@ -9,7 +9,7 @@ wrote, in the Ada version maintained at
 both the code and the data have been redesigned, and it now includes a new
 English dictionary (Lewis and Short) and two new Spanish ones
 (Echave-Sustaeta and De Miguel).  Here I explain how it was made, in
-eleven stages.
+twelve stages.
 
 The dictionary has six sources: WORDS, by William Whitaker, the starting
 point of the program and of the entries; R. E. Latham's *Revised Medieval
@@ -447,10 +447,46 @@ build: git writes the names with letters outside ASCII in quoted form
 (`DESCRIPCI\303\223N_es.md`), so the script could not find the Spanish
 description, and it now asks git for the names as they are.
 
+12. Installers
+--------------
+
+On Windows and macOS, the program still needed a Python installed first,
+and then `words_install.py` to put it in the menu; for many users of a
+Latin dictionary that is too much.  So in 3.29 I made installers for the
+three systems, each with a Python of its own, as the AppImage has.  The
+Python comes from python-build-standalone, a project that publishes
+Python builds meant to be moved anywhere, with Tk, for every system; one
+fixed version is used, and its checksums are written in the script that
+makes the installers (`tools/bundle-installer.py`), which checks each
+download against them.  A small launcher, `launcher.py`, gives the
+`py-words` command with the same commands as the AppImage and the
+packages, and adds `py-words uninstall`.  For Windows I used Inno Setup,
+which gives a normal setup program: for the user alone or for everyone,
+in English or Spanish, with the Start menu, the PATH and an uninstaller.
+For macOS the tools of Apple make a `.pkg` with three parts (the
+application, the Terminal programs and the command), and for Linux the
+installer is a shell script with a tar.gz after it, made with the
+standard library, which installs for the user or, as root, for everyone,
+and writes its own uninstaller.
+
+The difficulty was that Inno Setup and Apple's tools only run on their
+own systems, and I build the releases on Fedora.  So a workflow on GitHub
+makes them on Windows and on macOS (on Apple silicon and on Intel), and
+also there installs each one, tries it, and removes it again, before
+adding them to the release.  Two problems came up.  The first Linux
+installer was 85 MB, because those Python builds keep their debug
+symbols; the stripped builds that the project also publishes brought it
+to 43 MB.  And in trimming that Python of what the program does not use
+(the tests, IDLE, pip), I had at first removed its whole `share` folder,
+where its curses keeps the descriptions of the terminals; without them
+the full-screen terminal version would not start.  As in the packages,
+the installed dictionary is read-only, so that an update cannot replace
+someone's edits.
+
 Testing
 -------
 
-The program has unit tests and regression tests (`tests/`), 385 in total,
+The program has unit tests and regression tests (`tests/`), 405 in total,
 that run with Python 3.13 (the oldest it supports) and with the latest
 Python; `tools/test.py` runs them all at once, each class of tests in a
 process of its own, in about a minute and a half.  The regression tests
@@ -461,4 +497,8 @@ Spanish file of their own.  The online version was tried in a browser
 controlled by a script (searches in both directions, the links of the
 results, the Back button, dark mode, the Spanish interface, and the
 settings that stay after reloading), from a local server and also on the
-site then published.  The program now has 44 files, around 17,000 lines.
+site then published.  The installers are tried on GitHub, each on its own
+system, by installing them, running a search and removing them; the one
+for Linux is also built, installed and removed by the tests, with a
+stand-in for its Python.  The program now has 44 files, around 17,400
+lines.

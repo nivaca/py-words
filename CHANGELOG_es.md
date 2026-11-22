@@ -1,12 +1,43 @@
 # Registro de cambios
 
 Los cambios notables de py-words. Las releases, con el zip, la AppImage,
-el .deb firmado y el RPM firmado, están en
+los instaladores (desde la 3.29), el .deb firmado y el RPM firmado,
+están en
 [Codeberg](https://codeberg.org/nivaca/py-words/releases) y
 [GitHub](https://github.com/nivaca/py-words/releases); el RPM para
 Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
+
+## 3.29 — 2026-11-22
+
+- **Instaladores para Windows, macOS y Linux**, cada uno con su propio
+  Python 3.13 (de python-build-standalone, de una versión fija,
+  comprobada por su SHA-256), así que no hace falta nada más
+  (`tools/bundle-installer.py`, `packaging/installer/`):
+  - Windows (`py-words-v.3.29-windows-x64-setup.exe`, Inno Setup): para
+    el usuario sin permisos de administrador, o para todos; en inglés o
+    en español; los cuatro programas en el menú Inicio, un acceso directo
+    en el escritorio y la orden `py-words` en el PATH si se quiere; un
+    desinstalador que pregunta si quitar también los ajustes.
+  - macOS (`-macos-arm64.pkg`, `-macos-x86_64.pkg`): `py-words.app`, los
+    tres programas de Terminal y la orden en `/usr/local/bin`, los dos
+    últimos opcionales; `sudo py-words uninstall [--purge]` lo quita.
+  - Linux (`-linux-x86_64.run`): un script de shell con el programa
+    dentro, para el usuario (`~/.local`) o, con `sudo`, para todos
+    (`/opt`, `/usr/local`); las cuatro entradas del menú, los iconos, la
+    orden y un desinstalador; se comprueba a sí mismo antes de instalar.
+  - Todos dan la orden `py-words` de la AppImage y los paquetes, más
+    `py-words uninstall`, y dejan el diccionario de solo lectura, para
+    que una actualización no borre lo editado.
+- `.github/workflows/installers.yml` hace los instaladores en GitHub,
+  cada uno en su sistema, instala cada uno, lo prueba (Tk, curses,
+  HTTPS, una búsqueda) y lo quita, y los añade a la release de cada tag.
+- `tools/release.py` hace el instalador de Linux (`--no-installer` no lo
+  hace), y `--installers` copia los de Windows y macOS de la release de
+  GitHub a la de Codeberg.
+- Pruebas de los instaladores (`tests/test_installer.py`); los manuales,
+  los README y las listas de licencias los describen.
 
 ## 3.28 — 2026-11-21
 

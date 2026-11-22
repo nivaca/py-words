@@ -143,7 +143,7 @@ instalador no está firmado, así que SmartScreen puede advertir de él:
 elija "Más información" y luego "Ejecutar de todas formas".  También se
 puede ejecutar sin preguntas:
 
-    > py-words-v.3.28-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
+    > py-words-v.3.29-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
 
 **macOS.**  Abra el `.pkg`.  Pone `py-words.app` (la ventana) en
 Aplicaciones y, a menos que las deje fuera en "Personalizar",
@@ -162,7 +162,7 @@ paquete en el Finder y elija "Abrir").  Para quitarlo:
 **Linux.**  El archivo `.run` es un script de shell con el programa
 dentro:
 
-    $ sh py-words-v.3.28-linux-x86_64.run
+    $ sh py-words-v.3.29-linux-x86_64.run
 
 Ejecutado como usuario normal, instala solo para usted, en
 `~/.local/share/py-words`, con la orden en `~/.local/bin`; con `sudo`,
@@ -184,10 +184,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.28-x86_64.AppImage
-    $ ./py-words-v.3.28-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.28-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.28-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.29-x86_64.AppImage
+    $ ./py-words-v.3.29-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.29-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.29-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -219,7 +219,7 @@ O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
 paquete va firmado; importe su clave una vez) e instálelo:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.28-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.29-1.fc45.noarch.rpm
 
 Funciona en cualquier Fedora con Python 3.13 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
@@ -267,7 +267,7 @@ cuatro accesos del menú y el icono.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub e
 instálelo:
 
-    $ sudo apt install ./py-words_3.28-1_all.deb
+    $ sudo apt install ./py-words_3.29-1_all.deb
 
 Necesita Python 3.13 o posterior (Debian 13, Ubuntu 25.04 o posteriores);
 `apt` instala con él `python3-tk`.  La firma va aparte:
@@ -275,7 +275,7 @@ Necesita Python 3.13 o posterior (Debian 13, Ubuntu 25.04 o posteriores);
 clave que el RPM, y se comprueba así:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words_3.28-1_all.deb.asc py-words_3.28-1_all.deb
+    $ gpg --verify py-words_3.29-1_all.deb.asc py-words_3.29-1_all.deb
 
 Después `py-words` lo inicia, como con el RPM, y `sudo apt remove
 py-words` lo quita.  Para hacerlo desde la carpeta del programa (un clon
@@ -358,7 +358,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.28.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.29.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -374,7 +374,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.28-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.29-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -391,7 +391,7 @@ Los instaladores (véase "Instaladores") se hacen con
           [--stage-only]
 
 Para este sistema, a menos que `--system` y `--arch` digan otra cosa,
-eso escribe `dist/py-words-v.3.28-linux-x86_64.run` o su equivalente de
+eso escribe `dist/py-words-v.3.29-linux-x86_64.run` o su equivalente de
 Windows o de macOS (`-o` da otra carpeta; en `dist/` se borran los
 instaladores de versiones anteriores para el mismo sistema).  Cada uno
 lleva los archivos del zip (menos `words_install.py`), un Python propio y
@@ -1591,6 +1591,20 @@ verlas.
 Versiones
 ---------
 
+- 3.29:
+  - Instaladores para Windows, macOS y Linux, cada uno con un Python
+    propio, así que no hace falta nada más: un programa de instalación
+    para Windows (Inno Setup; para el usuario o para todos, menú Inicio,
+    PATH, desinstalador), un `.pkg` para macOS (Apple silicon e Intel; la
+    ventana, los programas de Terminal y la orden `py-words`) y un `.run`
+    para Linux (para el usuario o, con `sudo`, para todos; entradas del
+    menú, orden, desinstalador).  Véase "Instaladores (Windows, macOS,
+    Linux)".
+  - `tools/bundle-installer.py` los hace; el workflow
+    `.github/workflows/installers.yml` los hace en GitHub, instala y
+    prueba cada uno en su sistema, y los añade a la release.
+    `tools/release.py` hace el de Linux, y `--installers` copia los demás
+    a Codeberg.
 - 3.28:
   - El código del idioma de la interfaz (EN, ES o LA) aparece en la
     ventana principal de cada programa, como en la página web del autor:
