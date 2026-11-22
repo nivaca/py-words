@@ -10,6 +10,7 @@ AppImage, el instalador de Linux (.run) y el .deb firmado adjuntos y
                              [--rpm [--no-copr]]
                              [--only github|codeberg] [--remote REMOTE]
                              [--tea-login LOGIN] [--dry-run] [--yes]
+    python3 tools/release.py --installers [--dry-run] [--yes]
 
 En orden, y cada paso solo si hace falta:
 
@@ -51,8 +52,9 @@ que vuelve a hacer el AppImage y reemplaza el que se adjuntó aquí (mismo
 commit, mismo nombre de archivo), y .github/workflows/installers.yml,
 que hace los instaladores de Windows y de macOS (que solo se pueden hacer
 en esos sistemas), los prueba y los adjunta a la versión de GitHub, junto
-con otra copia del de Linux.  En Codeberg quedan sin ellos; se pueden
-bajar de GitHub y subir con tea.
+con otra copia del de Linux.  Cuando ese workflow termina,
+--installers (sin nada más) los baja de la versión de GitHub y los
+adjunta a la de Codeberg, que de otro modo quedaría sin ellos.
 """
 
 import argparse
@@ -75,6 +77,11 @@ APPIMAGE = os.path.join('dist', f'py-words-v.{VERSION}-x86_64.AppImage')
 #  El instalador de Linux (tools/bundle-installer.py); los de Windows y
 #  macOS los hace GitHub (installers.yml)
 INSTALLER = os.path.join('dist', f'py-words-v.{VERSION}-linux-x86_64.run')
+#  Los que hace GitHub, y adónde los baja --installers para Codeberg
+CI_INSTALLERS = [os.path.join('build', 'installers', name) for name in (
+    f'py-words-v.{VERSION}-windows-x64-setup.exe',
+    f'py-words-v.{VERSION}-macos-arm64.pkg',
+    f'py-words-v.{VERSION}-macos-x86_64.pkg')]
 #  El .deb que hace packaging/build-deb.py (su REVISION es la 1) y su firma
 DEB = os.path.join('dist', f'py-words_{VERSION}-1_all.deb')
 DEB_SIGNATURE = DEB + '.asc'
@@ -338,8 +345,36 @@ class Release:
 
     # All --------------------------------------------------------------
 
+    def installers(self):
+        """--installers: those of Windows and macOS, from the release on
+        GitHub (made by installers.yml) to the one on Codeberg."""
+        self.forges = ['github', 'codeberg']
+        self.files = CI_INSTALLERS
+        for tool in ('gh', 'tea'):
+            if not shutil.which(tool):
+                sys.exit(f'release.py: {tool} is not installed')
+        repos = self.repos()
+        names = [os.path.basename(f) for f in CI_INSTALLERS]
+        on_github = self.read('gh', 'release', 'view', TAG, '--repo',
+                              repos['github'], '--json', 'assets', '--jq',
+                              '.assets[].name', check=False).split('\n')
+        missing = [n for n in names if n not in on_github]
+        if missing:
+            sys.exit(f'release.py: the release {TAG} on GitHub does not have '
+                     f'{", ".join(missing)} (has installers.yml finished?)')
+        patterns = [a for n in names for a in ('--pattern', n)]
+        self.plan('Download the installers from GitHub', 'gh', 'release',
+                  'download', TAG, *patterns, '--dir',
+                  os.path.join('build', 'installers'), '--clobber',
+                  '--repo', repos['github'])
+        self.codeberg(repos['codeberg'])
+        self.run_plan()
+
     def __call__(self):
         args = self.args
+        if args.installers:
+            self.installers()
+            return
         self.forges = [args.only] if args.only else ['github', 'codeberg']
         self.files = [ZIP] + ([] if args.no_appimage else [APPIMAGE])
         if not args.no_installer:
@@ -391,6 +426,10 @@ def main(argv=None):
                              'build of it')
     parser.add_argument('--no-copr', action='store_true',
                         help='with --rpm, do not send it to Copr')
+    parser.add_argument('--installers', action='store_true',
+                        help='only copy the installers for Windows and macOS '
+                             f'from the release {TAG} on GitHub (made by '
+                             'installers.yml) to the one on Codeberg')
     parser.add_argument('--only', choices=('github', 'codeberg'),
                         help='publish on one forge only')
     parser.add_argument('--remote', default='origin',

@@ -432,7 +432,9 @@ key (see "An RPM package (Fedora)"), made with `packaging/build-rpm.sh
 --sign`, and sends the RPM to Copr (`copr-cli build py-words`; `--no-copr`
 skips this).  The installers for Windows and macOS cannot be made here:
 when the tag is pushed, `installers.yml` makes them and adds them to the
-release on GitHub only.
+release on GitHub.  When it has finished, `python3 tools/release.py
+--installers` downloads them from there and attaches them to the release
+on Codeberg.
 
 Usage
 -----

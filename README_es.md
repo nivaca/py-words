@@ -445,7 +445,9 @@ el RPM firmado y su clave pública (véase "Un paquete RPM (Fedora)"),
 hechos con `packaging/build-rpm.sh --sign`, y envía el RPM a Copr
 (`copr-cli build py-words`; `--no-copr` lo omite).  Los instaladores de
 Windows y de macOS no se pueden hacer aquí: cuando se sube el tag,
-`installers.yml` los hace y los añade a la release, solo en GitHub.
+`installers.yml` los hace y los añade a la release de GitHub.  Cuando
+termina, `python3 tools/release.py --installers` los baja de allí y los
+adjunta a la release de Codeberg.
 
 Uso
 ---

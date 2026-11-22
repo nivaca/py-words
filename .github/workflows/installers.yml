@@ -45,7 +45,7 @@ jobs:
           /usr/local/bin/py-words cli --language en amicus | grep -i friend
           sudo /opt/py-words/uninstall.sh --yes
           test ! -e /opt/py-words
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: installer-linux
           path: dist/*.run
@@ -92,7 +92,7 @@ jobs:
         if: always()
         shell: pwsh
         run: if (Test-Path install.log) { Get-Content install.log -Tail 60 }
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: installer-windows
           path: dist/*.exe
@@ -126,7 +126,7 @@ jobs:
           sudo /usr/local/bin/py-words uninstall --yes
           test ! -e /Applications/py-words.app && test ! -e /usr/local/bin/py-words
           ! pkgutil --pkgs | grep io.github.nivaca.py-words
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: installer-macos-${{ matrix.arch }}
           path: dist/*.pkg
@@ -136,7 +136,7 @@ jobs:
     needs: [linux, windows, macos]
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           pattern: installer-*
           path: installers

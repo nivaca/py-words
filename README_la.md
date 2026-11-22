@@ -432,7 +432,8 @@ eius publicam (vide "De fasciculo RPM (Fedora)"), factum per
 `packaging/build-rpm.sh --sign`, et mittit RPM ad Copr (`copr-cli build
 py-words`; `--no-copr` hoc omittit).  Institutores pro Windows et macOS
 hic fieri non possunt: cum signum impellitur, `installers.yml` eos facit
-et addit editioni, in GitHub tantum.
+et addit editioni in GitHub.  Cum finem fecit, `python3 tools/release.py
+--installers` eos inde trahit et affigit editioni in Codeberg.
 
 De usu
 ------

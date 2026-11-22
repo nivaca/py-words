@@ -30,7 +30,7 @@ jobs:
           export APPIMAGE_EXTRACT_AND_RUN=1
           "$app" help
           "$app" cli --language en amicus | grep -i friend
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: appimage
           path: dist/*.AppImage
