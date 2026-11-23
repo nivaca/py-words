@@ -220,6 +220,12 @@ la primera página), con estos archivos:
   Ubuntu, con su firma, \texttt{py-words\_VERSIÓN-1\_all.deb.asc};
 \item \texttt{py-words-v.VERSIÓN.zip}: el programa mismo, para Linux,
   macOS y Windows.
+\item \texttt{SHA256SUMS}, con \texttt{SHA256SUMS.asc}: las sumas SHA-256 de
+  los archivos, y su firma. Cada archivo tiene además su propia firma al
+  lado (\texttt{ARCHIVO.asc}), hecha con la misma clave, como la etiqueta de
+  la versión; con la clave importada (\texttt{gpg --import
+  RPM-GPG-KEY-py-words}), \texttt{gpg --verify ARCHIVO.asc ARCHIVO} comprueba
+  un archivo.
 \end{itemize}
 
 \subsection{Qué se necesita}

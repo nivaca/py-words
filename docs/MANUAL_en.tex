@@ -218,6 +218,11 @@ the first page), with these files:
   Ubuntu, with its signature, \texttt{py-words\_VERSION-1\_all.deb.asc};
 \item \texttt{py-words-v.VERSION.zip}: the program itself, for Linux,
   macOS and Windows.
+\item \texttt{SHA256SUMS}, with \texttt{SHA256SUMS.asc}: the SHA-256 sums of
+  the files, and their signature. Every file also has its own signature
+  beside it (\texttt{FILE.asc}), made with the same key, as the tag of the
+  version is; once the key is imported (\texttt{gpg --import
+  RPM-GPG-KEY-py-words}), \texttt{gpg --verify FILE.asc FILE} checks a file.
 \end{itemize}
 
 \subsection{What is needed}

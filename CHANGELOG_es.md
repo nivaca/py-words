@@ -9,6 +9,18 @@ Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
 
+## Sin publicar
+
+- **Cada versión firmada**: además del RPM y del .deb, cada archivo
+  publicado (el zip, la AppImage, los instaladores) trae su firma OpenPGP
+  (`.asc`), con `SHA256SUMS` y su firma, y con la clave pública; el tag
+  de la versión va firmado también. `tools/release.py` hace ahora
+  siempre el RPM firmado (`--no-rpm` lo omite) y comprueba cada firma con
+  la clave publicada antes de publicar nada (`tools/sign_release.py`);
+  `--installers` firma los de Windows y macOS. Los workflows de GitHub ya
+  no reemplazan la AppImage ni el instalador de Linux firmados. El README
+  explica cómo comprobar una descarga.
+
 ## 3.29 — 2026-11-22
 
 - **Instaladores para Windows, macOS y Linux**, cada uno con su propio

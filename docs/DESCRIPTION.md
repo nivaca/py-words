@@ -9,7 +9,7 @@ wrote, in the Ada version maintained at
 both the code and the data have been redesigned, and it now includes a new
 English dictionary (Lewis and Short) and two new Spanish ones
 (Echave-Sustaeta and De Miguel).  Here I explain how it was made, in
-twelve stages.
+thirteen stages.
 
 The dictionary has six sources: WORDS, by William Whitaker, the starting
 point of the program and of the entries; R. E. Latham's *Revised Medieval
@@ -483,10 +483,33 @@ the full-screen terminal version would not start.  As in the packages,
 the installed dictionary is read-only, so that an update cannot replace
 someone's edits.
 
+13. Every release signed
+------------------------
+
+The RPM was signed, and the `.deb` had its signature apart, but the zip,
+the AppImage and the installers went out with nothing to show where they
+came from, and so did the tag; the RPM, besides, was only made when the
+release was asked for it.  Now `tools/release.py` always makes it, and a
+release signs everything with the same key: a detached signature for each
+file, a list of their SHA-256 sums with its own signature, and the tag,
+signed by git.  A signature that nobody checks proves little, so
+`tools/sign_release.py` checks each one before anything is published, the
+way a user would, in a keyring of its own that holds only the public key
+published with the files; a file changed after signing, or a published
+key that is not the one that signed, stops the release.  Two things were
+particular to this program.  The workflows on GitHub built the AppImage
+and the installer for Linux again after the tag was pushed and replaced
+the ones attached, and the new builds would not match their signatures;
+they now keep the files that are already there.  And the installers for
+Windows and macOS are made only on GitHub, after the release, so
+`tools/release.py --installers`, which already copied them to Codeberg,
+now signs them too, with a list of sums of their own.  The tests sign with
+a key made for them, in a folder of their own, never with mine.
+
 Testing
 -------
 
-The program has unit tests and regression tests (`tests/`), 405 in total,
+The program has unit tests and regression tests (`tests/`), 409 in total,
 that run with Python 3.13 (the oldest it supports) and with the latest
 Python; `tools/test.py` runs them all at once, each class of tests in a
 process of its own, in about a minute and a half.  The regression tests
@@ -500,5 +523,6 @@ settings that stay after reloading), from a local server and also on the
 site then published.  The installers are tried on GitHub, each on its own
 system, by installing them, running a search and removing them; the one
 for Linux is also built, installed and removed by the tests, with a
-stand-in for its Python.  The program now has 44 files, around 17,400
+stand-in for its Python.  The signing of a release is tested with a key
+made in the test.  The program now has 44 files, around 17,400
 lines.

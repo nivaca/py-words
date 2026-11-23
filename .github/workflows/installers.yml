@@ -6,7 +6,8 @@
 #   Linux     py-words-v.VERSION-linux-x86_64.run
 #
 # With each tag that is pushed, they are added to the release of the tag
-# (made if there is none); run by hand ("Run workflow"), they are only
+# (made if there is none), except the one for Linux if the release
+# already has it (signed by tools/release.py); run by hand ("Run workflow"), they are only
 # kept as artifacts of the run.
 
 name: Installers
@@ -149,4 +150,17 @@ jobs:
         run: |
           gh release view "$TAG" >/dev/null 2>&1 ||
             gh release create "$TAG" --title "$TAG" --generate-notes
-          gh release upload "$TAG" installers/* --clobber
+          # The installer for Linux already there is kept: tools/release.py
+          # made and signed it (FILE.asc, SHA256SUMS), and this build would
+          # not match. Those of Windows and macOS are signed afterwards, by
+          # tools/release.py --installers.
+          have="$(gh release view "$TAG" --json assets --jq '.assets[].name')"
+          for f in installers/*; do
+            case "$f" in
+              *.run) if grep -qxF "$(basename "$f")" <<< "$have"; then
+                       echo "kept the signed $(basename "$f") already in the release"
+                       continue
+                     fi ;;
+            esac
+            gh release upload "$TAG" "$f" --clobber
+          done

@@ -276,6 +276,28 @@ py-words` ipsum removet.  Ad ipsum construendum ex capsula programmatis
 Hoc scribit `build/deb/py-words_VERSION-1_all.deb` et copiat ipsum in
 `dist/`.
 
+### Quomodo fasciculus acceptus probetur
+
+Ab editione que 3.29 sequitur, unusquisque fasciculus editionis signatur
+clave auctoris, eadem qua RPM signatur: unusquisque habet subscriptionem
+suam OpenPGP seorsum, `FASCICULUS.asc`, et editio habet etiam
+`SHA256SUMS`, cum summa SHA-256 uniuscuiusque fasciculi, et subscriptionem
+eius, `SHA256SUMS.asc`.  Institutores pro Windows et macOS, qui in GitHub
+post cetera fiunt, summas suas habent in `SHA256SUMS-installers`, etiam
+signato.  Signum versionis eadem clave signatur.  Ad fasciculum acceptum
+probandum, importa clavem semel, et deinde proba subscriptionem
+fasciculi, vel summam eius:
+
+    $ gpg --import RPM-GPG-KEY-py-words
+    $ gpg --verify py-words-v.3.30.zip.asc py-words-v.3.30.zip
+    $ gpg --verify SHA256SUMS.asc SHA256SUMS && sha256sum -c --ignore-missing SHA256SUMS
+
+RPM etiam intus subscriptionem suam fert: post `sudo rpm --import
+RPM-GPG-KEY-py-words`, `rpm -K` eam probat.  In clone, `git tag -v
+vVERSION` signum probat.  Hee sunt subscriptiones OpenPGP, non ille quas
+Windows et macOS querunt, ideo monita descripta in "De institutoribus"
+adhuc apparent.
+
 ### De loco in tabella applicationum
 
 Si vis programma incipere ex tabella applicationum, curre semel
@@ -416,24 +438,34 @@ Editio in GitHub et Codeberg, cum fasciculis suis, fit per
 
     $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
           [--no-build] [--no-appimage] [--no-installer] [--no-deb]
-          [--rpm [--no-copr]] [--only github|codeberg]
+          [--no-rpm | --no-copr] [--only github|codeberg]
           [--no-android] [--dry-run] [--yes]
 
 Requirit `gh` (GitHub) et `tea` (Codeberg), et `main` mundum.  Facit zip,
-AppImage, institutorem pro Linux (`--no-installer` ipsum omittit) et
+AppImage, institutorem pro Linux (`--no-installer` ipsum omittit),
 fasciculum .deb signatum (per `packaging/build-deb.py --sign`;
-`--no-deb` ipsum omittit), signat commissionem ut `vVERSION`, impellit `main` et
-signum, et facit editionem in unaquaque officina (vel servat eam que iam
-est), fasciculos affigens et substituens eos eiusdem nominis.  Ostendit
+`--no-deb` ipsum omittit) et RPM signatum (per `packaging/build-rpm.sh
+--sign`; `--no-rpm` ipsum omittit).  Deinde unumquemque fasciculum
+signat, scribit `SHA256SUMS` et ipsum signat, et unamquamque
+subscriptionem probat sola clave publica que editur,
+`packaging/RPM-GPG-KEY-py-words` (`tools/sign_release.py`; vide "Quomodo
+fasciculus acceptus probetur"); si una non probatur, cessat antequam
+quicquam edat.  Signat commissionem ut `vVERSION`, signo eadem clave
+signato, quod probat, impellit `main` et signum, et facit editionem in
+unaquaque officina (vel servat eam que iam est), fasciculos, eorum
+subscriptiones et clavem publicam affigens et substituens eos eiusdem
+nominis.  Ostendit
 mandata et interrogat antequam ea currat; `--dry-run` solum ea ostendit.
 Si signum est in alia commissione, cessat, nisi `--redo` ipsum moveat,
-quod editionem denuo facit.  `--rpm` affigit etiam RPM signatum et clavem
-eius publicam (vide "De fasciculo RPM (Fedora)"), factum per
-`packaging/build-rpm.sh --sign`, et mittit RPM ad Copr (`copr-cli build
-py-words`; `--no-copr` hoc omittit).  Institutores pro Windows et macOS
-hic fieri non possunt: cum signum impellitur, `installers.yml` eos facit
-et addit editioni in GitHub.  Cum finem fecit, `python3 tools/release.py
---installers` eos inde trahit et affigit editioni in Codeberg.  Ad
+quod editionem denuo facit.  Mittit etiam RPM ad Copr (`copr-cli build
+py-words`; `--no-copr` hoc omittit).  `--rpm`, quod olim RPM addebat,
+adhuc accipitur et nihil mutat.  Institutores pro Windows et macOS hic
+fieri non possunt: cum signum impellitur, `installers.yml` eos facit et
+addit editioni in GitHub (servat institutorem pro Linux signatum qui iam
+ibi est, et `appimage.yml` servat AppImage signatam).  Cum finem fecit,
+`python3 tools/release.py --installers` eos inde trahit, signat (cum
+summis eorum in `SHA256SUMS-installers`), affigit subscriptiones ambabus
+editionibus et institutores editioni in Codeberg.  Ad
 finem, si exemplar py-words pro Android adest in
 `../../android/py-words-android` (vel ubi `PY_WORDS_ANDROID` dicit),
 currit eius `tools/update-py-words.py --tag vVERSION`, quod hanc

@@ -286,6 +286,28 @@ de git), en cualquier sistema y sin más que Python:
 Eso escribe `build/deb/py-words_VERSIÓN-1_all.deb` y lo copia en
 `dist/`.
 
+### Cómo comprobar una descarga
+
+Desde la versión siguiente a la 3.29, cada archivo de una release va
+firmado con la clave del autor, la misma que firma el RPM: cada uno trae
+su firma OpenPGP aparte, `ARCHIVO.asc`, y la release tiene además
+`SHA256SUMS`, con la suma SHA-256 de cada archivo, y su firma,
+`SHA256SUMS.asc`.  Los instaladores de Windows y de macOS, que GitHub hace
+después del resto, tienen sus sumas en `SHA256SUMS-installers`, también
+firmado.  El tag de la versión se firma con la misma clave.  Para
+comprobar una descarga, importe la clave una vez y luego compruebe la
+firma del archivo, o su suma:
+
+    $ gpg --import RPM-GPG-KEY-py-words
+    $ gpg --verify py-words-v.3.30.zip.asc py-words-v.3.30.zip
+    $ gpg --verify SHA256SUMS.asc SHA256SUMS && sha256sum -c --ignore-missing SHA256SUMS
+
+El RPM lleva además su firma dentro: después de `sudo rpm --import
+RPM-GPG-KEY-py-words`, `rpm -K` la comprueba.  En un clon, `git tag -v
+vVERSIÓN` comprueba el tag.  Son firmas OpenPGP, no las que buscan
+Windows y macOS, así que los avisos descritos en "Instaladores" siguen
+apareciendo.
+
 ### Un acceso en el menú
 
 Si quiere abrir el programa desde el menú de aplicaciones, ejecute una
@@ -428,26 +450,34 @@ Una release en GitHub y en Codeberg, con sus archivos, se hace con
 
     $ python3 tools/release.py [--redo] [--notes TEXTO | --notes-file ARCHIVO]
           [--no-build] [--no-appimage] [--no-installer] [--no-deb]
-          [--rpm [--no-copr]] [--only github|codeberg]
+          [--no-rpm | --no-copr] [--only github|codeberg]
           [--no-android] [--dry-run] [--yes]
 
 Necesita `gh` (GitHub) y `tea` (Codeberg), y `main` sin cambios por
 confirmar.  Hace el zip, la AppImage, el instalador de Linux
-(`--no-installer` lo omite) y el .deb firmado (con
-`packaging/build-deb.py --sign`; `--no-deb` lo omite), pone el tag `vVERSIÓN` al commit,
-sube `main` y el tag, y hace la release en cada forja (o conserva la que
-haya), a la que adjunta los archivos, que reemplazan a los del mismo
-nombre.
+(`--no-installer` lo omite), el .deb firmado (con
+`packaging/build-deb.py --sign`; `--no-deb` lo omite) y el RPM firmado
+(con `packaging/build-rpm.sh --sign`; `--no-rpm` lo omite).  Después
+firma cada archivo, escribe `SHA256SUMS` y lo firma, y comprueba cada
+firma con solo la clave pública que se publica,
+`packaging/RPM-GPG-KEY-py-words` (`tools/sign_release.py`; véase "Cómo
+comprobar una descarga"); si una no se comprueba, se detiene antes de
+publicar nada.  Pone al commit el tag `vVERSIÓN`, firmado con la misma
+clave, y lo comprueba, sube `main` y el tag, y hace la release en cada
+forja (o conserva la que haya), a la que adjunta los archivos, sus firmas
+y la clave pública, que reemplazan a los del mismo nombre.
 Muestra las órdenes y pregunta antes de ejecutarlas; `--dry-run` solo
 las muestra.  Si el tag está en otro commit se detiene, a menos que
-`--redo` lo mueva, lo que rehace una release.  `--rpm` adjunta también
-el RPM firmado y su clave pública (véase "Un paquete RPM (Fedora)"),
-hechos con `packaging/build-rpm.sh --sign`, y envía el RPM a Copr
-(`copr-cli build py-words`; `--no-copr` lo omite).  Los instaladores de
-Windows y de macOS no se pueden hacer aquí: cuando se sube el tag,
-`installers.yml` los hace y los añade a la release de GitHub.  Cuando
-termina, `python3 tools/release.py --installers` los baja de allí y los
-adjunta a la release de Codeberg.  Al final, si hay un clon de py-words
+`--redo` lo mueva, lo que rehace una release.  También envía el RPM a
+Copr (`copr-cli build py-words`; `--no-copr` lo omite).  `--rpm`, que
+antes añadía el RPM, se sigue aceptando y no cambia nada.  Los
+instaladores de Windows y de macOS no se pueden hacer aquí: cuando se
+sube el tag, `installers.yml` los hace y los añade a la release de GitHub
+(conserva el instalador de Linux firmado que ya está allí, y
+`appimage.yml` conserva la AppImage firmada).  Cuando termina, `python3
+tools/release.py --installers` los baja de allí, los firma (con sus sumas
+en `SHA256SUMS-installers`), adjunta las firmas a las dos releases y los
+instaladores a la de Codeberg.  Al final, si hay un clon de py-words
 para Android en `../../android/py-words-android` (o donde diga
 `PY_WORDS_ANDROID`), corre su `tools/update-py-words.py --tag vVERSIÓN`,
 que pone esta versión en la app y publica la app; pregunta por su cuenta

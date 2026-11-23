@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """Publica una versión de py-words en GitHub (con gh) y en Codeberg (con
-tea): la etiqueta vVERSION (la versión de version.py), con el zip, el
-AppImage, el instalador de Linux (.run) y el .deb firmado adjuntos y
-(--rpm) el RPM firmado, que se publica también en Copr.
+tea): la etiqueta vVERSION (la versión de version.py), firmada, con el
+zip, el AppImage, el instalador de Linux (.run), el .deb y el RPM firmado
+adjuntos (el RPM se publica también en Copr), cada uno con su firma
+(ARCHIVO.asc), con SHA256SUMS y su firma, y con la clave pública que las
+comprueba todas.
+
+Todo se firma con la clave del proyecto (SIGNING_KEY de
+packaging/build-rpm.sh), y cada firma se comprueba, con la clave pública
+que se publica, antes de publicar nada.
 
     python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
                              [--no-build] [--no-appimage] [--no-installer]
                              [--no-deb]
-                             [--rpm [--no-copr]]
+                             [--no-rpm | --no-copr]
                              [--only github|codeberg] [--remote REMOTE]
                              [--tea-login LOGIN] [--no-android]
                              [--dry-run] [--yes]
@@ -16,23 +22,27 @@ AppImage, el instalador de Linux (.run) y el .deb firmado adjuntos y
 En orden, y cada paso solo si hace falta:
 
 1. comprueba que el repositorio esté en main, sin nada por confirmar, y
-   que gh y tea estén instalados (con --rpm, también rpmbuild y, salvo
-   --no-copr, copr-cli), y que la clave de firma (la del .deb y la del
-   RPM) esté en el llavero de gpg del computador;
+   que gh, tea y gpg estén instalados (salvo con --no-rpm, también
+   rpmbuild y, salvo --no-copr, copr-cli), y que la clave de firma esté en
+   el llavero de gpg del computador;
 2. hace el zip, el AppImage y el instalador de Linux en dist/
    (tools/bundle-zip.py, tools/bundle-appimage.py y
    tools/bundle-installer.py --system linux), salvo con --no-build
    (entonces usa los que hay en dist/); también el .deb, con su firma aparte (.deb.asc), en
-   dist/ (packaging/build-deb.py --sign), y con --rpm el RPM firmado y su
-   clave pública en build/rpm/ (packaging/build-rpm.sh --sign); gpg pide
-   la frase de paso;
-3. pone la etiqueta vVERSION en HEAD.  Si la etiqueta ya está en otro
-   commit, se detiene, salvo que --redo la mueva;
+   dist/ (packaging/build-deb.py --sign), y salvo con --no-rpm el RPM
+   firmado en build/rpm/ (packaging/build-rpm.sh --sign, que comprueba su
+   firma); gpg pide la frase de paso.  Después firma cada archivo
+   (tools/sign_release.py: ARCHIVO.asc, dist/SHA256SUMS y su .asc) y
+   comprueba cada firma con solo la clave pública que se publica
+   (packaging/RPM-GPG-KEY-py-words);
+3. pone la etiqueta vVERSION en HEAD, firmada con la misma clave (git tag
+   --sign), y la comprueba (git tag --verify).  Si la etiqueta ya está en
+   otro commit, se detiene, salvo que --redo la mueva;
 4. sube main y la etiqueta al remoto (origin, que sube tanto a GitHub como
    a Codeberg; --redo sube la etiqueta con --force);
 5. en cada forja, crea la versión de la etiqueta, o conserva la que
    exista, y le adjunta los archivos, reemplazando los del mismo nombre;
-6. con --rpm, manda el RPM fuente (firmado) a Copr (copr-cli build,
+6. salvo con --no-rpm, manda el RPM fuente (firmado) a Copr (copr-cli build,
    proyecto nivaca/py-words), salvo con --no-copr.  Copr lo construye para
    cada Fedora del proyecto y lo firma con su propia clave; cada
    construcción necesita una versión-release mayor que la anterior, así
@@ -55,13 +65,17 @@ Los repositorios se deducen de las direcciones de subida del remoto; tea
 usa el login llamado codeberg, salvo que --tea-login nombre otro.
 
 Cuando se sube la etiqueta, GitHub corre .github/workflows/appimage.yml,
-que vuelve a hacer el AppImage y reemplaza el que se adjuntó aquí (mismo
-commit, mismo nombre de archivo), y .github/workflows/installers.yml,
-que hace los instaladores de Windows y de macOS (que solo se pueden hacer
-en esos sistemas), los prueba y los adjunta a la versión de GitHub, junto
-con otra copia del de Linux.  Cuando ese workflow termina,
---installers (sin nada más) los baja de la versión de GitHub y los
-adjunta a la de Codeberg, que de otro modo quedaría sin ellos.
+que vuelve a hacer el AppImage, y .github/workflows/installers.yml, que
+hace los instaladores de Windows y de macOS (que solo se pueden hacer en
+esos sistemas), los prueba y los adjunta a la versión de GitHub, junto
+con otra copia del de Linux.  Ninguno reemplaza el AppImage ni el
+instalador de Linux que ya estén en la versión: se quedan los firmados
+aquí.
+Cuando ese workflow termina, --installers (sin nada más) los baja de la
+versión de GitHub, los firma (ARCHIVO.asc, y sus sumas en
+SHA256SUMS-installers, con su firma) y adjunta las firmas a las dos
+versiones, y los instaladores a la de Codeberg, que de otro modo quedaría
+sin ellos.
 """
 
 import argparse
@@ -89,11 +103,14 @@ CI_INSTALLERS = [os.path.join('build', 'installers', name) for name in (
     f'py-words-v.{VERSION}-windows-x64-setup.exe',
     f'py-words-v.{VERSION}-macos-arm64.pkg',
     f'py-words-v.{VERSION}-macos-x86_64.pkg')]
+#  Sus sumas, aparte de SHA256SUMS (hecho antes, sin ellos)
+CI_SUMS = os.path.join('build', 'installers', 'SHA256SUMS-installers')
 #  El .deb que hace packaging/build-deb.py (su REVISION es la 1) y su firma
 DEB = os.path.join('dist', f'py-words_{VERSION}-1_all.deb')
-DEB_SIGNATURE = DEB + '.asc'
 SPEC = os.path.join('packaging', 'py-words.spec')
-RPM_KEY = os.path.join('build', 'rpm', 'RPM-GPG-KEY-py-words')
+# The public key published with every release, which checks every signature
+PUBLIC_KEY = os.path.join('packaging', 'RPM-GPG-KEY-py-words')
+SUMS = os.path.join('dist', 'SHA256SUMS')
 #  El clon de py-words para Android, cuyo submódulo py-words/ sigue a este
 #  repositorio (véase android() más abajo)
 ANDROID = os.environ.get('PY_WORDS_ANDROID') or os.path.join(
@@ -188,7 +205,7 @@ class Release:
     # Las comprobaciones -----------------------------------------------
 
     def check(self):
-        tools = ('git',) + tuple(
+        tools = ('git', 'gpg') + tuple(
             t for t, f in (('gh', 'github'), ('tea', 'codeberg'))
             if f in self.forges)
         if self.args.rpm:
@@ -197,14 +214,7 @@ class Release:
         for tool in tools:
             if not shutil.which(tool):
                 sys.exit(f'release.py: {tool} is not installed')
-        if self.args.rpm or DEB in self.files:
-            key = signing_key()
-            if not key or subprocess.run(
-                    ['gpg', '--batch', '--list-secret-keys', key],
-                    capture_output=True).returncode != 0:
-                sys.exit(f'release.py: the signing key {key or "(none)"} is '
-                         "not in this machine's gpg keyring; import it "
-                         'first (see packaging/COPR.org)')
+        self.check_key()
         branch = self.read('git', 'rev-parse', '--abbrev-ref', 'HEAD')
         if branch != BRANCH:
             sys.exit(f'release.py: on branch {branch}, not {BRANCH}')
@@ -213,6 +223,20 @@ class Release:
             if not self.args.dry_run:
                 sys.exit(f'release.py: {message}')
             print(f'release.py: (dry run) {message}', file=sys.stderr)
+
+    def check_key(self):
+        """The signing key in gpg, and the public key published with it."""
+        #  Todo se firma, siempre: sin la clave no hay versión
+        key = signing_key()
+        if not key or subprocess.run(
+                ['gpg', '--batch', '--list-secret-keys', key],
+                capture_output=True).returncode != 0:
+            sys.exit(f'release.py: the signing key {key or "(none)"} is '
+                     "not in this machine's gpg keyring; import it "
+                     'first (see packaging/COPR.org)')
+        if not os.path.isfile(os.path.join(ROOT, PUBLIC_KEY)):
+            sys.exit(f'release.py: there is no {PUBLIC_KEY}, the public '
+                     'key published with the release')
 
     def repos(self) -> dict:
         """{forge: owner/name}, from the push addresses of the remote."""
@@ -251,9 +275,23 @@ class Release:
         if DEB in self.files:
             self.plan('Make the signed .deb', sys.executable, os.path.join(
                 'packaging', 'build-deb.py'), '--sign')
-        if RPM_KEY in self.files:
+        if self.args.rpm:
             self.plan('Make the signed RPM', os.path.join(
                 'packaging', 'build-rpm.sh'), '--sign')
+
+    def sign(self):
+        """Every file published signed (FILE.asc), with SHA256SUMS and its
+        signature, and each signature checked with only the public key
+        published."""
+        signed = [f for f in self.files if f != PUBLIC_KEY]
+        self.plan('Sign the files, and check each signature with the '
+                  'published key', sys.executable,
+                  os.path.join('tools', 'sign_release.py'), '--key',
+                  signing_key(), '--public', PUBLIC_KEY, '--sums', SUMS,
+                  *signed)
+        #  (la firma del .deb que hace build-deb.py se rehace aquí, igual)
+        self.files = (signed + [f + '.asc' for f in signed]
+                      + [SUMS, SUMS + '.asc', PUBLIC_KEY])
 
     def tag(self):
         head = self.read('git', 'rev-parse', 'HEAD')
@@ -266,9 +304,12 @@ class Release:
                      f'{tagged[:7]}, not of HEAD ({head[:7]}); --redo '
                      'moves it (and replaces the files of the releases)')
         else:
-            self.plan('Move the tag to HEAD' if tagged else 'Tag HEAD',
-                      'git', 'tag', '--force', '--annotate', TAG,
+            self.plan('Move the tag to HEAD, signed' if tagged
+                      else 'Tag HEAD, signed', 'git', 'tag', '--force',
+                      '--sign', '--local-user', signing_key(), TAG,
                       '--message', TAG)
+            self.plan('Check the signature of the tag', 'git', 'tag',
+                      '--verify', TAG)
         self.plan(f'Push {BRANCH}', 'git', 'push', self.args.remote,
                   BRANCH)
         #  Con --redo la etiqueta se sube siempre con --force: el remoto
@@ -358,12 +399,14 @@ class Release:
 
     def installers(self):
         """--installers: those of Windows and macOS, from the release on
-        GitHub (made by installers.yml) to the one on Codeberg."""
+        GitHub (made by installers.yml) to the one on Codeberg, each
+        signed here, with the signatures attached to both."""
         self.forges = ['github', 'codeberg']
         self.files = CI_INSTALLERS
-        for tool in ('gh', 'tea'):
+        for tool in ('gh', 'tea', 'gpg'):
             if not shutil.which(tool):
                 sys.exit(f'release.py: {tool} is not installed')
+        self.check_key()
         repos = self.repos()
         names = [os.path.basename(f) for f in CI_INSTALLERS]
         on_github = self.read('gh', 'release', 'view', TAG, '--repo',
@@ -378,6 +421,19 @@ class Release:
                   'download', TAG, *patterns, '--dir',
                   os.path.join('build', 'installers'), '--clobber',
                   '--repo', repos['github'])
+        #  Se firman aquí, como los demás archivos de la versión, con sus
+        #  propias sumas; las firmas van a las dos forjas
+        self.plan('Sign the installers, and check each signature with the '
+                  'published key', sys.executable,
+                  os.path.join('tools', 'sign_release.py'), '--key',
+                  signing_key(), '--public', PUBLIC_KEY, '--sums', CI_SUMS,
+                  *CI_INSTALLERS)
+        signatures = ([f + '.asc' for f in CI_INSTALLERS]
+                      + [CI_SUMS, CI_SUMS + '.asc'])
+        self.plan('GitHub: attach their signatures to the release', 'gh',
+                  'release', 'upload', TAG, *signatures, '--clobber',
+                  '--repo', repos['github'])
+        self.files = CI_INSTALLERS + signatures
         self.codeberg(repos['codeberg'])
         self.run_plan()
 
@@ -390,13 +446,16 @@ class Release:
         self.files = [ZIP] + ([] if args.no_appimage else [APPIMAGE])
         if not args.no_installer:
             self.files.append(INSTALLER)
+        args.rpm = not args.no_rpm      # (the signed RPM, unless --no-rpm)
         if not args.no_deb:
-            self.files += [DEB, DEB_SIGNATURE]
+            self.files.append(DEB)
         if args.rpm:
-            self.files += [rpm(), RPM_KEY]
+            self.files.append(rpm())
+        self.files.append(PUBLIC_KEY)
         self.check()
         repos = self.repos()
         self.build()
+        self.sign()
         self.tag()
         for forge in self.forges:
             getattr(self, forge)(repos[forge])
@@ -436,7 +495,7 @@ def main(argv=None):
         prog='tools/release.py',
         description=f'Publish {TAG} on GitHub and Codeberg, with the zip, '
                     'the AppImage, the installer for Linux, the .deb and '
-                    '(--rpm) the RPM.')
+                    'the RPM (also on Copr), all signed.')
     parser.add_argument('--redo', action='store_true',
                         help=f'move {TAG} to HEAD if it is on another commit '
                              '(here and on the remote), and replace the '
@@ -458,11 +517,12 @@ def main(argv=None):
                         help='without the .deb (packaging/build-deb.py '
                              '--sign)')
     parser.add_argument('--rpm', action='store_true',
-                        help='also the signed RPM and its public key '
-                             '(packaging/build-rpm.sh --sign), and a Copr '
-                             'build of it')
+                        help='(the signed RPM, and a Copr build of it, are '
+                             'made always now: kept for older scripts)')
+    parser.add_argument('--no-rpm', action='store_true',
+                        help='without the RPM (nor its Copr build)')
     parser.add_argument('--no-copr', action='store_true',
-                        help='with --rpm, do not send it to Copr')
+                        help='do not send the RPM to Copr')
     parser.add_argument('--installers', action='store_true',
                         help='only copy the installers for Windows and macOS '
                              f'from the release {TAG} on GitHub (made by '

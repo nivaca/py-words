@@ -1,6 +1,7 @@
 # Makes the AppImage of py-words (tools/bundle-appimage.py), for Linux.
 # With each tag that is pushed, it is added to the release of the tag
-# (made if there is none); run by hand ("Run workflow"), it is only kept
+# (made if there is none), unless the release already has the one that
+# tools/release.py made and signed; run by hand ("Run workflow"), it is only kept
 # as an artifact of the run.
 
 name: AppImage
@@ -42,4 +43,13 @@ jobs:
         run: |
           gh release view "$TAG" >/dev/null 2>&1 ||
             gh release create "$TAG" --title "$TAG" --generate-notes
-          gh release upload "$TAG" dist/*.AppImage --clobber
+          # A file already there is kept: tools/release.py signed it
+          # (FILE.asc, SHA256SUMS), and a new build would not match
+          have="$(gh release view "$TAG" --json assets --jq '.assets[].name')"
+          for f in dist/*.AppImage; do
+            if grep -qxF "$(basename "$f")" <<< "$have"; then
+              echo "kept the signed $(basename "$f") already in the release"
+            else
+              gh release upload "$TAG" "$f"
+            fi
+          done
