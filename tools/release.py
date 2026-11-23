@@ -9,7 +9,8 @@ AppImage, el instalador de Linux (.run) y el .deb firmado adjuntos y
                              [--no-deb]
                              [--rpm [--no-copr]]
                              [--only github|codeberg] [--remote REMOTE]
-                             [--tea-login LOGIN] [--dry-run] [--yes]
+                             [--tea-login LOGIN] [--no-android]
+                             [--dry-run] [--yes]
     python3 tools/release.py --installers [--dry-run] [--yes]
 
 En orden, y cada paso solo si hace falta:
@@ -36,7 +37,13 @@ En orden, y cada paso solo si hace falta:
    cada Fedora del proyecto y lo firma con su propia clave; cada
    construcción necesita una versión-release mayor que la anterior, así
    que el spec debe haberse subido de versión (rpmdev-bumpspec, véase
-   packaging/COPR.org).
+   packaging/COPR.org);
+7. al final, si hay un clon de py-words para Android (en
+   ../../android/py-words-android, o donde diga PY_WORDS_ANDROID), corre su
+   tools/update-py-words.py --tag vVERSION, que pone esta versión en la app
+   y publica la versión de la app que la lleva; pregunta antes por su
+   cuenta.  --no-android lo omite, igual que --only codeberg (el submódulo
+   de la app trae py-words de GitHub).
 
 Antes de hacer nada, muestra las órdenes que va a correr y pregunta; con
 --yes no pregunta, y con --dry-run solo las muestra.  Las notas de una
@@ -87,6 +94,10 @@ DEB = os.path.join('dist', f'py-words_{VERSION}-1_all.deb')
 DEB_SIGNATURE = DEB + '.asc'
 SPEC = os.path.join('packaging', 'py-words.spec')
 RPM_KEY = os.path.join('build', 'rpm', 'RPM-GPG-KEY-py-words')
+#  El clon de py-words para Android, cuyo submódulo py-words/ sigue a este
+#  repositorio (véase android() más abajo)
+ANDROID = os.environ.get('PY_WORDS_ANDROID') or os.path.join(
+    os.path.dirname(os.path.dirname(ROOT)), 'android', 'py-words-android')
 COPR_PROJECT = 'py-words'       # (del usuario de copr-cli, nivaca)
 
 
@@ -392,6 +403,32 @@ class Release:
         if args.rpm and not args.no_copr:
             self.copr()
         self.run_plan()
+        self.android()
+
+    def android(self):
+        """Put this version in py-words for Android and release the app,
+        with that project's own script, if there is a clone of it."""
+        script = os.path.join(ANDROID, 'tools', 'update-py-words.py')
+        if self.args.no_android or 'github' not in self.forges:
+            return
+        if not os.path.isfile(script):
+            print(f'\n(No py-words for Android at {ANDROID}; the app is '
+                  'not updated.)')
+            return
+        command = [sys.executable, script, '--tag', TAG]
+        if self.args.dry_run:
+            command.append('--dry-run')
+        elif self.args.yes:
+            command.append('--yes')
+        print(f'\n==> py-words for Android\n  {shlex.join(command)}',
+              flush=True)
+        if subprocess.run(command, cwd=ANDROID).returncode != 0:
+            if self.args.dry_run:
+                sys.exit('release.py: py-words for Android would not be '
+                         'updated (see above)')
+            sys.exit(f'release.py: {TAG} is released, but py-words for '
+                     'Android was not updated; after fixing the cause, run '
+                     f'{shlex.join(command)} again')
 
 
 def main(argv=None):
@@ -437,6 +474,10 @@ def main(argv=None):
     parser.add_argument('--tea-login', default='codeberg',
                         help='the login of tea for Codeberg (default: '
                              'codeberg)')
+    parser.add_argument('--no-android', action='store_true',
+                        help='do not put this version in py-words for '
+                             'Android afterwards (its '
+                             'tools/update-py-words.py)')
     parser.add_argument('-n', '--dry-run', action='store_true',
                         help='only show the commands')
     parser.add_argument('-y', '--yes', action='store_true',

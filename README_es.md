@@ -429,7 +429,7 @@ Una release en GitHub y en Codeberg, con sus archivos, se hace con
     $ python3 tools/release.py [--redo] [--notes TEXTO | --notes-file ARCHIVO]
           [--no-build] [--no-appimage] [--no-installer] [--no-deb]
           [--rpm [--no-copr]] [--only github|codeberg]
-          [--dry-run] [--yes]
+          [--no-android] [--dry-run] [--yes]
 
 Necesita `gh` (GitHub) y `tea` (Codeberg), y `main` sin cambios por
 confirmar.  Hace el zip, la AppImage, el instalador de Linux
@@ -447,7 +447,11 @@ hechos con `packaging/build-rpm.sh --sign`, y envía el RPM a Copr
 Windows y de macOS no se pueden hacer aquí: cuando se sube el tag,
 `installers.yml` los hace y los añade a la release de GitHub.  Cuando
 termina, `python3 tools/release.py --installers` los baja de allí y los
-adjunta a la release de Codeberg.
+adjunta a la release de Codeberg.  Al final, si hay un clon de py-words
+para Android en `../../android/py-words-android` (o donde diga
+`PY_WORDS_ANDROID`), corre su `tools/update-py-words.py --tag vVERSIÓN`,
+que pone esta versión en la app y publica la app; pregunta por su cuenta
+antes de hacer nada.  `--no-android` lo omite.
 
 Uso
 ---

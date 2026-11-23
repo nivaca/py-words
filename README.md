@@ -417,7 +417,7 @@ A release on GitHub and Codeberg, with its files, is made with
     $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
           [--no-build] [--no-appimage] [--no-installer] [--no-deb]
           [--rpm [--no-copr]] [--only github|codeberg]
-          [--dry-run] [--yes]
+          [--no-android] [--dry-run] [--yes]
 
 It needs `gh` (GitHub) and `tea` (Codeberg), and a clean `main`.  It makes
 the zip, the AppImage, the installer for Linux (`--no-installer` leaves
@@ -434,7 +434,11 @@ skips this).  The installers for Windows and macOS cannot be made here:
 when the tag is pushed, `installers.yml` makes them and adds them to the
 release on GitHub.  When it has finished, `python3 tools/release.py
 --installers` downloads them from there and attaches them to the release
-on Codeberg.
+on Codeberg.  At the end, if there is a clone of py-words for Android in
+`../../android/py-words-android` (or where `PY_WORDS_ANDROID` says), it
+runs that project's `tools/update-py-words.py --tag vVERSION`, which puts
+this version in the app and releases the app; it asks on its own before
+doing anything.  `--no-android` skips this.
 
 Usage
 -----

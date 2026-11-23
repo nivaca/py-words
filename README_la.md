@@ -417,7 +417,7 @@ Editio in GitHub et Codeberg, cum fasciculis suis, fit per
     $ python3 tools/release.py [--redo] [--notes TEXT | --notes-file FILE]
           [--no-build] [--no-appimage] [--no-installer] [--no-deb]
           [--rpm [--no-copr]] [--only github|codeberg]
-          [--dry-run] [--yes]
+          [--no-android] [--dry-run] [--yes]
 
 Requirit `gh` (GitHub) et `tea` (Codeberg), et `main` mundum.  Facit zip,
 AppImage, institutorem pro Linux (`--no-installer` ipsum omittit) et
@@ -433,7 +433,12 @@ eius publicam (vide "De fasciculo RPM (Fedora)"), factum per
 py-words`; `--no-copr` hoc omittit).  Institutores pro Windows et macOS
 hic fieri non possunt: cum signum impellitur, `installers.yml` eos facit
 et addit editioni in GitHub.  Cum finem fecit, `python3 tools/release.py
---installers` eos inde trahit et affigit editioni in Codeberg.
+--installers` eos inde trahit et affigit editioni in Codeberg.  Ad
+finem, si exemplar py-words pro Android adest in
+`../../android/py-words-android` (vel ubi `PY_WORDS_ANDROID` dicit),
+currit eius `tools/update-py-words.py --tag vVERSION`, quod hanc
+versionem in applicationem ponit et applicationem edit; ipsum per se
+interrogat antequam quicquam faciat.  `--no-android` hoc omittit.
 
 De usu
 ------
