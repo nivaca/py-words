@@ -5,8 +5,9 @@
 #   macOS     py-words-v.VERSION-macos-arm64.pkg, -macos-x86_64.pkg
 #   Linux     py-words-v.VERSION-linux-x86_64.run
 #
-# With each tag that is pushed, they are added to the release of the tag
-# (made if there is none), except the one for Linux if the release
+# With each tag that is pushed, they are added to the release of the tag,
+# once tools/release.py has published it (it is waited for, never made
+# here), except the one for Linux if the release
 # already has it (signed by tools/release.py); run by hand ("Run workflow"), they are only
 # kept as artifacts of the run.
 
@@ -148,8 +149,18 @@ jobs:
           TAG: ${{ github.ref_name }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release view "$TAG" >/dev/null 2>&1 ||
-            gh release create "$TAG" --title "$TAG" --generate-notes
+          # tools/release.py hace la versión (con los archivos firmados) después de subir la etiqueta:
+          # aquí se la espera, publicada, y nunca se hace, o las dos se harían a la vez (3.30)
+          draft=""
+          for i in $(seq 1 120); do
+            draft="$(gh release view "$TAG" --json isDraft --jq .isDraft 2>/dev/null || true)"
+            [ "$draft" = false ] && break
+            sleep 30
+          done
+          if [ "$draft" != false ]; then
+            echo "There is no release of $TAG after an hour: make it with tools/release.py, then run this again."
+            exit 1
+          fi
           # The installer for Linux already there is kept: tools/release.py
           # made and signed it (FILE.asc, SHA256SUMS), and this build would
           # not match. Those of Windows and macOS are signed afterwards, by

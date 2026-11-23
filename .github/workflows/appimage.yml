@@ -1,7 +1,8 @@
 # Makes the AppImage of py-words (tools/bundle-appimage.py), for Linux.
-# With each tag that is pushed, it is added to the release of the tag
-# (made if there is none), unless the release already has the one that
-# tools/release.py made and signed; run by hand ("Run workflow"), it is only kept
+# With each tag that is pushed, it is added to the release of the tag,
+# once tools/release.py has published it (it is waited for, never made
+# here), unless the release already has the one that tools/release.py made
+# and signed; run by hand ("Run workflow"), it is only kept
 # as an artifact of the run.
 
 name: AppImage
@@ -41,8 +42,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
         run: |
-          gh release view "$TAG" >/dev/null 2>&1 ||
-            gh release create "$TAG" --title "$TAG" --generate-notes
+          # tools/release.py hace la versión (con los archivos firmados) después de subir la etiqueta:
+          # aquí se la espera, publicada, y nunca se hace, o las dos se harían a la vez (3.30)
+          draft=""
+          for i in $(seq 1 120); do
+            draft="$(gh release view "$TAG" --json isDraft --jq .isDraft 2>/dev/null || true)"
+            [ "$draft" = false ] && break
+            sleep 30
+          done
+          if [ "$draft" != false ]; then
+            echo "There is no release of $TAG after an hour: make it with tools/release.py, then run this again."
+            exit 1
+          fi
           # A file already there is kept: tools/release.py signed it
           # (FILE.asc, SHA256SUMS), and a new build would not match
           have="$(gh release view "$TAG" --json assets --jq '.assets[].name')"
