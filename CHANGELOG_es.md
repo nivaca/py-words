@@ -9,7 +9,7 @@ Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
 
-## Sin publicar
+## 3.30 — 2026-11-22
 
 - **Cada versión firmada**: además del RPM y del .deb, cada archivo
   publicado (el zip, la AppImage, los instaladores) trae su firma OpenPGP
