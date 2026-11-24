@@ -9,7 +9,7 @@ Fedora is also on Copr, in `nivaca/py-words`. The repository starts at
 2.13 (2026-10-22); the versions before it are summed up at the end,
 without dates, from the list "Version" of the README.
 
-## Unreleased
+## 3.31 — 2026-11-24
 
 - The README says how to get py-words on Android ("On Android"): from the
   releases of the app, with Obtainium, or from its F-Droid repository

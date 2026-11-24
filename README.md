@@ -139,7 +139,7 @@ too.  The installer is not signed, so SmartScreen may warn about it:
 choose "More info" and then "Run anyway".  It can also be run without
 questions:
 
-    > py-words-v.3.30-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
+    > py-words-v.3.31-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
 
 **macOS.**  Open the `.pkg`.  It puts `py-words.app` (the window) in
 Applications and, unless you leave them out under "Customize",
@@ -156,7 +156,7 @@ Control-click the package in Finder and choose "Open").  To remove it:
 
 **Linux.**  The `.run` file is a shell script with the program inside:
 
-    $ sh py-words-v.3.30-linux-x86_64.run
+    $ sh py-words-v.3.31-linux-x86_64.run
 
 Run as a normal user, it installs for you alone, in
 `~/.local/share/py-words`, with the command in `~/.local/bin`; run with
@@ -179,10 +179,10 @@ Python (with Tk), so that nothing else is needed.  Download
 [Releases](https://github.com/nivaca/py-words/releases) on GitHub, make it
 executable and run it:
 
-    $ chmod +x py-words-v.3.30-x86_64.AppImage
-    $ ./py-words-v.3.30-x86_64.AppImage                # the window
-    $ ./py-words-v.3.30-x86_64.AppImage cli amicus     # the command line
-    $ ./py-words-v.3.30-x86_64.AppImage help           # the other programs
+    $ chmod +x py-words-v.3.31-x86_64.AppImage
+    $ ./py-words-v.3.31-x86_64.AppImage                # the window
+    $ ./py-words-v.3.31-x86_64.AppImage cli amicus     # the command line
+    $ ./py-words-v.3.31-x86_64.AppImage help           # the other programs
 
 The first argument chooses the program: `gui` (the default), `cli`, `tui`,
 `web`, `edit`, `edit-gui`, `check` or `convert`; the arguments after it go
@@ -212,7 +212,7 @@ Or download `py-words-VERSION-1.fc45.noarch.rpm` and
 package is signed; import its key once) and install it:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.30-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.31-1.fc45.noarch.rpm
 
 It runs on any Fedora with Python 3.13 or later, whatever the `fc`
 number in its name.  Or build it from the program's folder (a git
@@ -256,7 +256,7 @@ four menu entries and the icon.  Download `py-words_VERSION-1_all.deb`
 from the [Releases](https://github.com/nivaca/py-words/releases) on
 GitHub and install it:
 
-    $ sudo apt install ./py-words_3.30-1_all.deb
+    $ sudo apt install ./py-words_3.31-1_all.deb
 
 It needs Python 3.13 or later (Debian 13, Ubuntu 25.04 or later); `apt`
 installs `python3-tk` with it.  The signature is apart:
@@ -264,7 +264,7 @@ installs `python3-tk` with it.  The signature is apart:
 same key as the RPM, which is checked like this:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words_3.30-1_all.deb.asc py-words_3.30-1_all.deb
+    $ gpg --verify py-words_3.31-1_all.deb.asc py-words_3.31-1_all.deb
 
 Then `py-words` starts it, as with the RPM, and `sudo apt remove
 py-words` removes it.  To build it from the program's folder (a git
@@ -310,7 +310,7 @@ import the key once, and then check the signature of the file, or its
 sum:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words-v.3.30.zip.asc py-words-v.3.30.zip
+    $ gpg --verify py-words-v.3.31.zip.asc py-words-v.3.31.zip
     $ gpg --verify SHA256SUMS.asc SHA256SUMS && sha256sum -c --ignore-missing SHA256SUMS
 
 The RPM carries its signature inside as well: after `sudo rpm --import
@@ -390,7 +390,7 @@ distribute it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.30.zip` (with the version of the program;
+This writes `dist/py-words-v.3.31.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the same
 name.  It contains the programs, the data, the icons and the documents,
 and a file `COMMIT` with the commit it was made from, which "About" shows.
@@ -405,7 +405,7 @@ On Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.30-x86_64.AppImage` (`-o` gives another
+It writes `dist/py-words-v.3.31-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a
 Python of its own and the menu entry and icons.  The Python (Python 3.13
 with Tk, from [python-appimage](https://github.com/niess/python-appimage))
@@ -422,7 +422,7 @@ The installers (see "Installers") are made with
           [--stage-only]
 
 It writes, for this system unless `--system` and `--arch` say otherwise,
-`dist/py-words-v.3.30-linux-x86_64.run` or its Windows or macOS
+`dist/py-words-v.3.31-linux-x86_64.run` or its Windows or macOS
 counterpart (`-o` gives another folder; in `dist/`, the installers of
 older versions for the same system are removed).  Each one has the files
 of the zip (but not `words_install.py`), a Python of its own and
@@ -1598,6 +1598,13 @@ them.
 Version
 -------
 
+- 3.31:
+  - "On Android", under "Installation": how to get py-words for Android
+    (from its releases, with Obtainium, or from its F-Droid repository).
+  - `tools/release.py` also finds py-words for Android in
+    `../../Android/py-words-android`.
+  - The workflows that add the AppImage and the installers to a release
+    wait for the release that `tools/release.py` publishes.
 - 3.30:
   - Every release signed: each file published (the zip, the AppImage,
     the installers, the .deb, the RPM) comes with its OpenPGP signature

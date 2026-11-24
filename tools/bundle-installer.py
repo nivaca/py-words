@@ -230,7 +230,7 @@ def older(folder: str, system: str, arch: str) -> list[str]:
 
 
 def file_version() -> str:
-    """VERSION with four numbers, as Windows wants it: 3.30.0.0."""
+    """VERSION with four numbers, as Windows wants it: 3.31.0.0."""
     numbers = [n for n in VERSION.split('.') if n.isdigit()]
     return '.'.join((numbers + ['0'] * 4)[:4])
 
