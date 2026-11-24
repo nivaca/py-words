@@ -11,6 +11,12 @@ final, sin fechas, a partir de la lista "Versiones" del README.
 
 ## Sin publicar
 
+- El README dice cómo tener py-words en Android («En Android»): desde las
+  versiones publicadas de la app, con Obtainium o desde su repositorio de
+  F-Droid (`https://nivaca.codeberg.page/fdroid/repo`).
+- tools/release.py encuentra también py-words para Android en
+  `../../Android/py-words-android`, el nombre de la carpeta en algunos
+  computadores; allí la app no se actualizaba con cada versión.
 - Los flujos que añaden la AppImage y los instaladores a una versión
   esperan la que publica tools/release.py, y ya no la hacen ellos: en la
   3.30 la hicieron los dos a la vez, y la primera subida falló.

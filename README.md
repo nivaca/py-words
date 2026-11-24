@@ -275,6 +275,28 @@ clone), on any system and with nothing but Python:
 This writes `build/deb/py-words_VERSION-1_all.deb` and copies it to
 `dist/`.
 
+### On Android
+
+[py-words for Android](https://github.com/nivaca/py-words-android) carries
+the program and its data, with a Python of its own, and works on the
+phone without the Internet; in its settings it can show the web page
+instead.  It needs Android 10 or newer, on a 64-bit ARM device.  Each
+release of py-words brings a version of the app with it.  The app can be
+installed in three ways, all with the same signed APK, so that any of
+them updates the others:
+
+- from the releases of the app, on
+  [GitHub](https://github.com/nivaca/py-words-android/releases) or
+  [Codeberg](https://codeberg.org/nivaca/py-words-android/releases):
+  download `py-words-android-VERSION.apk` and open it on the phone;
+- with [Obtainium](https://github.com/ImranR98/Obtainium), adding the app
+  with the address `https://github.com/nivaca/py-words-android`;
+- with F-Droid (or Droid-ify, Neo Store), adding the repository
+  `https://nivaca.codeberg.page/fdroid/repo`, whose key has the
+  fingerprint `E930B855E234BD2DE4F083D454DA0195549005D91A89309F9A3E5510D71E2E46`.
+  The page <https://nivaca.codeberg.page/fdroid/>, opened on the phone,
+  adds it in one touch.
+
 ### Checking a download
 
 From the release after 3.29 on, every file of a release is signed with
@@ -466,7 +488,8 @@ signed AppImage).  When it has finished, `python3 tools/release.py
 --installers` downloads them from there, signs them (with their sums in
 `SHA256SUMS-installers`), attaches the signatures to both releases and
 the installers to the release on Codeberg.  At the end, if there is a clone of py-words for Android in
-`../../android/py-words-android` (or where `PY_WORDS_ANDROID` says), it
+`../../Android/py-words-android` or `../../android/py-words-android` (or where
+`PY_WORDS_ANDROID` says), it
 runs that project's `tools/update-py-words.py --tag vVERSION`, which puts
 this version in the app and releases the app; it asks on its own before
 doing anything.  `--no-android` skips this.

@@ -11,6 +11,12 @@ without dates, from the list "Version" of the README.
 
 ## Unreleased
 
+- The README says how to get py-words on Android ("On Android"): from the
+  releases of the app, with Obtainium, or from its F-Droid repository
+  (`https://nivaca.codeberg.page/fdroid/repo`).
+- tools/release.py also finds py-words for Android in
+  `../../Android/py-words-android`, the folder's name on some machines;
+  there, the app was not updated with each release.
 - The workflows that add the AppImage and the installers to a release
   wait for the release that tools/release.py publishes, and no longer make
   it themselves: in 3.30 both made it at once, and the first upload

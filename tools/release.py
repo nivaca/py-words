@@ -49,7 +49,8 @@ En orden, y cada paso solo si hace falta:
    que el spec debe haberse subido de versión (rpmdev-bumpspec, véase
    packaging/COPR.org);
 7. al final, si hay un clon de py-words para Android (en
-   ../../android/py-words-android, o donde diga PY_WORDS_ANDROID), corre su
+   ../../Android/py-words-android o ../../android/py-words-android, o donde
+   diga PY_WORDS_ANDROID), corre su
    tools/update-py-words.py --tag vVERSION, que pone esta versión en la app
    y publica la versión de la app que la lleva; pregunta antes por su
    cuenta.  --no-android lo omite, igual que --only codeberg (el submódulo
@@ -113,8 +114,14 @@ PUBLIC_KEY = os.path.join('packaging', 'RPM-GPG-KEY-py-words')
 SUMS = os.path.join('dist', 'SHA256SUMS')
 #  El clon de py-words para Android, cuyo submódulo py-words/ sigue a este
 #  repositorio (véase android() más abajo)
-ANDROID = os.environ.get('PY_WORDS_ANDROID') or os.path.join(
-    os.path.dirname(os.path.dirname(ROOT)), 'android', 'py-words-android')
+#  (la carpeta se escribe Android o android según el computador: vale la
+#  que exista)
+_PROJECTS = os.path.dirname(os.path.dirname(ROOT))
+ANDROID = os.environ.get('PY_WORDS_ANDROID') or next(
+    (path for path in (os.path.join(_PROJECTS, folder, 'py-words-android')
+                       for folder in ('Android', 'android'))
+     if os.path.isdir(path)),
+    os.path.join(_PROJECTS, 'android', 'py-words-android'))
 COPR_PROJECT = 'py-words'       # (del usuario de copr-cli, nivaca)
 
 

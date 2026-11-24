@@ -286,6 +286,28 @@ de git), en cualquier sistema y sin más que Python:
 Eso escribe `build/deb/py-words_VERSIÓN-1_all.deb` y lo copia en
 `dist/`.
 
+### En Android
+
+[py-words para Android](https://github.com/nivaca/py-words-android) lleva
+el programa y sus datos, con un Python propio, y funciona en el teléfono
+sin internet; en sus ajustes puede mostrar en cambio la página web.
+Necesita Android 10 o posterior, en un dispositivo ARM de 64 bits.  Cada
+versión de py-words trae consigo una versión de la app.  La app se
+instala de tres maneras, todas con el mismo APK firmado, así que
+cualquiera de ellas actualiza a las otras:
+
+- desde las versiones publicadas de la app, en
+  [GitHub](https://github.com/nivaca/py-words-android/releases) o en
+  [Codeberg](https://codeberg.org/nivaca/py-words-android/releases):
+  descargue `py-words-android-VERSIÓN.apk` y ábralo en el teléfono;
+- con [Obtainium](https://github.com/ImranR98/Obtainium), añadiendo la
+  app con la dirección `https://github.com/nivaca/py-words-android`;
+- con F-Droid (o Droid-ify, Neo Store), añadiendo el repositorio
+  `https://nivaca.codeberg.page/fdroid/repo`, cuya clave tiene la huella
+  `E930B855E234BD2DE4F083D454DA0195549005D91A89309F9A3E5510D71E2E46`.
+  La página <https://nivaca.codeberg.page/fdroid/>, abierta en el
+  teléfono, lo añade de un toque.
+
 ### Cómo comprobar una descarga
 
 Desde la versión siguiente a la 3.29, cada archivo de una release va
@@ -478,8 +500,8 @@ sube el tag, `installers.yml` los hace y los añade a la release de GitHub
 tools/release.py --installers` los baja de allí, los firma (con sus sumas
 en `SHA256SUMS-installers`), adjunta las firmas a las dos releases y los
 instaladores a la de Codeberg.  Al final, si hay un clon de py-words
-para Android en `../../android/py-words-android` (o donde diga
-`PY_WORDS_ANDROID`), corre su `tools/update-py-words.py --tag vVERSIÓN`,
+para Android en `../../Android/py-words-android` o `../../android/py-words-android` (o
+donde diga `PY_WORDS_ANDROID`), corre su `tools/update-py-words.py --tag vVERSIÓN`,
 que pone esta versión en la app y publica la app; pregunta por su cuenta
 antes de hacer nada.  `--no-android` lo omite.
 

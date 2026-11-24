@@ -276,6 +276,29 @@ py-words` ipsum removet.  Ad ipsum construendum ex capsula programmatis
 Hoc scribit `build/deb/py-words_VERSION-1_all.deb` et copiat ipsum in
 `dist/`.
 
+### De py-words in Android
+
+[py-words pro Android](https://github.com/nivaca/py-words-android) secum
+fert programma et data eius, cum Python suo, et in telephono sine
+interreti operatur; in optionibus suis potest etiam paginam
+interretialem ostendere.  Requirit Android 10 vel posteriorem, in
+instrumento ARM 64 bitorum.  Quaeque editio py-words secum affert
+editionem applicationis.  Applicatio tribus modis instituitur, semper
+eodem fasciculo APK subscripto, ita ut quilibet modus ceteros renovet:
+
+- ex editionibus applicationis, in
+  [GitHub](https://github.com/nivaca/py-words-android/releases) vel
+  [Codeberg](https://codeberg.org/nivaca/py-words-android/releases):
+  trahe ex interreti `py-words-android-VERSION.apk` et aperi ipsum in
+  telephono;
+- per [Obtainium](https://github.com/ImranR98/Obtainium), addendo
+  applicationem cum inscriptione `https://github.com/nivaca/py-words-android`;
+- per F-Droid (vel Droid-ify, Neo Store), addendo repositorium
+  `https://nivaca.codeberg.page/fdroid/repo`, cuius clavis vestigium
+  (*fingerprint*) est `E930B855E234BD2DE4F083D454DA0195549005D91A89309F9A3E5510D71E2E46`.
+  Pagina <https://nivaca.codeberg.page/fdroid/>, in telephono aperta,
+  ipsum uno tactu addit.
+
 ### Quomodo fasciculus acceptus probetur
 
 Ab editione que 3.29 sequitur, unusquisque fasciculus editionis signatur
@@ -467,7 +490,8 @@ ibi est, et `appimage.yml` servat AppImage signatam).  Cum finem fecit,
 summis eorum in `SHA256SUMS-installers`), affigit subscriptiones ambabus
 editionibus et institutores editioni in Codeberg.  Ad
 finem, si exemplar py-words pro Android adest in
-`../../android/py-words-android` (vel ubi `PY_WORDS_ANDROID` dicit),
+`../../Android/py-words-android` vel `../../android/py-words-android` (vel
+ubi `PY_WORDS_ANDROID` dicit),
 currit eius `tools/update-py-words.py --tag vVERSION`, quod hanc
 versionem in applicationem ponit et applicationem edit; ipsum per se
 interrogat antequam quicquam faciat.  `--no-android` hoc omittit.
