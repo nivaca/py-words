@@ -48,7 +48,10 @@ En orden, y cada paso solo si hace falta:
    construcción necesita una versión-release mayor que la anterior, así
    que el spec debe haberse subido de versión (rpmdev-bumpspec, véase
    packaging/COPR.org);
-7. al final, si hay un clon de py-words para Android (en
+7. salvo con --no-apt o --no-deb, añade el paquete de Debian al repositorio
+   APT de estos programas, github.com/nivaca/apt, con su herramienta
+   (../apt/tools/apt_repo.py: el índice firmado y comprobado);
+8. al final, si hay un clon de py-words para Android (en
    ../../Android/py-words-android o ../../android/py-words-android, o donde
    diga PY_WORDS_ANDROID), corre su
    tools/update-py-words.py --tag vVERSION, que pone esta versión en la app
@@ -108,6 +111,9 @@ CI_INSTALLERS = [os.path.join('build', 'installers', name) for name in (
 CI_SUMS = os.path.join('build', 'installers', 'SHA256SUMS-installers')
 #  El .deb que hace packaging/build-deb.py (su REVISION es la 1) y su firma
 DEB = os.path.join('dist', f'py-words_{VERSION}-1_all.deb')
+# La herramienta del repositorio APT de estos programas: el proyecto apt,
+# junto a este (github.com/nivaca/apt)
+APT_TOOL = os.path.join(os.path.dirname(ROOT), 'apt', 'tools', 'apt_repo.py')
 SPEC = os.path.join('packaging', 'py-words.spec')
 # The public key published with every release, which checks every signature
 PUBLIC_KEY = os.path.join('packaging', 'RPM-GPG-KEY-py-words')
@@ -444,6 +450,17 @@ class Release:
         self.codeberg(repos['codeberg'])
         self.run_plan()
 
+    def apt(self):
+        """The Debian package added to the APT repository of these programs
+        (github.com/nivaca/apt), by its own tool, which keeps only the newest
+        version, signs the index and checks it before uploading."""
+        if not os.path.isfile(APT_TOOL):
+            sys.exit(f'release.py: {APT_TOOL} is not there (clone '
+                     'github.com/nivaca/apt beside this project, or use '
+                     '--no-apt)')
+        self.plan('APT: add the Debian package to github.com/nivaca/apt',
+                  sys.executable, APT_TOOL, 'add', DEB)
+
     def __call__(self):
         args = self.args
         if args.installers:
@@ -468,6 +485,8 @@ class Release:
             getattr(self, forge)(repos[forge])
         if args.rpm and not args.no_copr:
             self.copr()
+        if not args.no_deb and not args.no_apt:
+            self.apt()
         self.run_plan()
         self.android()
 
@@ -530,6 +549,9 @@ def main(argv=None):
                         help='without the RPM (nor its Copr build)')
     parser.add_argument('--no-copr', action='store_true',
                         help='do not send the RPM to Copr')
+    parser.add_argument('--no-apt', action='store_true',
+                        help='do not add the Debian package to the APT '
+                             'repository (github.com/nivaca/apt)')
     parser.add_argument('--installers', action='store_true',
                         help='only copy the installers for Windows and macOS '
                              f'from the release {TAG} on GitHub (made by '

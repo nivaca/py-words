@@ -277,6 +277,16 @@ clave que el RPM, y se comprueba así:
     $ gpg --import RPM-GPG-KEY-py-words
     $ gpg --verify py-words_3.31-1_all.deb.asc py-words_3.31-1_all.deb
 
+O añada, una vez, el repositorio APT de mis programas
+([github.com/nivaca/apt](https://github.com/nivaca/apt)), firmado con la
+misma clave; entonces `apt upgrade` le trae cada versión nueva:
+
+    $ sudo curl -fsSLo /usr/share/keyrings/nivaca-archive-keyring.gpg \
+        https://github.com/nivaca/apt/releases/download/stable/nivaca-archive-keyring.gpg
+    $ echo "deb [signed-by=/usr/share/keyrings/nivaca-archive-keyring.gpg] https://github.com/nivaca/apt/releases/download/stable ./" \
+        | sudo tee /etc/apt/sources.list.d/nivaca.list
+    $ sudo apt update && sudo apt install py-words
+
 Después `py-words` lo inicia, como con el RPM, y `sudo apt remove
 py-words` lo quita.  Para hacerlo desde la carpeta del programa (un clon
 de git), en cualquier sistema y sin más que Python:

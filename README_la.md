@@ -267,6 +267,16 @@ eadem clave qua RPM, et sic probatur:
     $ gpg --import RPM-GPG-KEY-py-words
     $ gpg --verify py-words_3.31-1_all.deb.asc py-words_3.31-1_all.deb
 
+Vel adde semel repositorium APT programmatum meorum
+([github.com/nivaca/apt](https://github.com/nivaca/apt)), eadem clave
+subscriptum; deinde `apt upgrade` quamque versionem novam affert:
+
+    $ sudo curl -fsSLo /usr/share/keyrings/nivaca-archive-keyring.gpg \
+        https://github.com/nivaca/apt/releases/download/stable/nivaca-archive-keyring.gpg
+    $ echo "deb [signed-by=/usr/share/keyrings/nivaca-archive-keyring.gpg] https://github.com/nivaca/apt/releases/download/stable ./" \
+        | sudo tee /etc/apt/sources.list.d/nivaca.list
+    $ sudo apt update && sudo apt install py-words
+
 Deinde `py-words` ipsum incipit, sicut cum RPM, et `sudo apt remove
 py-words` ipsum removet.  Ad ipsum construendum ex capsula programmatis
 (clone git), in quolibet systemate et nullo alio quam Python:
