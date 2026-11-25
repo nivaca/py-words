@@ -11,6 +11,15 @@ final, sin fechas, a partir de la lista "Versiones" del README.
 
 ## Sin publicar
 
+- `tools/zenodo.py`: la descripción del depósito es ahora el README entero
+  de la etiqueta, en HTML. El borrador recibe además el colaborador (el
+  director del proyecto), los idiomas, el copyright, el repositorio en
+  GitHub, el lenguaje de programación y el estado del desarrollo; estos
+  últimos, por la API de registros de Zenodo, porque la de depósitos no los
+  admite. El token puede guardarse en el llavero del escritorio
+  (`secret-tool store --label="Zenodo token" service zenodo`) en vez de en
+  `$ZENODO_TOKEN`; `tools/zenodo.py check-token` dice si hay uno.
+
 - `tools/zenodo.py` prepara el depósito de una versión en Zenodo. `collect`
   deja en `dist/zenodo/` el árbol de la etiqueta como
   `py-words-VERSIÓN-source.tar.gz`, con su firma, un `SHA256SUMS` del

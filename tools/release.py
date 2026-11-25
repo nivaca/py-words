@@ -84,8 +84,8 @@ sin ellos.
 El depósito para Zenodo se reúne en dist/zenodo/ después de la etiqueta
 (tools/zenodo.py collect: el árbol de la etiqueta, firmado, con SHA256SUMS y
 la clave pública) y al final se sube a Zenodo como borrador (con el token de
-$ZENODO_TOKEN), salvo con --no-zenodo. Aquí nunca se publica: el borrador se
-revisa y se publica a mano en Zenodo.
+$ZENODO_TOKEN o del llavero), salvo con --no-zenodo. Aquí nunca se publica:
+el borrador se revisa y se publica a mano en Zenodo.
 """
 
 import argparse
@@ -135,6 +135,16 @@ ANDROID = os.environ.get('PY_WORDS_ANDROID') or next(
      if os.path.isdir(path)),
     os.path.join(_PROJECTS, 'android', 'py-words-android'))
 COPR_PROJECT = 'py-words'       # (del usuario de copr-cli, nivaca)
+
+
+def zenodo_token() -> bool:
+    """Whether tools/zenodo.py finds a Zenodo token, in $ZENODO_TOKEN or
+    in the desktop keyring (secret-tool)."""
+    tool = os.path.join(os.path.dirname(os.path.dirname(
+        os.path.abspath(__file__))), 'tools', 'zenodo.py')
+    done = subprocess.run([sys.executable, tool, 'check-token'],
+                          capture_output=True, check=False)
+    return done.returncode == 0
 
 
 def signing_key() -> str:
@@ -479,8 +489,8 @@ class Release:
         if self.args.no_zenodo:
             return
         # (sin token se para aquí, antes de hacer nada, y no al final de la versión)
-        if not os.environ.get('ZENODO_TOKEN') and not self.args.dry_run:
-            sys.exit('release.py: the upload to Zenodo needs a token in $ZENODO_TOKEN (see tools/zenodo.py); '
+        if not zenodo_token() and not self.args.dry_run:
+            sys.exit('release.py: the upload to Zenodo needs a token (see tools/zenodo.py check-token); '
                      '--no-zenodo leaves it out')
         self.plan('Zenodo: upload the deposit as a draft (not published)', sys.executable, 'tools/zenodo.py',
                   'upload')
@@ -596,7 +606,7 @@ def main(argv=None):
     parser.add_argument('--no-zenodo', action='store_true',
                         help='do not upload dist/zenodo/ to Zenodo (by default it '
                              'goes as a draft, never published, with the token '
-                             'in $ZENODO_TOKEN)')
+                             'in $ZENODO_TOKEN or the keyring)')
     parser.add_argument('--zenodo', action='store_true',
                         help='(the upload to Zenodo is made always now, unless '
                              '--no-zenodo: kept for older scripts)')
