@@ -9,6 +9,17 @@ Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
 
+## Sin publicar
+
+- `tools/zenodo.py` prepara el depósito de una versión en Zenodo. `collect`
+  deja en `dist/zenodo/` el árbol de la etiqueta como
+  `py-words-VERSIÓN-source.tar.gz`, con su firma, un `SHA256SUMS` del
+  depósito, firmado, y la clave pública, y comprueba cada firma con solo esa
+  clave (`--packages` añade los archivos de la versión). `upload` lo sube a
+  Zenodo como borrador, versión nueva del depósito si ya lo hay, y nunca lo
+  publica. `tools/release.py` reúne ahora el depósito después de la etiqueta
+  y, con `--zenodo`, lo sube. Los metadatos están en `.zenodo.json`.
+
 ## 3.31 — 2026-11-24
 
 - El README dice cómo tener py-words en Android («En Android»): desde las

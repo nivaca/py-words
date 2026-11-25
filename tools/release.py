@@ -80,6 +80,11 @@ versión de GitHub, los firma (ARCHIVO.asc, y sus sumas en
 SHA256SUMS-installers, con su firma) y adjunta las firmas a las dos
 versiones, y los instaladores a la de Codeberg, que de otro modo quedaría
 sin ellos.
+
+El depósito para Zenodo se reúne en dist/zenodo/ después de la etiqueta
+(tools/zenodo.py collect: el árbol de la etiqueta, firmado, con SHA256SUMS y
+la clave pública); --zenodo además lo sube a Zenodo como borrador, que aquí
+nunca se publica: se revisa y se publica a mano en Zenodo.
 """
 
 import argparse
@@ -461,6 +466,23 @@ class Release:
         self.plan('APT: add the Debian package to github.com/nivaca/apt',
                   sys.executable, APT_TOOL, 'add', DEB)
 
+    def zenodo_collect(self):
+        """The deposit of the release for Zenodo, in dist/zenodo/ (tools/zenodo.py): the tree of the tag, signed,
+        with SHA256SUMS and the public key, each signature checked with only that key."""
+        self.plan('Zenodo: collect the deposit in dist/zenodo/', sys.executable, 'tools/zenodo.py', 'collect',
+                  '--tag', TAG)
+
+    def zenodo_upload(self):
+        """With --zenodo, dist/zenodo/ uploaded to Zenodo as a draft, never published: it is reviewed and published
+        there by hand."""
+        if not self.args.zenodo:
+            return
+        # (sin token se para aquí, antes de hacer nada, y no al final de la versión)
+        if not os.environ.get('ZENODO_TOKEN') and not self.args.dry_run:
+            sys.exit('release.py: --zenodo needs a Zenodo token in $ZENODO_TOKEN (see tools/zenodo.py)')
+        self.plan('Zenodo: upload the deposit as a draft (not published)', sys.executable, 'tools/zenodo.py',
+                  'upload')
+
     def __call__(self):
         args = self.args
         if args.installers:
@@ -481,12 +503,14 @@ class Release:
         self.build()
         self.sign()
         self.tag()
+        self.zenodo_collect()
         for forge in self.forges:
             getattr(self, forge)(repos[forge])
         if args.rpm and not args.no_copr:
             self.copr()
         if not args.no_deb and not args.no_apt:
             self.apt()
+        self.zenodo_upload()
         self.run_plan()
         self.android()
 
@@ -567,6 +591,9 @@ def main(argv=None):
                         help='do not put this version in py-words for '
                              'Android afterwards (its '
                              'tools/update-py-words.py)')
+    parser.add_argument('--zenodo', action='store_true',
+                        help='also upload dist/zenodo/ to Zenodo as a draft, '
+                             'not published ($ZENODO_TOKEN)')
     parser.add_argument('-n', '--dry-run', action='store_true',
                         help='only show the commands')
     parser.add_argument('-y', '--yes', action='store_true',

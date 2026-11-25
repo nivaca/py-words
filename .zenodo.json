@@ -1,0 +1,20 @@
+{
+  "title": "py-words",
+  "upload_type": "software",
+  "description": "<p>Latin dictionary and parser (Latin-English and Latin-Spanish).</p>",
+  "creators": [
+    {
+      "name": "Vaughan, Nicolas",
+      "affiliation": "Universidad de los Andes",
+      "orcid": "0000-0002-2877-0539"
+    }
+  ],
+  "license": "gpl-3.0-or-later",
+  "access_right": "open",
+  "keywords": [
+    "Latin",
+    "dictionary",
+    "morphological analysis",
+    "parser"
+  ]
+}
