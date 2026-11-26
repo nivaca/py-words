@@ -83,9 +83,9 @@ sin ellos.
 
 El depósito para Zenodo se reúne en dist/zenodo/ después de la etiqueta
 (tools/zenodo.py collect: el árbol de la etiqueta, firmado, con SHA256SUMS y
-la clave pública) y al final se sube a Zenodo como borrador (con el token de
-$ZENODO_TOKEN o del llavero), salvo con --no-zenodo. Aquí nunca se publica:
-el borrador se revisa y se publica a mano en Zenodo.
+la clave pública) y al final se sube a Zenodo y se publica, con un DOI nuevo
+(con el token de $ZENODO_TOKEN o del llavero), salvo con --no-zenodo; con
+--zenodo-draft queda como borrador, para publicarlo a mano.
 """
 
 import argparse
@@ -484,16 +484,17 @@ class Release:
                   '--tag', TAG)
 
     def zenodo_upload(self):
-        """Unless --no-zenodo, dist/zenodo/ uploaded to Zenodo as a draft, never published: it is reviewed and
-        published there by hand."""
+        """Unless --no-zenodo, dist/zenodo/ uploaded to Zenodo and published (with
+        --zenodo-draft, only as a draft, published there by hand)."""
         if self.args.no_zenodo:
             return
         # (sin token se para aquí, antes de hacer nada, y no al final de la versión)
         if not zenodo_token() and not self.args.dry_run:
             sys.exit('release.py: the upload to Zenodo needs a token (see tools/zenodo.py check-token); '
                      '--no-zenodo leaves it out')
-        self.plan('Zenodo: upload the deposit as a draft (not published)', sys.executable, 'tools/zenodo.py',
-                  'upload')
+        publish = [] if self.args.zenodo_draft else ['--publish']
+        what = ' as a draft (not published)' if self.args.zenodo_draft else ' and publish it'
+        self.plan('Zenodo: upload the deposit' + what, sys.executable, 'tools/zenodo.py', 'upload', *publish)
 
     def __call__(self):
         args = self.args
@@ -604,9 +605,10 @@ def main(argv=None):
                              'Android afterwards (its '
                              'tools/update-py-words.py)')
     parser.add_argument('--no-zenodo', action='store_true',
-                        help='do not upload dist/zenodo/ to Zenodo (by default it '
-                             'goes as a draft, never published, with the token '
-                             'in $ZENODO_TOKEN or the keyring)')
+                        help='do not upload dist/zenodo/ to Zenodo (by default it is uploaded and '
+                             'published, with the token in $ZENODO_TOKEN or the keyring)')
+    parser.add_argument('--zenodo-draft', action='store_true',
+                        help='upload it to Zenodo as a draft, not published')
     parser.add_argument('--zenodo', action='store_true',
                         help='(the upload to Zenodo is made always now, unless '
                              '--no-zenodo: kept for older scripts)')
