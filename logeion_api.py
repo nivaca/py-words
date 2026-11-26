@@ -22,6 +22,7 @@ import hashlib
 import json
 import os
 import re
+import ssl
 import threading
 import time
 import urllib.error
@@ -51,13 +52,37 @@ class NotFound(Exception):
         self.closest = closest
 
 
+_context: ssl.SSLContext | None = None
+
+
+def ssl_context() -> ssl.SSLContext:
+    """The context for Logeion's connections: the system's certificates
+    and, when certifi is installed, its certificates too."""
+    global _context
+    if _context is None:
+        context = ssl.create_default_context()
+        #  En Windows, el almacén del sistema no tiene todas las raíces: las
+        #  baja cuando las necesita su propio verificador, no el OpenSSL de
+        #  Python.  Así faltaba la de Logeion (SSL.com TLS RSA Root CA 2022)
+        #  y la conexión fallaba con "self-signed certificate in certificate
+        #  chain".  Los instaladores traen certifi, que sí la tiene.
+        try:
+            import certifi
+            context.load_verify_locations(certifi.where())
+        except (ImportError, OSError, ssl.SSLError):
+            pass
+        _context = context
+    return _context
+
+
 def _get(endpoint: str, params: dict) -> dict:
     url = f"{API}/{endpoint}?{urllib.parse.urlencode(params)}"
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT,
                                                "Accept": "application/json"})
     for attempt in range(4):
         try:
-            with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            with urllib.request.urlopen(req, timeout=TIMEOUT,
+                                        context=ssl_context()) as resp:
                 data = resp.read()
             break
         except urllib.error.HTTPError as e:

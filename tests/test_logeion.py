@@ -7,6 +7,7 @@ páginas."""
 import contextlib
 import io
 import os
+import ssl
 import sys
 import unittest
 import urllib.error
@@ -662,6 +663,40 @@ class WindowTests(unittest.TestCase):
         lines = app.text.get('1.0', 'end').split('\n')
         self.assertLessEqual(max(map(len, lines)), width)
         self.assertGreater(width, 30)
+
+
+class CertificateTests(unittest.TestCase):
+    """The roots that the system's store may lack (on Windows, Logeion's
+    SSL.com TLS RSA Root CA 2022) come from certifi."""
+
+    def setUp(self):
+        api._context = None
+        self.addCleanup(setattr, api, '_context', None)
+
+    def test_certifi_is_added(self):
+        try:
+            import certifi
+        except ImportError:
+            self.skipTest('no certifi')
+        with mock.patch('ssl.SSLContext.load_verify_locations') as load:
+            context = api.ssl_context()
+        load.assert_called_once_with(certifi.where())
+        self.assertIs(api.ssl_context(), context)       # una sola vez
+        self.assertEqual(context.verify_mode, ssl.CERT_REQUIRED)
+        self.assertTrue(context.check_hostname)
+
+    def test_without_certifi(self):
+        with mock.patch.dict(sys.modules, {'certifi': None}):
+            context = api.ssl_context()
+        self.assertEqual(context.verify_mode, ssl.CERT_REQUIRED)
+
+    def test_the_requests_use_it(self):
+        response = mock.MagicMock()
+        response.__enter__.return_value.read.return_value = b'{}'
+        with mock.patch('urllib.request.urlopen',
+                        return_value=response) as urlopen:
+            api._get('detail', {'w': 'amo'})
+        self.assertIs(urlopen.call_args.kwargs['context'], api.ssl_context())
 
 
 if __name__ == '__main__':

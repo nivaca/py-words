@@ -11,6 +11,13 @@ final, sin fechas, a partir de la lista "Versiones" del README.
 
 ## Sin publicar
 
+- Logeion no respondía desde el instalador para Windows ("certificate
+  verify failed: self-signed certificate in certificate chain"). El
+  servidor de Logeion manda la raíz de su cadena, SSL.com TLS RSA Root CA
+  2022, que Windows no trae instalada: la baja solo cuando la necesita su
+  propio verificador, y el de Python no la pide. Las conexiones con Logeion
+  confían ahora en los certificados de certifi además de los del sistema.
+
 - El instalador para Windows se puede firmar con Authenticode por SignPath
   (firma de código gratuita para proyectos de código abierto, con el
   certificado de SignPath Foundation), desde
