@@ -1,4 +1,4 @@
-# py-words 3.31: descripción
+# py-words 3.32: descripción
 
 ## Análisis
 
@@ -46,7 +46,7 @@ Más adelante, también con ayuda de Claude, el diccionario se comparó con el v
 
 El rediseño se comparó con la traducción fiel sobre un corpus de 133 671 palabras: todas las raíces del diccionario, formas generadas y las entradas de prueba. El 99,2 % dio exactamente los mismos resultados. Las diferencias restantes se revisaron una por una, y todas resultaron ser cambios deliberados o errores del original ya corregidos; están documentadas en el README.
 
-Hay 409 pruebas automáticas; `python3 tools/test.py` las corre todas a la vez, cada clase de pruebas en un proceso propio, en cerca de un minuto y medio (`python3 -m unittest discover -s tests` las corre una tras otra). Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador, el servidor web, incluidas sus protecciones, y la firma de una versión (con una clave hecha en la prueba, nunca la del autor). Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
+Hay 432 pruebas automáticas; `python3 tools/test.py` las corre todas a la vez, cada clase de pruebas en un proceso propio, en cerca de un minuto y medio (`python3 -m unittest discover -s tests` las corre una tras otra). Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador, el servidor web, incluidas sus protecciones, y la firma de una versión (con una clave hecha en la prueba, nunca la del autor). Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
 
 La versión en línea se probó en un navegador manejado por un script (búsquedas en los dos sentidos, los enlaces de los resultados, el botón Atrás, el modo oscuro, la interfaz en español y los ajustes que se conservan al recargar), tanto desde un servidor local como desde el sitio entonces publicado. Las pruebas corren en Python 3.13, la versión mínima, y en la más reciente; con cada push a la rama principal, un flujo de trabajo de GitHub las corre. Las ventanas se revisaron además a ojo, con capturas de pantalla, y con un Python demasiado viejo el programa da un mensaje claro en lugar de un error.
 
@@ -55,6 +55,8 @@ Los instaladores se prueban en GitHub, cada uno en su sistema (Windows, macOS en
 ## Plataforma
 
 Funciona en Linux (y en otros sistemas tipo Unix con menús freedesktop), Windows y macOS. Desde la 3.29, los instaladores (Windows 10 o posterior de 64 bits; macOS 11 o posterior, en Apple silicon o Intel; Linux de 64 bits con glibc 2.17 o posterior) traen su propio Python y no necesitan nada más. Desde la carpeta del programa, necesita Python 3.13 o superior con Tkinter, que viene en los instaladores de python.org; en algunas distribuciones de Linux es un paquete aparte, como `python3-tkinter` o `python3-tk`. En Windows, el editor de terminal pide además el paquete `windows-curses`. La AppImage trae su propio Python y funciona en cualquier Linux de 64 bits; el RPM sirve para Fedora y el paquete `.deb`, para Debian 13, Ubuntu 25.04 y los sistemas posteriores o derivados, que ya traen Python 3.13.
+
+En Windows, cuyo almacén de certificados no trae la raíz que manda el servidor de Logeion (SSL.com TLS RSA Root CA 2022) hasta que la pide su propio verificador, el Python de los instaladores no podía conectarse; desde la 3.32 las conexiones con Logeion confían además en los certificados de certifi, que llevan los instaladores.
 
 En pantallas de alta resolución, las ventanas siguen la escala del escritorio (`Xft.dpi`), también con el Tk 8.6 del AppImage, que no la lee, y, desde la 3.24, cuando la configuración de fontconfig fija otra resolución para las fuentes, que dejaba el texto del RPM a la mitad de su tamaño en una pantalla al 200 %.
 

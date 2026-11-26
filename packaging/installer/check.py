@@ -12,9 +12,10 @@ de sus instaladores, lo que el programa necesita de ese Python:
     CARPETA/python/bin/python3 check.py CARPETA [--no-network]
 
 (en Windows, CARPETA\\python\\python.exe).  Prepara el entorno como
-launcher.py y prueba Tcl (sin pantalla: no abre ninguna ventana), curses
-y, salvo con --no-network, una conexión HTTPS como las de Logeion.  Lo
-usa .github/workflows/installers.yml tras instalar cada uno.
+launcher.py y prueba Tcl (sin pantalla: no abre ninguna ventana), curses,
+certifi y, salvo con --no-network, una conexión HTTPS y una búsqueda en
+Logeion, con el código del programa.  Lo usa
+.github/workflows/installers.yml tras instalar cada uno.
 """
 
 import os
@@ -48,6 +49,7 @@ def main(argv: list[str]) -> int:
     check('Python', lambda: f'{sys.version.split()[0]} in {sys.base_prefix}')
     check('Tcl', lambda: __import__('tkinter').Tcl().eval('info patchlevel'))
     check('curses', lambda: __import__('curses').__name__)
+    check('certifi', lambda: __import__('certifi').where())
     def program():
         path = os.path.join(root, 'program', 'words.py')
         if not os.path.isfile(path):
@@ -61,6 +63,16 @@ def main(argv: list[str]) -> int:
                                         timeout=30) as r:
                 return f'HTTP {r.status}'
         check('HTTPS', https)
+
+        #  Logeion con el contexto del programa (los certificados del
+        #  sistema y los de certifi): en Windows faltaba la raíz que manda
+        #  su servidor, y fallaba aunque la conexión con GitHub funcionara
+        def logeion():
+            sys.path.insert(0, os.path.join(root, 'program'))
+            import logeion_api
+            words = logeion_api._get('search', {'q': 'amic'}).get('words')
+            return f'{len(words or [])} words for amic-'
+        check('Logeion', logeion)
     return 1 if failed else 0
 
 

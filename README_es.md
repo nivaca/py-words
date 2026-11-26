@@ -143,7 +143,7 @@ instalador no está firmado, así que SmartScreen puede advertir de él:
 elija "Más información" y luego "Ejecutar de todas formas".  También se
 puede ejecutar sin preguntas:
 
-    > py-words-v.3.31-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
+    > py-words-v.3.32-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
 
 **macOS.**  Abra el `.pkg`.  Pone `py-words.app` (la ventana) en
 Aplicaciones y, a menos que las deje fuera en "Personalizar",
@@ -162,7 +162,7 @@ paquete en el Finder y elija "Abrir").  Para quitarlo:
 **Linux.**  El archivo `.run` es un script de shell con el programa
 dentro:
 
-    $ sh py-words-v.3.31-linux-x86_64.run
+    $ sh py-words-v.3.32-linux-x86_64.run
 
 Ejecutado como usuario normal, instala solo para usted, en
 `~/.local/share/py-words`, con la orden en `~/.local/bin`; con `sudo`,
@@ -184,10 +184,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.31-x86_64.AppImage
-    $ ./py-words-v.3.31-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.31-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.31-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.32-x86_64.AppImage
+    $ ./py-words-v.3.32-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.32-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.32-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -219,7 +219,7 @@ O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
 paquete va firmado; importe su clave una vez) e instálelo:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.31-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.32-1.fc45.noarch.rpm
 
 Funciona en cualquier Fedora con Python 3.13 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
@@ -267,7 +267,7 @@ cuatro accesos del menú y el icono.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub e
 instálelo:
 
-    $ sudo apt install ./py-words_3.31-1_all.deb
+    $ sudo apt install ./py-words_3.32-1_all.deb
 
 Necesita Python 3.13 o posterior (Debian 13, Ubuntu 25.04 o posteriores);
 `apt` instala con él `python3-tk`.  La firma va aparte:
@@ -275,7 +275,7 @@ Necesita Python 3.13 o posterior (Debian 13, Ubuntu 25.04 o posteriores);
 clave que el RPM, y se comprueba así:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words_3.31-1_all.deb.asc py-words_3.31-1_all.deb
+    $ gpg --verify py-words_3.32-1_all.deb.asc py-words_3.32-1_all.deb
 
 O añada, una vez, el repositorio APT de mis programas
 ([github.com/nivaca/apt](https://github.com/nivaca/apt)), firmado con la
@@ -331,7 +331,7 @@ comprobar una descarga, importe la clave una vez y luego compruebe la
 firma del archivo, o su suma:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words-v.3.31.zip.asc py-words-v.3.31.zip
+    $ gpg --verify py-words-v.3.32.zip.asc py-words-v.3.32.zip
     $ gpg --verify SHA256SUMS.asc SHA256SUMS && sha256sum -c --ignore-missing SHA256SUMS
 
 El RPM lleva además su firma dentro: después de `sudo rpm --import
@@ -412,7 +412,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.31.zip` (con la versión del programa; `-o`
+Eso escribe `dist/py-words-v.3.32.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -428,7 +428,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.31-x86_64.AppImage` (`-o` da otra
+Eso escribe `dist/py-words-v.3.32-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -445,7 +445,7 @@ Los instaladores (véase "Instaladores") se hacen con
           [--stage-only]
 
 Para este sistema, a menos que `--system` y `--arch` digan otra cosa,
-eso escribe `dist/py-words-v.3.31-linux-x86_64.run` o su equivalente de
+eso escribe `dist/py-words-v.3.32-linux-x86_64.run` o su equivalente de
 Windows o de macOS (`-o` da otra carpeta; en `dist/` se borran los
 instaladores de versiones anteriores para el mismo sistema).  Cada uno
 lleva los archivos del zip (menos `words_install.py`), un Python propio y
@@ -455,7 +455,8 @@ es Python 3.13 con Tk, de
 de una versión fija cuyas sumas de comprobación están en el script; sin
 las pruebas, IDLE, pip ni los archivos para compilar extensiones.  Lleva
 además [certifi](https://pypi.org/project/certifi/) (los certificados para
-Logeion, cuando los del sistema no están donde ese Python los busca) y,
+Logeion, junto a los del sistema: estos pueden no estar donde ese Python
+los busca, y a Windows le faltan algunas raíces hasta que las baja) y,
 para Windows, [windows-curses](https://pypi.org/project/windows-curses/).
 Todo se descarga la primera vez, se comprueba y se guarda en
 `~/.cache/py-words-build`; `--python` da otro Python, y `--no-extras`
@@ -1657,6 +1658,12 @@ verlas.
 Versiones
 ---------
 
+- 3.32:
+  - Logeion responde desde el instalador para Windows: las conexiones con
+    él confían en los certificados de certifi además de los del sistema
+    (a Windows le faltaba la raíz que manda el servidor de Logeion).
+  - Cada versión se publica en Zenodo (`tools/zenodo.py`), con el README
+    entero como descripción.
 - 3.31:
   - «En Android», en «Instalación»: cómo tener py-words para Android
     (desde sus versiones publicadas, con Obtainium o desde su repositorio

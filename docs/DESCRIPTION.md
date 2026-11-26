@@ -483,6 +483,16 @@ the full-screen terminal version would not start.  As in the packages,
 the installed dictionary is read-only, so that an update cannot replace
 someone's edits.
 
+A third problem appeared only later, on a real Windows computer: Logeion
+could not be reached ("self-signed certificate in certificate chain").
+Logeion's server sends the whole chain of its certificate, with the root,
+SSL.com TLS RSA Root CA 2022, and Windows does not come with that root
+installed; it downloads roots like it when its own verifier first needs
+them, but the OpenSSL of Python only reads what is already in the store.
+The tests on GitHub had not seen it: they try HTTPS with github.com, not
+with Logeion.  Since 3.32 the connections to Logeion trust the certificates of
+certifi, which the installers bring, as well as those of the system.
+
 13. Every release signed
 ------------------------
 
@@ -509,7 +519,7 @@ a key made for them, in a folder of their own, never with mine.
 Testing
 -------
 
-The program has unit tests and regression tests (`tests/`), 409 in total,
+The program has unit tests and regression tests (`tests/`), 432 in total,
 that run with Python 3.13 (the oldest it supports) and with the latest
 Python; `tools/test.py` runs them all at once, each class of tests in a
 process of its own, in about a minute and a half.  The regression tests

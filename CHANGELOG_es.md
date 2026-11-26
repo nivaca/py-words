@@ -9,7 +9,7 @@ Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
 
-## Sin publicar
+## 3.32 — 2026-11-26
 
 - Logeion no respondía desde el instalador para Windows ("certificate
   verify failed: self-signed certificate in certificate chain"). El
@@ -17,6 +17,9 @@ final, sin fechas, a partir de la lista "Versiones" del README.
   2022, que Windows no trae instalada: la baja solo cuando la necesita su
   propio verificador, y el de Python no la pide. Las conexiones con Logeion
   confían ahora en los certificados de certifi además de los del sistema.
+  La comprobación de cada instalador en GitHub
+  (`packaging/installer/check.py`) busca además certifi y hace una búsqueda
+  en Logeion con el código del programa.
 
 - El instalador para Windows se puede firmar con Authenticode por SignPath
   (firma de código gratuita para proyectos de código abierto, con el

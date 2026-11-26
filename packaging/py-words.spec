@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.31
+Version:        3.32
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -107,6 +107,10 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Thu Nov 26 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.32-1
+- Logeion from the installer for Windows: the connections trust certifi's
+  certificates as well as the system's; each release published on Zenodo
+
 * Tue Nov 24 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.31-1
 - The README says how to get py-words on Android; tools/release.py finds
   py-words for Android under Android/ as well
