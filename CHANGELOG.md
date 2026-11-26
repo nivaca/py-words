@@ -11,6 +11,11 @@ without dates, from the list "Version" of the README.
 
 ## Unreleased
 
+- The installer for Windows can be signed with Authenticode by SignPath
+  (free code signing for open-source projects, with SignPath Foundation's
+  certificate), from `.github/workflows/installers.yml` at each tag, once
+  the project is accepted there; `CODE_SIGNING_POLICY.md` is its policy,
+  and the installer now says its product name and version.
 - `tools/zenodo.py`: the description of the deposit is now the whole
   README of the tag, in HTML. The draft also gets the contributor (the
   project leader), the languages, the copyright, the repository on GitHub,

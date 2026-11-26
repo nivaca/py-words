@@ -2368,6 +2368,17 @@ De Miguel y de Echave-Sustaeta y los significados ingleses de De Miguel
 se hicieron con ayuda de Claude, el modelo de lenguaje de Anthropic
 (véase "Los significados en español").
 
+Política de firma de código (Code signing policy)
+-------------------------------------------------
+
+Free code signing provided by [SignPath.io](https://about.signpath.io),
+certificate by [SignPath Foundation](https://signpath.org).  El instalador
+para Windows se firma con Authenticode, y solo cuando GitHub lo hace a
+partir de este repositorio; cada firma se aprueba a mano.  Qué se firma,
+los papeles del equipo y la política de privacidad (el programa va a
+internet solo cuando se elige Logeion como fuente de las entradas) están en
+[CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md).
+
 Licencia
 --------
 

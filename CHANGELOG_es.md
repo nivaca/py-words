@@ -11,6 +11,12 @@ final, sin fechas, a partir de la lista "Versiones" del README.
 
 ## Sin publicar
 
+- El instalador para Windows se puede firmar con Authenticode por SignPath
+  (firma de código gratuita para proyectos de código abierto, con el
+  certificado de SignPath Foundation), desde
+  `.github/workflows/installers.yml` en cada etiqueta, una vez que el
+  proyecto sea aceptado allí; `CODE_SIGNING_POLICY.md` es su política, y el
+  instalador dice ahora el nombre y la versión del producto.
 - `tools/zenodo.py`: la descripción del depósito es ahora el README entero
   de la etiqueta, en HTML. El borrador recibe además el colaborador (el
   director del proyecto), los idiomas, el copyright, el repositorio en

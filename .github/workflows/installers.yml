@@ -10,6 +10,18 @@
 # here), except the one for Linux if the release
 # already has it (signed by tools/release.py); run by hand ("Run workflow"), they are only
 # kept as artifacts of the run.
+#
+# The installer for Windows of each tag is also signed with Authenticode by
+# SignPath (CODE_SIGNING_POLICY.md), once the repository has the variables
+# SIGNPATH_ORGANIZATION_ID, SIGNPATH_PROJECT_SLUG and
+# SIGNPATH_SIGNING_POLICY_SLUG and the secret SIGNPATH_API_TOKEN; each
+# request waits until it is approved on SignPath (up to four hours). Without
+# them, those steps are skipped and the installer is not signed. To set it
+# up once accepted: in SignPath, add the trusted build system "GitHub.com"
+# and link it to the project, install the SignPath GitHub App on the
+# repository, and paste packaging/signpath/artifact-configuration.xml as
+# the project's artifact configuration; then add those variables and that
+# secret here (Settings > Secrets and variables > Actions).
 
 name: Installers
 
@@ -20,6 +32,7 @@ on:
 
 permissions:
   contents: write             # (to add them to the release)
+  actions: read               # (SignPath fetches the installer from the artifacts of the run)
 
 jobs:
   linux:
@@ -68,6 +81,53 @@ jobs:
           if (-not $found) { choco install innosetup -y --no-progress }
       - name: Build the installer
         run: python tools/bundle-installer.py --system windows
+      # Firmado por SignPath, si el repositorio tiene su proyecto, y solo en una etiqueta; con otro nombre, para que
+      # el artefacto sin firmar no choque con el firmado (installer-windows, que tiene el mismo archivo).
+      - name: The installer to sign
+        id: unsigned
+        if: vars.SIGNPATH_PROJECT_SLUG != '' && startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $setup = Get-Item dist\*-windows-x64-setup.exe
+          $version = $setup.Name -replace '^py-words-v\.(.+)-windows-x64-setup\.exe$', '$1'
+          New-Item -ItemType Directory signing | Out-Null
+          Copy-Item $setup.FullName "signing\$($setup.BaseName)-unsigned.exe"
+          "version=$version" >> $env:GITHUB_OUTPUT
+          "name=$($setup.Name)" >> $env:GITHUB_OUTPUT
+      - name: Upload it for SignPath
+        id: upload-unsigned
+        if: vars.SIGNPATH_PROJECT_SLUG != '' && startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-artifact@v7
+        with:
+          path: signing/*-unsigned.exe
+          archive: false
+      - name: Sign it with SignPath (approved by hand)
+        if: vars.SIGNPATH_PROJECT_SLUG != '' && startsWith(github.ref, 'refs/tags/')
+        uses: signpath/github-action-submit-signing-request@v3
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ vars.SIGNPATH_SIGNING_POLICY_SLUG }}
+          github-artifact-id: ${{ steps.upload-unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          wait-for-completion-timeout-in-seconds: 14400
+          output-artifact-directory: signed
+          skip-decompress: true
+          parameters: |
+            version: ${{ toJSON(steps.unsigned.outputs.version) }}
+      - name: Check the signature, and put the signed installer in its place
+        if: vars.SIGNPATH_PROJECT_SLUG != '' && startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $signed = @(Get-ChildItem signed\*.exe)
+          if ($signed.Count -ne 1) { throw "signed\ has $($signed.Count) files" }
+          $signature = Get-AuthenticodeSignature $signed[0].FullName
+          if ($signature.Status -ne 'Valid') { throw "the signature is $($signature.Status): $($signature.StatusMessage)" }
+          Write-Output "Signed by $($signature.SignerCertificate.Subject)"
+          Move-Item -Force $signed[0].FullName "dist\${{ steps.unsigned.outputs.name }}"
       - name: Install it, try it and remove it
         shell: pwsh
         run: |

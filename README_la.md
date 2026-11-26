@@ -2302,6 +2302,17 @@ rescripte, et significationes Anglice De Miguel facte sunt cum auxilio
 Claude, magni exemplaris linguarum Anthropic (vide "De significationibus
 Hispanicis").
 
+De codice signando (Code signing policy)
+----------------------------------------
+
+Free code signing provided by [SignPath.io](https://about.signpath.io),
+certificate by [SignPath Foundation](https://signpath.org).  Instrumentum
+quo programma in Windows instituitur signo Authenticode signatur, et tantum
+cum GitHub id ex hoc repositorio facit; quaeque signatio manu probatur.  Quid
+signetur, quae munera sint, quomodo res privatae serventur (programma in
+interrete non it nisi cum Logeion fons vocabulorum eligitur), in
+[CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md) scriptum est.
+
 De licentia
 -----------
 

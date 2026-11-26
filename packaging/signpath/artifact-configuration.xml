@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  La configuración del artefacto de py-words en SignPath: se copia en el
+  proyecto de SignPath (Artifact configurations), que es donde vale; esta
+  copia es para tenerla con el código. El artefacto es el instalador de
+  Windows solo, subido sin comprimir (upload-artifact con archive: false),
+  y la versión llega de .github/workflows/installers.yml.
+-->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <parameters>
+    <parameter name="version" required="true" />
+  </parameters>
+  <pe-file product-name="py-words" product-version="${version}">
+    <authenticode-sign />
+  </pe-file>
+</artifact-configuration>

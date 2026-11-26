@@ -2286,6 +2286,17 @@ Echave-Sustaeta, and the English meanings of De Miguel were made with
 the help of Claude, the large language model of Anthropic (see "The
 Spanish meanings").
 
+Code signing policy
+-------------------
+
+Free code signing provided by [SignPath.io](https://about.signpath.io),
+certificate by [SignPath Foundation](https://signpath.org).  The installer
+for Windows is signed with Authenticode, and only when GitHub builds it from
+this repository; every signing is approved by hand.  What is signed, the
+team roles and the privacy policy (the program goes to the internet only
+when Logeion is chosen as the source of the entries) are in
+[CODE_SIGNING_POLICY.md](CODE_SIGNING_POLICY.md).
+
 Licensing
 ---------
 

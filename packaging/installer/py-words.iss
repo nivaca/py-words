@@ -49,6 +49,11 @@ AppCopyright=Copyright (C) 2026 Nicolas Vaughan
 AppComments=A Latin dictionary. GPL-3.0-or-later.
 VersionInfoVersion={#FileVersion}
 VersionInfoDescription=py-words setup
+; El nombre y la versión del producto, que SignPath comprueba antes de firmar
+; (packaging/signpath/artifact-configuration.xml)
+VersionInfoProductName=py-words
+VersionInfoProductVersion={#FileVersion}
+VersionInfoProductTextVersion={#AppVersion}
 DefaultDirName={autopf}\py-words
 DefaultGroupName=py-words
 DisableProgramGroupPage=auto
