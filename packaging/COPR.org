@@ -143,7 +143,10 @@ gpg --edit-key 81870643CA221AF90C30554EBE6832CD35994948 trust                   
    the published key, attaches all of them and the key to both releases,
    and sends the
    SRPM to COPR (=copr-cli build py-words build/rpm/SRPMS/py-words-X.Y-*.src.rpm=).
-   =--no-copr= leaves that last step out; to do it by hand:
+   =--no-copr= leaves that last step out. Everything but the RPM is made
+   in =build/release/= (the deposit for Zenodo in =build/zenodo/=), and
+   deleted at the end, once published: only the RPM is kept here, in
+   =build/rpm/= and its copy in =dist/=. To build on COPR by hand:
    #+begin_src sh
    packaging/build-rpm.sh --sign
    copr-cli build py-words build/rpm/SRPMS/py-words-3.10-*.src.rpm
@@ -233,5 +236,6 @@ copr-cli get nivaca/py-words          # project settings
       file signed and checked; publishes on both forges with the signed
       RPM, and builds it on COPR)
 - [ ] When installers.yml has finished: =tools/release.py --installers=
-      (signs those of Windows and macOS, and copies them to Codeberg)
+      (signs those of Windows and macOS, copies them to Codeberg, and
+      deletes =build/installers/=)
 - [ ] =sudo dnf upgrade --refresh py-words= and smoke-test (=py-words cli amo=)

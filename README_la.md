@@ -284,7 +284,7 @@ py-words` ipsum removet.  Ad ipsum construendum ex capsula programmatis
     $ python3 packaging/build-deb.py [--sign[=KEY]]
 
 Hoc scribit `build/deb/py-words_VERSION-1_all.deb` et copiat ipsum in
-`dist/`.
+`build/release/`.
 
 ### De py-words in Android
 
@@ -402,7 +402,7 @@ distribuendum:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-Hoc scribit `dist/py-words-v.3.32.zip` (cum versione programmatis; `-o`
+Hoc scribit `build/release/py-words-v.3.32.zip` (cum versione programmatis; `-o`
 dat aliam capsulam), cum programmate intra capsulam eiusdem nominis.
 Continet programmata, data, icones et documenta, et fasciculum `COMMIT`
 cum commissione ex qua factum est, quam "De programmate" ostendit.  Non continet
@@ -417,7 +417,7 @@ In Linux, AppImage (vide "De AppImage (Linux)") fit per
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-Scribit `dist/py-words-v.3.32-x86_64.AppImage` (`-o` dat aliam
+Scribit `build/release/py-words-v.3.32-x86_64.AppImage` (`-o` dat aliam
 capsulam), cum eisdem fasciculis quibus zip (sed non `words_install.py`),
 proprio Python et loco in tabella et iconibus.  Python (Python 3.13 cum
 Tk, ex [python-appimage](https://github.com/niess/python-appimage)) et
@@ -499,8 +499,11 @@ addit editioni in GitHub (servat institutorem pro Linux signatum qui iam
 ibi est, et `appimage.yml` servat AppImage signatam).  Cum finem fecit,
 `python3 tools/release.py --installers` eos inde trahit, signat (cum
 summis eorum in `SHA256SUMS-installers`), affigit subscriptiones ambabus
-editionibus et institutores editioni in Codeberg.  Ad
-finem, si exemplar py-words pro Android adest in
+editionibus et institutores editioni in Codeberg, et `build/installers/`
+delet.  Omnia praeter RPM in `build/release/` fiunt (et depositum pro
+Zenodo in `build/zenodo/`), et ambae capsulae delentur cum omnia edita
+sunt: hic solum RPM manet, in `build/rpm/` et exemplar eius in `dist/`.
+Ad finem, si exemplar py-words pro Android adest in
 `../../Android/py-words-android` vel `../../android/py-words-android` (vel
 ubi `PY_WORDS_ANDROID` dicit),
 currit eius `tools/update-py-words.py --tag vVERSION`, quod hanc

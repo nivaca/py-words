@@ -2,9 +2,9 @@
 """Hace un AppImage del programa, para Linux:
 python3 tools/bundle-appimage.py
 
-El AppImage es dist/py-words-v.VERSION-x86_64.AppImage (la versión de
-version.py; dist se crea en la carpeta del programa si hace falta, y
---output da otra carpeta).  Lleva un Python propio, con Tk (un Python
+El AppImage es build/release/py-words-v.VERSION-x86_64.AppImage (la
+versión de version.py; build/release se crea en la carpeta del programa si
+hace falta, y --output da otra carpeta).  Lleva un Python propio, con Tk (un Python
 reubicable del proyecto python-appimage,
 https://github.com/niess/python-appimage), y el programa tal como
 bundle-zip.py lo pone en el zip, así que corre en cualquier Linux de los
@@ -53,8 +53,9 @@ import interface
 from interface import tr
 from version import COMMIT_FILE, NAME, VERSION
 
-#  Adónde va el AppImage, salvo que --output diga otra cosa
-DIST = os.path.join(ROOT, 'dist')
+#  Adónde va el AppImage, salvo que --output diga otra cosa (no a dist/, que
+#  solo guarda el RPM)
+DIST = os.path.join(ROOT, 'build', 'release')
 APP_ID = 'py-words'
 ARCH = 'x86_64'
 
@@ -386,7 +387,7 @@ def main(argv=None):
                        '{name}, with a Python of its own.', name=name()))
     parser.add_argument('-o', '--output', metavar=tr('FOLDER'),
                         default=None,
-                        help=tr('the folder to write it in (default: dist, '
+                        help=tr('the folder to write it in (default: build/release, '
                                 "in the program's folder)"))
     parser.add_argument('--python', metavar=tr('APPIMAGE'),
                         help=tr('the Python AppImage to use (default: one '

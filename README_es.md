@@ -294,7 +294,7 @@ de git), en cualquier sistema y sin más que Python:
     $ python3 packaging/build-deb.py [--sign[=CLAVE]]
 
 Eso escribe `build/deb/py-words_VERSIÓN-1_all.deb` y lo copia en
-`dist/`.
+`build/release/`.
 
 ### En Android
 
@@ -412,7 +412,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `dist/py-words-v.3.32.zip` (con la versión del programa; `-o`
+Eso escribe `build/release/py-words-v.3.32.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -428,7 +428,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `dist/py-words-v.3.32-x86_64.AppImage` (`-o` da otra
+Eso escribe `build/release/py-words-v.3.32-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -510,7 +510,11 @@ sube el tag, `installers.yml` los hace y los añade a la release de GitHub
 `appimage.yml` conserva la AppImage firmada).  Cuando termina, `python3
 tools/release.py --installers` los baja de allí, los firma (con sus sumas
 en `SHA256SUMS-installers`), adjunta las firmas a las dos releases y los
-instaladores a la de Codeberg.  Al final, si hay un clon de py-words
+instaladores a la de Codeberg, y borra `build/installers/`.  Todo, salvo
+el RPM, se hace en `build/release/` (y el depósito para Zenodo en
+`build/zenodo/`), y las dos carpetas se borran cuando todo está
+publicado: aquí solo queda el RPM, en `build/rpm/` y su copia en `dist/`.
+Al final, si hay un clon de py-words
 para Android en `../../Android/py-words-android` o `../../android/py-words-android` (o
 donde diga `PY_WORDS_ANDROID`), corre su `tools/update-py-words.py --tag vVERSIÓN`,
 que pone esta versión en la app y publica la app; pregunta por su cuenta

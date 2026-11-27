@@ -2281,8 +2281,8 @@ Artium et Humanitatum Universitatis de los Andes, Bogotá, Columbia.</tr>
     <tr>CAPSULA</tr>
   </text>
   <text>
-    <en>the folder to write it in (default: dist, in the program's folder)</en>
-    <tr>capsula in qua scribatur (primitiva: dist, in capsula programmatis)</tr>
+    <en>the folder to write it in (default: build/release, in the program's folder)</en>
+    <tr>capsula in qua scribatur (primitiva: build/release, in capsula programmatis)</tr>
   </text>
   <text>
     <en>include the tests</en>

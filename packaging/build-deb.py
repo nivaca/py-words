@@ -9,7 +9,8 @@
 # WARRANTY; see the LICENCE.txt file, or <https://www.gnu.org/licenses/>.
 """Hace el paquete .deb de py-words (Debian, Ubuntu y derivados) a partir
 de esta copia del repositorio, en build/deb/, y copia el más reciente a
-dist/, junto al zip, la AppImage y el RPM.
+build/release/, donde tools/release.py hace y firma lo que publica (no a
+dist/, que solo guarda el RPM).
 
     python3 packaging/build-deb.py [--sign[=CLAVE]]
 
@@ -47,10 +48,10 @@ SIGNING_KEY = '81870643CA221AF90C30554EBE6832CD35994948'
 MAINTAINER = 'Nicolas Vaughan <nicolasvaughan@proton.me>'
 PREFIX = f'/usr/share/{NAME}'
 OUT = os.path.join(DIR, 'build', 'deb')
-DIST = os.path.join(DIR, 'dist')
+DIST = os.path.join(DIR, 'build', 'release')
 
 HELP = ('Build the .deb package of py-words (Debian, Ubuntu) into '
-        'build/deb/, and copy it to dist/.')
+        'build/deb/, and copy it to build/release/.')
 
 CONTROL = f"""\
 Package: {NAME}
@@ -290,7 +291,8 @@ def build(sign: str | None) -> str:
                        check=True)
         made.append(path + '.asc')
         print(f'Signed: {os.path.relpath(path, DIR)}.asc')
-    #  el .deb más reciente también en dist/, en lugar de los anteriores
+    #  el .deb más reciente también en build/release/, en lugar de los
+    #  anteriores
     os.makedirs(DIST, exist_ok=True)
     for old in os.listdir(DIST):
         if old.startswith(f'{NAME}_') and (old.endswith('.deb') or
@@ -298,7 +300,7 @@ def build(sign: str | None) -> str:
             os.remove(os.path.join(DIST, old))
     for f in made:
         shutil.copy2(f, DIST)
-    print('Copied to dist/: ' + ' '.join(os.path.basename(f)
+    print('Copied to build/release/: ' + ' '.join(os.path.basename(f)
                                          for f in made))
     return path
 

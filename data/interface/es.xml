@@ -2279,8 +2279,8 @@ Humanidades de la Universidad de los Andes, Bogotá, Colombia.</tr>
     <tr>CARPETA</tr>
   </text>
   <text>
-    <en>the folder to write it in (default: dist, in the program's folder)</en>
-    <tr>la carpeta donde escribirlo (por omisión: dist, en la carpeta del programa)</tr>
+    <en>the folder to write it in (default: build/release, in the program's folder)</en>
+    <tr>la carpeta donde escribirlo (por omisión: build/release, en la carpeta del programa)</tr>
   </text>
   <text>
     <en>include the tests</en>

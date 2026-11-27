@@ -3,7 +3,7 @@
 descargue, y lo comprueba.
 
     python3 tools/sign_release.py --key HUELLA --public CLAVE
-                                  --sums dist/SHA256SUMS ARCHIVO...
+                                  --sums build/release/SHA256SUMS ARCHIVO...
 
 Escribe SUMS (el SHA-256 de cada ARCHIVO, por su nombre, como lo lee
 `sha256sum -c`) y una firma separada en ASCII (ARCHIVO.asc) de cada

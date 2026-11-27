@@ -2,9 +2,9 @@
 """Hace un zip del programa, para distribuirlo:
 python3 tools/bundle-zip.py
 
-El zip es dist/py-words-v.VERSION.zip (la versión de version.py; dist se
-crea en la carpeta del programa si hace falta, y --output da otra
-carpeta), con el programa en una carpeta del mismo nombre.  Lleva los
+El zip es build/release/py-words-v.VERSION.zip (la versión de version.py;
+build/release se crea en la carpeta del programa si hace falta, y --output
+da otra carpeta), con el programa en una carpeta del mismo nombre.  Lleva los
 programas, los datos, los íconos y los documentos, pero no los archivos ni
 las carpetas ocultos (.git ...), ni lo que se produce mientras el programa
 corre o se edita (__pycache__, archivos .bak y .tmp, WORD.OUT ...), ni lo
@@ -32,8 +32,9 @@ import interface
 from interface import tr
 from version import COMMIT_FILE, VERSION, commit
 
-#  Adónde va el zip, salvo que --output diga otra cosa
-DIST = os.path.join(ROOT, 'dist')
+#  Adónde va el zip, salvo que --output diga otra cosa (no a dist/, que solo
+#  guarda el RPM)
+DIST = os.path.join(ROOT, 'build', 'release')
 
 #  What is made while the program runs or is edited (as in .gitignore)
 LEFT_OUT = ('__pycache__', '*.pyc', '*.bak', '*.tmp', '*~', 'WORD.MOD',
@@ -101,7 +102,7 @@ def main(argv=None):
                        '{name}.zip, without hidden files.', name=name()))
     parser.add_argument('-o', '--output', metavar=tr('FOLDER'),
                         default=None,
-                        help=tr('the folder to write it in (default: dist, '
+                        help=tr('the folder to write it in (default: build/release, '
                                 "in the program's folder)"))
     parser.add_argument('--tests', action='store_true',
                         help=tr('include the tests'))

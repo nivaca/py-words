@@ -28,14 +28,14 @@ jobs:
       # Without a display: does the AppImage start, and find a word?
       - name: Try it
         run: |
-          app=$(ls dist/*.AppImage)
+          app=$(ls build/release/*.AppImage)
           export APPIMAGE_EXTRACT_AND_RUN=1
           "$app" help
           "$app" cli --language en amicus | grep -i friend
       - uses: actions/upload-artifact@v7
         with:
           name: appimage
-          path: dist/*.AppImage
+          path: build/release/*.AppImage
       - name: Add it to the release
         if: startsWith(github.ref, 'refs/tags/')
         env:
@@ -57,7 +57,7 @@ jobs:
           # A file already there is kept: tools/release.py signed it
           # (FILE.asc, SHA256SUMS), and a new build would not match
           have="$(gh release view "$TAG" --json assets --jq '.assets[].name')"
-          for f in dist/*.AppImage; do
+          for f in build/release/*.AppImage; do
             if grep -qxF "$(basename "$f")" <<< "$have"; then
               echo "kept the signed $(basename "$f") already in the release"
             else

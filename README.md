@@ -283,7 +283,7 @@ clone), on any system and with nothing but Python:
     $ python3 packaging/build-deb.py [--sign[=KEY]]
 
 This writes `build/deb/py-words_VERSION-1_all.deb` and copies it to
-`dist/`.
+`build/release/`.
 
 ### On Android
 
@@ -400,7 +400,7 @@ distribute it:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-This writes `dist/py-words-v.3.32.zip` (with the version of the program;
+This writes `build/release/py-words-v.3.32.zip` (with the version of the program;
 `-o` gives another folder), with the program inside a folder of the same
 name.  It contains the programs, the data, the icons and the documents,
 and a file `COMMIT` with the commit it was made from, which "About" shows.
@@ -415,7 +415,7 @@ On Linux, the AppImage (see "An AppImage") is made with
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-It writes `dist/py-words-v.3.32-x86_64.AppImage` (`-o` gives another
+It writes `build/release/py-words-v.3.32-x86_64.AppImage` (`-o` gives another
 folder), with the same files as the zip (but not `words_install.py`), a
 Python of its own and the menu entry and icons.  The Python (Python 3.13
 with Tk, from [python-appimage](https://github.com/niess/python-appimage))
@@ -497,7 +497,11 @@ installer for Linux that is already there, and `appimage.yml` keeps the
 signed AppImage).  When it has finished, `python3 tools/release.py
 --installers` downloads them from there, signs them (with their sums in
 `SHA256SUMS-installers`), attaches the signatures to both releases and
-the installers to the release on Codeberg.  At the end, if there is a clone of py-words for Android in
+the installers to the release on Codeberg, and deletes
+`build/installers/`.  Everything but the RPM is made in `build/release/`
+(and the deposit for Zenodo in `build/zenodo/`), and both are deleted
+once all is published: only the RPM is kept here, in `build/rpm/` and its
+copy in `dist/`.  At the end, if there is a clone of py-words for Android in
 `../../Android/py-words-android` or `../../android/py-words-android` (or where
 `PY_WORDS_ANDROID` says), it
 runs that project's `tools/update-py-words.py --tag vVERSION`, which puts

@@ -25,14 +25,15 @@ En orden, y cada paso solo si hace falta:
    que gh, tea y gpg estén instalados (salvo con --no-rpm, también
    rpmbuild y, salvo --no-copr, copr-cli), y que la clave de firma esté en
    el llavero de gpg del computador;
-2. hace el zip, el AppImage y el instalador de Linux en dist/
+2. hace el zip, el AppImage y el instalador de Linux en build/release/
    (tools/bundle-zip.py, tools/bundle-appimage.py y
    tools/bundle-installer.py --system linux), salvo con --no-build
-   (entonces usa los que hay en dist/); también el .deb, con su firma aparte (.deb.asc), en
-   dist/ (packaging/build-deb.py --sign), y salvo con --no-rpm el RPM
-   firmado en build/rpm/ (packaging/build-rpm.sh --sign, que comprueba su
-   firma); gpg pide la frase de paso.  Después firma cada archivo
-   (tools/sign_release.py: ARCHIVO.asc, dist/SHA256SUMS y su .asc) y
+   (entonces usa los que hay en build/release/); también el .deb, con su
+   firma aparte (.deb.asc), en build/release/ (packaging/build-deb.py
+   --sign), y salvo con --no-rpm el RPM firmado en build/rpm/
+   (packaging/build-rpm.sh --sign, que comprueba su firma); gpg pide la
+   frase de paso.  Después firma cada archivo (tools/sign_release.py:
+   ARCHIVO.asc, build/release/SHA256SUMS y su .asc) y
    comprueba cada firma con solo la clave pública que se publica
    (packaging/RPM-GPG-KEY-py-words);
 3. pone la etiqueta vVERSION en HEAD, firmada con la misma clave (git tag
@@ -79,9 +80,15 @@ Cuando ese workflow termina, --installers (sin nada más) los baja de la
 versión de GitHub, los firma (ARCHIVO.asc, y sus sumas en
 SHA256SUMS-installers, con su firma) y adjunta las firmas a las dos
 versiones, y los instaladores a la de Codeberg, que de otro modo quedaría
-sin ellos.
+sin ellos.  Después borra build/installers/: las dos forjas los tienen,
+firmados.
 
-El depósito para Zenodo se reúne en dist/zenodo/ después de la etiqueta
+Aquí solo queda el RPM cuando la versión está hecha (en build/rpm/, y su
+copia en dist/, que no tiene nada más): al final se borran build/release/
+y build/zenodo/, porque las forjas y Zenodo ya tienen lo que había en
+ellas.
+
+El depósito para Zenodo se reúne en build/zenodo/ después de la etiqueta
 (tools/zenodo.py collect: el árbol de la etiqueta, firmado, con SHA256SUMS y
 la clave pública) y al final se sube a Zenodo y se publica, con un DOI nuevo
 (con el token de $ZENODO_TOKEN o del llavero), salvo con --no-zenodo; con
@@ -103,11 +110,14 @@ sys.path.insert(0, ROOT)
 from version import VERSION  # noqa: E402
 
 TAG = f'v{VERSION}'
-ZIP = os.path.join('dist', f'py-words-v.{VERSION}.zip')
-APPIMAGE = os.path.join('dist', f'py-words-v.{VERSION}-x86_64.AppImage')
+# What is published is made in build/release/, not in dist/: only the RPM is
+# kept here (in build/rpm/, and its copy in dist/, which holds nothing else)
+OUT = os.path.join('build', 'release')
+ZIP = os.path.join(OUT, f'py-words-v.{VERSION}.zip')
+APPIMAGE = os.path.join(OUT, f'py-words-v.{VERSION}-x86_64.AppImage')
 #  El instalador de Linux (tools/bundle-installer.py); los de Windows y
 #  macOS los hace GitHub (installers.yml)
-INSTALLER = os.path.join('dist', f'py-words-v.{VERSION}-linux-x86_64.run')
+INSTALLER = os.path.join(OUT, f'py-words-v.{VERSION}-linux-x86_64.run')
 #  Los que hace GitHub, y adónde los baja --installers para Codeberg
 CI_INSTALLERS = [os.path.join('build', 'installers', name) for name in (
     f'py-words-v.{VERSION}-windows-x64-setup.exe',
@@ -116,14 +126,14 @@ CI_INSTALLERS = [os.path.join('build', 'installers', name) for name in (
 #  Sus sumas, aparte de SHA256SUMS (hecho antes, sin ellos)
 CI_SUMS = os.path.join('build', 'installers', 'SHA256SUMS-installers')
 #  El .deb que hace packaging/build-deb.py (su REVISION es la 1) y su firma
-DEB = os.path.join('dist', f'py-words_{VERSION}-1_all.deb')
+DEB = os.path.join(OUT, f'py-words_{VERSION}-1_all.deb')
 # La herramienta del repositorio APT de estos programas: el proyecto apt,
 # junto a este (github.com/nivaca/apt)
 APT_TOOL = os.path.join(os.path.dirname(ROOT), 'apt', 'tools', 'apt_repo.py')
 SPEC = os.path.join('packaging', 'py-words.spec')
 # The public key published with every release, which checks every signature
 PUBLIC_KEY = os.path.join('packaging', 'RPM-GPG-KEY-py-words')
-SUMS = os.path.join('dist', 'SHA256SUMS')
+SUMS = os.path.join(OUT, 'SHA256SUMS')
 #  El clon de py-words para Android, cuyo submódulo py-words/ sigue a este
 #  repositorio (véase android() más abajo)
 #  (la carpeta se escribe Android o android según el computador: vale la
@@ -292,15 +302,19 @@ class Release:
                     sys.exit(f'release.py: there is no {f} (leave out '
                              '--no-build to make it)')
             return
+        #  (las herramientas quieren la carpeta hecha, si se les da --output)
+        os.makedirs(os.path.join(ROOT, OUT), exist_ok=True)
         self.plan('Make the zip', sys.executable,
-                  os.path.join('tools', 'bundle-zip.py'))
+                  os.path.join('tools', 'bundle-zip.py'), '--output', OUT)
         if APPIMAGE in self.files:
             self.plan('Make the AppImage', sys.executable,
-                      os.path.join('tools', 'bundle-appimage.py'))
+                      os.path.join('tools', 'bundle-appimage.py'),
+                      '--output', OUT)
         if INSTALLER in self.files:
             self.plan('Make the installer for Linux', sys.executable,
                       os.path.join('tools', 'bundle-installer.py'),
-                      '--system', 'linux', '--arch', 'x86_64')
+                      '--system', 'linux', '--arch', 'x86_64',
+                      '--output', OUT)
         if DEB in self.files:
             self.plan('Make the signed .deb', sys.executable, os.path.join(
                 'packaging', 'build-deb.py'), '--sign')
@@ -464,6 +478,9 @@ class Release:
                   '--repo', repos['github'])
         self.files = CI_INSTALLERS + signatures
         self.codeberg(repos['codeberg'])
+        #  Ya están en las dos forjas, firmados: aquí no se guarda copia
+        self.plan('Delete the installers from build/ (the forges have '
+                  'them)', 'rm', '-rf', os.path.join('build', 'installers'))
         self.run_plan()
 
     def apt(self):
@@ -478,13 +495,13 @@ class Release:
                   sys.executable, APT_TOOL, 'add', DEB)
 
     def zenodo_collect(self):
-        """The deposit of the release for Zenodo, in dist/zenodo/ (tools/zenodo.py): the tree of the tag, signed,
+        """The deposit of the release for Zenodo, in build/zenodo/ (tools/zenodo.py): the tree of the tag, signed,
         with SHA256SUMS and the public key, each signature checked with only that key."""
-        self.plan('Zenodo: collect the deposit in dist/zenodo/', sys.executable, 'tools/zenodo.py', 'collect',
+        self.plan('Zenodo: collect the deposit in build/zenodo/', sys.executable, 'tools/zenodo.py', 'collect',
                   '--tag', TAG)
 
     def zenodo_upload(self):
-        """Unless --no-zenodo, dist/zenodo/ uploaded to Zenodo and published (with
+        """Unless --no-zenodo, build/zenodo/ uploaded to Zenodo and published (with
         --zenodo-draft, only as a draft, published there by hand)."""
         if self.args.no_zenodo:
             return
@@ -524,8 +541,15 @@ class Release:
         if not args.no_deb and not args.no_apt:
             self.apt()
         self.zenodo_upload()
+        self.clean_up()
         self.run_plan()
         self.android()
+
+    def clean_up(self):
+        """Once all is published: only the RPM stays here (build/rpm/, and
+        its copy in dist/); the rest is on the forges and on Zenodo."""
+        self.plan('Delete what was published from build/ (only the RPM '
+                  'stays)', 'rm', '-rf', OUT, os.path.join('build', 'zenodo'))
 
     def android(self):
         """Put this version in py-words for Android and release the app,
@@ -569,8 +593,9 @@ def main(argv=None):
     notes.add_argument('--notes-file', metavar='FILE',
                        help='the notes of a new release, from FILE')
     parser.add_argument('--no-build', action='store_true',
-                        help='use the zip, the AppImage and the installer in '
-                             'dist/, without making them again')
+                        help='use the zip, the AppImage, the installer and '
+                             'the .deb in build/release/ (and the RPM in '
+                             'build/rpm/), without making them again')
     parser.add_argument('--no-appimage', action='store_true',
                         help='without the AppImage')
     parser.add_argument('--no-installer', action='store_true',
@@ -605,7 +630,7 @@ def main(argv=None):
                              'Android afterwards (its '
                              'tools/update-py-words.py)')
     parser.add_argument('--no-zenodo', action='store_true',
-                        help='do not upload dist/zenodo/ to Zenodo (by default it is uploaded and '
+                        help='do not upload build/zenodo/ to Zenodo (by default it is uploaded and '
                              'published, with the token in $ZENODO_TOKEN or the keyring)')
     parser.add_argument('--zenodo-draft', action='store_true',
                         help='upload it to Zenodo as a draft, not published')
