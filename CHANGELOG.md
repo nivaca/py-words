@@ -9,6 +9,15 @@ Fedora is also on Copr, in `nivaca/py-words`. The repository starts at
 2.13 (2026-10-22); the versions before it are summed up at the end,
 without dates, from the list "Version" of the README.
 
+## Unreleased
+
+- The public web page (`--public`, `public_app`) shows the cookie consent
+  of the Universidad de los Andes (Usercentrics, with the university's
+  settings id), as the university asked. Its script carries the page's
+  nonce, and the Content-Security-Policy lets the page reach
+  `https://*.usercentrics.eu`. The local page has no cookies and needs no
+  internet, so it stays without it.
+
 ## 3.32 — 2026-11-26
 
 - Logeion could not be reached from the installer for Windows ("certificate

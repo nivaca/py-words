@@ -99,6 +99,12 @@ ICON = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons',
 #  dibujado en currentColor, para que siga el tema) y su aviso legal
 LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons',
                     'uniandes.svg')
+#  La ventana de consentimiento de cookies que pidió la universidad
+#  (Usercentrics), solo en la página pública: la local no guarda cookies
+#  ni sale a internet.
+CONSENT_SRC = 'https://app.usercentrics.eu/browser-ui/latest/loader.js'
+CONSENT_ID = 'Lqn7YUJNI-tBas'
+CONSENT_HOSTS = 'https://*.usercentrics.eu'
 LOGO_LABEL = 'Universidad de los Andes · Facultad de Artes y Humanidades'
 LEGAL = ('Universidad de los Andes | Vigilada Mineducación. Reconocimiento '
          'como universidad: Decreto 1297 del 30 de mayo de 1964. '
@@ -575,6 +581,12 @@ class WebApp:
         if self.public:
             texts, script = PAGE_TEXTS | PUBLIC_TEXTS, \
                 SCRIPT_TEXTS | PUBLIC_SCRIPT_TEXTS
+        consent, hosts = '', ''
+        if self.public:
+            consent = (f'<script id="usercentrics-cmp" nonce="{nonce}"'
+                       f' src="{CONSENT_SRC}"'
+                       f' data-settings-id="{CONSENT_ID}" async></script>\n')
+            hosts = ' ' + CONSENT_HOSTS
         body = PAGE.substitute(
             {key: esc(tr(text)) for key, text in texts.items()},
             **{key: json.dumps(tr(text)) for key, text in script.items()},
@@ -582,7 +594,7 @@ class WebApp:
             title=esc(f'{query} – {NAME}' if query else
                       tr('{name}: A Latin Dictionary', name=NAME)),
             name=esc(NAME), version=esc(VERSION), about=about_html(),
-            footer=footer_html(),
+            footer=footer_html(), consent=consent,
             home=esc(HOME_PAGE), home_name=esc(HOME_PAGE.split('//')[1]),
             query=esc(query), token=esc(self._token()), nonce=nonce,
             la_checked='' if reverse else ' checked',
@@ -620,8 +632,12 @@ class WebApp:
             ('Content-Type', 'text/html; charset=utf-8'),
             ('Cache-Control', 'no-store'),
             ('Content-Security-Policy',
-             "default-src 'none'; img-src 'self'; style-src 'unsafe-inline';"
-             f" script-src 'nonce-{nonce}'; form-action 'self';"
+             f"default-src 'none'; img-src 'self'{hosts};"
+             " style-src 'unsafe-inline';"
+             f" script-src 'nonce-{nonce}'{hosts};"
+             + (f" connect-src{hosts}; font-src{hosts}; frame-src{hosts};"
+                if hosts else '')
+             + " form-action 'self';"
              " base-uri 'none'; frame-ancestors 'none'"),
             ('X-Content-Type-Options', 'nosniff'),
             ('Referrer-Policy', 'no-referrer')])
@@ -1080,7 +1096,7 @@ PAGE = Template("""<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>$title</title>
 <link rel="icon" href="/icon.png">
-<style>
+$consent<style>
 :root {
   --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --line: #dcd9d2;
   --panel: #f1efe9; --accent: #8a2c1f; --focus: #c0573f;

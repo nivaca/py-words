@@ -62,6 +62,13 @@ class WebTests(unittest.TestCase):
         self.assertIn('Vigilada Mineducación', footer)
         self.assertIn('Resolución 000194 del 16 de enero del 2025.', footer)
 
+    def test_no_consent(self):
+        """The local page (no cookies, no internet) has no cookie
+        consent."""
+        _, headers, page = self.call()
+        self.assertNotIn('usercentrics', page)
+        self.assertNotIn('usercentrics', headers['Content-Security-Policy'])
+
     def test_dark_mode(self):
         """The box of the page: ticked, dark, if not, light (until it is
         used, following the system); kept in the configuration file, which the
@@ -274,6 +281,7 @@ class PublicTests(unittest.TestCase):
                     jar.pop(key, None)
                 else:
                     jar[key] = unquote(value)
+        self.headers = dict(got['headers'])
         return got['status'], out
 
     def post(self, jar, path, fields=''):
@@ -281,6 +289,20 @@ class PublicTests(unittest.TestCase):
         body = f'token={jar["words_token"]}' + (f'&{fields}' if fields
                                                 else '')
         return self.call(jar, path, method='POST', body=body)
+
+    def test_consent(self):
+        """The university's cookie consent (Usercentrics): its script,
+        with the page's nonce, and its servers allowed by the CSP."""
+        page = self.call({})[1]
+        csp = self.headers['Content-Security-Policy']
+        nonce = csp.split("'nonce-")[1].split("'")[0]
+        self.assertIn(f'<script id="usercentrics-cmp" nonce="{nonce}" '
+                      'src="https://app.usercentrics.eu/browser-ui/latest/'
+                      'loader.js" data-settings-id="Lqn7YUJNI-tBas" async>'
+                      '</script>', page)
+        for directive in ('script-src', 'connect-src', 'img-src'):
+            policy = csp.split(directive, 1)[1].split(';')[0]
+            self.assertIn('https://*.usercentrics.eu', policy)
 
     def test_visitors_apart(self):
         """What a visitor changes is theirs only, and is not saved on the
