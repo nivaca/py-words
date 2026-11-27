@@ -502,7 +502,8 @@ summis eorum in `SHA256SUMS-installers`), affigit subscriptiones ambabus
 editionibus et institutores editioni in Codeberg, et `build/installers/`
 delet.  Omnia praeter RPM in `build/release/` fiunt (et depositum pro
 Zenodo in `build/zenodo/`), et ambae capsulae delentur cum omnia edita
-sunt: hic solum RPM manet, in `build/rpm/` et exemplar eius in `dist/`.
+sunt: hic in `dist/` manent solum RPM (etiam in `build/rpm/`), zip et
+fons signi (`.tar.gz`), novissimum cuiusque.
 Ad finem, si exemplar py-words pro Android adest in
 `../../Android/py-words-android` vel `../../android/py-words-android` (vel
 ubi `PY_WORDS_ANDROID` dicit),

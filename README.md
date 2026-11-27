@@ -500,8 +500,9 @@ signed AppImage).  When it has finished, `python3 tools/release.py
 the installers to the release on Codeberg, and deletes
 `build/installers/`.  Everything but the RPM is made in `build/release/`
 (and the deposit for Zenodo in `build/zenodo/`), and both are deleted
-once all is published: only the RPM is kept here, in `build/rpm/` and its
-copy in `dist/`.  At the end, if there is a clone of py-words for Android in
+once all is published: only the RPM (also in `build/rpm/`), the zip and
+the source of the tag (`.tar.gz`) are kept here, in `dist/`, the newest of
+each.  At the end, if there is a clone of py-words for Android in
 `../../Android/py-words-android` or `../../android/py-words-android` (or where
 `PY_WORDS_ANDROID` says), it
 runs that project's `tools/update-py-words.py --tag vVERSION`, which puts

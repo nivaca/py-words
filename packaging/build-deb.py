@@ -10,7 +10,7 @@
 """Hace el paquete .deb de py-words (Debian, Ubuntu y derivados) a partir
 de esta copia del repositorio, en build/deb/, y copia el más reciente a
 build/release/, donde tools/release.py hace y firma lo que publica (no a
-dist/, que solo guarda el RPM).
+dist/, que guarda solo el RPM, el zip y el código fuente).
 
     python3 packaging/build-deb.py [--sign[=CLAVE]]
 

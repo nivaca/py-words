@@ -83,10 +83,13 @@ versiones, y los instaladores a la de Codeberg, que de otro modo quedaría
 sin ellos.  Después borra build/installers/: las dos forjas los tienen,
 firmados.
 
-Aquí solo queda el RPM cuando la versión está hecha (en build/rpm/, y su
-copia en dist/, que no tiene nada más): al final se borran build/release/
-y build/zenodo/, porque las forjas y Zenodo ya tienen lo que había en
-ellas.
+Cuando la versión está hecha, aquí solo quedan, en dist/, el RPM (que
+packaging/build-rpm.sh copia allí y deja también en build/rpm/), el zip y
+el código fuente de la etiqueta (py-words-VERSIÓN-source.tar.gz, el del
+depósito para Zenodo), cada uno en lugar de los de versiones anteriores:
+al final se borran build/release/ y build/zenodo/, porque las forjas y
+Zenodo ya tienen lo demás (el AppImage, los instaladores, el .deb,
+SHA256SUMS y todas las firmas).
 
 El depósito para Zenodo se reúne en build/zenodo/ después de la etiqueta
 (tools/zenodo.py collect: el árbol de la etiqueta, firmado, con SHA256SUMS y
@@ -96,6 +99,7 @@ la clave pública) y al final se sube a Zenodo y se publica, con un DOI nuevo
 """
 
 import argparse
+import glob
 import json
 import os
 import re
@@ -110,10 +114,16 @@ sys.path.insert(0, ROOT)
 from version import VERSION  # noqa: E402
 
 TAG = f'v{VERSION}'
-# What is published is made in build/release/, not in dist/: only the RPM is
-# kept here (in build/rpm/, and its copy in dist/, which holds nothing else)
+# What is published is made in build/release/, not in dist/: dist/ keeps
+# only the RPM, the zip and the source of the tag, the newest of each
 OUT = os.path.join('build', 'release')
 ZIP = os.path.join(OUT, f'py-words-v.{VERSION}.zip')
+#  El código fuente de la etiqueta, que tools/zenodo.py collect deja en
+#  build/zenodo/ (siempre, también con --no-zenodo)
+SOURCE = os.path.join('build', 'zenodo', f'py-words-{VERSION}-source.tar.gz')
+#  Lo que se guarda en dist/ (además del RPM), la última versión de cada
+#  clase: (archivo, patrón de los viejos)
+KEPT = ((ZIP, 'py-words-v.*.zip'), (SOURCE, 'py-words-*-source.tar.gz'))
 APPIMAGE = os.path.join(OUT, f'py-words-v.{VERSION}-x86_64.AppImage')
 #  El instalador de Linux (tools/bundle-installer.py); los de Windows y
 #  macOS los hace GitHub (installers.yml)
@@ -546,10 +556,16 @@ class Release:
         self.android()
 
     def clean_up(self):
-        """Once all is published: only the RPM stays here (build/rpm/, and
-        its copy in dist/); the rest is on the forges and on Zenodo."""
+        """Once all is published: dist/ keeps the RPM (copied by
+        build-rpm.sh), the zip and the source of the tag, the newest of each;
+        the rest of build/release/ and build/zenodo/ is deleted, as it is on
+        the forges and on Zenodo."""
+        self.plan('Keep the zip and the source in dist/, in place of older '
+                  'ones', sys.executable, os.path.join('tools', 'release.py'),
+                  '--keep-in-dist')
         self.plan('Delete what was published from build/ (only the RPM '
-                  'stays)', 'rm', '-rf', OUT, os.path.join('build', 'zenodo'))
+                  'stays there)', 'rm', '-rf', OUT,
+                  os.path.join('build', 'zenodo'))
 
     def android(self):
         """Put this version in py-words for Android and release the app,
@@ -637,6 +653,10 @@ def main(argv=None):
     parser.add_argument('--zenodo', action='store_true',
                         help='(the upload to Zenodo is made always now, unless '
                              '--no-zenodo: kept for older scripts)')
+    parser.add_argument('--keep-in-dist', action='store_true',
+                        help='only copy the zip of build/release/ and the '
+                             'source of build/zenodo/ to dist/, in place of '
+                             'older ones (the release does it at the end)')
     parser.add_argument('-n', '--dry-run', action='store_true',
                         help='only show the commands')
     parser.add_argument('-y', '--yes', action='store_true',
@@ -644,7 +664,30 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.notes_file:
         args.notes_file = os.path.abspath(args.notes_file)
+    if args.keep_in_dist:
+        sys.exit(keep_in_dist())
     Release(args)()
+
+
+def keep_in_dist(root=ROOT):
+    """Copy the zip and the source of the tag to dist/, deleting their older
+    versions there; 0 if all went well, 1 if one of them is missing."""
+    #  Copias, no movimientos: la publicación los borra después de build/,
+    #  con todo lo demás
+    dist = os.path.join(root, 'dist')
+    os.makedirs(dist, exist_ok=True)
+    for made, pattern in KEPT:
+        source = os.path.join(root, made)
+        if not os.path.isfile(source):
+            print(f'release.py: there is no {made}', file=sys.stderr)
+            return 1
+        name = os.path.basename(source)
+        for old in glob.glob(os.path.join(dist, pattern)):
+            if os.path.basename(old) != name:
+                os.remove(old)
+        shutil.copy2(source, os.path.join(dist, name))
+        print(f'Kept {name} in dist/')
+    return 0
 
 
 if __name__ == '__main__':

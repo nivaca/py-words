@@ -145,10 +145,11 @@ if [ "$SIGN" = 1 ]; then
     done
 fi
 
-# The newest RPM goes to dist/ too, in place of the older ones: it is the
-# only package kept in dist/ (tools/release.py makes the others in
-# build/release/, and deletes them once they are published). It stays in
-# build/rpm/ as well, where the release tools look for it.
+# El RPM más nuevo va también a dist/, en lugar de los viejos. dist/ guarda,
+# además, solo el zip y el código fuente de la etiqueta, que tools/release.py
+# copia allí al final de una publicación; lo demás lo hace en build/release/
+# y lo borra cuando está publicado. El RPM se queda también en build/rpm/,
+# donde lo buscan las herramientas de publicación.
 mkdir -p "$DIR/dist"
 find "$DIR/dist" -maxdepth 1 -name 'py-words-*.rpm' ! -name '*.src.rpm' -delete
 for rpm in "${RPMS[@]}"; do

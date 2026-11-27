@@ -513,7 +513,9 @@ en `SHA256SUMS-installers`), adjunta las firmas a las dos releases y los
 instaladores a la de Codeberg, y borra `build/installers/`.  Todo, salvo
 el RPM, se hace en `build/release/` (y el depósito para Zenodo en
 `build/zenodo/`), y las dos carpetas se borran cuando todo está
-publicado: aquí solo queda el RPM, en `build/rpm/` y su copia en `dist/`.
+publicado: aquí solo quedan, en `dist/`, el RPM (también en `build/rpm/`),
+el zip y el código fuente de la etiqueta (`.tar.gz`), el más nuevo de
+cada uno.
 Al final, si hay un clon de py-words
 para Android en `../../Android/py-words-android` o `../../android/py-words-android` (o
 donde diga `PY_WORDS_ANDROID`), corre su `tools/update-py-words.py --tag vVERSIÓN`,

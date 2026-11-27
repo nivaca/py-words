@@ -32,8 +32,8 @@ import interface
 from interface import tr
 from version import COMMIT_FILE, VERSION, commit
 
-#  Adónde va el zip, salvo que --output diga otra cosa (no a dist/, que solo
-#  guarda el RPM)
+#  Adónde va el zip, salvo que --output diga otra cosa (no a dist/, adonde
+#  tools/release.py copia el de una versión cuando está publicada)
 DIST = os.path.join(ROOT, 'build', 'release')
 
 #  What is made while the program runs or is edited (as in .gitignore)
