@@ -9,7 +9,7 @@ Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
 
-## Sin publicar
+## 3.33 — 2026-11-27
 
 - La página web pública (`--public`, `public_app`) muestra el aviso de
   consentimiento de cookies de la Universidad de los Andes (Usercentrics,
@@ -18,6 +18,10 @@ final, sin fechas, a partir de la lista "Versiones" del README.
   Content-Security-Policy deja que la página llegue a
   `https://*.usercentrics.eu`. La página local no guarda cookies ni
   necesita internet, así que sigue sin él.
+- `tools/release.py` hace y firma los archivos de la versión en
+  `build/release/` (y el depósito de Zenodo en `build/zenodo/`), los
+  publica desde allí y borra las dos carpetas al final; en `dist/` quedan
+  solo el RPM, el zip y el código fuente más recientes.
 
 ## 3.32 — 2026-11-26
 

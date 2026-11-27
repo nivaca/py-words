@@ -138,7 +138,7 @@ removeat.  Institutor non est signatus, ideo SmartScreen de eo monere
 potest: elige "More info" et deinde "Run anyway".  Potest etiam curri sine
 interrogationibus:
 
-    > py-words-v.3.32-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
+    > py-words-v.3.33-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
 
 **macOS.**  Aperi `.pkg`.  Ponit `py-words.app` (fenestram) in
 Applications et, nisi ea omittas sub "Customize", `py-words (CLI)`,
@@ -156,7 +156,7 @@ fasciculum in Finder cum Control et elige "Open").  Ad ipsum removendum:
 **Linux.**  Fasciculus `.run` est scriptum testae (shell) cum programmate
 intus:
 
-    $ sh py-words-v.3.32-linux-x86_64.run
+    $ sh py-words-v.3.33-linux-x86_64.run
 
 Cursum ab usore communi, instituit pro te solo, in
 `~/.local/share/py-words`, cum mandato in `~/.local/bin`; cursum cum
@@ -179,10 +179,10 @@ secum fert, ita quod nichil aliud requiritur.  Trahe ex interreti
 [Releases](https://github.com/nivaca/py-words/releases) in GitHub, fac
 ipsum exsecutabilem et curre:
 
-    $ chmod +x py-words-v.3.32-x86_64.AppImage
-    $ ./py-words-v.3.32-x86_64.AppImage                # fenestra
-    $ ./py-words-v.3.32-x86_64.AppImage cli amicus     # linea mandatorum
-    $ ./py-words-v.3.32-x86_64.AppImage help           # cetera programmata
+    $ chmod +x py-words-v.3.33-x86_64.AppImage
+    $ ./py-words-v.3.33-x86_64.AppImage                # fenestra
+    $ ./py-words-v.3.33-x86_64.AppImage cli amicus     # linea mandatorum
+    $ ./py-words-v.3.33-x86_64.AppImage help           # cetera programmata
 
 Primum argumentum eligit programma: `gui` (quod ponitur nisi aliud
 dicatur), `cli`, `tui`, `web`, `edit`, `edit-gui`, `check` vel `convert`;
@@ -213,7 +213,7 @@ Vel trahe ex interreti `py-words-VERSION-1.fc45.noarch.rpm` et
 (fasciculus est signatus; importa clavem eius semel) et institue ipsum:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.32-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.33-1.fc45.noarch.rpm
 
 Currit in quolibet Fedora cum Python 3.13 vel posteriore, quicumque sit
 numerus `fc` in nomine eius.  Vel construe ipsum ex capsula programmatis
@@ -257,7 +257,7 @@ tabella et iconem.  Trahe ex interreti `py-words_VERSION-1_all.deb` ex
 [Releases](https://github.com/nivaca/py-words/releases) in GitHub et
 institue ipsum:
 
-    $ sudo apt install ./py-words_3.32-1_all.deb
+    $ sudo apt install ./py-words_3.33-1_all.deb
 
 Requirit Python 3.13 vel posteriorem (Debian 13, Ubuntu 25.04 vel
 posteriores); `apt` simul instituit `python3-tk`.  Subscriptio est
@@ -265,7 +265,7 @@ seorsum: `py-words_VERSION-1_all.deb.asc` est subscriptio OpenPGP facta
 eadem clave qua RPM, et sic probatur:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words_3.32-1_all.deb.asc py-words_3.32-1_all.deb
+    $ gpg --verify py-words_3.33-1_all.deb.asc py-words_3.33-1_all.deb
 
 Vel adde semel repositorium APT programmatum meorum
 ([github.com/nivaca/apt](https://github.com/nivaca/apt)), eadem clave
@@ -322,7 +322,7 @@ probandum, importa clavem semel, et deinde proba subscriptionem
 fasciculi, vel summam eius:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words-v.3.32.zip.asc py-words-v.3.32.zip
+    $ gpg --verify py-words-v.3.33.zip.asc py-words-v.3.33.zip
     $ gpg --verify SHA256SUMS.asc SHA256SUMS && sha256sum -c --ignore-missing SHA256SUMS
 
 RPM etiam intus subscriptionem suam fert: post `sudo rpm --import
@@ -402,7 +402,7 @@ distribuendum:
 
     $ python3 tools/bundle-zip.py [-o FOLDER] [--tests]
 
-Hoc scribit `build/release/py-words-v.3.32.zip` (cum versione programmatis; `-o`
+Hoc scribit `build/release/py-words-v.3.33.zip` (cum versione programmatis; `-o`
 dat aliam capsulam), cum programmate intra capsulam eiusdem nominis.
 Continet programmata, data, icones et documenta, et fasciculum `COMMIT`
 cum commissione ex qua factum est, quam "De programmate" ostendit.  Non continet
@@ -417,7 +417,7 @@ In Linux, AppImage (vide "De AppImage (Linux)") fit per
     $ python3 tools/bundle-appimage.py [-o FOLDER] [--python APPIMAGE]
           [--python-version VERSION] [--appimagetool APPIMAGE]
 
-Scribit `build/release/py-words-v.3.32-x86_64.AppImage` (`-o` dat aliam
+Scribit `build/release/py-words-v.3.33-x86_64.AppImage` (`-o` dat aliam
 capsulam), cum eisdem fasciculis quibus zip (sed non `words_install.py`),
 proprio Python et loco in tabella et iconibus.  Python (Python 3.13 cum
 Tk, ex [python-appimage](https://github.com/niess/python-appimage)) et
@@ -434,7 +434,7 @@ Institutores (vide "De institutoribus") fiunt per
           [--stage-only]
 
 Pro hoc systemate, nisi `--system` et `--arch` aliud dicant, scribit
-`dist/py-words-v.3.32-linux-x86_64.run` vel parem eius pro Windows vel
+`dist/py-words-v.3.33-linux-x86_64.run` vel parem eius pro Windows vel
 macOS (`-o` dat aliam capsulam; in `dist/` delentur institutores
 versionum priorum pro eodem systemate).  Quilibet continet fasciculos zip
 (sed non `words_install.py`), proprium Python et
@@ -1622,6 +1622,12 @@ spectes.
 Versiones
 ---------
 
+- 3.33:
+  - Pagina interretialis publica monitum de consensu crustulorum
+    Universitatis de los Andes ostendit (Usercentrics); pagina localis
+    sine eo manet.
+  - Fasciculi cuiusque editionis in `build/release/` fiunt; in `dist/`
+    soli RPM, zip et fons novissimi manent.
 - 3.32:
   - Logeion ex institutore pro Windows iam attingitur: conexiones cum eo
     certificatis certifi confidunt necnon eis systematis (Windows radice

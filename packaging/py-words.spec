@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.32
+Version:        3.33
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -107,6 +107,10 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Fri Nov 27 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.33-1
+- The public web page shows the university's cookie consent (Usercentrics);
+  the release files are made in build/release/
+
 * Thu Nov 26 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.32-1
 - Logeion from the installer for Windows: the connections trust certifi's
   certificates as well as the system's; each release published on Zenodo

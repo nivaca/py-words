@@ -290,6 +290,17 @@ installing anything.  It runs on a public server, at
 whose WSGI application is the same program.  The searches are made by the
 server, and each visitor keeps their own settings and earlier searches.
 
+Later the Universidad de los Andes asked for two things on that page:
+first its logo and legal notice at the foot, and then, in 3.33, its
+notice of consent for cookies, from Usercentrics.  The second one needed
+more care than the first.  The page has a strict Content-Security-Policy:
+only scripts with the nonce of each answer run, and nothing is fetched
+from other servers.  So the university's script gets the nonce, and the
+policy of the public page lets it reach `*.usercentrics.eu`, and only
+there.  I could not read Usercentrics' list of the servers it needs, so
+the banner was checked in a real browser before the release.  The local
+page keeps no cookies and needs no internet, and it shows no banner.
+
 7. A fuzzy search
 -----------------
 
@@ -519,7 +530,7 @@ a key made for them, in a folder of their own, never with mine.
 Testing
 -------
 
-The program has unit tests and regression tests (`tests/`), 432 in total,
+The program has unit tests and regression tests (`tests/`), 437 in total,
 that run with Python 3.13 (the oldest it supports) and with the latest
 Python; `tools/test.py` runs them all at once, each class of tests in a
 process of its own, in about a minute and a half.  The regression tests

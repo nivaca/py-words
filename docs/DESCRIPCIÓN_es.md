@@ -1,4 +1,4 @@
-# py-words 3.32: descripción
+# py-words 3.33: descripción
 
 ## Análisis
 
@@ -46,7 +46,7 @@ Más adelante, también con ayuda de Claude, el diccionario se comparó con el v
 
 El rediseño se comparó con la traducción fiel sobre un corpus de 133 671 palabras: todas las raíces del diccionario, formas generadas y las entradas de prueba. El 99,2 % dio exactamente los mismos resultados. Las diferencias restantes se revisaron una por una, y todas resultaron ser cambios deliberados o errores del original ya corregidos; están documentadas en el README.
 
-Hay 432 pruebas automáticas; `python3 tools/test.py` las corre todas a la vez, cada clase de pruebas en un proceso propio, en cerca de un minuto y medio (`python3 -m unittest discover -s tests` las corre una tras otra). Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador, el servidor web, incluidas sus protecciones, y la firma de una versión (con una clave hecha en la prueba, nunca la del autor). Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
+Hay 437 pruebas automáticas; `python3 tools/test.py` las corre todas a la vez, cada clase de pruebas en un proceso propio, en cerca de un minuto y medio (`python3 -m unittest discover -s tests` las corre una tras otra). Las pruebas unitarias cubren el análisis, el léxico, los idiomas (con un archivo de español propio: traducciones, respaldo en inglés, búsqueda sin tildes, identificadores), la configuración, la caché, el verificador, el conversor, el instalador, el servidor web, incluidas sus protecciones, y la firma de una versión (con una clave hecha en la prueba, nunca la del autor). Las de regresión comparan la salida completa del programa con resultados ya revisados, entre ellos 735 versos de la *Eneida*. Los editores se prueban manejándolos como lo haría un usuario, en una terminal simulada y en una ventana real, también con los significados en español.
 
 La versión en línea se probó en un navegador manejado por un script (búsquedas en los dos sentidos, los enlaces de los resultados, el botón Atrás, el modo oscuro, la interfaz en español y los ajustes que se conservan al recargar), tanto desde un servidor local como desde el sitio entonces publicado. Las pruebas corren en Python 3.13, la versión mínima, y en la más reciente; con cada push a la rama principal, un flujo de trabajo de GitHub las corre. Las ventanas se revisaron además a ojo, con capturas de pantalla, y con un Python demasiado viejo el programa da un mensaje claro en lugar de un error.
 
@@ -62,7 +62,7 @@ En pantallas de alta resolución, las ventanas siguen la escala del escritorio (
 
 En el equipo es una aplicación de escritorio, de terminal y de navegador, y no necesita internet, salvo para consultar Logeion. La versión web levanta su propio servidor, que por omisión solo atiende al mismo equipo; con `--host` se puede abrir a la red local, por ejemplo para usarla desde el teléfono. No tiene contraseñas ni permite editar el diccionario, y rechaza las peticiones que llegan con otro nombre de equipo y los formularios enviados desde otros sitios.
 
-En línea, en https://nivaca.pythonanywhere.com/, basta un navegador: las búsquedas las hace el servidor, y cada visitante guarda sus ajustes en las cookies de su navegador. Allí el diccionario no se puede editar.
+En línea, en https://nivaca.pythonanywhere.com/, basta un navegador: las búsquedas las hace el servidor, y cada visitante guarda sus ajustes en las cookies de su navegador. Allí el diccionario no se puede editar. Desde la 3.33 la página pública muestra el aviso de consentimiento de cookies que pidió la Universidad de los Andes (Usercentrics), cuyo script viene de los servidores de Usercentrics; la política de seguridad de la página (Content-Security-Policy) los admite solo a ellos. La página local no guarda cookies ni sale a internet, y no lo lleva.
 
 ### Licencias
 
