@@ -51,10 +51,28 @@ class CheckerTests(unittest.TestCase):
         checker = check.Checker(self.decls, set(
             check.lexicon.source_names(DATA)))
         for name in ('dictionary.xml', 'inflections.xml', 'uniques.xml',
-                     'addons.xml', 'sources.xml', 'gloss.xml'):
+                     'addons.xml', 'sources.xml', 'gloss.xml',
+                     'frequencies.xml'):
             checker.check_file(os.path.join(DATA, name))
         self.assertEqual((checker.errors, checker.warnings), (0, 0),
                          checker.out[:5])
+
+    def test_frequencies(self):
+        # una etiqueta mal hecha, y un recuento de una entrada que no existe
+        self.assertEqual(self.kinds('<tag name="n11" count="5"/>'
+                                    '<tag name="zz" count="1"/>',
+                                    'frequencies'), ['error'])
+        path = os.path.join(self.tmp.name, 'frequencies.xml')
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write('<frequencies><uses entry="999999" count="3"/>'
+                    '</frequencies>\n')
+        with open(os.path.join(self.tmp.name, 'dictionary.xml'), 'w',
+                  encoding='utf-8') as f:
+            f.write(f'<dictionary>{GOOD}</dictionary>\n')
+        checker = check.Checker(self.decls, None)
+        checker.check_file(path)
+        os.remove(os.path.join(self.tmp.name, 'dictionary.xml'))
+        self.assertEqual(checker.warnings, 1, checker.out)
 
     def test_several_sources(self):
         """source="O M": the main source, then the others; each must be a

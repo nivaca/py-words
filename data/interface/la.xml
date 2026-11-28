@@ -586,8 +586,8 @@
     <tr>{n} errores</tr>
   </text>
   <text>
-    <en>&lt;{root}&gt; is not a WORDS data file (the root must be &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;quantities&gt;, &lt;language&gt; or &lt;interface&gt;)</en>
-    <tr>&lt;{root}&gt; non est fasciculus datorum WORDS (radix debet esse &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;quantities&gt;, &lt;language&gt; vel &lt;interface&gt;)</tr>
+    <en>&lt;{root}&gt; is not a WORDS data file (the root must be &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;quantities&gt;, &lt;frequencies&gt;, &lt;language&gt; or &lt;interface&gt;)</en>
+    <tr>&lt;{root}&gt; non est fasciculus datorum WORDS (radix debet esse &lt;dictionary&gt;, &lt;inflections&gt;, &lt;uniques&gt;, &lt;addons&gt;, &lt;sources&gt;, &lt;glosses&gt;, &lt;quantities&gt;, &lt;frequencies&gt;, &lt;language&gt; vel &lt;interface&gt;)</tr>
   </text>
   <text>
     <en>{pos} is not a dictionary part of speech</en>
@@ -2208,7 +2208,8 @@ C. T. Lewis and C. Short, A Latin Dictionary (rare words and names,
 English definitions; text of the Perseus Digital Library, CC BY-SA 4.0);
 R. de Miguel and the Marqués de Morante, Nuevo diccionario latino-
 español etimológico, 1867 (rare words and proper names, Latin-Spanish);
-Collatinus, by Yves Ouvrard and Philippe Verkerk (long vowels).
+Collatinus, by Yves Ouvrard and Philippe Verkerk (long vowels; the
+counts of the texts of the LASLA, Liège).
 Code © 2026 Nicolas Vaughan (nicolasvaughan@proton.me), under the GNU General
 Public License, version 3 or later (see LICENCE.txt).  The data of WORDS,
 by William Whitaker, are free for any use.
@@ -2229,7 +2230,8 @@ Hispanicum); C. T. Lewis et C. Short, A Latin Dictionary (verba rara et
 nomina, definitiones Anglice; textus Perseus Digital Library, CC BY-SA
 4.0); R. de Miguel et Marchio de Morante, Nuevo diccionario latino-
 español etimológico, 1867 (verba rara et nomina propria, Latino-
-Hispanicum); Collatinus, Yvonis Ouvrard et Philippi Verkerk (vocales longe).
+Hispanicum); Collatinus, Yvonis Ouvrard et Philippi Verkerk (vocales
+longe; numeri textuum LASLA, Leodii).
 Codex © 2026 Nicolas Vaughan (nicolasvaughan@proton.me), sub licentia GNU
 General Public License, versione 3 vel posteriore (vide LICENCE.txt).
 Data ipsius WORDS, Guillelmi Whitaker, ad omnem usum libera sunt.
@@ -2243,8 +2245,8 @@ sunt.</tr>
     <tr>Fontes et licentia</tr>
   </text>
   <text>
-    <en>The program started from WORDS, by William Whitaker (1936-2010), but both its code and its data have been redesigned, and it now includes a new English dictionary (Lewis and Short) and two new Spanish ones (Echave-Sustaeta and De Miguel), besides other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Lewis and Short, A Latin Dictionary, in the text of the Perseus Digital Library (CC BY-SA 4.0), gave some 8,400 rare words and names that WORDS did not have (source code S, as other entries of WORDS taken from it), and the English definitions of some 31,000 entries.  R. de Miguel and the Marqués de Morante, Nuevo diccionario latino-español etimológico (1867), gave some 25,000 words and proper names that WORDS did not have, and the Spanish meanings of some 49,000 entries (source code m); Echave-Sustaeta gave those of the entries De Miguel does not have, and the other Spanish meanings are translations.  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, and some abbreviations (source code H).  Collatinus, in its turn, made its lexicon with the help of the dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; the README names all the sources and people it thanks.</en>
-    <tr>Programma initium sumpsit ex WORDS, Guillelmi Whitaker (1936-2010), sed et codex eius et data denuo composita sunt, et nunc continet novum dictionarium Anglicum (Lewis et Short) et duo nova Hispanica (Echave-Sustaeta et De Miguel), preter alia opera.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, dedit sensus, verba et orthographias mediei evi (nota fontis M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, dedit sensus et verba, Anglice et Hispanice (nota fontis A).  Lewis et Short, A Latin Dictionary, in textu Perseus Digital Library (CC BY-SA 4.0), dedit circiter 8.400 verba rara et nomina que WORDS non habebat (nota fontis S, sicut alii articuli ipsius WORDS ex eo sumpti), et definitiones Anglicas circiter 31.000 articulorum.  R. de Miguel et Marchio de Morante, Nuevo diccionario latino-español etimológico (1867), dedit circiter 25.000 verba et nomina propria que WORDS non habebat, et significationes Hispanicas circiter 49.000 articulorum (nota fontis m); Echave-Sustaeta dedit eas articulorum quos De Miguel non habet, et cetere significationes Hispanice sunt translationes.  Collatinus, Yvonis Ouvrard et Philippi Verkerk, dedit vocales longas radicum et terminationum, et quasdam abbreviationes (nota fontis H).  Collatinus autem lexicon suum fecit cum auxilio dictionariorum Gaffiot, Jeanneau, Du Cange et Lewis et Short, inter alia; README nominat omnes fontes et personas quibus gratias agit.</tr>
+    <en>The program started from WORDS, by William Whitaker (1936-2010), but both its code and its data have been redesigned, and it now includes a new English dictionary (Lewis and Short) and two new Spanish ones (Echave-Sustaeta and De Miguel), besides other works.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, gave medieval senses, words and spellings (source code M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, gave senses and words, in English and in Spanish (source code A).  Lewis and Short, A Latin Dictionary, in the text of the Perseus Digital Library (CC BY-SA 4.0), gave some 8,400 rare words and names that WORDS did not have (source code S, as other entries of WORDS taken from it), and the English definitions of some 31,000 entries.  R. de Miguel and the Marqués de Morante, Nuevo diccionario latino-español etimológico (1867), gave some 25,000 words and proper names that WORDS did not have, and the Spanish meanings of some 49,000 entries (source code m); Echave-Sustaeta gave those of the entries De Miguel does not have, and the other Spanish meanings are translations.  Collatinus, by Yves Ouvrard and Philippe Verkerk, gave the long vowels of the stems and endings, some abbreviations (source code H), and the counts of the texts lemmatised by the LASLA (Liège) by which the most usual readings come first.  Collatinus, in its turn, made its lexicon with the help of the dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among others; the README names all the sources and people it thanks.</en>
+    <tr>Programma initium sumpsit ex WORDS, Guillelmi Whitaker (1936-2010), sed et codex eius et data denuo composita sunt, et nunc continet novum dictionarium Anglicum (Lewis et Short) et duo nova Hispanica (Echave-Sustaeta et De Miguel), preter alia opera.  R. E. Latham, Revised Medieval Latin Word-List from British and Irish Sources, dedit sensus, verba et orthographias mediei evi (nota fontis M).  J. Echave-Sustaeta, Lengua latina. Vocabulario básico, dedit sensus et verba, Anglice et Hispanice (nota fontis A).  Lewis et Short, A Latin Dictionary, in textu Perseus Digital Library (CC BY-SA 4.0), dedit circiter 8.400 verba rara et nomina que WORDS non habebat (nota fontis S, sicut alii articuli ipsius WORDS ex eo sumpti), et definitiones Anglicas circiter 31.000 articulorum.  R. de Miguel et Marchio de Morante, Nuevo diccionario latino-español etimológico (1867), dedit circiter 25.000 verba et nomina propria que WORDS non habebat, et significationes Hispanicas circiter 49.000 articulorum (nota fontis m); Echave-Sustaeta dedit eas articulorum quos De Miguel non habet, et cetere significationes Hispanice sunt translationes.  Collatinus, Yvonis Ouvrard et Philippi Verkerk, dedit vocales longas radicum et terminationum, quasdam abbreviationes (nota fontis H) et numeros textuum a LASLA (Leodii) lemmatizatorum, quibus lectiones usitatiores primo loco ponuntur.  Collatinus autem lexicon suum fecit cum auxilio dictionariorum Gaffiot, Jeanneau, Du Cange et Lewis et Short, inter alia; README nominat omnes fontes et personas quibus gratias agit.</tr>
   </text>
   <text>
     <en>{name} is free software, distributed under the GNU General Public License, version 3 or later (see LICENCE.txt): it can be used, copied, changed and shared, but a program that includes it must be shared under the same licence, with its source code.  The data of WORDS are free for any use, by permission of William Whitaker.  "About" gives the version and the credits.</en>
@@ -2915,5 +2917,13 @@ Artium et Humanitatum Universitatis de los Andes, Bogotá, Columbia.</tr>
   <text>
     <en>Local ↔ Logeion (its entries for the lemmas of the words)</en>
     <tr>Hic ↔ Logeion (articuli eius pro lemmatibus verborum)</tr>
+  </text>
+  <text>
+    <en>is not a tag</en>
+    <tr>non est nota</tr>
+  </text>
+  <text>
+    <en>there is no entry with the id {id}: this count is not used</en>
+    <tr>nullus est articulus cum id {id}: hic numerus non adhibetur</tr>
   </text>
 </interface>

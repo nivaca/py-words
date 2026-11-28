@@ -9,6 +9,9 @@
     gloss.xml        <glosses> de <gloss>: las abreviaturas de los análisis
     quantities.xml   <quantities> de <stems>: las vocales largas de los
                      temas de cada entrada
+    frequencies.xml  <frequencies> de <tag> y <uses>: cuánto aparecen las
+                     entradas y las clases de formas en los textos del
+                     LASLA
     languages/*.xml  <language>: un idioma de los significados (véase
                      languages.py)
 
@@ -593,6 +596,42 @@ def read_quantities(path: str, errors=None) -> list[tuple[tuple[int, tuple[
         seen[uid] = r.el.line
         return uid, marked
     return _read(path, 'quantities', errors, stems)
+
+
+#  Una etiqueta de Collatinus: la categoría y dos cifras o espacios (n11,
+#  v1 , c  )
+_TAG = re.compile(r'[a-z][a-z1-8 ][1-2 ]')
+
+
+def read_frequencies(path: str, errors=None) -> list[tuple[tuple[
+        str, str | int, int], int]]:
+    """How often the entries and the kinds of forms occur in the texts of
+    the LASLA (data/frequencies.xml): a list of ((kind, key, count),
+    line), KIND being 'tag' (KEY a tag of Collatinus, as n11) or 'uses'
+    (KEY an entry id)."""
+    seen = {}
+
+    def item(r: _Reader, n: int) -> tuple[str, str | int, int]:
+        _expect(r, 'tag', 'uses')
+        if r.el.tag == 'tag':
+            key = r.raw('name')
+            if not _TAG.fullmatch(key):
+                r.bad('name', key, tr('is not a tag'))
+        else:
+            value = r.raw('entry')
+            if not value.isdigit() or not 0 < int(value) < MAX_UID:
+                r.bad('entry', value, tr('must be a whole number above 0'))
+            key = int(value)
+        count = r.integer('count', 0, MAX_UID)
+        r.done()
+        r.children({})
+        if (r.el.tag, key) in seen:
+            what = f'name="{key}"' if r.el.tag == 'tag' else f'entry="{key}"'
+            r.fail(tr('{what} is already on line {line}', what=what,
+                      line=seen[r.el.tag, key]))
+        seen[r.el.tag, key] = r.el.line
+        return r.el.tag, key, count
+    return _read(path, 'frequencies', errors, item)
 
 
 def read_sources(path: str, errors=None) -> list[tuple[tuple[str, str],

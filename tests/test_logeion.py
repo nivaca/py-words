@@ -92,7 +92,8 @@ class LemmaTests(unittest.TestCase):
     def test_lemmas_of_the_analysis(self):
         self.assertEqual(self.lemmas('arma'), ['armum', 'armo'])
         self.assertEqual(self.lemmas('dixit'), ['dico'])
-        self.assertEqual(self.lemmas('rosarum'), ['rodo', 'rosa'])
+        # (rosa, más usual, primero)
+        self.assertEqual(self.lemmas('rosarum'), ['rosa', 'rodo'])
         self.assertEqual(self.lemmas('Romae'), ['Roma'])
 
     def test_i_for_j(self):

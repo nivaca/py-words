@@ -12,12 +12,13 @@ import isolate  # noqa: F401,E402  (before anything that reads settings)
 from analyzer import Analyzer, split_line, form_of_sum
 from lexicon import Lexicon
 from model import (Pos, Case, Number, Tense, Voice,
-                                     Mood, Decl)
+                                     Mood, Decl, Form)
 from results import Origin
 from session import Session
 from settings import Settings
 import model
 import tricks
+import usage
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'data')
@@ -144,6 +145,31 @@ class AnalyzerTests(unittest.TestCase):
             self.assertLessEqual(stems, self.stems(word), word)
         r = self.analyze('queruntur')
         self.assertIn('quaeruntur', r.notes[Origin.TRICK])
+
+    def first_entry(self, word):
+        return next(rd.forms[0].entry for rd in self.analyze(word).readings
+                    if rd.forms and rd.forms[0].entry is not None)
+
+    def test_most_usual_reading_first(self):
+        # suis: suus antes que sus; amor: el sustantivo antes que amo;
+        # Aeneas: el nombre antes que aeneus
+        for word, stem, pos in (('suis', 'su', Pos.ADJ),
+                                ('amor', 'amor', Pos.N),
+                                ('Aeneas', 'Aene', Pos.N),
+                                ('rosarum', 'ros', Pos.N)):
+            e = self.first_entry(word)
+            self.assertEqual((e.stems[0], e.part.pos), (stem, pos), word)
+
+    def test_usage_tags(self):
+        self.assertEqual(usage.tag(Form(Pos.N, case=Case.ACC,
+                                        number=Number.S)), 'n31')
+        self.assertEqual(usage.tag(Form(Pos.V, tense=Tense.PRES,
+                                        mood=Mood.SUB)), 'v21')
+        self.assertEqual(usage.tag(Form(Pos.V, tense=Tense.PERF,
+                                        mood=Mood.IND)), 'v1 ')
+        self.assertEqual(usage.tag(Form(Pos.PREP)), 'r  ')
+        self.assertGreater(len(lexicon().uses), 20000)
+        self.assertIn('n11', lexicon().tag_counts)
 
     def test_prodelision_after_an_enclitic(self):
         # modoquest: modo + -que + est

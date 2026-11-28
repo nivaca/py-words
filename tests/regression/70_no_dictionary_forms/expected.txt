@@ -10,11 +10,6 @@ arma
 
 virumque
   -que  enclitic
-  [GBXEK]  neo-Latin  uncommon
-    virus;
-    vir-um         NOM.SG
-    vir-um         VOC.SG
-    vir-um         ACC.SG
   [XXXAX]
     a male person, a man; A man, a husband, the male, mate; a man of courage, principle, honor, one who deserves the name of a man; man, soldier; a foot-soldier; each man, every man; Human beings; Manhood, virility; (Lewis and Short)
     vir-um         ACC.SG
@@ -23,26 +18,31 @@ virumque
   [XXXAA]
     strength, force, vigor, power, energy, virtue; energy, virtue, potency; hostile strength, force, violence; force, violence; quantity, number, abundance; military forces, troops; the virile forces, organs; mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
     vīr-um         GEN.PL
+  [GBXEK]  neo-Latin  uncommon
+    virus;
+    vir-um         NOM.SG
+    vir-um         VOC.SG
+    vir-um         ACC.SG
   (less likely forms are not shown)
 
 cano
-  [XBXCO]
-    gray hairs (pl.); old age;
-  [XXXFS]  very rare
-    wicker basket (used for food/flowers and in sacrifices);
-    can-ō          DAT.SG
-    can-ō          ABL.SG
+  [EXXFS]  later  very rare
+    to produce melodious sounds, to make something the subject of one's singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one's singing, playing; to sing, play; to sing for one's self, to consult only one's own advantage; to sing, to cause to resound, to celebrate in song, to sing of, to croak; to celebrate, to trumpet abroad; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
+  [XXXAO]
+    to produce melodious sounds, to make something the subject of one's singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one's singing, playing; to sing, play; to sing for one's self, to consult only one's own advantage; to sing, to cause to resound, to celebrate in song, to sing of, to croak; to celebrate, to trumpet abroad; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
+    can-o          1SG.PRS.ACT.IND
   [XXXBO]
     white, hoary; the gray hair of the aged, gray hairs; old, aged, venerable; (Lewis and Short)
     cān-ō          DAT.SG.M
     cān-ō          DAT.SG.N
     cān-ō          ABL.SG.M
     cān-ō          ABL.SG.N
-  [EXXFS]  later  very rare
-    to produce melodious sounds, to make something the subject of one's singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one's singing, playing; to sing, play; to sing for one's self, to consult only one's own advantage; to sing, to cause to resound, to celebrate in song, to sing of, to croak; to celebrate, to trumpet abroad; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
-  [XXXAO]
-    to produce melodious sounds, to make something the subject of one's singing, playing, to sing of, to celebrate, make known in song; to utter melodious notes, to sing, sound, play; to speak in a sing-song tone; to sound, resound; to make something, some person the subject of one's singing, playing; to sing, play; to sing for one's self, to consult only one's own advantage; to sing, to cause to resound, to celebrate in song, to sing of, to croak; to celebrate, to trumpet abroad; to prophesy, foretell, predict; to blow, to sound, to give, to be sounded, resound; to sound a retreat; (Lewis and Short)
-    can-o          1SG.PRS.ACT.IND
+  [XBXCO]
+    gray hairs (pl.); old age;
+  [XXXFS]  very rare
+    wicker basket (used for food/flowers and in sacrifices);
+    can-ō          DAT.SG
+    can-ō          ABL.SG
 
 amicorum
   [XXXBO]
@@ -54,12 +54,12 @@ amicorum
     amīc-ōrum      GEN.PL.N
 
 aspis
+  [XXACO]
+    asp, venomous snake of North Africa;
   [EXAEW]  later  uncommon
     asp, venomous snake of North Africa;
   [GXXFM]  neo-Latin  very rare
     newt, eft;
-  [XXACO]
-    asp, venomous snake of North Africa;
     aspis          NOM.SG
     aspis          VOC.SG
 

@@ -883,6 +883,12 @@ ex `data/inflections.xml`, que ambo ex Collatino facta sunt (vide infra
 "De vocalibus longis").  Note quantitatis in voce scripte adhuc ante
 analysim removentur, unde rosā omnes lectiones vocis rosa ostendit.
 
+Articuli vocis ab usitatissimo ad minime usitatum procedunt, secundum
+quotiens in textibus classicis a LASLA Leodiensi lemmatizatis occurrunt,
+ut Collatinus eos numeravit: suis ostendit suus ante sus, amor nomen ante
+verbum, Aeneas heroem ante aeneus (vide infra "De lectionibus usitatioribus
+primo loco").
+
 ### De notis inter uncos
 
 Quinque littere inter uncos que articulum sequuntur, ut puta `[XXXBO]`
@@ -1089,6 +1095,7 @@ De fasciculis datorum
 | `sources.xml`     | nomina fontium (dictionaria ...)           |
 | `gloss.xml`       | abbreviationes glossarum analysium         |
 | `quantities.xml`  | vocales longe radicum articulorum          |
+| `frequencies.xml` | quotiens articuli in textibus LASLA occurrunt |
 | `special.xml`     | (ad libitum) secundum dictionarium, speciale |
 | `languages/`      | lingue significationum, unus fasciculus pro unaquaque |
 | `interface/`      | lingue interfaciei, unus fasciculus pro unaquaque (adhibentur que iuxta programma sunt) |
@@ -1216,6 +1223,35 @@ formis eius consentiunt.  Septingente triginta una terminationes hoc modo
 notate sunt.  Quedam terminationes sine notis manent quia longitudo
 earum a voce pendet: ablativus -e vel -ī adiectivorum tertie declinationis,
 -imur in legimur et audīmur, -ei in diēī et reī.
+
+### De lectionibus usitatioribus primo loco
+
+`data/frequencies.xml` dicit quotiens 22 829 articuli occurrant in
+textibus Latinis a LASLA (Laboratoire d'Analyse Statistique des Langues
+Anciennes, Université de Liège) lemmatizatis, qui fere totam Latinitatem
+classicam complectuntur, et quotiens ibi quodque genus forme occurrat:
+88 note Collatini, ubi n31 est accusativus singularis nominis et v21
+presens subiunctivi.
+
+    <tag name="n31" count="91444"/>
+    <uses entry="3014" count="1371"/>
+
+Hos numeros fecit pro Collatino Philippus Verkerk (`lemmes.la`,
+`tags.la`), ex textibus quos Dominicus Longrée et LASLA ei commiserunt.
+Lemmata eius cum articulis nostris coniunxi ut pro vocalibus longis, per
+formam canonicam et partem orationis, et per genetivum et genus (vel
+infinitivum) ubi duo articuli eandem formam canonicam habent: dico,
+dicere et dico, dicare; populus, gens, et populus, arbor.
+19 722 lemmata articulos suos invenerunt.  Deinde `usage.py` articulos
+vocis ordinat ut Collatinus facit.  Articulus valet numerum suum per
+partem quam note formarum eius inter eas partis orationis sue habent,
+tertiam eius partem pro adiectivis, pronominibus et participiis (note
+eorum genus non habent) et dimidiam vel quartam pro verbis (eorum note
+personam non habent); articulus quem LASLA non numerat valet medianam
+articulorum numeratorum note frequentie sue.  Forme irregulares primo
+loco veniunt, ut antea, et pronomina in qu- ordinem suum per genus
+servant.  Sunt numeri textuum classicorum: verbo mediei evi sepe desunt,
+et tunc sola nota frequentie pro eo loquitur.
 
 ### De significationibus Hispanicis
 
@@ -1476,6 +1512,7 @@ Quomodo operetur
 | `lexicon.py`  | data, indicibus ordinata: radices, terminationes, forme irregulares, affixa |
 | `analyzer.py` | analysis verbi: radices + terminationes, pronomina qu-, affixa, enclitica, tempora composita |
 | `tricks.py`   | alie orthographie, syncope, numeri Romani, duo verba ut unum  |
+| `usage.py`    | lectiones usitatiores primo loco, ex numeris LASLA           |
 | `fuzzy.py`    | orthographie vicine, ad inquisitionem approximatam            |
 | `results.py`  | inventa: ordinatio, resectio et congregatio                    |
 | `languages.py`| lingue significationum: significationes et textus cuiusque    |
@@ -2296,10 +2333,20 @@ Dictionarium py-words venit ex his operibus:
 - Collatinus 11, ab Yves Ouvrard et Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), sub GNU GPL: vocales longe
   radicum et terminationum, sex abbreviationes et forma quaesumus (nota
-  fontis H), et idee quorundam artificiorum (vide "De vocalibus longis").
+  fontis H), idee quorundam artificiorum (prodelisio verbi est, etiam
+  post encliticum ut in modoquest; -iis scriptum -is; duo verba simul
+  declinata), numeri textuum LASLA et modus lectiones per eos ordinandi
+  (vide "De vocalibus longis" et "De lectionibus usitatioribus primo
+  loco"), et index lemmatum frequentium quo Aeneas, Caelius et sanguen
+  deesse visa sunt.
   Usque ad 3.1 py-words habebat etiam significationes Gallice, Theodisce,
   Catalanice et Gallaecice ex Collatino; postea eas removi, ut tantum
   Anglicam et Hispanicam retinerem.
+
+- LASLA (Laboratoire d'Analyse Statistique des Langues Anciennes,
+  Université de Liège, <http://web.philo.ulg.ac.be/lasla/>), cuius textus
+  Latini lemmatizati, quos Dominicus Longrée et socii eius auctoribus
+  Collatini commiserunt, numeros `data/frequencies.xml` dederunt.
 
 Collatinus vero alios laudat propter lexicon suum (in "Remerciements",
 ultima pagina libelli sui), et quia hec data nunc sunt in py-words, ego

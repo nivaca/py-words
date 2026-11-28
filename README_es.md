@@ -909,6 +909,12 @@ hechos a partir de Collatinus (véase "Las vocales largas" más abajo).
 Las marcas que se escriben en una palabra se siguen quitando antes del
 análisis, así que rosā muestra todas las lecturas de rosa.
 
+Las entradas de una palabra van de la más usual a la menos, según lo que
+aparecen en los textos clásicos lematizados por el LASLA de Lieja, tal
+como los contó Collatinus: suis muestra suus antes que sus, amor el
+sustantivo antes que el verbo, Aeneas el héroe antes que aeneus (véase
+"Las lecturas más usuales primero" más abajo).
+
 ### Los códigos entre corchetes
 
 Las cinco letras entre corchetes que siguen a una entrada, como el
@@ -1115,6 +1121,7 @@ Los archivos de datos
 | `sources.xml`        | los nombres de las fuentes (diccionarios ...) |
 | `gloss.xml`          | las abreviaturas de glosado de los análisis |
 | `quantities.xml`     | las vocales largas de las raíces de las entradas |
+| `frequencies.xml`    | cuánto aparecen las entradas en los textos del LASLA |
 | `special.xml`        | (opcional) un segundo diccionario, especial |
 | `languages/`         | los idiomas de los significados, un archivo por idioma |
 | `interface/`         | los idiomas de la interfaz, un archivo por idioma (se usan los que están junto al programa) |
@@ -1244,6 +1251,36 @@ que coinciden al menos nueve de cada diez de sus formas.  Así se
 marcaron 731 desinencias.  Algunas quedan sin marcar porque su cantidad
 depende de la palabra: el ablativo -e o -ī de los adjetivos de la 3.ª
 declinación, -imur en legimur y audīmur, -ei en diēī y reī.
+
+### Las lecturas más usuales primero
+
+`data/frequencies.xml` dice cuánto aparecen 22 829 entradas en los
+textos latinos lematizados por el LASLA (Laboratoire d'Analyse
+Statistique des Langues Anciennes, Université de Liège), que abarcan casi
+todo el latín clásico, y cuánto aparece allí cada clase de forma: las 88
+etiquetas de Collatinus, donde n31 es el acusativo singular de un
+sustantivo y v21 un presente de subjuntivo.
+
+    <tag name="n31" count="91444"/>
+    <uses entry="3014" count="1371"/>
+
+Los recuentos los hizo para Collatinus Philippe Verkerk (`lemmes.la`,
+`tags.la`), con los textos que Dominique Longrée y el LASLA le confiaron.
+Emparejé sus lemas con nuestras entradas como para las vocales largas,
+por la forma canónica y la categoría, y por el genitivo y el género (o
+el infinitivo) donde dos entradas comparten la forma canónica: dico,
+dicere y dico, dicare; populus, el pueblo, y populus, el álamo.  19 722
+lemas hallaron sus entradas.  Luego `usage.py` ordena las entradas de una
+palabra como lo hace Collatinus.  Una entrada vale su recuento por la
+parte que las etiquetas de sus formas tienen entre las de su categoría,
+un tercio de ella para los adjetivos, pronombres y participios (sus
+etiquetas no tienen género) y la mitad o la cuarta parte para los verbos
+(las suyas no tienen persona); una entrada que el LASLA no cuenta vale la
+mediana de las entradas contadas de su código de frecuencia.  Las formas
+irregulares van primero, como antes, y los pronombres en qu- conservan
+su orden por clase.  Son recuentos de textos clásicos: a una palabra
+medieval suelen faltarle, y entonces solo habla por ella su código de
+frecuencia.
 
 ### Los significados en español
 
@@ -1515,6 +1552,7 @@ Cómo funciona
 | `lexicon.py`  | los datos, indexados: raíces, desinencias, formas irregulares, afijos |
 | `analyzer.py` | análisis de una palabra: raíces + desinencias, pronombres qu-, afijos, enclíticos, tiempos compuestos |
 | `tricks.py`   | otras grafías, síncopa, numerales romanos, dos palabras como una |
+| `usage.py`    | las lecturas más usuales primero, según los recuentos del LASLA |
 | `fuzzy.py`    | las grafías cercanas, para la búsqueda aproximada             |
 | `results.py`  | los resultados: orden, recorte y agrupación                   |
 | `languages.py`| los idiomas de los significados: los significados y textos de cada uno |
@@ -2362,11 +2400,21 @@ El diccionario de py-words viene de estas obras:
 - Collatinus 11, de Yves Ouvrard y Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), bajo la GPL de GNU:
   las vocales largas de las raíces y las desinencias, seis abreviaturas
-  y la forma quaesumus (código de fuente H), y la idea de algunos trucos
-  (véase "Las vocales largas").  Hasta la 3.1 py-words tenía también
+  y la forma quaesumus (código de fuente H), la idea de algunos trucos
+  (la prodelisión de est, también tras un enclítico como en modoquest;
+  -iis escrito -is; dos palabras declinadas juntas), los recuentos de los
+  textos del LASLA y la manera de ordenar con ellos las lecturas (véanse
+  "Las vocales largas" y "Las lecturas más usuales primero"), y la lista
+  de lemas frecuentes con la que se vio que faltaban Aeneas, Caelius y
+  sanguen.  Hasta la 3.1 py-words tenía también
   significados en francés, alemán, catalán y gallego tomados de
   Collatinus; después los quité, para quedarme solo con el inglés y el
   español.
+
+- El LASLA (Laboratoire d'Analyse Statistique des Langues Anciennes,
+  Université de Liège, <http://web.philo.ulg.ac.be/lasla/>), cuyos textos
+  latinos lematizados, que Dominique Longrée y su equipo confiaron a los
+  autores de Collatinus, dieron los recuentos de `data/frequencies.xml`.
 
 Collatinus, a su vez, agradece a otros su léxico (en "Remerciements", la
 última página de su guía), y como esos datos están ahora en py-words, yo

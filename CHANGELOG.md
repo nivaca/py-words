@@ -25,6 +25,17 @@ without dates, from the list "Version" of the README.
   LASLA: *Aeneas* (until now read only as *aeneus*), *Caelius* and the
   archaic *sanguen* (blood), with their meanings from Lewis and Short and
   De Miguel: 93,373 entries.
+- **The most usual readings first.** The entries of a word are listed by
+  how often they occur in the classical Latin texts lemmatised by the
+  LASLA (Université de Liège), as Philippe Verkerk counted them for
+  Collatinus: *suis* shows *suus* before *sus*, *amor* the noun before
+  the verb, *rosarum* rosa before rodo. The counts of 22,829 entries and
+  of 88 kinds of forms are in the new file `data/frequencies.xml`; the new
+  module `usage.py` weighs them as Collatinus does. The irregular forms
+  still come first, and the qu- pronouns keep their order by kind.
+  `words_check.py` and `words.xsd` know the new file.
+- The credits (About, the help, the README, `docs/LICENCES.md`) say what
+  came from Collatinus and from the LASLA.
 
 ## 3.33 — 2026-11-27
 

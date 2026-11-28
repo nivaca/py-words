@@ -53,15 +53,15 @@ amicum
   (less likely forms are not shown)
 
 amice
+  amice, amicius, amicissime  adverb  [XXXCO]
+    in a friendly manner/spirit; with goodwill;
+    amīcē          POS
   amicus, amici  noun, 2nd declension, masculine  [XXXBO]
     A friend, patron, protector, companion; a friend of the State, an ally; courtier, minister of a prince; a female friend; a concubine, mistress, courtesan; (Lewis and Short)
     amīc-e         VOC.SG
   amicus, amica -um, amicior -or -us, amicissimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     friendly, kind, amicable, favorable, inclined to, liking, a greater friend, the greatest friend; kindly, pleasing; it pleases me, it accords with my feelings, in a friendly manner, kindly, amicably; (Lewis and Short)
     amīc-e         VOC.SG.M
-  amice, amicius, amicissime  adverb  [XXXCO]
-    in a friendly manner/spirit; with goodwill;
-    amīcē          POS
 
 amicorum
   amicus, amici  noun, 2nd declension, masculine  [XXXBO]
@@ -73,10 +73,10 @@ amicorum
     amīc-ōrum      GEN.PL.N
 
 amicis
-  amica, amicae  noun, 1st declension, feminine  [XXXCO]
-    female friend; girl friend, sweetheart; patron; mistress, concubine; courtesan;
   amicus, amici  noun, 2nd declension, masculine  [XXXBO]
     A friend, patron, protector, companion; a friend of the State, an ally; courtier, minister of a prince; a female friend; a concubine, mistress, courtesan; (Lewis and Short)
+  amica, amicae  noun, 1st declension, feminine  [XXXCO]
+    female friend; girl friend, sweetheart; patron; mistress, concubine; courtesan;
     amīc-is        LOC.PL
     amīc-īs        DAT.PL
     amīc-īs        ABL.PL
@@ -151,9 +151,6 @@ manus
     man-ūs         ACC.PL
 
 cornu
-  cornus, cornus  noun, 4th declension, feminine  [XXXCO]
-    cornel-cherry-tree (Cornus mas); cornel wood; javelin (of cornel wood);
-    corn-ū         ABL.SG
   cornu, cornus  noun, 4th declension, neuter  [XXXAO]
     a horn; a hard and crooked growth upon the head of many mammiferous animals, the antlers of a stag, the horn of the goat Amalthea placed in heaven, the emblem of fruitfulness and abundance; things similar to horn in substance, form, made of horn; A hoof; the bills of birds; The horny skin covering the eye; A horny excrescence on the head, a wart; a projecting extremity, the point, end; The tooth, tusk of an elephant, ivory; The horns of the moon; The branches of a river; The arm of the shore forming a harbor, a tongue of land; The extremity, end of the sailyards; The cone of a helmet in which the crest was placed; The end of the stick around which books were rolled, usually ornamented with ivory; The side of a bow in the form of a horn; The horn-shaped side of the cithara; The top, summit of a mountain; The point, end, extremity, wing of a place; The wing of an army; The feeler, claw; The stiff hair; A bow; A bugle-horn, a horn, trumpet; The sides of the lyre; A lantern; An oil cruet; A funnel; power, courage, strength, might; (Lewis and Short)
     corn-u         NOM.SG
@@ -161,6 +158,9 @@ cornu
     corn-u         DAT.SG
     corn-ū         ABL.SG
     corn-u         ACC.SG
+  cornus, cornus  noun, 4th declension, feminine  [XXXCO]
+    cornel-cherry-tree (Cornus mas); cornel wood; javelin (of cornel wood);
+    corn-ū         ABL.SG
   (less likely forms are not shown)
 
 res
@@ -207,12 +207,12 @@ filius
     fili-us        NOM.SG
 
 aspis
+  aspis, aspidos/is  noun, 3rd declension, feminine  [XXACO]
+    asp, venomous snake of North Africa;
   aspis, aspidis  noun, 3rd declension, feminine  [EXAEW]  later  uncommon
     asp, venomous snake of North Africa;
   aspis, aspidis  noun, 3rd declension, feminine  [GXXFM]  neo-Latin  very rare
     newt, eft;
-  aspis, aspidos/is  noun, 3rd declension, feminine  [XXACO]
-    asp, venomous snake of North Africa;
     aspis          NOM.SG
     aspis          VOC.SG
 
@@ -243,6 +243,12 @@ ipse
     ips-e          NOM.SG.M
 
 qui
+  qui  adverb  [XXXAO]
+    in what manner? how? whereby? by what means? why?; how, would that, if but; wherewith, whereby, how; at what price, for how much; that, in order that; in some way, somehow, surely, and yet, but somehow; (Lewis and Short)
+    quī            POS
+  queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
+    to be able, can; (Lewis and Short)
+    qui            2SG.PRS.ACT.IMP
   pronoun, relative  [XXXAO]
     who; that; which, what; of which kind/degree; person/thing/time/point that;
     qu-i           NOM.PL.M
@@ -258,12 +264,6 @@ qui
     who?, which?, what?; what kind of?;
     qu-i           NOM.PL.M
     qu-i           NOM.SG.M
-  queo, quire, quivi(ii), quitus  verb, irregular  [XXXBX]
-    to be able, can; (Lewis and Short)
-    qui            2SG.PRS.ACT.IMP
-  qui  adverb  [XXXAO]
-    in what manner? how? whereby? by what means? why?; how, would that, if but; wherewith, whereby, how; at what price, for how much; that, in order that; in some way, somehow, surely, and yet, but somehow; (Lewis and Short)
-    quī            POS
 
 ego
   pronoun, personal  [XXXAX]
@@ -282,35 +282,35 @@ aliquis
     aliqu-is       ABL.PL
 
 bonus
-  bonus, boni  noun, 2nd declension, masculine  [XXXCO]
-    good/moral/honest/brave man; man of honor, gentleman; better/rich people (pl.);
-    bon-us         NOM.SG
   bonus, bona -um, melior -or -us, optimus -a -um  adjective, 1st/2nd declension  [XXXAO]
     good; better; best; A man morally good; An honest man; A man of good standing in the community; a good husband; better classes of society; a lucky hand; an honorable death; by fair, unfair means; Favorable, prosperous, lucky, fortunate; Good, large, considerable; Noble, good family, noble extraction, honorable birth; with the kind permission; a fair peace, under acceptable conditions; faithful; alliance; comforts of life; prosperity; Costly things, articles of luxury; Moral, morally good; important, interesting matter, subjects, questions; A good, laudable way of dealing; Liberal arts and sciences; Good faith, conscious honesty in acts, words, in good faith, as it is honestly earned, a conscientious man; Good faith in contracts and legal acts, honesty and fairness in dealing with another, to buy, believing the seller to be the rightful owner, to be responsible for one's good faith; actions in equity; Kind words; Words of good omen; Elegant, well-chosen expressions; Moral sayings; Polite, courteous language; Witticisms; it will be well; A friendly understanding; to thank; The well-disposed part; The good party, part in a drama; a considerable part, a good deal; the best part, lot, to know somebody from his most favorable side, to take something in good part, interpret it most favorably; A day of good omen, a fortunate day; A beautiful, serene day; good, decent, moral habits; morality, the laws, rules of morality; To be of good cheer, courage; to be of a good, friendly disposition, to do with good, honest intentions, of the best disposition; good temper, patience; with composure; In a decent manner; with good, perfect right, deservedly; a morally good man; good women; a man of honor; A brave man; A gentleman; the better, higher classes of society; the rich; one's betters; even the best; Honorable, brave; excellent; a good, goods, a moral good, a blessing; valuable, beneficial, estimable, favorable, pleasant; Good qualities, gifts; Advantage, benefit, for the public good; what is fair and good, the fair thing, equity, in equity; one's property, fortunes; the possession of one's property by another; an assignment of one's property for the benefit of creditors; to be morally good, honest; To be beneficial, prosperous, advantageous, valuable, favorable, serviceable, correct; To be kind; it would have been better, it would be better; good, useful, beneficial for; kind to; fit for, adapted to; it is of service to one, profits him, for whose advantage it is; (Lewis and Short)
     bon-us         NOM.SG.M
+  bonus, boni  noun, 2nd declension, masculine  [XXXCO]
+    good/moral/honest/brave man; man of honor, gentleman; better/rich people (pl.);
+    bon-us         NOM.SG
 
 acer
+  acer, acris -e, acrior -or -us, acerrimus -a -um  adjective, 3rd declension  [XXXAO]
+    sharp, pointed, piercing; sharp, dazzling, stinging, pungent, fine, piercing; sharp, severe; violent, sharp, severe, gnawing; violent, vehement, passionate, consuming, piercing, wounding by sharpness; subtle, acute, penetrating, sagacious, shrewd; active, ardent, eager, spirited, brave, zealous; violent, hasty, hot, passionate, fierce, severe; sharply, strongly, vehemently, eagerly, zealously; (Lewis and Short)
+    ācer           NOM.SG.M
+    ācer           VOC.SG.M
   acer, aceris  noun, 3rd declension, neuter  [XAXCO]
     the maple-tree; the wood of the maple-tree; (Lewis and Short)
     acer           NOM.SG
     acer           VOC.SG
     acer           ACC.SG
-  acer, acris -e, acrior -or -us, acerrimus -a -um  adjective, 3rd declension  [XXXAO]
-    sharp, pointed, piercing; sharp, dazzling, stinging, pungent, fine, piercing; sharp, severe; violent, sharp, severe, gnawing; violent, vehement, passionate, consuming, piercing, wounding by sharpness; subtle, acute, penetrating, sagacious, shrewd; active, ardent, eager, spirited, brave, zealous; violent, hasty, hot, passionate, fierce, severe; sharply, strongly, vehemently, eagerly, zealously; (Lewis and Short)
-    ācer           NOM.SG.M
-    ācer           VOC.SG.M
 
 fortis
-  fors, fortis  noun, 3rd declension, feminine  [XXXBX]
-    chance, hap, luck, hazard; it might so happen that; perchance; the goddess of chance; perchance, perhaps, peradventure, perhaps too; by chance, by accident, casually, accidentally; perhaps, perchance, peradventure; unless indeed, unless to be sure; (Lewis and Short)
-    fort-is        GEN.SG
-    fort-īs        ACC.PL  (early)
   fortis, forte, fortior -or -us, fortissimus -a -um  adjective, 3rd declension  [XXXAX]
     strong, powerful; powerful, fierce, hot; strong, powerful, vigorous, firm, steadfast, stout, courageous, brave, manly; an honorable, worthy man; strongly, powerfully, vigorously; strongly, powerfully, boldly, intrepidly, valiantly, bravely, manfully; (Lewis and Short)
     fort-is        NOM.SG.C
     fort-is        VOC.SG.C
     fort-is        GEN.SG
     fort-īs        ACC.PL.C
+  fors, fortis  noun, 3rd declension, feminine  [XXXBX]
+    chance, hap, luck, hazard; it might so happen that; perchance; the goddess of chance; perchance, perhaps, peradventure, perhaps too; by chance, by accident, casually, accidentally; perhaps, perchance, peradventure; unless indeed, unless to be sure; (Lewis and Short)
+    fort-is        GEN.SG
+    fort-īs        ACC.PL  (early)
   (less likely forms are not shown)
 
 felix
@@ -399,12 +399,12 @@ amo
     am-o           1SG.PRS.ACT.IND
 
 amas
-  ama, amae  noun, 1st declension, feminine  [XXXDO]  lesser
-    bucket; water bucket; (esp. fireman's bucket); pruning hook; a medicinal herb;
-    am-ās          ACC.PL
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     am-ās          2SG.PRS.ACT.IND
+  ama, amae  noun, 1st declension, feminine  [XXXDO]  lesser
+    bucket; water bucket; (esp. fireman's bucket); pruning hook; a medicinal herb;
+    am-ās          ACC.PL
 
 amat
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
@@ -424,6 +424,8 @@ amatis
     amāt-īs        PRF.PASS.PTCP.ABL.PL
   amata, amatae  noun, 1st declension, feminine  [XXXFO]  very rare
     loved one, beloved (woman);
+  Amata, Amatae  noun, 1st declension, masculine  [XXXEm]  uncommon
+    a people of India;
     amāt-is        LOC.PL
     amāt-īs        DAT.PL
     amāt-īs        ABL.PL
@@ -431,11 +433,6 @@ amatis
     loved, beloved;
     amat-īs        DAT.PL
     amat-īs        ABL.PL
-  Amata, Amatae  noun, 1st declension, masculine  [XXXEm]  uncommon
-    a people of India;
-    amāt-is        LOC.PL
-    amāt-īs        DAT.PL
-    amāt-īs        ABL.PL
 
 amant
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
@@ -488,14 +485,14 @@ amavissem
     amāv-issem     1SG.PLUP.ACT.SBJV
 
 ama
+  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
+    to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
+    am-ā           2SG.PRS.ACT.IMP
   ama, amae  noun, 1st declension, feminine  [XXXDO]  lesser
     bucket; water bucket; (esp. fireman's bucket); pruning hook; a medicinal herb;
     am-a           NOM.SG
     am-a           VOC.SG
     am-ā           ABL.SG
-  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
-    to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
-    am-ā           2SG.PRS.ACT.IMP
 
 amate
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
@@ -516,12 +513,12 @@ amare
     am-āre         PRS.ACT.INF
     am-āre         2SG.PRS.PASS.IND  (early)
     am-āre         2SG.PRS.PASS.IMP
-  amarus, amara -um, amarior -or -us, amarissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
-    bitter; brackish; rough, sharp, shrill; offensive; Calamitous, sad, bitter things; bitter, biting, acrimonious, sarcastic, caustic, severe; morose, ill-natured, sour, irritable, bitterly; (Lewis and Short)
-    amār-e         VOC.SG.M
   amare, amarius, amarissime  adverb  [XXXDO]  lesser
     with bitterness, acidly, spitefully, bitterly;
     amārē          POS
+  amarus, amara -um, amarior -or -us, amarissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
+    bitter; brackish; rough, sharp, shrill; offensive; Calamitous, sad, bitter things; bitter, biting, acrimonious, sarcastic, caustic, severe; morose, ill-natured, sour, irritable, bitterly; (Lewis and Short)
+    amār-e         VOC.SG.M
   syncope: Syncope   r => v.r
     Syncopated perfect often drops the 'v' and contracts vowel
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
@@ -588,25 +585,25 @@ amatum
   (less likely forms are not shown)
 
 amor
-  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
-    to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
-    am-or          1SG.PRS.PASS.IND
   amor, amoris  noun, 3rd declension, masculine  [XXXAO]
     love, a real, internal love; brotherly love; the beloved object itself; the god of love, Love, Cupid, Cupids, Loves; A strong, passionate longing for something, lust; a love-charm; (Lewis and Short)
     amor           NOM.SG
     amor           VOC.SG
+  amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
+    to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
+    am-or          1SG.PRS.PASS.IND
 
 amaris
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     am-āris        2SG.PRS.PASS.IND
+  amarus, amara -um, amarior -or -us, amarissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
+    bitter; brackish; rough, sharp, shrill; offensive; Calamitous, sad, bitter things; bitter, biting, acrimonious, sarcastic, caustic, severe; morose, ill-natured, sour, irritable, bitterly; (Lewis and Short)
+    amār-īs        DAT.PL
+    amār-īs        ABL.PL
   amarum, amari  noun, 2nd declension, neuter  [XXXEC]  uncommon
     bitterness; unpleasantness; (often pl.);
     amār-is        LOC.PL
-    amār-īs        DAT.PL
-    amār-īs        ABL.PL
-  amarus, amara -um, amarior -or -us, amarissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
-    bitter; brackish; rough, sharp, shrill; offensive; Calamitous, sad, bitter things; bitter, biting, acrimonious, sarcastic, caustic, severe; morose, ill-natured, sour, irritable, bitterly; (Lewis and Short)
     amār-īs        DAT.PL
     amār-īs        ABL.PL
   syncope: Syncope   r => v.r
@@ -645,16 +642,16 @@ amari
   amo, amare, amavi, amatus  verb, 1st conjugation  [XXXAO]
     to like, to love; to love with all one's heart, so may the gods love me, bless me!; to be in love with, to be pleased with one's self, to be selfish; to love, to like, to be fond of, to find pleasure in; to like one for something, to be obliged to one for something, to be under obligation, be thankful; I like you, am much obliged to you, be so good, I pray, entreat you; to do a thing willingly, to be wont, accustomed to; Fond, loving, kind, feeling kindly to, benevolent, pleasing, a friend, patron; friendly, affectionate; a paramour, lovingly, affectionately; (Lewis and Short)
     am-ārī         PRS.PASS.INF
-  amarum, amari  noun, 2nd declension, neuter  [XXXEC]  uncommon
-    bitterness; unpleasantness; (often pl.);
-    amār-ī         GEN.SG
-    amār-ī         LOC.SG
   amarus, amara -um, amarior -or -us, amarissimus -a -um  adjective, 1st/2nd declension  [XXXBO]
     bitter; brackish; rough, sharp, shrill; offensive; Calamitous, sad, bitter things; bitter, biting, acrimonious, sarcastic, caustic, severe; morose, ill-natured, sour, irritable, bitterly; (Lewis and Short)
     amār-ī         GEN.SG.M
     amār-ī         GEN.SG.N
     amār-ī         NOM.PL.M
     amār-ī         VOC.PL.M
+  amarum, amari  noun, 2nd declension, neuter  [XXXEC]  uncommon
+    bitterness; unpleasantness; (often pl.);
+    amār-ī         GEN.SG
+    amār-ī         LOC.SG
 
 moneo
   moneo, monere, monui, monitus  verb, 2nd conjugation  [XXXAX]
@@ -696,39 +693,42 @@ possum
     poss-um        1SG.PRS.ACT.IND
 
 eo
-  eo, eare, evi, etus  verb, 1st conjugation  [FXXFZ]  medieval  very rare
-    go, walk; march, advance; pass; flow; pass (time); ride; be in the middle;
-  eo, ire, ivi(ii), itus  verb, irregular  [XXXAX]
-    to walk, ride, sail, fly, move; to proceed against, to march against; to pass away; to proceed, move, advance; to go over, accede to any opinion; to vote against a bill; to be sold at; to proceed, turn out, happen; to set about, to prepare, to wish, to be about; (Lewis and Short)
-    e-o            1SG.PRS.ACT.IND
+  is, ea, id  pronoun, personal  [XXXAX]
+    he/she/it/they (by GENDER/NUMBER); DEMONST: that, he/she/it, they/them;
+    e-ō            ABL.SG.M
+    e-ō            ABL.SG.N
   eo  adverb  [XXXCO]
     there, in that place, in that condition; therefore, on that account, for that reason; so much, by so much, so much the worse, the less; to that place, thither; thereto, in addition to that, besides; to that end, with that purpose, to this result; to that degree, extent, so far, to such a point; up to the time, until, so long; (Lewis and Short)
   eo  adverb  [XXXBO]
     there, to/toward that place; in that direction; to that object/point/stage;
     eō             POS
-  is, ea, id  pronoun, personal  [XXXAX]
-    he/she/it/they (by GENDER/NUMBER); DEMONST: that, he/she/it, they/them;
+  eo, ire, ivi(ii), itus  verb, irregular  [XXXAX]
+    to walk, ride, sail, fly, move; to proceed against, to march against; to pass away; to proceed, move, advance; to go over, accede to any opinion; to vote against a bill; to be sold at; to proceed, turn out, happen; to set about, to prepare, to wish, to be about; (Lewis and Short)
+    e-o            1SG.PRS.ACT.IND
   idem, eadem, idem  pronoun, demonstrative  [XXXAX]
     the same; at the same time, likewise, also; nevertheless, yet, on the contrary; the same as, identical with, of the same meaning as; (Lewis and Short)
     e-ō            ABL.SG.M
     e-ō            ABL.SG.N
+  eo, eare, evi, etus  verb, 1st conjugation  [FXXFZ]  medieval  very rare
+    go, walk; march, advance; pass; flow; pass (time); ride; be in the middle;
+    e-o            1SG.PRS.ACT.IND
 
 fero
-  ferus, feri  noun, 2nd declension, masculine/feminine  [XXXDX]  lesser
-    wild beast/animal; wild/untamed horse/boar;
-    fer-ō          DAT.SG
-    fer-ō          ABL.SG
+  fero, ferre, tuli, latus  verb, 3rd conjugation  [XXXAX]
+    to bear, carry, bring; to set in motion, to move onward quickly, rapidly, to bear, lead, conduct, drive away; to move, go swiftly, to haste, speed, betake one's self, to flow, mount, run down; to move, go swiftly, to hasten, rush; to carry off, take away by force, to plunder, spoil, ravage; to bear, produce, yield; to bear offspring, be pregnant; to offer; to get, receive, acquire, obtain; to bear, carry, bring, bring assistance, aid, help; to entertain suspicion; to move, to bring, lead, conduct, drive, raise; to carry off, take away; to bear, produce; to bear away, to get, obtain, receive; to be convicted of a false accusation; to bear, support, to suffer, tolerate, endure; to bear; to bear, put up with, to suffer, tolerate, endure, sustain, resist; to make public, to disclose, show, exhibit; to show, manifest, to let be seen, to declare; to report, relate, make known, assert, celebrate; they relate, tell, say; it is said, it appears; to give out, to pass off, to pass current; to give in one's vote, to vote; to bring forward, move a proposition, to propose a law; to offer, propose to the defendant as judge, to propose a judge to, to bring a suit against, to sue; to enter, to set, note down; to require, demand, render necessary; to allow, permit, suffer; (Lewis and Short)
+  fero, ferre, tuli, latus  verb, 3rd conjugation  [XXXAA]
+    to bear, carry, bring; to set in motion, move onward quickly, rapidly, to bear, lead, conduct, drive away; to move, go swiftly, haste, speed, betake one's self; to flow, mount, run down; to move, go swiftly, hasten, rush; to carry off, take away by force, plunder, spoil, ravage; to bear, produce, yield; to bear offspring, be pregnant; to offer; to get, receive, acquire, obtain; to bear, carry, bring assistance, aid, help; to entertain suspicion; to move, bring, lead, conduct, drive, raise; to carry off, take away; to bear, produce; to bear away, get, obtain, receive; to bear, support, suffer, tolerate, endure, sustain, resist; to put up with; to make public, disclose, show, exhibit; to show, manifest, let be seen, declare; to report, relate, make known, assert, celebrate; they relate, tell, say; it is said, it appears; to give out, pass off, pass current; to give in one's vote, vote; to bring forward, move a proposition, propose a law; to offer, propose to the defendant as judge, to propose a judge to, to bring a suit against, sue; to enter, set, note down; to require, demand, render necessary; to allow, permit, suffer; (Lewis and Short)
+    fer-o          1SG.PRS.ACT.IND
   ferus, fera, ferum  adjective, 1st/2nd declension  [XXXAX]
     wild; a wild animal, wild beast, a lion, a boar, a horse, a stag, a serpent; a sea-monster; wild, rude, barbarous, fierce, cruel; (Lewis and Short)
     fer-ō          DAT.SG.M
     fer-ō          DAT.SG.N
     fer-ō          ABL.SG.M
     fer-ō          ABL.SG.N
-  fero, ferre, tuli, latus  verb, 3rd conjugation  [XXXAX]
-    to bear, carry, bring; to set in motion, to move onward quickly, rapidly, to bear, lead, conduct, drive away; to move, go swiftly, to haste, speed, betake one's self, to flow, mount, run down; to move, go swiftly, to hasten, rush; to carry off, take away by force, to plunder, spoil, ravage; to bear, produce, yield; to bear offspring, be pregnant; to offer; to get, receive, acquire, obtain; to bear, carry, bring, bring assistance, aid, help; to entertain suspicion; to move, to bring, lead, conduct, drive, raise; to carry off, take away; to bear, produce; to bear away, to get, obtain, receive; to be convicted of a false accusation; to bear, support, to suffer, tolerate, endure; to bear; to bear, put up with, to suffer, tolerate, endure, sustain, resist; to make public, to disclose, show, exhibit; to show, manifest, to let be seen, to declare; to report, relate, make known, assert, celebrate; they relate, tell, say; it is said, it appears; to give out, to pass off, to pass current; to give in one's vote, to vote; to bring forward, move a proposition, to propose a law; to offer, propose to the defendant as judge, to propose a judge to, to bring a suit against, to sue; to enter, to set, note down; to require, demand, render necessary; to allow, permit, suffer; (Lewis and Short)
-  fero, ferre, tuli, latus  verb, 3rd conjugation  [XXXAA]
-    to bear, carry, bring; to set in motion, move onward quickly, rapidly, to bear, lead, conduct, drive away; to move, go swiftly, haste, speed, betake one's self; to flow, mount, run down; to move, go swiftly, hasten, rush; to carry off, take away by force, plunder, spoil, ravage; to bear, produce, yield; to bear offspring, be pregnant; to offer; to get, receive, acquire, obtain; to bear, carry, bring assistance, aid, help; to entertain suspicion; to move, bring, lead, conduct, drive, raise; to carry off, take away; to bear, produce; to bear away, get, obtain, receive; to bear, support, suffer, tolerate, endure, sustain, resist; to put up with; to make public, disclose, show, exhibit; to show, manifest, let be seen, declare; to report, relate, make known, assert, celebrate; they relate, tell, say; it is said, it appears; to give out, pass off, pass current; to give in one's vote, vote; to bring forward, move a proposition, propose a law; to offer, propose to the defendant as judge, to propose a judge to, to bring a suit against, sue; to enter, set, note down; to require, demand, render necessary; to allow, permit, suffer; (Lewis and Short)
-    fer-o          1SG.PRS.ACT.IND
+  ferus, feri  noun, 2nd declension, masculine/feminine  [XXXDX]  lesser
+    wild beast/animal; wild/untamed horse/boar;
+    fer-ō          DAT.SG
+    fer-ō          ABL.SG
 
 volo
   volo, velle, volui, -  verb, irregular  [XXXAX]
@@ -758,12 +758,12 @@ collibuit
 accidit
   accido, accidere, accidi, accisus  verb, 3rd conjugation, transitive  [XXXCO]
     to begin to cut, to cut into, so to cut a thing that it falls, to fell, to cut; eaten up, to use up; to impair, weaken, cut off, down; impaired, ruined, troubled, unfortunate state of things; (Lewis and Short)
-  accidit, accidere, accidit, accisus est  verb, 3rd conjugation, impersonal  [XXXCO]
-    happens, turns out, befalls; fall upon; come to pass, occur;
   accido, accidere, accidi, -  verb, 3rd conjugation  [XXXAO]
     to fall upon, down upon, to reach by falling; to fall at one's knees; to strike the senses, to reach a thing by means of the senses, reaches the ear; to fall out, come to pass, happen, occur, to happen to, to befall, it happened, came to pass, that, it happened that; to die; if any thing should happen to one; To turn out; to belong to; (Lewis and Short)
   accido, accidere, accidi, -  verb, 3rd conjugation  [FXXEM]  medieval  uncommon
     accrue, fall to the share of;
+  accidit, accidere, accidit, accisus est  verb, 3rd conjugation, impersonal  [XXXCO]
+    happens, turns out, befalls; fall upon; come to pass, occur;
     accid-it       3SG.PRS.ACT.IND
     accid-it       3SG.PRF.ACT.IND
 
@@ -772,20 +772,20 @@ pluit
     to rain; (Lewis and Short)
     plu-it         3SG.PRS.ACT.IND
     plu-it         3SG.PRF.ACT.IND
-  pluit, pluere, pluvit, pluvitus est  verb, 3rd conjugation, impersonal  [XXXDX]  lesser
-    it rains;
   pluo, pluere, pluvi, -  verb, 3rd conjugation  [XXXDX]  lesser
     to rain; (Lewis and Short)
+  pluit, pluere, pluvit, pluvitus est  verb, 3rd conjugation, impersonal  [XXXDX]  lesser
+    it rains;
     plu-it         3SG.PRS.ACT.IND
 
 licet
-  licet, licere, licuit, licitus est  verb, 2nd conjugation, impersonal  [XXXAX]
-    it is lawful, it is allowed, permitted; one may, can, one is at liberty; that may be, may be done, I have no objection; even if, although, notwithstanding; free, unrestrained, uncurbed, bold, forward, presumptuous, licentious; freely, according to one's own pleasure, fancy, without restraint, boldly, impudently, licentiously; permitted, allowed, allowable, lawful; things that are lawful; rightfully, lawfully; (Lewis and Short)
-  liceo, licere, licui, -  verb, 2nd conjugation, intransitive  [XXXDX]  lesser
-    to be for sale; to have a price put upon, to be valued, esteemed at; to offer for sale, to fix the price, to value; (Lewis and Short)
-    lic-et         3SG.PRS.ACT.IND
   licet  conjunction  [XXXCO]
     although, granted that; (with subjunctive);
+  liceo, licere, licui, -  verb, 2nd conjugation, intransitive  [XXXDX]  lesser
+    to be for sale; to have a price put upon, to be valued, esteemed at; to offer for sale, to fix the price, to value; (Lewis and Short)
+  licet, licere, licuit, licitus est  verb, 2nd conjugation, impersonal  [XXXAX]
+    it is lawful, it is allowed, permitted; one may, can, one is at liberty; that may be, may be done, I have no objection; even if, although, notwithstanding; free, unrestrained, uncurbed, bold, forward, presumptuous, licentious; freely, according to one's own pleasure, fancy, without restraint, boldly, impudently, licentiously; permitted, allowed, allowable, lawful; things that are lawful; rightfully, lawfully; (Lewis and Short)
+    lic-et         3SG.PRS.ACT.IND
   (less likely forms are not shown)
 
 aborior
@@ -817,13 +817,13 @@ eleison
     eleison
 
 unus
-  unus -a -um, primus -a -um, singuli -ae -a, semel  numeral, 1  [XXXAX]
-    1 - (CARD answers 'how many');
-    ūn-us          NOM.SG.M.CARD
   unus, una, unum (gen -ius)  adjective, 1st/2nd declension  [XXXEO]  uncommon
     one, a single; all together, unanimously, to a man, without exception; to one place, together; one and the same; with one voice, all together, unanimously; one, alone, only, sole, single; no one, not a single one, none whatever; one, some, some one; Private, unofficial; a private person, a private citizen; in one and the same place, at the same time, in company, together; (Lewis and Short)
     ūn-us          NOM.SG.M
     ūn-us          VOC.SG.M
+  unus -a -um, primus -a -um, singuli -ae -a, semel  numeral, 1  [XXXAX]
+    1 - (CARD answers 'how many');
+    ūn-us          NOM.SG.M.CARD
 
 duo
   duo -ae o, secundus -a -um, bini -ae -a, bis  numeral, 2  [XXXAX]

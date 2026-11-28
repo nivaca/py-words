@@ -10,6 +10,7 @@ que se muestran antes de ellas.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field, replace
 from enum import IntEnum, auto
 
@@ -206,22 +207,28 @@ def _is_qu_pronoun(f: Form) -> bool:
     return f.pos == Pos.PRON and f.decl.which == 1
 
 
-def _order(p: Parse) -> tuple:
-    """Dictionary parses come entry by entry; within an entry, by form.
-    The qu- pronouns (qui, quis ...) are ordered by the kind of their entry
-    (relative, interrogative ...)."""
+def _order(p: Parse, score: dict[int, float] | None = None) -> tuple:
+    """Dictionary parses come entry by entry, the most usual entry first
+    when SCORE says how usual each is ({entry id: score}); within an
+    entry, by form.  The qu- pronouns (qui, quis ...) are ordered by the
+    kind of their entry (relative, interrogative ...)."""
     f = p.form
     if _is_qu_pronoun(f) and p.entry is not None:
         form_key = (Pos.PRON, (int(p.entry.part.kind or 0),))
     else:
         form_key = f.order()
-    return (-p.origin, p.id, form_key, p.meaning, len(p.infl.ending),
-            f.order())
+    #  (los pronombres en qu- conservan su orden por clase)
+    usual = -score.get(p.id, 0.0) if score and not _is_qu_pronoun(f) \
+        else 0.0
+    return (-p.origin, usual, p.id, form_key, p.meaning,
+            len(p.infl.ending), f.order())
 
 
 def _sort_and_trim(block: list[Parse], settings: Settings, all_caps: bool,
-                   followed_by_period: bool) -> (list[Parse], bool):
-    block = sorted(block, key=_order)
+                   followed_by_period: bool,
+                   score: dict[int, float] | None = None
+                   ) -> (list[Parse], bool):
+    block = sorted(block, key=lambda p: _order(p, score))
     if not settings.trim_output:
         return block, False
     entries = [p for p in block if from_dictionary(p.origin)]
@@ -263,15 +270,19 @@ def _sort_and_trim(block: list[Parse], settings: Settings, all_caps: bool,
 
 
 def sweep(findings: list[Found], settings: Settings, all_caps=False,
-          followed_by_period=False) -> tuple[list[Found], bool]:
-    """Orders the forms of each finding and removes unlikely and repeated
-    ones; a finding left with no forms goes, marks and all.  Returns the
-    findings and whether any form was trimmed."""
+          followed_by_period=False,
+          scores: Callable[[tuple[Parse, ...]], dict[int, float]] | None
+          = None) -> tuple[list[Found], bool]:
+    """Orders the forms of each finding (the most usual entries first, if
+    SCORES gives how usual the entries of some forms are) and removes
+    unlikely and repeated ones; a finding left with no forms goes, marks
+    and all.  Returns the findings and whether any form was trimmed."""
     out: list[Found] = []
     trimmed = False
     for f in findings:
         kept, cut = _sort_and_trim(list(f.parses), settings, all_caps,
-                                   followed_by_period)
+                                   followed_by_period,
+                                   scores(f.parses) if scores else None)
         trimmed = trimmed or cut
         if f.parses and not kept:
             continue

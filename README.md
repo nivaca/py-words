@@ -882,6 +882,12 @@ from `data/inflections.xml`, both made from Collatinus (see "The long
 vowels" below).  Marks typed in a word are still removed before the
 analysis, so rosā shows all the readings of rosa.
 
+The entries of a word come from the most usual to the least, by how often
+they occur in the classical texts lemmatised by the LASLA of Liège, as
+Collatinus counted them: suis shows suus before sus, amor the noun before
+the verb, Aeneas the hero before aeneus (see "The most usual readings
+first" below).
+
 ### The codes in brackets
 
 The five letters in brackets after an entry, for example the `[XXXBO]` of
@@ -1083,6 +1089,7 @@ The data files
 | `sources.xml`     | the names of the sources (dictionaries ...) |
 | `gloss.xml`       | the glossing abbreviations of the analyses |
 | `quantities.xml`  | the long vowels of the stems of the entries |
+| `frequencies.xml` | how often the entries occur in the texts of the LASLA |
 | `special.xml`     | (optional) a second, special dictionary    |
 | `languages/`      | the languages of the meanings, one file each |
 | `interface/`      | the languages of the interface, one file each (those next to the program are used) |
@@ -1212,6 +1219,35 @@ of its forms agree.  731 endings were marked this way.  Some endings stay
 unmarked because their length depends on the word: the ablative -e or -ī
 of the adjectives of the 3rd declension, -imur in legimur and audīmur, -ei
 in diēī and reī.
+
+### The most usual readings first
+
+`data/frequencies.xml` says how often 22,829 entries occur in the Latin
+texts lemmatised by the LASLA (Laboratoire d'Analyse Statistique des
+Langues Anciennes, Université de Liège), which cover most of classical
+Latin, and how often each kind of form occurs there: the 88 tags of
+Collatinus, where n31 is the accusative singular of a noun and v21 a
+present subjunctive.
+
+    <tag name="n31" count="91444"/>
+    <uses entry="3014" count="1371"/>
+
+The counts were made for Collatinus by Philippe Verkerk (`lemmes.la`,
+`tags.la`), from the texts that Dominique Longrée and the LASLA gave him.
+I matched its lemmas with our entries as for the long vowels, by the
+citation form and the part of speech, and by the genitive and the gender
+(or the infinitive) where two entries share a citation form: dico,
+dicere and dico, dicare; populus, the people, and populus, the poplar.
+19,722 lemmas found their entries.  `usage.py` then orders the entries
+of a word as Collatinus does.  An entry is worth its count times the
+share that the tags of its forms have among those of its part of speech,
+a third of it for adjectives, pronouns and participles (their tags have
+no gender) and a half or a quarter for verbs (theirs have no person); an
+entry that the LASLA does not count is worth the median of the counted
+entries of its frequency code.  The irregular forms come first, as
+before, and the qu- pronouns keep their order by kind.  These are counts
+of classical texts: a medieval word is often missing from them, and then
+only its frequency code speaks for it.
 
 ### The Spanish meanings
 
@@ -1470,6 +1506,7 @@ How it works
 | `lexicon.py`  | the data, indexed: stems, endings, irregular forms, affixes   |
 | `analyzer.py` | analysis of a word: stems + endings, qu- pronouns, affixes, enclitics, compound tenses |
 | `tricks.py`   | other spellings, syncope, Roman numerals, two words as one    |
+| `usage.py`    | the most usual readings first, from the counts of the LASLA   |
 | `fuzzy.py`    | near spellings, for the fuzzy search                          |
 | `results.py`  | the results: ordering, trimming and grouping                   |
 | `languages.py`| the languages of the meanings: the meanings and texts of each |
@@ -2277,10 +2314,19 @@ The dictionary of py-words comes from these works:
 - Collatinus 11, by Yves Ouvrard and Philippe Verkerk
   (<https://outils.biblissima.fr/collatinus/>), under the GNU GPL: the
   long vowels of the stems and endings, six abbreviations and the form
-  quaesumus (source code H), and the ideas of some tricks (see "The long
-  vowels").  Until 3.1 py-words also had meanings in French, German,
+  quaesumus (source code H), the ideas of some tricks (the prodelision
+  of est, also after an enclitic as in modoquest; -iis written -is; two
+  words declined together), the counts of the texts of the LASLA and the
+  way of ordering the readings with them (see "The long vowels" and "The
+  most usual readings first"), and the list of frequent lemmas with which
+  Aeneas, Caelius and sanguen were found missing.  Until 3.1 py-words also had meanings in French, German,
   Catalan and Galician from Collatinus; I took them out afterwards, to
   keep only English and Spanish.
+
+- The LASLA (Laboratoire d'Analyse Statistique des Langues Anciennes,
+  Université de Liège, <http://web.philo.ulg.ac.be/lasla/>), whose
+  lemmatised Latin texts, entrusted by Dominique Longrée and his team to
+  the authors of Collatinus, gave the counts of `data/frequencies.xml`.
 
 Collatinus, in its turn, thanks others for its lexicon (in
 "Remerciements", the last page of its guide), and as these data are now

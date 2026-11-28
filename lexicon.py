@@ -10,7 +10,10 @@
   ...), que solo se prueban en palabras que empiezan por qu o cu;
 * `uniques`, por forma normalizada; y los prefijos, sufijos y tackons;
 * `glosses`: las abreviaturas de los análisis (gloss.xml);
-* `long_stems`: las vocales largas de los temas (quantities.xml).
+* `long_stems`: las vocales largas de los temas (quantities.xml);
+* `uses` y `tag_counts`: cuánto aparecen las entradas y las clases de
+  formas en los textos del LASLA (frequencies.xml), para poner primero las
+  lecturas más usuales.
 
 Los idiomas de los significados (`language(code)`) y sus índices para la
 búsqueda hacia el latín (`reverse(code)`) se leen la primera vez que hacen
@@ -52,8 +55,9 @@ ADDONS = 'addons.xml'
 SOURCES = 'sources.xml'
 GLOSSES = 'gloss.xml'
 QUANTITIES = 'quantities.xml'
+FREQUENCIES = 'frequencies.xml'
 DATA_FILES = (DICTIONARY, SPECIAL, INFLECTIONS, UNIQUES, ADDONS, SOURCES,
-              GLOSSES, QUANTITIES)
+              GLOSSES, QUANTITIES, FREQUENCIES)
 
 #  La carpeta del programa, y la carpeta de datos que hay en ella
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -154,6 +158,11 @@ class Lexicon:
     #  entrada: sus temas con las vocales largas marcadas, '-' donde no se
     #  conocen}
     long_stems: dict[int, tuple[str, ...]] = field(default_factory=dict)
+    #  cuánto aparecen en los textos del LASLA, de frequencies.xml: las
+    #  entradas {id: ocurrencias} y las etiquetas de Collatinus {etiqueta:
+    #  ocurrencias}
+    uses: dict[int, int] = field(default_factory=dict)
+    tag_counts: dict[str, int] = field(default_factory=dict)
     datadir: str = ''
     #  los idiomas leídos, y sus índices para la búsqueda hacia el latín
     _languages: dict[str, Language] = field(default_factory=dict)
@@ -202,6 +211,13 @@ class Lexicon:
         if os.path.isfile(path(QUANTITIES)):
             lex.long_stems = dict(
                 m for m, _ in xmldata.read_quantities(path(QUANTITIES)))
+        if os.path.isfile(path(FREQUENCIES)):
+            for (kind, key, count), _ in xmldata.read_frequencies(
+                    path(FREQUENCIES)):
+                if kind == 'tag':
+                    lex.tag_counts[key] = count
+                else:
+                    lex.uses[key] = count
         return lex
 
     def language_names(self) -> dict[str, str]:

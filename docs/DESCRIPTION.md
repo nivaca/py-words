@@ -9,7 +9,7 @@ wrote, in the Ada version maintained at
 both the code and the data have been redesigned, and it now includes a new
 English dictionary (Lewis and Short) and two new Spanish ones
 (Echave-Sustaeta and De Miguel).  Here I explain how it was made, in
-thirteen stages.
+fourteen stages.
 
 The dictionary has six sources: WORDS, by William Whitaker, the starting
 point of the program and of the entries; R. E. Latham's *Revised Medieval
@@ -21,7 +21,8 @@ básico*, for senses and words in English and in Spanish; Lewis and Short's
 de Miguel and the Marqués de Morante's *Nuevo diccionario latino-español
 etimológico*, for 25,149 words and proper names and for most of the
 Spanish meanings; and Collatinus, by Yves Ouvrard and Philippe Verkerk,
-for the long vowels (Collatinus, in its turn, built its lexicon from the
+for the long vowels and for the counts of the Latin texts of the LASLA
+(Université de Liège) that order the readings (Collatinus, in its turn, built its lexicon from the
 dictionaries of Gaffiot, Jeanneau, Du Cange and Lewis and Short, among
 others, and the README names all the sources and people it thanks).
 py-words is free software, under the GNU General Public License, version 3
@@ -527,10 +528,55 @@ Windows and macOS are made only on GitHub, after the release, so
 now signs them too, with a list of sums of their own.  The tests sign with
 a key made for them, in a folder of their own, never with mine.
 
+14. Collatinus again: the most usual readings first
+--------------------------------------------------
+
+In 3.34 I read the code of Collatinus once more, this time for what its
+analysis does that py-words did not.  The largest difference was in the
+order of the results.  py-words listed the entries of a word in the order
+of the dictionary, so suis gave the noun suus (his men) before the
+possessive, and amor the verb before the noun; the frequency codes of
+WORDS, from A to F, are too coarse to settle such cases.  Collatinus
+orders them by counts that Philippe Verkerk made from the Latin texts
+lemmatised by the LASLA of Liège, which Dominique Longrée and his team
+entrusted to its authors: how often each lemma occurs, and how often
+each kind of form (its tags, such as n31 for the accusative singular of a
+noun).  I matched its lemmas with our entries as for the long vowels, and
+had to add the genitive, the gender or the infinitive to tell homonyms
+apart, since otherwise dico, dicare got the uses of dico, dicere, and
+the poplar those of the people; 19,722 lemmas found their entries, and
+the counts went into a new data file, `frequencies.xml`.  The new module
+`usage.py` gives each entry its count times the share of the tags of its
+forms, with the weights of Collatinus for the tags that have no gender
+or person, and the median of its frequency code to an entry the LASLA
+does not count.  The ordering itself had to go into `results.sweep`,
+which sorted the forms of each finding by entry and so undid any order
+given earlier.  The irregular forms still come first, and the qu-
+pronouns keep their order by kind (relative, interrogative ...), which a
+test asked for.  The counts are of classical texts, so they help less
+with medieval Latin, where a word is often not counted at all.
+
+Smaller things came from the same reading.  Collatinus also reads a
+dative or ablative plural in -iis written with one i, as in gaudis and
+conubis; py-words did this only for adjectives, and only when the word
+was not found otherwise, but gaudis is also Gaudos and conubis co- +
+nubis, so the reading was never reached.  It is now tried for every word,
+and to keep it from inventing readings (urbis as a form of Urbius, patris
+of patrius) it keeps only frequent entries, at least as frequent as the
+best plain reading of the word.  Collatinus strips enclitics one after
+another, so modoquest is modo + -que + est; py-words now does the same
+when est is written -st.  Last, the counts gave a way of checking the
+dictionary: of the 2,119 lemmas that occur at least a hundred times in
+the texts of the LASLA, nearly all had an entry, but Aeneas (read only as
+the adjective aeneus), Caelius and the archaic sanguen were missing, and
+were added from Lewis and Short and De Miguel.  None of the code of
+Collatinus was copied; I only read it, and wrote these things again in
+Python.
+
 Testing
 -------
 
-The program has unit tests and regression tests (`tests/`), 437 in total,
+The program has unit tests and regression tests (`tests/`), 443 in total,
 that run with Python 3.13 (the oldest it supports) and with the latest
 Python; `tools/test.py` runs them all at once, each class of tests in a
 process of its own, in about a minute and a half.  The regression tests
@@ -545,5 +591,6 @@ site then published.  The installers are tried on GitHub, each on its own
 system, by installing them, running a search and removing them; the one
 for Linux is also built, installed and removed by the tests, with a
 stand-in for its Python.  The signing of a release is tested with a key
-made in the test.  The program now has 44 files, around 17,400
-lines.
+made in the test, and the order of the results with words whose most
+usual reading is known (suis, amor, Aeneas, rosarum).  The program now
+has 45 files, around 17,700 lines.

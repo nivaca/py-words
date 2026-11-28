@@ -1,17 +1,4 @@
 multa
-  multa, multae  noun, 1st declension, feminine  [XLXCO]
-    a penalty, a fine, amercement, mulct; a fine in cattle, a pecuniary fine; (Lewis and Short)
-    mult-a         NOM.SG
-    mult-a         VOC.SG
-    mult-ā         ABL.SG
-  multum, multi  noun, 2nd declension, neuter  [XXXDX]  lesser
-    many things (pl.); much; many;
-    mult-a         NOM.PL
-    mult-a         VOC.PL
-    mult-a         ACC.PL
-  multo, multare, multavi, multatus  verb, 1st conjugation, transitive  [XLXCO]
-    to punish; (Lewis and Short)
-    mult-ā         2SG.PRS.ACT.IMP
   multus, multa -um, -, plurimus -a -um  adjective, 1st/2nd declension  [XXXAX]
     much, great, many; many things, much, a good many, many others, many a one; much, great, abundant; the many, the common mass, the multitude; one of the multitude, a man of no distinction; in short; much, greatly, very; Too much, overmuch, excessive; much-speaking, diffuse, prolix; Frequent, frequently present; much, very much, greatly, very, often, frequently, far; by much, much, a great deal, far, by far; far, greatly, very; long, much; more; about; more than this, too much; of more value, of a higher price, for more, higher, dearer; more and more; many; The mass, the multitude; the dead; The greater number, the majority; most, very much, many, thickest, very much indeed, exceedingly; for the most part, commonly, usually; (Lewis and Short)
     mult-a         NOM.SG.F
@@ -20,11 +7,37 @@ multa
     mult-a         NOM.PL.N
     mult-a         VOC.PL.N
     mult-a         ACC.PL.N
+  multum, multi  noun, 2nd declension, neuter  [XXXDX]  lesser
+    many things (pl.); much; many;
+    mult-a         NOM.PL
+    mult-a         VOC.PL
+    mult-a         ACC.PL
+  multa, multae  noun, 1st declension, feminine  [XLXCO]
+    a penalty, a fine, amercement, mulct; a fine in cattle, a pecuniary fine; (Lewis and Short)
+    mult-a         NOM.SG
+    mult-a         VOC.SG
+    mult-ā         ABL.SG
   -, multae  noun, 1st declension, feminine  [XXXDX]  lesser
     many women (pl.);
     mult-ā         ABL.SG
+  multo, multare, multavi, multatus  verb, 1st conjugation, transitive  [XLXCO]
+    to punish; (Lewis and Short)
+    mult-ā         2SG.PRS.ACT.IMP
 
 viri
+  vis, viris  noun, 3rd declension, feminine  [XXXAX]
+    strength (bodily) (pl.), force, power, might, violence; resources; large body;
+  vis, viris  noun, 3rd declension, feminine  [XXXAA]
+    strength, force, vigor, power, energy, virtue; energy, virtue, potency; hostile strength, force, violence; force, violence; quantity, number, abundance; military forces, troops; the virile forces, organs; mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
+    vīr-i          LOC.SG  (early)
+    vīr-ī          DAT.SG
+    vīr-ī          ABL.SG
+  vir, viri  noun, 2nd declension, masculine  [XXXAX]
+    a male person, a man; A man, a husband, the male, mate; a man of courage, principle, honor, one who deserves the name of a man; man, soldier; a foot-soldier; each man, every man; Human beings; Manhood, virility; (Lewis and Short)
+    vir-ī          GEN.SG
+    vir-ī          LOC.SG
+    vir-ī          NOM.PL
+    vir-ī          VOC.PL
   virus, viri  noun, 2nd declension, neuter  [XXXAO]
     a slimy liquid, slime; animal sperm, semen; A poisonous liquid, poison, venom, virus; An offensive odor, stench; A sharp, saline taste; (Lewis and Short)
     vīr-ī          GEN.SG
@@ -33,19 +46,6 @@ viri
     virus;
     vir-ī          GEN.SG
     vir-ī          LOC.SG
-  vir, viri  noun, 2nd declension, masculine  [XXXAX]
-    a male person, a man; A man, a husband, the male, mate; a man of courage, principle, honor, one who deserves the name of a man; man, soldier; a foot-soldier; each man, every man; Human beings; Manhood, virility; (Lewis and Short)
-    vir-ī          GEN.SG
-    vir-ī          LOC.SG
-    vir-ī          NOM.PL
-    vir-ī          VOC.PL
-  vis, viris  noun, 3rd declension, feminine  [XXXAX]
-    strength (bodily) (pl.), force, power, might, violence; resources; large body;
-  vis, viris  noun, 3rd declension, feminine  [XXXAA]
-    strength, force, vigor, power, energy, virtue; energy, virtue, potency; hostile strength, force, violence; force, violence; quantity, number, abundance; military forces, troops; the virile forces, organs; mental strength, power, force, vigor; force, notion, meaning, sense, import, nature, essence; (Lewis and Short)
-    vīr-i          LOC.SG  (early)
-    vīr-ī          DAT.SG
-    vīr-ī          ABL.SG
 
 virtus
   virtus, virtutis  noun, 3rd declension, feminine  [XXXAX]

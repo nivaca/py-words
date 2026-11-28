@@ -8,7 +8,8 @@ ambos ("fixes"); una palabra con un enclítico (-que, -ne, ...).  Si todo
 eso falla, se prueban los trucos de grafía (véase tricks.py).  Al final,
 los participios seguidos de una forma de esse se leen como tiempos
 compuestos, se añaden los adverbios hechos de adjetivos (longe de longus)
-y los resultados se ordenan y agrupan (results.py).  Para una palabra que
+y los resultados se ordenan, las entradas más usuales primero (usage.py),
+y se agrupan (results.py).  Para una palabra que
 sigue sin conocerse, la búsqueda aproximada encuentra las grafías
 cercanas que son palabras (véase fuzzy.py).
 """
@@ -21,6 +22,7 @@ from dataclasses import dataclass, replace
 
 import fuzzy
 import tricks
+from usage import Usage
 from lexicon import Lexicon, StemRef, ENDING_LETTERS
 from model import (Pos, Case, Number, Gender, Comparison, NumeralSort,
                     Tense, Voice, Mood, Freq, Decl, Form, Inflection,
@@ -141,6 +143,8 @@ class Analyzer:
         self.lex = lexicon
         self.settings = settings
         self._cache: dict[tuple, tuple[Parse, ...]] = {}
+        #  (las lecturas más usuales primero; véase usage.py)
+        self.usage = Usage(lexicon.uses, lexicon.tag_counts, lexicon.entries)
 
     def reset(self):
         """Forget cached results (after the settings have changed)."""
@@ -544,7 +548,8 @@ class Analyzer:
         if s.use_affixes and not any(p.form.pos == Pos.ADV
                                   for p in parses_of(out)):
             out = chain(out, adverbs(out, notes))
-        findings, trimmed = sweep(out, s, all_caps, followed_by_period)
+        findings, trimmed = sweep(out, s, all_caps, followed_by_period,
+                                  self.usage.scores if self.usage else None)
         return WordResult(word, group(findings), notes, trimmed), used_next
 
     def _passes(self, word: str, notes: dict) -> list[Found]:

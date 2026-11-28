@@ -5,7 +5,8 @@
 
 Sin FILE, revisa los archivos de datos de la carpeta de datos:
 dictionary.xml (y special.xml, si lo hay), inflections.xml, uniques.xml,
-addons.xml, sources.xml, gloss.xml, quantities.xml y los archivos de
+addons.xml, sources.xml, gloss.xml, quantities.xml, frequencies.xml y
+los archivos de
 idiomas de languages/, y los archivos de los idiomas de la interfaz
 (data/interface/, junto al programa).  Cada problema se informa como
 FILE:LINE: error|warning: mensaje.
@@ -102,6 +103,9 @@ class Checker:
             elif root == 'quantities':
                 self.check_quantities(
                     path, xmldata.read_quantities(path, errors))
+            elif root == 'frequencies':
+                self.check_frequencies(
+                    path, xmldata.read_frequencies(path, errors))
             elif root == 'language':
                 self.check_language(path, errors)
             elif root == 'interface':
@@ -115,7 +119,8 @@ class Checker:
                     path, 1, tr('<{root}> is not a WORDS data file (the '
                                 'root must be <dictionary>, <inflections>, '
                                 '<uniques>, <addons>, <sources>, <glosses>, '
-                                '<quantities>, <language> or <interface>)',
+                                '<quantities>, <frequencies>, <language> or '
+                                '<interface>)',
                                 root=root)))
         except xmldata.DataError as e:
             errors.append(e)            # el archivo no se pudo analizar
@@ -167,6 +172,19 @@ class Checker:
                                 tr('"{marked}" is not the stem "{stem}" of '
                                    'the entry: it is not used',
                                    marked=m, stem=stem))
+
+    def check_frequencies(self, path, items):
+        """Each count of uses is of an entry of the dictionary.xml in the
+        same folder."""
+        dictionary = os.path.join(os.path.dirname(path), lexicon.DICTIONARY)
+        if not os.path.isfile(dictionary):
+            return
+        uids = {e.uid for e, _ in xmldata.read_dictionary(dictionary, [])}
+        for (kind, key, _), line in items:
+            if kind == 'uses' and key not in uids:
+                self.report(path, line, 'warning',
+                            tr('there is no entry with the id {id}: this '
+                               'count is not used', id=key))
 
     def check_language(self, path, errors):
         data = xmldata.read_language(path, errors)

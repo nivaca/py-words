@@ -660,6 +660,51 @@
     </xs:unique>
   </xs:element>
 
+  <!-- frequencies.xml -->
+
+  <xs:element name="frequencies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation><xs:documentation>How often a kind of form
+            occurs in the texts of the LASLA, as counted by Collatinus:
+            the part of speech (a, n, p, v, w ...) followed by the case
+            and number, or by the mood and 1 for a present.
+          </xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:attribute name="name" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:pattern value="[a-z][a-z1-8 ][1-2 ]"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="count" type="xs:nonNegativeInteger"
+              use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="uses" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation><xs:documentation>How often the entry with this
+            id occurs in the texts of the LASLA.
+          </xs:documentation></xs:annotation>
+          <xs:complexType>
+            <xs:attribute name="entry" type="id" use="required"/>
+            <xs:attribute name="count" type="xs:nonNegativeInteger"
+              use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:unique name="oneTagOnce">
+      <xs:selector xpath="tag"/>
+      <xs:field xpath="@name"/>
+    </xs:unique>
+    <xs:unique name="usesEntry">
+      <xs:selector xpath="uses"/>
+      <xs:field xpath="@entry"/>
+    </xs:unique>
+  </xs:element>
+
   <xs:simpleType name="longStems">
     <xs:restriction base="xs:string">
       <xs:pattern value="(-|[a-zA-ZāēīōūȳĀĒĪŌŪȲ]+)( (-|[a-zA-ZāēīōūȳĀĒĪŌŪȲ]+)){0,3}"/>
