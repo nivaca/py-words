@@ -4689,36 +4689,9 @@ media
     medi-ā         2SG.PRS.ACT.IMP
 
 aenean
-  (unknown)
-  (near spellings: aenea, aeneae, aeneam)
-
-aenea
-  aeneum, aenei  noun, 2nd declension, neuter  [XXXCO]
-    vessel made of copper/bronze; brazen vessel; kettle, pot, cauldron;
-    aene-a         NOM.PL
-    aene-a         VOC.PL
-    aene-a         ACC.PL
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-a         NOM.SG.F
-    aene-a         VOC.SG.F
-    aene-ā         ABL.SG.F
-    aene-a         NOM.PL.N
-    aene-a         VOC.PL.N
-    aene-a         ACC.PL.N
-
-aeneae
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-ae        GEN.SG.F
-    aene-ae        DAT.SG.F
-    aene-ae        NOM.PL.F
-    aene-ae        VOC.PL.F
-
-aeneam
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-am        ACC.SG.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ān        ACC.SG
 
 secum
   secum, seci  noun, 2nd declension, neuter  [XXXDS]  lesser
@@ -7353,6 +7326,10 @@ aeneas
   aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
     of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
     aene-ās        ACC.PL.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ās        NOM.SG
+    aenē-ās        ACC.PL
 
 unaque
   -que  enclitic
@@ -8720,6 +8697,10 @@ aeneas
   aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
     of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
     aene-ās        ACC.PL.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ās        NOM.SG
+    aenē-ās        ACC.PL
 
 atque
   atque  conjunction  [XXXAO]
@@ -9191,6 +9172,10 @@ aeneas
   aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
     of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
     aene-ās        ACC.PL.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ās        NOM.SG
+    aenē-ās        ACC.PL
 
 tantum
   tantus, tanta, tantum  adjective, 1st/2nd declension  [XXXAX]
@@ -11284,6 +11269,10 @@ caeli
     the sky, heaven, the heavens, the vault of heaven, to be struck with lightning; to drop down from the sky, to confound every thing, overturn all, raise chaos, to err very much, be much, entirely mistaken; the heavens; Heaven, the region of heaven, a climate, zone, region; The air, sky, atmosphere, temperature, climate, weather; Daytime, day, at break of day; Height, the earth, upper world; Heaven, the abode of the happy dead; the summit of prosperity, honor; a vault, arch, covering; (Lewis and Short)
     cael-ī         GEN.SG
     cael-ī         LOC.SG
+  Caelius, Caeli  noun, 2nd declension, masculine  [XXXCS+m]
+    Caelius; Roman gens name; (M. ~ Rufus, Cicero's friend; L. ~ Antipater);
+    caeli          VOC.SG
+    caeli          GEN.SG
 
 medio
   medius, medii  noun, 2nd declension, masculine  [XXXDS]  lesser
@@ -11788,36 +11777,9 @@ venisse
     vēnīv-isse     PRF.ACT.INF
 
 aenean
-  (unknown)
-  (near spellings: aenea, aeneae, aeneam)
-
-aenea
-  aeneum, aenei  noun, 2nd declension, neuter  [XXXCO]
-    vessel made of copper/bronze; brazen vessel; kettle, pot, cauldron;
-    aene-a         NOM.PL
-    aene-a         VOC.PL
-    aene-a         ACC.PL
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-a         NOM.SG.F
-    aene-a         VOC.SG.F
-    aene-ā         ABL.SG.F
-    aene-a         NOM.PL.N
-    aene-a         VOC.PL.N
-    aene-a         ACC.PL.N
-
-aeneae
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-ae        GEN.SG.F
-    aene-ae        DAT.SG.F
-    aene-ae        NOM.PL.F
-    aene-ae        VOC.PL.F
-
-aeneam
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-am        ACC.SG.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ān        ACC.SG
 
 troiano
   Troianus, Troiani  noun, 2nd declension, masculine  [XXXEm]  uncommon
@@ -11834,6 +11796,8 @@ troiano
 sanguine
   sanguis, sanguinis  noun, 3rd declension, masculine  [XXXAA]
     blood; to shed blood; Blood, consanguinity, descent, race, stock, family; a descendant, offspring; vigor, strength, force, spirit, life; (Lewis and Short)
+  sanguen, sanguinis  noun, 3rd declension, neuter  [BXXDS]  early  lesser
+    blood; (archaic neuter form of sanguis);
   sanguis, sanguinis  noun, 3rd declension, masculine  [FXXEM]  medieval  uncommon
     (fine for) bloodshed [~ effusus];
     sanguin-e      LOC.SG
@@ -13360,36 +13324,9 @@ dominum
   (less likely forms are not shown)
 
 aenean
-  (unknown)
-  (near spellings: aenea, aeneae, aeneam)
-
-aenea
-  aeneum, aenei  noun, 2nd declension, neuter  [XXXCO]
-    vessel made of copper/bronze; brazen vessel; kettle, pot, cauldron;
-    aene-a         NOM.PL
-    aene-a         VOC.PL
-    aene-a         ACC.PL
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-a         NOM.SG.F
-    aene-a         VOC.SG.F
-    aene-ā         ABL.SG.F
-    aene-a         NOM.PL.N
-    aene-a         VOC.PL.N
-    aene-a         ACC.PL.N
-
-aeneae
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-ae        GEN.SG.F
-    aene-ae        DAT.SG.F
-    aene-ae        NOM.PL.F
-    aene-ae        VOC.PL.F
-
-aeneam
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-am        ACC.SG.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ān        ACC.SG
 
 in
   in  preposition, with the ablative  [XXXAX]
@@ -14423,6 +14360,8 @@ a
 sanguine
   sanguis, sanguinis  noun, 3rd declension, masculine  [XXXAA]
     blood; to shed blood; Blood, consanguinity, descent, race, stock, family; a descendant, offspring; vigor, strength, force, spirit, life; (Lewis and Short)
+  sanguen, sanguinis  noun, 3rd declension, neuter  [BXXDS]  early  lesser
+    blood; (archaic neuter form of sanguis);
   sanguis, sanguinis  noun, 3rd declension, masculine  [FXXEM]  medieval  uncommon
     (fine for) bloodshed [~ effusus];
     sanguin-e      LOC.SG
@@ -16419,36 +16358,9 @@ plantis
     plant-īs       ABL.PL
 
 aenean
-  (unknown)
-  (near spellings: aenea, aeneae, aeneam)
-
-aenea
-  aeneum, aenei  noun, 2nd declension, neuter  [XXXCO]
-    vessel made of copper/bronze; brazen vessel; kettle, pot, cauldron;
-    aene-a         NOM.PL
-    aene-a         VOC.PL
-    aene-a         ACC.PL
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-a         NOM.SG.F
-    aene-a         VOC.SG.F
-    aene-ā         ABL.SG.F
-    aene-a         NOM.PL.N
-    aene-a         VOC.PL.N
-    aene-a         ACC.PL.N
-
-aeneae
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-ae        GEN.SG.F
-    aene-ae        DAT.SG.F
-    aene-ae        NOM.PL.F
-    aene-ae        VOC.PL.F
-
-aeneam
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-am        ACC.SG.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ān        ACC.SG
 
 fundantem
   fundo, fundare, fundavi, fundatus  verb, 1st conjugation  [XXXBX]
@@ -17655,6 +17567,10 @@ aeneas
   aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
     of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
     aene-ās        ACC.PL.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ās        NOM.SG
+    aenē-ās        ACC.PL
 
 aspectu
   aspectus, aspectus  noun, 4th declension, masculine  [XXXAO]
@@ -19172,36 +19088,9 @@ his
     h-īs           ABL.PL
 
 aenean
-  (unknown)
-  (near spellings: aenea, aeneae, aeneam)
-
-aenea
-  aeneum, aenei  noun, 2nd declension, neuter  [XXXCO]
-    vessel made of copper/bronze; brazen vessel; kettle, pot, cauldron;
-    aene-a         NOM.PL
-    aene-a         VOC.PL
-    aene-a         ACC.PL
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-a         NOM.SG.F
-    aene-a         VOC.SG.F
-    aene-ā         ABL.SG.F
-    aene-a         NOM.PL.N
-    aene-a         VOC.PL.N
-    aene-a         ACC.PL.N
-
-aeneae
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-ae        GEN.SG.F
-    aene-ae        DAT.SG.F
-    aene-ae        NOM.PL.F
-    aene-ae        VOC.PL.F
-
-aeneam
-  aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
-    of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
-    aene-am        ACC.SG.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ān        ACC.SG
 
 compellat
   compello, compellare, compellavi, compellatus  verb, 1st conjugation, transitive  [XXXBO]
@@ -20759,6 +20648,10 @@ aeneas
   aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
     of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
     aene-ās        ACC.PL.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ās        NOM.SG
+    aenē-ās        ACC.PL
 
 qui
   pronoun, relative  [XXXAO]
@@ -24964,6 +24857,10 @@ aeneas
   aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
     of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
     aene-ās        ACC.PL.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ās        NOM.SG
+    aenē-ās        ACC.PL
 
 quamquam
   -quam  enclitic
@@ -28495,6 +28392,10 @@ caeli
     the sky, heaven, the heavens, the vault of heaven, to be struck with lightning; to drop down from the sky, to confound every thing, overturn all, raise chaos, to err very much, be much, entirely mistaken; the heavens; Heaven, the region of heaven, a climate, zone, region; The air, sky, atmosphere, temperature, climate, weather; Daytime, day, at break of day; Height, the earth, upper world; Heaven, the abode of the happy dead; the summit of prosperity, honor; a vault, arch, covering; (Lewis and Short)
     cael-ī         GEN.SG
     cael-ī         LOC.SG
+  Caelius, Caeli  noun, 2nd declension, masculine  [XXXCS+m]
+    Caelius; Roman gens name; (M. ~ Rufus, Cicero's friend; L. ~ Antipater);
+    caeli          VOC.SG
+    caeli          GEN.SG
 
 convexa
   convexum, convexi  noun, 2nd declension, neuter  [XTXCO]
@@ -29556,6 +29457,10 @@ aeneas
   aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
     of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
     aene-ās        ACC.PL.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ās        NOM.SG
+    aenē-ās        ACC.PL
 
 semperque
   -que  enclitic
@@ -35012,6 +34917,10 @@ aeneas
   aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
     of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
     aene-ās        ACC.PL.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ās        NOM.SG
+    aenē-ās        ACC.PL
 
 celsa
   celsus, celsa, celsum  adjective, 1st/2nd declension  [XXXAO]
@@ -36166,6 +36075,10 @@ aeneas
   aeneus, aenea, aeneum  adjective, 1st/2nd declension  [XXXCO]
     of bronze; Of copper, bronze; Of the color of bronze; (Lewis and Short)
     aene-ās        ACC.PL.F
+  Aeneas, Aeneae  noun, 1st declension, masculine  [XXXBS+m]
+    Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;
+    aenē-ās        NOM.SG
+    aenē-ās        ACC.PL
 
 subitis
   subeo, subire, subivi(ii), subitus  verb, irregular, intransitive  [XXXAO]
@@ -39282,6 +39195,8 @@ cum
 sanguine
   sanguis, sanguinis  noun, 3rd declension, masculine  [XXXAA]
     blood; to shed blood; Blood, consanguinity, descent, race, stock, family; a descendant, offspring; vigor, strength, force, spirit, life; (Lewis and Short)
+  sanguen, sanguinis  noun, 3rd declension, neuter  [BXXDS]  early  lesser
+    blood; (archaic neuter form of sanguis);
   sanguis, sanguinis  noun, 3rd declension, masculine  [FXXEM]  medieval  uncommon
     (fine for) bloodshed [~ effusus];
     sanguin-e      LOC.SG

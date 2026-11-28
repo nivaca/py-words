@@ -1374,7 +1374,7 @@ definitiones sunt in `data/languages/en.xml` (`source="S"`), et
 significationes WORDS manent in `data/dictionary.xml`: inquisitio ex
 Anglico in utrisque querit.  Nomina propria eius etiam addita sunt, et
 voces quarum grammatica a nostra differt; in summa, 8 436 articuli ab eo
-veniunt (6 653 voces et 1 783 nomina), et dictionarium habet 93 370
+veniunt (6 653 voces et 1 783 nomina), et dictionarium habet 93 373
 articulos.
 
 In versione 3.3 error horum duorum importuum correctus est.  Definitio De

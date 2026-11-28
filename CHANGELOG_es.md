@@ -21,6 +21,11 @@ final, sin fechas, a partir de la lista "Versiones" del README.
   tal como está (así *urbis* no es Urbius). La idea viene de Collatinus.
 - Se entiende *est* escrito *-st* después de un enclítico: *modoquest*
   es *modo* + *-que* + *est*, como en Collatinus.
+- Tres palabras frecuentes que le faltaban al diccionario, halladas al
+  compararlo con los lemas de Collatinus que más aparecen en los textos
+  del LASLA: *Aeneas* (hasta ahora leída solo como *aeneus*), *Caelius* y
+  el arcaico *sanguen* (sangre), con sus significados de Lewis y Short y
+  De Miguel: 93 373 entradas.
 
 ## 3.33 — 2026-11-27
 

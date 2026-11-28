@@ -20,6 +20,11 @@ without dates, from the list "Version" of the README.
   *urbis* is not Urbius). The idea comes from Collatinus.
 - *est* written *-st* after an enclitic is understood: *modoquest* is
   *modo* + *-que* + *est*, as in Collatinus.
+- Three frequent words that the dictionary lacked, found by comparing it
+  with the lemmas of Collatinus that occur most in the texts of the
+  LASLA: *Aeneas* (until now read only as *aeneus*), *Caelius* and the
+  archaic *sanguen* (blood), with their meanings from Lewis and Short and
+  De Miguel: 93,373 entries.
 
 ## 3.33 — 2026-11-27
 

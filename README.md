@@ -1370,7 +1370,7 @@ or another sense keeps its own meaning.  These definitions are in
 in `data/dictionary.xml`: the search from English looks in both.  His
 proper names were added too, and the words whose grammar differs from
 ours; in all, 8,436 entries come from him (6,653 words and 1,783
-names), and the dictionary has 93,370 entries.
+names), and the dictionary has 93,373 entries.
 
 In 3.3 a mistake of these two imports was corrected.  A definition of
 De Miguel or of Lewis and Short had been given to every entry with the

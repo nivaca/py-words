@@ -18474,6 +18474,12 @@
     <stem>Aeneat</stem>
     <meaning>inhabitants of Aenea;</meaning>
   </entry>
+  <entry id="94167" pos="N" decl="1 8" gender="M" kind="N" age="X" area="X"
+    geo="X" freq="B" source="S m">
+    <stem>Aene</stem>
+    <stem>Aene</stem>
+    <meaning>Aeneas, son of Venus and Anchises; Trojan hero of the Aeneid;</meaning>
+  </entry>
   <entry id="1925" pos="N" decl="3 1" gender="M" kind="P" age="X" area="X"
     geo="X" freq="D" source="O">
     <stem>aeneator</stem>
@@ -84810,6 +84816,12 @@
     <stem>caeliloqu</stem>
     <stem>caeliloqu</stem>
     <meaning>heavenly speaking;</meaning>
+  </entry>
+  <entry id="94168" pos="N" decl="2 5" gender="M" kind="N" age="X" area="X"
+    geo="X" freq="C" source="S m">
+    <stem>Caeli</stem>
+    <stem>Caeli</stem>
+    <meaning>Caelius; Roman gens name; (M. ~ Rufus, Cicero's friend; L. ~ Antipater);</meaning>
   </entry>
   <entry id="92286" pos="N" decl="2 2" gender="N" kind="L" age="X" area="X"
     geo="X" freq="E" source="S">
@@ -488129,6 +488141,12 @@
     <stem>sanguis</stem>
     <stem>sanguin</stem>
     <meaning>blood; family; bloodshed;</meaning>
+  </entry>
+  <entry id="94169" pos="N" decl="3 2" gender="N" kind="T" age="B" area="X"
+    geo="X" freq="D" source="S">
+    <stem>sanguen</stem>
+    <stem>sanguin</stem>
+    <meaning>blood; (archaic neuter form of sanguis);</meaning>
   </entry>
   <entry id="41706" pos="N" decl="3 1" gender="M" kind="T" age="F" area="X"
     geo="X" freq="E" source="M">

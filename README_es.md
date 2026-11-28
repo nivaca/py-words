@@ -1412,7 +1412,7 @@ los significados de WORDS siguen en `data/dictionary.xml`: la búsqueda
 desde el inglés mira en los dos.  También se añadieron sus nombres
 propios y las palabras cuya gramática difiere de la nuestra; en total,
 8436 entradas vienen de él (6653 palabras y 1783 nombres), y el
-diccionario tiene 93 370 entradas.
+diccionario tiene 93 373 entradas.
 
 En la 3.3 se corrigió un error de estas dos importaciones.  Una
 definición de De Miguel o de Lewis y Short se había dado a todas las
