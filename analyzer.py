@@ -520,6 +520,10 @@ class Analyzer:
             #  (e for ae or oe: queruntur is also quaeruntur)
             out = chain(out, tricks.diphthongs(self, word, notes, out,
                                                   capitalized))
+        if s.use_tricks:
+            #  (-iis escrito -is: gaudis, conubis)
+            out = chain(out, tricks.single_i(self, word, notes, out,
+                                                 capitalized))
         if not out:
             out = self.prodelision(word, notes)
             est = bool(out)

@@ -145,6 +145,18 @@ class AnalyzerTests(unittest.TestCase):
         r = self.analyze('queruntur')
         self.assertIn('quaeruntur', r.notes[Origin.TRICK])
 
+    def test_iis_written_with_one_i(self):
+        # gaudis es también Gaudos; conubis, co- + nubis
+        for word, stem in (('gaudis', 'gaudi'), ('conubis', 'conubi'),
+                           ('auspicis', 'auspici'), ('radis', 'radi')):
+            self.assertIn(stem, self.stems(word), word)
+        r = self.analyze('gaudis')
+        self.assertIn('gaudiis', r.notes[Origin.TRICK])
+
+    def test_iis_with_one_i_leaves_other_words_alone(self):
+        for word in ('bonis', 'piis', 'omnis', 'nobis'):
+            self.assertNotIn(Origin.TRICK, self.analyze(word).notes, word)
+
     def test_e_for_ae_or_oe_leaves_common_words_alone(self):
         # una e final (essae, benae), entradas raras y nombres (eum: Aea)
         for word in ('esse', 'bene', 'ille', 'eum', 'tres', 'ea'):

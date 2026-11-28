@@ -22278,6 +22278,12 @@ somnis
     somn-is        LOC.PL
     somn-īs        DAT.PL
     somn-īs        ABL.PL
+  spelling: Word mod iis -> is (somniis)
+    A terminal 'iis' (DAT/ABL P) may be written 'is' (somniis)
+  somnium, somni(i)  noun, 2nd declension, neuter  [XXXAX]
+    a dream; dreams; a dream, an idle whim, fancy, stuff, nonsense; (Lewis and Short)
+    somni-īs       DAT.PL
+    somni-īs       ABL.PL
 
 et
   et  conjunction  [XXXAX]
@@ -29531,6 +29537,12 @@ somnis
     somn-is        LOC.PL
     somn-īs        DAT.PL
     somn-īs        ABL.PL
+  spelling: Word mod iis -> is (somniis)
+    A terminal 'iis' (DAT/ABL P) may be written 'is' (somniis)
+  somnium, somni(i)  noun, 2nd declension, neuter  [XXXAX]
+    a dream; dreams; a dream, an idle whim, fancy, stuff, nonsense; (Lewis and Short)
+    somni-īs       DAT.PL
+    somni-īs       ABL.PL
 
 ferus
   ferus, feri  noun, 2nd declension, masculine/feminine  [XXXDX]  lesser
@@ -31856,6 +31868,16 @@ taedis
     taed-is        LOC.PL
     taed-īs        DAT.PL
     taed-īs        ABL.PL
+  spelling: Word mod iis -> is (taediis)
+    A terminal 'iis' (DAT/ABL P) may be written 'is' (taediis)
+  taedium, taedi(i)  noun, 2nd declension, neuter  [XXXBO]
+    a disgusting, loathsome, irksome thing, a nuisance, a loathsome, rancid taste, smell; (Lewis and Short)
+  taedium, taedi(i)  noun, 2nd declension, neuter  [XXXBO]
+    disagreeable/offensive quality; object of loathing/disgust/hate/offense;
+  taedium, taedi(i)  noun, 2nd declension, neuter  [EXXBP]  later
+    sadness, grief; sickness/illness; rancid taste/smell (L+S); irksomeness;
+    taedi-īs       DAT.PL
+    taedi-īs       ABL.PL
 
 atque
   atque  conjunction  [XXXAO]
@@ -35166,6 +35188,12 @@ somnis
     somn-is        LOC.PL
     somn-īs        DAT.PL
     somn-īs        ABL.PL
+  spelling: Word mod iis -> is (somniis)
+    A terminal 'iis' (DAT/ABL P) may be written 'is' (somniis)
+  somnium, somni(i)  noun, 2nd declension, neuter  [XXXAX]
+    a dream; dreams; a dream, an idle whim, fancy, stuff, nonsense; (Lewis and Short)
+    somni-īs       DAT.PL
+    somni-īs       ABL.PL
 
 rursusque
   -que  enclitic

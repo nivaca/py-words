@@ -9,6 +9,17 @@ Fedora está también en Copr, en `nivaca/py-words`. El repositorio
 empieza en la 2.13 (2026-10-22); las versiones anteriores se resumen al
 final, sin fechas, a partir de la lista "Versiones" del README.
 
+## 3.34 — 2026-11-28
+
+- El dativo y ablativo plural en -iis escrito con una sola i, como lo
+  hacen a menudo los poetas y las inscripciones (*gaudis*, *conubis*,
+  *auspicis* por *gaudiis*, *conubiis*, *auspiciis*), se lee también
+  cuando la palabra se encuentra tal como está (*gaudis* es también
+  Gaudos, y *conubis* co- + nubis), en los sustantivos de la 2.ª
+  declinación y los adjetivos de la 1.ª/2.ª. Solo se conservan las
+  entradas frecuentes, tan frecuentes como la mejor lectura de la palabra
+  tal como está (así *urbis* no es Urbius). La idea viene de Collatinus.
+
 ## 3.33 — 2026-11-27
 
 - La página web pública (`--public`, `public_app`) muestra el aviso de

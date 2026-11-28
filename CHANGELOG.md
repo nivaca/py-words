@@ -9,6 +9,16 @@ Fedora is also on Copr, in `nivaca/py-words`. The repository starts at
 2.13 (2026-10-22); the versions before it are summed up at the end,
 without dates, from the list "Version" of the README.
 
+## 3.34 — 2026-11-28
+
+- The dative and ablative plural in -iis written with one i, as poets and
+  inscriptions often do (*gaudis*, *conubis*, *auspicis* for *gaudiis*,
+  *conubiis*, *auspiciis*), is read also when the word is found as it is
+  (*gaudis* is also Gaudos, *conubis* co- + nubis), for the nouns of the
+  2nd declension and the adjectives of the 1st/2nd. Only frequent entries
+  are kept, as frequent as the best reading of the word as it is (so
+  *urbis* is not Urbius). The idea comes from Collatinus.
+
 ## 3.33 — 2026-11-27
 
 - The public web page (`--public`, `public_app`) shows the cookie consent

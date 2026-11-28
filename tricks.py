@@ -398,17 +398,6 @@ def try_tricks(az: Analyzer, word: str, notes: dict,
         return t.out
     if t.table(ANY_TRICKS):
         return t.out
-    if len(w) > 3 and w.endswith('is'):
-        # Adjectives of the 1st/2nd declension: -iis written -is
-        t.attempt('Word mod iis -> is', w[:-2] + 'iis',
-                  "A Terminal 'iis' on ADJ 1 1 DAT/ABL P might drop 'i'",
-                  accept=lambda p: p.form.pos == Pos.ADJ and
-                  p.form.decl == Decl(1, 1) and
-                  p.form.case in (Case.DAT, Case.ABL) and
-                  p.form.number == Number.P,
-                  lookup=lambda new: az.word(new, opts, True))
-    if t.out:
-        return t.out
     if s.medieval_spellings:
         if _medieval_spellings(t) or t.table(MEDIEVAL_TRICKS):
             return t.out
@@ -496,6 +485,53 @@ def diphthongs(az: Analyzer, word: str, notes: dict, known: list[Found],
         notes.setdefault(Origin.TRICK, f"'{w}' may be a medieval spelling "
                                        f"of {', '.join(found_as)}")
     return out
+
+
+def _iis(p: Parse) -> bool:
+    """Whether P is a dative or ablative plural in -iis of a noun of the
+    2nd declension or of an adjective of the 1st/2nd (gaudiis, piis)."""
+    f = p.form
+    return f.case in (Case.DAT, Case.ABL) and f.number == Number.P and (
+        (f.pos == Pos.N and f.decl.which == 2) or
+        (f.pos == Pos.ADJ and f.decl == Decl(1, 1)))
+
+
+def single_i(az: Analyzer, word: str, notes: dict, known: list[Found],
+             capitalized: bool = False) -> list[Found]:
+    """The dative or ablative plural in -iis written with one i, as poets
+    and inscriptions often do (gaudis, conubis, auspicis for gaudiis,
+    conubiis, auspiciis): the entries that WORD with -iis finds, besides
+    those of KNOWN.  It is tried even when WORD is found as it is, since
+    gaudis is also Gaudos and conubis co- + nubis; but only frequent
+    entries are kept, as frequent as the best that WORD finds without
+    affixes or tricks (urbis is not Urbius, nor patris patrius), and
+    names only for a CAPITALIZED word."""
+    w = word.lower()
+    if len(w) < 5 or not w.endswith('is') or w.endswith('iis'):
+        return []
+    new = w[:-2] + 'iis'
+    findings = az.word(new, az.default_opts(), True)
+    if not findings or _ends_with_tackon(findings):
+        return []
+    seen = {p.id for p in parses_of(known)}
+    plain = [f for f in known if not f.marks]
+    best = _freq(min(parses_of(plain), key=_freq)) if plain else len(Freq)
+    fresh = found(p for p in parses_of(findings)
+                  if _iis(p) and p.id not in seen and
+                  _common(p, capitalized) and _freq(p) <= best)
+    if not fresh:
+        return []
+    notes.setdefault(Origin.TRICK, f"A terminal 'iis' (DAT/ABL P) may be "
+                                   f"written 'is' ({new})")
+    return marked(trick_mark(f'Word mod iis -> is ({new})'), fresh)
+
+
+def _freq(p: Parse) -> int:
+    """How frequent the entry of P is (1, for A, is the most; an entry
+    without a frequency counts as D, an irregular form as C)."""
+    if p.entry is None:
+        return int(Freq.C)
+    return int(p.entry.codes.freq) or int(Freq.D)
 
 
 def _common(p: Parse, capitalized: bool) -> bool:
