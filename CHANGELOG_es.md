@@ -19,6 +19,8 @@ final, sin fechas, a partir de la lista "Versiones" del README.
   declinación y los adjetivos de la 1.ª/2.ª. Solo se conservan las
   entradas frecuentes, tan frecuentes como la mejor lectura de la palabra
   tal como está (así *urbis* no es Urbius). La idea viene de Collatinus.
+- Se entiende *est* escrito *-st* después de un enclítico: *modoquest*
+  es *modo* + *-que* + *est*, como en Collatinus.
 
 ## 3.33 — 2026-11-27
 

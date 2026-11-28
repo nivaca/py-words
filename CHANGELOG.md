@@ -18,6 +18,8 @@ without dates, from the list "Version" of the README.
   2nd declension and the adjectives of the 1st/2nd. Only frequent entries
   are kept, as frequent as the best reading of the word as it is (so
   *urbis* is not Urbius). The idea comes from Collatinus.
+- *est* written *-st* after an enclitic is understood: *modoquest* is
+  *modo* + *-que* + *est*, as in Collatinus.
 
 ## 3.33 — 2026-11-27
 

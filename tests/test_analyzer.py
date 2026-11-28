@@ -145,6 +145,13 @@ class AnalyzerTests(unittest.TestCase):
         r = self.analyze('queruntur')
         self.assertIn('quaeruntur', r.notes[Origin.TRICK])
 
+    def test_prodelision_after_an_enclitic(self):
+        # modoquest: modo + -que + est
+        r = self.analyze('modoquest')
+        self.assertEqual(r.readings[0].origin, Origin.TRICK)
+        self.assertEqual([rd.source.fix for rd in r.readings[1:3]],
+                         ['est', 'que'])
+
     def test_iis_written_with_one_i(self):
         # gaudis es también Gaudos; conubis, co- + nubis
         for word, stem in (('gaudis', 'gaudi'), ('conubis', 'conubi'),

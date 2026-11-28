@@ -580,6 +580,11 @@ class Analyzer:
             tries.append(w[:-2])
         for less in tries:
             findings = self.word(less, self.default_opts(), False)
+            if not findings:
+                #  Two enclitics, as in Collatinus: modoquest is
+                #  modo + -que + est
+                findings = self.enclitic(less, [], self.default_opts(),
+                                         notes)
             if findings:
                 notes[Origin.TRICK] = (f"A final '-st' may stand for 'est' "
                                        f"({less} est)")
