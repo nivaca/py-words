@@ -11,7 +11,7 @@
 ; tools/bundle-installer.py arma la carpeta SourceDir (python\, program\,
 ; bin\, launcher.py, py-words.ico) y corre ISCC con /D para cada valor:
 ;
-;   ISCC /DAppVersion=3.33 /DFileVersion=3.33.0.0 /DSourceDir=... \
+;   ISCC /DAppVersion=3.34 /DFileVersion=3.34.0.0 /DSourceDir=... \
 ;        /DOutputDir=... /DOutputName=... py-words.iss
 ;
 ; Instala para el usuario (sin permisos de administrador) o para todos,

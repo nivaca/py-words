@@ -10,7 +10,7 @@
 # Build with packaging/build-rpm.sh, which makes the source tarball.
 
 Name:           py-words
-Version:        3.33
+Version:        3.34
 Release:        1%{?dist}
 Summary:        Latin dictionary and parser (Latin-English and Latin-Spanish)
 
@@ -107,6 +107,10 @@ bash check-py-words cli --version | grep -q '%{version}'
 %{_datadir}/icons/hicolor/*/apps/py-words.*
 
 %changelog
+* Sat Nov 28 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.34-1
+- Version 3.34: the most usual readings first (counts of the LASLA texts, from
+  Collatinus); -iis written -is; modoquest; Aeneas, Caelius and sanguen
+
 * Fri Nov 27 2026 Nicolas Vaughan <nicolasvaughan@proton.me> - 3.33-1
 - The public web page shows the university's cookie consent (Usercentrics);
   the release files are made in build/release/

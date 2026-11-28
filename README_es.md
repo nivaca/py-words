@@ -143,7 +143,7 @@ instalador no está firmado, así que SmartScreen puede advertir de él:
 elija "Más información" y luego "Ejecutar de todas formas".  También se
 puede ejecutar sin preguntas:
 
-    > py-words-v.3.33-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
+    > py-words-v.3.34-windows-x64-setup.exe /VERYSILENT /CURRENTUSER /TASKS="terminal,path"
 
 **macOS.**  Abra el `.pkg`.  Pone `py-words.app` (la ventana) en
 Aplicaciones y, a menos que las deje fuera en "Personalizar",
@@ -162,7 +162,7 @@ paquete en el Finder y elija "Abrir").  Para quitarlo:
 **Linux.**  El archivo `.run` es un script de shell con el programa
 dentro:
 
-    $ sh py-words-v.3.33-linux-x86_64.run
+    $ sh py-words-v.3.34-linux-x86_64.run
 
 Ejecutado como usuario normal, instala solo para usted, en
 `~/.local/share/py-words`, con la orden en `~/.local/bin`; con `sudo`,
@@ -184,10 +184,10 @@ Python (con Tk), así que no hace falta nada más.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub,
 hágala ejecutable y ejecútela:
 
-    $ chmod +x py-words-v.3.33-x86_64.AppImage
-    $ ./py-words-v.3.33-x86_64.AppImage                # la ventana
-    $ ./py-words-v.3.33-x86_64.AppImage cli amicus     # la línea de órdenes
-    $ ./py-words-v.3.33-x86_64.AppImage help           # los demás programas
+    $ chmod +x py-words-v.3.34-x86_64.AppImage
+    $ ./py-words-v.3.34-x86_64.AppImage                # la ventana
+    $ ./py-words-v.3.34-x86_64.AppImage cli amicus     # la línea de órdenes
+    $ ./py-words-v.3.34-x86_64.AppImage help           # los demás programas
 
 El primer argumento elige el programa: `gui` (por omisión), `cli`,
 `tui`, `web`, `edit`, `edit-gui`, `check` o `convert`; los argumentos
@@ -219,7 +219,7 @@ O descargue `py-words-VERSIÓN-1.fc45.noarch.rpm` y
 paquete va firmado; importe su clave una vez) e instálelo:
 
     $ sudo rpm --import RPM-GPG-KEY-py-words
-    $ sudo dnf install ./py-words-3.33-1.fc45.noarch.rpm
+    $ sudo dnf install ./py-words-3.34-1.fc45.noarch.rpm
 
 Funciona en cualquier Fedora con Python 3.13 o posterior, sea cual sea
 el número `fc` de su nombre.  O hágalo desde la carpeta del programa (un
@@ -267,7 +267,7 @@ cuatro accesos del menú y el icono.  Descargue
 [Releases](https://github.com/nivaca/py-words/releases) de GitHub e
 instálelo:
 
-    $ sudo apt install ./py-words_3.33-1_all.deb
+    $ sudo apt install ./py-words_3.34-1_all.deb
 
 Necesita Python 3.13 o posterior (Debian 13, Ubuntu 25.04 o posteriores);
 `apt` instala con él `python3-tk`.  La firma va aparte:
@@ -275,7 +275,7 @@ Necesita Python 3.13 o posterior (Debian 13, Ubuntu 25.04 o posteriores);
 clave que el RPM, y se comprueba así:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words_3.33-1_all.deb.asc py-words_3.33-1_all.deb
+    $ gpg --verify py-words_3.34-1_all.deb.asc py-words_3.34-1_all.deb
 
 O añada, una vez, el repositorio APT de mis programas
 ([github.com/nivaca/apt](https://github.com/nivaca/apt)), firmado con la
@@ -331,7 +331,7 @@ comprobar una descarga, importe la clave una vez y luego compruebe la
 firma del archivo, o su suma:
 
     $ gpg --import RPM-GPG-KEY-py-words
-    $ gpg --verify py-words-v.3.33.zip.asc py-words-v.3.33.zip
+    $ gpg --verify py-words-v.3.34.zip.asc py-words-v.3.34.zip
     $ gpg --verify SHA256SUMS.asc SHA256SUMS && sha256sum -c --ignore-missing SHA256SUMS
 
 El RPM lleva además su firma dentro: después de `sudo rpm --import
@@ -412,7 +412,7 @@ Para llevarlo a otro sitio, copie la carpeta o haga un zip del programa:
 
     $ python3 tools/bundle-zip.py [-o CARPETA] [--tests]
 
-Eso escribe `build/release/py-words-v.3.33.zip` (con la versión del programa; `-o`
+Eso escribe `build/release/py-words-v.3.34.zip` (con la versión del programa; `-o`
 da otra carpeta), con el programa dentro de una carpeta del mismo
 nombre.  Lleva los programas,
 los datos, los iconos y los documentos, y un archivo `COMMIT` con el
@@ -428,7 +428,7 @@ En Linux, la AppImage (vea "Una AppImage") se hace con
     $ python3 tools/bundle-appimage.py [-o CARPETA] [--python APPIMAGE]
           [--python-version VERSIÓN] [--appimagetool APPIMAGE]
 
-Eso escribe `build/release/py-words-v.3.33-x86_64.AppImage` (`-o` da otra
+Eso escribe `build/release/py-words-v.3.34-x86_64.AppImage` (`-o` da otra
 carpeta), con los mismos archivos que el zip (menos `words_install.py`), un Python propio y la entrada del
 menú y los iconos.  El Python (Python
 3.13 con Tk, de [python-appimage](https://github.com/niess/python-appimage))
@@ -445,7 +445,7 @@ Los instaladores (véase "Instaladores") se hacen con
           [--stage-only]
 
 Para este sistema, a menos que `--system` y `--arch` digan otra cosa,
-eso escribe `dist/py-words-v.3.33-linux-x86_64.run` o su equivalente de
+eso escribe `dist/py-words-v.3.34-linux-x86_64.run` o su equivalente de
 Windows o de macOS (`-o` da otra carpeta; en `dist/` se borran los
 instaladores de versiones anteriores para el mismo sistema).  Cada uno
 lleva los archivos del zip (menos `words_install.py`), un Python propio y
@@ -1702,6 +1702,14 @@ verlas.
 Versiones
 ---------
 
+- 3.34:
+  - Las lecturas más usuales primero: las entradas de una palabra se
+    ordenan según lo que aparecen en los textos latinos del LASLA, tal
+    como los contó Collatinus (`data/frequencies.xml`, `usage.py`; véase
+    "Las lecturas más usuales primero").
+  - -iis escrito -is (gaudis, conubis) se lee también cuando la palabra
+    se encuentra de otro modo; modoquest es modo + -que + est.
+  - Se añadieron al diccionario Aeneas, Caelius y sanguen.
 - 3.33:
   - La página web pública muestra el aviso de consentimiento de cookies
     de la Universidad de los Andes (Usercentrics); la página local sigue
